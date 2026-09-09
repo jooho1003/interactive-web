@@ -1,0 +1,13 @@
+# 대용량 미디어는 저장소에 넣지 않는다 (GitHub 100MB 제한)
+동영상/
+*.mp4
+*.m4a
+*.HEIC
+*.heic
+
+# 플러그인 상태
+.bkit/
+
+# OS
+Thumbs.db
+.DS_Store
