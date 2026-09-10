@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>새벽 세 시 · 와이어프레임</title>
+<style>
+/* ===========================================================================
+   dawn-store 와이어프레임
+   값은 전부 seed/theme.json에서 왔다. 이 :root 블록을 그대로 가져다 써도 된다.
+   실제 구현에서는 theme.json을 파싱해 이 변수들을 주입한다.
+   =========================================================================== */
+:root{
+  /* colors */
+  --c-accent:#f3c614;
+  --c-glow:#ef4444;
+  --c-hotspot:#ffae00;
+  --c-text:#ffffff;
+  --c-muted:#b8b8b8;
+  --c-surface:rgba(0,0,0,.8);
+  --c-border:#363636;
+
+  /* font */
+  --font:'Noto Sans KR','Malgun Gothic',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+
+  /* arrow · desktop */
+  --arrow-size:52px; --arrow-glyph:20px; --arrow-stroke:1px;
+  --arrow-color:#c7c7c7; --arrow-bg:#474747; --arrow-op:.8; --arrow-margin:48px;
+  --arrow-glow:#ef4444; --arrow-glow-op:.5;
+
+  /* menu · desktop */
+  --menu-w:368px; --menu-h:53px; --menu-gap:12px; --menu-r:22px;
+  --menu-fs:24px; --menu-fw:400; --menu-bottom:30%;
+
+  /* question · desktop */
+  --q-fs:26px; --q-fw:500; --q-mb:20px;
+
+  /* subtitle · desktop */
+  --sub-fs:35px; --sub-fw:600; --sub-ls:-.5px; --sub-lh:1.35;
+  --sub-bottom:15%; --sub-max:80%;
+
+  /* skip · desktop  (우상단 — 레퍼런스의 자막 겹침을 피한 위치) */
+  --skip-w:85px; --skip-h:42px; --skip-r:21px; --skip-fs:14px;
+  --skip-top:24px; --skip-right:24px;
+
+  /* lang toggle · desktop (좌상단) */
+  --lang-fs:13px; --lang-h:32px; --lang-px:12px; --lang-r:16px;
+  --lang-top:24px; --lang-left:24px;
+
+  /* timeline · desktop */
+  --tl-w:60%; --tl-bar:3px; --tl-point:10px; --tl-point-active:14px;
+  --tl-label:13px; --tl-top:32px;
+
+  /* replay */
+  --replay-w:140px; --replay-h:50px; --replay-r:25px; --replay-fs:16px;
+
+  /* hotspot */
+  --hs-color:#ffae00; --hs-w:2px; --hs-blur:12px; --hs-r:6px;
+
+  /* misc */
+  --footer-fs:12px; --ai-fs:11px;
+  --crossfade:400ms;
+}
+
+/* ---- 와이어프레임 문서 자체의 스타일 (구현과 무관) ---- */
+*{box-sizing:border-box}
+body{margin:0;background:#0d1117;color:#c9d1d9;font-family:var(--font);font-size:14px;line-height:1.6}
+.wrap{max-width:1560px;margin:0 auto;padding:32px 24px 96px}
+h1{font-size:26px;margin:0 0 4px;color:#fff;letter-spacing:-.5px}
+.lede{color:#8b949e;margin:0 0 28px;font-size:14px}
+h2{font-size:17px;margin:44px 0 4px;color:#fff;letter-spacing:-.3px;
+   padding-top:20px;border-top:1px solid #21262d}
+h2 .n{display:inline-block;min-width:30px;color:#f3c614;font-variant-numeric:tabular-nums}
+.note{color:#8b949e;margin:0 0 14px;font-size:13px;max-width:80ch}
+.note code{background:#161b22;padding:1px 5px;border-radius:3px;color:#79c0ff;font-size:12px}
+.scroller{overflow-x:auto;overflow-y:hidden;padding-bottom:8px}
+.legend{display:flex;gap:18px;flex-wrap:wrap;background:#161b22;border:1px solid #21262d;
+        border-radius:8px;padding:12px 16px;margin-bottom:8px;font-size:12px}
+.legend b{color:#fff;font-weight:600}
+.sw{display:inline-block;width:11px;height:11px;border-radius:2px;vertical-align:-1px;margin-right:5px}
+.toolbar{position:sticky;top:0;z-index:99;background:#0d1117;border-bottom:1px solid #21262d;
+         padding:10px 0;margin-bottom:18px;display:flex;gap:20px;align-items:center;font-size:13px}
+.toolbar label{cursor:pointer;user-select:none;display:flex;gap:6px;align-items:center}
+table{border-collapse:collapse;font-size:13px;margin:8px 0 0}
+th,td{border:1px solid #21262d;padding:6px 11px;text-align:left}
+th{background:#161b22;color:#fff;font-weight:600}
+td code{color:#79c0ff;font-size:12px}
+
+/* ===========================================================================
+   프레임 — 데스크톱 1440×810 (16:9), 모바일 390×844
+   =========================================================================== */
+.frame{position:relative;width:1440px;height:810px;flex:0 0 auto;
+       background:#0a0e14;border:1px solid #30363d;overflow:hidden;
+       font-family:var(--font)}
+.frame.mobile{width:390px;height:844px}
+.row{display:flex;gap:20px;align-items:flex-start}
+.cap{font-size:12px;color:#8b949e;margin:6px 0 0;text-align:center}
+
+/* 미디어 플레이스홀더 */
+.media{position:absolute;inset:0;z-index:1;
+  background:
+    repeating-linear-gradient(45deg,#141a22 0 12px,#111721 12px 24px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.media .mt{font-size:19px;color:#3d4655;letter-spacing:2px;font-weight:600}
+.media .ms{font-size:12px;color:#2c333f}
+.media.dawn{background:
+  linear-gradient(180deg,#243a52 0%,#16202c 55%,#0f151d 100%),
+  repeating-linear-gradient(45deg,#141a22 0 12px,#111721 12px 24px)}
+.media.ending{background:#000}
+
+/* ---- 자막 · z 20 ---- */
+.subtitle{position:absolute;left:50%;transform:translateX(-50%);z-index:20;
+  bottom:var(--sub-bottom);max-width:var(--sub-max);text-align:center;
+  font-size:var(--sub-fs);font-weight:var(--sub-fw);letter-spacing:var(--sub-ls);
+  line-height:var(--sub-lh);color:var(--c-accent);
+  text-shadow:1px 1px 2px rgba(0,0,0,.65)}
+.mobile .subtitle{font-size:17px;bottom:20%;max-width:90%;letter-spacing:-.3px}
+
+/* ---- 푸터·AI 고지 · z 30 ---- */
+.footer{position:absolute;left:50%;transform:translateX(-50%);bottom:16px;z-index:30;
+  font-size:var(--footer-fs);color:rgba(255,255,255,.45)}
+.aidisc{position:absolute;left:50%;transform:translateX(-50%);bottom:38px;z-index:30;
+  font-size:var(--ai-fs);color:rgba(255,255,255,.35)}
+.mobile .footer{font-size:11px;bottom:12px}
+.mobile .aidisc{font-size:10px;bottom:30px}
+
+/* ---- 질문 + 메뉴 · z 40 ---- */
+.menus{position:absolute;left:50%;transform:translateX(-50%);bottom:var(--menu-bottom);
+  z-index:40;display:flex;flex-direction:column;align-items:center;gap:var(--menu-gap)}
+.question{font-size:var(--q-fs);font-weight:var(--q-fw);color:#fff;
+  margin-bottom:calc(var(--q-mb) - var(--menu-gap));text-shadow:0 2px 4px rgba(0,0,0,.5)}
+.menu{width:var(--menu-w);height:var(--menu-h);border-radius:var(--menu-r);
+  background:var(--c-surface);color:#fff;font-size:var(--menu-fs);font-weight:var(--menu-fw);
+  display:flex;align-items:center;justify-content:center;border:0}
+.menu.hover{color:var(--c-hotspot)}
+.menu.glow{border:.67px solid var(--c-glow);box-shadow:0 0 15px 8px rgba(239,68,68,.74)}
+.mobile .menus{bottom:30%}
+.mobile .question{font-size:19px}
+.mobile .menu{width:340px;height:48px;border-radius:20px;font-size:17px}
+
+/* ---- 화살표 · z 50 ---- */
+.arrow{position:absolute;z-index:50;width:var(--arrow-size);height:var(--arrow-size);
+  border-radius:50%;background:rgba(71,71,71,var(--arrow-op));
+  display:flex;align-items:center;justify-content:center}
+.arrow svg{width:var(--arrow-glyph);height:var(--arrow-glyph);
+  stroke:var(--arrow-color);stroke-width:var(--arrow-stroke);fill:none}
+.arrow.left {left:var(--arrow-margin);top:50%;transform:translateY(-50%)}
+.arrow.right{right:var(--arrow-margin);top:50%;transform:translateY(-50%)}
+.arrow.up   {left:50%;top:var(--arrow-margin);transform:translateX(-50%)}
+/* 호버는 방향별 transform 위에 scale을 더한다 */
+.arrow.hover{background:rgba(71,71,71,.9)}
+.arrow.hover svg{stroke:#fff}
+.arrow.left.hover,.arrow.right.hover{transform:translateY(-50%) scale(1.05)}
+.arrow.up.hover{transform:translateX(-50%) scale(1.05)}
+/* 글로우는 본체가 아니라 별도 레이어만 펄스한다. 화살표 자체는 흔들리지 않는다 */
+.arrow.glow{background:rgba(239,68,68,var(--arrow-glow-op))}
+.arrow.glow svg{stroke:#fff}
+.arrow.glow::after{content:'';position:absolute;inset:-6px;border-radius:50%;pointer-events:none;
+  box-shadow:0 0 20px 5px rgba(239,68,68,.7);
+  animation:glowPulse 1.5s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{opacity:.35}50%{opacity:1}}
+.mobile .arrow{width:40px;height:40px}
+.mobile .arrow svg{width:16px;height:16px}
+.mobile .arrow.left{left:20px}.mobile .arrow.right{right:20px}.mobile .arrow.up{top:20px}
+
+/* ---- 핫스팟 · z 10 / 아웃라인 z 12 ---- */
+.hotspot{position:absolute;z-index:10;left:var(--x);top:var(--y);width:var(--w);height:var(--h);
+  border-radius:var(--hs-r);cursor:pointer}
+.hotspot.on{outline:var(--hs-w) solid var(--hs-color);
+  box-shadow:0 0 var(--hs-blur) rgba(255,174,0,.55);background:rgba(255,174,0,.06)}
+.hotspot .tag{position:absolute;left:0;top:-19px;font-size:11px;color:var(--hs-color);
+  background:rgba(0,0,0,.75);padding:1px 6px;border-radius:3px;white-space:nowrap}
+body.no-hs .hotspot{outline:none!important;box-shadow:none!important;background:none!important}
+body.no-hs .hotspot .tag{display:none}
+
+/* ---- 히든 링크 · z 55 ---- */
+.hidden-link{position:absolute;z-index:55;left:var(--x);top:var(--y);width:var(--w);height:var(--h);
+  border:2px dashed #a855f7;border-radius:4px;cursor:pointer}
+.hidden-link .tag{position:absolute;left:0;top:-19px;font-size:11px;color:#a855f7;
+  background:rgba(0,0,0,.75);padding:1px 6px;border-radius:3px;white-space:nowrap}
+
+/* ---- 스킵 · z 60 ---- */
+.skip{position:absolute;z-index:60;top:var(--skip-top);right:var(--skip-right);
+  width:var(--skip-w);height:var(--skip-h);border-radius:var(--skip-r);
+  background:var(--c-surface);border:1px solid var(--c-border);color:var(--c-muted);
+  font-size:var(--skip-fs);font-weight:600;display:flex;align-items:center;justify-content:center}
+.mobile .skip{width:72px;height:34px;border-radius:17px;font-size:12px;top:16px;right:16px}
+
+/* ---- 타임라인 · z 70 ---- */
+.timeline{position:absolute;z-index:70;top:var(--tl-top);left:50%;transform:translateX(-50%);
+  width:var(--tl-w)}
+.tl-bar{position:relative;height:var(--tl-bar);background:rgba(255,255,255,.2);border-radius:2px}
+.tl-fill{position:absolute;left:0;top:0;height:100%;width:38%;background:var(--c-accent);border-radius:2px}
+.tl-pt{position:absolute;top:50%;width:var(--tl-point);height:var(--tl-point);border-radius:50%;
+  background:#fff;transform:translate(-50%,-50%)}
+.tl-pt.active{width:var(--tl-point-active);height:var(--tl-point-active);background:var(--c-accent)}
+.tl-lbl{position:absolute;top:14px;transform:translateX(-50%);font-size:var(--tl-label);
+  color:var(--c-muted);white-space:nowrap}
+.tl-lbl.active{color:var(--c-accent)}
+.mobile .timeline{width:84%;top:56px}
+.mobile .tl-pt{width:8px;height:8px}
+.mobile .tl-pt.active{width:12px;height:12px}
+.mobile .tl-lbl{font-size:11px}
+
+/* ---- 언어 토글 · z 75 ---- */
+.lang{position:absolute;z-index:75;top:var(--lang-top);left:var(--lang-left);height:var(--lang-h);
+  padding:0 var(--lang-px);border-radius:var(--lang-r);background:rgba(0,0,0,.6);
+  display:flex;align-items:center;gap:8px;font-size:var(--lang-fs);font-weight:600}
+.lang .a{color:var(--c-accent)}
+.lang .i{color:#fff;opacity:.55}
+.mobile .lang{top:16px;left:16px;height:28px;font-size:12px;padding:0 10px}
+
+/* ---- 음소거 · z 75 · 언어 토글 오른쪽 · 전 화면 공통 ---- */
+.mute{position:absolute;z-index:75;top:24px;left:132px;width:32px;height:32px;border-radius:16px;
+  background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center}
+.mute svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:1.6}
+.mute.off svg{stroke:var(--c-accent)}
+.mobile .mute{top:16px;left:108px;width:28px;height:28px;border-radius:14px}
+.mobile .mute svg{width:13px;height:13px}
+
+/* ---- 엔딩 화면 · z 90 ---- */
+.endscreen{position:absolute;inset:0;z-index:90;background:#000;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px}
+.replay{width:var(--replay-w);height:var(--replay-h);border-radius:var(--replay-r);
+  background:rgba(255,255,255,.1);border:1px solid var(--c-border);color:#fff;
+  font-size:var(--replay-fs);font-weight:600;display:flex;align-items:center;justify-content:center}
+.endcredit{font-size:12px;color:rgba(255,255,255,.45)}
+.mobile .replay{width:120px;height:44px;border-radius:22px;font-size:14px}
+
+/* ---- 치수 배지 ---- */
+.dim{position:absolute;z-index:95;font-size:10px;line-height:1.3;color:#0d1117;
+  background:#7ee787;padding:2px 5px;border-radius:3px;white-space:pre;font-weight:600;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+body.no-dim .dim{display:none}
+
+/* 상태 변형 데모 */
+.states{display:flex;gap:36px;flex-wrap:wrap;background:#0a0e14;border:1px solid #30363d;
+        padding:26px;border-radius:8px}
+.state{text-align:center}
+.state .box{position:relative;width:200px;height:80px;display:flex;align-items:center;justify-content:center}
+.state .lbl{font-size:12px;color:#8b949e;margin-top:4px}
+.state .arrow{position:static;transform:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>새벽 세 시 · Still Open — 와이어프레임</h1>
+<p class="lede">
+  데스크톱 1440×810, 모바일 390×844. 모든 수치는 <code>seed/theme.json</code>에서 왔고,
+  이 문서의 <code>:root</code> 블록을 구현에 그대로 가져다 써도 된다.
+  회색 사선 영역이 미디어 자리다.
+</p>
+
+<div class="toolbar">
+  <label><input type="checkbox" id="tgl-dim" checked> 치수 배지</label>
+  <label><input type="checkbox" id="tgl-hs" checked> 핫스팟 영역</label>
+  <span style="color:#8b949e">실제 화면에서 핫스팟은 보이지 않는다. 호버할 때만 앰버 아웃라인이 나온다.</span>
+</div>
+
+<div class="legend">
+  <span><b>레이어</b></span>
+  <span><i class="sw" style="background:#ffae00"></i>핫스팟 (z 10·12)</span>
+  <span><i class="sw" style="background:#f3c614"></i>자막 (z 20)</span>
+  <span><i class="sw" style="background:#fff"></i>질문·메뉴 (z 40)</span>
+  <span><i class="sw" style="background:#ef4444"></i>화살표 글로우 (z 50)</span>
+  <span><i class="sw" style="background:#a855f7"></i>히든 링크 (z 55)</span>
+  <span><i class="sw" style="background:#7ee787"></i>치수 주석 (구현에 없음)</span>
+</div>
+
+
+<h2><span class="n">01</span> intro · 유리문</h2>
+<p class="note">
+  8초 루프. 전체 화면 대신 <b>유리문 위 핫스팟 하나</b>만 클릭 지점이다. 3초에 UI가 뜬다
+  (<code>duration 8 − buttonShowBeforeEnd 5</code>). 스킵 없음. AI 고지는 이 화면에만 노출한다.
+  좌상단의 언어 토글과 음소거 버튼, 하단 크레딧은 <b>전 화면 공통</b>이라 이 아래 프레임에서는 일부 생략했다.
+</p>
+<div class="scroller"><div class="row">
+  <div>
+    <div class="frame">
+      <div class="media"><span class="mt">intro.webp</span><span class="ms">편의점 외경 · 8s loop · Ken Burns 1.00 → 1.04</span></div>
+      <div class="hotspot on" style="--x:38%;--y:30%;--w:24%;--h:46%"><span class="tag">e-enter · 유리문</span></div>
+      <div class="lang"><span class="a">KO</span><span class="i">EN</span></div>
+      <div class="mute"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M16 9c1 1 1 5 0 6"/><path d="M19 7c2 2 2 8 0 10"/></svg></div>
+      <div class="subtitle">새벽 세 시. 여기만 켜져 있다.</div>
+      <div class="menus">
+        <div class="question">들어간다</div>
+        <div class="menu glow">문을 연다</div>
+      </div>
+      <div class="aidisc">이 작품의 이미지는 생성형 AI로 제작되었습니다.</div>
+      <div class="footer">Created by ______</div>
+      <div class="dim" style="left:52px;top:250px">hotspot 38%,30%
+24%×46%</div>
+      <div class="dim" style="left:52px;top:640px">menu 368×53 r22
+fs 24 / bottom 18%</div>
+      <div class="dim" style="right:24px;top:540px">subtitle fs35 w600
+bottom 15% max 80%</div>
+      <div class="dim" style="left:120px;top:26px">lang h32 fs13
+top24 left24</div>
+    </div>
+    <p class="cap">1440 × 810</p>
+  </div>
+</div></div>
+
+
+<h2><span class="n">02</span> hub · 계산대 — 기본 상태</h2>
+<p class="note">
+  6초 루프, 2초에 UI 등장. 분기가 <b>화살표와 메뉴 두 방식으로 동시에</b> 표시된다. 같은
+  <code>edges</code> 배열에서 나오며, <code>arrow</code> 필드가 있는 엣지만 화살표로도 그린다.
+  <b>우산 메뉴는 DOM에 없다</b> — <code>umbrella</code> 노드가 <code>available:false</code>이기 때문이다.
+  숨김이 아니라 렌더링 제외다.
+</p>
+<div class="scroller"><div class="row">
+  <div>
+    <div class="frame">
+      <div class="media"><span class="mt">hub.webp</span><span class="ms">내부 전경 · 6s loop · 스타일 프레임</span></div>
+      <div class="hotspot on" style="--x:14%;--y:44%;--w:15%;--h:20%"><span class="tag">e-coffee</span></div>
+      <div class="hotspot on" style="--x:40%;--y:36%;--w:18%;--h:22%"><span class="tag">e-magazine</span></div>
+      <div class="hotspot" style="--x:64%;--y:52%;--w:11%;--h:24%;outline:2px dashed #6b7280;background:rgba(107,114,128,.08)">
+        <span class="tag" style="color:#6b7280">e-umbrella · available:false</span></div>
+      <div class="hotspot on" style="--x:82%;--y:34%;--w:15%;--h:40%"><span class="tag">e-exit</span></div>
+      <div class="arrow left glow"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></div>
+      <div class="arrow up"><svg viewBox="0 0 24 24"><path d="M5 15l7-7 7 7"/></svg></div>
+      <div class="arrow right"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
+      <div class="lang"><span class="a">KO</span><span class="i">EN</span></div>
+      <div class="mute"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M16 9c1 1 1 5 0 6"/><path d="M19 7c2 2 2 8 0 10"/></svg></div>
+      <div class="subtitle">아무도 없다.</div>
+      <div class="menus">
+        <div class="question">무엇을 살펴볼까</div>
+        <div class="menu glow">온장고 위 커피</div>
+        <div class="menu">매대의 잡지</div>
+        <div class="menu">출입구</div>
+      </div>
+      <div class="footer">Created by ______</div>
+      <div class="dim" style="left:110px;top:352px">glow = primary
+e-coffee</div>
+      <div class="dim" style="left:48px;top:452px">arrow 52px
+margin 48px</div>
+      <div class="dim" style="left:920px;top:200px">우산 자리 —
+버튼 없음</div>
+    </div>
+    <p class="cap">1440 × 810 · 화살표 2개 + 메뉴 3개 (우산 제외)</p>
+  </div>
+</div></div>
+
+
+<h2><span class="n">02b</span> hub · 글로우 전환 후</h2>
+<p class="note">
+  커피와 잡지를 다 본 뒤 돌아온 상태. <code>seenCoffee</code>와 <code>seenMagazine</code>이 모두 서면
+  글로우가 <code>e-coffee</code>에서 <code>e-exit</code>로 옮겨간다. <b>동시에 두 곳이 빛나지 않는다.</b>
+  안 가본 곳을 먼저 권하고, 다 봤으면 나가라고 알려주는 단일 지시등이다.
+</p>
+<div class="scroller"><div class="row">
+  <div>
+    <div class="frame">
+      <div class="media"><span class="mt">hub.webp</span><span class="ms">같은 이미지 · 글로우 타깃만 다름</span></div>
+      <div class="hotspot on" style="--x:14%;--y:44%;--w:15%;--h:20%"><span class="tag">e-coffee · 방문함</span></div>
+      <div class="hotspot on" style="--x:40%;--y:36%;--w:18%;--h:22%"><span class="tag">e-magazine · 방문함</span></div>
+      <div class="hotspot on" style="--x:82%;--y:34%;--w:15%;--h:40%"><span class="tag">e-exit</span></div>
+      <div class="arrow left"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></div>
+      <div class="arrow up"><svg viewBox="0 0 24 24"><path d="M5 15l7-7 7 7"/></svg></div>
+      <div class="arrow right glow"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
+      <div class="lang"><span class="a">KO</span><span class="i">EN</span></div>
+      <div class="menus">
+        <div class="question">무엇을 살펴볼까</div>
+        <div class="menu">온장고 위 커피</div>
+        <div class="menu">매대의 잡지</div>
+        <div class="menu glow">출입구</div>
+      </div>
+      <div class="footer">Created by ______</div>
+      <div class="dim" style="right:120px;top:452px">glow = secondary
+switchWhen 충족</div>
+    </div>
+    <p class="cap">수용 기준 3번</p>
+  </div>
+</div></div>
+
+
+<h2><span class="n">03</span> coffee · 브랜치 — 자막과 스킵</h2>
+<p class="note">
+  14초, 10초에 화살표 등장. 스킵 가능. <b>스킵을 우상단에 둔다.</b> 레퍼런스 두 사이트는 하단에 두어
+  긴 자막과 겹쳤고 모바일에서는 자막이 화면 밖으로 잘렸다. 위치를 분리해 원천 차단한다.
+</p>
+<div class="scroller"><div class="row">
+  <div>
+    <div class="frame">
+      <div class="media"><span class="mt">coffee.webp</span><span class="ms">온장고 클로즈업 · 14s · setsFlag seenCoffee</span></div>
+      <div class="arrow right glow"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
+      <div class="lang"><span class="a">KO</span><span class="i">EN</span></div>
+      <div class="skip">SKIP</div>
+      <div class="subtitle">네 시간째 식어가는 중이다.</div>
+      <div class="footer">Created by ______</div>
+      <div class="dim" style="right:24px;top:78px">skip 85×42 r21
+top24 right24</div>
+      <div class="dim" style="left:60px;top:560px">자막과 스킵이
+서로 다른 모서리</div>
+    </div>
+    <p class="cap">브랜치 노드 공통 레이아웃 · back 노드는 자막 없이 화살표만</p>
+  </div>
+</div></div>
+
+
+<h2><span class="n">05</span> magazine · 타임라인</h2>
+<p class="note">
+  42초. 유일한 긴 컷이라 챕터 점프를 붙인다. 점을 누르면 4초·16초·30초로 이동한다.
+  스틸 노드에서도 동작해야 한다. 타이머 시각을 옮기고 Ken Burns 진행률을 그에 맞춰 다시 계산한다.
+  몰입 구간이라 <b>스킵은 없다</b>. 대신 타임라인이 지루함을 피할 길이 된다. BGM도 이 노드에서만 꺼진다.
+</p>
+<div class="scroller"><div class="row">
+  <div>
+    <div class="frame">
+      <div class="media"><span class="mt">magazine.webp</span><span class="ms">잡지 매대 · 42s · 챕터 3</span></div>
+      <div class="timeline">
+        <div class="tl-bar">
+          <div class="tl-fill"></div>
+          <div class="tl-pt" style="left:9.5%"></div>
+          <div class="tl-lbl" style="left:9.5%">표지</div>
+          <div class="tl-pt active" style="left:38%"></div>
+          <div class="tl-lbl active" style="left:38%">접힌 자국</div>
+          <div class="tl-pt" style="left:71.4%"></div>
+          <div class="tl-lbl" style="left:71.4%">마지막 장</div>
+        </div>
+      </div>
+      <div class="arrow right glow"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
+      <div class="lang"><span class="a">KO</span><span class="i">EN</span></div>
+      <div class="subtitle">누가 같은 페이지를 계속 봤다.</div>
+      <div class="footer">Created by ______</div>
+      <div class="dim" style="left:300px;top:76px">bar 3px · point 10 / active 14
+width 60% · top 32</div>
+      <div class="dim" style="left:1090px;top:76px">점 위치 = at ÷ duration
+04/42=9.5% · 16/42=38% · 30/42=71.4%</div>
+    </div>
+    <p class="cap">수용 기준 4번</p>
+  </div>
+</div></div>
+
+
+<h2><span class="n">06</span> dawn · 엔딩과 히든 링크</h2>
+<p class="note">
+  20초. 00:11부터 00:16 사이에만 냉장고 반사 위에 투명 히트박스가 <b>DOM에 마운트</b>된다.
+  그 밖의 시각에는 존재하지 않는다. 평소에는 보이지 않으며
+  <code>previewEnabled</code>가 참일 때만 아래 보라 점선이 나온다(개발용).
+  화살표도 스킵도 없다. 끝나면 엔딩 화면으로 넘어간다.
+</p>
+<div class="scroller"><div class="row">
+  <div>
+    <div class="frame">
+      <div class="media dawn"><span class="mt">dawn.webp</span><span class="ms">창밖이 밝아온다 · 20s · 영상화 1순위</span></div>
+      <div class="hidden-link" style="--x:70%;--y:60%;--w:22%;--h:20%">
+        <span class="tag">e-hidden-reflection · 00:11–00:16</span></div>
+      <div class="lang"><span class="a">KO</span><span class="i">EN</span></div>
+      <div class="subtitle">밤이 끝났다.</div>
+      <div class="footer">Created by ______</div>
+      <div class="dim" style="left:1010px;top:390px">box 70%,60% 22%×20%
+mobile 64%,54% 30%×24%</div>
+      <div class="dim" style="left:60px;top:76px">엔딩 노드 —
+화살표·스킵 없음</div>
+    </div>
+    <p class="cap">수용 기준 5번 · 이 컷의 마지막 프레임이 reflection의 첫 프레임이다</p>
+  </div>
+</div></div>
+
+
+<h2><span class="n">07</span> 엔딩 화면</h2>
+<p class="note">
+  <code>type:"ending"</code> 노드가 끝나면 검은 화면에 「다시 보기」와 크레딧만 남는다.
+  누르면 <code>intro</code>로 돌아가고 방문 플래그도 초기화한다.
+</p>
+<div class="scroller"><div class="row">
+  <div>
+    <div class="frame">
+      <div class="media ending"></div>
+      <div class="endscreen">
+        <div class="replay">다시 보기</div>
+        <div class="endcredit">Created by ______</div>
+      </div>
+      <div class="dim" style="left:640px;top:330px">replay 140×50 r25 fs16</div>
+    </div>
+    <p class="cap">dawn과 reflection 공통</p>
+  </div>
+</div></div>
+
+
+<h2><span class="n">08</span> 모바일 390 × 844</h2>
+<p class="note">
+  <b>여기가 레퍼런스 두 사이트가 실제로 실패한 지점이다.</b> 두 사이트 모두 모바일 토큰을 정의해 두고도
+  데스크톱 값이 렌더링되어 화살표가 52px 그대로 나오고 자막이 화면 밖으로 잘렸다.
+  뷰포트 리사이즈가 아니라 모바일 에뮬레이션으로 검증한다.
+  16:9 이미지를 세로에 <code>cover</code>로 씌우면 좌우가 잘리므로,
+  <b>핫스팟 좌표는 화면이 아니라 미디어 렌더 박스 기준</b>으로 계산해야 사물 위에 붙어 있다.
+</p>
+<div class="scroller"><div class="row">
+  <div>
+    <div class="frame mobile">
+      <div class="media"><span class="mt" style="font-size:14px">hub.webp</span><span class="ms">cover · 좌우 잘림</span></div>
+      <div class="hotspot on" style="--x:22%;--y:44%;--w:24%;--h:16%"><span class="tag">e-coffee</span></div>
+      <div class="hotspot on" style="--x:56%;--y:38%;--w:28%;--h:18%"><span class="tag">e-magazine</span></div>
+      <div class="arrow left glow"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></div>
+      <div class="arrow up"><svg viewBox="0 0 24 24"><path d="M5 15l7-7 7 7"/></svg></div>
+      <div class="arrow right"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
+      <div class="lang"><span class="a">KO</span><span class="i">EN</span></div>
+      <div class="subtitle">아무도 없다.</div>
+      <div class="menus">
+        <div class="question">무엇을 살펴볼까</div>
+        <div class="menu glow">온장고 위 커피</div>
+        <div class="menu">매대의 잡지</div>
+        <div class="menu">출입구</div>
+      </div>
+      <div class="footer">Created by ______</div>
+    </div>
+    <p class="cap">허브 · 화살표 40px, 메뉴 340×48, 자막 17px</p>
+  </div>
+  <div>
+    <div class="frame mobile">
+      <div class="media"><span class="mt" style="font-size:14px">magazine.webp</span><span class="ms">타임라인 · 42s</span></div>
+      <div class="timeline">
+        <div class="tl-bar">
+          <div class="tl-fill"></div>
+          <div class="tl-pt" style="left:9.5%"></div>
+          <div class="tl-lbl" style="left:9.5%">표지</div>
+          <div class="tl-pt active" style="left:38%"></div>
+          <div class="tl-lbl active" style="left:38%">접힌 자국</div>
+          <div class="tl-pt" style="left:71.4%"></div>
+          <div class="tl-lbl" style="left:71.4%">마지막 장</div>
+        </div>
+      </div>
+      <div class="arrow right glow"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
+      <div class="lang"><span class="a">KO</span><span class="i">EN</span></div>
+      <div class="subtitle">누가 같은 페이지를 계속 봤다.</div>
+      <div class="footer">Created by ______</div>
+    </div>
+    <p class="cap">타임라인 top 56 · 라벨 11px</p>
+  </div>
+  <div>
+    <div class="frame mobile">
+      <div class="media dawn"><span class="mt" style="font-size:14px">dawn.webp</span><span class="ms">히든 창</span></div>
+      <div class="hidden-link" style="--x:64%;--y:54%;--w:30%;--h:24%">
+        <span class="tag">00:11–00:16</span></div>
+      <div class="lang"><span class="a">KO</span><span class="i">EN</span></div>
+      <div class="subtitle">밤이 끝났다.</div>
+      <div class="footer">Created by ______</div>
+    </div>
+    <p class="cap">히든 박스는 모바일 좌표를 따로 갖는다</p>
+  </div>
+</div></div>
+
+
+<h2><span class="n">09</span> 상태 변형</h2>
+<p class="note">
+  화살표와 메뉴는 기본·호버·글로우·글로우호버 네 상태를 갖는다. 글로우는 1.5초 주기로 투명도가
+  0.15에서 0.45 사이를 오간다. 핫스팟은 평소 완전히 투명하고 호버할 때만 앰버 아웃라인이 나온다.
+</p>
+<div class="states">
+  <div class="state"><div class="box"><div class="arrow"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div></div><div class="lbl">기본 · #c7c7c7 on #474747 80%</div></div>
+  <div class="state"><div class="box"><div class="arrow hover"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div></div><div class="lbl">호버 · scale 1.05, 흰색, 200ms</div></div>
+  <div class="state"><div class="box"><div class="arrow glow"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div></div><div class="lbl">글로우 · #ef4444, pulse 1.5s</div></div>
+  <div class="state"><div class="box"><div class="menu" style="width:240px">기본</div></div><div class="lbl">메뉴 기본</div></div>
+  <div class="state"><div class="box"><div class="menu hover" style="width:240px">호버</div></div><div class="lbl">메뉴 호버 · #ffae00</div></div>
+  <div class="state"><div class="box"><div class="menu glow" style="width:240px">글로우</div></div><div class="lbl">메뉴 글로우 · 0 0 15px 8px</div></div>
+  <div class="state"><div class="box"><div style="position:relative;width:120px;height:60px;border-radius:6px;border:1px dashed #30363d"></div></div><div class="lbl">핫스팟 기본 · 완전 투명</div></div>
+  <div class="state"><div class="box"><div style="position:relative;width:120px;height:60px;border-radius:6px;outline:2px solid #ffae00;background:rgba(255,174,0,.06);box-shadow:0 0 12px rgba(255,174,0,.55)"></div></div><div class="lbl">핫스팟 호버 · #ffae00</div></div>
+</div>
+
+
+<h2><span class="n">10</span> 레이어 순서</h2>
+<p class="note">
+  <code>theme.json</code>의 <code>zIndex</code> 값이다. 새 UI를 추가할 일이 생기면 이 표에 먼저 넣는다.
+</p>
+<table>
+  <tr><th>z</th><th>레이어</th><th>비고</th></tr>
+  <tr><td><code>0</code></td><td>이전 미디어</td><td>페이드아웃 중. 마지막 프레임 유지</td></tr>
+  <tr><td><code>1</code></td><td>현재 미디어</td><td><code>&lt;img&gt;</code> 또는 <code>&lt;video&gt;</code></td></tr>
+  <tr><td><code>10 · 12</code></td><td>핫스팟 · 호버 아웃라인</td><td>미디어 렌더 박스 기준 좌표</td></tr>
+  <tr><td><code>20</code></td><td>자막</td><td>하단 15%</td></tr>
+  <tr><td><code>30</code></td><td>푸터 · AI 고지</td><td></td></tr>
+  <tr><td><code>40</code></td><td>질문 · 메뉴</td><td>하단 18%</td></tr>
+  <tr><td><code>50</code></td><td>화살표</td><td>가장자리 48px</td></tr>
+  <tr><td><code>55</code></td><td>히든 링크</td><td>시간창에만 마운트</td></tr>
+  <tr><td><code>60</code></td><td>스킵</td><td>우상단</td></tr>
+  <tr><td><code>70</code></td><td>타임라인</td><td>상단 32px</td></tr>
+  <tr><td><code>75</code></td><td>언어 토글</td><td>좌상단</td></tr>
+  <tr><td><code>80</code></td><td>전환 오버레이</td><td>크로스페이드 400ms</td></tr>
+  <tr><td><code>90</code></td><td>엔딩 화면</td><td></td></tr>
+</table>
+
+</div>
+<script>
+  const b = document.body;
+  document.getElementById('tgl-dim').onchange = e => b.classList.toggle('no-dim', !e.target.checked);
+  document.getElementById('tgl-hs').onchange  = e => b.classList.toggle('no-hs',  !e.target.checked);
+</script>
+</body>
+</html>

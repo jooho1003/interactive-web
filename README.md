@@ -5,3 +5,7 @@ AI World 2026 김그륜 세션(본편 영상 + Q&A 녹취)과 레퍼런스 사�
 문서 인덱스: [docs/00-README.md](docs/00-README.md)
 
 원본 영상·사진(HEIC)·음성 파일은 용량 문제로 저장소에 포함하지 않는다. 전사 텍스트는 `docs/transcripts/`에 있다.
+
+## 첫 작품
+
+[`projects/dawn-store/`](projects/dawn-store/) — 「새벽 세 시 · Still Open」. 패밀리 B(분기형) 미니 버전 7컷. 기획·와이어프레임은 Claude, 구현·이미지는 Codex가 맡는다. 설계는 [SPEC.md](projects/dawn-store/SPEC.md).
