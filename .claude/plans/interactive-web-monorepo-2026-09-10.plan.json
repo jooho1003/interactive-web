@@ -1,14 +1,35 @@
 {
   "slug": "interactive-web-monorepo",
   "created": "2026-09-10",
-  "request": "인터랙티브 웹 양산 모노레포 구축 — docs/03-모노레포-설계.md §8 순서. 베이스 A(포탈 스페이스)·B(분기형 비디오) 2개와 복제 제너레이터까지.",
+  "request": "인터랙티브 웹 양산 모노레포 구축 — docs/03-모노레포-설계.md §8 순서. 베이스 A(포탈 스페이스)·B(분기형 비디오) 2개와 복제 제너레이터까지. 2026-09-11 개정: 편집 툴바(inline-editor) 3노드 추가.",
   "routing_ssot": ".claude/routing/model-tiers.json",
   "context": {
-    "repo": "D:/바이브코딩/인터렉티브 웹 (github: jooho1003/interactive-web, main b02848a)",
-    "source_docs": ["docs/02-레퍼런스-사이트-분석.md (API·데이터 모델 원본)", "docs/03-모노레포-설계.md (구조·패키지·배포)", "docs/04-제작-가이드.md (성능 예산 §5)", "docs/06-강연-영상-분석.md §5 (추가 원칙)"],
+    "repo": "D:/바이브코딩/interactive-web (github: jooho1003/interactive-web, main 32fdbe6)",
+    "source_docs": [
+      "docs/02-레퍼런스-사이트-분석.md (API·데이터 모델 원본)",
+      "docs/03-모노레포-설계.md (구조·패키지·배포)",
+      "docs/04-제작-가이드.md (성능 예산 §5)",
+      "docs/06-강연-영상-분석.md §5 (추가 원칙)",
+      "docs/03-모노레포-설계.md §3-3 (편집 툴바 — 2026-09-11 추가)",
+      "docs/transcripts/02-게임-영화-툴-시연.txt, 03-OSF-클라이언트-시연.txt (툴바 실물 근거 — 2026-09-11 반영)"
+    ],
     "stack_decided_in_docs": "pnpm workspaces + Turborepo · TypeScript · Vite+React · three.js/R3F/drei · zustand · zod · Express+Drizzle(SQLite→Postgres) · 스토리지 어댑터 · Tailwind+shadcn · Clerk(선택) · Replit 1순위 배포",
-    "out_of_scope_this_plan": ["flow-editor (Connect Idea형 에디터)", "integrations (Notion·GCal·이메일·YouTube·지갑)", "apps/world-game", "apps/platform-site", "apps/visual-routine", "가우시안 스플랫 렌더러"],
-    "env_known": { "node": "v24.18.0", "pnpm": "미확인 — N1에서 확인", "python3": "py -3 (3.10.5)", "ffmpeg": "9.0", "gh": "jooho1003 인증됨", "replit_cli": "미확인 — N13에서 확인" }
+    "out_of_scope_this_plan": [
+      "flow-editor (Connect Idea형 에디터)",
+      "integrations (Notion·GCal·이메일·YouTube·지갑)",
+      "apps/world-game",
+      "apps/platform-site",
+      "apps/visual-routine",
+      "가우시안 스플랫 렌더러"
+    ],
+    "env_known": {
+      "node": "v24.18.0",
+      "pnpm": "미확인 — N1에서 확인",
+      "python3": "py -3 (3.10.5)",
+      "ffmpeg": "9.0",
+      "gh": "jooho1003 인증됨",
+      "replit_cli": "미확인 — N13에서 확인"
+    }
   },
   "modules": {
     "M0": "기반 — 아키텍처·스키마·API·관리자 셸·UI",
@@ -19,96 +40,573 @@
     "M5": "검증·최종 리뷰"
   },
   "nodes": [
-    { "id": "N1", "title": "아키텍처 확정 + 모노레포 뼈대", "module": "M0",
+    {
+      "id": "N1",
+      "title": "아키텍처 확정 + 모노레포 뼈대",
+      "module": "M0",
       "detail": "pnpm-workspace.yaml, turbo.json, tsconfig.base.json, eslint/prettier, packages/·apps/·templates/·tools/ 빈 골격과 각 package.json. Replit 배포 방식(앱 1개=Repl 1개, 공용 패키지는 번들 포함)과 스토리지 어댑터 인터페이스, 패키지 간 의존 방향(apps→packages만, packages 간은 config-schema→*)을 여기서 확정. 03 문서 §1·§2와 다른 결정이 생기면 문서를 먼저 고친다.",
-      "domain": "frontend", "difficulty": { "D1_spec": 2, "D2_scope": 2, "D3_reversibility": 1, "D4_judgment": 2, "score": 7 },
-      "tier": "powerful", "clamped_by": null, "hard_override": "아키텍처·기술스택 결정 (never_delegate)", "agent": "self", "claude_model": "opus", "codex_model": "gpt-5.6-sol", "reasoning_effort": "xhigh",
-      "depends_on": [], "outputs": ["package.json", "pnpm-workspace.yaml", "turbo.json", "tsconfig.base.json", "packages/*/package.json", "apps/.gitkeep", "templates/.gitkeep", "tools/.gitkeep"], "requires_approval": false },
-
-    { "id": "N2", "title": "config-schema — 레퍼런스 API 응답을 zod 스키마로", "module": "M0",
-      "detail": "02 문서 §A·§B의 JSON을 그대로 옮긴다. A: SceneObject·PortalSettings·LightSettings·Transform·SpaceConfig·Space. B: Direction·VideoNode·VideoFlow·ArrowDesign·HoverFx·ButtonStyle·ToggleStyle·IntroStyle·SubtitleCue·SubtitleTrack·AppSettings. 공통: responsive(), AppInfo(title·favicon·og·domain·creatorLink·copyright·secretCode·nextWorkHint), hex 색 타입. 각 필드에 .describe()와 .meta({widget, min, max, step}) 폼 힌트. 스냅샷 테스트: 02 문서의 실제 응답 JSON이 parse를 통과해야 한다.",
-      "domain": "general", "difficulty": { "D1_spec": 0, "D2_scope": 1, "D3_reversibility": 1, "D4_judgment": 1, "score": 3 },
-      "tier": "balanced", "clamped_by": null, "hard_override": null, "agent": "worker", "claude_model": "sonnet", "codex_model": "gpt-5.6-terra", "reasoning_effort": "medium",
-      "depends_on": ["N1"], "outputs": ["packages/config-schema/src/{responsive,app-info,scene,video-flow,app-settings,index}.ts", "packages/config-schema/test/fixtures/*.json", "packages/config-schema/test/parse.test.ts"], "requires_approval": false },
-
-    { "id": "N3", "title": "api-server + storage(local) + sync — Express 팩토리", "module": "M0",
-      "detail": "createApiServer({settings, collections, uploads, auth, storage}). settings: GET/PUT /api/<key> + 버전 테이블 append(이전 저장본). collections: CRUD /api/<name>?space=. uploads: multipart → storage 어댑터, 바이너리는 GET /api/<name>/:id/<ext>. 항상 /api/saved-at, /api/health. Drizzle + SQLite(better-sqlite3), 스키마는 settings_versions·collections(jsonb)·files. storage: local fs 어댑터 + ?v=timestamp URL. sync: useSavedAt 폴링 훅 + BroadcastChannel. auth 슬롯은 인터페이스만(N15가 채움).",
-      "domain": "general", "difficulty": { "D1_spec": 1, "D2_scope": 1, "D3_reversibility": 1, "D4_judgment": 1, "score": 4 },
-      "tier": "balanced", "clamped_by": null, "hard_override": null, "agent": "worker", "claude_model": "sonnet", "codex_model": "gpt-5.6-terra", "reasoning_effort": "medium",
-      "depends_on": ["N1", "N2"], "outputs": ["packages/api-server/src/{createApiServer,settings,collections,uploads,savedAt,db/schema}.ts", "packages/storage/src/{adapter,local,url}.ts", "packages/sync/src/{useSavedAt,broadcast}.ts", "packages/api-server/test/*.test.ts"], "requires_approval": false },
-
-    { "id": "N4", "title": "core-admin — 스키마→폼 렌더러 + 관리자 셸", "module": "M0",
-      "detail": "zod 스키마를 읽어 폼 자동 생성: number(min/max→슬라이더)·hex→컬러피커·boolean→토글·enum→셀렉트·responsive()→Desktop/Mobile 탭·array→행 편집. 셸: 좌측 섹션 탭, 저장/이전 저장본/JSON 내보내기·가져오기/초기화, 섹션 on/off·리셋. Design Check(저장값 vs 렌더 계산값 대조 → All matched/불일치 목록). 다중 프리뷰 프레임(Desktop 672/Mobile 375). Quick Edit(현재 화면 요소만). 앱 정보 탭(AppInfo) 필수. ADMIN_MODE=public|auth|hidden 스위치(auth 구현은 N15).",
-      "domain": "frontend", "difficulty": { "D1_spec": 1, "D2_scope": 1, "D3_reversibility": 0, "D4_judgment": 1, "score": 3 },
-      "tier": "balanced", "clamped_by": null, "hard_override": null, "agent": "bkit:frontend-architect", "claude_model": "sonnet", "codex_model": "gpt-5.6-terra", "reasoning_effort": "medium",
-      "depends_on": ["N1", "N2", "N5"], "outputs": ["packages/core-admin/src/{AdminShell,SchemaForm,widgets/*,DesignCheck,PreviewFrame,QuickEdit,AppInfoSection,mode}.tsx", "packages/core-admin/src/defineApp.ts"], "requires_approval": false },
-
-    { "id": "N5", "title": "ui — Tailwind+shadcn 래핑, 사운드 훅, 테마", "module": "M0",
+      "domain": "frontend",
+      "difficulty": {
+        "D1_spec": 2,
+        "D2_scope": 2,
+        "D3_reversibility": 1,
+        "D4_judgment": 2,
+        "score": 7
+      },
+      "tier": "powerful",
+      "clamped_by": null,
+      "hard_override": "아키텍처·기술스택 결정 (never_delegate)",
+      "agent": "self",
+      "claude_model": "opus",
+      "codex_model": "gpt-5.6-sol",
+      "reasoning_effort": "xhigh",
+      "depends_on": [],
+      "outputs": [
+        "package.json",
+        "pnpm-workspace.yaml",
+        "turbo.json",
+        "tsconfig.base.json",
+        "packages/*/package.json",
+        "apps/.gitkeep",
+        "templates/.gitkeep",
+        "tools/.gitkeep"
+      ],
+      "requires_approval": false
+    },
+    {
+      "id": "N2",
+      "title": "config-schema — 레퍼런스 API 응답을 zod 스키마로",
+      "module": "M0",
+      "detail": "02 문서 §A·§B의 JSON을 그대로 옮긴다. A: SceneObject·PortalSettings·LightSettings·Transform·SpaceConfig·Space. B: Direction·VideoNode·VideoFlow·ArrowDesign·HoverFx·ButtonStyle·ToggleStyle·IntroStyle·SubtitleCue·SubtitleTrack·AppSettings. 공통: responsive(), AppInfo(title·favicon·og·domain·creatorLink·copyright·secretCode·nextWorkHint), hex 색 타입. 각 필드에 .describe()와 .meta({widget, min, max, step}) 폼 힌트. 스냅샷 테스트: 02 문서의 실제 응답 JSON이 parse를 통과해야 한다. 편집 툴바용 스키마 추가(03 §3-1): Fingerprint·Override·Overrides, 색 팔레트 3층(masterColor{defaultColor,pointColor,greyColor} + savedColors[{id,color}] + colorMasterRefs[키경로]).",
+      "domain": "general",
+      "difficulty": {
+        "D1_spec": 0,
+        "D2_scope": 1,
+        "D3_reversibility": 1,
+        "D4_judgment": 1,
+        "score": 3
+      },
+      "tier": "balanced",
+      "clamped_by": null,
+      "hard_override": null,
+      "agent": "worker",
+      "claude_model": "sonnet",
+      "codex_model": "gpt-5.6-terra",
+      "reasoning_effort": "medium",
+      "depends_on": [
+        "N1"
+      ],
+      "outputs": [
+        "packages/config-schema/src/{responsive,app-info,scene,video-flow,app-settings,index}.ts",
+        "packages/config-schema/test/fixtures/*.json",
+        "packages/config-schema/test/parse.test.ts",
+        "packages/config-schema/src/overrides.ts + palette.ts"
+      ],
+      "requires_approval": false
+    },
+    {
+      "id": "N3",
+      "title": "api-server + storage(local) + sync — Express 팩토리",
+      "module": "M0",
+      "detail": "createApiServer({settings, collections, uploads, auth, storage}). settings: GET/PUT /api/<key> + 버전 테이블 append(이전 저장본). collections: CRUD /api/<name>?space=. uploads: multipart → storage 어댑터, 바이너리는 GET /api/<name>/:id/<ext>. 항상 /api/saved-at, /api/health. Drizzle + SQLite(better-sqlite3), 스키마는 settings_versions·collections(jsonb)·files. storage: local fs 어댑터 + ?v=timestamp URL. sync: useSavedAt 폴링 훅 + BroadcastChannel. auth 슬롯은 인터페이스만(N15가 채움). 설정 키에 overrides 추가. 버전 행에 source(admin|toolbar) 기록. 툴바 이미지 교체용 업로드는 기존 uploads 경로 재사용.",
+      "domain": "general",
+      "difficulty": {
+        "D1_spec": 1,
+        "D2_scope": 1,
+        "D3_reversibility": 1,
+        "D4_judgment": 1,
+        "score": 4
+      },
+      "tier": "balanced",
+      "clamped_by": null,
+      "hard_override": null,
+      "agent": "worker",
+      "claude_model": "sonnet",
+      "codex_model": "gpt-5.6-terra",
+      "reasoning_effort": "medium",
+      "depends_on": [
+        "N1",
+        "N2"
+      ],
+      "outputs": [
+        "packages/api-server/src/{createApiServer,settings,collections,uploads,savedAt,db/schema}.ts",
+        "packages/storage/src/{adapter,local,url}.ts",
+        "packages/sync/src/{useSavedAt,broadcast}.ts",
+        "packages/api-server/test/*.test.ts"
+      ],
+      "requires_approval": false
+    },
+    {
+      "id": "N4",
+      "title": "core-admin — 스키마→폼 렌더러 + 관리자 셸",
+      "module": "M0",
+      "detail": "zod 스키마를 읽어 폼 자동 생성: number(min/max→슬라이더)·hex→컬러피커·boolean→토글·enum→셀렉트·responsive()→Desktop/Mobile 탭·array→행 편집. 셸: 좌측 섹션 탭, 저장/이전 저장본/JSON 내보내기·가져오기/초기화, 섹션 on/off·리셋. Design Check(저장값 vs 렌더 계산값 대조 → All matched/불일치 목록). 다중 프리뷰 프레임(Desktop 672/Mobile 375). Quick Edit는 inline-editor로 이관(N16·N17), 오버라이드 탭은 N18. 앱 정보 탭(AppInfo) 필수. ADMIN_MODE=public|auth|hidden 스위치(auth 구현은 N15).",
+      "domain": "frontend",
+      "difficulty": {
+        "D1_spec": 1,
+        "D2_scope": 1,
+        "D3_reversibility": 0,
+        "D4_judgment": 1,
+        "score": 3
+      },
+      "tier": "balanced",
+      "clamped_by": null,
+      "hard_override": null,
+      "agent": "bkit:frontend-architect",
+      "claude_model": "sonnet",
+      "codex_model": "gpt-5.6-terra",
+      "reasoning_effort": "medium",
+      "depends_on": [
+        "N1",
+        "N2",
+        "N5"
+      ],
+      "outputs": [
+        "packages/core-admin/src/{AdminShell,SchemaForm,widgets/*,DesignCheck,PreviewFrame,AppInfoSection,mode}.tsx",
+        "packages/core-admin/src/defineApp.ts"
+      ],
+      "requires_approval": false
+    },
+    {
+      "id": "N5",
+      "title": "ui — Tailwind+shadcn 래핑, 사운드 훅, 테마",
+      "module": "M0",
       "detail": "packages/ui: shadcn 컴포넌트(button·slider·switch·select·tabs·dialog·toast) 설치·재export, Tailwind preset, useSound(hover/click wav), 다크/라이트 토큰. 모노레포 공용 tailwind.config preset.",
-      "domain": "frontend", "difficulty": { "D1_spec": 0, "D2_scope": 1, "D3_reversibility": 0, "D4_judgment": 1, "score": 2 },
-      "tier": "balanced", "clamped_by": "floor:frontend=balanced", "hard_override": null, "agent": "worker", "claude_model": "sonnet", "codex_model": "gpt-5.6-terra", "reasoning_effort": "medium",
-      "depends_on": ["N1"], "outputs": ["packages/ui/src/{components/*,useSound,theme,index}.ts(x)", "packages/ui/tailwind.preset.ts"], "requires_approval": false },
-
-    { "id": "N6", "title": "three-kit — R3F 씬 셸·GLB·머티리얼·기즈모·레이어·히스토리", "module": "M1",
+      "domain": "frontend",
+      "difficulty": {
+        "D1_spec": 0,
+        "D2_scope": 1,
+        "D3_reversibility": 0,
+        "D4_judgment": 1,
+        "score": 2
+      },
+      "tier": "balanced",
+      "clamped_by": "floor:frontend=balanced",
+      "hard_override": null,
+      "agent": "worker",
+      "claude_model": "sonnet",
+      "codex_model": "gpt-5.6-terra",
+      "reasoning_effort": "medium",
+      "depends_on": [
+        "N1"
+      ],
+      "outputs": [
+        "packages/ui/src/{components/*,useSound,theme,index}.ts(x)",
+        "packages/ui/tailwind.preset.ts"
+      ],
+      "requires_approval": false
+    },
+    {
+      "id": "N6",
+      "title": "three-kit — R3F 씬 셸·GLB·머티리얼·기즈모·레이어·히스토리",
+      "module": "M1",
       "detail": "<SceneShell lightSettings> (조명·그림자·안개·글로우 포스트프로세싱), <GLBObject object=SceneObject> (Draco/KTX2 로더, mat* 오버라이드, 그림자 플래그, visible), <Gizmo> (drei TransformControls, 멀티 선택 일괄 스케일), <LayerPanel>, <HistoryPanel> (zustand+zundo), 멀티 DnD 업로드 훅, 로딩 프로그레스. 성능 예산(04 §5): three 별도 청크, 공간당 ≤30MB 경고.",
-      "domain": "frontend", "difficulty": { "D1_spec": 1, "D2_scope": 1, "D3_reversibility": 0, "D4_judgment": 1, "score": 3 },
-      "tier": "balanced", "clamped_by": null, "hard_override": null, "agent": "bkit:frontend-architect", "claude_model": "sonnet", "codex_model": "gpt-5.6-terra", "reasoning_effort": "medium",
-      "depends_on": ["N1", "N2"], "outputs": ["packages/three-kit/src/{SceneShell,GLBObject,Gizmo,LayerPanel,HistoryPanel,useSceneStore,useDropUpload,loaders,index}.ts(x)"], "requires_approval": false },
-
-    { "id": "N7", "title": "tracking — 페이스 트래킹 + 오프-액시스 카메라 + 폴백", "module": "M1",
+      "domain": "frontend",
+      "difficulty": {
+        "D1_spec": 1,
+        "D2_scope": 1,
+        "D3_reversibility": 0,
+        "D4_judgment": 1,
+        "score": 3
+      },
+      "tier": "balanced",
+      "clamped_by": null,
+      "hard_override": null,
+      "agent": "bkit:frontend-architect",
+      "claude_model": "sonnet",
+      "codex_model": "gpt-5.6-terra",
+      "reasoning_effort": "medium",
+      "depends_on": [
+        "N1",
+        "N2"
+      ],
+      "outputs": [
+        "packages/three-kit/src/{SceneShell,GLBObject,Gizmo,LayerPanel,HistoryPanel,useSceneStore,useDropUpload,loaders,index}.ts(x)"
+      ],
+      "requires_approval": false
+    },
+    {
+      "id": "N7",
+      "title": "tracking — 페이스 트래킹 + 오프-액시스 카메라 + 폴백",
+      "module": "M1",
       "detail": "MediaPipe FaceLandmarker(WASM) 훅: 얼굴 중심 x/y, 크기→z 근사, 가장 큰 얼굴 1개만. useOffAxisCamera(portalSettings): 감도·스무딩·flip·eyeDistance·perspectiveScale → PerspectiveCamera.setViewOffset. 폴백 체인 카메라 거부→마우스→(터치)자이로. 손바닥 오르빗(hand orbit) 슬롯은 인터페이스만.",
-      "domain": "frontend", "difficulty": { "D1_spec": 1, "D2_scope": 1, "D3_reversibility": 0, "D4_judgment": 1, "score": 3 },
-      "tier": "balanced", "clamped_by": null, "hard_override": null, "agent": "bkit:frontend-architect", "claude_model": "sonnet", "codex_model": "gpt-5.6-terra", "reasoning_effort": "medium",
-      "depends_on": ["N1", "N2"], "outputs": ["packages/tracking/src/{useFaceTracker,useOffAxisCamera,useMouseFallback,index}.ts"], "requires_approval": false },
-
-    { "id": "N8", "title": "apps/portal-space — 베이스 A 조립 (digital-figures 동등)", "module": "M1",
+      "domain": "frontend",
+      "difficulty": {
+        "D1_spec": 1,
+        "D2_scope": 1,
+        "D3_reversibility": 0,
+        "D4_judgment": 1,
+        "score": 3
+      },
+      "tier": "balanced",
+      "clamped_by": null,
+      "hard_override": null,
+      "agent": "bkit:frontend-architect",
+      "claude_model": "sonnet",
+      "codex_model": "gpt-5.6-terra",
+      "reasoning_effort": "medium",
+      "depends_on": [
+        "N1",
+        "N2"
+      ],
+      "outputs": [
+        "packages/tracking/src/{useFaceTracker,useOffAxisCamera,useMouseFallback,index}.ts"
+      ],
+      "requires_approval": false
+    },
+    {
+      "id": "N8",
+      "title": "apps/portal-space — 베이스 A 조립 (digital-figures 동등)",
+      "module": "M1",
       "detail": "defineApp으로 조립: 진입 화면(카메라 시작/마우스 모드), 포탈 뷰↔자유 카메라 토글, 공간 이전/다음/목록, 에디터 버튼 세트(레이어·추가·히스토리·저장·불러오기·GLB 추가·Light·Settings), 관리자 섹션(portal·light·objects·appInfo). 시드: SPACE 1~3 + 샘플 GLB 3개(public domain 로우폴리) + env 이미지. ADMIN_MODE=public(데모). 로딩 화면 + 프로그레스.",
-      "domain": "frontend", "difficulty": { "D1_spec": 0, "D2_scope": 2, "D3_reversibility": 1, "D4_judgment": 1, "score": 4 },
-      "tier": "balanced", "clamped_by": null, "hard_override": null, "agent": "bkit:frontend-architect", "claude_model": "sonnet", "codex_model": "gpt-5.6-terra", "reasoning_effort": "medium",
-      "depends_on": ["N3", "N4", "N5", "N6", "N7"], "outputs": ["apps/portal-space/{index.html,vite.config.ts,app.config.ts,src/main.tsx,src/pages/*,server.ts}", "apps/portal-space/seed/*.json", "apps/portal-space/public/models/*.glb"], "requires_approval": false },
-
-    { "id": "N9", "title": "video-kit — 분기형 플레이어·그래프 엔진·자막·화살표·프리로더", "module": "M2",
+      "domain": "frontend",
+      "difficulty": {
+        "D1_spec": 0,
+        "D2_scope": 2,
+        "D3_reversibility": 1,
+        "D4_judgment": 1,
+        "score": 4
+      },
+      "tier": "balanced",
+      "clamped_by": null,
+      "hard_override": null,
+      "agent": "bkit:frontend-architect",
+      "claude_model": "sonnet",
+      "codex_model": "gpt-5.6-terra",
+      "reasoning_effort": "medium",
+      "depends_on": [
+        "N3",
+        "N4",
+        "N5",
+        "N6",
+        "N7"
+      ],
+      "outputs": [
+        "apps/portal-space/{index.html,vite.config.ts,app.config.ts,src/main.tsx,src/pages/*,server.ts}",
+        "apps/portal-space/seed/*.json",
+        "apps/portal-space/public/models/*.glb"
+      ],
+      "requires_approval": false
+    },
+    {
+      "id": "N9",
+      "title": "video-kit — 분기형 플레이어·그래프 엔진·자막·화살표·프리로더",
+      "module": "M2",
       "detail": "<BranchingPlayer flow settings lang>. 그래프 엔진: 현재 노드·플래그 Set·glowCondition 평가·isEnding·available:false 스킵. 프리로더: 다음 후보 2~3개 <video preload> + 포스터 png. 자막 엔진: mm:ss(.s) 파싱, fadeIn/out, responsive 스타일. 오디오: BGM 루프 + 언어별 mp3를 video.currentTime에 동기. <ArrowButtons design> 효과음·글로우 애니·buttonShowTiming. 스킵/리플레이/언어 토글. 확장 슬롯: hotspot·quickJump·questionMenu·timeline jump 인터페이스만.",
-      "domain": "frontend", "difficulty": { "D1_spec": 1, "D2_scope": 1, "D3_reversibility": 0, "D4_judgment": 1, "score": 3 },
-      "tier": "balanced", "clamped_by": null, "hard_override": null, "agent": "bkit:frontend-architect", "claude_model": "sonnet", "codex_model": "gpt-5.6-terra", "reasoning_effort": "medium",
-      "depends_on": ["N1", "N2"], "outputs": ["packages/video-kit/src/{BranchingPlayer,graph,preload,subtitles,audio,ArrowButtons,Controls,slots,index}.ts(x)", "packages/video-kit/test/graph.test.ts"], "requires_approval": false },
-
-    { "id": "N10", "title": "apps/branching-movie — 베이스 B 조립 (gryun-aimovie 동등)", "module": "M2",
+      "domain": "frontend",
+      "difficulty": {
+        "D1_spec": 1,
+        "D2_scope": 1,
+        "D3_reversibility": 0,
+        "D4_judgment": 1,
+        "score": 3
+      },
+      "tier": "balanced",
+      "clamped_by": null,
+      "hard_override": null,
+      "agent": "bkit:frontend-architect",
+      "claude_model": "sonnet",
+      "codex_model": "gpt-5.6-terra",
+      "reasoning_effort": "medium",
+      "depends_on": [
+        "N1",
+        "N2"
+      ],
+      "outputs": [
+        "packages/video-kit/src/{BranchingPlayer,graph,preload,subtitles,audio,ArrowButtons,Controls,slots,index}.ts(x)",
+        "packages/video-kit/test/graph.test.ts"
+      ],
+      "requires_approval": false
+    },
+    {
+      "id": "N10",
+      "title": "apps/branching-movie — 베이스 B 조립 (gryun-aimovie 동등)",
+      "module": "M2",
       "detail": "언어 선택 인트로 → 플레이어. 관리자 섹션: 일반·디자인·분기·자막·타임라인·히든·인트로·앱 정보 (영상 2편 8:00 패널과 동일 구성). 앱 안에서 mp4/mp3 업로드 → video-flow의 available 자동 갱신. 시드: 5노드 샘플 그래프 + 플레이스홀더 영상(ffmpeg 생성 컬러바 5초) + 자막 2개 국어. ADMIN_MODE=auth.",
-      "domain": "frontend", "difficulty": { "D1_spec": 0, "D2_scope": 2, "D3_reversibility": 1, "D4_judgment": 1, "score": 4 },
-      "tier": "balanced", "clamped_by": null, "hard_override": null, "agent": "bkit:frontend-architect", "claude_model": "sonnet", "codex_model": "gpt-5.6-terra", "reasoning_effort": "medium",
-      "depends_on": ["N3", "N4", "N5", "N9"], "outputs": ["apps/branching-movie/{index.html,vite.config.ts,app.config.ts,src/main.tsx,src/pages/*,server.ts}", "apps/branching-movie/seed/{video-flow,app-settings}.json", "apps/branching-movie/public/videos/*.mp4"], "requires_approval": false },
-
-    { "id": "N11", "title": "tools/new-app 제너레이터 + templates/", "module": "M3",
+      "domain": "frontend",
+      "difficulty": {
+        "D1_spec": 0,
+        "D2_scope": 2,
+        "D3_reversibility": 1,
+        "D4_judgment": 1,
+        "score": 4
+      },
+      "tier": "balanced",
+      "clamped_by": null,
+      "hard_override": null,
+      "agent": "bkit:frontend-architect",
+      "claude_model": "sonnet",
+      "codex_model": "gpt-5.6-terra",
+      "reasoning_effort": "medium",
+      "depends_on": [
+        "N3",
+        "N4",
+        "N5",
+        "N9"
+      ],
+      "outputs": [
+        "apps/branching-movie/{index.html,vite.config.ts,app.config.ts,src/main.tsx,src/pages/*,server.ts}",
+        "apps/branching-movie/seed/{video-flow,app-settings}.json",
+        "apps/branching-movie/public/videos/*.mp4"
+      ],
+      "requires_approval": false
+    },
+    {
+      "id": "N11",
+      "title": "tools/new-app 제너레이터 + templates/",
+      "module": "M3",
       "detail": "pnpm new <family> <name> --title --domain. 동작: templates/<family> → apps/<name> 복사, package.json name·index.html <title>·app.config.ts 치환, 시드 JSON 복사, .replit 생성, git 브랜치 app/<name>. 앱 정보(타이틀·파비콘·도메인)를 인자로 안 주면 대화형으로 강제 입력(타이틀 사고 방지). templates/는 N8·N10 완성본에서 시드·샘플 에셋만 최소화해 복사. `pnpm template:sync <app>` 역방향 갱신 스크립트.",
-      "domain": "general", "difficulty": { "D1_spec": 0, "D2_scope": 2, "D3_reversibility": 0, "D4_judgment": 1, "score": 3 },
-      "tier": "balanced", "clamped_by": null, "hard_override": null, "agent": "worker", "claude_model": "sonnet", "codex_model": "gpt-5.6-terra", "reasoning_effort": "medium",
-      "depends_on": ["N8", "N10"], "outputs": ["tools/new-app/{index.ts,replace.ts,prompts.ts}", "templates/portal-space/**", "templates/branching-movie/**", "package.json (scripts.new, scripts.template:sync)"], "requires_approval": false },
-
-    { "id": "N12", "title": "tools/asset-pipeline — HEIC 변환·그리드 슬라이스·GLB 압축·영상 트랜스코드", "module": "M3",
+      "domain": "general",
+      "difficulty": {
+        "D1_spec": 0,
+        "D2_scope": 2,
+        "D3_reversibility": 0,
+        "D4_judgment": 1,
+        "score": 3
+      },
+      "tier": "balanced",
+      "clamped_by": null,
+      "hard_override": null,
+      "agent": "worker",
+      "claude_model": "sonnet",
+      "codex_model": "gpt-5.6-terra",
+      "reasoning_effort": "medium",
+      "depends_on": [
+        "N8",
+        "N10"
+      ],
+      "outputs": [
+        "tools/new-app/{index.ts,replace.ts,prompts.ts}",
+        "templates/portal-space/**",
+        "templates/branching-movie/**",
+        "package.json (scripts.new, scripts.template:sync)"
+      ],
+      "requires_approval": false
+    },
+    {
+      "id": "N12",
+      "title": "tools/asset-pipeline — HEIC 변환·그리드 슬라이스·GLB 압축·영상 트랜스코드",
+      "module": "M3",
       "detail": "py -3 스크립트 4개 + npm 래퍼: heic2jpg(pillow-heif), slice-grid(4×4·N×M, 여백 자동 트림), glb-pack(gltfpack -cc -tc, 결과 크기 보고·예산 초과 경고), video-prep(ffmpeg: 1080p h264 crf23 faststart 무음 mp4 + mp3 분리 + 포스터 png + _m1 저해상도). 04 문서 §2-4·§3-3 명령을 그대로 코드화.",
-      "domain": "mechanical", "difficulty": { "D1_spec": 0, "D2_scope": 1, "D3_reversibility": 0, "D4_judgment": 1, "score": 2 },
-      "tier": "balanced", "clamped_by": null, "hard_override": null, "agent": "worker", "claude_model": "sonnet", "codex_model": "gpt-5.6-terra", "reasoning_effort": "medium",
-      "depends_on": ["N1"], "outputs": ["tools/asset-pipeline/{heic2jpg,slice_grid,glb_pack,video_prep}.py", "tools/asset-pipeline/package.json", "tools/asset-pipeline/README.md"], "requires_approval": false },
-
-    { "id": "N13", "title": "Replit 배포 스크립트 + portal-space 첫 배포", "module": "M4",
+      "domain": "mechanical",
+      "difficulty": {
+        "D1_spec": 0,
+        "D2_scope": 1,
+        "D3_reversibility": 0,
+        "D4_judgment": 1,
+        "score": 2
+      },
+      "tier": "balanced",
+      "clamped_by": null,
+      "hard_override": null,
+      "agent": "worker",
+      "claude_model": "sonnet",
+      "codex_model": "gpt-5.6-terra",
+      "reasoning_effort": "medium",
+      "depends_on": [
+        "N1"
+      ],
+      "outputs": [
+        "tools/asset-pipeline/{heic2jpg,slice_grid,glb_pack,video_prep}.py",
+        "tools/asset-pipeline/package.json",
+        "tools/asset-pipeline/README.md"
+      ],
+      "requires_approval": false
+    },
+    {
+      "id": "N13",
+      "title": "Replit 배포 스크립트 + portal-space 첫 배포",
+      "module": "M4",
       "detail": "pnpm --filter <app> deploy: build(Vite 번들 + tsup 서버 단일 파일) → dist/·server.js·.replit·replit.nix를 배포 브랜치(deploy/<app>)로 push → Replit GitHub 연동으로 배포. Replit PostgreSQL·Object Storage 어댑터 연결(storage/replit). 대안 경로(Vercel+Railway) 스크립트는 골격만. 첫 배포는 portal-space를 *.replit.app에.",
-      "domain": "infra", "difficulty": { "D1_spec": 1, "D2_scope": 2, "D3_reversibility": 2, "D4_judgment": 1, "score": 6 },
-      "tier": "powerful", "clamped_by": null, "hard_override": null, "agent": "bkit:infra-architect", "claude_model": "opus", "codex_model": "gpt-5.6-sol", "reasoning_effort": "xhigh",
-      "depends_on": ["N8"], "outputs": ["tools/deploy/{replit.ts,vercel.ts}", "apps/portal-space/{.replit,replit.nix}", "packages/storage/src/replit.ts", "docs/07-배포-절차.md"], "requires_approval": true,
-      "approval_note": "외부 배포(D3=2). Replit 계정·DB·스토리지 생성과 push 전에 사용자 확인. 자동 연쇄 실행 금지." },
-
-    { "id": "N14", "title": "통합 검증 + 성능 예산 체크 + 최종 리뷰", "module": "M5",
-      "detail": "두 앱 실제 구동(webapp-testing): 카메라 거부→마우스 폴백, available:false 노드 스킵, 관리자 저장→saved-at 감지, Export/Import 왕복, pnpm new로 복제한 앱이 빌드·기동. 성능 예산(04 §5) 측정: 초기 JS gz, three 청크 분리, GLB 총량, 첫 인터랙션 시간. CI 스크립트(dist 크기·GLB 총량 검사) 추가. 03·04·05 문서를 구현 결과에 맞게 갱신. 최종 리뷰.",
-      "domain": "review", "difficulty": { "D1_spec": 1, "D2_scope": 2, "D3_reversibility": 1, "D4_judgment": 2, "score": 6 },
-      "tier": "powerful", "clamped_by": null, "hard_override": "최종 리뷰 (never_delegate)", "agent": "self", "claude_model": "opus", "codex_model": "gpt-5.6-sol", "reasoning_effort": "xhigh",
-      "depends_on": ["N11", "N12", "N13", "N15"], "outputs": ["tools/ci/budget-check.ts", "docs/03-모노레포-설계.md", "docs/04-제작-가이드.md", "docs/05-템플릿-카탈로그.md", "docs/08-검증-결과.md"], "requires_approval": false },
-
-    { "id": "N15", "title": "관리자 인증 가드 — ADMIN_MODE=auth 구현", "module": "M0",
-      "detail": "api-server auth 슬롯 구현: Clerk 어댑터(선택) + 단순 관리자 비밀번호(bcrypt, 환경변수) 어댑터. 관리자 API(PUT settings·uploads·collections 쓰기)만 보호, 읽기는 공개. 세션 쿠키 httpOnly·SameSite, 업로드 크기·MIME 검증, safePath. core-admin의 /admin 라우트 가드. hidden 모드는 라우트 자체 미등록.",
-      "domain": "security", "difficulty": { "D1_spec": 1, "D2_scope": 1, "D3_reversibility": 1, "D4_judgment": 2, "score": 5 },
-      "tier": "powerful", "clamped_by": "floor:security=powerful", "hard_override": "보안·인증·권한 설계", "agent": "bkit:security-architect", "claude_model": "opus", "codex_model": "gpt-5.6-sol", "reasoning_effort": "xhigh",
-      "depends_on": ["N3", "N4"], "outputs": ["packages/api-server/src/auth/{adapter,clerk,password,guard}.ts", "packages/core-admin/src/AuthGate.tsx", "packages/api-server/test/auth.test.ts"], "requires_approval": false }
+      "domain": "infra",
+      "difficulty": {
+        "D1_spec": 1,
+        "D2_scope": 2,
+        "D3_reversibility": 2,
+        "D4_judgment": 1,
+        "score": 6
+      },
+      "tier": "powerful",
+      "clamped_by": null,
+      "hard_override": null,
+      "agent": "bkit:infra-architect",
+      "claude_model": "opus",
+      "codex_model": "gpt-5.6-sol",
+      "reasoning_effort": "xhigh",
+      "depends_on": [
+        "N8"
+      ],
+      "outputs": [
+        "tools/deploy/{replit.ts,vercel.ts}",
+        "apps/portal-space/{.replit,replit.nix}",
+        "packages/storage/src/replit.ts",
+        "docs/07-배포-절차.md"
+      ],
+      "requires_approval": true,
+      "approval_note": "외부 배포(D3=2). Replit 계정·DB·스토리지 생성과 push 전에 사용자 확인. 자동 연쇄 실행 금지."
+    },
+    {
+      "id": "N14",
+      "title": "통합 검증 + 성능 예산 체크 + 최종 리뷰",
+      "module": "M5",
+      "detail": "두 앱 실제 구동(webapp-testing): 카메라 거부→마우스 폴백, available:false 노드 스킵, 관리자 저장→saved-at 감지, Export/Import 왕복, pnpm new로 복제한 앱이 빌드·기동. 성능 예산(04 §5) 측정: 초기 JS gz, three 청크 분리, GLB 총량, 첫 인터랙션 시간. CI 스크립트(dist 크기·GLB 총량 검사) 추가. 03·04·05 문서를 구현 결과에 맞게 갱신. 최종 리뷰. 오버라이드 CI 게이트 추가: 앱당 20개 초과 경고, status=orphan 1개 이상이면 실패(03 §7 규칙 8). 스키마 리프 필드가 관리자 섹션 또는 Editable 바인딩 어느 한쪽에 걸리는지 스냅샷 테스트(03 §7 규칙 7, 07 §4). 툴바 E2E: 텍스트·폰트·색·이미지 교체 후 새로고침 잔존 확인.",
+      "domain": "review",
+      "difficulty": {
+        "D1_spec": 1,
+        "D2_scope": 2,
+        "D3_reversibility": 1,
+        "D4_judgment": 2,
+        "score": 6
+      },
+      "tier": "powerful",
+      "clamped_by": null,
+      "hard_override": "최종 리뷰 (never_delegate)",
+      "agent": "self",
+      "claude_model": "opus",
+      "codex_model": "gpt-5.6-sol",
+      "reasoning_effort": "xhigh",
+      "depends_on": [
+        "N11",
+        "N12",
+        "N13",
+        "N15",
+        "N17",
+        "N18"
+      ],
+      "outputs": [
+        "tools/ci/budget-check.ts",
+        "docs/03-모노레포-설계.md",
+        "docs/04-제작-가이드.md",
+        "docs/05-템플릿-카탈로그.md",
+        "docs/08-검증-결과.md",
+        "tools/ci/overrides-check.ts + tools/ci/editable-coverage.test.ts"
+      ],
+      "requires_approval": false
+    },
+    {
+      "id": "N15",
+      "title": "관리자 인증 가드 — ADMIN_MODE=auth 구현",
+      "module": "M0",
+      "detail": "api-server auth 슬롯 구현: Clerk 어댑터(선택) + 단순 관리자 비밀번호(bcrypt, 환경변수) 어댑터. 관리자 API(PUT settings·uploads·collections 쓰기)만 보호, 읽기는 공개. 세션 쿠키 httpOnly·SameSite, 업로드 크기·MIME 검증, safePath. core-admin의 /admin 라우트 가드. hidden 모드는 라우트 자체 미등록. 편집 툴바가 새 공격면을 추가하므로 함께 막는다(03 §3-3-1, §6-3): /admin과 인앱 툴바를 단일 게이트로 통일(DYW는 톱니 패널이 무인증으로 열려 있었다, 08 §5), 툴바 번들은 인증 후 동적 import, contentEditable 입력 새니타이즈(XSS), 오버라이드 CSS 값 속성 화이트리스트(url()·expression 차단), 업로드 MIME·확장자 검증.",
+      "domain": "security",
+      "difficulty": {
+        "D1_spec": 1,
+        "D2_scope": 1,
+        "D3_reversibility": 1,
+        "D4_judgment": 2,
+        "score": 5
+      },
+      "tier": "powerful",
+      "clamped_by": "floor:security=powerful",
+      "hard_override": "보안·인증·권한 설계",
+      "agent": "bkit:security-architect",
+      "claude_model": "opus",
+      "codex_model": "gpt-5.6-sol",
+      "reasoning_effort": "xhigh",
+      "depends_on": [
+        "N3",
+        "N4",
+        "N16"
+      ],
+      "outputs": [
+        "packages/api-server/src/auth/{adapter,clerk,password,guard}.ts",
+        "packages/core-admin/src/AuthGate.tsx",
+        "packages/api-server/test/auth.test.ts",
+        "packages/inline-editor/src/guard.ts + sanitize.ts"
+      ],
+      "requires_approval": false
+    },
+    {
+      "id": "N16",
+      "title": "inline-editor 코어 — 선택 엔진 + 하이브리드 바인딩 + 자동 치유",
+      "module": "M0",
+      "detail": "03 §3-3-1~3-3-3 구현. EditableRoot 프로바이더(편집 모드 on/off, 선택 상태, zundo 히스토리, 디바운스 저장 큐). Editable(path, eid, as) 컴포넌트가 data-edit/data-eid를 렌더. 클릭 시 요소 해석 2단계: data-edit이 있으면 zod 경로로 스키마 필드, 없으면 오버라이드. 오버라이드 타깃은 selector + fingerprint(tag, textHash, parentChain, siblingIndex)를 함께 저장. 재적용 순서 eid → selector → 지문 fuzzy. 지문으로 찾으면 selector를 갱신하고 status=healed, 셋 다 실패하면 버리지 말고 status=orphan으로 남긴다. Desktop/Mobile 뷰포트 스위치 — responsive() 값은 편집 중인 뷰포트 쪽에만 쓴다. DOM 레이어 전용(3D는 three-kit 기즈모, §3-3-6).",
+      "domain": "frontend",
+      "difficulty": {
+        "D1_spec": 1,
+        "D2_scope": 1,
+        "D3_reversibility": 1,
+        "D4_judgment": 1,
+        "score": 4
+      },
+      "tier": "balanced",
+      "clamped_by": null,
+      "hard_override": null,
+      "agent": "bkit:frontend-architect",
+      "claude_model": "sonnet",
+      "codex_model": "gpt-5.6-terra",
+      "reasoning_effort": "medium",
+      "depends_on": [
+        "N1",
+        "N2",
+        "N3",
+        "N5"
+      ],
+      "outputs": [
+        "packages/inline-editor/src/{EditableRoot,Editable,resolveTarget,fingerprint,heal,saveQueue}.ts(x)",
+        "packages/inline-editor/test/heal.spec.ts (셀렉터 변형 시 지문 복구 케이스)"
+      ],
+      "requires_approval": false
+    },
+    {
+      "id": "N17",
+      "title": "inline-editor 툴바 UI — 텍스트·폰트·색·이미지 패널",
+      "module": "M0",
+      "detail": "03 §3-3-4. 툴바는 **우측 상단** 고정(접기·드래그 이동) — 하단은 모바일에서 자막·컨트롤과 겹친다. 전사 02:174 실물과 일치. 제1 규칙: 툴바에는 지금 화면에 보이는 것만 올린다(전체 설정 목록을 넣으면 core-admin과 같아져 존재 이유가 사라진다, 02:279). 제2 규칙: 수치 컨트롤은 슬라이더가 기본이고 숫자 입력은 보조(시안 맞추기는 값을 아는 게 아니라 보면서 맞추는 것, 03:40). 좌측에 출처 배지: [스키마 <경로>] 또는 [오버라이드·healed]. 요소 타입별 패널 — 텍스트(더블클릭 contentEditable, ko/en 언어 탭. 한쪽만 채우면 저장 경고. 크기·굵기·자간·행간·정렬), 색(masterColor → savedColors → 자유 hex 순서. UI 요소는 normal/highlight/disabled 3단을 한 세트로 노출. 마스터 변경은 colorMasterRefs 일괄 반영), 폰트(UI 킷이 정의한 세트에서만 선택 — 임의 입력 금지, 02:74), 이미지(드래그앤드롭 → storage 업로드 → asset-pipeline 규격 변환 → 캐시버스팅 URL을 media.src에 기록. objectFit·alt), 핫스팟(영상·이미지 위에 드래그로 사각형 → 좌표% + 시간창. 좌표는 셀렉터가 아니므로 항상 스키마에 쓴다), 박스(배경색·투명도·여백·반경·테두리), 공통(undo/redo, 이 요소만 초기화, 저장, 편집 종료). 상단 모드 탭 DOM/3D — 3D 선택은 three-kit 패널로 넘긴다. MVP 우선순위는 멘트·글씨 크기·대략적 디자인 셋(클라이언트에게 실제로 필요한 최소 집합, 03:22).",
+      "domain": "frontend",
+      "difficulty": {
+        "D1_spec": 0,
+        "D2_scope": 1,
+        "D3_reversibility": 0,
+        "D4_judgment": 1,
+        "score": 2
+      },
+      "tier": "balanced",
+      "clamped_by": null,
+      "hard_override": null,
+      "agent": "bkit:frontend-architect",
+      "claude_model": "sonnet",
+      "codex_model": "gpt-5.6-terra",
+      "reasoning_effort": "medium",
+      "depends_on": [
+        "N16",
+        "N5"
+      ],
+      "outputs": [
+        "packages/inline-editor/src/toolbar/{Toolbar,SourceBadge,TextPanel,ColorPanel,FontPanel,ImagePanel,HotspotPanel,BoxPanel,ViewportToggle}.tsx",
+        "packages/inline-editor/src/toolbar/uiKit.ts (폰트·색 세트 정의 — 임의 값 차단)"
+      ],
+      "requires_approval": false
+    },
+    {
+      "id": "N18",
+      "title": "오버라이드 거버넌스 — 목록·고아 경고·스키마 승격",
+      "module": "M0",
+      "detail": "03 §3-3-5. core-admin에 오버라이드 탭 추가: 항목별 대상·props·viewport·updatedAt·status(active/healed/orphan) 목록. orphan은 상단 경고 배너로 올린다(조용한 소실 금지). 각 항목에 스키마 승격 버튼 → config-schema에 붙일 zod 필드 스니펫과 컴포넌트에 넣을 Editable 스니펫을 생성해 복사시킨다. 필드명은 fingerprint.tag와 부모 체인에서 제안하되 사용자가 고칠 수 있게 한다. 범위는 core-admin 패키지 내부 — Overrides JSON을 읽어 렌더링할 뿐 inline-editor를 건드리지 않는다. CI 임계 게이트는 N14 소관.",
+      "domain": "frontend",
+      "difficulty": {
+        "D1_spec": 1,
+        "D2_scope": 1,
+        "D3_reversibility": 1,
+        "D4_judgment": 1,
+        "score": 4
+      },
+      "tier": "balanced",
+      "clamped_by": null,
+      "hard_override": null,
+      "agent": "bkit:frontend-architect",
+      "claude_model": "sonnet",
+      "codex_model": "gpt-5.6-terra",
+      "reasoning_effort": "medium",
+      "depends_on": [
+        "N16",
+        "N4"
+      ],
+      "outputs": [
+        "packages/core-admin/src/overrides/{OverridesTab,OrphanBanner,PromoteDialog,suggestFieldPath,emitSnippet}.tsx"
+      ],
+      "requires_approval": false
+    }
   ],
   "gate": {
     "G1_completeness": "PASS",
@@ -116,25 +614,40 @@
     "G3_clamp": "PASS",
     "G4_cost": {
       "verdict": "PASS",
-      "powerful_ratio": 0.267,
+      "powerful_ratio": 0.222,
       "justifications": [
         "N1 아키텍처·기술스택 결정 (hard override, never_delegate)",
         "N13 D3=2 외부 배포 + infra 다중 시스템 결합",
         "N14 최종 리뷰 (hard override, never_delegate)",
-        "N15 security 도메인 floor=powerful + 인증 설계 hard override"
+        "N15 security 도메인 floor=powerful + 인증 설계 hard override",
+        "신규 3노드(N16·N17·N18)는 전부 frontend/balanced — 03 §3-3이 설계를 확정해 D1이 0~1로 낮다. powerful 비율은 오히려 하락(0.267 → 0.222)"
       ]
     },
     "G5_safety": "PASS",
     "reassignments": [
       "1차: 관리자 인증을 N3(api-server)·N4(core-admin) 안에 포함시켰음 → G2 위반(보안·인증 설계가 balanced) → N15로 분리해 security/powerful 배정. N3·N4는 auth 슬롯 인터페이스만 남김.",
-      "1차: N11 제너레이터를 D2=2·D3=1로 5점(powerful) 산정 → README '20개 파일 일괄 rename은 D2=1' 기준과 'git으로 되돌리면 D3=0' 기준으로 재채점 0/2/0/1=3 balanced. D2는 apps·templates·tools 경계를 실제로 넘으므로 2 유지."
+      "1차: N11 제너레이터를 D2=2·D3=1로 5점(powerful) 산정 → README '20개 파일 일괄 rename은 D2=1' 기준과 'git으로 되돌리면 D3=0' 기준으로 재채점 0/2/0/1=3 balanced. D2는 apps·templates·tools 경계를 실제로 넘으므로 2 유지.",
+      "2026-09-11 편집 툴바 1차: N18을 core-admin 탭 + inline-editor 데이터 + tools/ci 게이트로 묶어 D2=2 → 5점 powerful로 산정. ceiling 위반은 아니지만 한 노드는 한 도메인·한 티어 원칙(CLAUDE.md §3)에 따라 재분해 — CI 임계 게이트를 N14로 넘기고 범위를 core-admin 패키지 내부로 좁혀 D2=1 → 4점 balanced.",
+      "2026-09-11 편집 툴바 2차: 편집 모드 가드·contentEditable 새니타이즈·CSS 화이트리스트를 N16 안에 두었음 → G2 위반(보안·인증 설계가 balanced 노드에). 신규 노드를 만들지 않고 N15(security/floor=powerful) 범위를 확장해 흡수하고 N15에 N16 의존을 추가."
     ]
   },
   "summary": {
-    "node_count": 15,
-    "by_tier": { "fast": 0, "balanced": 11, "powerful": 4 },
-    "needs_approval": ["N13"],
+    "node_count": 18,
+    "by_tier": {
+      "fast": 0,
+      "balanced": 14,
+      "powerful": 4
+    },
+    "needs_approval": [
+      "N13"
+    ],
     "critical_path": "N1 → N2 → N3/N4(+N5) → N6/N7 → N8 → N13 → N14",
-    "parallel_lanes": ["N6·N7·N9·N12는 N1·N2 직후 병렬", "N10은 N9·N3·N4·N5 후 N8과 병렬", "N15는 N3·N4 후 N8과 병렬"]
-  }
+    "parallel_lanes": [
+      "N6·N7·N9·N12는 N1·N2 직후 병렬",
+      "N10은 N9·N3·N4·N5 후 N8과 병렬",
+      "N15는 N3·N4 후 N8과 병렬",
+      "N16 → N17·N18은 N3·N4·N5 후 M1/M2와 병렬. N15는 N16 뒤로 이동"
+    ]
+  },
+  "revised": "2026-09-11 — 편집 툴바(03 §3-3) 반영"
 }
