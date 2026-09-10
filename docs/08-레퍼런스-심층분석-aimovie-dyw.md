@@ -236,8 +236,9 @@ aimovie 한 편 = 컷 15개(후보 4배 생성 시 60클립) + 더빙 2개 언�
 |---|---|
 | 02 §B·C | "aimovie는 화살표만, DYW는 핫스팟 추가"로 정정(02 초안이 맞았고, 07 리서치 r-dyw의 "aimovie도 핫스팟 보유"는 오류). z-index·thumbnails·available-videos는 DYW 전용 API |
 | 03 §3-1 `video-flow` 스키마 | `navigation`/`videoRouting`/`hiddenLinks` → `edges` 판별 유니온으로 교체. 노드 `type` 추가 |
-| 03 §3-6 `video-kit` | §4의 15개 요구사항으로 확정. hls.js 제외, 듀얼 video + mp4 |
-| 03 §3-2 `core-admin` | Visit State Control, Reset State, 섹션별 BGM, 색상 마스터/저장색, Quick Edit 항목 추가. 인앱 패널과 `/admin` 단일 게이트 |
+| 03 §3-7 `video-kit` | §4의 15개 요구사항으로 확정. hls.js 제외, 듀얼 video + mp4 |
+| 03 §3-2 `core-admin` | Visit State Control, Reset State, 섹션별 BGM, 색상 마스터/저장색 항목 추가. 인앱 패널과 `/admin` 단일 게이트 |
+| 03 §3-3 `inline-editor` | Quick Edit를 편집 툴바로 승격. 톱니 패널 재현 + `masterColor`/`savedColors`/`colorMasterRefs` 팔레트 차용 |
 | 04 §3-3 인코딩 | 1080p 24fps CRF 23 ≤ 6 Mbps, 컷당 ≤ 15 MB로 상향 조정(기존 ≤ 8 Mbps·40 MB보다 엄격) |
 | 04 §5 성능 예산 | 폰트 서브셋 ≤ 20파일, 초기 로드에 인트로 mp4 1 + 첫 노드 mp4 1만 |
 | 05 B 카탈로그 | 기본 기능에 타임라인·히든 링크·BGM 섹션·3트랙 오디오·`available` 방어 추가. 확장 슬롯에 핫스팟 메뉴·문 선택 인트로·Quick Jump·시네마 모드·행사 오버레이·색상 마스터·그룹/정렬/소프트삭제. 에셋 요구를 §5-1 컷 구성표로 |
