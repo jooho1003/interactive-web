@@ -1,0 +1,36 @@
+== KO style ==
+{"fontName": "Noto Sans KR", "fontWeight": 600, "fontSizePx": 35, "letterSpacing": -0.5, "verticalPositionPercent": 85, "fadeDurationSec": 1, "textColor": "#f3c614", "shadow": {"offsetX": 1, "offsetY": 1, "blur": 2, "opacity": 65}, "maxWidthPercent": 100}
+== KO first lines per video ==
+video1: [00:20-00:24] 안녕하세요. 김그륜 입니다. 만나서 반갑습니다. 
+video2: [00:05-00:11.5] 2013년에 ‘월터의 상상은 현실이 된다’라는 영화를 정말 감명 깊게 보았습니다.
+video3: [00:05-00:11.5] 그렇게 시간이 흘러 이제는 AI를 이용해 상상만하던 영화 제작의 꿈을 이룰수 있게 되었습니다.
+video3-L: (no subtitles)
+video3-R: (no subtitles)
+video3-IN: [00:05.0-00:11.1] 1950년대 AI 라는 Artificial intelligent 라는 용어가 생겨났습니다. 
+video4: [00:06.5-00:10.5] 이곳은 AI 발전의 경각심과 위험성을 보여주는 영화 A-Eye 입니다.
+video4-L: (no subtitles)
+video4-R: (no subtitles)
+video4-IN: [00:04.5-00:09.5] 우리는 인터넷에 수많은 정보를 올리고, 쓰고, 보고 그리고 사용하고 있습니다.
+video5: [00:04.5-00:08.5] 이제 마지막 영화, 바로 '토이스토리'의 패러디 'AI 스토리'입니다.
+video5-L: (no subtitles)
+video5-R: (no subtitles)
+video5-IN: [00:03.0-00:08.5] 최근 AI 영상 공모전 심사위원으로 활동하면서 아주 흥미로운 일이 있었습니다. 
+video6-HIDDEN: [00:21.5-00:24.5] 이렇게 모든 영화를 보고 우리는 처음에 만난 공간인
+== EN style ==
+{"fontName": "Noto Sans KR", "fontWeight": 600, "fontSizePx": 35, "letterSpacing": -0.5, "verticalPositionPercent": 85, "fadeDurationSec": 1, "textColor": "#f3c614", "shadow": {"offsetX": 1, "offsetY": 1, "blur": 2, "opacity": 65}, "maxWidthPercent": 100}
+== EN first lines per video ==
+video1: [00:20-00:23] Hello, my name is Kim Gryun. Nice to meet you.
+video2: [00:05-00:11.0] In 2013, I watched “The Secret Life of Walter Mitty,” and it struck me deeply.
+video3: [00:05-00:12.0] Time passed. And today, that imagination has finally become something I can make real with AI.
+video3-L: (no subtitles)
+video3-R: (no subtitles)
+video3-IN: [00:05.0-00:12] In the 1950s, the term AI, Artificial Intelligence, was first introduced.
+video4: [00:06.5-00:11.0] This is A-Eye, a film that highlights the urgency and risks of AI development.
+video4-L: (no subtitles)
+video4-R: (no subtitles)
+video4-IN: [00:04.5-00:09.0] We upload, view, and use countless pieces of information on the internet.
+video5: [00:02.0-00:07.0] This is our final film, a Toy Story parody told as an AI story.
+video5-L: (no subtitles)
+video5-R: (no subtitles)
+video5-IN: [00:03.0-00:07.5] Recently, I served as a judge for an A I film competition
+video6-HIDDEN: [00:20.0-00:22.0] After watching all of these films

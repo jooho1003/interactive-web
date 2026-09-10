@@ -1,0 +1,16 @@
+node	file	buttons	navigation	defaultGlow	glowCondition	setsFlag	isEnding	available
+video1	video1.mp4	[right]	{right→video2}	right	–	–	False	True
+video2	video2.mp4	[right]	{right→video3}	right	–	–	False	True
+video3	video3.mp4	[left,up,right]	{left→video3-L, up→video3-IN, right→video4}	up	if visitedVideo3In→right	–	False	True
+video3-L	video3-L.mp4	[right]	{right→video3-R}	right	–	–	False	False
+video3-R	video3-R.mp4	[left,up,right]	{left→video3-L, up→video3-IN, right→video4}	up	if visitedVideo3In→right	–	False	False
+video3-IN	video3-IN.mp4	[right]	{right→video4}	right	–	visitedVideo3In	False	True
+video4	video4.mp4	[left,up,right]	{left→video4-L, up→video4-IN, right→video5}	up	if visitedVideo4In→right	–	False	True
+video4-L	video4-L.mp4	[left,up,right]	{left→video3-L, up→video3-IN, right→video4-R}	up	if visitedVideo3In→right	–	False	True
+video4-R	video4-R.mp4	[left,up,right]	{left→video4-L, up→video4-IN, right→video5}	up	if visitedVideo4In→right	–	False	True
+video4-IN	video4-IN.mp4	[right]	{right→video5}	right	–	visitedVideo4In	False	True
+video5	video5.mp4	[left,up]	{left→video5-L, up→video5-IN}	up	–	–	False	True
+video5-L	video5-L.mp4	[left,up,right]	{left→video4-L, up→video4-IN, right→video5-R}	up	if visitedVideo4In→right	–	False	True
+video5-R	video5-R.mp4	[left,up]	{left→video5-L, up→video5-IN}	up	–	–	False	True
+video5-IN	video5-IN.mp4	[]	{}	–	–	–	True	True
+video6-HIDDEN	video6-HIDDEN.mp4	[]	{}	–	–	–	True	True

@@ -1,0 +1,1392 @@
+{
+  "startVideo": "video_intro_loop",
+  "buttonShowTiming": 8,
+  "videos": {
+    "video_intro_loop": {
+      "file": "video_intro_loop.mp4",
+      "buttons": [],
+      "defaultGlow": null,
+      "navigation": {},
+      "isLooping": true,
+      "src": "/videos/video_intro_loop.mp4?v=1777941036000",
+      "available": true
+    },
+    "video1": {
+      "file": "video1.mp4",
+      "buttons": [
+        "right"
+      ],
+      "defaultGlow": "right",
+      "navigation": {
+        "right": "video2"
+      },
+      "src": "/videos/video1.mp4?v=1777941036000",
+      "available": true
+    },
+    "video2": {
+      "file": "video2.mp4",
+      "buttons": [
+        "right"
+      ],
+      "defaultGlow": "right",
+      "navigation": {
+        "right": "video3"
+      },
+      "src": "/videos/video2.mp4?v=1777941036000",
+      "available": true
+    },
+    "video3": {
+      "file": "video3.mp4",
+      "buttons": [
+        "left",
+        "up",
+        "right"
+      ],
+      "defaultGlow": "up",
+      "glowCondition": {
+        "if": "visitedVideo3In",
+        "then": "right"
+      },
+      "navigation": {
+        "left": "video3-L",
+        "up": "video3-IN",
+        "right": "video4"
+      },
+      "src": "/videos/video3.mp4?v=1777941036000",
+      "available": true
+    },
+    "video3-L": {
+      "file": "video3-L.mp4",
+      "buttons": [
+        "right"
+      ],
+      "defaultGlow": "right",
+      "navigation": {
+        "right": "video3-R"
+      },
+      "src": "/videos/video3-L.mp4?v=1789068366766",
+      "available": false
+    },
+    "video3-R": {
+      "file": "video3-R.mp4",
+      "buttons": [
+        "left",
+        "up",
+        "right"
+      ],
+      "defaultGlow": "up",
+      "glowCondition": {
+        "if": "visitedVideo3In",
+        "then": "right"
+      },
+      "navigation": {
+        "left": "video3-L",
+        "up": "video3-IN",
+        "right": "video4"
+      },
+      "src": "/videos/video3-R.mp4?v=1777941036000",
+      "available": true
+    },
+    "video3-IN": {
+      "file": "video3-IN.mp4",
+      "buttons": [
+        "right"
+      ],
+      "defaultGlow": "right",
+      "setsFlag": "visitedVideo3In",
+      "navigation": {
+        "right": "video4"
+      },
+      "src": "/videos/video3-IN.mp4?v=1789068366766",
+      "available": false
+    },
+    "video4": {
+      "file": "video4.mp4",
+      "buttons": [
+        "left",
+        "up",
+        "right"
+      ],
+      "defaultGlow": "up",
+      "glowCondition": {
+        "if": "visitedVideo4In",
+        "then": "right"
+      },
+      "navigation": {
+        "left": "video4-L",
+        "up": "video4-IN",
+        "right": "video5"
+      },
+      "src": "/videos/video4.mp4?v=1777941036000",
+      "available": true
+    },
+    "video4-L": {
+      "file": "video4-L.mp4",
+      "buttons": [
+        "left",
+        "up",
+        "right"
+      ],
+      "defaultGlow": "up",
+      "glowCondition": {
+        "if": "visitedVideo3In",
+        "then": "right"
+      },
+      "navigation": {
+        "left": "video3-L",
+        "up": "video3-IN",
+        "right": "video4-R"
+      },
+      "src": "/videos/video4-L.mp4?v=1789068366766",
+      "available": false
+    },
+    "video4-R": {
+      "file": "video4-R.mp4",
+      "buttons": [
+        "left",
+        "up",
+        "right"
+      ],
+      "defaultGlow": "up",
+      "glowCondition": {
+        "if": "visitedVideo4In",
+        "then": "right"
+      },
+      "navigation": {
+        "left": "video4-L",
+        "up": "video4-IN",
+        "right": "video5"
+      },
+      "src": "/videos/video4-R.mp4?v=1777941036000",
+      "available": true
+    },
+    "video4-IN": {
+      "file": "video4-IN.mp4",
+      "buttons": [
+        "right"
+      ],
+      "defaultGlow": "right",
+      "setsFlag": "visitedVideo4In",
+      "navigation": {
+        "right": "video5"
+      },
+      "src": "/videos/video4-IN.mp4?v=1789068366766",
+      "available": false
+    },
+    "video5": {
+      "file": "video5.mp4",
+      "buttons": [
+        "left",
+        "up"
+      ],
+      "defaultGlow": "up",
+      "navigation": {
+        "left": "video5-L",
+        "up": "video5-IN"
+      },
+      "src": "/videos/video5.mp4?v=1777941036000",
+      "available": true
+    },
+    "video5-L": {
+      "file": "video5-L.mp4",
+      "buttons": [
+        "left",
+        "up",
+        "right"
+      ],
+      "defaultGlow": "up",
+      "glowCondition": {
+        "if": "visitedVideo4In",
+        "then": "right"
+      },
+      "navigation": {
+        "left": "video4-L",
+        "up": "video4-IN",
+        "right": "video5-R"
+      },
+      "src": "/videos/video5-L.mp4?v=1789068366766",
+      "available": false
+    },
+    "video5-R": {
+      "file": "video5-R.mp4",
+      "buttons": [
+        "left",
+        "up"
+      ],
+      "defaultGlow": "up",
+      "navigation": {
+        "left": "video5-L",
+        "up": "video5-IN"
+      },
+      "src": "/videos/video5-R.mp4?v=1777941036000",
+      "available": true
+    },
+    "video5-IN": {
+      "file": "video5-IN.mp4",
+      "buttons": [],
+      "defaultGlow": null,
+      "isEnding": true,
+      "navigation": {},
+      "src": "/videos/video5-IN.mp4?v=1789068366766",
+      "available": false
+    },
+    "video6-HIDDEN": {
+      "file": "video6-HIDDEN.mp4",
+      "buttons": [],
+      "defaultGlow": null,
+      "isEnding": true,
+      "navigation": {},
+      "src": "/videos/video6-HIDDEN.mp4?v=1777941036000",
+      "available": true
+    },
+    "video28": {
+      "file": "video28.mp4",
+      "buttons": [],
+      "defaultGlow": null,
+      "navigation": {},
+      "src": "/videos/video28.mp4?v=1777941036000",
+      "available": true
+    },
+    "video29": {
+      "file": "video29.mp4",
+      "buttons": [],
+      "defaultGlow": null,
+      "navigation": {},
+      "src": "/videos/video29.mp4?v=1777941036000",
+      "available": true
+    },
+    "video30": {
+      "file": "video30.mp4",
+      "buttons": [],
+      "defaultGlow": null,
+      "navigation": {},
+      "src": "/videos/video30.mp4?v=1777941036000",
+      "available": true
+    },
+    "video31": {
+      "file": "video31.mp4",
+      "buttons": [],
+      "defaultGlow": null,
+      "navigation": {},
+      "src": "/videos/video31.mp4?v=1777941036000",
+      "available": true
+    },
+    "video32": {
+      "file": "video32.mp4",
+      "buttons": [],
+      "defaultGlow": null,
+      "navigation": {},
+      "src": "/videos/video32.mp4?v=1777941036000",
+      "available": true
+    },
+    "video33": {
+      "file": "video33.mp4",
+      "buttons": [],
+      "defaultGlow": null,
+      "navigation": {},
+      "src": "/videos/video33.mp4?v=1777941036000",
+      "available": true
+    },
+    "video34": {
+      "file": "video34.mp4",
+      "buttons": [],
+      "defaultGlow": null,
+      "navigation": {},
+      "src": "/videos/video34.mp4?v=1777941036000",
+      "available": true
+    },
+    "video35": {
+      "file": "video35.mp4",
+      "buttons": [],
+      "defaultGlow": null,
+      "navigation": {},
+      "src": "/videos/video35.mp4?v=1777941036000",
+      "available": true
+    },
+    "video36": {
+      "file": "video36.mp4",
+      "buttons": [],
+      "defaultGlow": null,
+      "navigation": {},
+      "src": "/videos/video36.mp4?v=1777941036000",
+      "available": true
+    },
+    "video37": {
+      "file": "video37.mp4",
+      "buttons": [],
+      "defaultGlow": null,
+      "navigation": {},
+      "src": "/videos/video37.mp4?v=1777941036000",
+      "available": true
+    },
+    "video38": {
+      "file": "video38.mp4",
+      "buttons": [],
+      "defaultGlow": null,
+      "navigation": {},
+      "src": "/videos/video38.mp4?v=1777941036000",
+      "available": true
+    },
+    "video39": {
+      "file": "video39.mp4",
+      "buttons": [],
+      "defaultGlow": null,
+      "navigation": {},
+      "src": "/videos/video39.mp4?v=1777941036000",
+      "available": true
+    },
+    "video40": {
+      "file": "video40.mp4",
+      "buttons": [],
+      "defaultGlow": null,
+      "navigation": {},
+      "src": "/videos/video40.mp4?v=1777941036000",
+      "available": true
+    },
+    "video41": {
+      "file": "video41.mp4",
+      "buttons": [],
+      "defaultGlow": null,
+      "navigation": {},
+      "src": "/videos/video41.mp4?v=1777941036000",
+      "available": true
+    },
+    "video42": {
+      "file": "video42.mp4",
+      "buttons": [],
+      "defaultGlow": null,
+      "navigation": {},
+      "src": "/videos/video42.mp4?v=1777941036000",
+      "available": true
+    },
+    "video43-1": {
+      "file": "video43-1.mp4",
+      "buttons": [],
+      "defaultGlow": null,
+      "navigation": {},
+      "src": "/videos/video43-1.mp4?v=1777941036000",
+      "available": true
+    },
+    "video43-2": {
+      "file": "video43-2.mp4",
+      "buttons": [],
+      "defaultGlow": null,
+      "navigation": {},
+      "src": "/videos/video43-2.mp4?v=1777941036000",
+      "available": true
+    },
+    "video43-3": {
+      "file": "video43-3.mp4",
+      "buttons": [],
+      "defaultGlow": null,
+      "navigation": {},
+      "src": "/videos/video43-3.mp4?v=1777941036000",
+      "available": true
+    },
+    "video43-4": {
+      "file": "video43-4.mp4",
+      "buttons": [],
+      "defaultGlow": null,
+      "navigation": {},
+      "src": "/videos/video43-4.mp4?v=1777941036000",
+      "available": true
+    },
+    "video43-5": {
+      "file": "video43-5.mp4",
+      "buttons": [],
+      "defaultGlow": null,
+      "navigation": {},
+      "src": "/videos/video43-5.mp4?v=1777941036000",
+      "available": true
+    },
+    "video6": {
+      "file": "video6.mp4",
+      "src": "/videos/video6.mp4?v=1777941036000",
+      "buttons": [
+        "menu1"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video7"
+      },
+      "routing": {
+        "question": "",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "다음장으로 넘긴다",
+            "targetVideoId": "video7",
+            "hotspot": {
+              "width": 869,
+              "height": 650,
+              "x": 501,
+              "y": 311,
+              "enabled": true
+            },
+            "textEN": "Turn to the next page"
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video7": {
+      "file": "video7.mp4",
+      "src": "/videos/video7.mp4?v=1777941036000",
+      "buttons": [
+        "menu1"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video8"
+      },
+      "routing": {
+        "question": "",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "만화속으로 들어간다",
+            "targetVideoId": "video8",
+            "hotspot": {
+              "width": 451,
+              "height": 287,
+              "x": 555,
+              "y": 337,
+              "enabled": true
+            },
+            "textEN": "Enter the comic world"
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video3_IN": {
+      "file": "video3_IN.mp4",
+      "src": "/videos/video3_IN.mp4?v=1777941036000",
+      "buttons": [
+        "menu1"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video3-R"
+      },
+      "routing": {
+        "question": "다음 행동을 선택하세요.",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "뒤로가기",
+            "targetVideoId": "video3-R",
+            "textEN": "Go Back"
+          }
+        ],
+        "questionEN": "Select your next action."
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video8": {
+      "file": "video8.mp4",
+      "src": "/videos/video8.mp4?v=1777941036000",
+      "buttons": [
+        "menu1",
+        "menu2"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video9",
+        "menu2": "video9"
+      },
+      "routing": {
+        "question": "다음 행동을 선택하세요.",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "그림을 그리러 간다.",
+            "targetVideoId": "video9",
+            "textEN": "Go draw a picture."
+          },
+          {
+            "id": "menu2",
+            "text": "컴퓨터로 그림을 그린다.",
+            "targetVideoId": "video9",
+            "textEN": "Draw on a computer."
+          }
+        ],
+        "questionEN": "Select your next action."
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video9": {
+      "file": "video9.mp4",
+      "src": "/videos/video9.mp4?v=1777941036000",
+      "buttons": [
+        "menu1"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video10"
+      },
+      "routing": {
+        "question": "",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "학교 간다.",
+            "targetVideoId": "video10",
+            "textEN": "Go to school."
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video10": {
+      "file": "video10.mp4",
+      "src": "/videos/video10.mp4?v=1777941036000",
+      "buttons": [
+        "menu1",
+        "menu2"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video11",
+        "menu2": "video11"
+      },
+      "routing": {
+        "question": "대답을 선택하세요.",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "친구들과 게임을 한다.",
+            "targetVideoId": "video11",
+            "textEN": "Play games with friends."
+          },
+          {
+            "id": "menu2",
+            "text": "집가서 게임을 만든다.",
+            "targetVideoId": "video11",
+            "textEN": "Go home and make a game."
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video11": {
+      "file": "video11.mp4",
+      "src": "/videos/video11.mp4?v=1777941036000",
+      "buttons": [
+        "menu1"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video12"
+      },
+      "routing": {
+        "question": "",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "다음 컷을 본다.",
+            "targetVideoId": "video12",
+            "textEN": "See the next cut."
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video12": {
+      "file": "video12.mp4",
+      "src": "/videos/video12.mp4?v=1777941036000",
+      "buttons": [
+        "menu1"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video13"
+      },
+      "routing": {
+        "question": "",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "다음 컷을 본다.",
+            "targetVideoId": "video13",
+            "textEN": "See the next cut."
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video13": {
+      "file": "video13.mp4",
+      "src": "/videos/video13.mp4?v=1777941036000",
+      "buttons": [
+        "menu1",
+        "menu1769537943896",
+        "menu1769537944393"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video14",
+        "menu1769537943896": "video14",
+        "menu1769537944393": "video14"
+      },
+      "routing": {
+        "question": "어떤 촬영을 하시겠습니까?",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "펜돌리기",
+            "targetVideoId": "video14",
+            "textEN": "Pen Spinning"
+          },
+          {
+            "id": "menu1769537943896",
+            "text": "비트박스",
+            "targetVideoId": "video14",
+            "textEN": "Beatbox"
+          },
+          {
+            "id": "menu1769537944393",
+            "text": "동시에 둘다",
+            "targetVideoId": "video14",
+            "textEN": "Both at the same time"
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video14": {
+      "file": "video14.mp4",
+      "src": "/videos/video14.mp4?v=1777941036000",
+      "buttons": [
+        "menu1"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video15"
+      },
+      "routing": {
+        "question": "",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "만화책에서 나온다.",
+            "targetVideoId": "video15",
+            "textEN": "Come out of the comic book."
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video15": {
+      "file": "video15.mp4",
+      "src": "/videos/video15.mp4?v=1777941036000",
+      "buttons": [
+        "menu1"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video16"
+      },
+      "routing": {
+        "question": "",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "옆 테이블을 본다.",
+            "targetVideoId": "video16",
+            "textEN": "Look at the next table."
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video16": {
+      "file": "video16.mp4",
+      "src": "/videos/video16.mp4?v=1777941036000",
+      "buttons": [
+        "menu1"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video17"
+      },
+      "routing": {
+        "question": "",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "뒤로가기",
+            "targetVideoId": "video17",
+            "textEN": "Go Back"
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video17": {
+      "file": "video17.mp4",
+      "src": "/videos/video17.mp4?v=1777941036000",
+      "buttons": [
+        "menu1"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video18"
+      },
+      "routing": {
+        "question": "다음 행동을 선택하세요.",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "컴퓨터를 살핀다.",
+            "targetVideoId": "video18",
+            "textEN": "Examine the computer."
+          }
+        ],
+        "questionEN": "Select your next action."
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video18": {
+      "file": "video18.mp4",
+      "src": "/videos/video18.mp4?v=1777941036000",
+      "buttons": [
+        "menu1",
+        "menu2"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video29",
+        "menu2": "video19"
+      },
+      "routing": {
+        "question": "원하는 디스크를 선택하세요.",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "빨간색",
+            "targetVideoId": "video29",
+            "hotspot": {
+              "width": 420,
+              "height": 287,
+              "x": 663,
+              "y": 343,
+              "enabled": true
+            },
+            "textEN": "Red"
+          },
+          {
+            "id": "menu2",
+            "text": "파란색",
+            "targetVideoId": "video19",
+            "hotspot": {
+              "width": 336,
+              "height": 276,
+              "x": 1109,
+              "y": 339,
+              "enabled": true
+            },
+            "textEN": "Blue"
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video19": {
+      "file": "video19.mp4",
+      "src": "/videos/video19.mp4?v=1777941036000",
+      "buttons": [
+        "menu1"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video20"
+      },
+      "routing": {
+        "question": "",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "회의실로 이동한다.",
+            "targetVideoId": "video20",
+            "hotspot": {
+              "width": 211,
+              "height": 397,
+              "x": 1097,
+              "y": 537,
+              "enabled": true
+            },
+            "textEN": "Move to the meeting room."
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video20": {
+      "file": "video20.mp4",
+      "src": "/videos/video20.mp4?v=1777941036000",
+      "buttons": [
+        "menu1"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video20_IN"
+      },
+      "routing": {
+        "question": "",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "이희복 감독 스타일프레임",
+            "targetVideoId": "video20_IN",
+            "textEN": "Director Lee Style Frame"
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video21": {
+      "file": "video21.mp4",
+      "src": "/videos/video21.mp4?v=1777941036000",
+      "buttons": [
+        "menu1",
+        "menu2"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video22",
+        "menu2": "video22"
+      },
+      "routing": {
+        "question": "퇴근시간 후 행동을 선택하세요.",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "집으로 퇴근한다.",
+            "targetVideoId": "video22",
+            "textEN": "Go home after work."
+          },
+          {
+            "id": "menu2",
+            "text": "테스트 영상을 만든다.",
+            "targetVideoId": "video22",
+            "textEN": "Create a test video."
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video22": {
+      "file": "video22.mp4",
+      "src": "/videos/video22.mp4?v=1777941036000",
+      "buttons": [
+        "menu1"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video22_IN"
+      },
+      "routing": {
+        "question": "",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "작업한 테스트 보기",
+            "targetVideoId": "video22_IN",
+            "textEN": "View test work"
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video2-G": {
+      "file": "video2-G.mp4",
+      "src": "/videos/video2-G.mp4?v=1777941036000",
+      "buttons": [
+        "menu1",
+        "menu2",
+        "menu3"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video3",
+        "menu2": "video4",
+        "menu3": "video5"
+      },
+      "routing": {
+        "question": "자세히 보고 싶은 사물을 선택하세요.",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "모니터",
+            "targetVideoId": "video3",
+            "hotspot": {
+              "width": 251,
+              "height": 203,
+              "x": 851,
+              "y": 369,
+              "enabled": true,
+              "debugVisible": false
+            },
+            "textEN": "Monitor"
+          },
+          {
+            "id": "menu2",
+            "text": "트로피",
+            "targetVideoId": "video4",
+            "hotspot": {
+              "width": 287,
+              "height": 203,
+              "x": 817,
+              "y": 131,
+              "enabled": true,
+              "debugVisible": false
+            },
+            "textEN": "Trophy"
+          },
+          {
+            "id": "menu3",
+            "text": "연습장",
+            "targetVideoId": "video5",
+            "hotspot": {
+              "width": 377,
+              "height": 105,
+              "x": 1423,
+              "y": 645,
+              "enabled": true,
+              "debugVisible": false
+            },
+            "textEN": "Notebook"
+          }
+        ],
+        "questionEN": "Select an object to explore."
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video2-R": {
+      "file": "video2-R.mp4",
+      "src": "/videos/video2-R.mp4?v=1777941036000",
+      "buttons": [
+        "menu1",
+        "menu2",
+        "menu3"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video3",
+        "menu2": "video4",
+        "menu3": "video5"
+      },
+      "routing": {
+        "question": "자세히 보고 싶은 사물을 선택하세요.",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "모니터",
+            "targetVideoId": "video3",
+            "hotspot": {
+              "width": 251,
+              "height": 203,
+              "x": 851,
+              "y": 369,
+              "enabled": true,
+              "debugVisible": false
+            },
+            "textEN": "Monitor"
+          },
+          {
+            "id": "menu2",
+            "text": "트로피",
+            "targetVideoId": "video4",
+            "hotspot": {
+              "width": 287,
+              "height": 203,
+              "x": 817,
+              "y": 131,
+              "enabled": true,
+              "debugVisible": false
+            },
+            "textEN": "Trophy"
+          },
+          {
+            "id": "menu3",
+            "text": "연습장",
+            "targetVideoId": "video5",
+            "hotspot": {
+              "width": 377,
+              "height": 105,
+              "x": 1423,
+              "y": 645,
+              "enabled": true,
+              "debugVisible": false
+            },
+            "textEN": "Notebook"
+          }
+        ],
+        "questionEN": "Select an object to explore."
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video20_IN": {
+      "file": "video20_IN.mp4",
+      "src": "/videos/video20_IN.mp4?v=1777941036000",
+      "buttons": [
+        "menu1"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video21"
+      },
+      "routing": {
+        "question": "",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "자리로 돌아간다.",
+            "targetVideoId": "video21",
+            "textEN": "Return to seat."
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video23": {
+      "file": "video23.mp4",
+      "src": "/videos/video23.mp4?v=1777941036000",
+      "buttons": [
+        "menu1"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video24"
+      },
+      "routing": {
+        "question": "다음 행동을 선택하세요.",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "선택 1",
+            "targetVideoId": "video24",
+            "textEN": "Choice 1"
+          }
+        ],
+        "questionEN": "Select your next action."
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video24": {
+      "file": "video24.mp4",
+      "src": "/videos/video24.mp4?v=1777941036000",
+      "buttons": [
+        "menu1"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video25"
+      },
+      "routing": {
+        "question": "",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "스카이폴 제작하기",
+            "targetVideoId": "video25",
+            "textEN": "Create Skyfall"
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video25": {
+      "file": "video25.mp4",
+      "src": "/videos/video25.mp4?v=1777941036000",
+      "buttons": [
+        "menu1",
+        "menu1769577062259"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video26",
+        "menu1769577062259": "video26"
+      },
+      "routing": {
+        "question": "스카이폴 이후 행동을 선택하세요.",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "프로젝트 기다린다",
+            "targetVideoId": "video26",
+            "textEN": "Wait for the project"
+          },
+          {
+            "id": "menu1769577062259",
+            "text": "직접 소모임 만든다",
+            "targetVideoId": "video26",
+            "textEN": "Create your own group"
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video26": {
+      "file": "video26.mp4",
+      "src": "/videos/video26.mp4?v=1777941036000",
+      "buttons": [
+        "menu1"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video27"
+      },
+      "routing": {
+        "question": "",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "선배들과 술자리 하기",
+            "targetVideoId": "video27",
+            "textEN": "Have drinks with seniors"
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video27": {
+      "file": "video27.mp4",
+      "src": "/videos/video27.mp4?v=1777941036000",
+      "buttons": [
+        "menu1"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video28"
+      },
+      "routing": {
+        "question": "",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "디스크를 꺼낸다",
+            "targetVideoId": "video28",
+            "textEN": "Take out the disc"
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video22_IN": {
+      "file": "video22_IN.mp4",
+      "src": "/videos/video22_IN.mp4?v=1777941036000",
+      "buttons": [
+        "menu1"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video22_IN_END"
+      },
+      "routing": {
+        "question": "",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "퇴근하기",
+            "targetVideoId": "video22_IN_END",
+            "textEN": "Go Home"
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video22_IN_END": {
+      "file": "video22_IN_END.mp4",
+      "src": "/videos/video22_IN_END.mp4?v=1777941036000",
+      "buttons": [
+        "menu1"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video24"
+      },
+      "routing": {
+        "question": "",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "다시 자리로 돌아오기",
+            "targetVideoId": "video24",
+            "textEN": "Return to your seat"
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video6_NO": {
+      "file": "video6_NO.mp4",
+      "src": "/videos/video6_NO.mp4?v=1777941036000",
+      "buttons": [
+        "menu1"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video7_NO"
+      },
+      "routing": {
+        "question": "다음 행동을 선택하세요.",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "만화속으로 들어간다",
+            "targetVideoId": "video7_NO",
+            "hotspot": {
+              "width": 451,
+              "height": 287,
+              "x": 555,
+              "y": 337,
+              "enabled": true
+            },
+            "textEN": "Enter the comic world"
+          }
+        ],
+        "questionEN": "Select your next action."
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video7_NO": {
+      "file": "video7_NO.mp4",
+      "src": "/videos/video7_NO.mp4?v=1777941036000",
+      "buttons": [
+        "menu1",
+        "menu2"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video9",
+        "menu2": "video9"
+      },
+      "routing": {
+        "question": "다음 행동을 선택하세요.",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "그림을 그리러 간다.",
+            "targetVideoId": "video9",
+            "textEN": "Go draw a picture."
+          },
+          {
+            "id": "menu2",
+            "text": "컴퓨터로 그림을 그린다.",
+            "targetVideoId": "video9",
+            "textEN": "Draw on a computer."
+          }
+        ],
+        "questionEN": "Select your next action."
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video43": {
+      "file": "video43.mp4",
+      "src": "/videos/video43.mp4?v=1777941036000",
+      "buttons": [
+        "menu1"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video43-1"
+      },
+      "routing": {
+        "question": "",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "스텝별 보기",
+            "targetVideoId": "video43-1",
+            "textEN": "View step by step"
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video44": {
+      "file": "video44.mp4",
+      "src": "/videos/video44.mp4?v=1777941036000",
+      "buttons": [
+        "menu1"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1": "video45"
+      },
+      "routing": {
+        "question": "",
+        "menus": [
+          {
+            "id": "menu1",
+            "text": "엔딩보기",
+            "targetVideoId": "video45",
+            "textEN": "Watch Ending"
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    },
+    "video45": {
+      "file": "video45.mp4",
+      "src": "/videos/video45.mp4?v=1777941036000",
+      "buttons": [
+        "menu1769539170354"
+      ],
+      "defaultGlow": null,
+      "navigation": {
+        "menu1769539170354": "video1"
+      },
+      "routing": {
+        "question": "",
+        "menus": [
+          {
+            "id": "menu1769539170354",
+            "text": "처음으로 돌아간다.",
+            "targetVideoId": "video1",
+            "textEN": "Return to the beginning."
+          }
+        ]
+      },
+      "available": true,
+      "isEnding": false
+    }
+  },
+  "copyright": "Created by Gryun Kim",
+  "availableFilesCount": 68,
+  "totalVideosCount": 36
+}

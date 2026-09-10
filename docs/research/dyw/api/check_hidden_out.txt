@@ -1,0 +1,136 @@
+{
+  "desktop": {
+    "previewEnabled": false,
+    "links": [
+      {
+        "id": "hidden-1",
+        "videoId": "video5-IN",
+        "startTime": "01:20",
+        "endTime": "01:33",
+        "positionX": 77,
+        "positionY": 79,
+        "width": 400,
+        "height": 200,
+        "targetVideoId": "video6-HIDDEN",
+        "borderColor": "#ffffff",
+        "borderWidth": 2
+      }
+    ]
+  },
+  "mobile": {
+    "previewEnabled": false,
+    "links": [
+      {
+        "id": "hidden-1",
+        "videoId": "video5-IN",
+        "startTime": "01:20",
+        "endTime": "01:33",
+        "positionX": 60,
+        "positionY": 80,
+        "width": 300,
+        "height": 300,
+        "targetVideoId": "video6-HIDDEN",
+        "borderColor": "#ffffff",
+        "borderWidth": 2
+      }
+    ]
+  }
+}
+
+intro block:
+{
+  "mode": "doors",
+  "doors": {
+    "titleText": "원하는 문을 선택해주세요.",
+    "subtitleText": "Sound on",
+    "options": [
+      {
+        "id": "red",
+        "label": "빨간색",
+        "color": "#ef4444",
+        "hoverColor": "#dc2626",
+        "startVideoId": "video1",
+        "labelEN": "Red"
+      },
+      {
+        "id": "blue",
+        "label": "파란색",
+        "color": "#3b82f6",
+        "hoverColor": "#2563eb",
+        "startVideoId": "video1",
+        "labelEN": "Blue"
+      },
+      {
+        "id": "green",
+        "label": "초록색",
+        "color": "#22c55e",
+        "hoverColor": "#16a34a",
+        "startVideoId": "video1",
+        "labelEN": "Green"
+      }
+    ]
+  },
+  "desktop": {
+    "enabled": false,
+    "overlayColor": "#000000",
+    "overlayOpacity": 60,
+    "titleText": "Select a language",
+    "titleFontSize": 21,
+    "titleFontWeight": 500,
+    "titleFontFamily": "Noto Sans KR",
+    "titleColor": "#ffffff",
+    "titleMarginTop": 0,
+    "titleMarginBottom": 6,
+    "subtitleText": "Sound on",
+    "subtitleFontSize": 17,
+    "subtitleFontWeight": 600,
+    "subtitleColor": "#f3c614",
+    "subtitleMarginBottom": 35,
+    "subtitleShowIcon": true,
+    "subtitleIconGap": 8,
+    "subtitleAnimation": true,
+    "subtitleAnimationSpeed": 1.5,
+    "subtitleAnimationMin": 60,
+    "subtitleAnimationMax": 100,
+    "koButtonText": "Korean",
+    "enButtonText": "English",
+    "button": {
+      "width": 140,
+      "height": 50,
+      "fontSize": 18,
+      "fontWeight": 600,
+      "fontFamily": "Noto Sans KR",
+      "textColor": "#ffffff",
+      "backgroundColor": "#000000",
+      "backgroundOpacity": 50,
+      "borderColor": "#424242",
+      "borderWidth": 1,
+      "borderRadius": 8,
+      "gap": 35,
+      "hoverScale": 1.05,
+      "hoverTextColor": "#f3c614",
+      "hoverBackgroundColor": "#000000",
+      "hoverBackgroundOpacity": 30,
+      "hoverBorderColor": "#f3c614"
+    },
+    "fadeInDuration": 1,
+    "fadeOutDuration": 1
+  },
+  "mobile": {
+    "enabled": true,
+    "o
+
+mobileIntro:
+{
+  "enabled": true,
+  "overlayColor": "#000000",
+  "overlayOpacity": 40,
+  "titleText": "Select a language",
+  "titleFontSize": 24,
+  "titleFontWeight": 500,
+  "titleFontFamily": "Noto Sans KR",
+  "titleColor": "#ffffff",
+  "titleMarginBottom": 40,
+  "koButtonText": "Korean",
+  "enButtonText": "English"
+}

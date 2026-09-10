@@ -1,0 +1,70 @@
+node	file	src	buttons	navigation	defaultGlow	glowCondition	setsFlag	isEnding	available
+video1	video1.mp4	/videos/video1.mp4	["right"]	{"right": "video2"}	right			False	True
+video10	video10.mp4	/videos/video10.mp4	["menu1", "menu2"]	{"menu1": "video11", "menu2": "video11"}	None			False	True
+video11	video11.mp4	/videos/video11.mp4	["menu1"]	{"menu1": "video12"}	None			False	True
+video12	video12.mp4	/videos/video12.mp4	["menu1"]	{"menu1": "video13"}	None			False	True
+video13	video13.mp4	/videos/video13.mp4	["menu1", "menu1769537943896", "menu1769537944393"]	{"menu1": "video14", "menu1769537943896": "video14", "menu1769537944393": "video14"}	None			False	True
+video14	video14.mp4	/videos/video14.mp4	["menu1"]	{"menu1": "video15"}	None			False	True
+video15	video15.mp4	/videos/video15.mp4	["menu1"]	{"menu1": "video16"}	None			False	True
+video16	video16.mp4	/videos/video16.mp4	["menu1"]	{"menu1": "video17"}	None			False	True
+video17	video17.mp4	/videos/video17.mp4	["menu1"]	{"menu1": "video18"}	None			False	True
+video18	video18.mp4	/videos/video18.mp4	["menu1", "menu2"]	{"menu1": "video29", "menu2": "video19"}	None			False	True
+video19	video19.mp4	/videos/video19.mp4	["menu1"]	{"menu1": "video20"}	None			False	True
+video2	video2.mp4	/videos/video2.mp4	["right"]	{"right": "video3"}	right			False	True
+video2-G	video2-G.mp4	/videos/video2-G.mp4	["menu1", "menu2", "menu3"]	{"menu1": "video3", "menu2": "video4", "menu3": "video5"}	None			False	True
+video2-R	video2-R.mp4	/videos/video2-R.mp4	["menu1", "menu2", "menu3"]	{"menu1": "video3", "menu2": "video4", "menu3": "video5"}	None			False	True
+video20	video20.mp4	/videos/video20.mp4	["menu1"]	{"menu1": "video20_IN"}	None			False	True
+video20_IN	video20_IN.mp4	/videos/video20_IN.mp4	["menu1"]	{"menu1": "video21"}	None			False	True
+video21	video21.mp4	/videos/video21.mp4	["menu1", "menu2"]	{"menu1": "video22", "menu2": "video22"}	None			False	True
+video22	video22.mp4	/videos/video22.mp4	["menu1"]	{"menu1": "video22_IN"}	None			False	True
+video22_IN	video22_IN.mp4	/videos/video22_IN.mp4	["menu1"]	{"menu1": "video22_IN_END"}	None			False	True
+video22_IN_END	video22_IN_END.mp4	/videos/video22_IN_END.mp4	["menu1"]	{"menu1": "video24"}	None			False	True
+video23	video23.mp4	/videos/video23.mp4	["menu1"]	{"menu1": "video24"}	None			False	True
+video24	video24.mp4	/videos/video24.mp4	["menu1"]	{"menu1": "video25"}	None			False	True
+video25	video25.mp4	/videos/video25.mp4	["menu1", "menu1769577062259"]	{"menu1": "video26", "menu1769577062259": "video26"}	None			False	True
+video26	video26.mp4	/videos/video26.mp4	["menu1"]	{"menu1": "video27"}	None			False	True
+video27	video27.mp4	/videos/video27.mp4	["menu1"]	{"menu1": "video28"}	None			False	True
+video28	video28.mp4	/videos/video28.mp4	[]	{}	None			False	True
+video29	video29.mp4	/videos/video29.mp4	[]	{}	None			False	True
+video3	video3.mp4	/videos/video3.mp4	["left", "up", "right"]	{"left": "video3-L", "up": "video3-IN", "right": "video4"}	up	{"if": "visitedVideo3In", "then": "right"}		False	True
+video3-IN	video3-IN.mp4	/videos/video3-IN.mp4	["right"]	{"right": "video4"}	right		visitedVideo3In	False	False
+video3-L	video3-L.mp4	/videos/video3-L.mp4	["right"]	{"right": "video3-R"}	right			False	False
+video3-R	video3-R.mp4	/videos/video3-R.mp4	["left", "up", "right"]	{"left": "video3-L", "up": "video3-IN", "right": "video4"}	up	{"if": "visitedVideo3In", "then": "right"}		False	True
+video30	video30.mp4	/videos/video30.mp4	[]	{}	None			False	True
+video31	video31.mp4	/videos/video31.mp4	[]	{}	None			False	True
+video32	video32.mp4	/videos/video32.mp4	[]	{}	None			False	True
+video33	video33.mp4	/videos/video33.mp4	[]	{}	None			False	True
+video34	video34.mp4	/videos/video34.mp4	[]	{}	None			False	True
+video35	video35.mp4	/videos/video35.mp4	[]	{}	None			False	True
+video36	video36.mp4	/videos/video36.mp4	[]	{}	None			False	True
+video37	video37.mp4	/videos/video37.mp4	[]	{}	None			False	True
+video38	video38.mp4	/videos/video38.mp4	[]	{}	None			False	True
+video39	video39.mp4	/videos/video39.mp4	[]	{}	None			False	True
+video3_IN	video3_IN.mp4	/videos/video3_IN.mp4	["menu1"]	{"menu1": "video3-R"}	None			False	True
+video4	video4.mp4	/videos/video4.mp4	["left", "up", "right"]	{"left": "video4-L", "up": "video4-IN", "right": "video5"}	up	{"if": "visitedVideo4In", "then": "right"}		False	True
+video4-IN	video4-IN.mp4	/videos/video4-IN.mp4	["right"]	{"right": "video5"}	right		visitedVideo4In	False	False
+video4-L	video4-L.mp4	/videos/video4-L.mp4	["left", "up", "right"]	{"left": "video3-L", "up": "video3-IN", "right": "video4-R"}	up	{"if": "visitedVideo3In", "then": "right"}		False	False
+video4-R	video4-R.mp4	/videos/video4-R.mp4	["left", "up", "right"]	{"left": "video4-L", "up": "video4-IN", "right": "video5"}	up	{"if": "visitedVideo4In", "then": "right"}		False	True
+video40	video40.mp4	/videos/video40.mp4	[]	{}	None			False	True
+video41	video41.mp4	/videos/video41.mp4	[]	{}	None			False	True
+video42	video42.mp4	/videos/video42.mp4	[]	{}	None			False	True
+video43	video43.mp4	/videos/video43.mp4	["menu1"]	{"menu1": "video43-1"}	None			False	True
+video43-1	video43-1.mp4	/videos/video43-1.mp4	[]	{}	None			False	True
+video43-2	video43-2.mp4	/videos/video43-2.mp4	[]	{}	None			False	True
+video43-3	video43-3.mp4	/videos/video43-3.mp4	[]	{}	None			False	True
+video43-4	video43-4.mp4	/videos/video43-4.mp4	[]	{}	None			False	True
+video43-5	video43-5.mp4	/videos/video43-5.mp4	[]	{}	None			False	True
+video44	video44.mp4	/videos/video44.mp4	["menu1"]	{"menu1": "video45"}	None			False	True
+video45	video45.mp4	/videos/video45.mp4	["menu1769539170354"]	{"menu1769539170354": "video1"}	None			False	True
+video5	video5.mp4	/videos/video5.mp4	["left", "up"]	{"left": "video5-L", "up": "video5-IN"}	up			False	True
+video5-IN	video5-IN.mp4	/videos/video5-IN.mp4	[]	{}	None			True	False
+video5-L	video5-L.mp4	/videos/video5-L.mp4	["left", "up", "right"]	{"left": "video4-L", "up": "video4-IN", "right": "video5-R"}	up	{"if": "visitedVideo4In", "then": "right"}		False	False
+video5-R	video5-R.mp4	/videos/video5-R.mp4	["left", "up"]	{"left": "video5-L", "up": "video5-IN"}	up			False	True
+video6	video6.mp4	/videos/video6.mp4	["menu1"]	{"menu1": "video7"}	None			False	True
+video6-HIDDEN	video6-HIDDEN.mp4	/videos/video6-HIDDEN.mp4	[]	{}	None			True	True
+video6_NO	video6_NO.mp4	/videos/video6_NO.mp4	["menu1"]	{"menu1": "video7_NO"}	None			False	True
+video7	video7.mp4	/videos/video7.mp4	["menu1"]	{"menu1": "video8"}	None			False	True
+video7_NO	video7_NO.mp4	/videos/video7_NO.mp4	["menu1", "menu2"]	{"menu1": "video9", "menu2": "video9"}	None			False	True
+video8	video8.mp4	/videos/video8.mp4	["menu1", "menu2"]	{"menu1": "video9", "menu2": "video9"}	None			False	True
+video9	video9.mp4	/videos/video9.mp4	["menu1"]	{"menu1": "video10"}	None			False	True
+video_intro_loop	video_intro_loop.mp4	/videos/video_intro_loop.mp4	[]	{}	None			False	True

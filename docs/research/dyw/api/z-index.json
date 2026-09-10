@@ -1,0 +1,17 @@
+{
+  "videoLayerInactive": 0,
+  "videoLayerActive": 1,
+  "video": 10,
+  "subtitle": 20,
+  "footer": 30,
+  "hotspot": 35,
+  "questionMenu": 40,
+  "skipButton": 60,
+  "controlIcons": 70,
+  "settingsPanel": 80,
+  "overlayFade": 75,
+  "hotspotPreview": 37,
+  "menuButton": 50,
+  "hiddenLink": 55,
+  "quickJump": 72
+}

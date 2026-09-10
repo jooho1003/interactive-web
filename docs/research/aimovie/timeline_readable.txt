@@ -1,0 +1,18 @@
+== video3-IN AI Evolution 00:04 - 02:25 ==
+  00:15 머신러닝 / Machine Learning
+  00:35 딥러닝 / Deep Learning
+  00:58 생성형 AI / Generative AI
+  01:45 AI 에이전트 / AI Agent
+  02:10 시뮬레이션 / Simulation
+== video4-IN A eye 00:04.5 - 01:52 ==
+  00:12 무단학습 / Training
+  00:21 딥페이크 / DeepFake
+  00:42 카피 / Copy
+  01:10 기업이 할 일 / Enterprise
+  01:23 개인이 할 일 / Individual
+  01:36 커뮤니티 / Communities
+== video5-IN AI Story 00:04 - 01:09 ==
+  00:24 본선작품 / Finalist
+  00:38 쉬운습득 / Easy Learning
+  00:54 새로운 리더 / Leadership
+  01:01 창의성 / Creativity

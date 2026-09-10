@@ -1,0 +1,6396 @@
+{
+  "arrowInstantVisible": false,
+  "creatorLink": "https://www.instagram.com/kimgryun/",
+  "design": {
+    "desktop": {
+      "circleSize": 52,
+      "arrowSize": 20,
+      "strokeWidth": 1,
+      "arrowColor": "#c7c7c7",
+      "circleColor": "#474747",
+      "circleOpacity": 80,
+      "normalHover": {
+        "duration": 200,
+        "scale": 1.05,
+        "arrowColor": "#ffffff",
+        "circleColor": "#ffffff",
+        "circleOpacity": 70,
+        "soundFile": "/audio/on.wav"
+      },
+      "glowCircleColor": "#ef4444",
+      "glowCircleOpacity": 50,
+      "glowArrowColor": "#ef4444",
+      "glowColor": "#ef4444",
+      "glowAnimation": true,
+      "glowAnimationSpeed": 1.5,
+      "glowAnimationMin": 15,
+      "glowAnimationMax": 45,
+      "glowHover": {
+        "duration": 200,
+        "scale": 1.05,
+        "arrowColor": "#ef4444",
+        "circleColor": "#ef4444",
+        "circleOpacity": 80,
+        "soundFile": "/audio/on.wav"
+      }
+    },
+    "mobile": {
+      "circleSize": 40,
+      "arrowSize": 20,
+      "strokeWidth": 1,
+      "arrowColor": "#c7c7c7",
+      "circleColor": "#474747",
+      "circleOpacity": 80,
+      "normalHover": {
+        "duration": 200,
+        "scale": 1.05,
+        "arrowColor": "#ffffff",
+        "circleColor": "#ffffff",
+        "circleOpacity": 70,
+        "soundFile": "/audio/on.wav"
+      },
+      "glowCircleColor": "#ef4444",
+      "glowCircleOpacity": 50,
+      "glowArrowColor": "#ef4444",
+      "glowColor": "#ef4444",
+      "glowAnimation": true,
+      "glowAnimationSpeed": 1.5,
+      "glowAnimationMin": 15,
+      "glowAnimationMax": 45,
+      "glowHover": {
+        "duration": 200,
+        "scale": 1.05,
+        "arrowColor": "#ef4444",
+        "circleColor": "#ef4444",
+        "circleOpacity": 80,
+        "soundFile": "/audio/on.wav"
+      }
+    }
+  },
+  "skip": {
+    "desktop": {
+      "width": 85,
+      "height": 42,
+      "paddingX": 20,
+      "fontSize": 14,
+      "fontWeight": 600,
+      "textColor": "#b8b8b8",
+      "backgroundColor": "#000000",
+      "backgroundOpacity": 80,
+      "borderColor": "#363636",
+      "borderWidth": 1,
+      "hoverTextColor": "#ffffff",
+      "hoverBackgroundColor": "#000000",
+      "hoverBackgroundOpacity": 70,
+      "hoverScale": 1.05,
+      "hoverSoundFile": "/audio/on.wav",
+      "clickSoundFile": "/audio/click.wav"
+    },
+    "mobile": {
+      "width": 85,
+      "height": 32,
+      "paddingX": 20,
+      "fontSize": 14,
+      "fontWeight": 600,
+      "textColor": "#bfbfbf",
+      "backgroundColor": "#000000",
+      "backgroundOpacity": 80,
+      "borderColor": "#363636",
+      "borderWidth": 1,
+      "hoverTextColor": "#ffffff",
+      "hoverBackgroundColor": "#000000",
+      "hoverBackgroundOpacity": 70,
+      "hoverScale": 1.05,
+      "hoverSoundFile": "/audio/on.wav",
+      "clickSoundFile": "/audio/click.wav"
+    }
+  },
+  "replay": {
+    "desktop": {
+      "width": 140,
+      "height": 50,
+      "paddingX": 24,
+      "fontSize": 15,
+      "fontWeight": 500,
+      "textColor": "#b3b3b3",
+      "backgroundColor": "#0d0d0d",
+      "backgroundOpacity": 50,
+      "borderColor": "#363636",
+      "borderWidth": 1,
+      "hoverTextColor": "#fac614",
+      "hoverBackgroundColor": "#000000",
+      "hoverBackgroundOpacity": 70,
+      "hoverScale": 1.05,
+      "hoverSoundFile": "/audio/on.wav",
+      "clickSoundFile": "/audio/click.wav"
+    },
+    "mobile": {
+      "width": 125,
+      "height": 40,
+      "paddingX": 24,
+      "fontSize": 14,
+      "fontWeight": 600,
+      "textColor": "#ffffff",
+      "backgroundColor": "#000000",
+      "backgroundOpacity": 30,
+      "borderColor": "#5c5c5c",
+      "borderWidth": 1,
+      "hoverTextColor": "#ffc614",
+      "hoverBackgroundColor": "#000000",
+      "hoverBackgroundOpacity": 70,
+      "hoverScale": 1.05,
+      "hoverSoundFile": "/audio/on.wav",
+      "clickSoundFile": "/audio/click.wav"
+    }
+  },
+  "langToggle": {
+    "desktop": {
+      "fontSize": 14,
+      "fontWeight": 600,
+      "paddingX": 12,
+      "paddingY": 8,
+      "gap": 8,
+      "borderRadius": 9999,
+      "activeTextColor": "#f3c614",
+      "inactiveTextColor": "#ffffff",
+      "backgroundColor": "#000000",
+      "backgroundOpacity": 30,
+      "borderColor": "#ffffff",
+      "borderWidth": 1,
+      "hoverScale": 1.05,
+      "hoverSoundFile": "/audio/on.wav",
+      "clickSoundFile": "/audio/click.wav"
+    },
+    "mobile": {
+      "fontSize": 12,
+      "fontWeight": 600,
+      "paddingX": 10,
+      "paddingY": 6,
+      "gap": 6,
+      "borderRadius": 9999,
+      "activeTextColor": "#f3c614",
+      "inactiveTextColor": "#ffffff",
+      "backgroundColor": "#000000",
+      "backgroundOpacity": 30,
+      "borderColor": "#ffffff",
+      "borderWidth": 1,
+      "hoverScale": 1.05,
+      "hoverSoundFile": "/audio/on.wav",
+      "clickSoundFile": "/audio/click.wav"
+    }
+  },
+  "intro": {
+    "mode": "doors",
+    "doors": {
+      "titleText": "원하는 문을 선택해주세요.",
+      "subtitleText": "Sound on",
+      "options": [
+        {
+          "id": "red",
+          "label": "빨간색",
+          "color": "#ef4444",
+          "hoverColor": "#dc2626",
+          "startVideoId": "video1",
+          "labelEN": "Red"
+        },
+        {
+          "id": "blue",
+          "label": "파란색",
+          "color": "#3b82f6",
+          "hoverColor": "#2563eb",
+          "startVideoId": "video1",
+          "labelEN": "Blue"
+        },
+        {
+          "id": "green",
+          "label": "초록색",
+          "color": "#22c55e",
+          "hoverColor": "#16a34a",
+          "startVideoId": "video1",
+          "labelEN": "Green"
+        }
+      ]
+    },
+    "desktop": {
+      "enabled": false,
+      "overlayColor": "#000000",
+      "overlayOpacity": 60,
+      "titleText": "Select a language",
+      "titleFontSize": 21,
+      "titleFontWeight": 500,
+      "titleFontFamily": "Noto Sans KR",
+      "titleColor": "#ffffff",
+      "titleMarginTop": 0,
+      "titleMarginBottom": 6,
+      "subtitleText": "Sound on",
+      "subtitleFontSize": 17,
+      "subtitleFontWeight": 600,
+      "subtitleColor": "#f3c614",
+      "subtitleMarginBottom": 35,
+      "subtitleShowIcon": true,
+      "subtitleIconGap": 8,
+      "subtitleAnimation": true,
+      "subtitleAnimationSpeed": 1.5,
+      "subtitleAnimationMin": 60,
+      "subtitleAnimationMax": 100,
+      "koButtonText": "Korean",
+      "enButtonText": "English",
+      "button": {
+        "width": 140,
+        "height": 50,
+        "fontSize": 18,
+        "fontWeight": 600,
+        "fontFamily": "Noto Sans KR",
+        "textColor": "#ffffff",
+        "backgroundColor": "#000000",
+        "backgroundOpacity": 50,
+        "borderColor": "#424242",
+        "borderWidth": 1,
+        "borderRadius": 8,
+        "gap": 35,
+        "hoverScale": 1.05,
+        "hoverTextColor": "#f3c614",
+        "hoverBackgroundColor": "#000000",
+        "hoverBackgroundOpacity": 30,
+        "hoverBorderColor": "#f3c614"
+      },
+      "fadeInDuration": 1,
+      "fadeOutDuration": 1
+    },
+    "mobile": {
+      "enabled": true,
+      "overlayColor": "#000000",
+      "overlayOpacity": 40,
+      "titleText": "Select a language",
+      "titleFontSize": 21,
+      "titleFontWeight": 500,
+      "titleFontFamily": "Noto Sans KR",
+      "titleColor": "#ffffff",
+      "titleMarginTop": 0,
+      "titleMarginBottom": 6,
+      "subtitleText": "Sound on",
+      "subtitleFontSize": 17,
+      "subtitleFontWeight": 600,
+      "subtitleColor": "#f3c614",
+      "subtitleMarginBottom": 35,
+      "subtitleShowIcon": true,
+      "subtitleIconGap": 8,
+      "subtitleAnimation": true,
+      "subtitleAnimationSpeed": 1.5,
+      "subtitleAnimationMin": 60,
+      "subtitleAnimationMax": 100,
+      "koButtonText": "Korean",
+      "enButtonText": "English",
+      "button": {
+        "width": 120,
+        "height": 42,
+        "fontSize": 15,
+        "fontWeight": 600,
+        "fontFamily": "Noto Sans KR",
+        "textColor": "#ffffff",
+        "backgroundColor": "#000000",
+        "backgroundOpacity": 50,
+        "borderColor": "#4d4d4d",
+        "borderWidth": 1,
+        "borderRadius": 8,
+        "gap": 20,
+        "hoverScale": 1,
+        "hoverTextColor": "#f3c614",
+        "hoverBackgroundColor": "#000000",
+        "hoverBackgroundOpacity": 30,
+        "hoverBorderColor": "#f3c614"
+      },
+      "fadeInDuration": 1,
+      "fadeOutDuration": 1
+    }
+  },
+  "videoSkip": {
+    "video_intro_loop": false,
+    "video1": true,
+    "video2": true,
+    "video3": true,
+    "video3-L": false,
+    "video3-R": true,
+    "video3-IN": false,
+    "video4": true,
+    "video4-L": false,
+    "video4-R": true,
+    "video4-IN": false,
+    "video5": true,
+    "video5-L": false,
+    "video5-R": true,
+    "video5-IN": false,
+    "video6-HIDDEN": false,
+    "video28": false,
+    "video29": false,
+    "video30": false,
+    "video31": true,
+    "video32": false,
+    "video33": true,
+    "video34": false,
+    "video35": false,
+    "video36": true,
+    "video37": false,
+    "video38": false,
+    "video39": false,
+    "video40": false,
+    "video41": false,
+    "video42": false,
+    "video43-1": true,
+    "video43-2": true,
+    "video43-3": true,
+    "video43-4": true,
+    "video43-5": true,
+    "video6": false,
+    "video7": false,
+    "video3_IN": true,
+    "video8": false,
+    "video9": false,
+    "video10": false,
+    "video11": false,
+    "video12": false,
+    "video13": false,
+    "video14": false,
+    "video15": false,
+    "video16": false,
+    "video17": false,
+    "video18": false,
+    "video19": false,
+    "video20": false,
+    "video21": false,
+    "video22": false,
+    "video2-G": true,
+    "video2-R": true,
+    "video20_IN": true,
+    "video23": false,
+    "video24": false,
+    "video25": true,
+    "video26": false,
+    "video27": false,
+    "video22_IN": true,
+    "video22_IN_END": false,
+    "video6_NO": false,
+    "video7_NO": false,
+    "video43": true,
+    "video44": true,
+    "video45": false,
+    "video2_R": true
+  },
+  "videoRouting": {
+    "video_intro_loop": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "시작하기",
+          "targetVideoId": "video1",
+          "textEN": "Start"
+        }
+      ]
+    },
+    "video1": {
+      "question": "어떤 문을 여시겠습니까?",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "빨간문",
+          "targetVideoId": "video2-R",
+          "hotspot": {
+            "width": 234,
+            "height": 528,
+            "x": 407,
+            "y": 299,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Red Door"
+        },
+        {
+          "id": "menu2",
+          "text": "파란문",
+          "targetVideoId": "video2",
+          "hotspot": {
+            "width": 234,
+            "height": 528,
+            "x": 871,
+            "y": 299,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Blue Door"
+        },
+        {
+          "id": "menu3",
+          "text": "초록문",
+          "targetVideoId": "video2-G",
+          "hotspot": {
+            "width": 234,
+            "height": 528,
+            "x": 1329,
+            "y": 299,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Green Door"
+        }
+      ],
+      "questionEN": "Which door will you open?"
+    },
+    "video2": {
+      "question": "자세히 보고 싶은 사물을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "모니터",
+          "targetVideoId": "video3",
+          "hotspot": {
+            "width": 251,
+            "height": 203,
+            "x": 851,
+            "y": 369,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Monitor"
+        },
+        {
+          "id": "menu2",
+          "text": "트로피",
+          "targetVideoId": "video4",
+          "hotspot": {
+            "width": 287,
+            "height": 203,
+            "x": 817,
+            "y": 131,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Trophy"
+        },
+        {
+          "id": "menu3",
+          "text": "연습장",
+          "targetVideoId": "video5",
+          "hotspot": {
+            "width": 377,
+            "height": 105,
+            "x": 1423,
+            "y": 645,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Notebook"
+        }
+      ],
+      "questionEN": "Select an object to explore."
+    },
+    "video3": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu2",
+          "text": "쇼릴보기",
+          "targetVideoId": "video3_IN",
+          "hotspot": {
+            "width": 87,
+            "height": 97,
+            "x": 817,
+            "y": 303,
+            "enabled": true
+          },
+          "textEN": "Watch Showreel"
+        },
+        {
+          "id": "menu1",
+          "text": "뒤로가기",
+          "targetVideoId": "video3-R",
+          "textEN": "Go Back"
+        }
+      ]
+    },
+    "video3-L": {
+      "question": "다음 영상을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "선택 1",
+          "targetVideoId": "video3-R",
+          "textEN": "Choice 1"
+        }
+      ],
+      "questionEN": "Select the next video."
+    },
+    "video3-R": {
+      "question": "자세히 보고 싶은 사물을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "모니터",
+          "targetVideoId": "video3",
+          "hotspot": {
+            "width": 251,
+            "height": 203,
+            "x": 851,
+            "y": 369,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Monitor"
+        },
+        {
+          "id": "menu2",
+          "text": "트로피",
+          "targetVideoId": "video4",
+          "hotspot": {
+            "width": 287,
+            "height": 203,
+            "x": 817,
+            "y": 131,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Trophy"
+        },
+        {
+          "id": "menu3",
+          "text": "연습장",
+          "targetVideoId": "video5",
+          "hotspot": {
+            "width": 377,
+            "height": 105,
+            "x": 1423,
+            "y": 645,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Notebook"
+        }
+      ],
+      "questionEN": "Select an object to explore."
+    },
+    "video3-IN": {
+      "question": "다음 영상을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "선택 1",
+          "targetVideoId": "video4",
+          "textEN": "Choice 1"
+        }
+      ],
+      "questionEN": "Select the next video."
+    },
+    "video4": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "뒤로가기",
+          "targetVideoId": "video4-R",
+          "textEN": "Go Back"
+        }
+      ]
+    },
+    "video4-L": {
+      "question": "다음 영상을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "선택 1",
+          "targetVideoId": "video3-L",
+          "textEN": "Choice 1"
+        },
+        {
+          "id": "menu2",
+          "text": "선택 2",
+          "targetVideoId": "video3-IN",
+          "textEN": "Choice 2"
+        },
+        {
+          "id": "menu3",
+          "text": "선택 3",
+          "targetVideoId": "video4-R",
+          "textEN": "Choice 3"
+        }
+      ],
+      "questionEN": "Select the next video."
+    },
+    "video4-R": {
+      "question": "자세히 보고 싶은 사물을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "모니터",
+          "targetVideoId": "video3",
+          "hotspot": {
+            "width": 251,
+            "height": 203,
+            "x": 851,
+            "y": 369,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Monitor"
+        },
+        {
+          "id": "menu2",
+          "text": "트로피",
+          "targetVideoId": "video4",
+          "hotspot": {
+            "width": 287,
+            "height": 203,
+            "x": 817,
+            "y": 131,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Trophy"
+        },
+        {
+          "id": "menu3",
+          "text": "연습장",
+          "targetVideoId": "video5",
+          "hotspot": {
+            "width": 377,
+            "height": 105,
+            "x": 1423,
+            "y": 645,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Notebook"
+        }
+      ],
+      "questionEN": "Select an object to explore."
+    },
+    "video4-IN": {
+      "question": "다음 영상을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "선택 1",
+          "targetVideoId": "video5",
+          "textEN": "Choice 1"
+        }
+      ],
+      "questionEN": "Select the next video."
+    },
+    "video5": {
+      "question": "다음 행동을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "스탠드를 켠다.",
+          "targetVideoId": "video6",
+          "hotspot": {
+            "width": 611,
+            "height": 287,
+            "x": 519,
+            "y": 0,
+            "enabled": true
+          },
+          "textEN": "Turn on the lamp."
+        },
+        {
+          "id": "menu2",
+          "text": "연습장을 살핀다.",
+          "targetVideoId": "video6_NO",
+          "hotspot": {
+            "width": 869,
+            "height": 650,
+            "x": 501,
+            "y": 311,
+            "enabled": true
+          },
+          "textEN": "Examine the notebook."
+        },
+        {
+          "id": "menu3",
+          "text": "뒤로가기",
+          "targetVideoId": "video5-R",
+          "textEN": "Go Back"
+        }
+      ],
+      "questionEN": "Select your next action."
+    },
+    "video5-L": {
+      "question": "다음 영상을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "선택 1",
+          "targetVideoId": "video4-L",
+          "textEN": "Choice 1"
+        },
+        {
+          "id": "menu2",
+          "text": "선택 2",
+          "targetVideoId": "video4-IN",
+          "textEN": "Choice 2"
+        },
+        {
+          "id": "menu3",
+          "text": "선택 3",
+          "targetVideoId": "video5-R",
+          "textEN": "Choice 3"
+        }
+      ],
+      "questionEN": "Select the next video."
+    },
+    "video5-R": {
+      "question": "자세히 보고 싶은 사물을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "모니터",
+          "targetVideoId": "video3",
+          "hotspot": {
+            "width": 251,
+            "height": 203,
+            "x": 851,
+            "y": 369,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Monitor"
+        },
+        {
+          "id": "menu2",
+          "text": "트로피",
+          "targetVideoId": "video4",
+          "hotspot": {
+            "width": 287,
+            "height": 203,
+            "x": 817,
+            "y": 131,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Trophy"
+        },
+        {
+          "id": "menu3",
+          "text": "연습장",
+          "targetVideoId": "video5",
+          "hotspot": {
+            "width": 377,
+            "height": 105,
+            "x": 1423,
+            "y": 645,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Notebook"
+        }
+      ],
+      "questionEN": "Select an object to explore."
+    },
+    "video5-IN": {
+      "question": "다음 영상을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "다음",
+          "targetVideoId": null,
+          "textEN": "Next"
+        }
+      ],
+      "questionEN": "Select the next video."
+    },
+    "video6-HIDDEN": {
+      "question": "다음 영상을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "다음",
+          "targetVideoId": null,
+          "textEN": "Next"
+        }
+      ],
+      "questionEN": "Select the next video."
+    },
+    "video28": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "빨간색 디스크 넣는다",
+          "targetVideoId": "video29",
+          "hotspot": {
+            "width": 420,
+            "height": 287,
+            "x": 663,
+            "y": 343,
+            "enabled": true
+          },
+          "textEN": "Insert the red disc"
+        }
+      ]
+    },
+    "video29": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "주변을 살핀다.",
+          "targetVideoId": "video30",
+          "textEN": "Look around."
+        }
+      ]
+    },
+    "video30": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "첨부파일을 연다.",
+          "targetVideoId": "video31",
+          "hotspot": {
+            "width": 161,
+            "height": 76,
+            "x": 591,
+            "y": 523,
+            "enabled": true
+          },
+          "textEN": "Open the attachment."
+        }
+      ]
+    },
+    "video31": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "작품에 참여한다.",
+          "targetVideoId": "video32",
+          "textEN": "Participate in the project."
+        }
+      ]
+    },
+    "video32": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "둠페트롤 시청하기",
+          "targetVideoId": "video33",
+          "textEN": "Watch Doom Patrol"
+        }
+      ]
+    },
+    "video33": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "주변을 살핀다.",
+          "targetVideoId": "video34",
+          "textEN": "Look around."
+        }
+      ]
+    },
+    "video34": {
+      "question": "나디아에게 보낼 내용을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "답변을 정리해서 보낸다.",
+          "targetVideoId": "video35",
+          "textEN": "Organize and send the reply."
+        },
+        {
+          "id": "menu1769538401727",
+          "text": "직접 예제 파일을 만든다.",
+          "targetVideoId": "video35",
+          "textEN": "Create example files yourself."
+        }
+      ],
+      "questionEN": "Select the content to send to Nadia."
+    },
+    "video35": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "라스트오브어스 메인타이틀",
+          "targetVideoId": "video36",
+          "textEN": "The Last of Us Main Title"
+        }
+      ]
+    },
+    "video36": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "주변을 살핀다.",
+          "targetVideoId": "video37",
+          "textEN": "Look around."
+        }
+      ]
+    },
+    "video37": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "다음 도전을 한다",
+          "targetVideoId": "video38",
+          "textEN": "Take the next challenge"
+        }
+      ]
+    },
+    "video38": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "에피소드",
+          "targetVideoId": "video39",
+          "textEN": "Episode"
+        }
+      ]
+    },
+    "video39": {
+      "question": "작업 방식을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "기존의 방식으로 한다",
+          "targetVideoId": "video40",
+          "textEN": "Use the traditional method"
+        },
+        {
+          "id": "menu1769538661129",
+          "text": "새로운 방식을 시도한다",
+          "targetVideoId": "video40",
+          "textEN": "Try a new method"
+        }
+      ],
+      "questionEN": "Select a working method."
+    },
+    "video40": {
+      "question": "강의 방식을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "온라인 강의를 만든다.",
+          "targetVideoId": "video41",
+          "textEN": "Create an online lecture."
+        },
+        {
+          "id": "menu1769538746569",
+          "text": "유튜브를 만든다.",
+          "targetVideoId": "video41",
+          "textEN": "Create a YouTube video."
+        }
+      ]
+    },
+    "video41": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "앞으로 걸어간다.",
+          "targetVideoId": "video42",
+          "textEN": "Walk forward."
+        }
+      ]
+    },
+    "video42": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "메이킹 과정을 본다.",
+          "targetVideoId": "video43",
+          "textEN": "Watch the making process."
+        }
+      ]
+    },
+    "video43-1": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "IMAGE",
+          "targetVideoId": "video43-2"
+        }
+      ]
+    },
+    "video43-2": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "EDIT",
+          "targetVideoId": "video43-3"
+        }
+      ]
+    },
+    "video43-3": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "VIDEO",
+          "targetVideoId": "video43-4"
+        }
+      ]
+    },
+    "video43-4": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "VIBE",
+          "targetVideoId": "video43-5"
+        }
+      ]
+    },
+    "video43-5": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "메이킹 영상을 시청한다.",
+          "targetVideoId": "video44",
+          "textEN": "Watch the making video."
+        }
+      ]
+    },
+    "video6": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "다음장으로 넘긴다",
+          "targetVideoId": "video7",
+          "hotspot": {
+            "width": 869,
+            "height": 650,
+            "x": 501,
+            "y": 311,
+            "enabled": true
+          },
+          "textEN": "Turn to the next page"
+        }
+      ]
+    },
+    "video7": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "만화속으로 들어간다",
+          "targetVideoId": "video8",
+          "hotspot": {
+            "width": 451,
+            "height": 287,
+            "x": 555,
+            "y": 337,
+            "enabled": true
+          },
+          "textEN": "Enter the comic world"
+        }
+      ]
+    },
+    "video3_IN": {
+      "question": "다음 행동을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "뒤로가기",
+          "targetVideoId": "video3-R",
+          "textEN": "Go Back"
+        }
+      ],
+      "questionEN": "Select your next action."
+    },
+    "video8": {
+      "question": "다음 행동을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "그림을 그리러 간다.",
+          "targetVideoId": "video9",
+          "textEN": "Go draw a picture."
+        },
+        {
+          "id": "menu2",
+          "text": "컴퓨터로 그림을 그린다.",
+          "targetVideoId": "video9",
+          "textEN": "Draw on a computer."
+        }
+      ],
+      "questionEN": "Select your next action."
+    },
+    "video9": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "학교 간다.",
+          "targetVideoId": "video10",
+          "textEN": "Go to school."
+        }
+      ]
+    },
+    "video10": {
+      "question": "대답을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "친구들과 게임을 한다.",
+          "targetVideoId": "video11",
+          "textEN": "Play games with friends."
+        },
+        {
+          "id": "menu2",
+          "text": "집가서 게임을 만든다.",
+          "targetVideoId": "video11",
+          "textEN": "Go home and make a game."
+        }
+      ]
+    },
+    "video11": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "다음 컷을 본다.",
+          "targetVideoId": "video12",
+          "textEN": "See the next cut."
+        }
+      ]
+    },
+    "video12": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "다음 컷을 본다.",
+          "targetVideoId": "video13",
+          "textEN": "See the next cut."
+        }
+      ]
+    },
+    "video13": {
+      "question": "어떤 촬영을 하시겠습니까?",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "펜돌리기",
+          "targetVideoId": "video14",
+          "textEN": "Pen Spinning"
+        },
+        {
+          "id": "menu1769537943896",
+          "text": "비트박스",
+          "targetVideoId": "video14",
+          "textEN": "Beatbox"
+        },
+        {
+          "id": "menu1769537944393",
+          "text": "동시에 둘다",
+          "targetVideoId": "video14",
+          "textEN": "Both at the same time"
+        }
+      ]
+    },
+    "video14": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "만화책에서 나온다.",
+          "targetVideoId": "video15",
+          "textEN": "Come out of the comic book."
+        }
+      ]
+    },
+    "video15": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "옆 테이블을 본다.",
+          "targetVideoId": "video16",
+          "textEN": "Look at the next table."
+        }
+      ]
+    },
+    "video16": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "뒤로가기",
+          "targetVideoId": "video17",
+          "textEN": "Go Back"
+        }
+      ]
+    },
+    "video17": {
+      "question": "다음 행동을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "컴퓨터를 살핀다.",
+          "targetVideoId": "video18",
+          "textEN": "Examine the computer."
+        }
+      ],
+      "questionEN": "Select your next action."
+    },
+    "video18": {
+      "question": "원하는 디스크를 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "빨간색",
+          "targetVideoId": "video29",
+          "hotspot": {
+            "width": 420,
+            "height": 287,
+            "x": 663,
+            "y": 343,
+            "enabled": true
+          },
+          "textEN": "Red"
+        },
+        {
+          "id": "menu2",
+          "text": "파란색",
+          "targetVideoId": "video19",
+          "hotspot": {
+            "width": 336,
+            "height": 276,
+            "x": 1109,
+            "y": 339,
+            "enabled": true
+          },
+          "textEN": "Blue"
+        }
+      ]
+    },
+    "video19": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "회의실로 이동한다.",
+          "targetVideoId": "video20",
+          "hotspot": {
+            "width": 211,
+            "height": 397,
+            "x": 1097,
+            "y": 537,
+            "enabled": true
+          },
+          "textEN": "Move to the meeting room."
+        }
+      ]
+    },
+    "video20": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "이희복 감독 스타일프레임",
+          "targetVideoId": "video20_IN",
+          "textEN": "Director Lee Style Frame"
+        }
+      ]
+    },
+    "video21": {
+      "question": "퇴근시간 후 행동을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "집으로 퇴근한다.",
+          "targetVideoId": "video22",
+          "textEN": "Go home after work."
+        },
+        {
+          "id": "menu2",
+          "text": "테스트 영상을 만든다.",
+          "targetVideoId": "video22",
+          "textEN": "Create a test video."
+        }
+      ]
+    },
+    "video22": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "작업한 테스트 보기",
+          "targetVideoId": "video22_IN",
+          "textEN": "View test work"
+        }
+      ]
+    },
+    "video2-G": {
+      "question": "자세히 보고 싶은 사물을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "모니터",
+          "targetVideoId": "video3",
+          "hotspot": {
+            "width": 251,
+            "height": 203,
+            "x": 851,
+            "y": 369,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Monitor"
+        },
+        {
+          "id": "menu2",
+          "text": "트로피",
+          "targetVideoId": "video4",
+          "hotspot": {
+            "width": 287,
+            "height": 203,
+            "x": 817,
+            "y": 131,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Trophy"
+        },
+        {
+          "id": "menu3",
+          "text": "연습장",
+          "targetVideoId": "video5",
+          "hotspot": {
+            "width": 377,
+            "height": 105,
+            "x": 1423,
+            "y": 645,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Notebook"
+        }
+      ],
+      "questionEN": "Select an object to explore."
+    },
+    "video2-R": {
+      "question": "자세히 보고 싶은 사물을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "모니터",
+          "targetVideoId": "video3",
+          "hotspot": {
+            "width": 251,
+            "height": 203,
+            "x": 851,
+            "y": 369,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Monitor"
+        },
+        {
+          "id": "menu2",
+          "text": "트로피",
+          "targetVideoId": "video4",
+          "hotspot": {
+            "width": 287,
+            "height": 203,
+            "x": 817,
+            "y": 131,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Trophy"
+        },
+        {
+          "id": "menu3",
+          "text": "연습장",
+          "targetVideoId": "video5",
+          "hotspot": {
+            "width": 377,
+            "height": 105,
+            "x": 1423,
+            "y": 645,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Notebook"
+        }
+      ],
+      "questionEN": "Select an object to explore."
+    },
+    "video20_IN": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "자리로 돌아간다.",
+          "targetVideoId": "video21",
+          "textEN": "Return to seat."
+        }
+      ]
+    },
+    "video23": {
+      "question": "다음 행동을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "선택 1",
+          "targetVideoId": "video24",
+          "textEN": "Choice 1"
+        }
+      ],
+      "questionEN": "Select your next action."
+    },
+    "video24": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "스카이폴 제작하기",
+          "targetVideoId": "video25",
+          "textEN": "Create Skyfall"
+        }
+      ]
+    },
+    "video25": {
+      "question": "스카이폴 이후 행동을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "프로젝트 기다린다",
+          "targetVideoId": "video26",
+          "textEN": "Wait for the project"
+        },
+        {
+          "id": "menu1769577062259",
+          "text": "직접 소모임 만든다",
+          "targetVideoId": "video26",
+          "textEN": "Create your own group"
+        }
+      ]
+    },
+    "video26": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "선배들과 술자리 하기",
+          "targetVideoId": "video27",
+          "textEN": "Have drinks with seniors"
+        }
+      ]
+    },
+    "video27": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "디스크를 꺼낸다",
+          "targetVideoId": "video28",
+          "textEN": "Take out the disc"
+        }
+      ]
+    },
+    "video22_IN": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "퇴근하기",
+          "targetVideoId": "video22_IN_END",
+          "textEN": "Go Home"
+        }
+      ]
+    },
+    "video22_IN_END": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "다시 자리로 돌아오기",
+          "targetVideoId": "video24",
+          "textEN": "Return to your seat"
+        }
+      ]
+    },
+    "video6_NO": {
+      "question": "다음 행동을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "만화속으로 들어간다",
+          "targetVideoId": "video7_NO",
+          "hotspot": {
+            "width": 451,
+            "height": 287,
+            "x": 555,
+            "y": 337,
+            "enabled": true
+          },
+          "textEN": "Enter the comic world"
+        }
+      ],
+      "questionEN": "Select your next action."
+    },
+    "video7_NO": {
+      "question": "다음 행동을 선택하세요.",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "그림을 그리러 간다.",
+          "targetVideoId": "video9",
+          "textEN": "Go draw a picture."
+        },
+        {
+          "id": "menu2",
+          "text": "컴퓨터로 그림을 그린다.",
+          "targetVideoId": "video9",
+          "textEN": "Draw on a computer."
+        }
+      ],
+      "questionEN": "Select your next action."
+    },
+    "video43": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "스텝별 보기",
+          "targetVideoId": "video43-1",
+          "textEN": "View step by step"
+        }
+      ]
+    },
+    "video44": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "엔딩보기",
+          "targetVideoId": "video45",
+          "textEN": "Watch Ending"
+        }
+      ]
+    },
+    "video45": {
+      "question": "",
+      "menus": [
+        {
+          "id": "menu1769539170354",
+          "text": "처음으로 돌아간다.",
+          "targetVideoId": "video1",
+          "textEN": "Return to the beginning."
+        }
+      ]
+    },
+    "video2_R": {
+      "question": "어떤 문을 여시겠습니까?",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "모니터",
+          "targetVideoId": "video3",
+          "hotspot": {
+            "width": 251,
+            "height": 203,
+            "x": 851,
+            "y": 369,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Monitor"
+        },
+        {
+          "id": "menu2",
+          "text": "트로피",
+          "targetVideoId": "video4",
+          "hotspot": {
+            "width": 287,
+            "height": 203,
+            "x": 817,
+            "y": 131,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Trophy"
+        },
+        {
+          "id": "menu3",
+          "text": "연습장",
+          "targetVideoId": "video5",
+          "hotspot": {
+            "width": 377,
+            "height": 105,
+            "x": 1423,
+            "y": 645,
+            "enabled": true,
+            "debugVisible": false
+          },
+          "textEN": "Notebook"
+        }
+      ],
+      "questionEN": "Which door will you open?"
+    },
+    "intro": {
+      "question": "원하는 문을 선택해주세요.22",
+      "menus": [
+        {
+          "id": "menu1",
+          "text": "선택 1",
+          "targetVideoId": "video2",
+          "textEN": "Choice 1"
+        }
+      ]
+    }
+  },
+  "videoTiming": {
+    "video_intro_loop": 20,
+    "video1": 1,
+    "video2": 3,
+    "video3": 1,
+    "video3-L": 8,
+    "video3-R": 1,
+    "video3-IN": 8,
+    "video4": 1,
+    "video4-L": 8,
+    "video4-R": 1,
+    "video4-IN": 8,
+    "video5": 1,
+    "video5-L": 8,
+    "video5-R": 1,
+    "video5-IN": 8,
+    "video6-HIDDEN": 8,
+    "video28": 1,
+    "video29": 1,
+    "video30": 1,
+    "video31": 1,
+    "video32": 1,
+    "video33": 1,
+    "video34": 1,
+    "video35": 1,
+    "video36": 1,
+    "video37": 1,
+    "video38": 1,
+    "video39": 1,
+    "video40": 1,
+    "video41": 1,
+    "video42": 5,
+    "video43-1": 5,
+    "video43-2": 5,
+    "video43-3": 5,
+    "video43-4": 5,
+    "video43-5": 5,
+    "video6": 1,
+    "video7": 1,
+    "video3_IN": 30,
+    "video8": 1,
+    "video9": 1,
+    "video10": 1,
+    "video11": 1,
+    "video12": 1,
+    "video13": 1,
+    "video14": 1,
+    "video15": 1,
+    "video16": 1,
+    "video17": 1,
+    "video18": 1,
+    "video19": 1,
+    "video20": 1,
+    "video21": 1,
+    "video22": 1,
+    "video2-G": 3,
+    "video2-R": 3,
+    "video20_IN": 5,
+    "video23": 1,
+    "video24": 1,
+    "video25": 5,
+    "video26": 1,
+    "video27": 1,
+    "video22_IN": 1,
+    "video22_IN_END": 1,
+    "video6_NO": 1,
+    "video7_NO": 1,
+    "video43": 5,
+    "video44": 1,
+    "video45": 1,
+    "video2_R": 1
+  },
+  "videoGlow": {
+    "video_intro_loop": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video1": {
+      "glow1": 2,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video2": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video3": {
+      "glow1": 1,
+      "glow2": 3,
+      "glow2Condition": null
+    },
+    "video3-L": {
+      "glow1": 3,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video3-R": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video3-IN": {
+      "glow1": 3,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video4": {
+      "glow1": 2,
+      "glow2": 3,
+      "glow2Condition": "visitedVideo3In"
+    },
+    "video4-L": {
+      "glow1": 2,
+      "glow2": 3,
+      "glow2Condition": "visitedVideo3In"
+    },
+    "video4-R": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video4-IN": {
+      "glow1": 3,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video5": {
+      "glow1": 1,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video5-L": {
+      "glow1": 2,
+      "glow2": 3,
+      "glow2Condition": "visitedVideo4In"
+    },
+    "video5-R": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video5-IN": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video6-HIDDEN": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video28": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video29": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video30": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video31": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video32": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video33": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video34": {
+      "glow1": 2,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video35": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video36": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video37": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video38": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video39": {
+      "glow1": 2,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video40": {
+      "glow1": 2,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video41": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video42": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video43-1": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video43-2": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video43-3": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video43-4": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video43-5": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video6": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video7": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video3_IN": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video8": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video9": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video10": {
+      "glow1": 2,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video11": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video12": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video13": {
+      "glow1": 3,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video14": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video15": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video16": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video17": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video18": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video19": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video20": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video21": {
+      "glow1": 2,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video22": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video2-G": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video2-R": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video20_IN": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video23": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video24": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video25": {
+      "glow1": 2,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video26": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video27": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video22_IN": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video22_IN_END": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video6_NO": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video7_NO": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video43": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video44": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video45": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    },
+    "video2_R": {
+      "glow1": null,
+      "glow2": null,
+      "glow2Condition": null
+    }
+  },
+  "subtitles": {
+    "desktop": {
+      "KO": {
+        "style": {
+          "fontName": "Noto Sans KR",
+          "fontWeight": 600,
+          "fontSizePx": 35,
+          "letterSpacing": -0.5,
+          "verticalPositionPercent": 85,
+          "fadeDurationSec": 1,
+          "textColor": "#f3c614",
+          "shadow": {
+            "offsetX": 1,
+            "offsetY": 1,
+            "blur": 2,
+            "opacity": 65
+          },
+          "maxWidthPercent": 100
+        },
+        "videos": {
+          "video_intro_loop": [],
+          "video1": [
+            {
+              "start": "00:20",
+              "end": "00:24",
+              "text": "안녕하세요. 김그륜 입니다. 만나서 반갑습니다. ",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:24",
+              "end": "00:27",
+              "text": "지금 이 공간은 AI로 제작한 가상 세계입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:27",
+              "end": "00:32",
+              "text": "이곳에서 여러분들과 함께 공간을 이동하면서 AI영화 속으로 들어가겠습니다. ",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:32",
+              "end": "00:37",
+              "text": "자 이제, 준비가 되셨으면 오른쪽 화살표 버튼을 눌러주세요.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video2": [
+            {
+              "start": "00:05",
+              "end": "00:11.5",
+              "text": "2013년에 ‘월터의 상상은 현실이 된다’라는 영화를 정말 감명 깊게 보았습니다.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:11.5",
+              "end": "00:15.5",
+              "text": "영화 속 주인공 ‘월터’는 항상 상상으로만 가득차고, 실현하지 못했지만",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:15.5",
+              "end": "00:20.5",
+              "text": "어느순간 하나씩 상상을 실현할때마다 인생에 빛이 난다는 이야기입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:20.5",
+              "end": "00:27",
+              "text": "저는 그 영화를 보면서 “언젠가 나의 상상도 실현할 수 있는 날이 오지않을까” 생각했습니다.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video3": [
+            {
+              "start": "00:05",
+              "end": "00:11.5",
+              "text": "그렇게 시간이 흘러 이제는 AI를 이용해 상상만하던 영화 제작의 꿈을 이룰수 있게 되었습니다.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:11.5",
+              "end": "00:16.5",
+              "text": "지금부터 당신과 그 첫번째 영화 ‘AI Evolution’을 보려합니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:16.5",
+              "end": "00:21",
+              "text": "위쪽에 위치한 빨간색으로 빛이 나는 위 화살표를 누르면 영화가 시작됩니다.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video3-L": [],
+          "video3-R": [],
+          "video3-IN": [
+            {
+              "start": "00:05.0",
+              "end": "00:11.1",
+              "text": "1950년대 AI 라는 Artificial intelligent 라는 용어가 생겨났습니다. ",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:11.1",
+              "end": "00:14.7",
+              "text": "지금 앞에 보이시는 캐릭터가 바로 초창기 AI 입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:14.7",
+              "end": "00:19.1",
+              "text": "시간이 흘러 1980년대 ‘기계 학습’이라는 용어와 함께",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:19.1",
+              "end": "00:22.1",
+              "text": "획기적인 AI 훈련 방법이 고안 되었습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:22.1",
+              "end": "00:26.5",
+              "text": "바로 연구자들이 가이드를 주면서 수십만개의 정보를 주면",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:26.5",
+              "end": "00:31.5",
+              "text": "AI가 스스로 학습하고 인지 할 수 있다는 것을 알게 되었습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:31.5",
+              "end": "00:35.5",
+              "text": "하지만 그다지 큰 성과를 거두진 못했습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:35.5",
+              "end": "00:42.1",
+              "text": "그렇게 2010년대 초반, 그래픽카드 바로 GPU 기술의 발달로 AI 기술은 완전히 바뀌었습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:42.1",
+              "end": "00:47.5",
+              "text": "이제는 수천억개의 정보를 인간의 가이드없이 대량으로 학습 할 수 있게 되었습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:47.5",
+              "end": "00:52",
+              "text": "그렇게 수 많은 정보들은 마치 인간의 뇌처럼 정보를 교류하기 시작하고, ",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:52.0",
+              "end": "00:54.5",
+              "text": "우리는 이것을 '딥러닝'이라고 불렀습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:54.5",
+              "end": "00:58.1",
+              "text": "비로서 AI의 눈이 뜨기 시작하였습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:58.1",
+              "end": "01:01",
+              "text": "바로, 글을 쓰고 우리와 대화를 하기 시작했다는 것입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:01.0",
+              "end": "01:04.5",
+              "text": "바로, 글을 쓰고 우리와 대화를 하기 시작했다는 것입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:04.5",
+              "end": "01:10.1",
+              "text": "우리가 잘아는 Open AI에서 개발한 ChatGPT가 가장 대표적인 사례입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:10.1",
+              "end": "01:15.1",
+              "text": "우리는 이것을 AI가 컨텐츠를 생성한다고 해서 ‘생성형 AI’라고 부릅니다.",
+              "fadeIn": false,
+              "fadeOut": true
+            },
+            {
+              "start": "01:16.5",
+              "end": "01:20.3",
+              "text": "인간만의 영역이라고 생각하던 창의적인 영역의 대명사",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "01:20.3",
+              "end": "01:23.5",
+              "text": "아트의 영역까지도 AI로 가능해졌습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:23.5",
+              "end": "01:27.1",
+              "text": "초반에는 기괴한 그림을 그리던 AI도 점차 시간이 지나",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:27.1",
+              "end": "01:31.2",
+              "text": "이제는 전문가 실력의 그림도 가능해졌습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:31.2",
+              "end": "01:35.5",
+              "text": "뿐만아니라, AI는 사진과 동영상을 실제와 구분이 안될정도로",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:35.5",
+              "end": "01:38.5",
+              "text": "생생하게 만들 수 있게 되었습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:38.5",
+              "end": "01:42",
+              "text": "존재하지 않는 공간까지, 마치 실제 존재하는 곳처럼",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:42.0",
+              "end": "01:45.0",
+              "text": "너무나도 사실적으로 만들 수 있게 되었습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:45.0",
+              "end": "01:49.5",
+              "text": "이제 현재는, AI가 만들어진 알고리즘인 프로그래밍 영역까지",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:49.5",
+              "end": "01:52",
+              "text": "AI가 만들 수 있게 되었습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:52.0",
+              "end": "01:55.5",
+              "text": "AI가 대신 코딩을 하는 바이브코딩부터",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:55.5",
+              "end": "01:58.5",
+              "text": "인간을 대신해 일을 한다는 개념의 AI 에이전트까지",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:58.5",
+              "end": "02:01.0",
+              "text": "무한한 기술 발전을 보여주고 있습니다.",
+              "fadeIn": false,
+              "fadeOut": true
+            },
+            {
+              "start": "02:01.5",
+              "end": "02:08.5",
+              "text": "그리고, 이제는 영상 생성을 넘어서 실시간 상호작용이 가능한 가상세계를 만들고 있습니다.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "02:08.5",
+              "end": "02:13.5",
+              "text": "구글의 Genie 3 처럼 실시간으로 영상 속의 캐릭터를 키보드로 움직이거나",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "02:13.5",
+              "end": "02:16.5",
+              "text": "공간을 프롬프트로 실시간으로 제어 할 수 있는",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "02:16.5",
+              "end": "02:19.5",
+              "text": "진정한 가상공간을 만들 수 있는 시대가 되었습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "02:19.5",
+              "end": "02:24",
+              "text": "이렇게 무한히 발전하는 AI를 바라보는 우리는 이제, 무엇을 해야할까요?",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "02:24.0",
+              "end": "02:27.3",
+              "text": "지금까지 첫번째 영화 AI Evolution 이었습니다.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video4": [
+            {
+              "start": "00:06.5",
+              "end": "00:10.5",
+              "text": "이곳은 AI 발전의 경각심과 위험성을 보여주는 영화 A-Eye 입니다.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:10.5",
+              "end": "00:14.5",
+              "text": "영화를 보시려면 위에 빛나는 빨간 화살표를 선택해주세요.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video4-L": [],
+          "video4-R": [],
+          "video4-IN": [
+            {
+              "start": "00:04.5",
+              "end": "00:09.5",
+              "text": "우리는 인터넷에 수많은 정보를 올리고, 쓰고, 보고 그리고 사용하고 있습니다.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:09.5",
+              "end": "00:14.5",
+              "text": "그런데 이러한 정보는 AI가 무단으로 학습하고 있다는 것을 알고 계신가요?",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:14.5",
+              "end": "00:17.5",
+              "text": "AI 기술을 둘러싼 많은 논쟁 중에 가장 큰 것은 바로",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:17.5",
+              "end": "00:21.0",
+              "text": "허가 없이 인터넷에 있는 정보를 학습한다는 것입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:21.0",
+              "end": "00:26.5",
+              "text": "AI 발전에 또 다른 큰 문제점으로 화두되는 것이 바로 딥페이크 기술입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:26.5",
+              "end": "00:30.5",
+              "text": "AI는 너무나도 쉽게 실제처럼 존재하지 않는 자료를 만들 수 있기에",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:30.5",
+              "end": "00:34.5",
+              "text": "이로 인해 가짜 영상, 가짜 뉴스가 점점 늘어나고",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:34.5",
+              "end": "00:37.5",
+              "text": "앞에 보이는 두사람 처럼 이제는 어떤 사람이 진짜인지",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:37.5",
+              "end": "00:40.5",
+              "text": "AI를 눈으로 구분할 수 없는 지경이 되었습니다.",
+              "fadeIn": false,
+              "fadeOut": true
+            },
+            {
+              "start": "00:42.0",
+              "end": "00:44.5",
+              "text": "또 다른 문제점으로 야기되는 것은 바로 이제는",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:44.5",
+              "end": "00:47.5",
+              "text": "너무나도 쉽게 카피가 가능해졌다는 것입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:47.5",
+              "end": "00:52.5",
+              "text": "다른 사람의 작품을 허가 없이 무단으로 레퍼런스로 사용하고 카피가 쉬워지면서",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:52.5",
+              "end": "00:57.5",
+              "text": "마치 다른 사람의 작품이 자신의 작품인 것처럼 속이기가 아주 쉬워졌습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:57.5",
+              "end": "00:59.5",
+              "text": "그리고 그렇게 만들어진 가짜 작품이",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:59.5",
+              "end": "01:02.5",
+              "text": "홍보를 잘하면 실제 작품보다 더 큰 인기를 얻어",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:02.5",
+              "end": "01:08.5",
+              "text": "진정한 창작자에게 엄청나게 큰 피해를 줄 수 있는 것이 AI 기술 발전의 현실입니다.",
+              "fadeIn": false,
+              "fadeOut": true
+            },
+            {
+              "start": "01:09.0",
+              "end": "01:12.5",
+              "text": "이러한 상황에서 기업이 해야 할 일은 무엇일까요?",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "01:12.5",
+              "end": "01:16.0",
+              "text": "바로 지금 보이는 화면처럼 위험 요소로부터 바리케이드를 쳐",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:16.0",
+              "end": "01:19.0",
+              "text": "바리케이트 밑으로 흘러나오는 맑은 물처럼",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:19.0",
+              "end": "01:23.5",
+              "text": "바로 정제된 AI 기술만 사용자에게 전달하는 방법이 있습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:23.5",
+              "end": "01:27.0",
+              "text": "그렇다면 개인의 입장에서 해야 하는 것은 무엇일까요?",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:27.0",
+              "end": "01:31.5",
+              "text": "바로 이렇게 정제된 AI 기술로 ‘가치 있는 콘텐츠’를 만들어야 합니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:31.5",
+              "end": "01:36.5",
+              "text": "자극적이거나 양산형 콘텐츠보다 다른 사람들에게 가치를 주는 콘텐츠를 생성하다 보면",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:36.5",
+              "end": "01:41.0",
+              "text": "그 가치는 거대한 나무가 되고, 그 안에 더 많은 사람들이 모여",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:41.0",
+              "end": "01:45.5",
+              "text": "올바른 커뮤니티가 생성되어 더 큰 가치를 창출할 수 있게 될 것입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:45.5",
+              "end": "01:50.0",
+              "text": "아직 AI 기술 발전에 비해 문화가 자리 잡지 않는 것이 현실입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:50.0",
+              "end": "01:55.0",
+              "text": "AI 기술 발전의 경각심을 알려주는 영화 A-Eye 였습니다.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video5": [
+            {
+              "start": "00:04.5",
+              "end": "00:08.5",
+              "text": "이제 마지막 영화, 바로 '토이스토리'의 패러디 'AI 스토리'입니다.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:08.5",
+              "end": "00:11.0",
+              "text": "AI와 관련된 실제 일화를 통해",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:11.0",
+              "end": "00:14.0",
+              "text": "AI 시대에 갖춰야 하는 자세에 대한 이야기가 담긴 영화입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:14.0",
+              "end": "00:17.5",
+              "text": "시청을 원하시면 위쪽 화살표를 눌러주세요.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video5-L": [],
+          "video5-R": [],
+          "video5-IN": [
+            {
+              "start": "00:03.0",
+              "end": "00:08.5",
+              "text": "최근 AI 영상 공모전 심사위원으로 활동하면서 아주 흥미로운 일이 있었습니다. ",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:08.5",
+              "end": "00:12.5",
+              "text": "지금 보시는 인형뽑기처럼, 집게로 인형을 뽑는 것 처럼",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:12.5",
+              "end": "00:17.5",
+              "text": "AI로 만든 영상 출품작들을 골라, 가장 잘된 작품을 뽑아",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:17.5",
+              "end": "00:19.5",
+              "text": "본선 작품을 선별하였습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:19.5",
+              "end": "00:25.5",
+              "text": "실제 선별된 본선 작품들을 모아보니 아주 흥미로운 일이 있었습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:25.5",
+              "end": "00:28.0",
+              "text": "지금 보시는 다양한 종류의 인형들처럼",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:28.0",
+              "end": "00:32.0",
+              "text": "본선에 뽑힌 작품은 정말 다양한 분야의 사람들의 작품들이었습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:32.0",
+              "end": "00:35.5",
+              "text": "최종적으로 기존의 영상 전문가가 만든 AI 영상이 ",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:35.5",
+              "end": "00:38.5",
+              "text": "가장 좋은 퀄리티를 만들어 우승을 하게 되었지만,",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:38.5",
+              "end": "00:42.0",
+              "text": "제가 더 흥미롭게 본 것은, 비영상 전문가도 이제는 AI를 이용하면",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:42.0",
+              "end": "00:46.5",
+              "text": "본선 퀄리티의 작품을 아주 쉽고 빠르게 만들 수 있게 된 점입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:46.5",
+              "end": "00:50.0",
+              "text": "바꾸어 생각하면, 누구나 자신의 분야가 아닌 새로운 분야도",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:50.0",
+              "end": "00:54.0",
+              "text": "AI를 활용하면 상당한 수준으로 쉽게 도달할 수 있다는 이야기가 됩니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:54.0",
+              "end": "00:57.5",
+              "text": "그래서 AI 시대의 새로운 리더는 AI를 활용하여",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:57.5",
+              "end": "01:01.5",
+              "text": "다양한 분야를 혼자서도 어우르는 크리에이터가 될 것입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:01.5",
+              "end": "01:04.0",
+              "text": "앞으로 변화하는 시대의 새로운 창의성이란",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:04.0",
+              "end": "01:06.5",
+              "text": "이렇게 다양한 분야를 어우르는 크리에이터가",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:06.5",
+              "end": "01:09.0",
+              "text": "여러 분야의 장점을 새롭게 결합해",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:09.0",
+              "end": "01:12.0",
+              "text": "기존에 존재하지 않는 새로운 형태의 콘텐츠를 만드는것이라 생각합니다.",
+              "fadeIn": false,
+              "fadeOut": true
+            },
+            {
+              "start": "01:15.0",
+              "end": "01:18.0",
+              "text": "이렇게 모든 영화를 보고 우리는 처음에 만난 공간인",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "01:18.0",
+              "end": "01:22.5",
+              "text": "'월터의 상상은 현실이 된다' 포스터가 있던 공간으로 돌아왔습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:22.5",
+              "end": "01:26",
+              "text": "월터가 자신의 상상을 실현하면서 삶에 빛이 났듯이,",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:26.0",
+              "end": "01:34.5",
+              "text": "이제는 우리의 상상을 AI 를 통해 실현하며 가치 있는 콘텐츠를 만들어 삶이 빛나기를 바랍니다.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video6-HIDDEN": [
+            {
+              "start": "00:21.5",
+              "end": "00:24.5",
+              "text": "이렇게 모든 영화를 보고 우리는 처음에 만난 공간인",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:24.5",
+              "end": "00:29",
+              "text": "'월터의 상상은 현실이 된다' 포스터가 있던 공간으로 돌아왔습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:29.0",
+              "end": "00:32.5",
+              "text": "월터가 자신의 상상을 실현하면서 삶에 빛이 났듯이,",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:32.5",
+              "end": "00:38.5",
+              "text": "이제는 우리의 상상을 AI 를 통해 실현하며 가치 있는 콘텐츠를 만들어 삶이 빛나기를 바랍니다.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video28": [],
+          "video29": [],
+          "video30": [],
+          "video31": [],
+          "video32": [],
+          "video33": [],
+          "video34": [],
+          "video35": [],
+          "video36": [],
+          "video37": [],
+          "video38": [],
+          "video39": [],
+          "video40": [],
+          "video41": [],
+          "video42": [],
+          "video43-1": [],
+          "video43-2": [],
+          "video43-3": [],
+          "video43-4": [],
+          "video43-5": [],
+          "video6": [],
+          "video7": [],
+          "video3_IN": [],
+          "video8": [],
+          "video9": [],
+          "video10": [],
+          "video11": [],
+          "video12": [],
+          "video13": [],
+          "video14": [],
+          "video15": [],
+          "video16": [],
+          "video17": [],
+          "video18": [],
+          "video19": [],
+          "video20": [],
+          "video21": [],
+          "video22": [],
+          "video2-G": [],
+          "video2-R": [],
+          "video20_IN": [],
+          "video23": [],
+          "video24": [],
+          "video25": [],
+          "video26": [],
+          "video27": [],
+          "video22_IN": [],
+          "video22_IN_END": [],
+          "video6_NO": [],
+          "video7_NO": [],
+          "video43": [],
+          "video44": [],
+          "video45": [],
+          "video2_R": []
+        }
+      },
+      "EN": {
+        "style": {
+          "fontName": "Noto Sans KR",
+          "fontWeight": 600,
+          "fontSizePx": 35,
+          "letterSpacing": -0.5,
+          "verticalPositionPercent": 85,
+          "fadeDurationSec": 1,
+          "textColor": "#f3c614",
+          "shadow": {
+            "offsetX": 1,
+            "offsetY": 1,
+            "blur": 2,
+            "opacity": 65
+          },
+          "maxWidthPercent": 100
+        },
+        "videos": {
+          "video_intro_loop": [],
+          "video1": [
+            {
+              "start": "00:20",
+              "end": "00:23",
+              "text": "Hello, my name is Kim Gryun. Nice to meet you.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:23",
+              "end": "00:27.5",
+              "text": "This space you’re in right now, it’s a virtual world I created with AI.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:27.5",
+              "end": "00:32",
+              "text": "Here, we will move through this space together, and step inside an AI-generated film.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:32",
+              "end": "00:37",
+              "text": "So now, if you’re ready, please tap the arrow button on the right.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video2": [
+            {
+              "start": "00:05",
+              "end": "00:11.0",
+              "text": "In 2013, I watched “The Secret Life of Walter Mitty,” and it struck me deeply.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:11.0",
+              "end": "00:15.5",
+              "text": "Walter lived inside his imagination, but never brought it to life.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:15.5",
+              "end": "00:20.5",
+              "text": "And the moment he began to turn those imagined scenes into action, his life began to glow.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:20.5",
+              "end": "00:26",
+              "text": "That film made me wonder… will there come a day when my imagination can also become real?",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video3": [
+            {
+              "start": "00:05",
+              "end": "00:12.0",
+              "text": "Time passed. And today, that imagination has finally become something I can make real with AI.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:12.0",
+              "end": "00:17.5",
+              "text": "Starting now, we will watch my first AI film, AI Evolution.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:17.5",
+              "end": "00:21",
+              "text": "Tap the red glowing arrow at the top to begin.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video3-L": [],
+          "video3-R": [],
+          "video3-IN": [
+            {
+              "start": "00:05.0",
+              "end": "00:12",
+              "text": "In the 1950s, the term AI, Artificial Intelligence, was first introduced.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:12",
+              "end": "00:16.2",
+              "text": "The character you see in front of you is a visual interpretation of early AI.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:16.2",
+              "end": "00:21.6",
+              "text": "As we moved into the 1980s, the term Machine Learning appeared",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:21.6",
+              "end": "00:24.6",
+              "text": "and researchers discovered something groundbreaking",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:24.6",
+              "end": "00:28.0",
+              "text": "if you guide AI and give it hundreds of thousands of examples",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:28.0",
+              "end": "00:31.5",
+              "text": "it can learn and recognize patterns on its own.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:31.5",
+              "end": "00:35.5",
+              "text": "But the results at the time were still very limited.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:35.5",
+              "end": "00:42.1",
+              "text": "Then in the early 2010s, everything changed with the development of GPU technology.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:42.1",
+              "end": "00:47.0",
+              "text": "Now AI could train on billions of data points without human guidance.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:47.0",
+              "end": "00:52.5",
+              "text": "And that’s when massive networks of information began to interact like neurons in a human brain.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:52.5",
+              "end": "00:54.5",
+              "text": "We called this Deep Learning.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:54.5",
+              "end": "00:58.1",
+              "text": "This was the moment AI truly began to open its eyes.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:58.1",
+              "end": "01:04.0",
+              "text": "One of the most astonishing outcomes is that AI began to write and talk to us.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:04.0",
+              "end": "01:07.5",
+              "text": "ChatGPT from OpenAI is the most well known example.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:07.5",
+              "end": "01:14.1",
+              "text": "We call this Generative AI, because AI can now create content.",
+              "fadeIn": false,
+              "fadeOut": true
+            },
+            {
+              "start": "01:16.5",
+              "end": "01:22.3",
+              "text": "Even the world of art, which we believed belonged only to humans, became possible for AI",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "01:22.3",
+              "end": "01:26.0",
+              "text": "At first, AI made strange and bizarre images.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:26.0",
+              "end": "01:31.0",
+              "text": "But over time, it reached the level of trained professionals.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:31.0",
+              "end": "01:38.0",
+              "text": "뿐만아니라, AI는 사진과 동영상을 실제와 구분이 안될정도로",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:38.0",
+              "end": "01:43.5",
+              "text": "Even places that do not exist can be created as if they are real.",
+              "fadeIn": false,
+              "fadeOut": true
+            },
+            {
+              "start": "01:45.0",
+              "end": "01:50.0",
+              "text": "And now today, AI has even entered the domain where AI itself was born.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "01:50.0",
+              "end": "01:53.0",
+              "text": "the world of programming and algorithms.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:53.0",
+              "end": "01:58.0",
+              "text": "From AI assisted coding to autonomous AI agents that work instead of us",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:58.0",
+              "end": "02:02.0",
+              "text": "we are witnessing limitless expansion.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "02:02.0",
+              "end": "02:07.0",
+              "text": "And now, beyond video generation, we are building virtual worlds that respond in real time.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "02:07.0",
+              "end": "02:13.0",
+              "text": "Like Google Genie 3, where we can control a character inside video instantly",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "02:13.0",
+              "end": "02:17.0",
+              "text": "we are seeing the awakening of true interactive virtual space.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "02:17.0",
+              "end": "02:21.0",
+              "text": "So now, standing in front of this exponential moment of AI",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "02:21.0",
+              "end": "02:24.5",
+              "text": "the real question is… What will we choose to create?",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "02:24.5",
+              "end": "02:27.3",
+              "text": "This was the first film, AI Evolution.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video4": [
+            {
+              "start": "00:06.5",
+              "end": "00:11.0",
+              "text": "This is A-Eye, a film that highlights the urgency and risks of AI development.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:11.0",
+              "end": "00:14.5",
+              "text": "To watch the film, please select the glowing red arrow at the top.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video4-L": [],
+          "video4-R": [],
+          "video4-IN": [
+            {
+              "start": "00:04.5",
+              "end": "00:09.0",
+              "text": "We upload, view, and use countless pieces of information on the internet.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:09.0",
+              "end": "00:13.0",
+              "text": "But did you know that AI has been learning from this information without permission?",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:13.0",
+              "end": "00:17.5",
+              "text": "Among the many debates surrounding AI, the biggest point of contention is this",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:17.5",
+              "end": "00:22.5",
+              "text": "AI systems train on information from the internet without explicit consent.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:22.5",
+              "end": "00:26.0",
+              "text": "Another major concern is Deepfake technology.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:26.5",
+              "end": "00:30.5",
+              "text": "AI can easily create things that look real but do not actually exist.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:30.5",
+              "end": "00:34.5",
+              "text": "As a result, fake videos and fake news are multiplying",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:34.5",
+              "end": "00:39.5",
+              "text": "and the quality is improving to the point where it is almost indistinguishable from reality.",
+              "fadeIn": false,
+              "fadeOut": true
+            },
+            {
+              "start": "00:42.5",
+              "end": "00:46.5",
+              "text": "There is also the problem that copying has become far too easy.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:46.5",
+              "end": "00:50.0",
+              "text": "People can use someone else’s work as reference without permission",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:50.0",
+              "end": "00:54.0",
+              "text": "reproduce it, and pass it off as their own with little effort.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:54.0",
+              "end": "00:59.0",
+              "text": "With the right promotion, these inauthentic works can even become more popular than the originals",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:59.0",
+              "end": "01:02.5",
+              "text": "causing serious harm to the true creators.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:02.5",
+              "end": "01:07.5",
+              "text": "This is the reality that has emerged alongside AI progress.",
+              "fadeIn": false,
+              "fadeOut": true
+            },
+            {
+              "start": "01:09.0",
+              "end": "01:12.5",
+              "text": "So what should companies do in this situation",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "01:12.5",
+              "end": "01:16.0",
+              "text": "They can build barricades against risk, just like you see on the screen now",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:16.0",
+              "end": "01:20.0",
+              "text": "so that only refined and 'safe AI' can flow down to users",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:20.0",
+              "end": "01:23.5",
+              "text": "like clean water passing through a filter.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:23.5",
+              "end": "01:26.0",
+              "text": "Then what should individuals do",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:26.0",
+              "end": "01:30.5",
+              "text": "We should use refined AI tools to create content with real value.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:30.5",
+              "end": "01:34.0",
+              "text": "If we focus on making content that benefits others",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:34.0",
+              "end": "01:37.0",
+              "text": "rather than sensational or mass produced content,",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:37.0",
+              "end": "01:41.0",
+              "text": "that value can grow into a great tree where more people gather",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:41.0",
+              "end": "01:45.0",
+              "text": "forming healthy communities that generate even greater value.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:45.0",
+              "end": "01:49.0",
+              "text": "In truth, our culture has not yet caught up with the speed of AI.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:49.0",
+              "end": "01:55.0",
+              "text": "This has been A-Eye, a film to raise awareness about the risks of AI development.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video5": [
+            {
+              "start": "00:02.0",
+              "end": "00:07.0",
+              "text": "This is our final film, a Toy Story parody told as an AI story.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:07.0",
+              "end": "00:10.5",
+              "text": "This film is based on a real incident related to AI",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:10.5",
+              "end": "00:13.5",
+              "text": "and explores the mindset we need to have in the AI era.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:13.5",
+              "end": "00:17.5",
+              "text": "If you would like to watch it, please tap the glowing red arrow at the top.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video5-L": [],
+          "video5-R": [],
+          "video5-IN": [
+            {
+              "start": "00:03.0",
+              "end": "00:07.5",
+              "text": "Recently, I served as a judge for an A I film competition",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:07.5",
+              "end": "00:10.5",
+              "text": "and I witnessed something fascinating",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:10.5",
+              "end": "00:13.5",
+              "text": "Just like a claw machine picking up dolls",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:13.5",
+              "end": "00:19.5",
+              "text": "we reviewed A I generated short films, and selected only the best works to advance into the finals.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:19.5",
+              "end": "00:24.5",
+              "text": "Once we gathered all the finalists, we discovered something even more interesting.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:24.5",
+              "end": "00:27.0",
+              "text": "Just like the variety of dolls you see here",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:27.0",
+              "end": "00:31.0",
+              "text": "the finalists were created by people from many different backgrounds.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:31.0",
+              "end": "00:37.0",
+              "text": "In the end, a professional filmmaker won first place with the highest quality AI film.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:37.0",
+              "end": "00:39.5",
+              "text": "But what impressed me even more was this",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:39.5",
+              "end": "00:46.5",
+              "text": "non professionals could now use A I to create finalist level work very quickly and very easily.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:46.5",
+              "end": "00:48.5",
+              "text": "This means that with AI",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:48.5",
+              "end": "00:54.0",
+              "text": "anyone can now reach a high level in fields outside of their own original profession.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:54.0",
+              "end": "00:56.0",
+              "text": "So the new leaders of the AI era",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:56.0",
+              "end": "01:00.5",
+              "text": "will be creators who can use A I to interweave many different domains on their own.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:00.5",
+              "end": "01:02.5",
+              "text": "And I believe the next generation of creativity",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:02.5",
+              "end": "01:06.0",
+              "text": "will be the creators who combine strengths from multiple disciplines",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:06.0",
+              "end": "01:10.0",
+              "text": "to generate forms of content that have never existed before.",
+              "fadeIn": false,
+              "fadeOut": true
+            },
+            {
+              "start": "01:14.0",
+              "end": "01:15.5",
+              "text": "After watching all of these films",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "01:15.5",
+              "end": "01:18.5",
+              "text": "we now return to the very first space we met the place",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:18.5",
+              "end": "01:22.5",
+              "text": "where the poster for The Secret Life of Walter Mitty was waiting.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:22.5",
+              "end": "01:27.0",
+              "text": "Just like Walter’s life began to shine when he brought his imagination into reality",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:27.0",
+              "end": "01:31.0",
+              "text": "I hope we, too, can turn our imagination into reality through AI",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:31.0",
+              "end": "01:34.5",
+              "text": "and create content that brings real value so that our lives may shine.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video6-HIDDEN": [
+            {
+              "start": "00:20.0",
+              "end": "00:22.0",
+              "text": "After watching all of these films",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:22.0",
+              "end": "00:24.5",
+              "text": "we now return to the very first space we met the place",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:24.5",
+              "end": "00:28.5",
+              "text": "where the poster for The Secret Life of Walter Mitty was waiting.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:28.5",
+              "end": "00:33.0",
+              "text": "Just like Walter’s life began to shine when he brought his imagination into reality",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:33.0",
+              "end": "00:37.0",
+              "text": "I hope we, too, can turn our imagination into reality through AI",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:37.0",
+              "end": "00:40.5",
+              "text": "and create content that brings real value so that our lives may shine.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video28": [],
+          "video29": [],
+          "video30": [],
+          "video31": [],
+          "video32": [],
+          "video33": [],
+          "video34": [],
+          "video35": [],
+          "video36": [],
+          "video37": [],
+          "video38": [],
+          "video39": [],
+          "video40": [],
+          "video41": [],
+          "video42": [],
+          "video43-1": [],
+          "video43-2": [],
+          "video43-3": [],
+          "video43-4": [],
+          "video43-5": [],
+          "video6": [],
+          "video7": [],
+          "video3_IN": [],
+          "video8": [],
+          "video9": [],
+          "video10": [],
+          "video11": [],
+          "video12": [],
+          "video13": [],
+          "video14": [],
+          "video15": [],
+          "video16": [],
+          "video17": [],
+          "video18": [],
+          "video19": [],
+          "video20": [],
+          "video21": [],
+          "video22": [],
+          "video2-G": [],
+          "video2-R": [],
+          "video20_IN": [],
+          "video23": [],
+          "video24": [],
+          "video25": [],
+          "video26": [],
+          "video27": [],
+          "video22_IN": [],
+          "video22_IN_END": [],
+          "video6_NO": [],
+          "video7_NO": [],
+          "video43": [],
+          "video44": [],
+          "video45": [],
+          "video2_R": []
+        }
+      }
+    },
+    "mobile": {
+      "KO": {
+        "style": {
+          "fontName": "Noto Sans KR",
+          "fontWeight": 500,
+          "fontSizePx": 13,
+          "letterSpacing": -0.5,
+          "verticalPositionPercent": 85,
+          "fadeDurationSec": 1,
+          "textColor": "#f3c614",
+          "shadow": {
+            "offsetX": 1,
+            "offsetY": 1,
+            "blur": 2,
+            "opacity": 65
+          },
+          "maxWidthPercent": 100
+        },
+        "videos": {
+          "video_intro_loop": [],
+          "video1": [
+            {
+              "start": "00:20",
+              "end": "00:24",
+              "text": "안녕하세요. 김그륜 입니다. 만나서 반갑습니다. ",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:24",
+              "end": "00:27",
+              "text": "지금 이 공간은 AI로 제작한 가상 세계입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:27",
+              "end": "00:32",
+              "text": "이곳에서 여러분들과 함께 공간을 이동하면서 \nAI영화 속으로 들어가겠습니다. ",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:32",
+              "end": "00:37",
+              "text": "자 이제, 준비가 되셨으면 \n오른쪽 화살표 버튼을 눌러주세요.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video2": [
+            {
+              "start": "00:05",
+              "end": "00:11.5",
+              "text": "2013년에 ‘월터의 상상은 현실이 된다’라는 \n영화를 정말 감명 깊게 보았습니다.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:11.5",
+              "end": "00:15.5",
+              "text": "영화 속 주인공 ‘월터’는 항상 상상으로만 가득차고, \n실현하지 못했지만",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:15.5",
+              "end": "00:20.5",
+              "text": "어느순간 하나씩 상상을 실현할때마다 \n인생에 빛이 난다는 이야기입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:20.5",
+              "end": "00:27",
+              "text": "저는 그 영화를 보면서 “언젠가 나의 상상도 \n실현할 수 있는 날이 오지않을까” 생각했습니다.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video3": [
+            {
+              "start": "00:05",
+              "end": "00:11.5",
+              "text": "그렇게 시간이 흘러 이제는 AI를 이용해 상상만하던 \n영화 제작의 꿈을 이룰수 있게 되었습니다.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:11.5",
+              "end": "00:16.5",
+              "text": "지금부터 당신과 그 첫번째 영화 \n‘AI Evolution’을 보려합니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:16.5",
+              "end": "00:21",
+              "text": "위쪽에 위치한 빨간색으로 빛이 나는 \n위 화살표를 누르면 영화가 시작됩니다.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video3-L": [],
+          "video3-R": [],
+          "video3-IN": [
+            {
+              "start": "00:05.0",
+              "end": "00:11.1",
+              "text": "1950년대 AI 라는 Artificial intelligent 라는 \n용어가 생겨났습니다. ",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:11.1",
+              "end": "00:14.7",
+              "text": "지금 앞에 보이시는 캐릭터가 바로 초창기 AI 입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:14.7",
+              "end": "00:19.1",
+              "text": "시간이 흘러 1980년대 ‘기계 학습’이라는 용어와 함께",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:19.1",
+              "end": "00:22.1",
+              "text": "획기적인 AI 훈련 방법이 고안 되었습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:22.1",
+              "end": "00:26.5",
+              "text": "바로 연구자들이 가이드를 주면서 \n수십만개의 정보를 주면",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:26.5",
+              "end": "00:31.5",
+              "text": "AI가 스스로 학습하고 인지 할 수 있다는 것을 \n알게 되었습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:31.5",
+              "end": "00:35.5",
+              "text": "하지만 그다지 큰 성과를 거두진 못했습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:35.5",
+              "end": "00:42.1",
+              "text": "그렇게 2010년대 초반, 그래픽카드 바로 GPU \n기술의 발달로 AI 기술은 완전히 바뀌었습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:42.1",
+              "end": "00:47.5",
+              "text": "이제는 수천억개의 정보를 인간의 가이드없이 \n대량으로 학습 할 수 있게 되었습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:47.5",
+              "end": "00:52",
+              "text": "그렇게 수 많은 정보들은 마치 인간의 뇌처럼 \n정보를 교류하기 시작하고, ",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:52.0",
+              "end": "00:54.5",
+              "text": "우리는 이것을 '딥러닝'이라고 불렀습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:54.5",
+              "end": "00:58.1",
+              "text": "비로서 AI의 눈이 뜨기 시작하였습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:58.1",
+              "end": "01:01",
+              "text": "바로, 글을 쓰고 우리와 대화를 하기 시작했다는 것입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:01.0",
+              "end": "01:04.5",
+              "text": "바로, 글을 쓰고 우리와 대화를 하기 \n시작했다는 것입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:04.5",
+              "end": "01:10.1",
+              "text": "우리가 잘아는 Open AI에서 개발한 \nChatGPT가 가장 대표적인 사례입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:10.1",
+              "end": "01:15.1",
+              "text": "우리는 이것을 AI가 컨텐츠를 생성한다고 해서 \n‘생성형 AI’라고 부릅니다.",
+              "fadeIn": false,
+              "fadeOut": true
+            },
+            {
+              "start": "01:16.5",
+              "end": "01:20.3",
+              "text": "인간만의 영역이라고 생각하던 \n창의적인 영역의 대명사",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "01:20.3",
+              "end": "01:23.5",
+              "text": "아트의 영역까지도 AI로 가능해졌습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:23.5",
+              "end": "01:27.1",
+              "text": "초반에는 기괴한 그림을 그리던 AI도 \n점차 시간이 지나",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:27.1",
+              "end": "01:31.2",
+              "text": "이제는 전문가 실력의 그림도 가능해졌습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:31.2",
+              "end": "01:35.5",
+              "text": "뿐만아니라, AI는 사진과 동영상을 \n실제와 구분이 안될정도로",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:35.5",
+              "end": "01:38.5",
+              "text": "생생하게 만들 수 있게 되었습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:38.5",
+              "end": "01:42",
+              "text": "존재하지 않는 공간까지, 마치 실제 존재하는 곳처럼",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:42.0",
+              "end": "01:45.0",
+              "text": "너무나도 사실적으로 만들 수 있게 되었습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:45.0",
+              "end": "01:49.5",
+              "text": "이제 현재는, AI가 만들어진 알고리즘인 \n프로그래밍 영역까지",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:49.5",
+              "end": "01:52",
+              "text": "AI가 만들 수 있게 되었습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:52.0",
+              "end": "01:55.5",
+              "text": "AI가 대신 코딩을 하는 바이브코딩부터",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:55.5",
+              "end": "01:58.5",
+              "text": "인간을 대신해 일을 한다는 개념의 AI 에이전트까지",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:58.5",
+              "end": "02:01.0",
+              "text": "무한한 기술 발전을 보여주고 있습니다.",
+              "fadeIn": false,
+              "fadeOut": true
+            },
+            {
+              "start": "02:01.5",
+              "end": "02:08.5",
+              "text": "그리고, 이제는 영상 생성을 넘어서 실시간 상호작용이 \n가능한 가상세계를 만들고 있습니다.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "02:08.5",
+              "end": "02:13.5",
+              "text": "구글의 Genie 3 처럼 실시간으로 \n영상 속의 캐릭터를 키보드로 움직이거나",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "02:13.5",
+              "end": "02:16.5",
+              "text": "공간을 프롬프트로 실시간으로 제어 할 수 있는",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "02:16.5",
+              "end": "02:19.5",
+              "text": "진정한 가상공간을 만들 수 있는 시대가 되었습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "02:19.5",
+              "end": "02:24",
+              "text": "이렇게 무한히 발전하는 AI를 바라보는 \n우리는 이제, 무엇을 해야할까요?",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "02:24.0",
+              "end": "02:27.3",
+              "text": "지금까지 첫번째 영화 AI Evolution 이었습니다.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video4": [
+            {
+              "start": "00:06.5",
+              "end": "00:10.5",
+              "text": "이곳은 AI 발전의 경각심과 위험성을 보여주는 \n영화 A-Eye 입니다.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:10.5",
+              "end": "00:14.5",
+              "text": "영화를 보시려면 위에 빛나는 빨간 화살표를 선택해주세요.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video4-L": [],
+          "video4-R": [],
+          "video4-IN": [
+            {
+              "start": "00:04.5",
+              "end": "00:09.5",
+              "text": "우리는 인터넷에 수많은 정보를 \n올리고, 쓰고, 보고 그리고 사용하고 있습니다.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:09.5",
+              "end": "00:14.5",
+              "text": "그런데 이러한 정보는 AI가 \n무단으로 학습하고 있다는 것을 알고 계신가요?",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:14.5",
+              "end": "00:17.5",
+              "text": "AI 기술을 둘러싼 많은 논쟁 중에 가장 큰 것은 바로",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:17.5",
+              "end": "00:21.0",
+              "text": "허가 없이 인터넷에 있는 \n정보를 학습한다는 것입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:21.0",
+              "end": "00:26.5",
+              "text": "AI 발전에 또 다른 큰 문제점으로 화두되는 것이 \n바로 딥페이크 기술입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:26.5",
+              "end": "00:30.5",
+              "text": "AI는 너무나도 쉽게 실제처럼 존재하지 않는 자료를 \n만들 수 있기에",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:30.5",
+              "end": "00:34.5",
+              "text": "이로 인해 가짜 영상, 가짜 뉴스가 점점 늘어나고",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:34.5",
+              "end": "00:37.5",
+              "text": "앞에 보이는 두사람 처럼 이제는 어떤 사람이 진짜인지",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:37.5",
+              "end": "00:40.5",
+              "text": "AI를 눈으로 구분할 수 없는 지경이 되었습니다.",
+              "fadeIn": false,
+              "fadeOut": true
+            },
+            {
+              "start": "00:42.0",
+              "end": "00:44.5",
+              "text": "또 다른 문제점으로 야기되는 것은 바로 이제는",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:44.5",
+              "end": "00:47.5",
+              "text": "너무나도 쉽게 카피가 가능해졌다는 것입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:47.5",
+              "end": "00:52.5",
+              "text": "다른 사람의 작품을 허가 없이 무단으로 \n레퍼런스로 사용하고 카피가 쉬워지면서",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:52.5",
+              "end": "00:57.5",
+              "text": "마치 다른 사람의 작품이 자신의 작품인 것처럼 \n속이기가 아주 쉬워졌습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:57.5",
+              "end": "00:59.5",
+              "text": "그리고 그렇게 만들어진 가짜 작품이",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:59.5",
+              "end": "01:02.5",
+              "text": "홍보를 잘하면 실제 작품보다 더 큰 인기를 얻어",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:02.5",
+              "end": "01:08.5",
+              "text": "진정한 창작자에게 엄청나게 큰 피해를 줄 수\n있는 것이 AI 기술 발전의 현실입니다.",
+              "fadeIn": false,
+              "fadeOut": true
+            },
+            {
+              "start": "01:09.0",
+              "end": "01:12.5",
+              "text": "이러한 상황에서 기업이 해야 할 일은 무엇일까요?",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "01:12.5",
+              "end": "01:16.0",
+              "text": "바로 지금 보이는 화면처럼 위험 요소로부터 \n바리케이드를 쳐",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:16.0",
+              "end": "01:19.0",
+              "text": "바리케이트 밑으로 흘러나오는 맑은 물처럼",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:19.0",
+              "end": "01:23.5",
+              "text": "바로 정제된 AI 기술만 사용자에게 \n전달하는 방법이 있습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:23.5",
+              "end": "01:27.0",
+              "text": "그렇다면 개인의 입장에서 해야 하는 것은 무엇일까요?",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:27.0",
+              "end": "01:31.5",
+              "text": "바로 이렇게 정제된 AI 기술로 \n‘가치 있는 콘텐츠’를 만들어야 합니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:31.5",
+              "end": "01:36.5",
+              "text": "자극적이거나 양산형 콘텐츠보다 다른 사람들에게 \n가치를 주는 콘텐츠를 생성하다 보면",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:36.5",
+              "end": "01:41.0",
+              "text": "그 가치는 거대한 나무가 되고, \n그 안에 더 많은 사람들이 모여",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:41.0",
+              "end": "01:45.5",
+              "text": "올바른 커뮤니티가 생성되어 \n더 큰 가치를 창출할 수 있게 될 것입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:45.5",
+              "end": "01:50.0",
+              "text": "아직 AI 기술 발전에 비해 \n문화가 자리 잡지 않는 것이 현실입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:50.0",
+              "end": "01:55.0",
+              "text": "AI 기술 발전의 경각심을 알려주는 \n영화 A-Eye 였습니다.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video5": [
+            {
+              "start": "00:04.5",
+              "end": "00:08.5",
+              "text": "이제 마지막 영화, 바로 '토이스토리'의 패러디 'AI 스토리'입니다.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:08.5",
+              "end": "00:11.0",
+              "text": "AI와 관련된 실제 일화를 통해",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:11.0",
+              "end": "00:14.0",
+              "text": "AI 시대에 갖춰야 하는 자세에 대한 \n이야기가 담긴 영화입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:14.0",
+              "end": "00:17.5",
+              "text": "시청을 원하시면 위쪽 화살표를 눌러주세요.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video5-L": [],
+          "video5-R": [],
+          "video5-IN": [
+            {
+              "start": "00:03.0",
+              "end": "00:08.5",
+              "text": "최근 AI 영상 공모전 심사위원으로 활동하면서 \n아주 흥미로운 일이 있었습니다. ",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:08.5",
+              "end": "00:12.5",
+              "text": "지금 보시는 인형뽑기처럼, 집게로 인형을 뽑는 것처럼",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:12.5",
+              "end": "00:17.5",
+              "text": "AI로 만든 영상 출품작들을 골라, \n가장 잘된 작품을 뽑아",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:17.5",
+              "end": "00:19.5",
+              "text": "본선 작품을 선별하였습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:19.5",
+              "end": "00:25.5",
+              "text": "실제 선별된 본선 작품들을 모아보니 \n아주 흥미로운 일이 있었습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:25.5",
+              "end": "00:28.0",
+              "text": "지금 보시는 다양한 종류의 인형들처럼",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:28.0",
+              "end": "00:32.0",
+              "text": "본선에 뽑힌 작품은 정말 다양한 분야의 \n사람들의 작품들이었습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:32.0",
+              "end": "00:35.5",
+              "text": "최종적으로 기존의 영상 전문가가 만든 AI 영상이 ",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:35.5",
+              "end": "00:38.5",
+              "text": "가장 좋은 퀄리티를 만들어 우승을 하게 되었지만,",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:38.5",
+              "end": "00:42.0",
+              "text": "제가 더 흥미롭게 본 것은, \n비영상 전문가도 이제는 AI를 이용하면",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:42.0",
+              "end": "00:46.5",
+              "text": "본선 퀄리티의 작품을 아주 쉽고 빠르게 \n만들 수 있게 된 점입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:46.5",
+              "end": "00:50.0",
+              "text": "바꾸어 생각하면, \n누구나 자신의 분야가 아닌 새로운 분야도",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:50.0",
+              "end": "00:54.0",
+              "text": "AI를 활용하면 상당한 수준으로 \n쉽게 도달할 수 있다는 이야기가 됩니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:54.0",
+              "end": "00:57.5",
+              "text": "그래서 AI 시대의 새로운 리더는 AI를 활용하여",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:57.5",
+              "end": "01:01.5",
+              "text": "다양한 분야를 혼자서도 어우르는 \n크리에이터가 될 것입니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:01.5",
+              "end": "01:04.0",
+              "text": "앞으로 변화하는 시대의 새로운 창의성이란",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:04.0",
+              "end": "01:06.5",
+              "text": "이렇게 다양한 분야를 어우르는 크리에이터가",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:06.5",
+              "end": "01:09.0",
+              "text": "여러 분야의 장점을 새롭게 결합해",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:09.0",
+              "end": "01:12.0",
+              "text": "기존에 존재하지 않는 새로운 형태의 콘텐츠를 \n만드는 것이라 생각합니다.",
+              "fadeIn": false,
+              "fadeOut": true
+            },
+            {
+              "start": "01:15.0",
+              "end": "01:18.0",
+              "text": "이렇게 모든 영화를 보고 우리는 처음에 만난 공간인",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "01:18.0",
+              "end": "01:22.5",
+              "text": "'월터의 상상은 현실이 된다' 포스터가 있던 \n공간으로 돌아왔습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:22.5",
+              "end": "01:26",
+              "text": "월터가 자신의 상상을 실현하면서 삶에 빛이 났듯이,",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:26.0",
+              "end": "01:34.5",
+              "text": "이제는 우리의 상상을 AI 를 통해 실현하며 \n가치 있는 콘텐츠를 만들어 삶이 빛나기를 바랍니다.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video6-HIDDEN": [
+            {
+              "start": "00:21.5",
+              "end": "00:24.5",
+              "text": "이렇게 모든 영화를 보고 우리는 처음에 만난 공간인",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:24.5",
+              "end": "00:29.0",
+              "text": "'월터의 상상은 현실이 된다' 포스터가 있던 \n공간으로 돌아왔습니다.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:29.0",
+              "end": "00:32.5",
+              "text": "월터가 자신의 상상을 실현하면서 삶에 빛이 났듯이,",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:32.5",
+              "end": "00:38.5",
+              "text": "이제는 우리의 상상을 AI 를 통해 실현하며 \n가치 있는 콘텐츠를 만들어 삶이 빛나기를 바랍니다.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video28": [],
+          "video29": [],
+          "video30": [],
+          "video31": [],
+          "video32": [],
+          "video33": [],
+          "video34": [],
+          "video35": [],
+          "video36": [],
+          "video37": [],
+          "video38": [],
+          "video39": [],
+          "video40": [],
+          "video41": [],
+          "video42": [],
+          "video43-1": [],
+          "video43-2": [],
+          "video43-3": [],
+          "video43-4": [],
+          "video43-5": [],
+          "video6": [],
+          "video7": [],
+          "video3_IN": [],
+          "video8": [],
+          "video9": [],
+          "video10": [],
+          "video11": [],
+          "video12": [],
+          "video13": [],
+          "video14": [],
+          "video15": [],
+          "video16": [],
+          "video17": [],
+          "video18": [],
+          "video19": [],
+          "video20": [],
+          "video21": [],
+          "video22": [],
+          "video2-G": [],
+          "video2-R": [],
+          "video20_IN": [],
+          "video23": [],
+          "video24": [],
+          "video25": [],
+          "video26": [],
+          "video27": [],
+          "video22_IN": [],
+          "video22_IN_END": [],
+          "video6_NO": [],
+          "video7_NO": [],
+          "video43": [],
+          "video44": [],
+          "video45": [],
+          "video2_R": []
+        }
+      },
+      "EN": {
+        "style": {
+          "fontName": "Noto Sans KR",
+          "fontWeight": 500,
+          "fontSizePx": 13,
+          "letterSpacing": -0.5,
+          "verticalPositionPercent": 85,
+          "fadeDurationSec": 1,
+          "textColor": "#f3c614",
+          "shadow": {
+            "offsetX": 1,
+            "offsetY": 1,
+            "blur": 2,
+            "opacity": 65
+          },
+          "maxWidthPercent": 100
+        },
+        "videos": {
+          "video_intro_loop": [],
+          "video1": [
+            {
+              "start": "00:20",
+              "end": "00:23",
+              "text": "Hello, my name is Kim Gryun. Nice to meet you.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:23",
+              "end": "00:27.5",
+              "text": "This space you’re in right now, \nit’s a virtual world I created with AI.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:27.5",
+              "end": "00:32",
+              "text": "Here, we will move through this space together, \nand step inside an AI-generated film.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:32",
+              "end": "00:37",
+              "text": "So now, if you’re ready, \nplease tap the arrow button on the right.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video2": [
+            {
+              "start": "00:05",
+              "end": "00:11.0",
+              "text": "In 2013, I watched “The Secret Life of \nWalter Mitty,” and it struck me deeply.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:11.0",
+              "end": "00:15.5",
+              "text": "Walter lived inside his imagination, \nbut never brought it to life.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:15.5",
+              "end": "00:20.5",
+              "text": "And the moment he began to turn those imagined \nscenes into action, his life began to glow.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:20.5",
+              "end": "00:26",
+              "text": "That film made me wonder… will there come a day \nwhen my imagination can also become real?",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video3": [
+            {
+              "start": "00:05",
+              "end": "00:12.0",
+              "text": "Time passed. And today, that imagination has \nfinally become something I can make real with AI.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:12.0",
+              "end": "00:17.5",
+              "text": "Starting now, we will watch my first AI film, \nAI Evolution.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:17.5",
+              "end": "00:21",
+              "text": "Tap the red glowing arrow at the top to begin.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video3-L": [],
+          "video3-R": [],
+          "video3-IN": [
+            {
+              "start": "00:05.0",
+              "end": "00:12",
+              "text": "In the 1950s, the term AI, \nArtificial Intelligence, was first introduced.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:12",
+              "end": "00:16.2",
+              "text": "The character you see in front of you \nis a visual interpretation of early AI.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:16.2",
+              "end": "00:21.6",
+              "text": "As we moved into the 1980s, \nthe term Machine Learning appeared",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:21.6",
+              "end": "00:24.6",
+              "text": "and researchers discovered \nsomething groundbreaking",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:24.6",
+              "end": "00:28.0",
+              "text": "if you guide AI and give it \nhundreds of thousands of examples",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:28.0",
+              "end": "00:31.5",
+              "text": "it can learn and recognize patterns on its own.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:31.5",
+              "end": "00:35.5",
+              "text": "But the results at the time were still very limited.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:35.5",
+              "end": "00:42.1",
+              "text": "Then in the early 2010s, everything changed \nwith the development of GPU technology.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:42.1",
+              "end": "00:47.0",
+              "text": "Now AI could train on billions of data points \nwithout human guidance.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:47.0",
+              "end": "00:52.5",
+              "text": "And that’s when massive networks of information\nbegan to interact like neurons in a human brain.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:52.5",
+              "end": "00:54.5",
+              "text": "We called this Deep Learning.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:54.5",
+              "end": "00:58.1",
+              "text": "This was the moment AI truly \nbegan to open its eyes.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:58.1",
+              "end": "01:04.0",
+              "text": "One of the most astonishing outcomes is that \nAI began to write and talk to us.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:04.0",
+              "end": "01:07.5",
+              "text": "ChatGPT from OpenAI is the most well known example.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:07.5",
+              "end": "01:14.1",
+              "text": "We call this Generative AI, \nbecause AI can now create content.",
+              "fadeIn": false,
+              "fadeOut": true
+            },
+            {
+              "start": "01:16.5",
+              "end": "01:22.3",
+              "text": "Even the world of art, which we believed \nbelonged only to humans, became possible for AI",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "01:22.3",
+              "end": "01:26.0",
+              "text": "At first, AI made strange and bizarre images.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:26.0",
+              "end": "01:31.0",
+              "text": "But over time, \nit reached the level of trained professionals.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:31.0",
+              "end": "01:38.0",
+              "text": "Not only that, AI can now generate photos and videos that are almost indistinguishable from reality.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:38.0",
+              "end": "01:43.5",
+              "text": "Even places that do not exist can be created \nas if they are real.",
+              "fadeIn": false,
+              "fadeOut": true
+            },
+            {
+              "start": "01:45.0",
+              "end": "01:50.0",
+              "text": "And now today, AI has even entered the domain \nwhere AI itself was born.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "01:50.0",
+              "end": "01:53.0",
+              "text": "the world of programming and algorithms.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:53.0",
+              "end": "01:58.0",
+              "text": "From AI assisted coding to autonomous AI agents\nthat work instead of us",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:58.0",
+              "end": "02:02.0",
+              "text": "we are witnessing limitless expansion.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "02:02.0",
+              "end": "02:07.0",
+              "text": "And now, beyond video generation, we are \nbuilding virtual worlds that respond in real time.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "02:07.0",
+              "end": "02:13.0",
+              "text": "Like Google Genie 3, where we can control \na character inside video instantly",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "02:13.0",
+              "end": "02:17.0",
+              "text": "we are seeing the awakening of true \ninteractive virtual space.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "02:17.0",
+              "end": "02:21.0",
+              "text": "So now, standing in front of this \nexponential moment of AI",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "02:21.0",
+              "end": "02:24.5",
+              "text": "the real question is… \nWhat will we choose to create?",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "02:24.5",
+              "end": "02:27.3",
+              "text": "This was the first film, AI Evolution.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video4": [
+            {
+              "start": "00:06.5",
+              "end": "00:11.0",
+              "text": "This is A-Eye, a film that highlights the urgency \nand risks of AI development.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:11.0",
+              "end": "00:14.5",
+              "text": "To watch the film, \nplease select the glowing red arrow at the top.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video4-L": [],
+          "video4-R": [],
+          "video4-IN": [
+            {
+              "start": "00:04.5",
+              "end": "00:09.0",
+              "text": "We upload, view, and use countless \npieces of information on the internet.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:09.0",
+              "end": "00:13.0",
+              "text": "But did you know that AI has been learning from \nthis information without permission?",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:13.0",
+              "end": "00:17.5",
+              "text": "Among the many debates surrounding AI, \nthe biggest point of contention is this",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:17.5",
+              "end": "00:22.5",
+              "text": "AI systems train on information \nfrom the internet without explicit consent.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:22.5",
+              "end": "00:26.0",
+              "text": "Another major concern is Deepfake technology.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:26.5",
+              "end": "00:30.5",
+              "text": "AI can easily create things that look real \nbut do not actually exist.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:30.5",
+              "end": "00:34.5",
+              "text": "As a result, fake videos \nand fake news are multiplying",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:34.5",
+              "end": "00:39.5",
+              "text": "and the quality is improving to the point \nwhere it is almost indistinguishable from reality.",
+              "fadeIn": false,
+              "fadeOut": true
+            },
+            {
+              "start": "00:42.5",
+              "end": "00:46.5",
+              "text": "There is also the problem \nthat copying has become far too easy.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:46.5",
+              "end": "00:50.0",
+              "text": "People can use someone else’s work \nas reference without permission",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:50.0",
+              "end": "00:54.0",
+              "text": "reproduce it, and pass it off as their own \nwith little effort.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:54.0",
+              "end": "00:59.0",
+              "text": "With the right promotion, these inauthentic works\ncan even become more popular than the originals",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:59.0",
+              "end": "01:02.5",
+              "text": "causing serious harm to the true creators.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:02.5",
+              "end": "01:07.5",
+              "text": "This is the reality that has emerged \nalongside AI progress.",
+              "fadeIn": false,
+              "fadeOut": true
+            },
+            {
+              "start": "01:09.0",
+              "end": "01:12.5",
+              "text": "So what should companies do in this situation",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "01:12.5",
+              "end": "01:16.0",
+              "text": "They can build barricades against risk, \njust like you see on the screen now",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:16.0",
+              "end": "01:20.0",
+              "text": "so that only refined and 'safe AI' \ncan flow down to users",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:20.0",
+              "end": "01:23.5",
+              "text": "like clean water passing through a filter.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:23.5",
+              "end": "01:26.0",
+              "text": "Then what should individuals do",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:26.0",
+              "end": "01:30.5",
+              "text": "We should use refined AI tools \nto create content with real value.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:30.5",
+              "end": "01:34.0",
+              "text": "If we focus on making content \nthat benefits others",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:34.0",
+              "end": "01:37.0",
+              "text": "rather than sensational \nor mass produced content,",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:37.0",
+              "end": "01:41.0",
+              "text": "that value can grow into a great tree\nwhere more people gather",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:41.0",
+              "end": "01:45.0",
+              "text": "forming healthy communities \nthat generate even greater value.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:45.0",
+              "end": "01:49.0",
+              "text": "In truth, our culture has not yet \ncaught up with the speed of AI.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:49.0",
+              "end": "01:55.0",
+              "text": "This has been A-Eye, a film to raise awareness \nabout the risks of AI development.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video5": [
+            {
+              "start": "00:02.0",
+              "end": "00:07.0",
+              "text": "This is our final film, a Toy Story parody told as an AI story.",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:07.0",
+              "end": "00:10.5",
+              "text": "This film is based on a real incident related to AI",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:10.5",
+              "end": "00:13.5",
+              "text": "and explores the mindset \nwe need to have in the AI era.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:13.5",
+              "end": "00:17.5",
+              "text": "If you would like to watch it, \nplease tap the glowing red arrow at the top.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video5-L": [],
+          "video5-R": [],
+          "video5-IN": [
+            {
+              "start": "00:03.0",
+              "end": "00:07.5",
+              "text": "Recently, I served as a judge \nfor an AI film competition",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:07.5",
+              "end": "00:10.5",
+              "text": "and I witnessed something fascinating",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:10.5",
+              "end": "00:13.5",
+              "text": "Just like a claw machine picking up dolls",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:13.5",
+              "end": "00:19.5",
+              "text": "we reviewed A I generated short films, and \nselected only the best works to advance into the finals.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:19.5",
+              "end": "00:24.5",
+              "text": "Once we gathered all the finalists, \nwe discovered something even more interesting.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:24.5",
+              "end": "00:27.0",
+              "text": "Just like the variety of dolls you see here",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:27.0",
+              "end": "00:31.0",
+              "text": "the finalists were created by people \nfrom many different backgrounds.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:31.0",
+              "end": "00:37.0",
+              "text": "In the end, a professional filmmaker \nwon first place with the highest quality AI film.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:37.0",
+              "end": "00:39.5",
+              "text": "But what impressed me even more was this",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:39.5",
+              "end": "00:46.5",
+              "text": "non professionals could now use AI to create \nfinalist level work very quickly and very easily.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:46.5",
+              "end": "00:48.5",
+              "text": "This means that with AI",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:48.5",
+              "end": "00:54.0",
+              "text": "anyone can now reach a high level in fields \noutside of their own original profession.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:54.0",
+              "end": "00:56.0",
+              "text": "So the new leaders of the AI era",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:56.0",
+              "end": "01:00.5",
+              "text": "will be creators who can use AI to interweave \nmany different domains on their own.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:00.5",
+              "end": "01:02.5",
+              "text": "And I believe the next generation of creativity",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:02.5",
+              "end": "01:06.0",
+              "text": "will be the creators who combine strengths \nfrom multiple disciplines",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:06.0",
+              "end": "01:10.0",
+              "text": "to generate forms of content \nthat have never existed before.",
+              "fadeIn": false,
+              "fadeOut": true
+            },
+            {
+              "start": "01:14.0",
+              "end": "01:15.5",
+              "text": "After watching all of these films",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "01:15.5",
+              "end": "01:18.5",
+              "text": "we now return to the very first space \nwe met the place",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:18.5",
+              "end": "01:22.5",
+              "text": "where the poster for \nThe Secret Life of Walter Mitty was waiting.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:22.5",
+              "end": "01:27.0",
+              "text": "Just like Walter’s life began to shine \nwhen he brought his imagination into reality",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:27.0",
+              "end": "01:31.0",
+              "text": "I hope we, too, can turn our imagination \ninto reality through AI",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "01:31.0",
+              "end": "01:34.5",
+              "text": "and create content that brings real value \nso that our lives may shine.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video6-HIDDEN": [
+            {
+              "start": "00:20.0",
+              "end": "00:22.0",
+              "text": "After watching all of these films",
+              "fadeIn": true,
+              "fadeOut": false
+            },
+            {
+              "start": "00:22.0",
+              "end": "00:24.5",
+              "text": "we now return to the very first space \nwe met the place",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:24.5",
+              "end": "00:28.5",
+              "text": "where the poster for \nThe Secret Life of Walter Mitty was waiting.",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:28.5",
+              "end": "00:33.0",
+              "text": "Just like Walter’s life began to shine \nwhen he brought his imagination into reality",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:33.0",
+              "end": "00:37.0",
+              "text": "I hope we, too, can turn our imagination \ninto reality through AI",
+              "fadeIn": false,
+              "fadeOut": false
+            },
+            {
+              "start": "00:37.0",
+              "end": "00:40.5",
+              "text": "and create content that brings real value \nso that our lives may shine.",
+              "fadeIn": false,
+              "fadeOut": true
+            }
+          ],
+          "video28": [],
+          "video29": [],
+          "video30": [],
+          "video31": [],
+          "video32": [],
+          "video33": [],
+          "video34": [],
+          "video35": [],
+          "video36": [],
+          "video37": [],
+          "video38": [],
+          "video39": [],
+          "video40": [],
+          "video41": [],
+          "video42": [],
+          "video43-1": [],
+          "video43-2": [],
+          "video43-3": [],
+          "video43-4": [],
+          "video43-5": [],
+          "video6": [],
+          "video7": [],
+          "video3_IN": [],
+          "video8": [],
+          "video9": [],
+          "video10": [],
+          "video11": [],
+          "video12": [],
+          "video13": [],
+          "video14": [],
+          "video15": [],
+          "video16": [],
+          "video17": [],
+          "video18": [],
+          "video19": [],
+          "video20": [],
+          "video21": [],
+          "video22": [],
+          "video2-G": [],
+          "video2-R": [],
+          "video20_IN": [],
+          "video23": [],
+          "video24": [],
+          "video25": [],
+          "video26": [],
+          "video27": [],
+          "video22_IN": [],
+          "video22_IN_END": [],
+          "video6_NO": [],
+          "video7_NO": [],
+          "video43": [],
+          "video44": [],
+          "video45": [],
+          "video2_R": []
+        }
+      }
+    }
+  },
+  "timeline": {
+    "desktop": {
+      "video3-IN": {
+        "enabled": true,
+        "width": 600,
+        "height": 5,
+        "backgroundColor": "#000000",
+        "progressColor": "#facc15",
+        "startTime": "00:04",
+        "endTime": "02:25",
+        "pointSize": 12,
+        "pointDelaySeconds": 1,
+        "pointStyle": {
+          "circleSize": 12,
+          "circleColor": "#ffffff",
+          "circlePassedColor": "#facc15",
+          "glowColor": "#facc15",
+          "glowBlurPx": 6
+        },
+        "title": {
+          "text": "AI Evolution",
+          "fontFamily": "Noto Sans KR",
+          "fontWeight": 600,
+          "fontSize": 14,
+          "color": "#f0ce3d",
+          "marginBottom": 13
+        },
+        "points": [
+          {
+            "time": "00:15",
+            "title": "머신러닝",
+            "fontSize": 10,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": true,
+            "titleEN": "Machine Learning"
+          },
+          {
+            "time": "00:35",
+            "title": "딥러닝",
+            "fontSize": 10,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "Deep Learning"
+          },
+          {
+            "time": "00:58",
+            "title": "생성형 AI",
+            "fontSize": 10,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "Generative AI"
+          },
+          {
+            "time": "01:45",
+            "title": "AI 에이전트",
+            "fontSize": 10,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "AI Agent"
+          },
+          {
+            "time": "02:10",
+            "title": "시뮬레이션",
+            "fontSize": 10,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "Simulation"
+          }
+        ]
+      },
+      "video4-IN": {
+        "enabled": true,
+        "width": 600,
+        "height": 5,
+        "backgroundColor": "#000000",
+        "progressColor": "#facc15",
+        "startTime": "00:04.5",
+        "endTime": "01:52",
+        "pointSize": 12,
+        "pointDelaySeconds": 1,
+        "pointStyle": {
+          "circleSize": 12,
+          "circleColor": "#ffffff",
+          "circlePassedColor": "#facc15",
+          "glowColor": "#facc15",
+          "glowBlurPx": 6
+        },
+        "title": {
+          "text": "A eye",
+          "fontFamily": "Noto Sans KR",
+          "fontWeight": 600,
+          "fontSize": 14,
+          "color": "#f0ce3d",
+          "marginBottom": 13
+        },
+        "points": [
+          {
+            "time": "00:12",
+            "title": "무단학습",
+            "fontSize": 10,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "Training"
+          },
+          {
+            "time": "00:21",
+            "title": "딥페이크",
+            "fontSize": 10,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "DeepFake"
+          },
+          {
+            "time": "00:42",
+            "title": "카피",
+            "fontSize": 10,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "Copy"
+          },
+          {
+            "time": "01:10",
+            "title": "기업이 할 일",
+            "fontSize": 10,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "Enterprise"
+          },
+          {
+            "time": "01:23",
+            "title": "개인이 할 일",
+            "fontSize": 10,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "Individual"
+          },
+          {
+            "time": "01:36",
+            "title": "커뮤니티",
+            "fontSize": 10,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "Communities"
+          }
+        ]
+      },
+      "video5-IN": {
+        "enabled": true,
+        "width": 600,
+        "height": 5,
+        "backgroundColor": "#000000",
+        "progressColor": "#facc15",
+        "startTime": "00:04",
+        "endTime": "01:09",
+        "pointSize": 12,
+        "pointDelaySeconds": 1,
+        "pointStyle": {
+          "circleSize": 12,
+          "circleColor": "#ffffff",
+          "circlePassedColor": "#facc15",
+          "glowColor": "#facc15",
+          "glowBlurPx": 6
+        },
+        "title": {
+          "text": "AI Story",
+          "fontFamily": "Noto Sans KR",
+          "fontWeight": 600,
+          "fontSize": 14,
+          "color": "#f0ce3d",
+          "marginBottom": 13
+        },
+        "points": [
+          {
+            "time": "00:24",
+            "title": "본선작품",
+            "fontSize": 10,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "Finalist"
+          },
+          {
+            "time": "00:38",
+            "title": "쉬운습득",
+            "fontSize": 10,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "Easy Learning"
+          },
+          {
+            "time": "00:54",
+            "title": "새로운 리더",
+            "fontSize": 10,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "Leadership"
+          },
+          {
+            "time": "01:01",
+            "title": "창의성",
+            "fontSize": 10,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "Creativity"
+          }
+        ]
+      }
+    },
+    "mobile": {
+      "video3-IN": {
+        "enabled": true,
+        "width": 370,
+        "height": 3,
+        "backgroundColor": "#000000",
+        "progressColor": "#facc15",
+        "startTime": "00:05.5",
+        "endTime": "02:25",
+        "pointSize": 12,
+        "pointDelaySeconds": 1,
+        "pointStyle": {
+          "circleSize": 10,
+          "circleColor": "#ffffff",
+          "circlePassedColor": "#facc15",
+          "glowColor": "#facc15",
+          "glowBlurPx": 6
+        },
+        "title": {
+          "text": "AI Evolution",
+          "fontFamily": "Noto Sans KR",
+          "fontWeight": 600,
+          "fontSize": 12,
+          "color": "#f0ce3d",
+          "marginBottom": 13
+        },
+        "points": [
+          {
+            "time": "00:15",
+            "title": "머신러닝",
+            "fontSize": 9,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": true,
+            "titleEN": "ML"
+          },
+          {
+            "time": "00:35",
+            "title": "딥러닝",
+            "fontSize": 9,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "DL"
+          },
+          {
+            "time": "00:58",
+            "title": "생성형 AI",
+            "fontSize": 9,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "Generative AI"
+          },
+          {
+            "time": "01:45",
+            "title": "AI 에이전트",
+            "fontSize": 9,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "AI Agent"
+          },
+          {
+            "time": "02:10",
+            "title": "시뮬레이션",
+            "fontSize": 9,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "Simluation"
+          }
+        ]
+      },
+      "video4-IN": {
+        "enabled": true,
+        "width": 370,
+        "height": 3,
+        "backgroundColor": "#000000",
+        "progressColor": "#facc15",
+        "startTime": "00:04.5",
+        "endTime": "01:52",
+        "pointSize": 10,
+        "pointDelaySeconds": 1,
+        "pointStyle": {
+          "circleSize": 10,
+          "circleColor": "#ffffff",
+          "circlePassedColor": "#facc15",
+          "glowColor": "#facc15",
+          "glowBlurPx": 6
+        },
+        "title": {
+          "text": "A eye",
+          "fontFamily": "Noto Sans KR",
+          "fontWeight": 600,
+          "fontSize": 12,
+          "color": "#f0ce3d",
+          "marginBottom": 13
+        },
+        "points": [
+          {
+            "time": "00:11",
+            "title": "학습",
+            "fontSize": 9,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "Learn"
+          },
+          {
+            "time": "00:22",
+            "title": "딥페이크",
+            "fontSize": 9,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "DeepFake"
+          },
+          {
+            "time": "00:42",
+            "title": "카피",
+            "fontSize": 9,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "Copy"
+          },
+          {
+            "time": "01:07",
+            "title": "기업",
+            "fontSize": 9,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "Enterprise"
+          },
+          {
+            "time": "01:23",
+            "title": "개인",
+            "fontSize": 9,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "Person"
+          },
+          {
+            "time": "01:36",
+            "title": "커뮤니티",
+            "fontSize": 9,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "Community"
+          }
+        ]
+      },
+      "video5-IN": {
+        "enabled": true,
+        "width": 370,
+        "height": 3,
+        "backgroundColor": "#000000",
+        "progressColor": "#facc15",
+        "startTime": "00:04",
+        "endTime": "01:09",
+        "pointSize": 10,
+        "pointDelaySeconds": 1,
+        "pointStyle": {
+          "circleSize": 10,
+          "circleColor": "#ffffff",
+          "circlePassedColor": "#facc15",
+          "glowColor": "#facc15",
+          "glowBlurPx": 6
+        },
+        "title": {
+          "text": "AI Story",
+          "fontFamily": "Noto Sans KR",
+          "fontWeight": 600,
+          "fontSize": 12,
+          "color": "#f0ce3d",
+          "marginBottom": 13
+        },
+        "points": [
+          {
+            "time": "00:24",
+            "title": "본선작품",
+            "fontSize": 9,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "Finalist"
+          },
+          {
+            "time": "00:38",
+            "title": "쉬운습득",
+            "fontSize": 9,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "fontSizeEN": 9,
+            "titleEN": "Learning"
+          },
+          {
+            "time": "00:54",
+            "title": "새로운 리더",
+            "fontSize": 9,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "Leader"
+          },
+          {
+            "time": "01:01",
+            "title": "창의성",
+            "fontSize": 9,
+            "fontFamily": "Noto Sans KR",
+            "fontWeight": 400,
+            "letterSpacing": 0,
+            "enableHoverPreview": false,
+            "titleEN": "Creativity"
+          }
+        ]
+      }
+    }
+  },
+  "hiddenLinks": {
+    "desktop": {
+      "previewEnabled": false,
+      "links": [
+        {
+          "id": "hidden-1",
+          "videoId": "video5-IN",
+          "startTime": "01:20",
+          "endTime": "01:33",
+          "positionX": 77,
+          "positionY": 79,
+          "width": 400,
+          "height": 200,
+          "targetVideoId": "video6-HIDDEN",
+          "borderColor": "#ffffff",
+          "borderWidth": 2
+        }
+      ]
+    },
+    "mobile": {
+      "previewEnabled": false,
+      "links": [
+        {
+          "id": "hidden-1",
+          "videoId": "video5-IN",
+          "startTime": "01:20",
+          "endTime": "01:33",
+          "positionX": 60,
+          "positionY": 80,
+          "width": 300,
+          "height": 300,
+          "targetVideoId": "video6-HIDDEN",
+          "borderColor": "#ffffff",
+          "borderWidth": 2
+        }
+      ]
+    }
+  },
+  "bgm": {
+    "desktop": {
+      "enabled": true,
+      "volume": 80,
+      "transitionDuration": 2,
+      "enabledSections": {
+        "intro": false,
+        "video1": false,
+        "video2": true,
+        "video3": true,
+        "video3-IN": false,
+        "video4": true,
+        "video4-L": true,
+        "video4-R": true,
+        "video4-IN": false,
+        "video5": true,
+        "video5-L": true,
+        "video5-R": true,
+        "video5-IN": false,
+        "video6-HIDDEN": false
+      },
+      "startAtEndSections": {
+        "video3-IN": true,
+        "video4-IN": true,
+        "video5-IN": false
+      }
+    },
+    "mobile": {
+      "enabled": false,
+      "volume": 80,
+      "transitionDuration": 2,
+      "enabledSections": {
+        "intro": false,
+        "video1": false,
+        "video2": true,
+        "video3": true,
+        "video3-IN": false,
+        "video4": true,
+        "video4-L": true,
+        "video4-R": true,
+        "video4-IN": false,
+        "video5": true,
+        "video5-L": true,
+        "video5-R": true,
+        "video5-IN": false,
+        "video6-HIDDEN": false
+      },
+      "startAtEndSections": {
+        "video3-IN": true,
+        "video4-IN": true,
+        "video5-IN": false
+      }
+    }
+  },
+  "soundEffects": {
+    "hoverEnabled": false,
+    "clickEnabled": false
+  },
+  "menuDesign": {
+    "desktop": {
+      "question": {
+        "fontFamily": "Noto Sans KR",
+        "fontSize": 26,
+        "fontWeight": 500,
+        "textColor": "#FFFFFF",
+        "textAlign": "center",
+        "marginBottom": 16,
+        "textShadowBlur": 4,
+        "textShadowColor": "rgba(0,0,0,0.5)",
+        "shadowOpacity": 50,
+        "shadowDistance": 2,
+        "shadowBlur": 4,
+        "backgroundEnabled": false,
+        "backgroundPaddingY": 8,
+        "backgroundPaddingX": 16
+      },
+      "menuItem": {
+        "fontFamily": "Noto Sans KR",
+        "fontSize": 24,
+        "fontWeight": 400,
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#000000",
+        "backgroundOpacity": 80,
+        "borderWidth": 1,
+        "borderColor": "rgba(255,255,255,0.3)",
+        "borderRadius": 22,
+        "paddingX": 44,
+        "paddingY": 8,
+        "gap": 12,
+        "maxWidth": 400,
+        "bottomOffset": 100
+      },
+      "hover": {
+        "textColor": "#FFAE00",
+        "backgroundColor": "#000000",
+        "backgroundOpacity": 85,
+        "borderColor": "#FFAE00",
+        "scale": 1.05,
+        "duration": 200,
+        "soundFile": "",
+        "overlayFadeDuration": 650
+      },
+      "glow": {
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#000000",
+        "backgroundOpacity": 85,
+        "borderColor": "#FFD700",
+        "glowColor": "#ffd900",
+        "glowBlur": 15,
+        "glowSpread": 8,
+        "animation": true,
+        "animationSpeed": 1.3,
+        "animationMin": 25,
+        "animationMax": 85
+      },
+      "clickSoundFile": "",
+      "animation": {
+        "enabled": true,
+        "typingSpeed": 70,
+        "typingCursor": true,
+        "menuDelay": 300,
+        "menuInterval": 350,
+        "menuFadeInDuration": 500
+      }
+    },
+    "mobile": {
+      "question": {
+        "fontFamily": "Noto Sans KR",
+        "fontSize": 18,
+        "fontWeight": 400,
+        "textColor": "#FFFFFF",
+        "textAlign": "center",
+        "marginBottom": 12,
+        "textShadowBlur": 4,
+        "textShadowColor": "rgba(0,0,0,0.5)",
+        "shadowOpacity": 50,
+        "shadowDistance": 2,
+        "shadowBlur": 4,
+        "backgroundEnabled": false,
+        "backgroundPaddingY": 8,
+        "backgroundPaddingX": 16
+      },
+      "menuItem": {
+        "fontFamily": "Noto Sans KR",
+        "fontSize": 12,
+        "fontWeight": 400,
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#000000",
+        "backgroundOpacity": 40,
+        "borderWidth": 0,
+        "borderColor": "rgba(255,255,255,0.3)",
+        "borderRadius": 8,
+        "paddingX": 12,
+        "paddingY": 6,
+        "gap": 4,
+        "maxWidth": 240,
+        "bottomOffset": 80
+      },
+      "hover": {
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#FFFFFF",
+        "backgroundOpacity": 20,
+        "borderColor": "rgba(255,255,255,0.6)",
+        "scale": 1.02,
+        "duration": 200,
+        "soundFile": "",
+        "overlayFadeDuration": 300
+      },
+      "glow": {
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#FFD700",
+        "backgroundOpacity": 30,
+        "borderColor": "#FFD700",
+        "glowColor": "#FFD700",
+        "glowBlur": 15,
+        "glowSpread": 5,
+        "animation": true,
+        "animationSpeed": 1.5,
+        "animationMin": 30,
+        "animationMax": 70
+      },
+      "clickSoundFile": "",
+      "animation": {
+        "enabled": true,
+        "typingSpeed": 50,
+        "typingCursor": true,
+        "menuDelay": 300,
+        "menuInterval": 150,
+        "menuFadeInDuration": 300
+      }
+    }
+  },
+  "masterColor": {
+    "defaultColor": "#bababa",
+    "pointColor": "#ffae00",
+    "greyColor": "#222222"
+  },
+  "savedColors": [
+    {
+      "id": "saved-1",
+      "color": "#FF6B6B"
+    },
+    {
+      "id": "saved-2",
+      "color": "#2465ff"
+    },
+    {
+      "id": "saved-3",
+      "color": "#00ff33"
+    },
+    {
+      "id": "saved-4",
+      "color": "#FFAE00"
+    }
+  ],
+  "individualHighlights": [
+    {
+      "videoId": "video1",
+      "menus": [
+        {
+          "menuId": "menu1",
+          "backgroundColor": "#000000",
+          "glowColor": "#FF6B6B",
+          "useSavedBg": "_default",
+          "useSavedGlow": "saved-1",
+          "enabled": true,
+          "useSavedLine": "saved-1",
+          "lineColor": "#FF6B6B"
+        },
+        {
+          "menuId": "menu2",
+          "backgroundColor": "#000000",
+          "glowColor": "#4ECDC4",
+          "useSavedBg": "_default",
+          "useSavedGlow": "saved-2",
+          "enabled": true,
+          "backgroundOpacity": 35,
+          "useSavedLine": "saved-2",
+          "lineColor": "#2465ff"
+        },
+        {
+          "menuId": "menu3",
+          "backgroundColor": "#000000",
+          "glowColor": "#00ff33",
+          "useSavedBg": "_default",
+          "useSavedGlow": "saved-3",
+          "enabled": true,
+          "useSavedLine": "saved-3",
+          "lineColor": "#00ff33"
+        }
+      ]
+    },
+    {
+      "videoId": "video18",
+      "menus": [
+        {
+          "menuId": "menu1",
+          "enabled": true,
+          "backgroundColor": "#000000",
+          "glowColor": "#FF6B6B",
+          "useSavedBg": "_default",
+          "useSavedGlow": "saved-1",
+          "useSavedLine": "saved-1",
+          "lineColor": "#FF6B6B"
+        },
+        {
+          "menuId": "menu2",
+          "enabled": true,
+          "backgroundColor": "#000000",
+          "glowColor": "#2465ff",
+          "useSavedBg": "_default",
+          "useSavedGlow": "saved-2",
+          "useSavedLine": "saved-2",
+          "lineColor": "#2465ff"
+        }
+      ]
+    }
+  ],
+  "mobileIntro": {
+    "enabled": true,
+    "overlayColor": "#000000",
+    "overlayOpacity": 40,
+    "titleText": "Select a language",
+    "titleFontSize": 24,
+    "titleFontWeight": 500,
+    "titleFontFamily": "Noto Sans KR",
+    "titleColor": "#ffffff",
+    "titleMarginBottom": 40,
+    "koButtonText": "Korean",
+    "enButtonText": "English",
+    "button": {
+      "width": 120,
+      "height": 50,
+      "fontSize": 20,
+      "fontWeight": 600,
+      "fontFamily": "Noto Sans KR",
+      "textColor": "#ffffff",
+      "backgroundColor": "#000000",
+      "backgroundOpacity": 50,
+      "borderColor": "#ffffff",
+      "borderWidth": 2,
+      "borderRadius": 8,
+      "gap": 40,
+      "hoverScale": 1.05,
+      "hoverBackgroundColor": "#ffffff",
+      "hoverBackgroundOpacity": 30
+    }
+  },
+  "dynamicVideos": [
+    "video6",
+    "video7",
+    "video3_IN",
+    "video8",
+    "video9",
+    "video10",
+    "video11",
+    "video12",
+    "video13",
+    "video14",
+    "video15",
+    "video16",
+    "video17",
+    "video18",
+    "video19",
+    "video20",
+    "video21",
+    "video22",
+    "video2-G",
+    "video2-R",
+    "video20_IN",
+    "video23",
+    "video24",
+    "video25",
+    "video26",
+    "video27",
+    "video22_IN",
+    "video22_IN_END",
+    "video6_NO",
+    "video7_NO",
+    "video43-1",
+    "video43-2",
+    "video43-3",
+    "video43-4",
+    "video43-5",
+    "video43",
+    "video44",
+    "video45"
+  ],
+  "deletedVideos": [
+    "video6-HIDDEN",
+    "video5-IN",
+    "video4-IN",
+    "video7",
+    "video6",
+    "video5-L",
+    "video3-L",
+    "video3-IN",
+    "video4-L",
+    "video8",
+    "video2_R"
+  ],
+  "colorMasterRefs": {
+    "menuDesign.desktop.glow.backgroundColor": {
+      "useMaster": false,
+      "masterRef": "default"
+    },
+    "menuDesign.desktop.glow.glowColor": {
+      "useMaster": true,
+      "masterRef": "point"
+    },
+    "menuDesign.desktop.glow.textColor": {
+      "useMaster": true,
+      "masterRef": "point"
+    }
+  },
+  "qOverlayDelay": 0,
+  "individualHighlightOpacity": {
+    "glow": 80,
+    "hover": 90,
+    "backgroundColor": "#000000"
+  },
+  "videoGroups": {
+    "video26": "saved-3",
+    "video27": "saved-3",
+    "video7_NO": "saved-1",
+    "video7": "saved-1",
+    "video28": "saved-4",
+    "video29": "saved-4",
+    "video30": "saved-4",
+    "video31": "saved-4",
+    "video32": "saved-4",
+    "video33": "saved-4",
+    "video34": "saved-4",
+    "video35": "saved-4",
+    "video36": "saved-4",
+    "video37": "saved-4",
+    "video38": "saved-4",
+    "video39": "saved-4",
+    "video40": "saved-4",
+    "video41": "saved-4",
+    "video42": "saved-4"
+  },
+  "videoOrder": [
+    "video_intro_loop",
+    "video1",
+    "video2",
+    "video2-G",
+    "video2-R",
+    "video3",
+    "video3-L",
+    "video3-R",
+    "video3-IN",
+    "video4",
+    "video4-L",
+    "video4-R",
+    "video4-IN",
+    "video5",
+    "video5-L",
+    "video5-R",
+    "video5-IN",
+    "video6",
+    "video6-HIDDEN",
+    "video7",
+    "video8",
+    "video9",
+    "video10",
+    "video11",
+    "video12",
+    "video13",
+    "video14",
+    "video15",
+    "video16",
+    "video17",
+    "video18",
+    "video19",
+    "video20",
+    "video20_IN",
+    "video21",
+    "video22",
+    "video22_IN",
+    "video22_IN_END",
+    "video23",
+    "video24",
+    "video25",
+    "video26",
+    "video27",
+    "video28",
+    "video29",
+    "video30",
+    "video31",
+    "video32",
+    "video33",
+    "video34",
+    "video35",
+    "video36",
+    "video37",
+    "video38",
+    "video39",
+    "video40",
+    "video41",
+    "video42"
+  ],
+  "topJumpMenuNames": {
+    "video43-1": "PLAN",
+    "video43-2": "IMAGE",
+    "video43-3": "EDIT",
+    "video43-4": "VIDEO",
+    "video43-5": "VIBE"
+  },
+  "topJumpMenu": {
+    "desktop": {
+      "buttonWidth": 175,
+      "buttonHeight": 70,
+      "buttonGap": 17,
+      "borderRadius": 100,
+      "fontSize": 26,
+      "fontWeight": 500,
+      "textColor": "#ffffff",
+      "backgroundColor": "#000000",
+      "backgroundOpacity": 80,
+      "borderWidth": 2,
+      "borderColor": "#616161",
+      "currentBorderColor": "#FF6B6B",
+      "hoverBorderColor": "#FFAE00",
+      "useSavedCurrent": "saved-1",
+      "useSavedHover": "saved-4",
+      "topOffset": 20
+    }
+  },
+  "showCopyright": false
+}

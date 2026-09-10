@@ -1,0 +1,49 @@
+=== TOP-LEVEL KEY DIFF (app-settings) ===
+aimovie key count: 16
+dyw key count: 31
+
+keys ONLY in dyw (new features):
+ + colorMasterRefs
+ + deletedVideos
+ + dynamicVideos
+ + individualHighlightOpacity
+ + individualHighlights
+ + masterColor
+ + menuDesign
+ + qOverlayDelay
+ + savedColors
+ + showCopyright
+ + soundEffects
+ + topJumpMenu
+ + topJumpMenuNames
+ + videoGroups
+ + videoOrder
+
+keys ONLY in aimovie (removed in dyw):
+
+keys in BOTH:
+ = arrowInstantVisible
+ = bgm
+ = creatorLink
+ = design
+ = hiddenLinks
+ = intro
+ = langToggle
+ = mobileIntro
+ = replay
+ = skip
+ = subtitles
+ = timeline
+ = videoGlow
+ = videoRouting
+ = videoSkip
+ = videoTiming
+
+=== design.desktop sub-key diff ===
+dyw only: []
+aim only: []
+
+=== aimovie video-flow node count ===
+15
+aimovie startVideo: video1 buttonShowTiming: 8
+aimovie totalVideosCount: 15 availableFilesCount: 14

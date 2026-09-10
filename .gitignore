@@ -11,3 +11,6 @@
 # OS
 Thumbs.db
 .DS_Store
+
+# Playwright MCP 세션 로그
+.playwright-mcp/

@@ -1,0 +1,758 @@
+{
+  "style": {
+    "fontName": "Noto Sans KR",
+    "fontWeight": 600,
+    "fontSizePx": 35,
+    "letterSpacing": -0.5,
+    "verticalPositionPercent": 85,
+    "fadeDurationSec": 1,
+    "textColor": "#f3c614",
+    "shadow": {
+      "offsetX": 1,
+      "offsetY": 1,
+      "blur": 2,
+      "opacity": 65
+    },
+    "maxWidthPercent": 100
+  },
+  "videos": {
+    "video1": [
+      {
+        "start": "00:20",
+        "end": "00:23",
+        "text": "Hello, my name is Kim Gryun. Nice to meet you.",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "00:23",
+        "end": "00:27.5",
+        "text": "This space you’re in right now, it’s a virtual world I created with AI.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:27.5",
+        "end": "00:32",
+        "text": "Here, we will move through this space together, and step inside an AI-generated film.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:32",
+        "end": "00:37",
+        "text": "So now, if you’re ready, please tap the arrow button on the right.",
+        "fadeIn": false,
+        "fadeOut": true
+      }
+    ],
+    "video2": [
+      {
+        "start": "00:05",
+        "end": "00:11.0",
+        "text": "In 2013, I watched “The Secret Life of Walter Mitty,” and it struck me deeply.",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "00:11.0",
+        "end": "00:15.5",
+        "text": "Walter lived inside his imagination, but never brought it to life.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:15.5",
+        "end": "00:20.5",
+        "text": "And the moment he began to turn those imagined scenes into action, his life began to glow.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:20.5",
+        "end": "00:26",
+        "text": "That film made me wonder… will there come a day when my imagination can also become real?",
+        "fadeIn": false,
+        "fadeOut": true
+      }
+    ],
+    "video3": [
+      {
+        "start": "00:05",
+        "end": "00:12.0",
+        "text": "Time passed. And today, that imagination has finally become something I can make real with AI.",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "00:12.0",
+        "end": "00:17.5",
+        "text": "Starting now, we will watch my first AI film, AI Evolution.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:17.5",
+        "end": "00:21",
+        "text": "Tap the red glowing arrow at the top to begin.",
+        "fadeIn": false,
+        "fadeOut": true
+      }
+    ],
+    "video3-L": [],
+    "video3-R": [],
+    "video3-IN": [
+      {
+        "start": "00:05.0",
+        "end": "00:12",
+        "text": "In the 1950s, the term AI, Artificial Intelligence, was first introduced.",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "00:12",
+        "end": "00:16.2",
+        "text": "The character you see in front of you is a visual interpretation of early AI.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:16.2",
+        "end": "00:21.6",
+        "text": "As we moved into the 1980s, the term Machine Learning appeared",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:21.6",
+        "end": "00:24.6",
+        "text": "and researchers discovered something groundbreaking",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:24.6",
+        "end": "00:28.0",
+        "text": "if you guide AI and give it hundreds of thousands of examples",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:28.0",
+        "end": "00:31.5",
+        "text": "it can learn and recognize patterns on its own.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:31.5",
+        "end": "00:35.5",
+        "text": "But the results at the time were still very limited.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:35.5",
+        "end": "00:42.1",
+        "text": "Then in the early 2010s, everything changed with the development of GPU technology.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:42.1",
+        "end": "00:47.0",
+        "text": "Now AI could train on billions of data points without human guidance.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:47.0",
+        "end": "00:52.5",
+        "text": "And that’s when massive networks of information began to interact like neurons in a human brain.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:52.5",
+        "end": "00:54.5",
+        "text": "We called this Deep Learning.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:54.5",
+        "end": "00:58.1",
+        "text": "This was the moment AI truly began to open its eyes.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:58.1",
+        "end": "01:04.0",
+        "text": "One of the most astonishing outcomes is that AI began to write and talk to us.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:04.0",
+        "end": "01:07.5",
+        "text": "ChatGPT from OpenAI is the most well known example.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:07.5",
+        "end": "01:14.1",
+        "text": "We call this Generative AI, because AI can now create content.",
+        "fadeIn": false,
+        "fadeOut": true
+      },
+      {
+        "start": "01:16.5",
+        "end": "01:22.3",
+        "text": "Even the world of art, which we believed belonged only to humans, became possible for AI",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "01:22.3",
+        "end": "01:26.0",
+        "text": "At first, AI made strange and bizarre images.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:26.0",
+        "end": "01:31.0",
+        "text": "But over time, it reached the level of trained professionals.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:31.0",
+        "end": "01:38.0",
+        "text": "뿐만아니라, AI는 사진과 동영상을 실제와 구분이 안될정도로",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:38.0",
+        "end": "01:43.5",
+        "text": "Even places that do not exist can be created as if they are real.",
+        "fadeIn": false,
+        "fadeOut": true
+      },
+      {
+        "start": "01:45.0",
+        "end": "01:50.0",
+        "text": "And now today, AI has even entered the domain where AI itself was born.",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "01:50.0",
+        "end": "01:53.0",
+        "text": "the world of programming and algorithms.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:53.0",
+        "end": "01:58.0",
+        "text": "From AI assisted coding to autonomous AI agents that work instead of us",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:58.0",
+        "end": "02:02.0",
+        "text": "we are witnessing limitless expansion.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "02:02.0",
+        "end": "02:07.0",
+        "text": "And now, beyond video generation, we are building virtual worlds that respond in real time.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "02:07.0",
+        "end": "02:13.0",
+        "text": "Like Google Genie 3, where we can control a character inside video instantly",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "02:13.0",
+        "end": "02:17.0",
+        "text": "we are seeing the awakening of true interactive virtual space.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "02:17.0",
+        "end": "02:21.0",
+        "text": "So now, standing in front of this exponential moment of AI",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "02:21.0",
+        "end": "02:24.5",
+        "text": "the real question is… What will we choose to create?",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "02:24.5",
+        "end": "02:27.3",
+        "text": "This was the first film, AI Evolution.",
+        "fadeIn": false,
+        "fadeOut": true
+      }
+    ],
+    "video4": [
+      {
+        "start": "00:06.5",
+        "end": "00:11.0",
+        "text": "This is A-Eye, a film that highlights the urgency and risks of AI development.",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "00:11.0",
+        "end": "00:14.5",
+        "text": "To watch the film, please select the glowing red arrow at the top.",
+        "fadeIn": false,
+        "fadeOut": true
+      }
+    ],
+    "video4-L": [],
+    "video4-R": [],
+    "video4-IN": [
+      {
+        "start": "00:04.5",
+        "end": "00:09.0",
+        "text": "We upload, view, and use countless pieces of information on the internet.",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "00:09.0",
+        "end": "00:13.0",
+        "text": "But did you know that AI has been learning from this information without permission?",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:13.0",
+        "end": "00:17.5",
+        "text": "Among the many debates surrounding AI, the biggest point of contention is this",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:17.5",
+        "end": "00:22.5",
+        "text": "AI systems train on information from the internet without explicit consent.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:22.5",
+        "end": "00:26.0",
+        "text": "Another major concern is Deepfake technology.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:26.5",
+        "end": "00:30.5",
+        "text": "AI can easily create things that look real but do not actually exist.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:30.5",
+        "end": "00:34.5",
+        "text": "As a result, fake videos and fake news are multiplying",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:34.5",
+        "end": "00:39.5",
+        "text": "and the quality is improving to the point where it is almost indistinguishable from reality.",
+        "fadeIn": false,
+        "fadeOut": true
+      },
+      {
+        "start": "00:42.5",
+        "end": "00:46.5",
+        "text": "There is also the problem that copying has become far too easy.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:46.5",
+        "end": "00:50.0",
+        "text": "People can use someone else’s work as reference without permission",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:50.0",
+        "end": "00:54.0",
+        "text": "reproduce it, and pass it off as their own with little effort.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:54.0",
+        "end": "00:59.0",
+        "text": "With the right promotion, these inauthentic works can even become more popular than the originals",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:59.0",
+        "end": "01:02.5",
+        "text": "causing serious harm to the true creators.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:02.5",
+        "end": "01:07.5",
+        "text": "This is the reality that has emerged alongside AI progress.",
+        "fadeIn": false,
+        "fadeOut": true
+      },
+      {
+        "start": "01:09.0",
+        "end": "01:12.5",
+        "text": "So what should companies do in this situation",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "01:12.5",
+        "end": "01:16.0",
+        "text": "They can build barricades against risk, just like you see on the screen now",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:16.0",
+        "end": "01:20.0",
+        "text": "so that only refined and 'safe AI' can flow down to users",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:20.0",
+        "end": "01:23.5",
+        "text": "like clean water passing through a filter.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:23.5",
+        "end": "01:26.0",
+        "text": "Then what should individuals do",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:26.0",
+        "end": "01:30.5",
+        "text": "We should use refined AI tools to create content with real value.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:30.5",
+        "end": "01:34.0",
+        "text": "If we focus on making content that benefits others",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:34.0",
+        "end": "01:37.0",
+        "text": "rather than sensational or mass produced content,",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:37.0",
+        "end": "01:41.0",
+        "text": "that value can grow into a great tree where more people gather",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:41.0",
+        "end": "01:45.0",
+        "text": "forming healthy communities that generate even greater value.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:45.0",
+        "end": "01:49.0",
+        "text": "In truth, our culture has not yet caught up with the speed of AI.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:49.0",
+        "end": "01:55.0",
+        "text": "This has been A-Eye, a film to raise awareness about the risks of AI development.",
+        "fadeIn": false,
+        "fadeOut": true
+      }
+    ],
+    "video5": [
+      {
+        "start": "00:02.0",
+        "end": "00:07.0",
+        "text": "This is our final film, a Toy Story parody told as an AI story.",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "00:07.0",
+        "end": "00:10.5",
+        "text": "This film is based on a real incident related to AI",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:10.5",
+        "end": "00:13.5",
+        "text": "and explores the mindset we need to have in the AI era.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:13.5",
+        "end": "00:17.5",
+        "text": "If you would like to watch it, please tap the glowing red arrow at the top.",
+        "fadeIn": false,
+        "fadeOut": true
+      }
+    ],
+    "video5-L": [],
+    "video5-R": [],
+    "video5-IN": [
+      {
+        "start": "00:03.0",
+        "end": "00:07.5",
+        "text": "Recently, I served as a judge for an A I film competition",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "00:07.5",
+        "end": "00:10.5",
+        "text": "and I witnessed something fascinating",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:10.5",
+        "end": "00:13.5",
+        "text": "Just like a claw machine picking up dolls",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:13.5",
+        "end": "00:19.5",
+        "text": "we reviewed A I generated short films, and selected only the best works to advance into the finals.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:19.5",
+        "end": "00:24.5",
+        "text": "Once we gathered all the finalists, we discovered something even more interesting.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:24.5",
+        "end": "00:27.0",
+        "text": "Just like the variety of dolls you see here",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:27.0",
+        "end": "00:31.0",
+        "text": "the finalists were created by people from many different backgrounds.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:31.0",
+        "end": "00:37.0",
+        "text": "In the end, a professional filmmaker won first place with the highest quality AI film.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:37.0",
+        "end": "00:39.5",
+        "text": "But what impressed me even more was this",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:39.5",
+        "end": "00:46.5",
+        "text": "non professionals could now use A I to create finalist level work very quickly and very easily.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:46.5",
+        "end": "00:48.5",
+        "text": "This means that with AI",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:48.5",
+        "end": "00:54.0",
+        "text": "anyone can now reach a high level in fields outside of their own original profession.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:54.0",
+        "end": "00:56.0",
+        "text": "So the new leaders of the AI era",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:56.0",
+        "end": "01:00.5",
+        "text": "will be creators who can use A I to interweave many different domains on their own.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:00.5",
+        "end": "01:02.5",
+        "text": "And I believe the next generation of creativity",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:02.5",
+        "end": "01:06.0",
+        "text": "will be the creators who combine strengths from multiple disciplines",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:06.0",
+        "end": "01:10.0",
+        "text": "to generate forms of content that have never existed before.",
+        "fadeIn": false,
+        "fadeOut": true
+      },
+      {
+        "start": "01:14.0",
+        "end": "01:15.5",
+        "text": "After watching all of these films",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "01:15.5",
+        "end": "01:18.5",
+        "text": "we now return to the very first space we met the place",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:18.5",
+        "end": "01:22.5",
+        "text": "where the poster for The Secret Life of Walter Mitty was waiting.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:22.5",
+        "end": "01:27.0",
+        "text": "Just like Walter’s life began to shine when he brought his imagination into reality",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:27.0",
+        "end": "01:31.0",
+        "text": "I hope we, too, can turn our imagination into reality through AI",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:31.0",
+        "end": "01:34.5",
+        "text": "and create content that brings real value so that our lives may shine.",
+        "fadeIn": false,
+        "fadeOut": true
+      }
+    ],
+    "video6-HIDDEN": [
+      {
+        "start": "00:20.0",
+        "end": "00:22.0",
+        "text": "After watching all of these films",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "00:22.0",
+        "end": "00:24.5",
+        "text": "we now return to the very first space we met the place",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:24.5",
+        "end": "00:28.5",
+        "text": "where the poster for The Secret Life of Walter Mitty was waiting.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:28.5",
+        "end": "00:33.0",
+        "text": "Just like Walter’s life began to shine when he brought his imagination into reality",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:33.0",
+        "end": "00:37.0",
+        "text": "I hope we, too, can turn our imagination into reality through AI",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:37.0",
+        "end": "00:40.5",
+        "text": "and create content that brings real value so that our lives may shine.",
+        "fadeIn": false,
+        "fadeOut": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+flowchart TD
+  classDef ending fill:#7f1d1d,stroke:#ef4444,color:#fff,stroke-width:2px;
+  classDef hidden fill:#111827,stroke:#a855f7,color:#fff,stroke-dasharray:4 2;
+  classDef unavailable fill:#1f2937,stroke:#6b7280,color:#9ca3af,stroke-dasharray:2 2;
+  classDef startNode fill:#065f46,stroke:#10b981,color:#fff,stroke-width:2px;
+  video1["video1"] -->|right| video2["video2"]
+  video2 -->|right| video3["video3"]
+  video3 -->|left| video3L["video3-L"]
+  video3 -->|up| video3IN["video3-IN"]
+  video3 -->|right| video4["video4"]
+  video3L -->|right| video3R["video3-R"]
+  video3R -->|left| video3L
+  video3R -->|up| video3IN
+  video3R -->|right| video4
+  video3IN -->|right| video4
+  video4 -->|left| video4L["video4-L"]
+  video4 -->|up| video4IN["video4-IN"]
+  video4 -->|right| video5["video5"]
+  video4L -->|left| video3L
+  video4L -->|up| video3IN
+  video4L -->|right| video4R["video4-R"]
+  video4R -->|left| video4L
+  video4R -->|up| video4IN
+  video4R -->|right| video5
+  video4IN -->|right| video5
+  video5 -->|left| video5L["video5-L"]
+  video5 -->|up| video5IN["video5-IN"]
+  video5L -->|left| video4L
+  video5L -->|up| video4IN
+  video5L -->|right| video5R["video5-R"]
+  video5R -->|left| video5L
+  video5R -->|up| video5IN
+  video5IN -.->|"hiddenLink (01:20~01:33 구간)"| video6H["video6-HIDDEN"]
+  class video1 startNode
+  class video5IN,video6H ending
+  class video6H hidden
+  class video3L,video3R unavailable

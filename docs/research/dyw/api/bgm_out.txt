@@ -1,0 +1,56 @@
+{
+  "desktop": {
+    "enabled": true,
+    "volume": 80,
+    "transitionDuration": 2,
+    "enabledSections": {
+      "intro": false,
+      "video1": false,
+      "video2": true,
+      "video3": true,
+      "video3-IN": false,
+      "video4": true,
+      "video4-L": true,
+      "video4-R": true,
+      "video4-IN": false,
+      "video5": true,
+      "video5-L": true,
+      "video5-R": true,
+      "video5-IN": false,
+      "video6-HIDDEN": false
+    },
+    "startAtEndSections": {
+      "video3-IN": true,
+      "video4-IN": true,
+      "video5-IN": false
+    }
+  },
+  "mobile": {
+    "enabled": false,
+    "volume": 80,
+    "transitionDuration": 2,
+    "enabledSections": {
+      "intro": false,
+      "video1": false,
+      "video2": true,
+      "video3": true,
+      "video3-IN": false,
+      "video4": true,
+      "video4-L": true,
+      "video4-R": true,
+      "video4-IN": false,
+      "video5": true,
+      "video5-L": true,
+      "video5-R": true,
+      "video5-IN": false,
+      "video6-HIDDEN": false
+    },
+    "startAtEndSections": {
+      "video3-IN": true,
+      "video4-IN": true,
+      "video5-IN": false
+    }
+  }
+}
+
+soundEffects: {'hoverEnabled': False, 'clickEnabled': False}

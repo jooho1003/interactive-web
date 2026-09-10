@@ -1,0 +1,124 @@
+category,real_count,total_of_category,total_bytes,total_MB,avg_bytes,max_bytes,min_bytes
+video_mp4,63,69,447344367,426.62,7100704,26967400,2271709
+video_mp4_intro,0,1,0,0.00,0,0,0
+audio_mp3_ko,0,69,0,0.00,0,0,0
+audio_mp3_en,0,69,0,0.00,0,0,0
+poster_q,1,69,2126677,2.03,2126677,2126677,2126677
+poster_m1,18,70,2641863,2.52,146770,2120260,8408
+thumbnail,68,68,567848,0.54,8351,14317,579
+bgm,1,1,3349163,3.19,3349163,3349163,3349163
+sfx,2,2,318206,0.30,159103,165756,152450
+
+GRAND TOTAL real assets: 153 files, 456,348,124 bytes = 435.21 MB = 0.425 GB
+
+--- fallback (SPA index.html, i.e. asset missing) items ---
+video_mp4: 6 missing, e.g.:
+    https://design-your-world.replit.app/videos/video3-IN.mp4
+    https://design-your-world.replit.app/videos/video3-L.mp4
+    https://design-your-world.replit.app/videos/video4-IN.mp4
+    https://design-your-world.replit.app/videos/video4-L.mp4
+    https://design-your-world.replit.app/videos/video5-IN.mp4
+    https://design-your-world.replit.app/videos/video5-L.mp4
+video_mp4_intro: 1 missing, e.g.:
+    https://design-your-world.replit.app/videos/video-INTRO.mp4
+audio_mp3_ko: 69 missing, e.g.:
+    https://design-your-world.replit.app/videos/video_intro_loop.mp3
+    https://design-your-world.replit.app/videos/video1.mp3
+    https://design-your-world.replit.app/videos/video2.mp3
+    https://design-your-world.replit.app/videos/video3.mp3
+    https://design-your-world.replit.app/videos/video3-L.mp3
+    https://design-your-world.replit.app/videos/video3-R.mp3
+    https://design-your-world.replit.app/videos/video3-IN.mp3
+    https://design-your-world.replit.app/videos/video4.mp3
+audio_mp3_en: 69 missing, e.g.:
+    https://design-your-world.replit.app/videos/EN/video_intro_loop.mp3
+    https://design-your-world.replit.app/videos/EN/video1.mp3
+    https://design-your-world.replit.app/videos/EN/video2.mp3
+    https://design-your-world.replit.app/videos/EN/video3.mp3
+    https://design-your-world.replit.app/videos/EN/video3-L.mp3
+    https://design-your-world.replit.app/videos/EN/video3-R.mp3
+    https://design-your-world.replit.app/videos/EN/video3-IN.mp3
+    https://design-your-world.replit.app/videos/EN/video4.mp3
+poster_q: 68 missing, e.g.:
+    https://design-your-world.replit.app/videos/video_intro_loop_q.png
+    https://design-your-world.replit.app/videos/video1_q.png
+    https://design-your-world.replit.app/videos/video2_q.png
+    https://design-your-world.replit.app/videos/video3_q.png
+    https://design-your-world.replit.app/videos/video3-L_q.png
+    https://design-your-world.replit.app/videos/video3-R_q.png
+    https://design-your-world.replit.app/videos/video3-IN_q.png
+    https://design-your-world.replit.app/videos/video4_q.png
+poster_m1: 52 missing, e.g.:
+    https://design-your-world.replit.app/videos/video_intro_loop_m1.png
+    https://design-your-world.replit.app/videos/video3-L_m1.png
+    https://design-your-world.replit.app/videos/video3-IN_m1.png
+    https://design-your-world.replit.app/videos/video4_m1.png
+    https://design-your-world.replit.app/videos/video4-L_m1.png
+    https://design-your-world.replit.app/videos/video4-IN_m1.png
+    https://design-your-world.replit.app/videos/video5-L_m1.png
+    https://design-your-world.replit.app/videos/video5-R_m1.png
+
+--- mp4 real files (name,size) ---
+video1.mp4	13153423
+video10.mp4	8670908
+video11.mp4	14564672
+video12.mp4	4026648
+video13.mp4	3359143
+video14.mp4	2649176
+video15.mp4	6878634
+video16.mp4	6793247
+video17.mp4	8798124
+video18.mp4	6354252
+video19.mp4	7182510
+video2-G.mp4	5268725
+video2-R.mp4	5085958
+video2.mp4	4797881
+video20.mp4	8034479
+video20_IN.mp4	3972302
+video21.mp4	6445916
+video22.mp4	2839715
+video22_IN.mp4	5673893
+video22_IN_END.mp4	5365905
+video23.mp4	7420608
+video24.mp4	3985069
+video25.mp4	26967400
+video26.mp4	4496300
+video27.mp4	10932957
+video28.mp4	4591057
+video29.mp4	5651827
+video3-R.mp4	4650892
+video3.mp4	4683722
+video30.mp4	4376677
+video31.mp4	10418660
+video32.mp4	10829993
+video33.mp4	17604976
+video34.mp4	8144797
+video35.mp4	6006956
+video36.mp4	11001861
+video37.mp4	8422670
+video38.mp4	5863866
+video39.mp4	7282350
+video3_IN.mp4	19249943
+video4-R.mp4	5206447
+video4.mp4	5129153
+video40.mp4	11159414
+video41.mp4	4832465
+video42.mp4	6850588
+video43-1.mp4	5436472
+video43-2.mp4	4360674
+video43-3.mp4	6430172
+video43-4.mp4	3960765
+video43-5.mp4	4154194
+video43.mp4	3525460
+video44.mp4	8853425
+video45.mp4	5113130
+video5-R.mp4	8562646
+video5.mp4	8671892
+video6-HIDDEN.mp4	7274009
+video6.mp4	2271709
+video6_NO.mp4	2943313
+video7.mp4	2847997
+video7_NO.mp4	7182559
+video8.mp4	6754628
+video9.mp4	8186427
+video_intro_loop.mp4	5138736

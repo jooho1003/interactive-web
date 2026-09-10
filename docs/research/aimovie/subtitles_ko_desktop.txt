@@ -1,0 +1,786 @@
+{
+  "style": {
+    "fontName": "Noto Sans KR",
+    "fontWeight": 600,
+    "fontSizePx": 35,
+    "letterSpacing": -0.5,
+    "verticalPositionPercent": 85,
+    "fadeDurationSec": 1,
+    "textColor": "#f3c614",
+    "shadow": {
+      "offsetX": 1,
+      "offsetY": 1,
+      "blur": 2,
+      "opacity": 65
+    },
+    "maxWidthPercent": 100
+  },
+  "videos": {
+    "video1": [
+      {
+        "start": "00:20",
+        "end": "00:24",
+        "text": "안녕하세요. 김그륜 입니다. 만나서 반갑습니다. ",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "00:24",
+        "end": "00:27",
+        "text": "지금 이 공간은 AI로 제작한 가상 세계입니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:27",
+        "end": "00:32",
+        "text": "이곳에서 여러분들과 함께 공간을 이동하면서 AI영화 속으로 들어가겠습니다. ",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:32",
+        "end": "00:37",
+        "text": "자 이제, 준비가 되셨으면 오른쪽 화살표 버튼을 눌러주세요.",
+        "fadeIn": false,
+        "fadeOut": true
+      }
+    ],
+    "video2": [
+      {
+        "start": "00:05",
+        "end": "00:11.5",
+        "text": "2013년에 ‘월터의 상상은 현실이 된다’라는 영화를 정말 감명 깊게 보았습니다.",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "00:11.5",
+        "end": "00:15.5",
+        "text": "영화 속 주인공 ‘월터’는 항상 상상으로만 가득차고, 실현하지 못했지만",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:15.5",
+        "end": "00:20.5",
+        "text": "어느순간 하나씩 상상을 실현할때마다 인생에 빛이 난다는 이야기입니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:20.5",
+        "end": "00:27",
+        "text": "저는 그 영화를 보면서 “언젠가 나의 상상도 실현할 수 있는 날이 오지않을까” 생각했습니다.",
+        "fadeIn": false,
+        "fadeOut": true
+      }
+    ],
+    "video3": [
+      {
+        "start": "00:05",
+        "end": "00:11.5",
+        "text": "그렇게 시간이 흘러 이제는 AI를 이용해 상상만하던 영화 제작의 꿈을 이룰수 있게 되었습니다.",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "00:11.5",
+        "end": "00:16.5",
+        "text": "지금부터 당신과 그 첫번째 영화 ‘AI Evolution’을 보려합니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:16.5",
+        "end": "00:21",
+        "text": "위쪽에 위치한 빨간색으로 빛이 나는 위 화살표를 누르면 영화가 시작됩니다.",
+        "fadeIn": false,
+        "fadeOut": true
+      }
+    ],
+    "video3-L": [],
+    "video3-R": [],
+    "video3-IN": [
+      {
+        "start": "00:05.0",
+        "end": "00:11.1",
+        "text": "1950년대 AI 라는 Artificial intelligent 라는 용어가 생겨났습니다. ",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "00:11.1",
+        "end": "00:14.7",
+        "text": "지금 앞에 보이시는 캐릭터가 바로 초창기 AI 입니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:14.7",
+        "end": "00:19.1",
+        "text": "시간이 흘러 1980년대 ‘기계 학습’이라는 용어와 함께",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:19.1",
+        "end": "00:22.1",
+        "text": "획기적인 AI 훈련 방법이 고안 되었습니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:22.1",
+        "end": "00:26.5",
+        "text": "바로 연구자들이 가이드를 주면서 수십만개의 정보를 주면",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:26.5",
+        "end": "00:31.5",
+        "text": "AI가 스스로 학습하고 인지 할 수 있다는 것을 알게 되었습니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:31.5",
+        "end": "00:35.5",
+        "text": "하지만 그다지 큰 성과를 거두진 못했습니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:35.5",
+        "end": "00:42.1",
+        "text": "그렇게 2010년대 초반, 그래픽카드 바로 GPU 기술의 발달로 AI 기술은 완전히 바뀌었습니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:42.1",
+        "end": "00:47.5",
+        "text": "이제는 수천억개의 정보를 인간의 가이드없이 대량으로 학습 할 수 있게 되었습니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:47.5",
+        "end": "00:52",
+        "text": "그렇게 수 많은 정보들은 마치 인간의 뇌처럼 정보를 교류하기 시작하고, ",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:52.0",
+        "end": "00:54.5",
+        "text": "우리는 이것을 '딥러닝'이라고 불렀습니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:54.5",
+        "end": "00:58.1",
+        "text": "비로서 AI의 눈이 뜨기 시작하였습니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:58.1",
+        "end": "01:01",
+        "text": "바로, 글을 쓰고 우리와 대화를 하기 시작했다는 것입니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:01.0",
+        "end": "01:04.5",
+        "text": "바로, 글을 쓰고 우리와 대화를 하기 시작했다는 것입니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:04.5",
+        "end": "01:10.1",
+        "text": "우리가 잘아는 Open AI에서 개발한 ChatGPT가 가장 대표적인 사례입니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:10.1",
+        "end": "01:15.1",
+        "text": "우리는 이것을 AI가 컨텐츠를 생성한다고 해서 ‘생성형 AI’라고 부릅니다.",
+        "fadeIn": false,
+        "fadeOut": true
+      },
+      {
+        "start": "01:16.5",
+        "end": "01:20.3",
+        "text": "인간만의 영역이라고 생각하던 창의적인 영역의 대명사",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "01:20.3",
+        "end": "01:23.5",
+        "text": "아트의 영역까지도 AI로 가능해졌습니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:23.5",
+        "end": "01:27.1",
+        "text": "초반에는 기괴한 그림을 그리던 AI도 점차 시간이 지나",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:27.1",
+        "end": "01:31.2",
+        "text": "이제는 전문가 실력의 그림도 가능해졌습니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:31.2",
+        "end": "01:35.5",
+        "text": "뿐만아니라, AI는 사진과 동영상을 실제와 구분이 안될정도로",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:35.5",
+        "end": "01:38.5",
+        "text": "생생하게 만들 수 있게 되었습니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:38.5",
+        "end": "01:42",
+        "text": "존재하지 않는 공간까지, 마치 실제 존재하는 곳처럼",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:42.0",
+        "end": "01:45.0",
+        "text": "너무나도 사실적으로 만들 수 있게 되었습니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:45.0",
+        "end": "01:49.5",
+        "text": "이제 현재는, AI가 만들어진 알고리즘인 프로그래밍 영역까지",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:49.5",
+        "end": "01:52",
+        "text": "AI가 만들 수 있게 되었습니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:52.0",
+        "end": "01:55.5",
+        "text": "AI가 대신 코딩을 하는 바이브코딩부터",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:55.5",
+        "end": "01:58.5",
+        "text": "인간을 대신해 일을 한다는 개념의 AI 에이전트까지",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:58.5",
+        "end": "02:01.0",
+        "text": "무한한 기술 발전을 보여주고 있습니다.",
+        "fadeIn": false,
+        "fadeOut": true
+      },
+      {
+        "start": "02:01.5",
+        "end": "02:08.5",
+        "text": "그리고, 이제는 영상 생성을 넘어서 실시간 상호작용이 가능한 가상세계를 만들고 있습니다.",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "02:08.5",
+        "end": "02:13.5",
+        "text": "구글의 Genie 3 처럼 실시간으로 영상 속의 캐릭터를 키보드로 움직이거나",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "02:13.5",
+        "end": "02:16.5",
+        "text": "공간을 프롬프트로 실시간으로 제어 할 수 있는",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "02:16.5",
+        "end": "02:19.5",
+        "text": "진정한 가상공간을 만들 수 있는 시대가 되었습니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "02:19.5",
+        "end": "02:24",
+        "text": "이렇게 무한히 발전하는 AI를 바라보는 우리는 이제, 무엇을 해야할까요?",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "02:24.0",
+        "end": "02:27.3",
+        "text": "지금까지 첫번째 영화 AI Evolution 이었습니다.",
+        "fadeIn": false,
+        "fadeOut": true
+      }
+    ],
+    "video4": [
+      {
+        "start": "00:06.5",
+        "end": "00:10.5",
+        "text": "이곳은 AI 발전의 경각심과 위험성을 보여주는 영화 A-Eye 입니다.",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "00:10.5",
+        "end": "00:14.5",
+        "text": "영화를 보시려면 위에 빛나는 빨간 화살표를 선택해주세요.",
+        "fadeIn": false,
+        "fadeOut": true
+      }
+    ],
+    "video4-L": [],
+    "video4-R": [],
+    "video4-IN": [
+      {
+        "start": "00:04.5",
+        "end": "00:09.5",
+        "text": "우리는 인터넷에 수많은 정보를 올리고, 쓰고, 보고 그리고 사용하고 있습니다.",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "00:09.5",
+        "end": "00:14.5",
+        "text": "그런데 이러한 정보는 AI가 무단으로 학습하고 있다는 것을 알고 계신가요?",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:14.5",
+        "end": "00:17.5",
+        "text": "AI 기술을 둘러싼 많은 논쟁 중에 가장 큰 것은 바로",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:17.5",
+        "end": "00:21.0",
+        "text": "허가 없이 인터넷에 있는 정보를 학습한다는 것입니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:21.0",
+        "end": "00:26.5",
+        "text": "AI 발전에 또 다른 큰 문제점으로 화두되는 것이 바로 딥페이크 기술입니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:26.5",
+        "end": "00:30.5",
+        "text": "AI는 너무나도 쉽게 실제처럼 존재하지 않는 자료를 만들 수 있기에",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:30.5",
+        "end": "00:34.5",
+        "text": "이로 인해 가짜 영상, 가짜 뉴스가 점점 늘어나고",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:34.5",
+        "end": "00:37.5",
+        "text": "앞에 보이는 두사람 처럼 이제는 어떤 사람이 진짜인지",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:37.5",
+        "end": "00:40.5",
+        "text": "AI를 눈으로 구분할 수 없는 지경이 되었습니다.",
+        "fadeIn": false,
+        "fadeOut": true
+      },
+      {
+        "start": "00:42.0",
+        "end": "00:44.5",
+        "text": "또 다른 문제점으로 야기되는 것은 바로 이제는",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:44.5",
+        "end": "00:47.5",
+        "text": "너무나도 쉽게 카피가 가능해졌다는 것입니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:47.5",
+        "end": "00:52.5",
+        "text": "다른 사람의 작품을 허가 없이 무단으로 레퍼런스로 사용하고 카피가 쉬워지면서",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:52.5",
+        "end": "00:57.5",
+        "text": "마치 다른 사람의 작품이 자신의 작품인 것처럼 속이기가 아주 쉬워졌습니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:57.5",
+        "end": "00:59.5",
+        "text": "그리고 그렇게 만들어진 가짜 작품이",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:59.5",
+        "end": "01:02.5",
+        "text": "홍보를 잘하면 실제 작품보다 더 큰 인기를 얻어",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:02.5",
+        "end": "01:08.5",
+        "text": "진정한 창작자에게 엄청나게 큰 피해를 줄 수 있는 것이 AI 기술 발전의 현실입니다.",
+        "fadeIn": false,
+        "fadeOut": true
+      },
+      {
+        "start": "01:09.0",
+        "end": "01:12.5",
+        "text": "이러한 상황에서 기업이 해야 할 일은 무엇일까요?",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "01:12.5",
+        "end": "01:16.0",
+        "text": "바로 지금 보이는 화면처럼 위험 요소로부터 바리케이드를 쳐",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:16.0",
+        "end": "01:19.0",
+        "text": "바리케이트 밑으로 흘러나오는 맑은 물처럼",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:19.0",
+        "end": "01:23.5",
+        "text": "바로 정제된 AI 기술만 사용자에게 전달하는 방법이 있습니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:23.5",
+        "end": "01:27.0",
+        "text": "그렇다면 개인의 입장에서 해야 하는 것은 무엇일까요?",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:27.0",
+        "end": "01:31.5",
+        "text": "바로 이렇게 정제된 AI 기술로 ‘가치 있는 콘텐츠’를 만들어야 합니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:31.5",
+        "end": "01:36.5",
+        "text": "자극적이거나 양산형 콘텐츠보다 다른 사람들에게 가치를 주는 콘텐츠를 생성하다 보면",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:36.5",
+        "end": "01:41.0",
+        "text": "그 가치는 거대한 나무가 되고, 그 안에 더 많은 사람들이 모여",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:41.0",
+        "end": "01:45.5",
+        "text": "올바른 커뮤니티가 생성되어 더 큰 가치를 창출할 수 있게 될 것입니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:45.5",
+        "end": "01:50.0",
+        "text": "아직 AI 기술 발전에 비해 문화가 자리 잡지 않는 것이 현실입니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:50.0",
+        "end": "01:55.0",
+        "text": "AI 기술 발전의 경각심을 알려주는 영화 A-Eye 였습니다.",
+        "fadeIn": false,
+        "fadeOut": true
+      }
+    ],
+    "video5": [
+      {
+        "start": "00:04.5",
+        "end": "00:08.5",
+        "text": "이제 마지막 영화, 바로 '토이스토리'의 패러디 'AI 스토리'입니다.",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "00:08.5",
+        "end": "00:11.0",
+        "text": "AI와 관련된 실제 일화를 통해",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:11.0",
+        "end": "00:14.0",
+        "text": "AI 시대에 갖춰야 하는 자세에 대한 이야기가 담긴 영화입니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:14.0",
+        "end": "00:17.5",
+        "text": "시청을 원하시면 위쪽 화살표를 눌러주세요.",
+        "fadeIn": false,
+        "fadeOut": true
+      }
+    ],
+    "video5-L": [],
+    "video5-R": [],
+    "video5-IN": [
+      {
+        "start": "00:03.0",
+        "end": "00:08.5",
+        "text": "최근 AI 영상 공모전 심사위원으로 활동하면서 아주 흥미로운 일이 있었습니다. ",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "00:08.5",
+        "end": "00:12.5",
+        "text": "지금 보시는 인형뽑기처럼, 집게로 인형을 뽑는 것 처럼",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:12.5",
+        "end": "00:17.5",
+        "text": "AI로 만든 영상 출품작들을 골라, 가장 잘된 작품을 뽑아",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:17.5",
+        "end": "00:19.5",
+        "text": "본선 작품을 선별하였습니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:19.5",
+        "end": "00:25.5",
+        "text": "실제 선별된 본선 작품들을 모아보니 아주 흥미로운 일이 있었습니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:25.5",
+        "end": "00:28.0",
+        "text": "지금 보시는 다양한 종류의 인형들처럼",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:28.0",
+        "end": "00:32.0",
+        "text": "본선에 뽑힌 작품은 정말 다양한 분야의 사람들의 작품들이었습니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:32.0",
+        "end": "00:35.5",
+        "text": "최종적으로 기존의 영상 전문가가 만든 AI 영상이 ",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:35.5",
+        "end": "00:38.5",
+        "text": "가장 좋은 퀄리티를 만들어 우승을 하게 되었지만,",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:38.5",
+        "end": "00:42.0",
+        "text": "제가 더 흥미롭게 본 것은, 비영상 전문가도 이제는 AI를 이용하면",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:42.0",
+        "end": "00:46.5",
+        "text": "본선 퀄리티의 작품을 아주 쉽고 빠르게 만들 수 있게 된 점입니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:46.5",
+        "end": "00:50.0",
+        "text": "바꾸어 생각하면, 누구나 자신의 분야가 아닌 새로운 분야도",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:50.0",
+        "end": "00:54.0",
+        "text": "AI를 활용하면 상당한 수준으로 쉽게 도달할 수 있다는 이야기가 됩니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:54.0",
+        "end": "00:57.5",
+        "text": "그래서 AI 시대의 새로운 리더는 AI를 활용하여",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:57.5",
+        "end": "01:01.5",
+        "text": "다양한 분야를 혼자서도 어우르는 크리에이터가 될 것입니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:01.5",
+        "end": "01:04.0",
+        "text": "앞으로 변화하는 시대의 새로운 창의성이란",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:04.0",
+        "end": "01:06.5",
+        "text": "이렇게 다양한 분야를 어우르는 크리에이터가",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:06.5",
+        "end": "01:09.0",
+        "text": "여러 분야의 장점을 새롭게 결합해",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:09.0",
+        "end": "01:12.0",
+        "text": "기존에 존재하지 않는 새로운 형태의 콘텐츠를 만드는것이라 생각합니다.",
+        "fadeIn": false,
+        "fadeOut": true
+      },
+      {
+        "start": "01:15.0",
+        "end": "01:18.0",
+        "text": "이렇게 모든 영화를 보고 우리는 처음에 만난 공간인",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "01:18.0",
+        "end": "01:22.5",
+        "text": "'월터의 상상은 현실이 된다' 포스터가 있던 공간으로 돌아왔습니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:22.5",
+        "end": "01:26",
+        "text": "월터가 자신의 상상을 실현하면서 삶에 빛이 났듯이,",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "01:26.0",
+        "end": "01:34.5",
+        "text": "이제는 우리의 상상을 AI 를 통해 실현하며 가치 있는 콘텐츠를 만들어 삶이 빛나기를 바랍니다.",
+        "fadeIn": false,
+        "fadeOut": true
+      }
+    ],
+    "video6-HIDDEN": [
+      {
+        "start": "00:21.5",
+        "end": "00:24.5",
+        "text": "이렇게 모든 영화를 보고 우리는 처음에 만난 공간인",
+        "fadeIn": true,
+        "fadeOut": false
+      },
+      {
+        "start": "00:24.5",
+        "end": "00:29",
+        "text": "'월터의 상상은 현실이 된다' 포스터가 있던 공간으로 돌아왔습니다.",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:29.0",
+        "end": "00:32.5",
+        "text": "월터가 자신의 상상을 실현하면서 삶에 빛이 났듯이,",
+        "fadeIn": false,
+        "fadeOut": false
+      },
+      {
+        "start": "00:32.5",
+        "end": "00:38.5",
+        "text": "이제는 우리의 상상을 AI 를 통해 실현하며 가치 있는 콘텐츠를 만들어 삶이 빛나기를 바랍니다.",
+        "fadeIn": false,
+        "fadeOut": true
+      }
+    ]
+  }
+}

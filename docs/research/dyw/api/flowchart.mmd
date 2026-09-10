@@ -1,0 +1,201 @@
+flowchart TD
+  classDef ending fill:#7f1d1d,stroke:#ef4444,color:#fff,stroke-width:2px;
+  classDef hidden fill:#111827,stroke:#a855f7,color:#fff,stroke-dasharray:4 2;
+  classDef unavailable fill:#1f2937,stroke:#6b7280,color:#9ca3af,stroke-dasharray:2 2;
+  classDef startNode fill:#065f46,stroke:#10b981,color:#fff,stroke-width:2px;
+  classDef orphan fill:#78350f,stroke:#f59e0b,color:#fff;
+  subgraph HUB_레거시_화살표_리비지트_허브
+    video1["video1"]
+    video2["video2"]
+    video2DG["video2-G"]
+    video2DR["video2-R"]
+    video2UR["video2_R"]
+    video3["video3"]
+    video3DIN["video3-IN"]
+    video3DL["video3-L"]
+    video3DR["video3-R"]
+    video3UIN["video3_IN"]
+    video4["video4"]
+    video4DIN["video4-IN"]
+    video4DL["video4-L"]
+    video4DR["video4-R"]
+    video5["video5"]
+    video5DIN["video5-IN"]
+    video5DL["video5-L"]
+    video5DR["video5-R"]
+    video6DHIDDEN["video6-HIDDEN"]
+    videoUintroUloop["video_intro_loop"]
+  end
+  subgraph ACT1_video6_to_27
+    video10["video10"]
+    video11["video11"]
+    video12["video12"]
+    video13["video13"]
+    video14["video14"]
+    video15["video15"]
+    video16["video16"]
+    video17["video17"]
+    video18["video18"]
+    video19["video19"]
+    video20["video20"]
+    video20UIN["video20_IN"]
+    video21["video21"]
+    video22["video22"]
+    video22UIN["video22_IN"]
+    video22UINUEND["video22_IN_END"]
+    video23["video23"]
+    video24["video24"]
+    video25["video25"]
+    video26["video26"]
+    video27["video27"]
+    video6["video6"]
+    video6UNO["video6_NO"]
+    video7["video7"]
+    video7UNO["video7_NO"]
+    video8["video8"]
+    video9["video9"]
+  end
+  subgraph ACT2_video28_to_45_루프백
+    video28["video28"]
+    video29["video29"]
+    video30["video30"]
+    video31["video31"]
+    video32["video32"]
+    video33["video33"]
+    video34["video34"]
+    video35["video35"]
+    video36["video36"]
+    video37["video37"]
+    video38["video38"]
+    video39["video39"]
+    video40["video40"]
+    video41["video41"]
+    video42["video42"]
+    video43["video43"]
+    video43D1["video43-1"]
+    video43D2["video43-2"]
+    video43D3["video43-3"]
+    video43D4["video43-4"]
+    video43D5["video43-5"]
+    video44["video44"]
+    video45["video45"]
+  end
+  START(("start: video_intro_loop"))
+  START --> video1
+  video1 -->|right| video2
+  video1 -.->|Green Door| video2DG
+  video1 -.->|Red Door| video2DR
+  video10 -->|menu2| video11
+  video11 -->|menu1| video12
+  video12 -->|menu1| video13
+  video13 -->|menu1769537944393| video14
+  video14 -->|menu1| video15
+  video15 -->|menu1| video16
+  video16 -->|menu1| video17
+  video17 -->|menu1| video18
+  video18 -->|menu2| video19
+  video18 -->|menu1| video29
+  video19 -->|menu1| video20
+  video2 -->|right| video3
+  video2 -.->|Trophy| video4
+  video2 -.->|Notebook| video5
+  video2DG -->|menu1| video3
+  video2DG -->|menu2| video4
+  video2DG -->|menu3| video5
+  video2DR -->|menu1| video3
+  video2DR -->|menu2| video4
+  video2DR -->|menu3| video5
+  video20 -->|menu1| video20UIN
+  video20UIN -->|menu1| video21
+  video21 -->|menu2| video22
+  video22 -->|menu1| video22UIN
+  video22UIN -->|menu1| video22UINUEND
+  video22UINUEND -->|menu1| video24
+  video23 -->|menu1| video24
+  video24 -->|menu1| video25
+  video25 -->|menu1769577062259| video26
+  video26 -->|menu1| video27
+  video27 -->|menu1| video28
+  video28 -.->|Insert the red disc| video29
+  video29 -.->|Look around.| video30
+  video2UR -.->|Monitor| video3
+  video2UR -.->|Trophy| video4
+  video2UR -.->|Notebook| video5
+  video3 -->|up| video3DIN
+  video3 -->|left| video3DL
+  video3 -.->|Go Back| video3DR
+  video3 -.->|Watch Showreel| video3UIN
+  video3 -->|right| video4
+  video3DIN -->|right| video4
+  video3DL -->|right| video3DR
+  video3DR -.->|Monitor| video3
+  video3DR -->|up| video3DIN
+  video3DR -->|left| video3DL
+  video3DR -->|right| video4
+  video3DR -.->|Notebook| video5
+  video30 -.->|Open the attachment.| video31
+  video31 -.->|Participate in the project.| video32
+  video32 -.->|Watch Doom Patrol| video33
+  video33 -.->|Look around.| video34
+  video34 -.->|Organize and send the reply.| video35
+  video35 -.->|The Last of Us Main Title| video36
+  video36 -.->|Look around.| video37
+  video37 -.->|Take the next challenge| video38
+  video38 -.->|Episode| video39
+  video39 -.->|Use the traditional method| video40
+  video3UIN -->|menu1| video3DR
+  video4 -->|up| video4DIN
+  video4 -->|left| video4DL
+  video4 -.->|Go Back| video4DR
+  video4 -->|right| video5
+  video4DIN -->|right| video5
+  video4DL -->|up| video3DIN
+  video4DL -->|left| video3DL
+  video4DL -->|right| video4DR
+  video4DR -.->|Monitor| video3
+  video4DR -.->|Trophy| video4
+  video4DR -->|up| video4DIN
+  video4DR -->|left| video4DL
+  video4DR -->|right| video5
+  video40 -.->|Create an online lecture.| video41
+  video41 -.->|Walk forward.| video42
+  video42 -.->|Watch the making process.| video43
+  video43 -->|menu1| video43D1
+  video43D1 -.->|menu1| video43D2
+  video43D2 -.->|menu1| video43D3
+  video43D3 -.->|menu1| video43D4
+  video43D4 -.->|menu1| video43D5
+  video43D5 -.->|Watch the making video.| video44
+  video44 -->|menu1| video45
+  video45 -->|menu1769539170354| video1
+  video5 -->|up| video5DIN
+  video5 -->|left| video5DL
+  video5 -.->|Go Back| video5DR
+  video5 -.->|Turn on the lamp.| video6
+  video5 -.->|Examine the notebook.| video6UNO
+  video5DL -->|up| video4DIN
+  video5DL -->|left| video4DL
+  video5DL -->|right| video5DR
+  video5DR -.->|Monitor| video3
+  video5DR -.->|Trophy| video4
+  video5DR -.->|Notebook| video5
+  video5DR -->|up| video5DIN
+  video5DR -->|left| video5DL
+  video6 -->|menu1| video7
+  video6UNO -->|menu1| video7UNO
+  video7 -->|menu1| video8
+  video7UNO -->|menu2| video9
+  video8 -->|menu2| video9
+  video9 -->|menu1| video10
+  videoUintroUloop -.->|Start| video1
+  class video5DIN ending
+  class video6DHIDDEN ending
+  class video6DHIDDEN hidden
+  class video3DL unavailable
+  class video3DIN unavailable
+  class video4DL unavailable
+  class video4DIN unavailable
+  class video5DL unavailable
+  class video5DIN unavailable
+  class video1 startNode
+  class video23 orphan

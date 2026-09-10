@@ -1,0 +1,107 @@
+from	to	label	source
+video1	video2	right	video-flow
+video1	video2-G	Green Door	videoRouting
+video1	video2-R	Red Door	videoRouting
+video10	video11	menu2	video-flow
+video11	video12	menu1	video-flow
+video12	video13	menu1	video-flow
+video13	video14	menu1769537944393	video-flow
+video14	video15	menu1	video-flow
+video15	video16	menu1	video-flow
+video16	video17	menu1	video-flow
+video17	video18	menu1	video-flow
+video18	video19	menu2	video-flow
+video18	video29	menu1	video-flow
+video19	video20	menu1	video-flow
+video2	video3	right	video-flow
+video2	video4	Trophy	videoRouting
+video2	video5	Notebook	videoRouting
+video2-G	video3	menu1	video-flow
+video2-G	video4	menu2	video-flow
+video2-G	video5	menu3	video-flow
+video2-R	video3	menu1	video-flow
+video2-R	video4	menu2	video-flow
+video2-R	video5	menu3	video-flow
+video20	video20_IN	menu1	video-flow
+video20_IN	video21	menu1	video-flow
+video21	video22	menu2	video-flow
+video22	video22_IN	menu1	video-flow
+video22_IN	video22_IN_END	menu1	video-flow
+video22_IN_END	video24	menu1	video-flow
+video23	video24	menu1	video-flow
+video24	video25	menu1	video-flow
+video25	video26	menu1769577062259	video-flow
+video26	video27	menu1	video-flow
+video27	video28	menu1	video-flow
+video28	video29	Insert the red disc	videoRouting
+video29	video30	Look around.	videoRouting
+video2_R	video3	Monitor	videoRouting
+video2_R	video4	Trophy	videoRouting
+video2_R	video5	Notebook	videoRouting
+video3	video3-IN	up	video-flow
+video3	video3-L	left	video-flow
+video3	video3-R	Go Back	videoRouting
+video3	video3_IN	Watch Showreel	videoRouting
+video3	video4	right	video-flow
+video3-IN	video4	right	video-flow
+video3-L	video3-R	right	video-flow
+video3-R	video3	Monitor	videoRouting
+video3-R	video3-IN	up	video-flow
+video3-R	video3-L	left	video-flow
+video3-R	video4	right	video-flow
+video3-R	video5	Notebook	videoRouting
+video30	video31	Open the attachment.	videoRouting
+video31	video32	Participate in the project.	videoRouting
+video32	video33	Watch Doom Patrol	videoRouting
+video33	video34	Look around.	videoRouting
+video34	video35	Organize and send the reply.	videoRouting
+video35	video36	The Last of Us Main Title	videoRouting
+video36	video37	Look around.	videoRouting
+video37	video38	Take the next challenge	videoRouting
+video38	video39	Episode	videoRouting
+video39	video40	Use the traditional method	videoRouting
+video3_IN	video3-R	menu1	video-flow
+video4	video4-IN	up	video-flow
+video4	video4-L	left	video-flow
+video4	video4-R	Go Back	videoRouting
+video4	video5	right	video-flow
+video4-IN	video5	right	video-flow
+video4-L	video3-IN	up	video-flow
+video4-L	video3-L	left	video-flow
+video4-L	video4-R	right	video-flow
+video4-R	video3	Monitor	videoRouting
+video4-R	video4	Trophy	videoRouting
+video4-R	video4-IN	up	video-flow
+video4-R	video4-L	left	video-flow
+video4-R	video5	right	video-flow
+video40	video41	Create an online lecture.	videoRouting
+video41	video42	Walk forward.	videoRouting
+video42	video43	Watch the making process.	videoRouting
+video43	video43-1	menu1	video-flow
+video43-1	video43-2	menu1	videoRouting
+video43-2	video43-3	menu1	videoRouting
+video43-3	video43-4	menu1	videoRouting
+video43-4	video43-5	menu1	videoRouting
+video43-5	video44	Watch the making video.	videoRouting
+video44	video45	menu1	video-flow
+video45	video1	menu1769539170354	video-flow
+video5	video5-IN	up	video-flow
+video5	video5-L	left	video-flow
+video5	video5-R	Go Back	videoRouting
+video5	video6	Turn on the lamp.	videoRouting
+video5	video6_NO	Examine the notebook.	videoRouting
+video5-L	video4-IN	up	video-flow
+video5-L	video4-L	left	video-flow
+video5-L	video5-R	right	video-flow
+video5-R	video3	Monitor	videoRouting
+video5-R	video4	Trophy	videoRouting
+video5-R	video5	Notebook	videoRouting
+video5-R	video5-IN	up	video-flow
+video5-R	video5-L	left	video-flow
+video6	video7	menu1	video-flow
+video6_NO	video7_NO	menu1	video-flow
+video7	video8	menu1	video-flow
+video7_NO	video9	menu2	video-flow
+video8	video9	menu2	video-flow
+video9	video10	menu1	video-flow
+video_intro_loop	video1	Start	videoRouting
