@@ -77,7 +77,7 @@
           "text": { "ko": "온장고 위 커피", "en": "The coffee on the warmer" },
           "to": "coffee",
           "arrow": "left",
-          "hotspot": { "x": 14, "y": 44, "w": 15, "h": 20 }
+          "hotspot": { "x": 1, "y": 18, "w": 16, "h": 60 }
         },
         {
           "id": "e-magazine",
@@ -85,7 +85,7 @@
           "text": { "ko": "매대의 잡지", "en": "The magazine on the rack" },
           "to": "magazine",
           "arrow": "up",
-          "hotspot": { "x": 40, "y": 36, "w": 18, "h": 22 }
+          "hotspot": { "x": 38, "y": 28, "w": 21, "h": 47 }
         },
         {
           "id": "e-umbrella",
@@ -100,7 +100,7 @@
           "text": { "ko": "출입구", "en": "The door" },
           "to": "dawn",
           "arrow": "right",
-          "hotspot": { "x": 82, "y": 34, "w": 15, "h": 40 }
+          "hotspot": { "x": 83, "y": 18, "w": 16, "h": 60 }
         }
       ],
       "glow": {
@@ -272,8 +272,8 @@
           "until": "00:16",
           "to": "reflection",
           "box": {
-            "desktop": { "x": 70, "y": 60, "w": 22, "h": 20 },
-            "mobile": { "x": 64, "y": 54, "w": 30, "h": 24 }
+            "desktop": { "x": 84, "y": 20, "w": 16, "h": 60 },
+            "mobile": { "x": 72, "y": 20, "w": 26, "h": 65 }
           },
           "previewEnabled": false
         }
