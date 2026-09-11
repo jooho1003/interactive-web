@@ -1,0 +1,327 @@
+{
+  "meta": {
+    "id": "dawn-store",
+    "title": { "ko": "새벽 세 시", "en": "Still Open" },
+    "subtitle": { "ko": "편의점", "en": "Convenience Store" },
+    "creator": "",
+    "creatorLink": "",
+    "aiDisclosure": {
+      "ko": "이 작품의 이미지는 생성형 AI로 제작되었습니다.",
+      "en": "Images in this work were created with generative AI."
+    },
+    "defaultLang": "ko",
+    "langs": ["ko", "en"]
+  },
+  "start": "intro",
+  "nodes": [
+    {
+      "id": "intro",
+      "type": "intro",
+      "title": { "ko": "유리문", "en": "The Glass Door" },
+      "media": {
+        "kind": "still",
+        "src": "/media/intro.webp",
+        "duration": 8,
+        "kenBurns": {
+          "from": { "scale": 1.0, "x": 0, "y": 0 },
+          "to": { "scale": 1.04, "x": 0, "y": -0.5 }
+        }
+      },
+      "available": true,
+      "loop": true,
+      "skippable": false,
+      "buttonShowBeforeEnd": 5,
+      "question": { "ko": "들어간다", "en": "Go inside" },
+      "edges": [
+        {
+          "id": "e-enter",
+          "kind": "menu",
+          "text": { "ko": "문을 연다", "en": "Open the door" },
+          "to": "hub",
+          "hotspot": { "x": 38, "y": 30, "w": 24, "h": 46 }
+        }
+      ],
+      "glow": { "primary": "e-enter" },
+      "subtitles": {
+        "ko": [
+          { "start": "00:01", "end": "00:05", "text": "새벽 세 시. 여기만 켜져 있다.", "fadeIn": true, "fadeOut": true }
+        ],
+        "en": [
+          { "start": "00:01", "end": "00:05", "text": "Three in the morning. Only this place is lit.", "fadeIn": true, "fadeOut": true }
+        ]
+      },
+      "audio": { "bgm": "on" }
+    },
+    {
+      "id": "hub",
+      "type": "hub",
+      "title": { "ko": "계산대", "en": "The Counter" },
+      "media": {
+        "kind": "still",
+        "src": "/media/hub.webp",
+        "duration": 6,
+        "kenBurns": {
+          "from": { "scale": 1.0, "x": 0, "y": 0 },
+          "to": { "scale": 1.03, "x": 0, "y": -0.4 }
+        }
+      },
+      "available": true,
+      "loop": true,
+      "skippable": false,
+      "buttonShowBeforeEnd": 4,
+      "question": { "ko": "무엇을 살펴볼까", "en": "What will you look at?" },
+      "edges": [
+        {
+          "id": "e-coffee",
+          "kind": "menu",
+          "text": { "ko": "온장고 위 커피", "en": "The coffee on the warmer" },
+          "to": "coffee",
+          "arrow": "left",
+          "hotspot": { "x": 14, "y": 44, "w": 15, "h": 20 }
+        },
+        {
+          "id": "e-magazine",
+          "kind": "menu",
+          "text": { "ko": "매대의 잡지", "en": "The magazine on the rack" },
+          "to": "magazine",
+          "arrow": "up",
+          "hotspot": { "x": 40, "y": 36, "w": 18, "h": 22 }
+        },
+        {
+          "id": "e-umbrella",
+          "kind": "menu",
+          "text": { "ko": "창가의 우산", "en": "The umbrella by the window" },
+          "to": "umbrella",
+          "hotspot": { "x": 64, "y": 52, "w": 11, "h": 24 }
+        },
+        {
+          "id": "e-exit",
+          "kind": "menu",
+          "text": { "ko": "출입구", "en": "The door" },
+          "to": "dawn",
+          "arrow": "right",
+          "hotspot": { "x": 82, "y": 34, "w": 15, "h": 40 }
+        }
+      ],
+      "glow": {
+        "primary": "e-coffee",
+        "secondary": "e-exit",
+        "switchWhen": ["seenCoffee", "seenMagazine"]
+      },
+      "subtitles": {
+        "ko": [
+          { "start": "00:01", "end": "00:04", "text": "아무도 없다.", "fadeIn": true, "fadeOut": true }
+        ],
+        "en": [
+          { "start": "00:01", "end": "00:04", "text": "No one is here.", "fadeIn": true, "fadeOut": true }
+        ]
+      },
+      "audio": { "bgm": "on" }
+    },
+    {
+      "id": "coffee",
+      "type": "branch",
+      "title": { "ko": "식은 커피", "en": "Cold Coffee" },
+      "media": {
+        "kind": "still",
+        "src": "/media/coffee.webp",
+        "duration": 14,
+        "kenBurns": {
+          "from": { "scale": 1.0, "x": 0, "y": 0 },
+          "to": { "scale": 1.06, "x": -1.5, "y": 0.5 }
+        }
+      },
+      "available": true,
+      "skippable": true,
+      "buttonShowBeforeEnd": 4,
+      "setsFlag": "seenCoffee",
+      "edges": [
+        { "id": "e-coffee-back", "kind": "arrow", "arrow": "right", "to": "back" }
+      ],
+      "glow": { "primary": "e-coffee-back" },
+      "subtitles": {
+        "ko": [
+          { "start": "00:01", "end": "00:04", "text": "누군가 사놓고 마시지 않았다.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:04", "end": "00:07", "text": "영수증의 시각은 밤 열한 시.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:07", "end": "00:10", "text": "네 시간째 식어가는 중이다.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:10", "end": "00:13", "text": "무엇을 기다렸을까.", "fadeIn": true, "fadeOut": true }
+        ],
+        "en": [
+          { "start": "00:01", "end": "00:04", "text": "Someone bought it and never drank it.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:04", "end": "00:07", "text": "The receipt says eleven at night.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:07", "end": "00:10", "text": "It has been cooling for four hours.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:10", "end": "00:13", "text": "What were they waiting for?", "fadeIn": true, "fadeOut": true }
+        ]
+      },
+      "audio": { "bgm": "on" }
+    },
+    {
+      "id": "back",
+      "type": "link",
+      "title": { "ko": "통로", "en": "The Aisle" },
+      "media": {
+        "kind": "still",
+        "src": "/media/back.webp",
+        "duration": 4,
+        "kenBurns": {
+          "from": { "scale": 1.0, "x": 0, "y": 0 },
+          "to": { "scale": 1.15, "x": 0, "y": 0 }
+        }
+      },
+      "available": true,
+      "skippable": true,
+      "buttonShowBeforeEnd": 2,
+      "edges": [
+        { "id": "e-back-hub", "kind": "arrow", "arrow": "right", "to": "hub" }
+      ],
+      "glow": { "primary": "e-back-hub" },
+      "audio": { "bgm": "on" }
+    },
+    {
+      "id": "magazine",
+      "type": "branch",
+      "title": { "ko": "오래된 잡지", "en": "The Old Magazine" },
+      "media": {
+        "kind": "still",
+        "src": "/media/magazine.webp",
+        "duration": 42,
+        "kenBurns": {
+          "from": { "scale": 1.0, "x": 0, "y": 0 },
+          "to": { "scale": 1.1, "x": 1, "y": -1 }
+        }
+      },
+      "available": true,
+      "skippable": false,
+      "buttonShowBeforeEnd": 2,
+      "setsFlag": "seenMagazine",
+      "edges": [
+        { "id": "e-magazine-hub", "kind": "arrow", "arrow": "right", "to": "hub" }
+      ],
+      "glow": { "primary": "e-magazine-hub" },
+      "timeline": {
+        "chapters": [
+          { "at": "00:04", "title": { "ko": "표지", "en": "The Cover" } },
+          { "at": "00:16", "title": { "ko": "접힌 자국", "en": "The Fold" } },
+          { "at": "00:30", "title": { "ko": "마지막 장", "en": "The Last Page" } }
+        ]
+      },
+      "subtitles": {
+        "ko": [
+          { "start": "00:02", "end": "00:06", "text": "한 권만 자리가 틀어져 있다.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:07", "end": "00:11", "text": "표지가 바랬다. 삼 년 전 호다.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:14", "end": "00:19", "text": "가운데가 접혀 있다. 여러 번 펼친 자국.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:20", "end": "00:25", "text": "누가 같은 페이지를 계속 봤다.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:31", "end": "00:36", "text": "마지막 장에 전화번호가 적혀 있다.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:37", "end": "00:41", "text": "지워졌다가, 다시 쓰였다.", "fadeIn": true, "fadeOut": true }
+        ],
+        "en": [
+          { "start": "00:02", "end": "00:06", "text": "Only one is out of place.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:07", "end": "00:11", "text": "The cover has faded. It is three years old.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:14", "end": "00:19", "text": "The middle is creased. Opened many times.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:20", "end": "00:25", "text": "Someone kept returning to the same page.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:31", "end": "00:36", "text": "A phone number is written on the last page.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:37", "end": "00:41", "text": "Erased, then written again.", "fadeIn": true, "fadeOut": true }
+        ]
+      },
+      "audio": { "bgm": "off" }
+    },
+    {
+      "id": "umbrella",
+      "type": "branch",
+      "title": { "ko": "창가의 우산", "en": "The Umbrella" },
+      "media": {
+        "kind": "still",
+        "src": "/media/umbrella.webp",
+        "duration": 12,
+        "kenBurns": {
+          "from": { "scale": 1.0, "x": 0, "y": 0 },
+          "to": { "scale": 1.07, "x": 1, "y": 0 }
+        }
+      },
+      "available": false,
+      "skippable": true,
+      "buttonShowBeforeEnd": 3,
+      "setsFlag": "seenUmbrella",
+      "edges": [
+        { "id": "e-umbrella-hub", "kind": "arrow", "arrow": "right", "to": "hub" }
+      ],
+      "glow": { "primary": "e-umbrella-hub" },
+      "audio": { "bgm": "on" }
+    },
+    {
+      "id": "dawn",
+      "type": "ending",
+      "title": { "ko": "창밖", "en": "Outside" },
+      "media": {
+        "kind": "still",
+        "src": "/media/dawn.webp",
+        "duration": 20,
+        "kenBurns": {
+          "from": { "scale": 1.0, "x": 0, "y": 0 },
+          "to": { "scale": 1.08, "x": 0, "y": -1 }
+        }
+      },
+      "available": true,
+      "skippable": false,
+      "buttonShowBeforeEnd": 0,
+      "edges": [
+        {
+          "id": "e-hidden-reflection",
+          "kind": "hidden",
+          "from": "00:11",
+          "until": "00:16",
+          "to": "reflection",
+          "box": {
+            "desktop": { "x": 70, "y": 60, "w": 22, "h": 20 },
+            "mobile": { "x": 64, "y": 54, "w": 30, "h": 24 }
+          },
+          "previewEnabled": false
+        }
+      ],
+      "subtitles": {
+        "ko": [
+          { "start": "00:02", "end": "00:06", "text": "창밖이 파래진다.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:07", "end": "00:11", "text": "형광등이 조금 약해진다.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:13", "end": "00:17", "text": "밤이 끝났다.", "fadeIn": true, "fadeOut": true }
+        ],
+        "en": [
+          { "start": "00:02", "end": "00:06", "text": "The window turns blue.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:07", "end": "00:11", "text": "The fluorescent light dims a little.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:13", "end": "00:17", "text": "The night is over.", "fadeIn": true, "fadeOut": true }
+        ]
+      },
+      "audio": { "bgm": "on" }
+    },
+    {
+      "id": "reflection",
+      "type": "ending",
+      "title": { "ko": "반사", "en": "Reflection" },
+      "media": {
+        "kind": "still",
+        "src": "/media/reflection.webp",
+        "duration": 16,
+        "kenBurns": {
+          "from": { "scale": 1.08, "x": 0, "y": -1 },
+          "to": { "scale": 1.2, "x": 2, "y": -1.5 }
+        }
+      },
+      "available": true,
+      "skippable": false,
+      "buttonShowBeforeEnd": 0,
+      "edges": [],
+      "subtitles": {
+        "ko": [
+          { "start": "00:02", "end": "00:06", "text": "냉장고 유리에 계산대가 비친다.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:07", "end": "00:11", "text": "누군가 서 있다.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:12", "end": "00:15", "text": "아까는 없었다.", "fadeIn": true, "fadeOut": true }
+        ],
+        "en": [
+          { "start": "00:02", "end": "00:06", "text": "The cooler glass reflects the counter.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:07", "end": "00:11", "text": "Someone is standing there.", "fadeIn": true, "fadeOut": true },
+          { "start": "00:12", "end": "00:15", "text": "They were not there before.", "fadeIn": true, "fadeOut": true }
+        ]
+      },
+      "audio": { "bgm": "off" }
+    }
+  ]
+}
