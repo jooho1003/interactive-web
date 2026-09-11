@@ -92,10 +92,10 @@ button { cursor: pointer; }
 [data-viewport="mobile"] .direction-right { right: var(--arrow-mobile-edge-margin); }
 [data-viewport="mobile"] .direction-up { top: var(--arrow-mobile-edge-margin); }
 [data-viewport="mobile"] .direction-arrow.is-glowing::after { box-shadow: var(--arrow-mobile-glow-shadow) var(--arrow-mobile-glow-color); animation-duration: var(--arrow-mobile-glow-pulse-duration-sec); }
-[data-viewport="mobile"] .menu-stack { bottom: var(--menu-mobile-bottom-percent); gap: var(--menu-mobile-gap); }
+[data-viewport="mobile"] .menu-stack { bottom: var(--menu-mobile-bottom-percent); gap: var(--menu-mobile-gap); width: var(--menu-mobile-width); }
 [data-viewport="mobile"] .menu-stack h1 { margin-bottom: calc(var(--question-mobile-margin-bottom) - var(--menu-mobile-gap)); font-size: var(--question-mobile-font-size); }
-[data-viewport="mobile"] .menu-list { gap: var(--menu-mobile-gap); }
-[data-viewport="mobile"] .menu-button { width: var(--menu-mobile-width); height: var(--menu-mobile-height); border-radius: var(--menu-mobile-radius); font-size: var(--menu-mobile-font-size); }
+[data-viewport="mobile"] .menu-list { gap: var(--menu-mobile-gap); width: 100%; }
+[data-viewport="mobile"] .menu-button { width: 100%; height: var(--menu-mobile-height); border-radius: var(--menu-mobile-radius); font-size: var(--menu-mobile-font-size); }
 [data-viewport="mobile"] .subtitle { bottom: var(--subtitle-mobile-bottom-percent); width: var(--subtitle-mobile-max-width-percent); max-width: var(--subtitle-mobile-max-width-percent); font-size: var(--subtitle-mobile-font-size); letter-spacing: var(--subtitle-mobile-letter-spacing); line-height: var(--subtitle-mobile-line-height); }
 [data-viewport="mobile"] .skip-button { top: var(--skip-mobile-position-top); right: var(--skip-mobile-position-right); width: var(--skip-mobile-width); height: var(--skip-mobile-height); border-radius: var(--skip-mobile-radius); font-size: var(--skip-mobile-font-size); }
 [data-viewport="mobile"] .timeline { top: var(--timeline-mobile-position-top); width: var(--timeline-mobile-width-percent); }

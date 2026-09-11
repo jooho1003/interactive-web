@@ -84,7 +84,6 @@
           "kind": "menu",
           "text": { "ko": "매대의 잡지", "en": "The magazine on the rack" },
           "to": "magazine",
-          "arrow": "up",
           "hotspot": { "x": 38, "y": 28, "w": 21, "h": 47 }
         },
         {

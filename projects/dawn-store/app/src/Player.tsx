@@ -17,7 +17,7 @@ export function Player({ story, theme, lang, onLangChange }: Props) {
   const { currentNode, flags, nodeMap, navigate, replay } = useStoryState(story);
   const [previousNode, setPreviousNode] = useState<typeof currentNode | null>(null);
   const [activeNodeId, setActiveNodeId] = useState(currentNode.id);
-  const audio = useAudio(currentNode);
+  const audio = useAudio(currentNode, theme.audio);
   const frameRef = useRef<HTMLDivElement>(null);
   const [mediaBounds, setMediaBounds] = useState({ left: 0, top: 0, width: 0, height: 0 });
   const [mobile, setMobile] = useState(false);

@@ -6,8 +6,9 @@ function kebab(value: string) {
   return value.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`);
 }
 
-function cssValue(key: string, value: string | number): string {
+function cssValue(key: string, value: string | number, path: string[]): string {
   if (typeof value === "string") return value;
+  if (path[0] === "zIndex") return String(value);
   if (key.toLowerCase().includes("opacity")) return String(value > 1 ? value / 100 : value);
   if (unitless.has(key)) return String(value);
   if (key.endsWith("Percent") || key === "widthPercent" || key === "bottomPercent" || key === "maxWidthPercent") {
@@ -24,7 +25,7 @@ function visit(value: unknown, path: string[], set: (name: string, value: string
     if (key.startsWith("_")) continue;
     const nextPath = [...path, key];
     if (typeof child === "string" || typeof child === "number") {
-      set(`--${nextPath.map(kebab).join("-")}`, cssValue(key, child));
+      set(`--${nextPath.map(kebab).join("-")}`, cssValue(key, child, nextPath));
     } else {
       visit(child, nextPath, set);
     }

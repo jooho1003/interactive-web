@@ -25,10 +25,23 @@ export const themeSchema = z.object({
   footer: z.object({ desktop: responsive, mobile: responsive }),
   aiDisclosure: z.object({ desktop: responsive, mobile: responsive }),
   transition: z.record(z.string(), z.unknown()),
-  audio: z.record(z.string(), z.unknown()),
+  audio: z.object({
+    bgm: z.object({
+      src: z.string().min(1),
+      volume: z.number().min(0).max(1),
+      crossfadeMs: z.number().nonnegative(),
+      loop: z.boolean(),
+    }),
+    sfx: z.object({
+      hoverEnabled: z.boolean(),
+      clickEnabled: z.boolean(),
+      volume: z.number().min(0).max(1),
+      hover: z.string().min(1),
+      click: z.string().min(1),
+    }),
+  }),
   breakpoint: z.object({ mobileMaxWidth: z.number() }),
   zIndex: z.record(z.string(), z.number()),
 });
 
 export type Theme = z.infer<typeof themeSchema>;
-
