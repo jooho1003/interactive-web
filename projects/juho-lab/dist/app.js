@@ -16,6 +16,9 @@ let query = visit?.query || '';
 $('#search').value = query;
 let scene;
 let view = 'space';
+let sceneVisible = true;
+const syncSceneActivity=()=>scene?.setActive(view==='space' && !document.hidden && sceneVisible);
+new IntersectionObserver(([entry])=>{sceneVisible=entry.isIntersecting;syncSceneActivity()},{threshold:0}).observe($('#space').parentElement);
 let motion = effectiveMotion();
 const motionQuery = matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -126,7 +129,7 @@ function setView(next) {
   $('#list-view').setAttribute('aria-pressed', String(view === 'list'));
   $('#world-prev').hidden = view === 'list'; $('#world-next').hidden = view === 'list'; $('#gallery-pagination').hidden = view === 'list'; $('#reset-camera').hidden = view === 'list'; $('#motion-toggle').hidden = view === 'list';
   $('#space-hint').textContent = view === 'space' ? '넘겨서 탐색 · 눌러서 입장' : '작품을 누르면 해당 페이지로 이동합니다';
-  scene?.setActive(view === 'space' && !document.hidden);
+  syncSceneActivity();
 }
 $('#space-view').addEventListener('click', () => setView('space'));
 $('#list-view').addEventListener('click', () => setView('list'));
@@ -137,10 +140,10 @@ motionQuery.addEventListener('change', () => { if(readPreferences().motion === '
 $('#space').addEventListener('keydown', (event) => {
   if (event.target !== $('#space')) return;
   if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); moveSelection(event.key === 'ArrowRight' ? 1 : -1); }
-  if (event.key === 'Enter') { event.preventDefault(); if (visibleProjects().length) openProject(selected); }
+  if (event.key === 'Enter') { event.preventDefault(); if (visibleProjects().length) { if(scene) scene.enter(selected); else openProject(selected); } }
   if (event.key === 'Home') { event.preventDefault(); scene?.reset(); }
 });
-document.addEventListener('visibilitychange', () => scene?.setActive(!document.hidden && view === 'space'));
+document.addEventListener('visibilitychange', syncSceneActivity);
 const dialog = $('#about-dialog');
 $('#about-copy').textContent = profile.introduction;
 $('#about-open').addEventListener('click', () => dialog.showModal());
@@ -180,7 +183,7 @@ import('./scene.js').then(({ createGallery }) => {
   scene = createGallery($('#scene'), projects, changeSelection, fallback, openProject, projectHref);
   scene.select(selected); scene.filter(visibleProjects().map((p) => p.id));
   scene.setZoom(readPreferences().zoom);
-  scene.setReducedMotion(motion); scene.setActive(view === 'space' && !document.hidden);
+  scene.setReducedMotion(motion); syncSceneActivity();
   $('#scene-status').hidden = true;
 }).catch(fallback);
 

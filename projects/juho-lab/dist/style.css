@@ -11,3 +11,16 @@ html[data-motion=reduce]{scroll-behavior:auto}html[data-motion=reduce] *{transit
 
 .site-header{position:fixed;transition:background .2s,box-shadow .2s}.site-header.scrolled{background:#f9fcf6ed;backdrop-filter:blur(14px);box-shadow:0 1px 0 #46624d20}
 .project-detail{display:none}.gallery-footer{bottom:104px}@media(max-width:620px){.gallery-footer{bottom:140px}}
+
+.village-walker{position:absolute;left:0;top:0;height:auto;pointer-events:none;z-index:3;transform-origin:center 85%;will-change:transform}
+.building-light{position:absolute;left:0;top:0;width:90px;height:85px;border-radius:50%;background:radial-gradient(ellipse,var(--light),transparent 70%);mix-blend-mode:screen;pointer-events:none;z-index:1}
+.entry-veil{position:absolute;inset:0;z-index:7;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:rgb(248 250 245 / calc(var(--entry-progress,0)*.97));pointer-events:none}
+.entry-veil strong{margin-top:30vh;font-size:1rem;color:#284b3d;background:#fffffff0;border-radius:22px;padding:8px 18px}
+.entry-veil button{pointer-events:auto;border:1px solid #486b5540;border-radius:20px;padding:7px 14px;background:#ffffffe8;font-size:.85rem}
+.entering .scene-label{pointer-events:none}.entering .world-label{opacity:0;transition:opacity .25s}
+.project-grid:not([hidden]){animation:list-arrive .35s ease-out}
+@keyframes list-arrive{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+html[data-motion=reduce] *{animation:none!important}
+@media(max-width:620px){.building-light{width:55px;height:60px}}
+
+.exhibition .intro{transition:opacity .35s}.exhibition:has(.entering) .intro{opacity:0}.village-walker{z-index:1}

@@ -34,3 +34,7 @@ Pretendard Variable은 https://github.com/orioncactus/pretendard 의 배포 파�
 2026-09-12 Chromium 데스크톱 1440×1000 / 모바일 390×844: 실제 폰트 로드, 120% 글자 크기, 설정 새로고침 후 유지, 링크 변경/복원, 모달 Escape 및 포커스 복귀, 드래그와 클릭 구분, 개별 페이지 진입, 검색·선택 복원, 키보드 체험 진입, 목록/상세 탐색, 잘못된 ID, 런타임 오류 확인. 실제 화면을 보고 중복 제목과 모바일 배경 끝부분을 수정했다.
 
 Sites의 기존 프로젝트 ID와 비공개 범위를 유지한다. 별도 소스 체크아웃에 동일 파일을 게시하고 그 리비전의 정적 파일만 패키징한다.
+
+## Camera and ambient life
+`village-motion.js` choreographs a 1.05s travel arc with zoom-out, slight bank and settling. Building entry zooms in and fades for 1.15s; Escape or the stay button cancels it. Native modified-click links remain unchanged. An original alpha mascot walks toward the selected building, with softly pulsing building lights. Reduced motion removes these animations and navigates immediately. Hidden tabs, list mode and offscreen scenes pause the render loop. Return navigation clears an unfinished entrance.
+Validated animated entry, cancellation without delayed navigation, browser return recovery, moving and frozen mascot states, plus existing desktop/mobile navigation checks.
