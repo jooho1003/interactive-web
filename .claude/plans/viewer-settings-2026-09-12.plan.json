@@ -1,0 +1,11 @@
+{
+  "gate": "PASS",
+  "nodes": [
+    {"id":"design","title":"관람 설정 설계","domain":"architecture","D1":2,"D2":1,"D3":0,"D4":2,"score":5,"tier":"powerful","agent":"main","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":[],"산출물":"SPEC 14절"},
+    {"id":"settings","title":"설정 및 재생 연결","domain":"implementation","D1":0,"D2":1,"D3":1,"D4":1,"score":3,"tier":"balanced","agent":"main","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":["design"],"산출물":"설정 패널, 저장, 재생 훅"},
+    {"id":"automation","title":"검증 자동화","domain":"implementation","D1":0,"D2":1,"D3":1,"D4":1,"score":3,"tier":"balanced","agent":"main","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":["design"],"산출물":"check 명령, 테스트, 예산 검사"},
+    {"id":"review","title":"최종 검수","domain":"review","D1":0,"D2":1,"D3":0,"D4":2,"score":3,"tier":"powerful","agent":"main","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":["settings","automation"],"산출물":"QA 보고"}
+  ],
+  "powerful_exception":"범위 설계와 최종 검수는 하드 오버라이드",
+  "execution":"현재 세션에서 직접 수행; 모델 필드는 저장소 배정 기준"
+}

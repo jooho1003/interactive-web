@@ -234,5 +234,33 @@
     "controls": 75,
     "transitionOverlay": 80,
     "endScreen": 90
+  },
+
+  "settings": {
+    "desktop": {
+      "width": 520,
+      "padding": 24,
+      "gap": 12,
+      "fontSize": 14,
+      "controlHeight": 44,
+      "radius": 12,
+      "titleSize": 22,
+      "largeSubtitleSize": 26,
+      "checkboxSize": 20,
+      "borderWidth": 1,
+      "focusWidth": 2,
+      "lineHeight": 1.5,
+      "backdrop": "rgba(0,0,0,0.72)"
+    },
+    "mobile": {
+      "width": 358,
+      "padding": 18,
+      "gap": 10,
+      "fontSize": 14,
+      "controlHeight": 44,
+      "radius": 12,
+      "titleSize": 20,
+      "largeSubtitleSize": 20
+    }
   }
 }

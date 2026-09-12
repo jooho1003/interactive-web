@@ -5,9 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npm run validate && tsc -b && vite build && npm run check:budget",
     "preview": "vite preview",
-    "lint:graph": "tsx scripts/lint-graph.ts"
+    "lint:graph": "tsx scripts/lint-graph.ts",
+    "validate": "npm run lint:graph && tsx scripts/check-assets.ts",
+    "check:budget": "tsx scripts/check-budget.ts",
+    "test": "tsx --test scripts/preferences.test.ts",
+    "check": "npm test && npm run build",
+    "test:e2e": "playwright test",
+    "check:all": "npm run check && npm run test:e2e"
   },
   "dependencies": {
     "react": "^19.1.1",
@@ -15,9 +21,10 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "@types/node": "^24.3.0",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
-    "@types/node": "^24.3.0",
     "@vitejs/plugin-react": "^5.0.2",
     "tsx": "^4.19.3",
     "typescript": "^5.9.2",

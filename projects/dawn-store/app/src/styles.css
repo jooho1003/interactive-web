@@ -107,6 +107,7 @@ button { cursor: pointer; }
 [data-viewport="mobile"] .replay-button { width: var(--replay-mobile-width); height: var(--replay-mobile-height); border-radius: var(--replay-mobile-radius); font-size: var(--replay-mobile-font-size); }
 [data-viewport="mobile"] .end-screen a { font-size: var(--footer-mobile-font-size); }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
-}
+[data-motion="reduce"] *, [data-motion="reduce"] *::before, [data-motion="reduce"] *::after { animation: none !important; transition: none !important; }
+[data-motion="reduce"] .media-layer img { transform: none !important; }
+[data-subtitle-size="large"] .subtitle { font-size: var(--settings-desktop-large-subtitle-size); }
+[data-viewport="mobile"] [data-subtitle-size="large"] .subtitle { font-size: var(--settings-mobile-large-subtitle-size); }

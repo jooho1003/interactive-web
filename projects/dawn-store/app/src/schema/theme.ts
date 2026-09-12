@@ -41,6 +41,7 @@ export const themeSchema = z.object({
     }),
   }),
   breakpoint: z.object({ mobileMaxWidth: z.number() }),
+  settings: z.object({ desktop: responsive, mobile: responsive }),
   zIndex: z.record(z.string(), z.number()),
 });
 

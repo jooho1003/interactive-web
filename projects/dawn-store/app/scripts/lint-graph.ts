@@ -26,6 +26,9 @@ function validateEdges(current: Story["nodes"][number]) {
     if (edge.kind === "hidden" && parseTimecode(edge.until) > current.media.duration) {
       error(`${current.id}/${edge.id}: hidden link ends after media duration`);
     }
+    if (edge.kind === "hidden" && parseTimecode(edge.from) >= parseTimecode(edge.until)) {
+      error(`${current.id}/${edge.id}: hidden link start must be before end`);
+    }
   }
 }
 
@@ -49,9 +52,12 @@ function validateTiming(current: Story["nodes"][number]) {
 
 function validateGraph() {
   if (!nodeMap.has(story.start)) error(`start node '${story.start}' does not exist`);
+  if (!nodeMap.get(story.start)?.available) error("start node must be available");
+  if (nodeMap.size !== story.nodes.length) error("node IDs must be unique");
 
   const incoming = new Set<string>();
   for (const node of story.nodes) {
+    if (new Set(node.edges.map((edge) => edge.id)).size !== node.edges.length) error(`${node.id}: edge IDs must be unique`);
     validateEdges(node);
     validateTiming(node);
     for (const edge of node.edges) incoming.add(edge.to);
@@ -97,4 +103,3 @@ if (errors.length) {
 } else {
   console.log(`Graph valid: ${story.nodes.length} nodes, ${warnings.length} warning(s).`);
 }
-
