@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JUHO LAB — 아이디어를 실제로 만드는 곳</title>
+  <meta name="description" content="이주호의 바이브 코딩 포트폴리오. AI 도구, 콘텐츠 자동화, 게임, 인터랙티브 웹 프로젝트를 둘러보세요.">
+  <meta name="theme-color" content="#141517"><link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css"><script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#project-index">프로젝트 목록으로 이동</a>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="JUHO LAB 홈"><span class="brand-symbol" aria-hidden="true">J.</span>JUHO<span class="brand-light">LAB</span></a>
+    <nav aria-label="주 메뉴"><a class="nav-active" href="#work">작업물 <span>06</span></a><button id="about-open" type="button">소개</button><a href="https://github.com/jooho1003" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></nav>
+    <span class="header-note">A PERSONAL COLLECTION / 2026</span>
+  </header>
+  <main id="work">
+    <section class="intro" aria-labelledby="page-title">
+      <div><p class="eyebrow"><span class="small-cross" aria-hidden="true">✳</span> BUILT WITH CURIOSITY & AI</p><h1 id="page-title">생각에서, <em>작동하는 것</em>으로.</h1></div>
+      <p class="intro-copy">AI 도구부터 게임까지.<br>직접 만들고, 써 보고, 다시 고치는 이주호의 작업실.</p>
+    </section>
+    <section class="workspace" aria-label="프로젝트 갤러리">
+      <div class="gallery-wrap">
+        <div class="gallery-toolbar"><div class="gallery-title"><span class="mono">01 — 06</span><span>PROJECT SPACE</span></div><div class="view-switch" role="group" aria-label="보기 방식"><button id="space-view" type="button" aria-pressed="true">공간 보기</button><button id="list-view" type="button" aria-pressed="false">목록 보기</button></div></div>
+        <div id="space" class="space" tabindex="0" role="group" aria-label="3D 프로젝트 공간. 드래그로 회전하고 패널을 선택하세요. 방향키로 프로젝트를 선택할 수 있습니다.">
+          <div id="scene"></div>
+          <div class="space-watermark" aria-hidden="true">WORKS<br><span>IN PROGRESS.</span></div>
+          <div id="scene-status" class="scene-status" role="status">프로젝트 공간을 준비하고 있습니다.</div>
+        </div>
+        <div id="project-grid" class="project-grid" hidden></div>
+        <div class="gallery-footer"><p id="space-hint"><span aria-hidden="true">↔</span> 드래그해서 둘러보기 · 패널을 눌러 선택</p><div class="scene-buttons"><button id="motion-toggle" type="button" aria-pressed="false">움직임 줄이기</button><button id="reset-camera" type="button" aria-label="시점 초기화">⟲</button></div></div>
+      </div>
+      <aside id="project-detail" class="project-detail" aria-labelledby="detail-title"></aside>
+    </section>
+    <section id="project-index" class="index-section" aria-labelledby="index-title">
+      <div class="index-heading"><h2 id="index-title">프로젝트 인덱스 <span id="project-count">06</span></h2><div class="index-tools"><div id="filters" class="filters" role="group" aria-label="프로젝트 분야"></div><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="프로젝트 찾기" aria-label="프로젝트 검색"></label></div></div>
+      <div id="project-list" class="project-list"></div><p id="empty-state" class="empty-state" hidden>일치하는 프로젝트가 없습니다. 다른 이름이나 기술로 찾아보세요.</p>
+      <p id="result-status" class="sr-only" role="status"></p>
+    </section>
+  </main>
+  <footer class="site-footer"><span>JUHO LAB <span class="footer-divider">/</span> 아이디어는 계속 쌓이는 중.</span><span>MADE THROUGH CONVERSATION, BUILT TO WORK.</span><a href="#work">위로 ↑</a></footer>
+  <dialog id="about-dialog" aria-labelledby="about-title"><button class="dialog-close" type="button" aria-label="소개 닫기">×</button><p class="eyebrow">THE MAKER</p><h2 id="about-title">안녕하세요,<br>이주호입니다.</h2><p id="about-copy"></p><a class="primary-link" href="https://github.com/jooho1003" target="_blank" rel="noopener noreferrer">GitHub에서 작업 보기 <span>↗</span></a></dialog>
+  <noscript><p class="noscript">인터랙티브 공간은 JavaScript가 필요합니다. <a href="https://github.com/jooho1003">GitHub에서 프로젝트를 볼 수 있습니다.</a></p></noscript>
+</body>
+</html>

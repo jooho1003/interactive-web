@@ -1,0 +1,61 @@
+export const profile = {
+  name: '이주호', brand: 'JUHO LAB', github: 'https://github.com/jooho1003',
+  introduction: 'AI와 함께 아이디어를 실제로 작동하는 도구와 경험으로 만듭니다. 화장품 규제부터 콘텐츠 자동화, 게임과 인터랙티브 웹까지. 직접 만들어 보고, 써 보고, 다시 고치는 중입니다.',
+};
+
+export const projects = [
+  {
+    id: 'chemiforge', title: 'ChemiForge', subtitle: '복잡한 규제를, 근거 있는 답으로.',
+    category: 'AI 도구', type: 'REGULATORY INTELLIGENCE', number: '01', color: '#91bce8',
+    description: '화장품 규제 문서를 바탕으로 질문에 답하고, 제품과 광고 문구 검토를 돕는 AI 규제 어드바이저입니다.',
+    details: ['법령·가이드라인 원문을 연결하는 질의응답', '제품 및 광고 문구 검토를 돕는 워크플로', '한국·EU·미국 규제 자료 탐색'],
+    tags: ['Next.js', 'TypeScript', 'Supabase', 'AI'],
+    url: 'https://github.com/jooho1003/chemiforge-regulation', linkLabel: '프로젝트 코드 보기',
+    image: null, mark: 'Cf', note: '규제 정보 검토를 돕는 참고 도구입니다.',
+  },
+  {
+    id: 'sasu', title: '사수 · SASU', subtitle: '회의 다음의 결정을 돕는 AI.',
+    category: 'AI 도구', type: 'DECISION ASSISTANT', number: '02', color: '#87c9ac',
+    description: '부서의 맥락과 근거를 바탕으로 결정을 돕는 AI 사수. 결정이 필요한 일과 그 이유를 함께 다루는 프로젝트입니다.',
+    details: ['지금 결정해야 할 일을 모으는 결정 큐', '누가, 왜, 어떤 근거로 결정했는지 남기는 원장', '부서의 업무 맥락을 반영하는 질의응답'],
+    tags: ['AI Agent', '업무 자동화', 'MVP'],
+    url: 'https://github.com/jooho1003/sasu', linkLabel: '프로젝트 코드 보기',
+    image: './assets/sasu.webp', mark: 'S', note: '원티드 AI Championship 2026 출품을 준비하는 MVP입니다.',
+  },
+  {
+    id: 'shortform', title: '숏폼 자동화', subtitle: '조사에서 렌더까지, 하나의 흐름.',
+    category: '자동화', type: 'CONTENT PIPELINE', number: '03', color: '#c6a5f0',
+    description: '소재 조사, 기획, 클립 선택, 렌더링을 연결하는 숏폼 제작 파이프라인. 웹 콘솔에서 과정을 살펴보고 필요한 단계에 개입합니다.',
+    details: ['리서치와 콘텐츠 기획 연결', '클립 선택·미리보기·단계별 승인', 'Python·Remotion 기반 제작 파이프라인'],
+    tags: ['Python', 'Remotion', 'Next.js'],
+    url: 'https://github.com/jooho1003/shortform-automation', linkLabel: '프로젝트 코드 보기',
+    image: null, mark: '▶', note: '로컬 웹 콘솔 중심으로 사용하는 제작 도구입니다.',
+  },
+  {
+    id: 'dawn-store', title: '새벽 세 시', subtitle: '선택하면서 걷는, 아주 짧은 밤.',
+    category: '인터랙티브', type: 'INTERACTIVE STORY', number: '04', color: '#edbc76',
+    description: '아무도 없는 새벽의 편의점을 둘러보는 분기형 인터랙티브 웹. 물건을 살펴보고, 숨겨진 장면을 발견하며 이야기를 완성합니다.',
+    details: ['7개 장면과 선택에 따라 달라지는 탐색', '핫스팟·타임라인·숨겨진 장면', '한국어·영어 자막과 개인별 관람 설정'],
+    tags: ['React', 'Vite', '인터랙션'],
+    url: 'https://github.com/jooho1003/interactive-web', linkLabel: '프로젝트 코드 보기',
+    image: './assets/dawn.webp', mark: '03:00', note: 'Still Open — 편의점을 배경으로 한 인터랙티브 스토리입니다.',
+  },
+  {
+    id: 'market-front', title: 'MARKET FRONT', subtitle: '나라를 운영하는 선택의 드라마.',
+    category: '게임', type: 'STRATEGY & NARRATIVE', number: '05', color: '#d5a47e',
+    description: '정책과 경제의 선택을 국가 운영 드라마로 풀어내는 2.5D 게임 프로젝트입니다. 규칙, 밸런스, 상호작용을 함께 설계합니다.',
+    details: ['국가 운영을 소재로 한 게임 디자인', '경제와 정책의 선택 구조', '2.5D 표현과 드라마 중심의 경험'],
+    tags: ['게임 디자인', 'TypeScript', '2.5D'],
+    url: 'https://github.com/jooho1003/market-front', linkLabel: '프로젝트 코드 보기',
+    image: null, mark: 'MF', note: 'OpenAI Game Builders Seoul 2026 출품을 목표로 한 프로젝트입니다.',
+  },
+  {
+    id: 'spire', title: '종말의 탑', subtitle: '매번 다른 만남, 위로 향하는 모험.',
+    category: '게임', type: 'ACTION ROGUELIKE', number: '06', color: '#a4b58c',
+    description: '방랑자와의 만남, 전투, 아이템 선택으로 이어지는 탑다운 액션 로그라이크. 캐릭터 선택부터 5층 탈출전까지의 흐름을 구현한 데모입니다.',
+    details: ['캐릭터·무기 선택과 실시간 전투', '시드에 따라 달라지는 방랑자 조우', '휴식처·상점·아이템·보스 탈출전'],
+    tags: ['Phaser', 'React', 'TypeScript'],
+    url: 'https://github.com/jooho1003/game-monorepo', linkLabel: '프로젝트 코드 보기',
+    image: null, mark: 'V', note: '플레이 가능한 초기 데모입니다.',
+  },
+];
