@@ -14,7 +14,7 @@ export const projects = [
     image: './assets/chemiforge.webp', mark: 'Cf', note: '규제 정보 검토를 돕는 참고 도구입니다.',
   },
   {
-    id: 'sasu', title: '사수 · SASU', subtitle: '회의 다음의 결정을 돕는 AI.',
+    id: 'sasu', liveUrl: 'https://sasu-alpha.vercel.app/', title: '사수 · SASU', subtitle: '회의 다음의 결정을 돕는 AI.',
     category: 'AI 도구', type: 'DECISION ASSISTANT', number: '02', color: '#87c9ac',
     description: '부서의 맥락과 근거를 바탕으로 결정을 돕는 AI 사수. 결정이 필요한 일과 그 이유를 함께 다루는 프로젝트입니다.',
     details: ['지금 결정해야 할 일을 모으는 결정 큐', '누가, 왜, 어떤 근거로 결정했는지 남기는 원장', '부서의 업무 맥락을 반영하는 질의응답'],
@@ -32,7 +32,7 @@ export const projects = [
     image: null, mark: '▶', note: '로컬 웹 콘솔 중심으로 사용하는 제작 도구입니다.',
   },
   {
-    id: 'dawn-store', title: '새벽 세 시', subtitle: '선택하면서 걷는, 아주 짧은 밤.',
+    id: 'dawn-store', liveUrl: './experiences/dawn-store/', title: '새벽 세 시', subtitle: '선택하면서 걷는, 아주 짧은 밤.',
     category: '인터랙티브', type: 'INTERACTIVE STORY', number: '04', color: '#edbc76',
     description: '아무도 없는 새벽의 편의점을 둘러보는 분기형 인터랙티브 웹. 물건을 살펴보고, 숨겨진 장면을 발견하며 이야기를 완성합니다.',
     details: ['7개 장면과 선택에 따라 달라지는 탐색', '핫스팟·타임라인·숨겨진 장면', '한국어·영어 자막과 개인별 관람 설정'],

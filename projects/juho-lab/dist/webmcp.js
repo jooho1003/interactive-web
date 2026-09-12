@@ -1,3 +1,4 @@
+import { projectHref, detailHref } from './navigation.js';
 export function registerPortfolioTools(projects, selectProject) {
   const context = document.modelContext;
   if (!context?.registerTool) return;
@@ -12,7 +13,7 @@ export function registerPortfolioTools(projects, selectProject) {
         if (!input || typeof input !== 'object' || typeof input.query !== 'string' || input.query.length > 200 || Object.keys(input).some((key) => key !== 'query')) throw new Error('A query string of up to 200 characters is required.');
         const query = input.query.trim().toLocaleLowerCase();
         return projects.filter((p) => `${p.title} ${p.category} ${p.tags.join(' ')}`.toLocaleLowerCase().includes(query))
-          .map((p) => ({ id: p.id, title: p.title, category: p.category, url: p.url }));
+          .map((p) => ({ id: p.id, title: p.title, category: p.category, url: new URL(projectHref(p), location.href).href, detailUrl: new URL(detailHref(p), location.href).href, sourceUrl: p.url }));
       },
     },
     {
@@ -25,7 +26,7 @@ export function registerPortfolioTools(projects, selectProject) {
         const project = projects.find((p) => p.id === input.id);
         if (!project) throw new Error('Unknown project.');
         selectProject(project.id);
-        return { id: project.id, title: project.title, url: project.url };
+        return { id: project.id, title: project.title, url: new URL(projectHref(project), location.href).href };
       },
     },
   ];

@@ -2,7 +2,7 @@
 import * as THREE from './assets/three.module.min.js';
 import { relativeSlot } from './gallery-layout.js';
 
-export function createGallery(container, projects, onSelect, onFailure) {
+export function createGallery(container, projects, onSelect, onFailure, onOpen, getHref) {
   const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true, powerPreference:'low-power'});
   renderer.setPixelRatio(Math.min(devicePixelRatio, 1.7));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -64,8 +64,8 @@ export function createGallery(container, projects, onSelect, onFailure) {
     const reflection=new THREE.Mesh(new THREE.PlaneGeometry(5.5,3.535),new THREE.MeshBasicMaterial({map,alphaMap,transparent:true,opacity:.26,depthWrite:false,side:THREE.DoubleSide}));
     reflection.scale.y=-.72;reflection.position.set(0,-3.25,-.03);
     group.add(body,panel,reflection);scene.add(group);
-    const label=document.createElement('button');label.className='scene-label';label.type='button';label.textContent=project.title;
-    label.setAttribute('aria-label',project.title+' 선택');label.addEventListener('click',()=>onSelect(project.id));container.append(label);
+    const label=document.createElement('a');label.className='scene-label';label.href=getHref(project);label.textContent=project.title;
+    label.setAttribute('aria-label',project.title+' 페이지로 입장');label.addEventListener('click',event=>{if(!event.ctrlKey&&!event.metaKey&&!event.shiftKey&&!event.altKey){event.preventDefault();onOpen(project.id)}});container.append(label);
     cards.push({id:project.id,group,panel,material,frameMaterial,reflection,label,slot:99});
   });
   function resize(){
@@ -107,7 +107,7 @@ export function createGallery(container, projects, onSelect, onFailure) {
       card.label.style.left=((p.x*.5+.5)*container.clientWidth)+'px';
       card.label.style.top=((-p.y*.5+.5)*container.clientHeight)+'px';
       card.label.classList.toggle('selected',slot===0);
-      card.label.setAttribute('aria-pressed',String(slot===0));
+      card.label.setAttribute('aria-current',String(slot===0));
     }
     if(dirty||moving||Math.abs(targetX-camera.position.x)>.001||Math.abs(.7+targetY-camera.position.y)>.001){
       renderer.render(scene,camera);dirty=false;requestRender();
@@ -120,7 +120,7 @@ export function createGallery(container, projects, onSelect, onFailure) {
   }
   const surface=container.parentElement;
   surface.addEventListener('pointerdown',event=>{
-    if(event.button!==0||event.target.closest('button'))return;
+    if(event.button!==0||event.target.closest('button,a'))return;
     down={x:event.clientX,y:event.clientY,distance:0};surface.setPointerCapture(event.pointerId);surface.classList.add('dragging');
   });
   surface.addEventListener('pointermove',event=>{
@@ -138,10 +138,18 @@ export function createGallery(container, projects, onSelect, onFailure) {
     const dx=event.clientX-down.x,dy=event.clientY-down.y;
     if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)&&ids.length>1){
       const index=ids.indexOf(selected);onSelect(ids[(index+(dx<0?1:-1)+ids.length)%ids.length]);
-    }else if(down.distance<7){const id=hit(event);if(id)onSelect(id)}
+    }else if(down.distance<7){const id=hit(event);if(id)onOpen(id)}
     down=null;drag=0;surface.classList.remove('dragging');if(surface.hasPointerCapture(event.pointerId))surface.releasePointerCapture(event.pointerId);
     dirty=true;requestRender();
   });
+  let wheelDistance=0, lastWheel=0;
+  surface.addEventListener('wheel',event=>{
+    if(event.ctrlKey || Math.abs(event.deltaX)<=Math.abs(event.deltaY) || ids.length<2)return;
+    event.preventDefault();
+    const now=performance.now();if(now-lastWheel<450)return;
+    wheelDistance+=event.deltaX*(event.deltaMode===1?16:1);
+    if(Math.abs(wheelDistance)>45){const index=ids.indexOf(selected);onSelect(ids[(index+(wheelDistance>0?1:-1)+ids.length)%ids.length]);wheelDistance=0;lastWheel=now;}
+  },{passive:false});
   function resetPointer(){down=null;drag=0;targetX=0;targetY=0;surface.classList.remove('dragging');dirty=true;requestRender()}
   surface.addEventListener('pointercancel',resetPointer);surface.addEventListener('pointerleave',()=>{if(!down)resetPointer()});
   renderer.domElement.addEventListener('webglcontextlost',event=>{event.preventDefault();active=false;cancelAnimationFrame(frame);frame=0;onFailure()});

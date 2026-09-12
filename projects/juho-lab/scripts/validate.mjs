@@ -25,6 +25,29 @@ for (const file of await readdir(root)) {
   for (const match of text.matchAll(/(?:from\s+|import\()['"](\.\/[^'"]+)['"]/g)) assert.ok((await stat(resolve(root, match[1]))).isFile(), `${file}: ${match[1]}`);
 }
 const html = await readFile(resolve(root, 'index.html'), 'utf8');
+const { projectHref, detailHref } = await import(pathToFileURL(resolve(root, 'navigation.js')));
+for (const project of projects) {
+  for (const href of [projectHref(project), detailHref(project)]) {
+    if (href.startsWith('./')) {
+      let path = resolve(root, href.split('?')[0]);
+      if ((await stat(path)).isDirectory()) path = resolve(path, 'index.html');
+      assert.ok((await stat(path)).isFile(), href);
+    } else assert.equal(new URL(href).protocol, 'https:');
+  }
+}
+for (const file of ['project.html']) {
+  const markup = await readFile(resolve(root,file),'utf8');
+  for (const match of markup.matchAll(/(?:src|href)="(\.\/[^"#]+)"/g)) assert.ok((await stat(resolve(root,match[1]))).isFile(),match[1]);
+}
+function assetPaths(value) {
+  if (value && typeof value === 'object' && value.available === false) return [];
+  if (typeof value === 'string') return value.startsWith('/experiences/') ? [value] : [];
+  return value && typeof value === 'object' ? Object.values(value).flatMap(assetPaths) : [];
+}
+for (const file of ['story.json','theme.json']) {
+  const data = JSON.parse(await readFile(resolve(root,'experiences/dawn-store',file),'utf8'));
+  for (const asset of assetPaths(data)) assert.ok((await stat(resolve(root,'.'+asset))).isFile(),asset);
+}
 for (const match of html.matchAll(/(?:src|href)="(\.\/[^"#]+)"/g)) assert.ok((await stat(resolve(root, match[1]))).isFile(), match[1]);
 const hosting = JSON.parse(await readFile(resolve(root, '../.openai/hosting.json'), 'utf8'));
 assert.equal(hosting.static.directory, 'dist');

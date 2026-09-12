@@ -1,3 +1,4 @@
+import { projectHref, detailHref, projectAction, readVisit, sessionKey } from './navigation.js';
 import { projects, profile } from './projects.js';
 import { registerPortfolioTools } from './webmcp.js';
 
@@ -6,9 +7,12 @@ const list = $('#project-list');
 const grid = $('#project-grid');
 const detail = $('#project-detail');
 const filters = $('#filters');
-let selected = 'dawn-store';
-let category = '전체';
-let query = '';
+const arrivalHash = location.hash;
+const visit = readVisit(projects);
+let selected = visit?.selected || 'dawn-store';
+let category = visit?.category || '전체';
+let query = visit?.query || '';
+$('#search').value = query;
 let scene;
 let view = 'space';
 let motion = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -44,12 +48,14 @@ function changeSelection(id, updateHash = true) {
   project.details.forEach((item) => features.append(element('li', '', item)));
   const notes = element('details', 'project-notes'); notes.append(element('summary', '', '작업 노트'), features);
   const tags = element('div', 'tags'); project.tags.forEach((tag) => tags.append(element('span', '', tag)));
-  const link = element('a', 'primary-link', project.linkLabel);
-  link.href = project.url; link.target = '_blank'; link.rel = 'noopener noreferrer'; link.append(element('span', '', '↗'));
+  const link = element('a', 'primary-link', projectAction(project));
+  link.href = projectHref(project); link.append(element('span', '', '↗'));
   detail.append(top, element('p', 'detail-tag', project.type), title, element('p', 'detail-subtitle', project.subtitle),
     element('p', 'detail-description', project.description), notes, tags, link, element('p', 'detail-note', project.note));
+  if (project.liveUrl) { const more = element('a', 'detail-more', '작업 소개 보기 →'); more.href = detailHref(project); detail.append(more); }
+  document.querySelectorAll('#gallery-pagination button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.id === id)));
   if (focusedLabel) Array.from(controls.children).find((button) => button.getAttribute('aria-label') === focusedLabel)?.focus();
-  document.querySelectorAll('[data-project]').forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.project === id)));
+  document.querySelectorAll('[data-project]').forEach((button) => button.setAttribute('aria-current', String(button.dataset.project === id)));
   scene?.select(id);
   $('#result-status').textContent = `${project.title} 선택됨. ${project.subtitle}`;
   if (updateHash) history.replaceState(null, '', `#project=${encodeURIComponent(id)}`);
@@ -60,11 +66,11 @@ function moveSelection(direction) {
   changeSelection(available[(index + direction + available.length) % available.length].id);
 }
 function projectButton(project, mode) {
-  const button = element('button', mode === 'list' ? 'index-card' : 'grid-card');
-  button.type = 'button'; button.dataset.project = project.id;
+  const button = element('a', mode === 'list' ? 'index-card' : 'grid-card');
+  button.href = projectHref(project); button.dataset.project = project.id;
   button.style.setProperty('--project-color', project.color);
-  button.setAttribute('aria-pressed', String(project.id === selected));
-  button.setAttribute('aria-label', `${project.title} — ${project.category}`);
+  button.setAttribute('aria-current', String(project.id === selected));
+  button.setAttribute('aria-label', `${project.title} — ${projectAction(project)}`);
   if (mode === 'list') {
     const meta = element('span', 'index-card-meta');
     meta.append(element('span', '', project.number), element('span', '', project.category));
@@ -82,7 +88,7 @@ function projectButton(project, mode) {
     const copy = element('span', 'grid-copy'); copy.append(element('strong', '', project.title), element('small', '', project.category));
     button.append(art, copy);
   }
-  button.addEventListener('click', () => { changeSelection(project.id); if (mode === 'list') { document.querySelector('.workspace').scrollIntoView({ behavior: motion ? 'instant' : 'smooth', block: 'center' }); } });
+  button.addEventListener('click', event => { if (!event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) changeSelection(project.id); });
   return button;
 }
 function renderIndex() {
@@ -93,10 +99,11 @@ function renderIndex() {
   $('#empty-state').hidden = available.length !== 0;
   $('#result-status').textContent = `${available.length}개 프로젝트`;
   scene?.filter(available.map((p) => p.id));
+  $('#gallery-pagination').replaceChildren(...available.map(project => { const b = element('button', '', project.number); b.type = 'button'; b.dataset.id = project.id; b.setAttribute('aria-label', project.title + ' 전시 위치로 이동'); b.setAttribute('aria-pressed', String(project.id === selected)); b.addEventListener('click', () => changeSelection(project.id)); return b; }));
   if (available.length && !available.some((p) => p.id === selected)) changeSelection(available[0].id);
   if (!available.length) {
     detail.replaceChildren(element('p', 'detail-description', '일치하는 프로젝트가 없습니다.'), element('p', 'detail-note', '검색어를 지우거나 다른 분야를 선택해 주세요.'));
-  } else if (!$('#detail-title')) changeSelection(selected);
+  } else if (!$('#detail-title')) changeSelection(selected, false);
 }
 for (const name of ['전체', ...new Set(projects.map((p) => p.category))]) {
   const button = element('button', '', name); button.type = 'button'; button.setAttribute('aria-pressed', String(name === category));
@@ -114,7 +121,7 @@ function setView(next) {
   $('#space-view').setAttribute('aria-pressed', String(view === 'space'));
   $('#list-view').setAttribute('aria-pressed', String(view === 'list'));
   $('#reset-camera').hidden = view === 'list'; $('#motion-toggle').hidden = view === 'list';
-  $('#space-hint').textContent = view === 'space' ? '↔ 좌우로 넘겨 작품 탐색' : '프로젝트를 선택해 자세히 보기';
+  $('#space-hint').textContent = view === 'space' ? '넘겨서 탐색 · 눌러서 입장' : '작품을 누르면 해당 페이지로 이동합니다';
   scene?.setActive(view === 'space' && !document.hidden);
 }
 $('#space-view').addEventListener('click', () => setView('space'));
@@ -126,6 +133,7 @@ motionQuery.addEventListener('change', (event) => setMotion(event.matches));
 $('#space').addEventListener('keydown', (event) => {
   if (event.target !== $('#space')) return;
   if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); moveSelection(event.key === 'ArrowRight' ? 1 : -1); }
+  if (event.key === 'Enter') { event.preventDefault(); if (visibleProjects().length) openProject(selected); }
   if (event.key === 'Home') { event.preventDefault(); scene?.reset(); }
 });
 document.addEventListener('visibilitychange', () => scene?.setActive(!document.hidden && view === 'space'));
@@ -138,9 +146,9 @@ dialog.addEventListener('click', (event) => { if (event.target === dialog) {
   if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
 } });
 dialog.addEventListener('close', () => $('#about-open').focus());
-function applyHash() {
-  if (location.hash.startsWith('#project=')) { try {
-    const id = decodeURIComponent(location.hash.slice(9));
+function applyHash(hash = location.hash) {
+  if (hash.startsWith('#project=')) { try {
+    const id = decodeURIComponent(hash.slice(9));
     const target = projects.find((p) => p.id === id);
     if (target) {
       category = '전체'; query = ''; $('#search').value = '';
@@ -149,8 +157,11 @@ function applyHash() {
     }
   } catch { /* Leave unknown hashes as normal anchors. */ } }
 }
-window.addEventListener('hashchange', applyHash);
-renderIndex(); changeSelection(selected, false); applyHash(); setMotion(motion);
+window.addEventListener('hashchange', () => applyHash());
+renderIndex(); changeSelection(selected, false); applyHash(arrivalHash); setMotion(motion);
+if (visit) { setView(visit.view); requestAnimationFrame(() => requestAnimationFrame(() => scrollTo(0, visit.scrollY))); }
+window.addEventListener('pagehide', () => { try { sessionStorage.setItem(sessionKey, JSON.stringify({selected, category, query, view, scrollY})); } catch {} });
+function openProject(id) { const project = projects.find(p => p.id === id); if (project) { changeSelection(id); location.assign(projectHref(project)); } }
 registerPortfolioTools(projects, (id) => {
   category = '전체'; query = ''; $('#search').value = '';
   filters.querySelectorAll('button').forEach((el) => el.setAttribute('aria-pressed', String(el.textContent === category)));
@@ -161,7 +172,7 @@ function fallback() {
   $('#space-hint').textContent = '이 기기에서는 목록으로 작업물을 둘러볼 수 있습니다.';
 }
 import('./scene.js').then(({ createGallery }) => {
-  scene = createGallery($('#scene'), projects, changeSelection, fallback);
+  scene = createGallery($('#scene'), projects, changeSelection, fallback, openProject, projectHref);
   scene.select(selected); scene.filter(visibleProjects().map((p) => p.id));
   scene.setReducedMotion(motion); scene.setActive(view === 'space' && !document.hidden);
   $('#scene-status').hidden = true;
