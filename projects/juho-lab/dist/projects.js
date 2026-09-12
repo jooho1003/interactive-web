@@ -11,7 +11,7 @@ export const projects = [
     details: ['법령·가이드라인 원문을 연결하는 질의응답', '제품 및 광고 문구 검토를 돕는 워크플로', '한국·EU·미국 규제 자료 탐색'],
     tags: ['Next.js', 'TypeScript', 'Supabase', 'AI'],
     url: 'https://github.com/jooho1003/chemiforge-regulation', linkLabel: '프로젝트 코드 보기',
-    image: null, mark: 'Cf', note: '규제 정보 검토를 돕는 참고 도구입니다.',
+    image: './assets/chemiforge.webp', mark: 'Cf', note: '규제 정보 검토를 돕는 참고 도구입니다.',
   },
   {
     id: 'sasu', title: '사수 · SASU', subtitle: '회의 다음의 결정을 돕는 AI.',
@@ -56,6 +56,6 @@ export const projects = [
     details: ['캐릭터·무기 선택과 실시간 전투', '시드에 따라 달라지는 방랑자 조우', '휴식처·상점·아이템·보스 탈출전'],
     tags: ['Phaser', 'React', 'TypeScript'],
     url: 'https://github.com/jooho1003/game-monorepo', linkLabel: '프로젝트 코드 보기',
-    image: null, mark: 'V', note: '플레이 가능한 초기 데모입니다.',
+    image: './assets/spire.webp', mark: 'V', note: '플레이 가능한 초기 데모입니다.',
   },
 ];

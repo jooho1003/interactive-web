@@ -1,145 +1,156 @@
+
 import * as THREE from './assets/three.module.min.js';
+import { relativeSlot } from './gallery-layout.js';
 
 export function createGallery(container, projects, onSelect, onFailure) {
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
+  const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true, powerPreference:'low-power'});
   renderer.setPixelRatio(Math.min(devicePixelRatio, 1.7));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.setClearColor(0x1b1d20, 0);
-  renderer.domElement.setAttribute('aria-hidden', 'true');
+  renderer.setClearColor(0,0);
+  renderer.domElement.setAttribute('aria-hidden','true');
   container.append(renderer.domElement);
   const scene = new THREE.Scene();
-  const camera = new THREE.OrthographicCamera(-8, 8, 5, -5, .1, 80);
-  const target = new THREE.Vector3(0, .35, 0);
-  const raycaster = new THREE.Raycaster();
-  const pointer = new THREE.Vector2();
+  const camera = new THREE.PerspectiveCamera(38,1,.1,100);
+  camera.position.set(0,1,12);
+  const raycaster = new THREE.Raycaster(), pointer = new THREE.Vector2();
+  scene.add(new THREE.HemisphereLight(0xffe8c2,0x243448,2.2));
+  const warm = new THREE.DirectionalLight(0xffd6a0,4); warm.position.set(-3,7,5); scene.add(warm);
+  const cool = new THREE.DirectionalLight(0x96bfff,2); cool.position.set(6,2,3); scene.add(cool);
   const cards = [];
-  const lights = new THREE.HemisphereLight(0xffffff, 0x343946, 2.5); scene.add(lights);
-  const key = new THREE.DirectionalLight(0xffffff, 3); key.position.set(4, 8, 6); scene.add(key);
-  const floor = new THREE.Mesh(new THREE.PlaneGeometry(28, 20), new THREE.MeshStandardMaterial({ color: 0x202226, roughness: 1, transparent: true, opacity: .55 }));
-  floor.rotation.x = -Math.PI / 2; floor.position.y = -.62; scene.add(floor);
-  const grid = new THREE.GridHelper(28, 28, 0x484038, 0x35373b); grid.position.y = -.6;
-  grid.material.transparent = true; grid.material.opacity = .7; scene.add(grid);
-  const rail = new THREE.Mesh(new THREE.BoxGeometry(10.5, .018, .024), new THREE.MeshBasicMaterial({ color: 0xff885b }));
-  rail.position.set(0, -.58, 4.05); scene.add(rail);
-  let active = true, reduced = false, selected = projects[0].id, frame = 0;
-  let yaw = .27, pitch = .56, aimYaw = .27, aimPitch = .56, down = null;
-  let hovered = null, dirty = true, time = 0;
-  const background = '#171a1e';
-
-  function cardTexture(project) {
-    const canvas = document.createElement('canvas'); canvas.width = 1024; canvas.height = 620;
-    const ctx = canvas.getContext('2d');
-    const texture = new THREE.CanvasTexture(canvas); texture.colorSpace = THREE.SRGBColorSpace;
-    texture.anisotropy = Math.min(renderer.capabilities.getMaxAnisotropy(), 4);
-    const paint = (image) => {
-      ctx.fillStyle = background; ctx.fillRect(0, 0, 1024, 620);
-      if (image) {
-        const scale = Math.max(1024 / image.width, 620 / image.height);
-        ctx.drawImage(image, (1024 - image.width * scale) / 2, (620 - image.height * scale) / 2, image.width * scale, image.height * scale);
-      } else {
-        ctx.fillStyle = project.color; ctx.globalAlpha = .08; ctx.fillRect(0, 0, 1024, 620); ctx.globalAlpha = 1;
-        ctx.fillStyle = project.color; ctx.font = '700 200px Arial, sans-serif'; ctx.textAlign = 'center';
-        ctx.fillText(project.mark, 512, 352);
-        ctx.strokeStyle = project.color; ctx.globalAlpha = .23; ctx.lineWidth = 2;
-        ctx.strokeRect(36, 36, 952, 548); ctx.globalAlpha = 1;
-        ctx.textAlign = 'left'; ctx.font = '24px Consolas, monospace'; ctx.fillText(project.type, 64, 550);
-        ctx.textAlign = 'right'; ctx.fillText(project.number, 956, 78);
+  let ids=projects.map(p=>p.id), selected='dawn-store', active=true, reduced=false, frame=0;
+  let down=null, drag=0, targetX=0, targetY=0, dirty=true, last=0;
+  function requestRender(){if(active&&!frame)frame=requestAnimationFrame(draw)}
+  function textureFor(project) {
+    const canvas=document.createElement('canvas'); canvas.width=1400;canvas.height=900;
+    const ctx=canvas.getContext('2d');
+    const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;
+    texture.anisotropy=Math.min(renderer.capabilities.getMaxAnisotropy(),4);
+    function paint(image){
+      ctx.fillStyle='#172122';ctx.fillRect(0,0,1400,900);
+      if(image){
+        const scale=Math.max(1400/image.width,900/image.height);
+        ctx.drawImage(image,(1400-image.width*scale)/2,(900-image.height*scale)/2,image.width*scale,image.height*scale);
+      }else{
+        const gradient=ctx.createLinearGradient(0,0,1400,900);
+        gradient.addColorStop(0,project.color);gradient.addColorStop(1,'#101a20');
+        ctx.globalAlpha=.32;ctx.fillStyle=gradient;ctx.fillRect(0,0,1400,900);ctx.globalAlpha=1;
+        ctx.font='230px Georgia, serif';ctx.fillStyle=project.color;ctx.textAlign='center';
+        ctx.fillText(project.mark,700,460);ctx.textAlign='left';
       }
-      texture.needsUpdate = true; dirty = true; requestRender();
-    };
-    paint();
-    if (project.image) {
-      const image = new Image(); image.onload = () => paint(image); image.onerror = () => paint(); image.src = project.image;
+      const shade=ctx.createLinearGradient(0,330,0,900);
+      shade.addColorStop(0,'#060d1300');shade.addColorStop(1,'#060d13ed');
+      ctx.fillStyle=shade;ctx.fillRect(0,0,1400,900);
+      ctx.fillStyle='#e2c59c';ctx.font='22px Consolas, monospace';ctx.fillText(project.type,65,708);
+      ctx.fillStyle='#fff4e3';ctx.font='500 66px Segoe UI, Malgun Gothic, sans-serif';ctx.fillText(project.title,60,797);
+      ctx.font='23px Consolas, monospace';ctx.fillStyle='#ddd0ba';ctx.textAlign='right';ctx.fillText(project.number+' / 06',1335,800);ctx.textAlign='left';
+      texture.needsUpdate=true;dirty=true;requestRender();
     }
+    paint();
+    if(project.image){const image=new Image();image.onload=()=>paint(image);image.src=project.image}
     return texture;
   }
-  projects.forEach((project, index) => {
-    const group = new THREE.Group();
-    group.position.set((index % 3 - 1) * 3.7, .78, index < 3 ? -2.1 : 1.8);
-    group.rotation.y = .18;
-    const frameMaterial = new THREE.MeshStandardMaterial({ color: 0x55585d, roughness: .6, metalness: .3 });
-    const backing = new THREE.Mesh(new THREE.BoxGeometry(3.1, 2, .13), frameMaterial);
-    const panel = new THREE.Mesh(new THREE.PlaneGeometry(2.99, 1.89), new THREE.MeshBasicMaterial({ map: cardTexture(project) }));
-    panel.position.z = .071; panel.userData.id = project.id;
-    group.add(backing, panel); scene.add(group);
-    const base = new THREE.Mesh(new THREE.BoxGeometry(3.35, .075, 2), new THREE.MeshStandardMaterial({ color: 0x303237, roughness: .8 }));
-    base.position.set(group.position.x, -.55, group.position.z); scene.add(base);
-    const label = document.createElement('button'); label.type = 'button'; label.className = 'scene-label';
-    label.textContent = project.title; label.setAttribute('aria-label', `${project.title} 선택`);
-    label.addEventListener('click', () => onSelect(project.id)); container.append(label);
-    cards.push({ id: project.id, group, panel, frameMaterial, base, label, baseY: group.position.y });
+  const fadeCanvas=document.createElement('canvas');fadeCanvas.width=4;fadeCanvas.height=256;
+  const fadeContext=fadeCanvas.getContext('2d'),fade=fadeContext.createLinearGradient(0,0,0,256);
+  fade.addColorStop(0,'#000');fade.addColorStop(.5,'#050505');fade.addColorStop(1,'#8a8a8a');
+  fadeContext.fillStyle=fade;fadeContext.fillRect(0,0,4,256);
+  const alphaMap=new THREE.CanvasTexture(fadeCanvas);
+  projects.forEach((project)=>{
+    const group=new THREE.Group();group.position.set(0,0,-15);
+    const frameMaterial=new THREE.MeshStandardMaterial({color:0x8a8272,metalness:.8,roughness:.28});
+    const body=new THREE.Mesh(new THREE.BoxGeometry(5.65,3.68,.14),frameMaterial);
+    const map=textureFor(project);
+    const material=new THREE.MeshBasicMaterial({map});
+    const panel=new THREE.Mesh(new THREE.PlaneGeometry(5.5,3.535),material);panel.position.z=.081;panel.userData.id=project.id;
+    const reflection=new THREE.Mesh(new THREE.PlaneGeometry(5.5,3.535),new THREE.MeshBasicMaterial({map,alphaMap,transparent:true,opacity:.26,depthWrite:false,side:THREE.DoubleSide}));
+    reflection.scale.y=-.72;reflection.position.set(0,-3.25,-.03);
+    group.add(body,panel,reflection);scene.add(group);
+    const label=document.createElement('button');label.className='scene-label';label.type='button';label.textContent=project.title;
+    label.setAttribute('aria-label',project.title+' 선택');label.addEventListener('click',()=>onSelect(project.id));container.append(label);
+    cards.push({id:project.id,group,panel,material,frameMaterial,reflection,label,slot:99});
   });
-
-  function resize() {
-    const width = container.clientWidth, height = container.clientHeight;
-    if (!width || !height) return;
-    const aspect = width / height;
-    const span = Math.max(12.8, aspect * 7.4);
-    camera.left = -span / 2; camera.right = span / 2;
-    camera.top = span / aspect / 2; camera.bottom = -span / aspect / 2;
-    camera.updateProjectionMatrix(); renderer.setSize(width, height, false);
-    dirty = true; requestRender();
+  function resize(){
+    const w=container.clientWidth,h=container.clientHeight;if(!w||!h)return;
+    camera.aspect=w/h;camera.fov=w<500?45:38;camera.updateProjectionMatrix();
+    camera.position.z=w<500?15.3:12;
+    renderer.setSize(w,h,false);dirty=true;requestRender();
   }
-  function draw(now) {
-    frame = 0; if (!active) return;
-    time = now * .001;
-    const moving = Math.abs(yaw - aimYaw) > .0001 || Math.abs(pitch - aimPitch) > .0001;
-    yaw += (aimYaw - yaw) * (reduced ? 1 : .09); pitch += (aimPitch - pitch) * (reduced ? 1 : .09);
-    camera.position.set(Math.sin(yaw) * 15 * Math.cos(pitch), Math.sin(pitch) * 15, Math.cos(yaw) * 15 * Math.cos(pitch));
-    camera.lookAt(target);
-    camera.updateMatrixWorld();
-    for (const card of cards) {
-      const chosen = card.id === selected;
-      card.group.position.y = card.baseY + (chosen ? .14 : 0) + (reduced ? 0 : Math.sin(time * .7 + cards.indexOf(card)) * .025);
-      card.frameMaterial.color.set(chosen ? 0xff885b : card.id === hovered ? 0xc4c6ca : 0x55585d);
-      card.frameMaterial.emissive.set(chosen ? 0x462114 : 0x000000);
-      const position = card.group.localToWorld(new THREE.Vector3(0, -1.22, 0)).project(camera);
-      card.label.style.left = `${(position.x * .5 + .5) * container.clientWidth}px`;
-      card.label.style.top = `${(-position.y * .5 + .5) * container.clientHeight}px`;
-      card.label.classList.toggle('selected', chosen);
-      card.label.setAttribute('aria-pressed', String(chosen));
+  function draw(now){
+    frame=0;if(!active)return;
+    const dt=Math.min((now-last)/1000||.016,.05);last=now;
+    const blend=reduced?1:1-Math.exp(-dt*8);
+    let moving=false;
+    camera.position.x+=(targetX-camera.position.x)*blend;
+    camera.position.y+=(.7+targetY-camera.position.y)*blend;
+    camera.lookAt(0,-.35,0);camera.updateMatrixWorld();
+    for(const card of cards){
+      const index=ids.indexOf(card.id);
+      const slot=index<0?99:relativeSlot(index,Math.max(0,ids.indexOf(selected)),ids.length);
+      const visible=Math.abs(slot)<=1;
+      const x=slot*4.7+drag,z=slot===0?1.2:-2.1,y=slot===0?.25:.08;
+      if(visible&&!card.group.visible){card.group.position.set(x,y,z-1)}
+      card.group.visible=visible;card.label.hidden=!visible;
+      if(!visible)continue;
+      const scale=slot===0?1:.76;
+      const rotation=-Math.sign(slot)*.38;
+      for(const [key,target] of [['x',x],['y',y],['z',z]]){
+        const d=target-card.group.position[key];moving ||= Math.abs(d)>.001;
+        card.group.position[key]+=d*blend;
+      }
+      moving ||= Math.abs(card.group.rotation.y-rotation)>.001||Math.abs(card.group.scale.x-scale)>.001;
+      card.group.rotation.y+=(rotation-card.group.rotation.y)*blend;
+      card.group.scale.setScalar(card.group.scale.x+(scale-card.group.scale.x)*blend);
+      card.material.color.setScalar(slot===0?1:.52);
+      card.frameMaterial.emissive.set(slot===0?0x362817:0);
+      card.reflection.material.opacity=slot===0?.26:.1;
+      card.group.updateMatrixWorld(true);
+      const p=card.group.localToWorld(new THREE.Vector3(0,-2.03,.1)).project(camera);
+      card.label.style.left=((p.x*.5+.5)*container.clientWidth)+'px';
+      card.label.style.top=((-p.y*.5+.5)*container.clientHeight)+'px';
+      card.label.classList.toggle('selected',slot===0);
+      card.label.setAttribute('aria-pressed',String(slot===0));
     }
-    if (dirty || moving || !reduced) renderer.render(scene, camera);
-    dirty = false;
-    if (moving || !reduced) requestRender();
+    if(dirty||moving||Math.abs(targetX-camera.position.x)>.001||Math.abs(.7+targetY-camera.position.y)>.001){
+      renderer.render(scene,camera);dirty=false;requestRender();
+    }
   }
-  function requestRender() { if (active && !frame) frame = requestAnimationFrame(draw); }
-  function intersect(event) {
-    const bounds = container.getBoundingClientRect();
-    pointer.set((event.clientX - bounds.left) / bounds.width * 2 - 1, -(event.clientY - bounds.top) / bounds.height * 2 + 1);
-    raycaster.setFromCamera(pointer, camera);
-    return raycaster.intersectObjects(cards.filter((c) => c.group.visible).map((c) => c.panel))[0]?.object.userData.id;
+  function hit(event){
+    const b=container.getBoundingClientRect();pointer.set((event.clientX-b.left)/b.width*2-1,-(event.clientY-b.top)/b.height*2+1);
+    raycaster.setFromCamera(pointer,camera);
+    return raycaster.intersectObjects(cards.filter(c=>c.group.visible).map(c=>c.panel))[0]?.object.userData.id;
   }
-  const surface = container.parentElement;
-  surface.addEventListener('pointerdown', (event) => {
-    if (event.target.closest('button') || event.button !== 0) return;
-    down = { x: event.clientX, y: event.clientY, yaw: aimYaw, pitch: aimPitch, distance: 0 };
-    surface.setPointerCapture(event.pointerId); surface.classList.add('dragging');
+  const surface=container.parentElement;
+  surface.addEventListener('pointerdown',event=>{
+    if(event.button!==0||event.target.closest('button'))return;
+    down={x:event.clientX,y:event.clientY,distance:0};surface.setPointerCapture(event.pointerId);surface.classList.add('dragging');
   });
-  surface.addEventListener('pointermove', (event) => {
-    if (down) {
-      const dx = event.clientX - down.x, dy = event.clientY - down.y;
-      down.distance = Math.max(down.distance, Math.hypot(dx, dy));
-      aimYaw = THREE.MathUtils.clamp(down.yaw - dx * .004, -.6, .85);
-      aimPitch = THREE.MathUtils.clamp(down.pitch + dy * .002, .38, .85);
-    } else { hovered = intersect(event); surface.style.cursor = hovered ? 'pointer' : 'grab'; }
-    dirty = true; requestRender();
+  surface.addEventListener('pointermove',event=>{
+    if(down){
+      const dx=event.clientX-down.x,dy=event.clientY-down.y;
+      down.distance=Math.max(down.distance,Math.hypot(dx,dy));drag=reduced?0:THREE.MathUtils.clamp(dx*.005,-.65,.65);
+    }else if(!reduced&&event.pointerType==='mouse'){
+      const b=surface.getBoundingClientRect();targetX=((event.clientX-b.left)/b.width-.5)*.35;
+      targetY=-((event.clientY-b.top)/b.height-.5)*.14;surface.style.cursor=hit(event)?'pointer':'grab';
+    }
+    dirty=true;requestRender();
   });
-  surface.addEventListener('pointerup', (event) => {
-    if (down?.distance < 7) { const id = intersect(event); if (id) onSelect(id); }
-    down = null; surface.classList.remove('dragging');
-    if (surface.hasPointerCapture(event.pointerId)) surface.releasePointerCapture(event.pointerId);
+  surface.addEventListener('pointerup',event=>{
+    if(!down)return;
+    const dx=event.clientX-down.x,dy=event.clientY-down.y;
+    if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)&&ids.length>1){
+      const index=ids.indexOf(selected);onSelect(ids[(index+(dx<0?1:-1)+ids.length)%ids.length]);
+    }else if(down.distance<7){const id=hit(event);if(id)onSelect(id)}
+    down=null;drag=0;surface.classList.remove('dragging');if(surface.hasPointerCapture(event.pointerId))surface.releasePointerCapture(event.pointerId);
+    dirty=true;requestRender();
   });
-  surface.addEventListener('pointercancel', () => { down = null; surface.classList.remove('dragging'); });
-  surface.addEventListener('pointerleave', () => { hovered = null; dirty = true; requestRender(); });
-  renderer.domElement.addEventListener('webglcontextlost', (event) => { event.preventDefault(); active = false; cancelAnimationFrame(frame); onFailure(); });
-  const observer = new ResizeObserver(resize); observer.observe(container);
-  resize(); requestRender();
+  function resetPointer(){down=null;drag=0;targetX=0;targetY=0;surface.classList.remove('dragging');dirty=true;requestRender()}
+  surface.addEventListener('pointercancel',resetPointer);surface.addEventListener('pointerleave',()=>{if(!down)resetPointer()});
+  renderer.domElement.addEventListener('webglcontextlost',event=>{event.preventDefault();active=false;cancelAnimationFrame(frame);frame=0;onFailure()});
+  new ResizeObserver(resize).observe(container);resize();requestRender();
   return {
-    select(id) { selected = id; dirty = true; requestRender(); },
-    filter(ids) { for (const card of cards) { const visible = ids.includes(card.id); card.group.visible = visible; card.base.visible = visible; card.label.hidden = !visible; } dirty = true; requestRender(); },
-    reset() { aimYaw = .27; aimPitch = .56; dirty = true; requestRender(); },
-    setReducedMotion(value) { reduced = value; dirty = true; requestRender(); },
-    setActive(value) { active = value; if (value) { resize(); requestRender(); } else { cancelAnimationFrame(frame); frame = 0; } },
+    select(id){selected=id;dirty=true;requestRender()},
+    filter(next){ids=next;dirty=true;requestRender()},
+    reset:resetPointer,
+    setReducedMotion(value){reduced=value;resetPointer()},
+    setActive(value){active=value;if(value){last=0;resize();requestRender()}else{cancelAnimationFrame(frame);frame=0}}
   };
 }

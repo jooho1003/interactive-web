@@ -28,4 +28,17 @@ const html = await readFile(resolve(root, 'index.html'), 'utf8');
 for (const match of html.matchAll(/(?:src|href)="(\.\/[^"#]+)"/g)) assert.ok((await stat(resolve(root, match[1]))).isFile(), match[1]);
 const hosting = JSON.parse(await readFile(resolve(root, '../.openai/hosting.json'), 'utf8'));
 assert.equal(hosting.static.directory, 'dist');
-console.log(`PASS: ${projects.length} projects, source syntax, imports, local assets, and static hosting manifest.`);
+const { relativeSlot } = await import(pathToFileURL(resolve(root, 'gallery-layout.js')));
+assert.equal(relativeSlot(0, 0, 0), 99);
+for (const count of [1, 2, 3, 4, 5, 6]) {
+  for (let selected = 0; selected < count; selected++) {
+    const slots = Array.from({length: count}, (_, index) => relativeSlot(index, selected, count));
+    assert.equal(slots[selected], 0, 'selected work is centered');
+    assert.equal(new Set(slots).size, count, 'filtered works cannot overlap');
+    assert.equal(slots.filter(slot => Math.abs(slot) <= 1).length, Math.min(3, count));
+  }
+}
+const css = await readFile(resolve(root, 'style.css'), 'utf8');
+for (const match of css.matchAll(/url\(['"]?(\.\/[^)'"\s]+)['"]?\)/g)) assert.ok((await stat(resolve(root, match[1]))).isFile(), match[1]);
+assert.equal([...html.matchAll(/id="([^"]+)"/g)].length, new Set([...html.matchAll(/id="([^"]+)"/g)].map(m => m[1])).size, 'unique element IDs');
+console.log(`PASS: ${projects.length} projects, source syntax, imports, local assets, CSS assets, gallery wrapping/filter layout, unique IDs, and static hosting manifest.`);

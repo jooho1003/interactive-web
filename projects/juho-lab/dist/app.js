@@ -6,7 +6,7 @@ const list = $('#project-list');
 const grid = $('#project-grid');
 const detail = $('#project-detail');
 const filters = $('#filters');
-let selected = projects[0].id;
+let selected = 'dawn-store';
 let category = '전체';
 let query = '';
 let scene;
@@ -32,7 +32,7 @@ function changeSelection(id, updateHash = true) {
   detail.style.setProperty('--project-color', project.color);
   detail.replaceChildren();
   const top = element('div', 'detail-top');
-  top.append(element('span', '', `SELECTED PROJECT / ${project.number}`));
+  top.append(element('span', '', `WORK ${project.number} / 06`));
   const controls = element('div', 'detail-navigation');
   for (const [label, text, direction] of [['이전 프로젝트', '←', -1], ['다음 프로젝트', '→', 1]]) {
     const button = element('button', '', text); button.type = 'button'; button.setAttribute('aria-label', label);
@@ -42,11 +42,12 @@ function changeSelection(id, updateHash = true) {
   const title = element('h2', '', project.title); title.id = 'detail-title';
   const features = element('ul', 'detail-features');
   project.details.forEach((item) => features.append(element('li', '', item)));
+  const notes = element('details', 'project-notes'); notes.append(element('summary', '', '작업 노트'), features);
   const tags = element('div', 'tags'); project.tags.forEach((tag) => tags.append(element('span', '', tag)));
   const link = element('a', 'primary-link', project.linkLabel);
   link.href = project.url; link.target = '_blank'; link.rel = 'noopener noreferrer'; link.append(element('span', '', '↗'));
   detail.append(top, element('p', 'detail-tag', project.type), title, element('p', 'detail-subtitle', project.subtitle),
-    element('p', 'detail-description', project.description), features, tags, link, element('p', 'detail-note', project.note));
+    element('p', 'detail-description', project.description), notes, tags, link, element('p', 'detail-note', project.note));
   if (focusedLabel) Array.from(controls.children).find((button) => button.getAttribute('aria-label') === focusedLabel)?.focus();
   document.querySelectorAll('[data-project]').forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.project === id)));
   scene?.select(id);
@@ -67,7 +68,13 @@ function projectButton(project, mode) {
   if (mode === 'list') {
     const meta = element('span', 'index-card-meta');
     meta.append(element('span', '', project.number), element('span', '', project.category));
-    button.append(meta, element('span', 'index-card-name', project.title), element('span', 'index-card-line'));
+    const art = element('span', 'index-art');
+    art.dataset.kind = project.id;
+    if (project.image) { const img = element('img'); img.src = project.image; img.alt = ''; img.loading = 'lazy'; art.append(img); }
+    else { art.append(element('span', 'poster-type', project.type), element('span', 'poster-mark', project.mark), element('span', 'poster-title', project.title)); }
+    const heading = element('span', 'index-card-heading');
+    heading.append(element('span', 'index-card-name', project.title), element('span', 'index-arrow', '→'));
+    button.append(art, meta, heading, element('span', 'index-card-subtitle', project.subtitle));
   } else {
     const art = element('span', 'grid-art');
     if (project.image) { const img = element('img'); img.src = project.image; img.alt = ''; img.loading = 'lazy'; art.append(img); }
@@ -75,7 +82,7 @@ function projectButton(project, mode) {
     const copy = element('span', 'grid-copy'); copy.append(element('strong', '', project.title), element('small', '', project.category));
     button.append(art, copy);
   }
-  button.addEventListener('click', () => changeSelection(project.id));
+  button.addEventListener('click', () => { changeSelection(project.id); if (mode === 'list') { document.querySelector('.workspace').scrollIntoView({ behavior: motion ? 'instant' : 'smooth', block: 'center' }); } });
   return button;
 }
 function renderIndex() {
@@ -107,7 +114,7 @@ function setView(next) {
   $('#space-view').setAttribute('aria-pressed', String(view === 'space'));
   $('#list-view').setAttribute('aria-pressed', String(view === 'list'));
   $('#reset-camera').hidden = view === 'list'; $('#motion-toggle').hidden = view === 'list';
-  $('#space-hint').textContent = view === 'space' ? '↔ 드래그해서 둘러보기 · 패널을 눌러 선택' : '프로젝트를 선택해 자세히 보기';
+  $('#space-hint').textContent = view === 'space' ? '↔ 좌우로 넘겨 작품 탐색' : '프로젝트를 선택해 자세히 보기';
   scene?.setActive(view === 'space' && !document.hidden);
 }
 $('#space-view').addEventListener('click', () => setView('space'));
