@@ -9,7 +9,7 @@ export function createGallery(container, projects, onSelect, onFailure, onOpen, 
   camera.position.z=20;
   const width=36, height=width/(2164/727);
   const centers=[.10,.26,.42,.58,.745,.92], tops=[.22,.34,.26,.32,.27,.06];
-  let selected='dawn-store',ids=projects.map(p=>p.id),frame=0,active=true,reduced=false,zoom=1.1,down=null,suppressClick=false;
+  let selected='dawn-store',ids=projects.map(p=>p.id),frame=0,active=true,reduced=false,zoom=1.1,cameraSpeed=1,down=null,suppressClick=false;
   let x=centers[3]*width-width/2,goal=x,viewWidth=20,viewHeight=14,offset=0,parallax=0,last=0,dirty=true;
   const tex=new THREE.TextureLoader().load('./assets/project-village.webp',()=>{dirty=true;requestRender()},undefined,onFailure);tex.colorSpace=THREE.SRGBColorSpace;
   tex.anisotropy=Math.min(renderer.capabilities.getMaxAnisotropy(),4);
@@ -27,11 +27,11 @@ export function createGallery(container, projects, onSelect, onFailure, onOpen, 
     });
     anchor.addEventListener('dragstart',e=>e.preventDefault());container.append(anchor);return {anchor,id:p.id,index};
   });
-  function clamp(value){const edge=Math.max(0,(width-viewWidth)/2);return THREE.MathUtils.clamp(value,-edge,edge)}
-  function target(){const i=projects.findIndex(p=>p.id===selected);goal=clamp((centers[Math.max(0,i)]-.5)*width)}
+  function clamp(value){const edge=Math.max(0,(width-viewWidth/camera.zoom)/2);return THREE.MathUtils.clamp(value,-edge,edge)}
+  function target(){const i=projects.findIndex(p=>p.id===selected);goal=(centers[Math.max(0,i)]-.5)*width}
   function requestRender(){if(active&&!frame)frame=requestAnimationFrame(draw)}
-  function resize(){const w=container.clientWidth,h=container.clientHeight;if(!w||!h)return;viewHeight=(w<620?16.4:14)/zoom;viewWidth=viewHeight*w/h;camera.left=-viewWidth/2;camera.right=viewWidth/2;camera.top=viewHeight/2;camera.bottom=-viewHeight/2;camera.position.y=w<620?-1.25:0;camera.updateProjectionMatrix();renderer.setSize(w,h,false);target();dirty=true;requestRender()}
-  function draw(now){frame=0;if(!active)return;const dt=Math.min((now-last)/1000||.016,.05);last=now;const blend=reduced?1:1-Math.exp(-dt*9);const aim=clamp(goal+offset+parallax);const moving=Math.abs(aim-x)>.001;x+=(aim-x)*blend;camera.position.x=x;camera.position.y=container.clientWidth<620?-1.25:0;motion.update(now,dt,camera);camera.updateMatrixWorld();
+  function resize(){const w=container.clientWidth,h=container.clientHeight;if(!w||!h)return;viewHeight=(w<620?12.4:11.6)/zoom;viewWidth=viewHeight*w/h;camera.left=-viewWidth/2;camera.right=viewWidth/2;camera.top=viewHeight/2;camera.bottom=-viewHeight/2;camera.position.y=w<620?-.25:0;camera.updateProjectionMatrix();renderer.setSize(w,h,false);target();dirty=true;requestRender()}
+  function draw(now){frame=0;if(!active)return;const dt=Math.min((now-last)/1000||.016,.05);last=now;const blend=reduced?1:1-Math.exp(-dt*6.5*cameraSpeed);const aim=clamp(goal+offset+parallax);const moving=Math.abs(aim-x)>.001;x+=(aim-x)*blend;camera.position.x=x;camera.position.y=container.clientWidth<620?-.25:0;const cameraMoving=motion.update(now,dt,camera);camera.updateMatrixWorld();
     for(const {anchor,id,index} of labels){
       const cx=(centers[index]-.5)*width;
       const topY=(.5-tops[index])*height,bottomY=(.5-.76)*height;
@@ -41,7 +41,7 @@ export function createGallery(container, projects, onSelect, onFailure, onOpen, 
       anchor.hidden=!ids.includes(id)||b.x < -1||a.x > 1;anchor.classList.toggle('selected',id===selected);anchor.setAttribute('aria-current',String(id===selected));
     }
     motion.decorate((wx,wy)=>{const v=new THREE.Vector3(wx,wy,.1).project(camera);return [(v.x*.5+.5)*container.clientWidth,(-v.y*.5+.5)*container.clientHeight]},ids,container.clientHeight,viewHeight);
-    if(dirty||moving||!reduced){renderer.render(scene,camera);dirty=false}if(moving||!reduced)requestRender();
+    if(dirty||moving||cameraMoving){renderer.render(scene,camera);dirty=false}if(moving||cameraMoving||!reduced)requestRender();
   }
   const surface=container.parentElement;
   surface.addEventListener('pointerdown',e=>{if(motion.entering||e.button!==0||e.target.closest('button'))return;suppressClick=false;down={x:e.clientX,y:e.clientY,max:0};surface.classList.add('dragging')});
@@ -62,5 +62,5 @@ export function createGallery(container, projects, onSelect, onFailure, onOpen, 
   surface.addEventListener('wheel',e=>{if(motion.entering||e.ctrlKey||ids.length<2||Math.abs(e.deltaX)<=Math.abs(e.deltaY))return;e.preventDefault();const now=performance.now();if(now-lastWheel<450)return;wheel+=e.deltaX;if(Math.abs(wheel)>45){const i=ids.indexOf(selected);onSelect(ids[Math.max(0,Math.min(ids.length-1,i+(wheel>0?1:-1)))]);wheel=0;lastWheel=now}},{passive:false});
   renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();active=false;cancelAnimationFrame(frame);frame=0;onFailure()});
   new ResizeObserver(resize).observe(container);resize();
-  return {enter(id){if(ids.includes(id))motion.enter(id)},select(id){motion.select(id);selected=id;target();dirty=true;requestRender()},filter(next){ids=next;dirty=true;requestRender()},reset(){target();reset()},setReducedMotion(value){reduced=value;motion.reduce(value);reset()},setZoom(value){zoom=value;resize()},refreshLinks(){labels.forEach(({anchor,index})=>anchor.href=getHref(projects[index]))},setActive(value){if(!value)motion.pause();active=value;if(active){last=0;resize()}else{cancelAnimationFrame(frame);frame=0}}};
+  return {refreshContent(value){cameraSpeed=value.cameraSpeed;motion.configure(value);panorama.material.color.setScalar(Math.min(1.15,.72+.28*value.lighting));labels.forEach(({anchor,index})=>{const p=projects[index];anchor.href=getHref(p);anchor.setAttribute('aria-label',p.title+' 건물로 들어가기');const label=anchor.querySelector('.world-label');label.firstChild.textContent=p.title;});dirty=true;requestRender()},enter(id){if(ids.includes(id))motion.enter(id)},select(id){motion.select(id);selected=id;target();dirty=true;requestRender()},filter(next){ids=next;dirty=true;requestRender()},reset(){target();reset()},setReducedMotion(value){reduced=value;motion.reduce(value);reset()},setZoom(value){zoom=value;resize()},refreshLinks(){labels.forEach(({anchor,index})=>anchor.href=getHref(projects[index]))},setActive(value){if(!value)motion.pause();active=value;if(active){last=0;resize()}else{cancelAnimationFrame(frame);frame=0}}};
 }

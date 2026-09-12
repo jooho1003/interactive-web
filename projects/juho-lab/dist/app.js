@@ -182,7 +182,7 @@ function fallback() {
   setView('list'); $('#space-view').disabled = true;
   $('#space-hint').textContent = '이 기기에서는 목록으로 작업물을 둘러볼 수 있습니다.';
 }
-import('./museum-scene.js').then(({ createGallery }) => {
+import('./scene.js').then(({ createGallery }) => {
   scene = createGallery($('#scene'), projects, changeSelection, fallback, openProject, projectHref);
   scene.select(selected); scene.filter(visibleProjects().map((p) => p.id));
   scene.setZoom(readPreferences().zoom);scene.refreshContent?.(getContent());
