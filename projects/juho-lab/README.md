@@ -1,40 +1,16 @@
-# JUHO’s village
+# JUHO Museum
 
-이주호의 바이브 코딩 작업을 둘러보는 개인 포트폴리오. 이미지 카드 위주의 이전 전시실을 독립 건물이 이어지는 밝은 작업 동네로 재설계했다. 원본 3D 디오라마 이미지를 Three.js 정사영 카메라로 탐색하는 2.5D 공간이며, 완전한 3D 건축 모델은 아니다.
+Perspective Three.js museum portfolio inspired by AI Movie's cinematic full-screen scenes and Dinotaeng's object-based horizontal navigation. Uses existing project artwork and original mascot; no reference-site assets/code copied.
 
-## 실행과 콘텐츠
+## Source and build
+`dist/` remains authored frontend source. `server/index.js` adds the Cloudflare Worker API. `node scripts/build-museum.mjs` writes `.build/dist/client` and `.build/dist/server/index.js`; `.build` is ignored. The dedicated Sites source checkout uses `public/` for these exact frontend files and builds into `dist/`. No new runtime dependencies.
 
-`dist`는 정적 사이트 원본이며 삭제하면 안 된다. `py -3 -m http.server 4182 --bind 127.0.0.1 --directory dist`로 실행한다.
+## Editing
+Settings opens Exhibition editing by default: words, works, character, space. Live preview is local until Exhibition Save writes shared content to R2. Uploads are PNG/JPG/WebP/GIF, <=5MB and <=25 megapixels. R2 stores the binary image and content JSON; images use immutable unique URLs. Browser preference controls remain local. Export/import includes content and uploaded image URLs for same-site restoration. Defaults preview and discard do not overwrite stored content until save. Text uses textContent, never user HTML. Project links allow only HTTP/HTTPS. Saved title/descriptions/art/links load into home and project detail views.
 
-- `dist/projects.js`: 6개 실제 프로젝트, 소개, 이미지, 소스 코드 링크. `liveUrl`이 실제 진입 주소이며 없으면 개별 소개 페이지를 연다.
-- `dist/scene.js`: 가로 탐색, 건물 히트 영역, 카메라 확대, 움직임, 목록 대체 보기.
-- `dist/preferences.js`: 글자 크기/확대/움직임/기본 보기/개인 링크, 범위 및 URL 검증. 설정은 이 브라우저 localStorage에만 저장한다. 방문자 공통 기본값을 수정하는 관리자 화면으로 가장하지 않는다.
-- `dist/navigation.js`: 기본·개인 목적지와 세션 탐색 복원.
-- `dist/tokens.css`: 실제 번들된 Pretendard Variable 웹폰트와 기본 색.
-- `dist/project.html`: 직접 접근 가능한 작품 소개. 소개 페이지에도 설정 진입 링크를 제공한다.
+Writes require Sites-authenticated identity with the verified owner's email allowlist and same-origin Origin header. Anonymous and other-user writes are rejected on the server. The existing Site remains owner-private. Email allowlist should be updated if ownership changes. R2 ETag compare-and-set prevents silently overwriting another editor's changes. Backend failures preserve draft input and show errors. Images uploaded without saving can remain as unreferenced R2 objects.
 
-상단 고정 설정 버튼에서 변경한다. 설정 값은 즉시 반영하고 새로고침 후에도 유지한다. 저장이 불가능하면 현재 화면 적용과 저장 실패를 구분해 알린다. 링크를 비우면 기본 연결을 사용한다. 설정 JSON 내보내기와 기본값 복원을 제공한다. 개인 링크는 http/https만 허용하며 자격 증명이 포함된 URL을 거부한다.
+## Verification
+`node scripts/validate.mjs` validates frontend syntax/assets, links and preferences. `.site-publish/test-museum.cjs` exercises the actual Worker with an in-memory R2 contract adapter: real browser edit, image upload, save/reload/new browser, draft revert, project destination, gallery/keyboard entry, cancel, reduced motion, mobile editor and navigation. It checks server owner/origin authorization, revision conflicts and SVG rejection. Hosted R2/auth integration is checked after publishing.
 
-## 실제 체험
-
-SASU는 배포 기록과 HTTP 200으로 확인한 `https://sasu-alpha.vercel.app/`를 사용한다. ChemiForge의 기록된 배포 주소는 404여서 연결하지 않았다. 나머지는 확인되지 않은 서비스 URL을 만들어 내지 않고 개별 소개와 소스 코드로 연결한다.
-
-새벽 세 시는 원본 앱에서 `npm run build`를 통과한 후 `node scripts/include-dawn.mjs`로 포함한 스냅샷이다. 자산 경로를 하위 폴더로 변경하고, 전시실 복귀 바와 iframe으로 원본 뷰포트를 보존한다. 원본 소스는 수정하지 않았다. 원본 스토리의 비활성 umbrella 노드/경고도 보존한다. 원본 앱을 업데이트한 뒤 다시 빌드하고 포함해야 체험 스냅샷이 갱신된다.
-
-## 참고와 자산
-
-https://dinotaeng.com/project/ 의 오브젝트 중심 수평 탐색, 클릭 진입, 돌아왔을 때 탐색 복원을 참고했다. 참고 사이트의 이미지·캐릭터·코드는 복사하지 않았다. 프로젝트별 건물 파노라마 `project-village.webp`는 별도로 생성한 원본 디오라마다. 프로젝트 대표 이미지는 각 로컬 프로젝트의 기존 에셋이다.
-
-Pretendard Variable은 https://github.com/orioncactus/pretendard 의 배포 파일이며 SIL OFL 라이선스를 함께 제공한다. Three.js 0.180.0도 정적 모듈과 MIT 라이선스를 보존한다.
-
-## 검증
-
-`node scripts/validate.mjs`: JS 구문, 모듈/HTML/CSS 경로, 프로젝트 진입 링크, 활성 체험 에셋, 설정 범위·안전한 URL, 웹폰트 파일 형식, 고유 ID, 정적 호스팅 설정.
-
-2026-09-12 Chromium 데스크톱 1440×1000 / 모바일 390×844: 실제 폰트 로드, 120% 글자 크기, 설정 새로고침 후 유지, 링크 변경/복원, 모달 Escape 및 포커스 복귀, 드래그와 클릭 구분, 개별 페이지 진입, 검색·선택 복원, 키보드 체험 진입, 목록/상세 탐색, 잘못된 ID, 런타임 오류 확인. 실제 화면을 보고 중복 제목과 모바일 배경 끝부분을 수정했다.
-
-Sites의 기존 프로젝트 ID와 비공개 범위를 유지한다. 별도 소스 체크아웃에 동일 파일을 게시하고 그 리비전의 정적 파일만 패키징한다.
-
-## Camera and ambient life
-`village-motion.js` choreographs a 1.05s travel arc with zoom-out, slight bank and settling. Building entry zooms in and fades for 1.15s; Escape or the stay button cancels it. Native modified-click links remain unchanged. An original alpha mascot walks toward the selected building, with softly pulsing building lights. Reduced motion removes these animations and navigates immediately. Hidden tabs, list mode and offscreen scenes pause the render loop. Return navigation clears an unfinished entrance.
-Validated animated entry, cancellation without delayed navigation, browser return recovery, moving and frozen mascot states, plus existing desktop/mobile navigation checks.
+Existing Dawn interactive experience remains embedded at `/experiences/dawn-store/`; SASU opens its live service. Projects without confirmed live services open their introduction pages. Existing source code and links are preserved.

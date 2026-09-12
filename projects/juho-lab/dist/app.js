@@ -1,8 +1,11 @@
+import {loadContent,applyContent,getContent} from './content.js';
+import {initEditor} from './editor.js';
 import { initSettings, readPreferences, effectiveMotion } from './preferences.js';
 import { projectHref, detailHref, projectAction, readVisit, sessionKey } from './navigation.js';
 import { projects, profile } from './projects.js';
 import { registerPortfolioTools } from './webmcp.js';
 
+await loadContent();
 const $ = (selector) => document.querySelector(selector);
 const list = $('#project-list');
 const grid = $('#project-grid');
@@ -128,7 +131,7 @@ function setView(next) {
   $('#space-view').setAttribute('aria-pressed', String(view === 'space'));
   $('#list-view').setAttribute('aria-pressed', String(view === 'list'));
   $('#world-prev').hidden = view === 'list'; $('#world-next').hidden = view === 'list'; $('#gallery-pagination').hidden = view === 'list'; $('#reset-camera').hidden = view === 'list'; $('#motion-toggle').hidden = view === 'list';
-  $('#space-hint').textContent = view === 'space' ? '넘겨서 탐색 · 눌러서 입장' : '작품을 누르면 해당 페이지로 이동합니다';
+  $('#space-hint').textContent = view === 'space' ? '좌우로 관람 · 작품을 눌러 입장' : '작품을 누르면 해당 페이지로 이동합니다';
   syncSceneActivity();
 }
 $('#space-view').addEventListener('click', () => setView('space'));
@@ -179,10 +182,10 @@ function fallback() {
   setView('list'); $('#space-view').disabled = true;
   $('#space-hint').textContent = '이 기기에서는 목록으로 작업물을 둘러볼 수 있습니다.';
 }
-import('./scene.js').then(({ createGallery }) => {
+import('./museum-scene.js').then(({ createGallery }) => {
   scene = createGallery($('#scene'), projects, changeSelection, fallback, openProject, projectHref);
   scene.select(selected); scene.filter(visibleProjects().map((p) => p.id));
-  scene.setZoom(readPreferences().zoom);
+  scene.setZoom(readPreferences().zoom);scene.refreshContent?.(getContent());
   scene.setReducedMotion(motion); syncSceneActivity();
   $('#scene-status').hidden = true;
 }).catch(fallback);
@@ -190,6 +193,9 @@ import('./scene.js').then(({ createGallery }) => {
 $('#world-prev').addEventListener('click', () => moveSelection(-1));
 $('#world-next').addEventListener('click', () => moveSelection(1));
 initSettings();
+initEditor(document.querySelector('#settings-dialog'));
+applyContent();
+window.addEventListener('museum-content',()=>{renderIndex();changeSelection(selected,false);scene?.refreshContent?.(getContent())});
 let lastSettings = readPreferences();
 window.addEventListener('portfolio-settings', event => {
   const prefs = event.detail;

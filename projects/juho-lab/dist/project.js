@@ -1,5 +1,7 @@
+import {loadContent} from './content.js';
 import { projects } from './projects.js';
 import { detailHref, projectAction, projectHref } from './navigation.js';
+await loadContent();
 const host = document.querySelector('#project-page');
 const id = new URL(location.href).searchParams.get('id');
 const project = projects.find(p => p.id === id);

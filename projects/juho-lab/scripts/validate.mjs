@@ -50,7 +50,7 @@ for (const file of ['story.json','theme.json']) {
 }
 for (const match of html.matchAll(/(?:src|href)="(\.\/[^"#]+)"/g)) assert.ok((await stat(resolve(root, match[1]))).isFile(), match[1]);
 const hosting = JSON.parse(await readFile(resolve(root, '../.openai/hosting.json'), 'utf8'));
-assert.equal(hosting.static.directory, 'dist');
+assert.equal(hosting.r2, 'MEDIA');assert.equal(hosting.static,undefined);
 const { cleanPreferences } = await import(pathToFileURL(resolve(root,'preferences.js')));
 assert.equal(cleanPreferences({scale:99}).scale,1.2);
 assert.equal(cleanPreferences({zoom:-1}).zoom,.85);
