@@ -1,5 +1,5 @@
 import { projects } from './projects.js';
-import { detailHref, projectAction } from './navigation.js';
+import { detailHref, projectAction, projectHref } from './navigation.js';
 const host = document.querySelector('#project-page');
 const id = new URL(location.href).searchParams.get('id');
 const project = projects.find(p => p.id === id);
@@ -26,9 +26,10 @@ if (!project) {
   const features=el('ul','project-features');project.details.forEach(item=>features.append(el('li','',item)));description.append(features,el('p','project-context',project.note));
   const info=el('aside','project-info');info.append(el('p','eyebrow',project.category));
   const tags=el('div','tags');project.tags.forEach(tag=>tags.append(el('span','',tag)));info.append(tags);
-  if(project.liveUrl) info.append(link(projectAction(project)+' ↗',project.liveUrl,'primary-link'));
+  const hasDestination=projectHref(project)!==detailHref(project);
+  if(hasDestination) info.append(link(projectAction(project)+' ↗',projectHref(project),'primary-link'));
   else info.append(el('p','availability','현재는 작업 소개와 소스 코드를 볼 수 있습니다.'));
-  const code=link('소스 코드 보기 ↗',project.url,project.liveUrl?'code-link':'primary-link');code.target='_blank';code.rel='noopener noreferrer';info.append(code);
+  const code=link('소스 코드 보기 ↗',project.url,hasDestination?'code-link':'primary-link');code.target='_blank';code.rel='noopener noreferrer';info.append(code);
   info.append(link('← 전시실로 돌아가기','./','detail-more'));
   body.append(description,info);
   const next=projects[(projects.indexOf(project)+1)%projects.length];

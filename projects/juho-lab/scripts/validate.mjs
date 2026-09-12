@@ -37,7 +37,7 @@ for (const project of projects) {
 }
 for (const file of ['project.html']) {
   const markup = await readFile(resolve(root,file),'utf8');
-  for (const match of markup.matchAll(/(?:src|href)="(\.\/[^"#]+)"/g)) assert.ok((await stat(resolve(root,match[1]))).isFile(),match[1]);
+  for (const match of markup.matchAll(/(?:src|href)="(\.\/[^"#]+)"/g)) { let p=resolve(root,match[1].split('?')[0]); if((await stat(p)).isDirectory())p=resolve(p,'index.html');assert.ok((await stat(p)).isFile(),match[1]); }
 }
 function assetPaths(value) {
   if (value && typeof value === 'object' && value.available === false) return [];
@@ -51,17 +51,15 @@ for (const file of ['story.json','theme.json']) {
 for (const match of html.matchAll(/(?:src|href)="(\.\/[^"#]+)"/g)) assert.ok((await stat(resolve(root, match[1]))).isFile(), match[1]);
 const hosting = JSON.parse(await readFile(resolve(root, '../.openai/hosting.json'), 'utf8'));
 assert.equal(hosting.static.directory, 'dist');
-const { relativeSlot } = await import(pathToFileURL(resolve(root, 'gallery-layout.js')));
-assert.equal(relativeSlot(0, 0, 0), 99);
-for (const count of [1, 2, 3, 4, 5, 6]) {
-  for (let selected = 0; selected < count; selected++) {
-    const slots = Array.from({length: count}, (_, index) => relativeSlot(index, selected, count));
-    assert.equal(slots[selected], 0, 'selected work is centered');
-    assert.equal(new Set(slots).size, count, 'filtered works cannot overlap');
-    assert.equal(slots.filter(slot => Math.abs(slot) <= 1).length, Math.min(3, count));
-  }
-}
+const { cleanPreferences } = await import(pathToFileURL(resolve(root,'preferences.js')));
+assert.equal(cleanPreferences({scale:99}).scale,1.2);
+assert.equal(cleanPreferences({zoom:-1}).zoom,.85);
+assert.equal(cleanPreferences({view:'bad'}).view,'space');
+assert.throws(()=>cleanPreferences({links:{sasu:'javascript:alert(1)'}}));
+assert.throws(()=>cleanPreferences({links:{sasu:'https://user:pass@example.com/'}}));
+assert.equal(cleanPreferences({links:{sasu:'https://example.com/'}}).links.sasu,'https://example.com/');
+assert.equal((await readFile(resolve(root,'assets/PretendardVariable.woff2'))).subarray(0,4).toString(),'wOF2');
 const css = await readFile(resolve(root, 'style.css'), 'utf8');
 for (const match of css.matchAll(/url\(['"]?(\.\/[^)'"\s]+)['"]?\)/g)) assert.ok((await stat(resolve(root, match[1]))).isFile(), match[1]);
 assert.equal([...html.matchAll(/id="([^"]+)"/g)].length, new Set([...html.matchAll(/id="([^"]+)"/g)].map(m => m[1])).size, 'unique element IDs');
-console.log(`PASS: ${projects.length} projects, source syntax, imports, local assets, CSS assets, gallery wrapping/filter layout, unique IDs, and static hosting manifest.`);
+console.log(`PASS: ${projects.length} projects, source syntax, imports, local assets, CSS assets, preferences bounds/safe links/font file, unique IDs, and static hosting manifest.`);

@@ -1,1 +1,2 @@
-:root{--bg:#141517;--panel:#1b1d20;--surface:#26282c;--text:#f0eee9;--muted:#a1a3a8;--line:#34363a;--accent:#ff885b;--radius:12px;--gutter:3.5rem;--sans:Inter,"Pretendard","Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--mono:"SFMono-Regular",Consolas,monospace}
+@font-face{font-family:Juho Sans;src:url('./assets/PretendardVariable.woff2') format('woff2');font-weight:45 920;font-style:normal;font-display:swap}
+:root{--sans:"Juho Sans","Apple SD Gothic Neo",sans-serif;--mono:var(--sans);--text:#273e3c;--muted:#627674;--bg:#f8faf6;--accent:#365e53;--line:#d5dfd6;--font-scale:1}

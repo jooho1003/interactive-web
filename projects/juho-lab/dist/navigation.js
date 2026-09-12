@@ -1,7 +1,8 @@
+import { readPreferences } from './preferences.js';
 export function detailHref(project) { return './project.html?id=' + encodeURIComponent(project.id); }
-export function projectHref(project) { return project.liveUrl || detailHref(project); }
-export function projectAction(project) { return project.id === 'dawn-store' ? '작품 체험하기' : project.liveUrl ? '서비스 열기' : '프로젝트 들어가기'; }
-export const sessionKey = 'juho-atelier-navigation-v1';
+export function projectHref(project) { return readPreferences().links[project.id] || project.liveUrl || detailHref(project); }
+export function projectAction(project) { return readPreferences().links[project.id] ? '프로젝트 열기' : project.id === 'dawn-store' ? '작품 체험하기' : project.liveUrl ? '서비스 열기' : '프로젝트 들어가기'; }
+export const sessionKey = 'juho-village-navigation-v2';
 export function readVisit(projects) {
   try {
     const value = JSON.parse(sessionStorage.getItem(sessionKey));

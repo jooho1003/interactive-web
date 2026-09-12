@@ -1,3 +1,4 @@
+import { initSettings, readPreferences, effectiveMotion } from './preferences.js';
 import { projectHref, detailHref, projectAction, readVisit, sessionKey } from './navigation.js';
 import { projects, profile } from './projects.js';
 import { registerPortfolioTools } from './webmcp.js';
@@ -15,7 +16,7 @@ let query = visit?.query || '';
 $('#search').value = query;
 let scene;
 let view = 'space';
-let motion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let motion = effectiveMotion();
 const motionQuery = matchMedia('(prefers-reduced-motion: reduce)');
 
 function element(tag, className, text) {
@@ -58,12 +59,14 @@ function changeSelection(id, updateHash = true) {
   document.querySelectorAll('[data-project]').forEach((button) => button.setAttribute('aria-current', String(button.dataset.project === id)));
   scene?.select(id);
   $('#result-status').textContent = `${project.title} 선택됨. ${project.subtitle}`;
+  const available = visibleProjects(); const currentIndex = available.findIndex(p => p.id === selected);
+  $('#world-prev').disabled = currentIndex <= 0; $('#world-next').disabled = currentIndex >= available.length - 1;
   if (updateHash) history.replaceState(null, '', `#project=${encodeURIComponent(id)}`);
 }
 function moveSelection(direction) {
   const available = visibleProjects(); if (!available.length) return;
   const index = available.findIndex((p) => p.id === selected);
-  changeSelection(available[(index + direction + available.length) % available.length].id);
+  changeSelection(available[Math.max(0, Math.min(available.length-1, index + direction))].id);
 }
 function projectButton(project, mode) {
   const button = element('a', mode === 'list' ? 'index-card' : 'grid-card');
@@ -102,6 +105,7 @@ function renderIndex() {
   $('#gallery-pagination').replaceChildren(...available.map(project => { const b = element('button', '', project.number); b.type = 'button'; b.dataset.id = project.id; b.setAttribute('aria-label', project.title + ' 전시 위치로 이동'); b.setAttribute('aria-pressed', String(project.id === selected)); b.addEventListener('click', () => changeSelection(project.id)); return b; }));
   if (available.length && !available.some((p) => p.id === selected)) changeSelection(available[0].id);
   if (!available.length) {
+    $('#world-prev').disabled = true; $('#world-next').disabled = true;
     detail.replaceChildren(element('p', 'detail-description', '일치하는 프로젝트가 없습니다.'), element('p', 'detail-note', '검색어를 지우거나 다른 분야를 선택해 주세요.'));
   } else if (!$('#detail-title')) changeSelection(selected, false);
 }
@@ -120,16 +124,16 @@ function setView(next) {
   $('#space').hidden = view !== 'space'; grid.hidden = view !== 'list';
   $('#space-view').setAttribute('aria-pressed', String(view === 'space'));
   $('#list-view').setAttribute('aria-pressed', String(view === 'list'));
-  $('#reset-camera').hidden = view === 'list'; $('#motion-toggle').hidden = view === 'list';
+  $('#world-prev').hidden = view === 'list'; $('#world-next').hidden = view === 'list'; $('#gallery-pagination').hidden = view === 'list'; $('#reset-camera').hidden = view === 'list'; $('#motion-toggle').hidden = view === 'list';
   $('#space-hint').textContent = view === 'space' ? '넘겨서 탐색 · 눌러서 입장' : '작품을 누르면 해당 페이지로 이동합니다';
   scene?.setActive(view === 'space' && !document.hidden);
 }
 $('#space-view').addEventListener('click', () => setView('space'));
 $('#list-view').addEventListener('click', () => setView('list'));
 $('#reset-camera').addEventListener('click', () => scene?.reset());
-function setMotion(reduce) { motion = reduce; $('#motion-toggle').setAttribute('aria-pressed', String(reduce)); scene?.setReducedMotion(reduce); }
+function setMotion(reduce) { motion = reduce; document.documentElement.dataset.motion = reduce ? 'reduce' : 'full'; $('#motion-toggle').setAttribute('aria-pressed', String(reduce)); scene?.setReducedMotion(reduce); }
 $('#motion-toggle').addEventListener('click', () => setMotion(!motion));
-motionQuery.addEventListener('change', (event) => setMotion(event.matches));
+motionQuery.addEventListener('change', () => { if(readPreferences().motion === 'system') setMotion(effectiveMotion()); });
 $('#space').addEventListener('keydown', (event) => {
   if (event.target !== $('#space')) return;
   if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); moveSelection(event.key === 'ArrowRight' ? 1 : -1); }
@@ -159,6 +163,7 @@ function applyHash(hash = location.hash) {
 }
 window.addEventListener('hashchange', () => applyHash());
 renderIndex(); changeSelection(selected, false); applyHash(arrivalHash); setMotion(motion);
+setView(visit?.view || readPreferences().view);
 if (visit) { setView(visit.view); requestAnimationFrame(() => requestAnimationFrame(() => scrollTo(0, visit.scrollY))); }
 window.addEventListener('pagehide', () => { try { sessionStorage.setItem(sessionKey, JSON.stringify({selected, category, query, view, scrollY})); } catch {} });
 function openProject(id) { const project = projects.find(p => p.id === id); if (project) { changeSelection(id); location.assign(projectHref(project)); } }
@@ -174,6 +179,20 @@ function fallback() {
 import('./scene.js').then(({ createGallery }) => {
   scene = createGallery($('#scene'), projects, changeSelection, fallback, openProject, projectHref);
   scene.select(selected); scene.filter(visibleProjects().map((p) => p.id));
+  scene.setZoom(readPreferences().zoom);
   scene.setReducedMotion(motion); scene.setActive(view === 'space' && !document.hidden);
   $('#scene-status').hidden = true;
 }).catch(fallback);
+
+$('#world-prev').addEventListener('click', () => moveSelection(-1));
+$('#world-next').addEventListener('click', () => moveSelection(1));
+initSettings();
+let lastSettings = readPreferences();
+window.addEventListener('portfolio-settings', event => {
+  const prefs = event.detail;
+  setMotion(effectiveMotion(prefs)); scene?.setZoom(prefs.zoom); if (prefs.view !== lastSettings.view) setView(prefs.view); lastSettings = prefs;
+  renderIndex(); if (visibleProjects().length) changeSelection(selected, false);
+  scene?.refreshLinks();
+});
+
+window.addEventListener('scroll',()=>document.querySelector('.site-header').classList.toggle('scrolled',scrollY>40),{passive:true});
