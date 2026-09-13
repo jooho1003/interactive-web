@@ -1,4 +1,4 @@
-import {cleanContent} from '../dist/content-schema.js';
+import {cleanContent} from '../public/content-schema.js';
 const ownerEmail='heyagent1003@gmail.com';
 const json=(value,status=200)=>Response.json(value,{status,headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}});
 const isOwner=request=>!!request.headers.get('oai-authenticated-user-id')&&request.headers.get('oai-authenticated-user-email')?.toLowerCase()===ownerEmail;

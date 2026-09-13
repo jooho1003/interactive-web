@@ -1,0 +1,4 @@
+packages:
+  - "projects/*"
+  - "projects/*/app"
+  - "packages/*"

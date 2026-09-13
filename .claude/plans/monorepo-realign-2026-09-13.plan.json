@@ -1,0 +1,16 @@
+{
+  "gate": "PASS",
+  "request": "juho-lab 설정 구성 점검 + 인터랙티브 웹 양산 모노레포 설계 검토·수정",
+  "nodes": [
+    {"id":"N1","title":"설계 개정 (docs/03 현실 정렬 + 앱 역할·설정 계약)","domain":"general","D1":1,"D2":2,"D3":0,"D4":2,"score":5,"tier":"powerful","agent":"main","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":[],"산출물":"docs/03-모노레포-설계.md, README.md, projects/juho-lab/README.md 설정 절"},
+    {"id":"N2","title":"pnpm 워크스페이스 루트 + dawn-store 락파일 이관 + CI","domain":"general","D1":0,"D2":2,"D3":1,"D4":1,"score":4,"tier":"balanced","agent":"worker","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":["N1"],"산출물":"package.json, pnpm-workspace.yaml, .nvmrc, pnpm-lock.yaml, .github/workflows/*"},
+    {"id":"N3","title":"juho-lab 소스 dist→public 이동, 경로·이름 정리","domain":"mechanical","D1":0,"D2":1,"D3":1,"D4":0,"score":2,"tier":"balanced","agent":"worker","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":["N1"],"산출물":"projects/juho-lab/{public,scripts,server,package.json}, .gitignore"},
+    {"id":"N4","title":"작품 레지스트리 단일 원천 (projectIds 파생)","domain":"general","D1":0,"D2":1,"D3":1,"D4":1,"score":3,"tier":"balanced","agent":"worker","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":["N3"],"산출물":"public/content-schema.js, scripts/build-museum.mjs"},
+    {"id":"N5","title":"잡파일 정리 (드라이브 폴더 노트 이동, 빈 중복 디렉터리 삭제)","domain":"mechanical","D1":0,"D2":0,"D3":0,"D4":0,"score":0,"tier":"fast","agent":"worker","claude_model":"haiku","codex_model":"gpt-5.6-luna","depends_on":[],"산출물":"docs/transcripts/00-ai-world-녹화노트.txt"},
+    {"id":"N6","title":"통합 검증 + 최종 리뷰","domain":"review","D1":0,"D2":2,"D3":0,"D4":2,"score":4,"tier":"powerful","agent":"main","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":["N2","N4","N5"],"산출물":"validate/check 실행 결과"}
+  ],
+  "gates": {"G1":"PASS","G2":"PASS","G3":"PASS","G4":"PASS","G5":"PASS"},
+  "powerful_exception": "N1 아키텍처 결정, N6 최종 리뷰 — 둘 다 하드 오버라이드 + never_delegate (2/6=33%)",
+  "requires_approval": [],
+  "out_of_scope": ["서버 소유자 allowlist 환경변수화(보안 — 호스팅 env 지원 확인 후 별도 플랜)", "turbo 도입(첫 공용 패키지 생길 때)", "배포"]
+}

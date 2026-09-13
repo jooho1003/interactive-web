@@ -4,7 +4,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import assert from 'node:assert/strict';
 
-const root = resolve(dirname(fileURLToPath(import.meta.url)), '../dist');
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '../public');
 const { projects, profile } = await import(pathToFileURL(resolve(root, 'projects.js')));
 assert.ok(profile.name && profile.introduction);
 assert.ok(projects.length > 0);

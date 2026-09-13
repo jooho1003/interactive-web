@@ -4,7 +4,7 @@ import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const source = resolve(root, '../dawn-store/app/dist');
-const target = resolve(root, 'dist/experiences/dawn-store');
+const target = resolve(root, 'public/experiences/dawn-store');
 await mkdir(target, {recursive:true});
 await cp(source, target, {recursive:true});
 const prefix='/experiences/dawn-store';

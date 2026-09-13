@@ -1,0 +1,13 @@
+{
+  "name": "interactive-web",
+  "private": true,
+  "packageManager": "pnpm@9.13.2",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "dev:dawn": "pnpm --filter dawn-store dev",
+    "build:dawn": "pnpm --filter dawn-store build",
+    "build:hub": "pnpm build:dawn && pnpm --filter juho-lab include:dawn && pnpm --filter juho-lab validate && pnpm --filter juho-lab build",
+    "check": "pnpm -r --if-present check",
+    "validate": "pnpm -r --if-present validate"
+  }
+}

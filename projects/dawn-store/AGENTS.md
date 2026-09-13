@@ -19,9 +19,9 @@
 
 | 단계 | 내용 | 통과 조건 |
 |---|---|---|
-| 1 | 스캐폴딩. Vite + React + TS, `app/` 아래. `seed/`의 JSON 두 개를 `app/public/`으로 복사 | `npm run dev`가 뜬다 |
+| 1 | 스캐폴딩. Vite + React + TS, `app/` 아래. `seed/`의 JSON 두 개를 `app/public/`으로 복사 | `pnpm run dev`가 뜬다 |
 | 2 | zod 스키마(`src/schema/`)로 두 JSON을 파싱. 타입 추출 | 두 파일이 검증을 통과한다 |
-| 3 | `scripts/lint-graph.ts`. SPEC §3의 린트 규칙 9개 | `npm run lint:graph` 통과 |
+| 3 | `scripts/lint-graph.ts`. SPEC §3의 린트 규칙 9개 | `pnpm run lint:graph` 통과 |
 | 4 | `theme.json` → CSS 변수 주입(`src/theme/`) | 개발자 도구에서 변수가 보인다 |
 | 5 | 플레이어 코어. 미디어 추상화, 듀얼 레이어 크로스페이드, 타이머, 프리로드 | 플레이스홀더 이미지로 7컷이 순서대로 넘어간다 |
 | 6 | 그래프 엔진. 노드 이동, 플래그, 글로우 상태기계, `available` 방어 | 수용 기준 2·3번 통과 |
@@ -68,9 +68,9 @@ ffmpeg -i in.png -vf "scale=1920:-2" -c:v libwebp -quality 80 -compression_level
 ## 검증
 
 ```bash
-npm run lint:graph     # 그래프·자막·타임라인 정합성
-npm run build          # 성능 예산 확인
-npm run preview        # 수동 확인
+pnpm run lint:graph     # 그래프·자막·타임라인 정합성
+pnpm run build          # 성능 예산 확인
+pnpm run preview        # 수동 확인
 ```
 
 수용 기준 10개는 `SPEC.md` §10에 있다. 전부 통과할 때만 완료를 선언한다. 특히 9번(모바일 토큰 적용)은 레퍼런스 두 사이트가 실제로 실패한 지점이니 뷰포트 리사이즈가 아니라 모바일 에뮬레이션으로 확인한다.
