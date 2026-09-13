@@ -1,0 +1,32 @@
+name: Dawn Store checks
+on:
+  push:
+    paths: ['projects/dawn-store/**', '.github/workflows/dawn-store-check.yml']
+  pull_request:
+    paths: ['projects/dawn-store/**', '.github/workflows/dawn-store-check.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: projects/dawn-store/app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: projects/dawn-store/app/package-lock.json
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run check:all
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-test-results
+          path: projects/dawn-store/app/test-results
+          retention-days: 7

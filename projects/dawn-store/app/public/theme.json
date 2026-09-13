@@ -1,0 +1,266 @@
+{
+  "_note": "값의 출처는 docs/08 문서의 AI Movie·Design Your World 실측치다. 모바일 자막 크기와 스킵 버튼 위치는 두 사이트의 결함(자막 잘림, 스킵과 겹침)을 피하려고 의도적으로 바꿨다. 컴포넌트에 색·크기 리터럴을 쓰지 말고 전부 여기서 CSS 변수로 주입한다.",
+
+  "colors": {
+    "accent": "#f3c614",
+    "glow": "#ef4444",
+    "hotspot": "#ffae00",
+    "text": "#ffffff",
+    "textMuted": "#b8b8b8",
+    "surface": "rgba(0, 0, 0, 0.8)",
+    "border": "#363636",
+    "endingBackground": "#000000"
+  },
+
+  "font": {
+    "family": "Noto Sans KR",
+    "stack": "'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    "weights": [400, 500, 600],
+    "subsets": ["korean", "latin"],
+    "maxFiles": 6
+  },
+
+  "arrow": {
+    "desktop": {
+      "circleSize": 52,
+      "arrowSize": 20,
+      "strokeWidth": 1,
+      "arrowColor": "#c7c7c7",
+      "circleColor": "#474747",
+      "circleOpacity": 80,
+      "edgeMargin": 48,
+      "hover": { "durationMs": 200, "scale": 1.05, "arrowColor": "#ffffff", "circleOpacity": 90 },
+      "glow": {
+        "color": "#ef4444",
+        "circleOpacity": 50,
+        "shadow": "0 0 20px 5px",
+        "pulse": { "enabled": true, "durationSec": 1.5, "minOpacity": 0.15, "maxOpacity": 0.45 }
+      },
+      "glowHover": { "circleOpacity": 80, "scale": 1.08 }
+    },
+    "mobile": {
+      "circleSize": 40,
+      "arrowSize": 16,
+      "strokeWidth": 1,
+      "arrowColor": "#c7c7c7",
+      "circleColor": "#474747",
+      "circleOpacity": 80,
+      "edgeMargin": 20,
+      "hover": { "durationMs": 200, "scale": 1.05, "arrowColor": "#ffffff", "circleOpacity": 90 },
+      "glow": {
+        "color": "#ef4444",
+        "circleOpacity": 50,
+        "shadow": "0 0 14px 4px",
+        "pulse": { "enabled": true, "durationSec": 1.5, "minOpacity": 0.15, "maxOpacity": 0.45 }
+      },
+      "glowHover": { "circleOpacity": 80, "scale": 1.08 }
+    }
+  },
+
+  "question": {
+    "desktop": { "fontSize": 26, "fontWeight": 500, "color": "#ffffff", "textShadow": "0 2px 4px rgba(0,0,0,0.5)", "marginBottom": 20 },
+    "mobile": { "fontSize": 19, "fontWeight": 500, "color": "#ffffff", "textShadow": "0 2px 4px rgba(0,0,0,0.5)", "marginBottom": 14 }
+  },
+
+  "menu": {
+    "desktop": {
+      "width": 368,
+      "height": 53,
+      "gap": 12,
+      "radius": 22,
+      "fontSize": 24,
+      "fontWeight": 400,
+      "color": "#ffffff",
+      "background": "rgba(0, 0, 0, 0.8)",
+      "bottomPercent": 30,
+      "hover": { "color": "#ffae00", "durationMs": 160 },
+      "glow": { "borderWidth": 0.67, "borderColor": "#ef4444", "shadow": "0 0 15px 8px", "shadowOpacity": 0.74 }
+    },
+    "mobile": {
+      "width": "88%",
+      "height": 48,
+      "gap": 10,
+      "radius": 20,
+      "fontSize": 17,
+      "fontWeight": 400,
+      "color": "#ffffff",
+      "background": "rgba(0, 0, 0, 0.8)",
+      "bottomPercent": 30,
+      "hover": { "color": "#ffae00", "durationMs": 160 },
+      "glow": { "borderWidth": 0.67, "borderColor": "#ef4444", "shadow": "0 0 12px 6px", "shadowOpacity": 0.74 }
+    }
+  },
+
+  "hotspot": {
+    "outlineColor": "#ffae00",
+    "outlineWidth": 2,
+    "glowBlur": 12,
+    "fillOpacity": 0.06,
+    "radius": 6,
+    "transitionMs": 160,
+    "cursor": "pointer"
+  },
+
+  "subtitle": {
+    "desktop": {
+      "fontSize": 35,
+      "fontWeight": 600,
+      "letterSpacing": -0.5,
+      "lineHeight": 1.35,
+      "color": "#f3c614",
+      "bottomPercent": 15,
+      "maxWidthPercent": 80,
+      "textShadow": "1px 1px 2px rgba(0,0,0,0.65)",
+      "fadeMs": 1000
+    },
+    "mobile": {
+      "fontSize": 17,
+      "fontWeight": 600,
+      "letterSpacing": -0.3,
+      "lineHeight": 1.4,
+      "color": "#f3c614",
+      "bottomPercent": 20,
+      "maxWidthPercent": 90,
+      "textShadow": "1px 1px 2px rgba(0,0,0,0.65)",
+      "fadeMs": 1000
+    }
+  },
+
+  "skip": {
+    "_note": "레퍼런스는 하단에 두어 자막과 겹쳤다. 우상단으로 옮겨 겹침을 원천 차단한다.",
+    "desktop": {
+      "width": 85, "height": 42, "radius": 21, "fontSize": 14, "fontWeight": 600,
+      "color": "#b8b8b8", "hoverColor": "#ffffff",
+      "background": "rgba(0, 0, 0, 0.8)", "borderColor": "#363636", "borderWidth": 1,
+      "position": { "top": 24, "right": 24 }
+    },
+    "mobile": {
+      "width": 72, "height": 34, "radius": 17, "fontSize": 12, "fontWeight": 600,
+      "color": "#b8b8b8", "hoverColor": "#ffffff",
+      "background": "rgba(0, 0, 0, 0.8)", "borderColor": "#363636", "borderWidth": 1,
+      "position": { "top": 16, "right": 16 }
+    }
+  },
+
+  "langToggle": {
+    "desktop": {
+      "fontSize": 13, "fontWeight": 600, "gap": 8, "radius": 16,
+      "activeColor": "#f3c614", "inactiveColor": "#ffffff",
+      "background": "rgba(0, 0, 0, 0.6)", "paddingX": 12, "height": 32,
+      "position": { "top": 24, "left": 24 }
+    },
+    "mobile": {
+      "fontSize": 12, "fontWeight": 600, "gap": 6, "radius": 14,
+      "activeColor": "#f3c614", "inactiveColor": "#ffffff",
+      "background": "rgba(0, 0, 0, 0.6)", "paddingX": 10, "height": 28,
+      "position": { "top": 16, "left": 16 }
+    }
+  },
+
+  "mute": {
+    "_note": "언어 토글 바로 오른쪽. BGM과 효과음을 한 번에 끈다. 상태는 localStorage에 남긴다.",
+    "desktop": { "size": 32, "radius": 16, "iconSize": 15, "color": "#ffffff", "activeColor": "#f3c614", "background": "rgba(0,0,0,0.6)", "position": { "top": 24, "left": 132 } },
+    "mobile": { "size": 28, "radius": 14, "iconSize": 13, "color": "#ffffff", "activeColor": "#f3c614", "background": "rgba(0,0,0,0.6)", "position": { "top": 16, "left": 108 } }
+  },
+
+  "timeline": {
+    "desktop": {
+      "widthPercent": 60, "barHeight": 3, "barColor": "rgba(255,255,255,0.2)",
+      "progressColor": "#f3c614", "pointSize": 10, "pointActiveSize": 14,
+      "pointColor": "#ffffff", "labelFontSize": 13, "labelColor": "#b8b8b8",
+      "position": { "top": 32 }, "hoverPreview": true
+    },
+    "mobile": {
+      "widthPercent": 84, "barHeight": 3, "barColor": "rgba(255,255,255,0.2)",
+      "progressColor": "#f3c614", "pointSize": 8, "pointActiveSize": 12,
+      "pointColor": "#ffffff", "labelFontSize": 11, "labelColor": "#b8b8b8",
+      "position": { "top": 56 }, "hoverPreview": false
+    }
+  },
+
+  "replay": {
+    "desktop": { "width": 140, "height": 50, "radius": 25, "fontSize": 16, "fontWeight": 600, "color": "#ffffff", "background": "rgba(255,255,255,0.1)", "borderColor": "#363636", "borderWidth": 1, "hoverColor": "#f3c614" },
+    "mobile": { "width": 120, "height": 44, "radius": 22, "fontSize": 14, "fontWeight": 600, "color": "#ffffff", "background": "rgba(255,255,255,0.1)", "borderColor": "#363636", "borderWidth": 1, "hoverColor": "#f3c614" }
+  },
+
+  "hiddenLink": {
+    "previewBorderColor": "#a855f7",
+    "previewBorderWidth": 2,
+    "previewDash": "4 3",
+    "cursor": "pointer"
+  },
+
+  "footer": {
+    "desktop": { "fontSize": 12, "color": "rgba(255,255,255,0.45)", "bottom": 16, "hoverColor": "rgba(255,255,255,0.8)" },
+    "mobile": { "fontSize": 11, "color": "rgba(255,255,255,0.45)", "bottom": 12, "hoverColor": "rgba(255,255,255,0.8)" }
+  },
+
+  "aiDisclosure": {
+    "desktop": { "fontSize": 11, "color": "rgba(255,255,255,0.35)", "bottom": 38 },
+    "mobile": { "fontSize": 10, "color": "rgba(255,255,255,0.35)", "bottom": 30 }
+  },
+
+  "transition": {
+    "crossfadeMs": 400,
+    "uiFadeMs": 300,
+    "endScreenFadeMs": 600
+  },
+
+  "audio": {
+    "bgm": { "src": "/audio/bgm.mp3", "volume": 0.5, "crossfadeMs": 1500, "loop": true },
+    "sfx": {
+      "hoverEnabled": true,
+      "clickEnabled": true,
+      "volume": 0.6,
+      "hover": "/audio/hover.wav",
+      "click": "/audio/click.wav"
+    }
+  },
+
+  "breakpoint": { "mobileMaxWidth": 768 },
+
+  "zIndex": {
+    "mediaPrev": 0,
+    "mediaCurrent": 1,
+    "hotspot": 10,
+    "hotspotOutline": 12,
+    "subtitle": 20,
+    "footer": 30,
+    "menu": 40,
+    "arrow": 50,
+    "hiddenLink": 55,
+    "skip": 60,
+    "timeline": 70,
+    "controls": 75,
+    "transitionOverlay": 80,
+    "endScreen": 90
+  },
+
+  "settings": {
+    "desktop": {
+      "width": 520,
+      "padding": 24,
+      "gap": 12,
+      "fontSize": 14,
+      "controlHeight": 44,
+      "radius": 12,
+      "titleSize": 22,
+      "largeSubtitleSize": 26,
+      "checkboxSize": 20,
+      "borderWidth": 1,
+      "focusWidth": 2,
+      "lineHeight": 1.5,
+      "backdrop": "rgba(0,0,0,0.72)"
+    },
+    "mobile": {
+      "width": 358,
+      "padding": 18,
+      "gap": 10,
+      "fontSize": 14,
+      "controlHeight": 44,
+      "radius": 12,
+      "titleSize": 20,
+      "largeSubtitleSize": 20
+    }
+  }
+}

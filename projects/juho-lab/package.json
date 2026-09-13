@@ -1,0 +1,1 @@
+{"name":"juho-museum","private":true,"type":"module","scripts":{"build":"node scripts/build-museum.mjs","validate":"node scripts/validate.mjs"}}
