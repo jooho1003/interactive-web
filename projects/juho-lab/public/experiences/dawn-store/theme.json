@@ -207,7 +207,7 @@
   },
 
   "audio": {
-    "bgm": { "src": "/experiences/dawn-store/audio/bgm.mp3", "volume": 0.5, "crossfadeMs": 1500, "loop": true },
+    "bgm": { "src": "/experiences/dawn-store/audio/bgm.mp3", "volume": 0.5, "crossfadeMs": 1500, "loop": false },
     "sfx": {
       "hoverEnabled": true,
       "clickEnabled": true,

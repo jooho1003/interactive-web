@@ -13,6 +13,7 @@ type Props = {
 function StillImage({ node, currentTime, previous = false }: { node: Node; currentTime: number; previous?: boolean }) {
   const [failed, setFailed] = useState(false);
   const media = node.media.kind === "still" ? node.media : null;
+  useEffect(() => setFailed(false), [node.id, media?.src]);
   const progress = media ? Math.min(1, currentTime / media.duration) : 0;
   const from = media?.kenBurns?.from ?? { scale: 1, x: 0, y: 0 };
   const to = media?.kenBurns?.to ?? from;

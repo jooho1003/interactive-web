@@ -64,6 +64,15 @@ export function usePlayback(node: Node, onComplete: () => void, paused = false) 
     setSeekVersion((value) => value + 1);
   }, [node.media.duration, node.media.kind, node.loop]);
 
+  const replay = useCallback(() => {
+    clock.current = 0;
+    if (videoRef.current) videoRef.current.currentTime = 0;
+    setCurrentTime(0);
+    setEnded(false);
+    setCycles(0);
+    setSeekVersion((value) => value + 1);
+  }, []);
+
   const handleVideoTime = useCallback((time: number) => setCurrentTime(time), []);
   const handleVideoEnded = useCallback(() => {
     if (node.loop && videoRef.current) {
@@ -76,5 +85,5 @@ export function usePlayback(node: Node, onComplete: () => void, paused = false) 
     completeRef.current();
   }, [node.loop, paused]);
 
-  return { currentTime, ended, cycles, seek, videoRef, handleVideoTime, handleVideoEnded };
+  return { currentTime, ended, cycles, seek, replay, videoRef, handleVideoTime, handleVideoEnded };
 }

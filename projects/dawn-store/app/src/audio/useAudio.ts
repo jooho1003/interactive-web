@@ -21,7 +21,10 @@ export function useAudio(node: Node, audioTheme: Theme["audio"], settings: Prefe
     const bgm = bgmRef.current;
     if (!bgm) return;
     bgm.volume = audioTheme.bgm.volume * settings.bgmVolume / 100;
-    if (bgmEnabled && unlockedRef.current) void bgm.play().catch(() => undefined);
+    if (bgmEnabled && unlockedRef.current) {
+      if (bgm.ended) bgm.currentTime = 0;
+      void bgm.play().catch(() => undefined);
+    }
     else bgm.pause();
   }, [audioTheme.bgm, settings.bgmVolume, bgmEnabled, node.id]);
 
