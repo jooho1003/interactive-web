@@ -1,0 +1,16 @@
+:root {
+  --sky-morning-top: #fbd6bc; --sky-morning-bottom: #a9d9ed;
+  --sky-afternoon-top: #65b8e9; --sky-afternoon-bottom: #d7eff8;
+  --sky-evening-top: #f39a67; --sky-evening-bottom: #8669aa;
+  --sky-night-top: #17244e; --sky-night-bottom: #43517c;
+  --seg-morning: #e98458; --seg-afternoon: #4a9bd1; --seg-evening: #7960ac;
+  --surface: #fffdf8; --surface-raised: #ffffff; --ink: #202433;
+  --ink-muted: #5d6473; --line: #d8dce3; --focus: #126cc4;
+  --font-sans: system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+  --radius-sm: 0.25rem; --radius-md: 0.5rem; --shadow-raised: 0 0.25rem 0.75rem rgb(32 36 51 / 15%);
+  --duration-fast: 150ms; --duration-normal: 300ms;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--surface); color: var(--ink); font-family: var(--font-sans); }
