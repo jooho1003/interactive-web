@@ -1,20 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { applyTheme } from "./theme/applyTheme";
 import { loadStoryAndTheme } from "./schema/load";
 import type { Story, Theme } from "./schema";
 import { Player } from "./Player";
+import { applyCustomization, defaultCustomization, mergeCustomization, readCustomization, saveCustomization, type DawnCustomization, type DawnCustomizationPatch } from "./settings/customization";
 
 export function App() {
-  const [data, setData] = useState<{ story: Story; theme: Theme } | null>(null);
+  const [baseData, setBaseData] = useState<{ story: Story; theme: Theme } | null>(null);
+  const [customization, setCustomization] = useState<DawnCustomization>(() => {
+    try { return readCustomization(window.localStorage); }
+    catch { return readCustomization({ getItem: () => null }); }
+  });
   const [error, setError] = useState<string | null>(null);
+
+  const data = useMemo(() => baseData ? applyCustomization(baseData.story, baseData.theme, customization) : null, [baseData, customization]);
 
   useEffect(() => {
     let cancelled = false;
     let cleanup = () => {};
     loadStoryAndTheme().then((loaded) => {
       if (cancelled) return;
-      applyTheme(loaded.theme);
-      setData(loaded);
+      setBaseData(loaded);
       const updateViewport = () => {
         document.documentElement.dataset.viewport = window.innerWidth <= loaded.theme.breakpoint.mobileMaxWidth ? "mobile" : "desktop";
       };
@@ -25,7 +31,24 @@ export function App() {
     return () => { cancelled = true; cleanup(); };
   }, []);
 
+  useEffect(() => {
+    if (data) applyTheme(data.theme);
+  }, [data]);
+
+  const updateCustomization = (patch: DawnCustomizationPatch) => {
+    setCustomization((current) => {
+      const next = mergeCustomization(current, patch);
+      try { saveCustomization(window.localStorage, next); } catch { /* The current visit still uses the draft. */ }
+      return next;
+    });
+  };
+  const resetCustomization = () => {
+    const next = structuredClone(defaultCustomization);
+    try { saveCustomization(window.localStorage, next); } catch { /* The current visit still uses the reset draft. */ }
+    setCustomization(next);
+  };
+
   if (error) return <main className="app-shell error-shell"><p>{error}</p></main>;
   if (!data) return <main className="app-shell"><p className="loading-copy">새벽 세 시 · Still Open</p></main>;
-  return <Player story={data.story} theme={data.theme} />;
+  return <Player story={data.story} theme={data.theme} customization={customization} onCustomizationChange={updateCustomization} onCustomizationReset={resetCustomization} />;
 }

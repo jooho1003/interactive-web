@@ -8,8 +8,6 @@
 # 프로젝트 빌드 산출물과 의존성
 **/node_modules/
 **/dist/
-!projects/juho-lab/dist/
-!projects/juho-lab/dist/**
 **/test-results/
 **/playwright-report/
 
@@ -23,5 +21,3 @@ Thumbs.db
 # Playwright MCP 세션 로그
 .playwright-mcp/
 .site-publish/
-
-projects/juho-lab/.build/

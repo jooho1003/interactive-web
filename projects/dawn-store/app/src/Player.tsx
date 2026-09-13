@@ -13,10 +13,17 @@ import { NavigationUi } from "./ui/NavigationUi";
 import { SettingsPanel } from "./ui/SettingsPanel";
 import { usePreferences } from "./settings/usePreferences";
 import { useEnvironment } from "./settings/useEnvironment";
+import type { DawnCustomization, DawnCustomizationPatch } from "./settings/customization";
 
-type Props = { story: Story; theme: Theme };
+type Props = {
+  story: Story;
+  theme: Theme;
+  customization: DawnCustomization;
+  onCustomizationChange: (patch: DawnCustomizationPatch) => void;
+  onCustomizationReset: () => void;
+};
 
-export function Player({ story, theme }: Props) {
+export function Player({ story, theme, customization, onCustomizationChange, onCustomizationReset }: Props) {
   const { settings, update, saved } = usePreferences(story.meta.defaultLang);
   const { hidden, reducedMotion } = useEnvironment();
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -69,6 +76,7 @@ export function Player({ story, theme }: Props) {
     setPreviousNode(currentNode);
     replay();
   };
+  const handleSceneReplay = () => playback.replay();
 
   return (
     <main className="player-shell" data-motion={reduceMotion ? "reduce" : "full"} data-subtitle-size={settings.subtitleSize}>
@@ -100,7 +108,24 @@ export function Player({ story, theme }: Props) {
         <SkipButton node={currentNode} visible={controlsVisible} lang={lang} onSkip={() => playback.seek(currentNode.media.duration)} />
         <Footer story={story} lang={lang} showDisclosure={currentNode.id === story.start} />
         {playback.ended && currentNode.type === "ending" && <EndScreen story={story} lang={lang} onReplay={handleReplay} />}
-        {settingsOpen && <SettingsPanel settings={settings} saved={saved} onChange={update} onClose={() => setSettingsOpen(false)} />}
+        {playback.ended && currentNode.type !== "ending" && (
+          <button className="scene-replay" type="button" onClick={handleSceneReplay}>
+            {lang === "ko" ? "이 장면 다시 보기" : "Replay this scene"}
+          </button>
+        )}
+        {settingsOpen && (
+          <SettingsPanel
+            settings={settings}
+            saved={saved}
+            story={story}
+            theme={theme}
+            customization={customization}
+            onChange={update}
+            onCustomizationChange={onCustomizationChange}
+            onCustomizationReset={onCustomizationReset}
+            onClose={() => setSettingsOpen(false)}
+          />
+        )}
       </div>
     </main>
   );

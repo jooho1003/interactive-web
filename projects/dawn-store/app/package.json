@@ -5,15 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run validate && tsc -b && vite build && npm run check:budget",
+    "build": "pnpm run validate && tsc -b && vite build && pnpm run check:budget",
     "preview": "vite preview",
     "lint:graph": "tsx scripts/lint-graph.ts",
-    "validate": "npm run lint:graph && tsx scripts/check-assets.ts",
+    "validate": "pnpm run lint:graph && tsx scripts/check-assets.ts",
     "check:budget": "tsx scripts/check-budget.ts",
     "test": "tsx --test scripts/preferences.test.ts",
-    "check": "npm test && npm run build",
+    "check": "pnpm test && pnpm run build",
     "test:e2e": "playwright test",
-    "check:all": "npm run check && npm run test:e2e"
+    "check:all": "pnpm run check && pnpm run test:e2e"
   },
   "dependencies": {
     "react": "^19.1.1",

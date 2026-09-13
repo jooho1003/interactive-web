@@ -81,6 +81,8 @@ button { cursor: pointer; }
 .replay-button { width: var(--replay-desktop-width); height: var(--replay-desktop-height); border: var(--replay-desktop-border-width) solid var(--replay-desktop-border-color); border-radius: var(--replay-desktop-radius); background: var(--replay-desktop-background); color: var(--replay-desktop-color); font-size: var(--replay-desktop-font-size); font-weight: var(--replay-desktop-font-weight); }
 .replay-button:hover { color: var(--replay-desktop-hover-color); }
 .end-screen a { color: var(--footer-desktop-color); font-size: var(--footer-desktop-font-size); }
+.scene-replay { position: absolute; left: 50%; bottom: 7%; z-index: var(--z-index-end-screen, 90); min-width: var(--replay-desktop-width); height: var(--replay-desktop-height); transform: translateX(-50%); border: var(--replay-desktop-border-width) solid var(--replay-desktop-border-color); border-radius: var(--replay-desktop-radius); background: var(--replay-desktop-background); color: var(--replay-desktop-color); font-size: var(--replay-desktop-font-size); font-weight: var(--replay-desktop-font-weight); }
+.scene-replay:hover { color: var(--replay-desktop-hover-color); }
 
 [data-viewport="mobile"] .controls { top: var(--lang-toggle-mobile-position-top); left: var(--lang-toggle-mobile-position-left); gap: var(--lang-toggle-mobile-gap); }
 [data-viewport="mobile"] .lang-toggle { height: var(--lang-toggle-mobile-height); padding: 0 var(--lang-toggle-mobile-padding-x); gap: var(--lang-toggle-mobile-gap); border-radius: var(--lang-toggle-mobile-radius); font-size: var(--lang-toggle-mobile-font-size); }
@@ -105,6 +107,7 @@ button { cursor: pointer; }
 [data-viewport="mobile"] .footer { bottom: var(--footer-mobile-bottom); font-size: var(--footer-mobile-font-size); }
 [data-viewport="mobile"] .footer small { font-size: var(--ai-disclosure-mobile-font-size); }
 [data-viewport="mobile"] .replay-button { width: var(--replay-mobile-width); height: var(--replay-mobile-height); border-radius: var(--replay-mobile-radius); font-size: var(--replay-mobile-font-size); }
+[data-viewport="mobile"] .scene-replay { min-width: var(--replay-mobile-width); height: var(--replay-mobile-height); border-radius: var(--replay-mobile-radius); font-size: var(--replay-mobile-font-size); }
 [data-viewport="mobile"] .end-screen a { font-size: var(--footer-mobile-font-size); }
 
 [data-motion="reduce"] *, [data-motion="reduce"] *::before, [data-motion="reduce"] *::after { animation: none !important; transition: none !important; }

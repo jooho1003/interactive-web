@@ -1,1 +1,12 @@
-{"name":"juho-museum","private":true,"type":"module","scripts":{"build":"node scripts/build-museum.mjs","validate":"node scripts/validate.mjs"}}
+{
+  "name": "juho-lab",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-museum.mjs",
+    "validate": "node scripts/validate.mjs",
+    "check": "node scripts/validate.mjs",
+    "include:dawn": "node scripts/include-dawn.mjs"
+  }
+}
+

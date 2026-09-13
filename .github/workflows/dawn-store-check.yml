@@ -1,9 +1,9 @@
 name: Dawn Store checks
 on:
   push:
-    paths: ['projects/dawn-store/**', '.github/workflows/dawn-store-check.yml']
+    paths: ['projects/dawn-store/**', '.github/workflows/dawn-store-check.yml', 'pnpm-lock.yaml', 'package.json']
   pull_request:
-    paths: ['projects/dawn-store/**', '.github/workflows/dawn-store-check.yml']
+    paths: ['projects/dawn-store/**', '.github/workflows/dawn-store-check.yml', 'pnpm-lock.yaml', 'package.json']
   workflow_dispatch:
 permissions:
   contents: read
@@ -16,14 +16,16 @@ jobs:
         working-directory: projects/dawn-store/app
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: npm
-          cache-dependency-path: projects/dawn-store/app/package-lock.json
-      - run: npm ci
-      - run: npx playwright install --with-deps chromium
-      - run: npm run check:all
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+        working-directory: .
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm run check:all
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
