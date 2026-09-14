@@ -15,6 +15,33 @@ button { cursor: pointer; }
 .app-shell { min-height: 100vh; display: grid; place-items: center; background: var(--colors-ending-background); }
 .loading-copy, .error-shell p { color: var(--c-text-muted); font-size: 1rem; letter-spacing: .04em; }
 
+.cinematic-prelude { position: relative; width: 100vw; height: 100dvh; overflow: hidden; isolation: isolate; color: #f1efe9; background: #050708; cursor: crosshair; }
+.prelude-media, .prelude-media img, .prelude-media video, .prelude-vignette, .prelude-grain { position: absolute; inset: 0; width: 100%; height: 100%; }
+.prelude-media { z-index: -4; overflow: hidden; background: #050708; }
+.prelude-media img, .prelude-media video { object-fit: cover; transform: scale(1.03); }
+.prelude-media img { animation: preludeDrift 14s ease-in-out infinite alternate; filter: saturate(.78) contrast(1.08); }
+.prelude-media video { opacity: .92; }
+.prelude-vignette { z-index: -3; background: radial-gradient(circle at var(--pointer-x) var(--pointer-y), transparent 0 16%, rgba(0, 0, 0, .2) 52%, rgba(0, 0, 0, .78) 100%), linear-gradient(180deg, rgba(0,0,0,.38), transparent 25%, transparent 66%, rgba(0,0,0,.58)); pointer-events: none; }
+.prelude-grain { z-index: -2; opacity: .12; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E"); mix-blend-mode: screen; animation: grainShift .35s steps(2) infinite; }
+.prelude-topline, .prelude-bottomline { position: absolute; left: clamp(1.25rem, 4vw, 4rem); right: clamp(1.25rem, 4vw, 4rem); display: flex; justify-content: space-between; gap: 1rem; color: rgba(241,239,233,.66); font-size: .62rem; letter-spacing: .18em; }
+.prelude-topline { top: clamp(1.25rem, 4vw, 3rem); }
+.prelude-bottomline { bottom: clamp(1.25rem, 4vw, 3rem); }
+.prelude-gate { position: absolute; top: 50%; left: 50%; width: min(36rem, calc(100vw - 2.5rem)); transform: translate(-50%, -50%); text-align: center; text-shadow: 0 2px 16px rgba(0,0,0,.5); }
+.prelude-kicker, .prelude-prompt { margin: 0; color: rgba(241,239,233,.7); font-size: .68rem; letter-spacing: .22em; }
+.prelude-gate h1 { margin: .7rem 0 .2rem; font-size: clamp(2.5rem, 7vw, 6.25rem); font-weight: 400; letter-spacing: -.08em; line-height: .98; }
+.prelude-subtitle { margin: 0 0 clamp(3rem, 9vh, 5rem); color: rgba(241,239,233,.76); font-size: .78rem; letter-spacing: .32em; }
+.prelude-prompt { margin-bottom: 1.1rem; }
+.prelude-actions { display: inline-flex; align-items: center; gap: 1rem; color: rgba(241,239,233,.38); }
+.prelude-language { min-width: 7rem; padding: .78rem 1rem; border: 1px solid rgba(241,239,233,.38); border-radius: 999px; color: #f1efe9; background: rgba(3,7,8,.12); font-size: .8rem; letter-spacing: .08em; transition: border-color .25s ease, background .25s ease, color .25s ease, transform .25s ease; }
+.prelude-language:hover, .prelude-language:focus-visible { border-color: #e6b84b; color: #e6b84b; background: rgba(230,184,75,.1); transform: translateY(-2px); }
+.prelude-sound { display: inline-flex; align-items: center; gap: .5rem; margin-top: 1.65rem; padding: .3rem .5rem; border: 0; color: rgba(241,239,233,.64); background: transparent; font-size: .68rem; letter-spacing: .12em; }
+.prelude-sound-mark { width: 1.7rem; height: .5rem; border-top: 1px solid currentColor; border-bottom: 1px solid currentColor; opacity: .8; }
+.prelude-sound.is-on .prelude-sound-mark { border-color: #e6b84b; box-shadow: 0 0 12px rgba(230,184,75,.5); }
+.prelude-sound.is-off { color: rgba(241,239,233,.42); }
+.prelude-cursor { position: absolute; left: var(--pointer-x); top: var(--pointer-y); z-index: 3; width: 1rem; height: 1rem; border: 1px solid rgba(230,184,75,.8); border-radius: 50%; transform: translate(-50%, -50%); pointer-events: none; transition: left .08s linear, top .08s linear; }
+@keyframes preludeDrift { from { transform: scale(1.03) translate3d(-.5%, -.3%, 0); } to { transform: scale(1.08) translate3d(.7%, .4%, 0); } }
+@keyframes grainShift { 0% { transform: translate(0,0); } 25% { transform: translate(2%, -1%); } 50% { transform: translate(-1%, 2%); } 75% { transform: translate(1%, 1%); } 100% { transform: translate(-2%, -1%); } }
+
 .player-shell { width: 100vw; height: 100dvh; overflow: hidden; background: var(--colors-ending-background); }
 .player-frame { position: relative; width: 100%; height: 100%; overflow: hidden; isolation: isolate; background: var(--colors-ending-background); }
 

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import type { Story, Theme } from "./schema";
+import type { Lang, Story, Theme } from "./schema";
 import { availableEdges, glowEdgeId, preloadEdges } from "./graph/engine";
 import { useStoryState } from "./graph/useStoryState";
 import { useAudio } from "./audio/useAudio";
@@ -19,12 +19,18 @@ type Props = {
   story: Story;
   theme: Theme;
   customization: DawnCustomization;
+  initialLang?: Lang;
+  initialMuted?: boolean;
   onCustomizationChange: (patch: DawnCustomizationPatch) => void;
   onCustomizationReset: () => void;
 };
 
-export function Player({ story, theme, customization, onCustomizationChange, onCustomizationReset }: Props) {
-  const { settings, update, saved } = usePreferences(story.meta.defaultLang);
+export function Player({ story, theme, customization, initialLang, initialMuted, onCustomizationChange, onCustomizationReset }: Props) {
+  const initialPreferences = {
+    ...(initialLang ? { lang: initialLang } : {}),
+    ...(initialMuted === undefined ? {} : { muted: initialMuted }),
+  };
+  const { settings, update, saved } = usePreferences(story.meta.defaultLang, initialPreferences);
   const { hidden, reducedMotion } = useEnvironment();
   const [settingsOpen, setSettingsOpen] = useState(false);
   const paused = settingsOpen || hidden;
