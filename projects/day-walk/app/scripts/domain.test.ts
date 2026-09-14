@@ -59,6 +59,36 @@ test("advisor exposes each rule in its priority set", () => {
   assert.ok(ruleAdvisor.advise({ tasks: [task("1", "next", 1200)], bounds, minute: 800, phase: "during" }).some((x) => x.id === "next"));
 });
 
+test("advisor names one overdue segment and summarizes multiple segments", () => {
+  const morningTask = task("1", "Workout", 600, {
+    slot: { kind: "segment", segment: "morning" },
+  });
+  const afternoonTask = task("2", "Email 정리", 800, {
+    slot: { kind: "segment", segment: "afternoon" },
+  });
+  const afternoonTaskTwo = task("3", "Meeting", 840, {
+    slot: { kind: "segment", segment: "afternoon" },
+  });
+  const afternoonTaskThree = task("4", "산책", 900, {
+    slot: { kind: "segment", segment: "afternoon" },
+  });
+  const oneSegment = ruleAdvisor.advise({
+    tasks: [morningTask],
+    bounds,
+    minute: 800,
+    phase: "during",
+  });
+  const multipleSegments = ruleAdvisor.advise({
+    tasks: [morningTask, afternoonTask, afternoonTaskTwo, afternoonTaskThree],
+    bounds,
+    minute: 1100,
+    phase: "during",
+  });
+
+  assert.equal(oneSegment.find((advice) => advice.id === "overdue")?.text, "아침 마감이 지났는데 1개 남았어: Workout.");
+  assert.equal(multipleSegments.find((advice) => advice.id === "overdue")?.text, "마감 지난 일이 4개 남았어: Workout, Email 정리 외 2개.");
+});
+
 test("notifications respect trigger windows and de-duplicate IDs", () => {
   const items = [task("1", "Meeting", 840), task("2", "Segment", 850, { slot: { kind: "segment", segment: "afternoon" } })];
   const due = dueNotifications(items, bounds, 840, new Set());

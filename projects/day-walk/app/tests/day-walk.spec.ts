@@ -38,8 +38,12 @@ test.describe("12-1 first run", () => {
       const morningTab = page.getByRole("tab", { name: "아침" });
       await expect(morningTab).toBeVisible();
       await expect(morningTab).toHaveAttribute("aria-selected", "true");
+      await expect(page.getByTestId("date-label")).toContainText("9/14");
     }
-    else await expect(page.locator(".column")).toHaveCount(3);
+    else {
+      await expect(page.locator(".column")).toHaveCount(3);
+      await expect(page.getByTestId("date-label")).toContainText("9월 14일");
+    }
   });
 });
 

@@ -25,7 +25,17 @@ export const ruleAdvisor: Advisor = {
       const shown = overdue.slice(0, 2).map((task) => task.title).join(", ");
       const extra = overdue.length > 2 ? ` 외 ${overdue.length - 2}개` : "";
       const hasMovable = overdue.some((task) => task.slot.kind === "segment");
-      advice.push({ id: "overdue", text: `${names[taskSegment(overdue[0], bounds)]} 마감이 지났는데 ${overdue.length}개 남았어: ${shown}${extra}.`, ...(hasMovable ? { action: { label: "지금 칸으로 옮기기", kind: "move-overdue" as const } } : {}) });
+      const overdueSegments = new Set(overdue.map((task) => taskSegment(task, bounds)));
+      const prefix = overdueSegments.size === 1
+        ? `${names[taskSegment(overdue[0], bounds)]} 마감이 지났는데`
+        : "마감 지난 일이";
+      advice.push({
+        id: "overdue",
+        text: `${prefix} ${overdue.length}개 남았어: ${shown}${extra}.`,
+        ...(hasMovable
+          ? { action: { label: "지금 칸으로 옮기기", kind: "move-overdue" as const } }
+          : {}),
+      });
     }
     const soon = unfinished.filter((task) => task.slot.kind === "time" && task.slot.minute > minute && task.slot.minute - minute <= 30).sort((a, b) => (a.slot as { minute: number }).minute - (b.slot as { minute: number }).minute)[0];
     if (soon?.slot.kind === "time") advice.push({ id: "soon", text: `${formatMinute(soon.slot.minute)} ${soon.title}까지 ${soon.slot.minute - minute}분.` });
