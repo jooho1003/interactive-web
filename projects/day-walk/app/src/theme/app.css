@@ -68,4 +68,26 @@ main[data-motion="reduce"] *, main[data-motion="reduce"] *::before, main[data-mo
 @keyframes flag-wave { to { transform: translateY(calc(var(--flag-wave) * -1)); } }
 @keyframes wing-flap { to { transform: rotate(-20deg); } }
 @keyframes walk-step { to { transform: translateY(var(--walk-step)); } }
+.check-wrap { position: relative; display: inline-flex; }
+.particle-burst { position: absolute; inset: 0; pointer-events: none; }
+.particle-burst i { position: absolute; width: var(--particle-size); height: var(--particle-size); border-radius: 50%; background: var(--seg-morning); animation: particle-burst var(--particle-duration) ease-out forwards; transform: rotate(calc(var(--particle-index) * 30deg)) translateY(calc(var(--particle-distance) * -1)); opacity: 0; }
+.particle-burst i:nth-child(3n) { background: var(--seg-afternoon); }
+.particle-burst i:nth-child(3n + 1) { background: var(--seg-evening); }
+.clear { display: inline-block; animation: clear-stamp var(--duration-normal) ease-out; }
+.bird-celebrate .bird-wing { animation: wing-celebrate var(--duration-normal) ease-in-out; }
+.app-dialog { width: min(var(--dialog-width), calc(100% - var(--space-4))); max-height: var(--dialog-max-height); border: var(--border) solid var(--line); border-radius: var(--radius-md); box-shadow: var(--shadow-raised); color: var(--ink); background: var(--surface); }
+.app-dialog::backdrop { background: var(--overlay); }
+.app-dialog fieldset { display: grid; gap: var(--space-2); margin: var(--space-3) 0; }
+.app-dialog label, .routine-list li { display: flex; gap: var(--space-2); align-items: center; }
+.routine-list { display: grid; gap: var(--space-2); padding: 0; list-style: none; }
+.routine-list button, .dialog-actions button, .app-dialog fieldset button, .routine-save button { padding: var(--space-1) var(--space-2); border: var(--border) solid var(--line); border-radius: var(--radius-sm); background: var(--surface-raised); color: var(--ink); }
+.routine-save { display: grid; gap: var(--space-2); }
+.dialog-actions { display: flex; justify-content: end; gap: var(--space-2); margin-top: var(--space-3); }
+.celebration { position: fixed; inset: 0; z-index: var(--celebration-z); display: grid; place-items: center; background: var(--overlay); }
+.celebration canvas { position: absolute; inset: 0; z-index: var(--canvas-z); }
+.celebration-message { position: relative; z-index: var(--dialog-z); text-align: center; background: var(--surface); color: var(--ink); border-radius: var(--radius-md); box-shadow: var(--shadow-raised); padding: var(--space-4); }
+.celebration-message h2 { font-size: var(--celebration-title); }
+@keyframes particle-burst { from { opacity: 1; } to { opacity: 0; transform: rotate(calc(var(--particle-index) * 30deg)) translateY(calc(var(--particle-distance) * -1)) scale(0); } }
+@keyframes clear-stamp { from { opacity: 0; transform: scale(2); } to { opacity: 1; transform: scale(1); } }
+@keyframes wing-celebrate { 50% { transform: rotate(-45deg); } }
 @media (max-width: var(--mobile-breakpoint)) { .header h1, .header > button:first-of-type { display: none; } .scene { height: var(--scene-mobile-height); } .columns { display: block; border: 0; } .tab-hidden { display: none; } .column { border: var(--border) solid var(--line); } .tabs { display: flex; gap: var(--space-1); margin-bottom: var(--space-2); } .tabs .selected { background: var(--seg-afternoon); color: var(--surface); } }

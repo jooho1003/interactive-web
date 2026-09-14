@@ -5,10 +5,19 @@ import { applyRoutine, tasksReducer, type TaskAction } from "../domain/tasks.js"
 import { createStorage, defaultAppData, loadAppData } from "./storage.js";
 import { clockDate, useClock } from "./useClock.js";
 
-type Action = { type: "select"; date: string } | { type: "tasks"; date: string; action: TaskAction } | { type: "settings"; settings: Settings } | { type: "routine-save"; routine: Routine } | { type: "routine-delete"; id: string } | { type: "routine-apply"; date: string; routine: Routine; now: number } | { type: "celebrate"; date: string };
+type Action =
+  | { type: "select"; date: string }
+  | { type: "tasks"; date: string; action: TaskAction }
+  | { type: "settings"; settings: Settings }
+  | { type: "routine-save"; routine: Routine }
+  | { type: "routine-delete"; id: string }
+  | { type: "routine-apply"; date: string; routine: Routine; now: number }
+  | { type: "celebrate"; date: string }
+  | { type: "replace-all"; data: AppData };
 type State = { data: AppData; selectedDate: string };
 
 function reduce(state: State, action: Action): State {
+  if (action.type === "replace-all") return { ...state, data: action.data };
   if (action.type === "select") return { ...state, selectedDate: action.date };
   if (action.type === "tasks") return { ...state, data: { ...state.data, days: { ...state.data.days, [action.date]: tasksReducer(state.data.days[action.date] ?? [], action.action) } } };
   if (action.type === "settings") return { ...state, data: { ...state.data, settings: { ...action.settings, bounds: clampBounds(action.settings.bounds) } } };

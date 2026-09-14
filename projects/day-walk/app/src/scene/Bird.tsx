@@ -1,7 +1,18 @@
+import { useEffect, useState } from "react";
+
 export function Bird({ onNext }: { onNext(): void }) {
+  const [flapping, setFlapping] = useState(false);
+  useEffect(() => {
+    const flap = () => {
+      setFlapping(true);
+      window.setTimeout(() => setFlapping(false), 300);
+    };
+    window.addEventListener("bird-flap", flap);
+    return () => window.removeEventListener("bird-flap", flap);
+  }, []);
   return <g
     aria-label="다음 조언 보기"
-    className="bird"
+    className={`bird ${flapping ? "bird-celebrate" : ""}`}
     data-testid="bird"
     onClick={onNext}
     onKeyDown={(event) => {

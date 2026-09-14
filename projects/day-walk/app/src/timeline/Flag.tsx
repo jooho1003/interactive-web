@@ -1,5 +1,7 @@
 import { useRef, useState, type CSSProperties } from "react";
+import { playFlag } from "../audio/sfx.js";
 import type { DayBounds, Task } from "../schema/index.js";
+import { useAppStore } from "../store/AppStore.js";
 import { clamp, formatMinute, segmentOf, snap, xOf } from "../domain/time.js";
 
 type Props = {
@@ -10,6 +12,7 @@ type Props = {
   onFocus(task: Task): void;
 };
 export function Flag({ task, bounds, stack, onChange, onFocus }: Props) {
+  const { data } = useAppStore();
   const time = task.slot.kind === "time" ? task.slot : null;
   const start = useRef({ x: 0, minute: time?.minute ?? 0 });
   const [dragMinute, setDragMinute] = useState<number | null>(null);
@@ -38,6 +41,7 @@ export function Flag({ task, bounds, stack, onChange, onFocus }: Props) {
       event.preventDefault();
       const amount = event.shiftKey ? 60 : 15;
       onChange(clamp(time.minute + (event.key === "ArrowLeft" ? -amount : amount), bounds.dayStart, bounds.dayEnd));
+      if (data.settings.sound) playFlag();
     }}
     onPointerDown={(event) => {
       event.currentTarget.setPointerCapture(event.pointerId);
@@ -55,7 +59,10 @@ export function Flag({ task, bounds, stack, onChange, onFocus }: Props) {
       const next = pointMinute(event.clientX, event.currentTarget);
       setDragMinute(null);
       if (moved < 4) onFocus(task);
-      else onChange(next);
+      else {
+        onChange(next);
+        if (data.settings.sound) playFlag();
+      }
     }}
     onPointerCancel={() => setDragMinute(null)}
     onLostPointerCapture={() => setDragMinute(null)}

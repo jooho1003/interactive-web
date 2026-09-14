@@ -1,6 +1,28 @@
 import { ProgressBar } from "./ProgressBar.js";
-export function Header({ date, today, done, total, onPrevious, onNext, onToday }: { date: string; today: string; done: number; total: number; onPrevious(): void; onNext(): void; onToday(): void }) {
+
+export function Header({ date, today, done, total, onPrevious, onNext, onToday, onOpenRoutines, onOpenSettings }: {
+  date: string;
+  today: string;
+  done: number;
+  total: number;
+  onPrevious(): void;
+  onNext(): void;
+  onToday(): void;
+  onOpenRoutines(element: HTMLElement): void;
+  onOpenSettings(element: HTMLElement): void;
+}) {
   const shown = new Date(`${date}T00:00:00`);
-  const label = `${shown.getMonth() + 1}월 ${shown.getDate()}일 (${["일", "월", "화", "수", "목", "금", "토"][shown.getDay()]})${date === today ? " · 오늘" : ""}`;
-  return <header className="header"><h1>Day Walk</h1><div className="date-nav"><button onClick={onPrevious} aria-label="이전 날짜">‹</button><button onClick={onToday}>{label}</button><button onClick={onNext} aria-label="다음 날짜">›</button></div><ProgressBar done={done} total={total} /><button type="button">루틴</button><button type="button" aria-label="설정">⚙</button></header>;
+  const days = ["일", "월", "화", "수", "목", "금", "토"];
+  const label = `${shown.getMonth() + 1}월 ${shown.getDate()}일 (${days[shown.getDay()]})${date === today ? " · 오늘" : ""}`;
+  return <header className="header">
+    <h1>Day Walk</h1>
+    <div className="date-nav">
+      <button aria-label="이전 날짜" onClick={onPrevious}>‹</button>
+      <button onClick={onToday}>{label}</button>
+      <button aria-label="다음 날짜" onClick={onNext}>›</button>
+    </div>
+    <ProgressBar done={done} total={total} />
+    <button onClick={(event) => onOpenRoutines(event.currentTarget)} type="button">루틴</button>
+    <button aria-label="설정" onClick={(event) => onOpenSettings(event.currentTarget)} type="button">⚙</button>
+  </header>;
 }

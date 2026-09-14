@@ -14,6 +14,7 @@
   --header-height: 3.5rem; --scene-height: 44vh; --scene-mobile-height: 36svh; --timeline-height: 4.5rem; --column-height: 18rem; --progress-width: 8rem; --progress-height: .5rem; --border: 1px; --border-current: 2px; --text-title: 1.25rem; --text-heading: 1rem; --text-small: .75rem; --mobile-breakpoint: 45rem; --timeline-pad: 1.5rem; --flag-size: 1.25rem; --flag-offset: .375rem; --popover-width: 10rem; --flash-shadow: 0 0 0 .25rem;
   --scene-orb: #fff2bd; --hill: #526984; --back-home: #40526b; --road: #d6c8a8; --road-line: #f6edcc; --roof: #6e4c4b; --window: #fff0a6; --pole: #4a3b3c; --done-flag: #8d929a; --bird: #394b61;
   --scene-bubble-width: 17.5rem; --scene-bubble-offset: 4rem; --scene-note-offset: 1rem; --scene-note-top: 1rem; --scene-orb-stroke: .15rem; --walker-stroke: .35rem; --flag-wave: .25rem; --walk-step: .2rem;
+  --dialog-width: 32rem; --dialog-max-height: 80svh; --overlay: rgb(32 36 51 / 55%); --particle-size: .35rem; --particle-distance: 1.75rem; --particle-duration: 600ms; --celebration-z: 20; --canvas-z: 1; --dialog-z: 2; --celebration-title: 2rem;
 }
 
 * { box-sizing: border-box; }
