@@ -6,7 +6,21 @@
 양산하기 위한 모노레포입니다. AI World 2026 김그륜 세션과 레퍼런스 사이트 5곳을 분석해,
 작품마다 엔진을 다시 만드는 대신 스토리 데이터와 테마를 교체하는 제작 체계를 설계했습니다.
 
-![새벽 세 시 인터랙티브 웹 와이어프레임](docs/readme/wireframe.jpg)
+### Juho Lab
+
+작품과 실험을 한곳에서 탐색하는 스튜디오 인덱스입니다.
+
+![Juho Lab 메인 페이지](docs/readme/juho-lab.jpg)
+
+[메인 페이지 소스 보기](docs/readme/juho-lab.html)
+
+### 새벽 세 시 · Still Open
+
+불이 켜진 편의점으로 관객을 초대하는 첫 인터랙티브 작품의 메인 페이지입니다.
+
+![새벽 세 시 메인 페이지](docs/readme/still-open.jpg)
+
+[메인 페이지 소스 보기](docs/readme/still-open.html)
 
 ## 만들고 있는 경험
 
