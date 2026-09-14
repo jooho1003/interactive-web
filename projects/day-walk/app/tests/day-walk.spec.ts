@@ -53,7 +53,7 @@ test.describe("12-2 routines", () => {
     await loadRoutine(page);
     await expect(page.getByTestId("task-item")).toHaveCount(5);
     await expect(page.getByTestId("flag")).toHaveCount(3);
-    await expect(page.getByTestId("house")).toHaveCount(3);
+    await expect(page.locator(".scene-task-marker .scene-flag-label")).toHaveCount(3);
     await expect(page.getByTestId("column-morning")).toContainText("Workout");
     await expect(page.getByTestId("column-afternoon")).toContainText("Meeting");
     await loadRoutine(page);
@@ -79,7 +79,7 @@ test.describe("12-4 timeline add", () => {
     await page.getByLabel("일정 제목").fill("타임라인 일정");
     await page.getByLabel("일정 제목").press("Enter");
     await expect(page.getByTestId("flag")).toHaveCount(1);
-    await expect(page.getByText("타임라인 일정")).toBeVisible();
+    await expect(page.getByTestId("task-item").getByText("타임라인 일정", { exact: true })).toBeVisible();
   });
 });
 
@@ -116,7 +116,7 @@ test.describe("12-6 boundary handle", () => {
     const box = await handle.boundingBox();
     if (!timeline || !box) throw new Error("boundary geometry unavailable");
     const startX = box.x + box.width / 2;
-    const startY = box.y + box.height / 2;
+    const startY = timeline.y + timeline.height / 2;
     const targetMinute = 780;
     const targetX = timeline.x + timeline.width * ((targetMinute - 420) / (1380 - 420));
     await page.mouse.move(startX, startY);
@@ -146,7 +146,7 @@ test.describe("12-8 celebration", () => {
     await addColumnTask(page, "하루 완료");
     await page.getByRole("checkbox").check();
     await expect(page.getByTestId("celebration")).toContainText("Congratulations!");
-    await page.getByRole("button", { name: "닫기" }).click();
+    await page.getByRole("button", { name: "완료 연출 닫기" }).click();
     await page.reload();
     await expect(page.getByTestId("celebration")).toHaveCount(0);
   });
@@ -169,7 +169,7 @@ test.describe("12-10 long day", () => {
     await at(page, "2026-09-14T20:00");
     await page.getByRole("button", { name: "설정" }).click();
     await page.getByLabel("저녁 마감").fill("01:00");
-    await page.getByRole("button", { name: "닫기" }).click();
+    await page.getByRole("button", { name: "닫기", exact: true }).click();
     await at(page, "2026-09-15T00:30");
     await expect(page.getByRole("button", { name: /9월 14일/ })).toBeVisible();
     await expect(page.getByTestId("scene")).toHaveAttribute("aria-label", /현재 00:30, 저녁 구간, 남은 일 0개/);
@@ -215,7 +215,7 @@ test.describe("12-13 reduced motion", () => {
     await at(page, "2026-09-14T10:00");
     await page.getByRole("button", { name: "설정" }).click();
     await page.getByLabel("움직임").selectOption("reduce");
-    await page.getByRole("button", { name: "닫기" }).click();
+    await page.getByRole("button", { name: "닫기", exact: true }).click();
     await addColumnTask(page, "조용한 완료");
     await page.getByRole("checkbox").check();
     await expect(page.getByText("Congratulations!")).toBeVisible();
@@ -230,7 +230,7 @@ test.describe("12-14 notification fallback", () => {
     await page.goto("./");
     await page.getByRole("button", { name: "설정" }).click();
     await page.getByLabel("알림 켜기").check();
-    await page.getByRole("button", { name: "닫기" }).click();
+    await page.getByRole("button", { name: "닫기", exact: true }).click();
     const timeline = page.getByTestId("timeline");
     const box = await timeline.boundingBox();
     if (!box) throw new Error("timeline geometry unavailable");
@@ -249,6 +249,7 @@ test.describe("12-15 keyboard", () => {
     await page.getByLabel("할 일 제목").fill("키보드 일정");
     await page.getByLabel("할 일 제목").press("Enter");
     await page.getByRole("checkbox").press("Space");
+    await expect(page.getByTestId("celebration")).toBeVisible();
     await page.keyboard.press("Escape");
     await expect(page.getByTestId("celebration")).toHaveCount(0);
     await loadRoutine(page);

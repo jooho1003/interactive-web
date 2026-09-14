@@ -1,0 +1,77 @@
+/* Quiet paper controls and small metallic / fabric details for the street. */
+.header { background: var(--polish-header); border-bottom-color: var(--polish-header-line); }
+.header h1 { letter-spacing: var(--polish-tracking); font-weight: 600; }
+.header button { border-radius: var(--polish-radius); }
+.header .today-button { border-color: transparent; background: var(--polish-header-active); }
+.neighborhood-hud { font-variant-numeric: tabular-nums; }
+.neighborhood-mode, .neighborhood-clock { background: var(--polish-hud); border-color: var(--polish-glass-line); box-shadow: var(--polish-small-shadow); backdrop-filter: blur(var(--polish-blur)); }
+.scene-controls > span { background: var(--polish-hud); border-color: var(--polish-glass-line); }
+.scene-task-marker { filter: drop-shadow(var(--polish-marker-shadow)); height: var(--scene-flag-height); }
+.scene-task-marker .scene-flag-label { bottom: calc(100% + var(--space-2) + var(--marker-row) * var(--polish-label-row)); }
+.scene-flag-label::before { content: ""; position: absolute; left: 50%; top: calc(100% + var(--space-2)); height: calc(var(--marker-row) * var(--polish-label-row)); border-left: var(--border) dashed var(--polish-glass-line); pointer-events: none; }
+.neighborhood-flag { perspective: var(--polish-perspective); }
+.neighborhood-flag i { width: var(--polish-pole-width); border-radius: var(--pill-radius); background: linear-gradient(90deg, var(--polish-metal-dark), var(--polish-metal-light) 46%, var(--polish-metal-mid)); box-shadow: var(--polish-pole-shadow); }
+.neighborhood-flag b, .scene-task-marker.is-reached:not(.is-done) .neighborhood-flag b { top: var(--space-2); width: var(--polish-cloth-width); height: var(--polish-cloth-height); background: linear-gradient(105deg, var(--polish-cloth-dark), var(--polish-cloth-bright) 28%, var(--polish-cloth-mid) 60%, var(--polish-cloth-light)); clip-path: polygon(0 0, 45% 5%, 100% 18%, 86% 57%, 100% 95%, 50% 88%, 0 96%); box-shadow: inset var(--border-current) 0 var(--border-current) var(--polish-cloth-shine); animation: cloth-breathe var(--polish-cloth-duration) ease-in-out infinite alternate; }
+.neighborhood-flag b em { position: absolute; inset: var(--space-1); border-top: var(--border) solid var(--polish-cloth-shine); border-bottom: var(--border) solid var(--polish-cloth-shine); opacity: .6; }
+.neighborhood-flag .flag-finial { position: absolute; left: 50%; top: calc(var(--space-1) * -1); width: var(--polish-finial-size); height: var(--polish-finial-size); border-radius: 50%; transform: translateX(-50%); background: radial-gradient(circle at 35% 25%, var(--polish-metal-light), var(--polish-metal-mid) 55%, var(--polish-metal-dark)); }
+.neighborhood-flag .flag-foot { position: absolute; left: 50%; bottom: calc(var(--space-1) * -1); width: var(--polish-foot-width); height: var(--space-1); transform: translateX(-50%); border-radius: 50%; background: var(--polish-pole-base); box-shadow: var(--polish-pole-shadow); }
+.scene-flag-label { min-width: var(--polish-label-min); max-width: var(--polish-label-max); padding: var(--space-2) var(--space-3); border: var(--border) solid var(--polish-glass-line); border-radius: var(--polish-radius); background: var(--polish-label-bg); color: var(--polish-label-ink); box-shadow: var(--polish-small-shadow); backdrop-filter: blur(var(--polish-blur)); gap: var(--space-2); }
+.scene-flag-label::after { border-top-color: var(--polish-label-bg); }
+.scene-flag-label > small { display: flex; justify-content: space-between; gap: var(--space-3); font-size: var(--marker-time-size); color: var(--polish-label-meta); letter-spacing: var(--polish-tracking); opacity: 1; white-space: nowrap; }
+.scene-flag-label time { letter-spacing: normal; font-weight: 600; }
+.scene-flag-label > b { line-height: 1.45; }
+.scene-task-marker.is-dragging .scene-flag-label { box-shadow: var(--polish-focus-shadow); }
+.scene-task-marker.is-done .scene-flag-label { background: var(--polish-done-bg); color: var(--ink-muted); }
+.scene-task-marker.is-done .scene-flag-label::after { border-top-color: var(--polish-done-bg); }
+.scene-task-marker.is-done .neighborhood-flag b { background: var(--neighborhood-label-done); animation: none; }
+.flag-snap-hint { position: absolute; bottom: calc(var(--space-4) * -1.6); left: 50%; transform: translateX(-50%); white-space: nowrap; padding: var(--space-1) var(--space-2); background: var(--polish-label-bg); color: var(--focus); font-size: var(--marker-time-size); border-radius: var(--pill-radius); }
+.scene-companion .speech-bubble { width: var(--polish-speech-width); background: var(--polish-paper); border-radius: var(--polish-bubble-radius); border: var(--border) solid var(--polish-border); box-shadow: var(--polish-bubble-shadow); }
+.scene-companion .speech-bubble::after { border-top-color: var(--polish-paper); }
+.speech-bubble .speech-text { padding: var(--space-4); font-size: var(--polish-body-size); line-height: 1.6; color: var(--polish-ink); }
+.speech-bubble .speech-text small { font-size: var(--marker-time-size); color: var(--polish-muted); }
+.speech-bubble .speech-action { background: var(--polish-accent-wash); border: 0; color: var(--polish-accent); border-radius: var(--pill-radius); padding: var(--space-2) var(--space-3); }
+.board { background: var(--polish-paper); }
+.column { padding-inline: var(--polish-column-padding); }
+.column-period { text-transform: uppercase; letter-spacing: var(--polish-tracking); color: var(--polish-muted); }
+.column h2 { color: var(--polish-ink); font-weight: 600; }
+.column > header p { margin-block: var(--space-3); }
+.column-deadline { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-3); color: var(--polish-muted); font-size: var(--text-small); }
+.time-field { position: relative; display: inline-flex; align-items: center; flex-shrink: 0; }
+.time-field input { width: var(--polish-time-width); min-height: var(--button-target); padding: var(--space-1) var(--space-2); color: var(--polish-accent); background: var(--polish-input-bg); border: var(--border) solid var(--polish-border); border-radius: var(--polish-radius); font-size: var(--text-small); font-variant-numeric: tabular-nums; text-align: center; transition: box-shadow var(--duration-fast), border-color var(--duration-fast); }
+.time-field input:hover { border-color: var(--polish-accent-border); }
+.time-field input:focus { outline: none; border-color: var(--polish-accent); box-shadow: var(--polish-focus-shadow); background: var(--polish-paper); }
+.time-field input::placeholder { color: var(--polish-muted); }
+.time-field.is-invalid input { border-color: var(--polish-error); }
+.time-next-day { position: absolute; right: var(--space-1); top: calc(var(--space-2) * -1); background: var(--polish-paper); color: var(--polish-muted); font-size: var(--marker-time-size); }
+.time-field-error { position: absolute; top: calc(100% + var(--space-1)); left: 0; z-index: 12; width: var(--polish-error-width); padding: var(--space-2); border: var(--border) solid var(--polish-border); border-radius: var(--polish-radius); background: var(--polish-paper); box-shadow: var(--polish-small-shadow); color: var(--polish-error); font-size: var(--text-small); }
+.task { gap: var(--space-2); padding: var(--space-3) 0; border-bottom: var(--border) solid var(--polish-row-line); font-size: var(--polish-body-size); }
+.task input[type="checkbox"] { width: var(--polish-check-size); height: var(--polish-check-size); min-width: var(--polish-check-size); min-height: var(--polish-check-size); border-radius: var(--polish-check-radius); background: transparent; }
+.task .star { min-width: var(--polish-check-size); min-height: var(--polish-check-size); border: 0; padding: 0; background: transparent; }
+.task summary { border-color: transparent; color: var(--polish-muted); }
+.task details[open] summary { background: var(--polish-input-bg); }
+.task details[open] > button { color: var(--polish-ink); background: var(--polish-paper); box-shadow: var(--polish-small-shadow); border-color: var(--polish-border); }
+.task-title { color: var(--polish-ink); line-height: 1.55; }
+.task.done .task-title { color: var(--polish-muted); }
+.add-task { margin-top: var(--space-3); }
+.add-task button { border: var(--border) dashed var(--polish-accent-border); background: transparent; color: var(--polish-accent); border-radius: var(--polish-radius); padding: var(--space-2) var(--space-3); }
+.add-task input, .task > input, .scene-add-popover input, .quick-popover input { border: var(--border) solid var(--polish-border); background: var(--polish-input-bg); border-radius: var(--polish-radius); padding: var(--space-3); color: var(--polish-ink); font-size: var(--polish-body-size); }
+.add-task input:focus, .task > input:focus, .scene-add-popover input:focus, .quick-popover input:focus { outline: none; border-color: var(--polish-accent); box-shadow: var(--polish-focus-shadow); }
+.scene-add-popover, .quick-popover { padding: var(--space-4); gap: var(--space-3); border-radius: var(--polish-bubble-radius); border: var(--border) solid var(--polish-border); background: var(--polish-paper); color: var(--polish-ink); box-shadow: var(--polish-bubble-shadow); }
+.scene-add-popover > b { text-align: left; font-size: var(--polish-body-size); font-weight: 600; }
+.scene-add-popover button { background: var(--polish-accent); color: var(--polish-paper); border-radius: var(--polish-radius); }
+.quick-popover { align-items: center; }
+.flag-preview { color: var(--polish-accent); }
+.app-dialog { background: var(--polish-paper); border-color: var(--polish-border); border-radius: var(--polish-bubble-radius); padding: var(--polish-column-padding); }
+.app-dialog input, .app-dialog select { border: var(--border) solid var(--polish-border); border-radius: var(--polish-radius); padding: var(--space-2); }
+.date-picker-popover { border-radius: var(--polish-bubble-radius); box-shadow: var(--polish-bubble-shadow); }
+@keyframes cloth-breathe { from { transform: rotateY(-9deg) skewY(-2deg); } to { transform: rotateY(12deg) skewY(3deg); } }
+@media (max-width: 45rem) {
+  .scene-flag-label { min-width: 0; max-width: var(--marker-label-mobile); }
+  .scene-flag-label > small { gap: var(--space-1); }
+  .scene-flag-label > small { font-size: var(--polish-mobile-meta); }
+  .scene-companion .speech-bubble { width: var(--companion-bubble-mobile); }
+  .speech-bubble .speech-text { padding: var(--space-3); font-size: var(--text-small); }
+  .column { padding-inline: var(--space-4); }
+  .task input[type="checkbox"], .task .star { min-width: var(--button-target); min-height: var(--button-target); }
+  .time-field input { min-height: var(--button-target-mobile); }
+}

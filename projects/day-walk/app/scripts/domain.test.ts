@@ -4,7 +4,7 @@ import { AppData, Task, type DayBounds, type Task as TaskType } from "../src/sch
 import { ruleAdvisor } from "../src/domain/advisor.js";
 import { dueNotifications } from "../src/domain/notifications.js";
 import { applyRoutine, sortTasks, tasksReducer } from "../src/domain/tasks.js";
-import { DEFAULT_BOUNDS, clampBounds, formatMinute, formatMinuteWithDay, logicalNow, phaseOf, segmentOf, snap, xOf } from "../src/domain/time.js";
+import { DEFAULT_BOUNDS, clampBounds, formatMinute, formatMinuteWithDay, logicalNow, magneticMinute, parseTimeInput, phaseOf, segmentOf, snap, xOf } from "../src/domain/time.js";
 import { houseVisual } from "../src/domain/visual.js";
 import { STORAGE_KEY, loadAppData } from "../src/store/storage.js";
 
@@ -21,9 +21,30 @@ test("time model handles boundaries, formatting, position, and logical midnight"
   assert.equal(phaseOf(419, bounds), "before"); assert.equal(phaseOf(420, bounds), "during"); assert.equal(phaseOf(1381, bounds), "after");
 });
 
-test("clampBounds snaps and preserves the required gaps", () => {
+test("clampBounds keeps minute precision and preserves the required gaps", () => {
   const result = clampBounds({ dayStart: 231, morningEnd: 240, afternoonEnd: 250, dayEnd: 1701 });
   assert.deepEqual(result, { dayStart: 240, morningEnd: 300, afternoonEnd: 360, dayEnd: 1680 });
+  assert.deepEqual(clampBounds({ dayStart: 421, morningEnd: 721, afternoonEnd: 1081, dayEnd: 1381 }), { dayStart: 421, morningEnd: 721, afternoonEnd: 1081, dayEnd: 1381 });
+});
+
+test("magnetic dragging snaps only within five minutes of a half hour", () => {
+  for (const target of [420, 720, 750, 1080, 1440, 1470]) {
+    assert.equal(magneticMinute(target - 5), target);
+    assert.equal(magneticMinute(target + 5), target);
+    assert.equal(magneticMinute(target - 6), target - 6);
+    assert.equal(magneticMinute(target + 6), target + 6);
+  }
+  assert.equal(magneticMinute(737.2), 737);
+  assert.equal(magneticMinute(733), 733);
+});
+
+test("typed times preserve exact minutes and handle overnight bounds", () => {
+  assert.equal(parseTimeInput("14:23", 420, 1380), 863);
+  assert.equal(parseTimeInput("1423", 420, 1380), 863);
+  assert.equal(parseTimeInput("7:03", 420, 1380), 423);
+  assert.equal(parseTimeInput("00:27", 420, 1500), 1467);
+  assert.equal(parseTimeInput("24:00", 420, 1500), 1440);
+  for (const invalid of ["", "25:00", "12:60", "24:01", "oops", "6:59", "23:01"]) assert.equal(parseTimeInput(invalid, 420, 1380), null);
 });
 
 test("house visuals deterministically choose a token color and permitted height", () => {

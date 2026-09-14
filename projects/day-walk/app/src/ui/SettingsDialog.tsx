@@ -94,7 +94,7 @@ export function SettingsDialog({ open, onClose, opener }: {
       <fieldset><legend>하루 구간</legend>
         {(["dayStart", "morningEnd", "afternoonEnd", "dayEnd"] as const).map((key) => <label key={key}>
           {key === "dayStart" ? "시작" : key === "morningEnd" ? "아침 마감" : key === "afternoonEnd" ? "점심 마감" : "저녁 마감"}
-          <input onChange={(event) => updateBounds(key, toMinute(event.target.value, key === "dayEnd" && (nextDay || event.target.value <= "04:00")))} step="900" type="time" value={timeValue(data.settings.bounds[key])} />
+          <input onChange={(event) => updateBounds(key, toMinute(event.target.value, key === "dayEnd" && (nextDay || event.target.value <= "04:00")))} step="60" type="time" value={timeValue(data.settings.bounds[key])} />
           {key === "dayEnd" && <small>{formatMinuteWithDay(data.settings.bounds.dayEnd)}</small>}
         </label>)}
         <button onClick={() => update({ bounds: DEFAULT_BOUNDS })} type="button">기본값으로</button>

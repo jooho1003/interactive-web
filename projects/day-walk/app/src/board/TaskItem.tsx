@@ -1,10 +1,11 @@
 import { useState, type CSSProperties } from "react";
 import { playDone } from "../audio/sfx.js";
 import type { TaskAction } from "../domain/tasks.js";
-import { formatMinute } from "../domain/time.js";
+import { segmentOf } from "../domain/time.js";
 import type { DayBounds, Task } from "../schema/index.js";
 import { useAppStore } from "../store/AppStore.js";
 import { useToast } from "../ui/Toast.js";
+import { TimeField } from "../ui/TimeField.js";
 
 export function TaskItem({ task, bounds, overdue }: { task: Task; bounds: DayBounds; overdue: boolean }) {
   const { data, dispatch, selectedDate } = useAppStore();
@@ -32,7 +33,10 @@ export function TaskItem({ task, bounds, overdue }: { task: Task; bounds: DayBou
         {burst && <span aria-hidden="true" className="particle-burst">{Array.from({ length: 12 }, (_, index) => <i key={index} style={{ "--particle-index": index } as CSSProperties} />)}</span>}
       </span>
       <button aria-label="중요 표시" aria-pressed={task.starred} className="star" onClick={() => act({ type: "toggle-star", id: task.id })} type="button">{task.starred ? "★" : "☆"}</button>
-      {task.slot.kind === "time" && <span className="time-chip">{formatMinute(task.slot.minute)}</span>}
+      <TimeField label={`${task.title} 시각`} max={bounds.dayEnd} min={bounds.dayStart} onCommit={(minute) => {
+        act({ type: "set-time", id: task.id, minute });
+        window.dispatchEvent(new CustomEvent("timeline-segment", { detail: segmentOf(minute, bounds) }));
+      }} value={task.slot.kind === "time" ? task.slot.minute : null} />
       {editing ? <input autoFocus onBlur={finishRename} onChange={(event) => setTitle(event.target.value)} value={title} /> : <span className="task-title" onDoubleClick={() => setEditing(true)}>{task.title}</span>}
       {overdue && !task.done && <em>지남</em>}
       <details>

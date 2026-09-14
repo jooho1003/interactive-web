@@ -26,7 +26,19 @@ export function playFlag() {
 }
 
 export function playCelebration() {
-  tone(523, 0.12);
-  tone(659, 0.12, 0.13);
-  tone(784, 0.18, 0.26);
+  if (!context) return;
+  for (let index = 0; index < 12; index++) {
+    const start = context.currentTime + index * .32;
+    const oscillator = context.createOscillator();
+    const gain = context.createGain();
+    oscillator.frequency.setValueAtTime(1500 + index % 3 * 220, start);
+    oscillator.frequency.exponentialRampToValueAtTime(3200, start + .06);
+    oscillator.frequency.exponentialRampToValueAtTime(1800, start + .15);
+    gain.gain.setValueAtTime(.001, start);
+    gain.gain.exponentialRampToValueAtTime(.035, start + .02);
+    gain.gain.exponentialRampToValueAtTime(.001, start + .17);
+    oscillator.connect(gain).connect(context.destination);
+    oscillator.start(start);
+    oscillator.stop(start + .18);
+  }
 }

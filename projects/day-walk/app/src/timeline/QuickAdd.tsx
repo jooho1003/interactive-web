@@ -11,6 +11,7 @@ export function QuickAdd({ bounds, onAdd }: Props) {
   const [minute, setMinute] = useState<number | null>(null);
   const [title, setTitle] = useState("");
   const input = useRef<HTMLInputElement>(null);
+  useEffect(() => { if (minute !== null) input.current?.focus(); }, [minute]);
   const open = (clientX: number, element: HTMLElement) => {
     const rect = element.getBoundingClientRect();
     const next = bounds.dayStart + ((clientX - rect.left) / rect.width) * (bounds.dayEnd - bounds.dayStart);
@@ -53,7 +54,7 @@ export function QuickAdd({ bounds, onAdd }: Props) {
         <form
           className="quick-popover"
           onSubmit={submit}
-          style={{ "--quick-x": `${xOf(minute, bounds) * 100}%` } as CSSProperties}
+          style={{ "--quick-x": `${Math.max(15, Math.min(85, xOf(minute, bounds) * 100))}%` } as CSSProperties}
         >
           <span className="flag-preview">⚑</span>
           <input

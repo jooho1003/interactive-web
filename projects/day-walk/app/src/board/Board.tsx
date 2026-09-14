@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { taskSegment } from "../domain/tasks.js";
 import type { Segment, Task } from "../schema/index.js";
 import { useAppStore } from "../store/AppStore.js";
@@ -7,7 +7,7 @@ import { Column } from "./Column.js";
 const segments: Segment[] = ["morning", "afternoon", "evening"];
 const labels: Record<Segment, string> = { morning: "아침", afternoon: "오후", evening: "저녁" };
 
-export function Board() {
+export function Board({ celebration }: { celebration?: ReactNode }) {
   const { data, tasks, selectedDate, dispatch, minute } = useAppStore();
   const current = minute <= data.settings.bounds.morningEnd ? "morning" : minute <= data.settings.bounds.afternoonEnd ? "afternoon" : "evening";
   const [tab, setTab] = useState<Segment>(current);
@@ -42,6 +42,7 @@ export function Board() {
           </div>
         ))}
       </div>
+      {celebration}
     </section>
   );
 }

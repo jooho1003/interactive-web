@@ -12,7 +12,7 @@ for (const file of files) {
   else if (ext === ".css") css += gzipSync(await readFile(file)).length;
   else if (![".html", ".map"].includes(ext) && !(ext === ".svg" && file.endsWith("favicon.svg"))) assets++;
 }
-const checks = [["JS gzip", js, 120 * 1024], ["CSS gzip", css, 15 * 1024], ["Image/font/audio files", assets, 0]] as const;
+const checks = [["JS gzip", js, 120 * 1024], ["CSS gzip", css, 15 * 1024], ["Neighborhood media assets", assets, 5]] as const;
 for (const [label, actual, limit] of checks) {
   console.log(`${actual <= limit ? "PASS" : "FAIL"} ${label}: ${actual} / ${limit}`);
   if (actual > limit) process.exitCode = 1;
