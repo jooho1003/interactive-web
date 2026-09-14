@@ -3,7 +3,7 @@ import test from "node:test";
 import { AppData, Task, type DayBounds, type Task as TaskType } from "../src/schema/index.js";
 import { ruleAdvisor } from "../src/domain/advisor.js";
 import { dueNotifications } from "../src/domain/notifications.js";
-import { applyRoutine, sortTasks } from "../src/domain/tasks.js";
+import { applyRoutine, sortTasks, tasksReducer } from "../src/domain/tasks.js";
 import { DEFAULT_BOUNDS, clampBounds, formatMinute, formatMinuteWithDay, logicalNow, phaseOf, segmentOf, snap, xOf } from "../src/domain/time.js";
 import { STORAGE_KEY, loadAppData } from "../src/store/storage.js";
 
@@ -57,6 +57,20 @@ test("notifications respect trigger windows and de-duplicate IDs", () => {
   assert.deepEqual(due.map((notice) => notice.id), ["task:1"]);
   assert.equal(dueNotifications(items, bounds, 840, new Set(["task:1"])).length, 0);
   assert.ok(dueNotifications(items, bounds, 1050, new Set()).some((notice) => notice.id === "deadline:afternoon"));
+  assert.ok(dueNotifications(items, bounds, 1060, new Set()).some((notice) => notice.id === "deadline:afternoon"));
+  assert.equal(dueNotifications(items, bounds, 1080, new Set()).some((notice) => notice.id === "deadline:afternoon"), false);
+});
+
+test("task reducer supports editing, moving, restoring, and overdue migration", () => {
+  const base = task("1", "old", 800);
+  assert.equal(tasksReducer([base], { type: "rename", id: "1", title: "new" })[0].title, "new");
+  assert.deepEqual(tasksReducer([base], { type: "set-time", id: "1", minute: 900 })[0].slot, { kind: "time", minute: 900 });
+  assert.deepEqual(tasksReducer([base], { type: "clear-time", id: "1", bounds })[0].slot, { kind: "segment", segment: "afternoon" });
+  const segment = { ...base, slot: { kind: "segment" as const, segment: "morning" as const } };
+  assert.equal((tasksReducer([segment], { type: "move-segment", id: "1", segment: "evening" })[0].slot as { segment: string }).segment, "evening");
+  assert.equal(tasksReducer([base], { type: "move-segment", id: "1", segment: "evening" })[0].slot.kind, "time");
+  assert.equal(tasksReducer([], { type: "restore", task: base }).length, 1);
+  assert.equal((tasksReducer([segment], { type: "move-overdue", bounds, minute: 800 })[0].slot as { segment: string }).segment, "afternoon");
 });
 
 test("schema rejects invalid task titles and date keys", () => {

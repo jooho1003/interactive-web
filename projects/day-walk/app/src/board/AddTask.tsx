@@ -1,0 +1,3 @@
+import { useState } from "react";
+import type { Segment, Task } from "../schema/index.js";
+export function AddTask({ segment, add }: { segment: Segment; add(task: Task): void }) { const [title, setTitle] = useState(""); const submit = () => { const value = title.trim(); if (!value) return; add({ id: crypto.randomUUID(), title: value, slot: { kind: "segment", segment }, starred: false, done: false, createdAt: Date.now(), doneAt: null }); setTitle(""); }; return <div className="add-task"><input aria-label="할 일 제목" value={title} onChange={(e) => setTitle(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") submit(); if (e.key === "Escape") setTitle(""); }} placeholder="+ 할 일 추가" /></div>; }

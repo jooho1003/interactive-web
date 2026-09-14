@@ -13,7 +13,7 @@ export function dueNotifications(tasks: Task[], bounds: DayBounds, minute: numbe
   const segment = segmentOf(minute, bounds);
   const end = segment === "morning" ? bounds.morningEnd : segment === "afternoon" ? bounds.afternoonEnd : bounds.dayEnd;
   const id = `deadline:${segment}`;
-  if (minute === end - 30 && !alreadyNotified.has(id)) {
+  if (minute >= end - 30 && minute < end && !alreadyNotified.has(id)) {
     const count = tasks.filter((task) => !task.done && taskSegment(task, bounds) === segment).length;
     if (count) due.push({ id, text: `${segment === "morning" ? "아침" : segment === "afternoon" ? "점심" : "저녁"} 마감 30분 전 · 남은 일 ${count}개` });
   }
