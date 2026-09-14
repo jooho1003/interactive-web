@@ -28,6 +28,8 @@ export function BoundaryHandle({ name, bounds, onChange }: { name: Name; bounds:
     onPointerDown={(event) => event.currentTarget.setPointerCapture(event.pointerId)}
     onPointerMove={(event) => { if (event.currentTarget.hasPointerCapture(event.pointerId)) update(event.clientX, event.currentTarget, false); }}
     onPointerUp={(event) => { if (event.currentTarget.hasPointerCapture(event.pointerId)) { event.currentTarget.releasePointerCapture(event.pointerId); update(event.clientX, event.currentTarget, true); } }}
+    onPointerCancel={() => setMinute(null)}
+    onLostPointerCapture={() => setMinute(null)}
     role="slider"
     style={{ "--boundary-x": `${xOf(value, bounds) * 100}%` } as CSSProperties}
     type="button"

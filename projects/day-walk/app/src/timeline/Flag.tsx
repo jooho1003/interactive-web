@@ -2,7 +2,13 @@ import { useRef, useState, type CSSProperties } from "react";
 import type { DayBounds, Task } from "../schema/index.js";
 import { clamp, formatMinute, segmentOf, snap, xOf } from "../domain/time.js";
 
-type Props = { task: Task; bounds: DayBounds; stack: number; onChange(minute: number): void; onFocus(task: Task): void };
+type Props = {
+  task: Task;
+  bounds: DayBounds;
+  stack: number;
+  onChange(minute: number): void;
+  onFocus(task: Task): void;
+};
 export function Flag({ task, bounds, stack, onChange, onFocus }: Props) {
   const time = task.slot.kind === "time" ? task.slot : null;
   const start = useRef({ x: 0, minute: time?.minute ?? 0 });
@@ -51,6 +57,8 @@ export function Flag({ task, bounds, stack, onChange, onFocus }: Props) {
       if (moved < 4) onFocus(task);
       else onChange(next);
     }}
+    onPointerCancel={() => setDragMinute(null)}
+    onLostPointerCapture={() => setDragMinute(null)}
     role="slider"
     style={{ "--flag-x": `${xOf(minute, bounds) * 100}%`, "--flag-stack": String(stack) } as CSSProperties}
     type="button"

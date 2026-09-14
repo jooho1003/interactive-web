@@ -3,6 +3,7 @@
   --sky-afternoon-top: #65b8e9; --sky-afternoon-bottom: #d7eff8;
   --sky-evening-top: #f39a67; --sky-evening-bottom: #8669aa;
   --sky-night-top: #17244e; --sky-night-bottom: #43517c;
+  --house-0: #f2bb8c; --house-1: #d99c8d; --house-2: #a8c8b1; --house-3: #b8b2db; --house-4: #e4cf7a;
   --seg-morning: #e98458; --seg-afternoon: #4a9bd1; --seg-evening: #7960ac;
   --surface: #fffdf8; --surface-raised: #ffffff; --ink: #202433;
   --ink-muted: #5d6473; --line: #d8dce3; --focus: #126cc4;
@@ -11,6 +12,8 @@
   --radius-sm: 0.25rem; --radius-md: 0.5rem; --shadow-raised: 0 0.25rem 0.75rem rgb(32 36 51 / 15%);
   --duration-fast: 150ms; --duration-normal: 300ms;
   --header-height: 3.5rem; --scene-height: 44vh; --scene-mobile-height: 36svh; --timeline-height: 4.5rem; --column-height: 18rem; --progress-width: 8rem; --progress-height: .5rem; --border: 1px; --border-current: 2px; --text-title: 1.25rem; --text-heading: 1rem; --text-small: .75rem; --mobile-breakpoint: 45rem; --timeline-pad: 1.5rem; --flag-size: 1.25rem; --flag-offset: .375rem; --popover-width: 10rem; --flash-shadow: 0 0 0 .25rem;
+  --scene-orb: #fff2bd; --hill: #526984; --back-home: #40526b; --road: #d6c8a8; --road-line: #f6edcc; --roof: #6e4c4b; --window: #fff0a6; --pole: #4a3b3c; --done-flag: #8d929a; --bird: #394b61;
+  --scene-bubble-width: 17.5rem; --scene-bubble-offset: 4rem; --scene-note-offset: 1rem; --scene-note-top: 1rem; --scene-orb-stroke: .15rem; --walker-stroke: .35rem; --flag-wave: .25rem; --walk-step: .2rem;
 }
 
 * { box-sizing: border-box; }
