@@ -1,0 +1,4 @@
+export function Street({ parallax, width }: { parallax: number; width: number }) {
+  const homes = Array.from({ length: 8 }, (_, index) => width * (.05 + index * .13));
+  return <><path className="far-hills" d={`M0 360 L0 300 L${width * .16} 250 L${width * .32} 310 L${width * .5} 235 L${width * .67} 305 L${width * .84} 245 L${width} 300 L${width} 360 Z`} transform={`translate(${-parallax * width * .025} 0)`} /><g className="back-homes">{homes.map((x, index) => <g key={x} transform={`translate(${x} ${332 - (index % 2) * 14}) scale(.55)`}><path d="M0 38 L28 8 L56 38 Z" /><rect height="42" width="56" y="38" /></g>)}</g><path className="scene-ground" d={`M0 350 L${width} 350 L${width} 500 L0 500 Z`} /><path className="street-road" d={`M0 405 Q${width * .25} 385 ${width * .5} 402 T${width} 398 L${width} 500 L0 500 Z`} /><path className="street-line" d={`M0 445 Q${width * .25} 425 ${width * .5} 442 T${width} 438`} /></>;
+}

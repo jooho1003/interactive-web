@@ -1,0 +1,16 @@
+{
+  "gate": "PASS",
+  "request": "강연 속 하루 3등분 투두 인터랙티브 웹(패밀리 E)을 참고해 유사 작품 설계 + Codex 개발",
+  "worktree": "D:/바이브코딩/interactive-web--day-walk (branch feat/day-walk)",
+  "nodes": [
+    {"id":"N1","title":"설계 (SPEC·AGENTS·의존성 확정)","domain":"general","D1":2,"D2":1,"D3":0,"D4":2,"score":5,"tier":"powerful","agent":"main","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":[],"산출물":"projects/day-walk/SPEC.md, AGENTS.md, app/package.json"},
+    {"id":"N2","title":"Codex 단계 1-3: 스캐폴딩·스키마·시간/할 일/조언/알림 도메인·저장·단위 테스트","domain":"general","D1":0,"D2":1,"D3":1,"D4":1,"score":3,"tier":"balanced","agent":"codex","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":["N1"],"산출물":"app/src/{schema,domain,store/storage.ts}, scripts/domain.test.ts"},
+    {"id":"N3","title":"Codex 단계 4-7: 보드·타임라인·씬·연출·대화상자","domain":"frontend","D1":1,"D2":1,"D3":0,"D4":1,"score":3,"tier":"balanced","agent":"codex","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":["N2"],"산출물":"app/src/{store,board,timeline,scene,ui,audio}"},
+    {"id":"N4","title":"Codex 단계 8: 모바일·접근성·Playwright 수용 기준·예산","domain":"qa","D1":0,"D2":1,"D3":1,"D4":1,"score":3,"tier":"balanced","agent":"codex","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":["N3"],"산출물":"tests/day-walk.spec.ts, check:all 통과"},
+    {"id":"N5","title":"최종 리뷰 (스펙 대조·코드·실행 확인)","domain":"review","D1":0,"D2":1,"D3":0,"D4":2,"score":3,"tier":"powerful","agent":"main","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":["N4"],"산출물":"리뷰 결과, 수정 지시 또는 머지 가능 판정"}
+  ],
+  "gates": {"G1":"PASS","G2":"PASS","G3":"PASS","G4":"PASS","G5":"PASS"},
+  "powerful_exception": "N1 모호한 요구 해석·아키텍처(스택·범위 결정), N5 최종 리뷰 — 하드 오버라이드 + never_delegate (2/5=40%)",
+  "requires_approval": [],
+  "out_of_scope": ["Google Calendar 연동", "LLM 조언 어댑터", "3D 씬", "허브 등록", "배포"]
+}
