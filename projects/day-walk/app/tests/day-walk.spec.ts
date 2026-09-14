@@ -3,7 +3,7 @@ import { expect, test, type Page } from "@playwright/test";
 const at = (page: Page, now: string) => page.goto(`./?now=${now}`);
 
 async function loadRoutine(page: Page) {
-  await page.getByRole("button", { name: "루틴" }).click();
+  await page.getByTestId("header-routines").click();
   await page.getByRole("button", { name: "오늘에 불러오기" }).click();
 }
 
@@ -34,7 +34,11 @@ test.describe("12-1 first run", () => {
     await at(page, "2026-09-14T10:00");
     await expect(page.getByTestId("speech-bubble")).toContainText("오늘은 비어 있어");
     await expect(page.getByText("—")).toBeVisible();
-    if (isMobile) await expect(page.getByRole("button", { name: "아침" })).toBeVisible();
+    if (isMobile) {
+      const morningTab = page.getByRole("tab", { name: "아침" });
+      await expect(morningTab).toBeVisible();
+      await expect(morningTab).toHaveAttribute("aria-selected", "true");
+    }
     else await expect(page.locator(".column")).toHaveCount(3);
   });
 });
@@ -153,7 +157,7 @@ test.describe("12-10 long day", () => {
     await page.getByRole("button", { name: "닫기" }).click();
     await at(page, "2026-09-15T00:30");
     await expect(page.getByRole("button", { name: /9월 14일/ })).toBeVisible();
-    await expect(page.locator(".walker-evening")).toBeVisible();
+    await expect(page.getByTestId("scene")).toHaveAttribute("aria-label", /현재 00:30, 저녁 구간, 남은 일 0개/);
   });
 });
 
@@ -171,7 +175,7 @@ test.describe("12-11 import export", () => {
     await page.getByRole("button", { name: "확인" }).click();
     await page.getByTestId("import-file").setInputFiles(path);
     await page.getByRole("button", { name: "확인" }).click();
-    await expect(page.getByText("백업 일정")).toBeVisible();
+    await expect(page.getByTestId("task-item").getByText("백업 일정")).toBeVisible();
     await page.getByTestId("import-file").setInputFiles({ name: "bad.json", mimeType: "application/json", buffer: Buffer.from("{}") });
     await expect(page.getByTestId("toast")).toBeVisible();
   });
@@ -182,7 +186,7 @@ test.describe("12-12 mobile layout", () => {
     test.skip(!isMobile, "Mobile-specific acceptance criterion.");
     await at(page, "2026-09-14T10:00");
     await loadRoutine(page);
-    await expect(page.getByRole("button", { name: "아침" })).toBeVisible();
+    await expect(page.getByRole("tab", { name: "아침" })).toBeVisible();
     await expect(page.evaluate(() => document.documentElement.scrollWidth <= 390)).resolves.toBeTruthy();
     const box = await page.getByTestId("flag").first().boundingBox();
     if (!box) throw new Error("flag geometry unavailable");
@@ -229,6 +233,8 @@ test.describe("12-15 keyboard", () => {
     await page.getByLabel("할 일 제목").fill("키보드 일정");
     await page.getByLabel("할 일 제목").press("Enter");
     await page.getByRole("checkbox").press("Space");
+    await page.keyboard.press("Escape");
+    await expect(page.getByTestId("celebration")).toHaveCount(0);
     await loadRoutine(page);
     await page.getByTestId("flag").first().focus();
     await page.keyboard.press("ArrowRight");
