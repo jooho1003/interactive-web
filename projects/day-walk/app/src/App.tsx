@@ -22,12 +22,14 @@ function Content() {
   const [celebrating, setCelebrating] = useState(false);
   const routineOpener = useRef<HTMLElement | null>(null);
   const settingsOpener = useRef<HTMLElement | null>(null);
+  const celebrationOpener = useRef<HTMLElement | null>(null);
   useEffect(() => {
     if (recovered) toast("저장된 데이터를 읽지 못해 새로 시작했어요");
   }, [recovered, toast]);
   useEffect(() => {
     if (selectedDate !== logicalDate || !tasks.length || tasks.some((task) => !task.done) || data.celebrated.includes(selectedDate)) return;
     dispatch({ type: "celebrate", date: selectedDate });
+    celebrationOpener.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     setCelebrating(true);
     if (data.settings.sound) playCelebration();
   }, [data.celebrated, data.settings.sound, dispatch, logicalDate, selectedDate, tasks]);
@@ -60,7 +62,10 @@ function Content() {
     <Board />
     <RoutineDialog onClose={() => setRoutinesOpen(false)} open={routinesOpen} opener={routineOpener.current} />
     <SettingsDialog onClose={() => setSettingsOpen(false)} open={settingsOpen} opener={settingsOpener.current} />
-    {celebrating && <Celebration onClose={() => setCelebrating(false)} reduced={reducedMotion} />}
+    {celebrating && <Celebration onClose={() => {
+      setCelebrating(false);
+      window.setTimeout(() => celebrationOpener.current?.focus(), 0);
+    }} reduced={reducedMotion} />}
   </main>;
 }
 

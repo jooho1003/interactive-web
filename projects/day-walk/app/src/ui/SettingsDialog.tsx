@@ -24,6 +24,7 @@ export function SettingsDialog({ open, onClose, opener }: {
   const toast = useToast();
   const ref = useRef<HTMLDialogElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
+  const confirmOpener = useRef<HTMLElement | null>(null);
   const [confirm, setConfirm] = useState<"clear" | "import" | null>(null);
   const [incoming, setIncoming] = useState<typeof data | null>(null);
   useEffect(() => {
@@ -31,9 +32,17 @@ export function SettingsDialog({ open, onClose, opener }: {
     if (open && dialog && !dialog.open) dialog.showModal();
     if (!open && dialog?.open) dialog.close();
   }, [open]);
-  const close = () => {
-    onClose();
+  const restoreFocus = () => {
     window.setTimeout(() => opener?.focus(), 0);
+  };
+
+  const handleClose = () => {
+    onClose();
+    restoreFocus();
+  };
+
+  const close = () => {
+    ref.current?.close();
   };
   const update = (changes: Partial<Settings>) => {
     dispatch({ type: "settings", settings: { ...data.settings, ...changes } });
@@ -72,7 +81,15 @@ export function SettingsDialog({ open, onClose, opener }: {
   const nextDay = data.settings.bounds.dayEnd >= 1440;
   const fallback = !data.settings.notifications || !("Notification" in window) || Notification.permission !== "granted";
   return <>
-    <dialog className="app-dialog settings-dialog" ref={ref} onClose={close}>
+    <dialog
+      className="app-dialog settings-dialog"
+      onCancel={(event) => {
+        event.preventDefault();
+        close();
+      }}
+      onClose={handleClose}
+      ref={ref}
+    >
       <h2>설정</h2>
       <fieldset><legend>하루 구간</legend>
         {(["dayStart", "morningEnd", "afternoonEnd", "dayEnd"] as const).map((key) => <label key={key}>
@@ -94,9 +111,15 @@ export function SettingsDialog({ open, onClose, opener }: {
       </fieldset>
       <fieldset><legend>데이터</legend>
         <button onClick={download} type="button">내보내기</button>
-        <button onClick={() => fileRef.current?.click()} type="button">가져오기</button>
+        <button onClick={(event) => {
+          confirmOpener.current = event.currentTarget;
+          fileRef.current?.click();
+        }} type="button">가져오기</button>
         <input accept="application/json" className="sr-only" data-testid="import-file" onChange={(event) => void readImport(event.target.files?.[0])} ref={fileRef} type="file" />
-        <button onClick={() => setConfirm("clear")} type="button">모든 데이터 지우기</button>
+        <button onClick={(event) => {
+          confirmOpener.current = event.currentTarget;
+          setConfirm("clear");
+        }} type="button">모든 데이터 지우기</button>
       </fieldset>
       <div className="dialog-actions"><button onClick={close} type="button">닫기</button></div>
     </dialog>
@@ -109,6 +132,7 @@ export function SettingsDialog({ open, onClose, opener }: {
         toast(confirm === "clear" ? "모든 데이터를 지웠어요" : "데이터를 가져왔어요");
       }}
       open={confirm !== null}
+      opener={confirmOpener.current}
       title="정말 진행할까요?"
     />
   </>;

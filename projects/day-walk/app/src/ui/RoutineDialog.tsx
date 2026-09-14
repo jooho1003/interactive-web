@@ -17,10 +17,20 @@ export function RoutineDialog({ open, onClose, opener }: {
     if (open && dialog && !dialog.open) dialog.showModal();
     if (!open && dialog?.open) dialog.close();
   }, [open]);
-  const close = () => {
-    onClose();
+
+  const restoreFocus = () => {
     window.setTimeout(() => opener?.focus(), 0);
   };
+
+  const handleClose = () => {
+    onClose();
+    restoreFocus();
+  };
+
+  const close = () => {
+    ref.current?.close();
+  };
+
   const save = () => {
     const clean = name.trim();
     if (!clean || !tasks.length) return;
@@ -35,7 +45,15 @@ export function RoutineDialog({ open, onClose, opener }: {
     setName("");
     toast("루틴으로 저장했어요");
   };
-  return <dialog className="app-dialog" ref={ref} onClose={close}>
+  return <dialog
+    className="app-dialog"
+    onCancel={(event) => {
+      event.preventDefault();
+      close();
+    }}
+    onClose={handleClose}
+    ref={ref}
+  >
     <h2>루틴</h2>
     <ul className="routine-list">
       {data.routines.map((routine) => <li key={routine.id}>
@@ -44,6 +62,7 @@ export function RoutineDialog({ open, onClose, opener }: {
           const result = applyRoutine(tasks, routine, () => crypto.randomUUID(), Date.now());
           dispatch({ type: "routine-apply", date: selectedDate, routine, now: Date.now() });
           toast(`${result.added}개 추가, ${result.skipped}개는 이미 있어요`);
+          close();
         }} type="button">오늘에 불러오기</button>
         <button onClick={() => dispatch({ type: "routine-delete", id: routine.id })} type="button">삭제</button>
       </li>)}

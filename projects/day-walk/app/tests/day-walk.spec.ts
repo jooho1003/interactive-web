@@ -1,4 +1,4 @@
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test, type Locator, type Page } from "@playwright/test";
 
 const at = (page: Page, now: string) => page.goto(`./?now=${now}`);
 
@@ -13,8 +13,8 @@ async function addColumnTask(page: Page, title: string) {
   await page.getByLabel("할 일 제목").press("Enter");
 }
 
-async function dragTouch(page: Page, selector: string, fromX: number, toX: number, y: number) {
-  await page.locator(selector).evaluate((node, values) => {
+async function dragTouch(flag: Locator, fromX: number, toX: number, y: number) {
+  await flag.evaluate((node, values) => {
     const target = node as HTMLElement;
     const fire = (type: string, x: number) => target.dispatchEvent(new PointerEvent(type, {
       bubbles: true,
@@ -53,7 +53,7 @@ test.describe("12-2 routines", () => {
     await expect(page.getByTestId("column-morning")).toContainText("Workout");
     await expect(page.getByTestId("column-afternoon")).toContainText("Meeting");
     await loadRoutine(page);
-    await expect(page.getByTestId("toast")).toContainText("0개 추가, 5개는 이미 있어요");
+    await expect(page.getByTestId("toast").filter({ hasText: "0개 추가, 5개는 이미 있어요" })).toBeVisible();
   });
 });
 
@@ -88,9 +88,13 @@ test.describe("12-5 flag drag and keyboard", () => {
     const timeline = await page.getByTestId("timeline").boundingBox();
     const flagBox = await flag.boundingBox();
     if (!timeline || !flagBox) throw new Error("flag geometry unavailable");
-    await page.mouse.move(flagBox.x + flagBox.width / 2, flagBox.y + flagBox.height / 2);
+    const startX = flagBox.x + flagBox.width / 2;
+    const startY = flagBox.y + flagBox.height / 2;
+    const targetMinute = 750;
+    const targetX = timeline.x + timeline.width * ((targetMinute - 420) / (1380 - 420));
+    await page.mouse.move(startX, startY);
     await page.mouse.down();
-    await page.mouse.move(timeline.x + timeline.width * .4, flagBox.y + flagBox.height / 2);
+    await page.mouse.move(targetX, startY, { steps: 10 });
     await page.mouse.up();
     await flag.focus();
     await page.keyboard.press("ArrowRight");
@@ -104,11 +108,16 @@ test.describe("12-6 boundary handle", () => {
     await at(page, "2026-09-14T10:00");
     await loadRoutine(page);
     const handle = page.getByTestId("boundary-morningEnd");
+    const timeline = await page.getByTestId("timeline").boundingBox();
     const box = await handle.boundingBox();
-    if (!box) throw new Error("boundary geometry unavailable");
-    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+    if (!timeline || !box) throw new Error("boundary geometry unavailable");
+    const startX = box.x + box.width / 2;
+    const startY = box.y + box.height / 2;
+    const targetMinute = 780;
+    const targetX = timeline.x + timeline.width * ((targetMinute - 420) / (1380 - 420));
+    await page.mouse.move(startX, startY);
     await page.mouse.down();
-    await page.mouse.move(box.x + box.width / 2 + 60, box.y + box.height / 2);
+    await page.mouse.move(targetX, startY, { steps: 10 });
     await page.mouse.up();
     await expect(page.getByTestId("column-morning")).toContainText("아침까지 ~13:00");
   });
@@ -119,8 +128,10 @@ test.describe("12-7 complete", () => {
     await at(page, "2026-09-14T10:00");
     await loadRoutine(page);
     const morning = page.getByTestId("column-morning");
-    await morning.getByRole("checkbox").all().then((items) => Promise.all(items.map((item) => item.check())));
-    await expect(page.getByTestId("flag").first()).toHaveAttribute("data-done", "true");
+    // Completed items re-sort to the bottom, so check the first unchecked box one at a time.
+    const unchecked = morning.locator("input[type=checkbox]:not(:checked)");
+    while (await unchecked.count()) await unchecked.first().check();
+    await expect(page.locator("[data-testid=flag][aria-valuetext*='Workout']")).toHaveAttribute("data-done", "true");
     await expect(page.getByTestId("column-morning")).toContainText("CLEAR");
   });
 });
@@ -177,7 +188,7 @@ test.describe("12-11 import export", () => {
     await page.getByRole("button", { name: "확인" }).click();
     await expect(page.getByTestId("task-item").getByText("백업 일정")).toBeVisible();
     await page.getByTestId("import-file").setInputFiles({ name: "bad.json", mimeType: "application/json", buffer: Buffer.from("{}") });
-    await expect(page.getByTestId("toast")).toBeVisible();
+    await expect(page.getByTestId("toast").filter({ hasText: "Day Walk 데이터 파일이 아니에요" })).toBeVisible();
   });
 });
 
@@ -188,9 +199,10 @@ test.describe("12-12 mobile layout", () => {
     await loadRoutine(page);
     await expect(page.getByRole("tab", { name: "아침" })).toBeVisible();
     await expect(page.evaluate(() => document.documentElement.scrollWidth <= 390)).resolves.toBeTruthy();
-    const box = await page.getByTestId("flag").first().boundingBox();
+    const flag = page.locator('[data-testid="flag"][aria-valuetext="07:30 Workout"]');
+    const box = await flag.boundingBox();
     if (!box) throw new Error("flag geometry unavailable");
-    await dragTouch(page, '[data-testid="flag"]', box.x + 8, box.x + 80, box.y + 8);
+    await dragTouch(flag, box.x + 8, box.x + 80, box.y + 8);
   });
 });
 
