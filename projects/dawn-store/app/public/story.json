@@ -58,7 +58,7 @@
       "title": { "ko": "계산대", "en": "The Counter" },
       "media": {
         "kind": "still",
-        "src": "/media/hub.webp",
+        "src": "/media/counter-generated-v2.webp",
         "duration": 6,
         "kenBurns": {
           "from": { "scale": 1.0, "x": 0, "y": 0 },

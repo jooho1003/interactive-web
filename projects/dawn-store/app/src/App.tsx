@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { applyTheme } from "./theme/applyTheme";
 import { loadStoryAndTheme } from "./schema/load";
-import type { Story, Theme } from "./schema";
+import type { Lang, Story, Theme } from "./schema";
 import { Player } from "./Player";
 import { applyCustomization, defaultCustomization, mergeCustomization, readCustomization, saveCustomization, type DawnCustomization, type DawnCustomizationPatch } from "./settings/customization";
+import { CinematicPrelude } from "./ui/CinematicPrelude";
 
 export function App() {
   const [baseData, setBaseData] = useState<{ story: Story; theme: Theme } | null>(null);
@@ -11,6 +12,7 @@ export function App() {
     try { return readCustomization(window.localStorage); }
     catch { return readCustomization({ getItem: () => null }); }
   });
+  const [preludeChoice, setPreludeChoice] = useState<{ lang: Lang; muted?: boolean } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const data = useMemo(() => baseData ? applyCustomization(baseData.story, baseData.theme, customization) : null, [baseData, customization]);
@@ -50,5 +52,8 @@ export function App() {
 
   if (error) return <main className="app-shell error-shell"><p>{error}</p></main>;
   if (!data) return <main className="app-shell"><p className="loading-copy">새벽 세 시 · Still Open</p></main>;
-  return <Player story={data.story} theme={data.theme} customization={customization} onCustomizationChange={updateCustomization} onCustomizationReset={resetCustomization} />;
+  if (!preludeChoice) {
+    return <CinematicPrelude story={data.story} onEnter={(lang, muted) => setPreludeChoice({ lang, muted })} />;
+  }
+  return <Player story={data.story} theme={data.theme} customization={customization} initialLang={preludeChoice.lang} initialMuted={preludeChoice.muted} onCustomizationChange={updateCustomization} onCustomizationReset={resetCustomization} />;
 }

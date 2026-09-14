@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { defaults, readPreferences, savePreferences, type Preferences } from "./preferences";
 
-export function usePreferences(defaultLang: Preferences["lang"]) {
+export function usePreferences(defaultLang: Preferences["lang"], initial: Partial<Preferences> = {}) {
   const [settings, setSettings] = useState<Preferences>(() => {
-    try { return readPreferences(window.localStorage, defaultLang); }
-    catch { return { ...defaults, lang: defaultLang }; }
+    try { return { ...readPreferences(window.localStorage, defaultLang), ...initial }; }
+    catch { return { ...defaults, lang: defaultLang, ...initial }; }
   });
   const [saved, setSaved] = useState(true);
   useEffect(() => {

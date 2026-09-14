@@ -8,7 +8,14 @@ test.beforeEach(async ({ page }) => {
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
 });
 
+async function enterPrelude(page: Page, language = "한국어") {
+  const preludeLanguage = page.getByRole("button", { name: language, exact: true });
+  await expect(preludeLanguage.or(page.locator(".player-shell"))).toBeVisible();
+  if (await preludeLanguage.count()) await preludeLanguage.click();
+}
+
 async function openSettings(page: Page) {
+  await enterPrelude(page);
   await page.getByRole("button", { name: "설정", exact: true }).click();
   await expect(page.getByRole("dialog")).toBeVisible();
 }
@@ -83,6 +90,7 @@ test("legacy preferences and device motion preference are respected", async ({ p
   });
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
+  await enterPrelude(page, "English");
   await expect(page.getByRole("button", { name: "Unmute", exact: true })).toBeVisible();
   await expect(page.locator(".player-shell")).toHaveAttribute("data-motion", "reduce");
   await page.getByRole("button", { name: "Settings", exact: true }).click();
@@ -93,6 +101,7 @@ test("legacy preferences and device motion preference are respected", async ({ p
 test("settings pause the clock and a completed chapter can play again", async ({ page }) => {
   await page.clock.install();
   await page.goto("/");
+  await enterPrelude(page);
   await expect(page.locator(".node-intro")).toBeVisible();
   await openSettings(page);
   await page.clock.runFor(9000);
