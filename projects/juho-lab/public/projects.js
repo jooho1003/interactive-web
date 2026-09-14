@@ -58,4 +58,13 @@ export const projects = [
     url: 'https://github.com/jooho1003/game-monorepo', linkLabel: '프로젝트 코드 보기',
     image: './assets/spire.webp', mark: 'V', note: '플레이 가능한 초기 데모입니다.',
   },
+  {
+    id: 'day-walk', liveUrl: './experiences/day-walk/', title: '하루 산책', subtitle: '하루를 세 번의 마감으로 걷는다.',
+    category: '인터랙티브', type: 'VISUAL ROUTINE', number: '07', color: '#e8b86a',
+    description: '할 일이 길가의 집이 되고, 캐릭터가 현재 시각을 따라 동네를 걷는 루틴 앱. 하루를 아침·점심·저녁 세 마감으로 나눠 오늘 할 일을 끝까지 데려갑니다.',
+    details: ['타임라인에 깃발을 꽂아 일정 추가, 끌어서 시간 변경', '따라다니는 새의 마감 조언과 완료 축하', '구간 경계 조절·루틴 저장·브라우저 알림'],
+    tags: ['React', 'Vite', 'SVG'],
+    url: 'https://github.com/jooho1003/interactive-web', linkLabel: '프로젝트 코드 보기',
+    image: null, mark: '☀', note: '브라우저에 저장되는 1인용 루틴 도구입니다.',
+  },
 ];

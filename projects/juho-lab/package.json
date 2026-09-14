@@ -6,7 +6,7 @@
     "build": "node scripts/build-museum.mjs",
     "validate": "node scripts/validate.mjs",
     "check": "node scripts/validate.mjs",
-    "include:dawn": "node scripts/include-dawn.mjs"
+    "include:experience": "node scripts/include-experience.mjs"
   }
 }
 

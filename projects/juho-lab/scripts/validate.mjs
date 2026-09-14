@@ -44,9 +44,19 @@ function assetPaths(value) {
   if (typeof value === 'string') return value.startsWith('/experiences/') ? [value] : [];
   return value && typeof value === 'object' ? Object.values(value).flatMap(assetPaths) : [];
 }
-for (const file of ['story.json','theme.json']) {
-  const data = JSON.parse(await readFile(resolve(root,'experiences/dawn-store',file),'utf8'));
-  for (const asset of assetPaths(data)) assert.ok((await stat(resolve(root,'.'+asset))).isFile(),asset);
+const experiencesRoot = resolve(root, 'experiences');
+for (const entry of await readdir(experiencesRoot, { withFileTypes: true })) {
+  if (!entry.isDirectory()) continue;
+  const experienceRoot = resolve(experiencesRoot, entry.name);
+  for (const file of ['index.html', 'play.html']) assert.ok((await stat(resolve(experienceRoot, file))).isFile(), `${entry.name}: ${file}`);
+  for (const file of ['story.json', 'theme.json']) {
+    try {
+      const data = JSON.parse(await readFile(resolve(experienceRoot, file), 'utf8'));
+      for (const asset of assetPaths(data)) assert.ok((await stat(resolve(root, '.' + asset))).isFile(), asset);
+    } catch (error) {
+      if (error?.code !== 'ENOENT') throw error;
+    }
+  }
 }
 for (const match of html.matchAll(/(?:src|href)="(\.\/[^"#]+)"/g)) assert.ok((await stat(resolve(root, match[1]))).isFile(), match[1]);
 const hosting = JSON.parse(await readFile(resolve(root, '../.openai/hosting.json'), 'utf8'));

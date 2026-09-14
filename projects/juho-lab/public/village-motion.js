@@ -1,6 +1,7 @@
 import {getContent} from './content.js';
 // Camera choreography and ambient life use one clock, paused with the scene.
 export function createVillageMotion(container, projects, onSelect, onOpen, projectX) {
+  const projectIds=new Set(projects.map(project=>project.id));
   let settings=getContent();
   let reduced=false, trip=null, entry=null, timer=0, scale=1, lift=0, bank=0, elapsed=0, walkerX=projectX('dawn-store')+1.9, selected='dawn-store',step=0;
   const walker=document.createElement('img');walker.src=settings.character;walker.alt='';walker.className='village-walker';walker.setAttribute('aria-hidden','true');walker.draggable=false;container.append(walker);
@@ -15,8 +16,8 @@ export function createVillageMotion(container, projects, onSelect, onOpen, proje
   return {
     get entering(){return !!entry},
     configure(value){settings=value;if(walker.getAttribute('src')!==value.character)walker.src=value.character;},
-    select(id){if(entry&&entry.id!==id)cancelEntry();if(selected!==id&&!reduced)trip={start:performance.now(),direction:Math.sign(projectX(id)-projectX(selected))};selected=id},
-    enter(id){if(entry)return;if(reduced){onOpen(id);return}onSelect(id);trip=null;entry={id,start:performance.now(),scale,duration:1450/settings.cameraSpeed};veil.style.setProperty('--entry-progress',0);veil.hidden=false;title.textContent=projects.find(p=>p.id===id).title+'에 들어가는 중';container.parentElement.classList.add('entering');cancel.focus({preventScroll:true});timer=setTimeout(()=>{timer=0;onOpen(id)},entry.duration)},
+    select(id){if(!projectIds.has(id))return;if(entry&&entry.id!==id)cancelEntry();if(selected!==id&&!reduced)trip={start:performance.now(),direction:Math.sign(projectX(id)-projectX(selected))};selected=id},
+    enter(id){if(entry)return;if(!projectIds.has(id)){onOpen(id);return}if(reduced){onOpen(id);return}onSelect(id);trip=null;entry={id,start:performance.now(),scale,duration:1450/settings.cameraSpeed};veil.style.setProperty('--entry-progress',0);veil.hidden=false;title.textContent=projects.find(p=>p.id===id).title+'에 들어가는 중';container.parentElement.classList.add('entering');cancel.focus({preventScroll:true});timer=setTimeout(()=>{timer=0;onOpen(id)},entry.duration)},
     pause(){cancelEntry()},
     reduce(value){reduced=value;if(value){cancelEntry();trip=null;scale=1;lift=0;bank=0}},
     update(now,dt,camera){

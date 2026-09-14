@@ -43,7 +43,7 @@ function changeSelection(id, updateHash = true) {
   detail.style.setProperty('--project-color', project.color);
   detail.replaceChildren();
   const top = element('div', 'detail-top');
-  top.append(element('span', '', `WORK ${project.number} / 06`));
+  top.append(element('span', '', `WORK ${project.number} / ${String(projects.length).padStart(2, "0")}`));
   const controls = element('div', 'detail-navigation');
   for (const [label, text, direction] of [['이전 프로젝트', '←', -1], ['다음 프로젝트', '→', 1]]) {
     const button = element('button', '', text); button.type = 'button'; button.setAttribute('aria-label', label);

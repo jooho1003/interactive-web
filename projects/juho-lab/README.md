@@ -12,7 +12,7 @@ One source per layer; full table in docs/03 §0-5.
 - Viewer preferences: `public/preferences.js` → localStorage.
 - Owner allowlist: `server/index.js` `ownerEmail`.
 - HTML metadata: `public/index.html`, `public/project.html`.
-- Embedded works: `scripts/include-dawn.mjs` → `public/experiences/dawn-store/` (committed snapshot; refresh with root `pnpm build:hub`).
+- Embedded works: `scripts/include-experience.mjs <id>` → `public/experiences/<id>/` (committed snapshot; refresh Day Walk with root `pnpm build:hub`, or Dawn with `pnpm build:hub:dawn`).
 
 Project link precedence is currently spread over three places (registry `url`/`liveUrl`, saved content `projects[id].link`, viewer preference `links`) — see docs/03 §0-5 open issues.
 
