@@ -10,7 +10,7 @@
 
 작품과 실험을 한곳에서 탐색하는 스튜디오 인덱스입니다.
 
-![Juho Lab 메인 페이지](docs/readme/juho-lab.jpg)
+![Juho Lab 메인 페이지](docs/readme/juho-lab.png)
 
 [메인 페이지 소스 보기](docs/readme/juho-lab.html)
 
@@ -18,7 +18,7 @@
 
 불이 켜진 편의점으로 관객을 초대하는 첫 인터랙티브 작품의 메인 페이지입니다.
 
-![새벽 세 시 메인 페이지](docs/readme/still-open.jpg)
+![새벽 세 시 메인 페이지](docs/readme/still-open.png)
 
 [메인 페이지 소스 보기](docs/readme/still-open.html)
 
