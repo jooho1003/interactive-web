@@ -26,13 +26,14 @@ export function loadAppData(storage: StorageLike, logicalToday: string, now = Da
     return { data, persistent: true, recovered: false };
   } catch { return { data: defaultAppData(), persistent: false, recovered: false }; }
 }
-export function createStorage(storage: StorageLike, delay = 300) {
+export function createStorage(storage: StorageLike, delay = 300, onPersistent?: (value: boolean) => void) {
   let timer: ReturnType<typeof setTimeout> | undefined; let pending: AppDataType | undefined; let persistent = true;
   const flush = () => {
     if (!pending) return persistent;
     const value = pending; pending = undefined;
     if (timer) clearTimeout(timer); timer = undefined;
     try { storage.setItem(STORAGE_KEY, JSON.stringify(value)); } catch { persistent = false; }
+    onPersistent?.(persistent);
     return persistent;
   };
   return {

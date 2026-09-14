@@ -10,7 +10,7 @@
   --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
   --radius-sm: 0.25rem; --radius-md: 0.5rem; --shadow-raised: 0 0.25rem 0.75rem rgb(32 36 51 / 15%);
   --duration-fast: 150ms; --duration-normal: 300ms;
-  --header-height: 3.5rem; --scene-height: 44vh; --scene-mobile-height: 36svh; --timeline-height: 4.5rem; --column-height: 18rem; --progress-width: 8rem; --progress-height: .5rem; --border: 1px; --border-current: 2px; --text-title: 1.25rem; --text-heading: 1rem; --text-small: .75rem; --mobile-breakpoint: 45rem;
+  --header-height: 3.5rem; --scene-height: 44vh; --scene-mobile-height: 36svh; --timeline-height: 4.5rem; --column-height: 18rem; --progress-width: 8rem; --progress-height: .5rem; --border: 1px; --border-current: 2px; --text-title: 1.25rem; --text-heading: 1rem; --text-small: .75rem; --mobile-breakpoint: 45rem; --timeline-pad: 1.5rem; --flag-size: 1.25rem; --flag-offset: .375rem; --popover-width: 10rem; --flash-shadow: 0 0 0 .25rem;
 }
 
 * { box-sizing: border-box; }
