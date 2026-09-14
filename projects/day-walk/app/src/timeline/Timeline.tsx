@@ -17,7 +17,7 @@ export function Timeline() {
   };
   return <section className="timeline" data-testid="timeline">
     <div className="segments" aria-hidden="true"><i className="segment-morning" /><i className="segment-afternoon" /><i className="segment-evening" /></div>
-    {[bounds.dayStart, bounds.morningEnd, bounds.afternoonEnd, bounds.dayEnd].map((minute) => <span className="time-tick" key={minute} style={{ "--tick-x": `${xOf(minute, bounds) * 100}%` } as CSSProperties}>{formatMinute(minute)}</span>)}
+    {[bounds.dayStart, bounds.morningEnd, bounds.afternoonEnd, bounds.dayEnd].map((minute, index) => <span className={`time-tick ${index === 0 ? "time-tick-start" : index === 3 ? "time-tick-end" : ""}`} key={minute} style={{ "--tick-x": `${xOf(minute, bounds) * 100}%` } as CSSProperties}>{formatMinute(minute)}</span>)}
     {timed.map((task) => { const value = task.slot.kind === "time" ? task.slot.minute : 0; const stack = stacks.get(value) ?? 0; stacks.set(value, stack + 1); return <Flag bounds={bounds} key={task.id} onChange={(minute) => dispatch({ type: "tasks", date: selectedDate, action: { type: "set-time", id: task.id, minute } })} onFocus={focus} stack={stack} task={task} />; })}
     <BoundaryHandle bounds={bounds} name="morningEnd" onChange={(next) => dispatch({ type: "settings", settings: { ...data.settings, bounds: next } })} />
     <BoundaryHandle bounds={bounds} name="afternoonEnd" onChange={(next) => dispatch({ type: "settings", settings: { ...data.settings, bounds: next } })} />

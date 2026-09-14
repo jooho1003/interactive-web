@@ -22,7 +22,9 @@ export function Header({ date, today, done, total, onPrevious, onNext, onToday, 
       <button aria-label="다음 날짜" onClick={onNext}>›</button>
     </div>
     <ProgressBar done={done} total={total} />
-    <button onClick={(event) => onOpenRoutines(event.currentTarget)} type="button">루틴</button>
+    <button aria-label="루틴" onClick={(event) => onOpenRoutines(event.currentTarget)} type="button">
+      <span aria-hidden="true">☰</span><span className="routine-label"> 루틴</span>
+    </button>
     <button aria-label="설정" onClick={(event) => onOpenSettings(event.currentTarget)} type="button">⚙</button>
   </header>;
 }
