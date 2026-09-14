@@ -67,10 +67,17 @@ export function Flag({ task, bounds, stack, onChange, onFocus }: Props) {
     onPointerCancel={() => setDragMinute(null)}
     onLostPointerCapture={() => setDragMinute(null)}
     role="slider"
-    style={{ "--flag-x": `${xOf(minute, bounds) * 100}%`, "--flag-stack": String(stack) } as CSSProperties}
+    style={{
+      "--flag-x": `${xOf(minute, bounds) * 100}%`,
+      "--flag-stack": String(stack),
+      "--flag-segment": `var(--seg-${segmentOf(minute, bounds)})`,
+    } as CSSProperties}
     type="button"
   >
-    ⚑
+    <svg aria-hidden="true" className="flag-icon" viewBox="0 0 32 36">
+      <path className="flag-pole" d="M8 2 V34" />
+      <path className="flag-cloth" d="M9 4 L29 10 L9 18 Z" />
+    </svg>
     {dragMinute !== null && <span className="flag-bubble">{formatMinute(dragMinute)}</span>}
   </button>;
 }

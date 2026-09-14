@@ -95,7 +95,7 @@ export function SettingsDialog({ open, onClose, opener }: {
       <fieldset><legend>데이터</legend>
         <button onClick={download} type="button">내보내기</button>
         <button onClick={() => fileRef.current?.click()} type="button">가져오기</button>
-        <input accept="application/json" className="sr-only" onChange={(event) => void readImport(event.target.files?.[0])} ref={fileRef} type="file" />
+        <input accept="application/json" className="sr-only" data-testid="import-file" onChange={(event) => void readImport(event.target.files?.[0])} ref={fileRef} type="file" />
         <button onClick={() => setConfirm("clear")} type="button">모든 데이터 지우기</button>
       </fieldset>
       <div className="dialog-actions"><button onClick={close} type="button">닫기</button></div>

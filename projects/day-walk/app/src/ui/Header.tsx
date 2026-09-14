@@ -14,11 +14,15 @@ export function Header({ date, today, done, total, onPrevious, onNext, onToday, 
   const shown = new Date(`${date}T00:00:00`);
   const days = ["일", "월", "화", "수", "목", "금", "토"];
   const label = `${shown.getMonth() + 1}월 ${shown.getDate()}일 (${days[shown.getDay()]})${date === today ? " · 오늘" : ""}`;
+  const mobileLabel = `${shown.getMonth() + 1}/${shown.getDate()} (${days[shown.getDay()]})`;
   return <header className="header">
     <h1>Day Walk</h1>
     <div className="date-nav">
       <button aria-label="이전 날짜" onClick={onPrevious}>‹</button>
-      <button onClick={onToday}>{label}</button>
+      <button aria-label={label} className="today-button" onClick={onToday}>
+        <span className="date-long">{label}</span>
+        <span className="date-short">{mobileLabel}{date === today && <i aria-label="오늘" className="today-dot" />}</span>
+      </button>
       <button aria-label="다음 날짜" onClick={onNext}>›</button>
     </div>
     <ProgressBar done={done} total={total} />

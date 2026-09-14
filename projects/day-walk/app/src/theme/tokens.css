@@ -64,6 +64,8 @@
   --bird: #233e5e;
   --scene-bubble-width: 17.5rem;
   --scene-bubble-offset: 12rem;
+  --speech-top-right: var(--space-2);
+  --speech-top-left: var(--space-2);
   --scene-note-offset: 1rem;
   --scene-note-top: 1rem;
   --scene-orb-stroke: .15rem;

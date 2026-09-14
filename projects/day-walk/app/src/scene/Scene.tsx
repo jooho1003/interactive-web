@@ -12,7 +12,7 @@ import { Walker } from "./Walker.js";
 export function Scene({ onOpenRoutines }: { onOpenRoutines(): void }) {
   const { data, dispatch, logicalDate, minute, phase, selectedDate, tasks } = useAppStore();
   const element = useRef<HTMLElement>(null);
-  const [box, setBox] = useState({ width: 1600, pixelWidth: 1600 });
+  const [box, setBox] = useState({ width: 1600, pixelWidth: 1600, pixelHeight: 500 });
   const [adviceIndex, setAdviceIndex] = useState(0);
   const bounds = data.settings.bounds;
   const viewingToday = selectedDate === logicalDate;
@@ -25,7 +25,11 @@ export function Scene({ onOpenRoutines }: { onOpenRoutines(): void }) {
   useEffect(() => {
     const node = element.current;
     if (!node) return;
-    const resize = () => setBox({ width: 500 * (node.clientWidth / node.clientHeight), pixelWidth: node.clientWidth });
+    const resize = () => setBox({
+      width: 500 * (node.clientWidth / node.clientHeight),
+      pixelWidth: node.clientWidth,
+      pixelHeight: node.clientHeight,
+    });
     resize();
     const observer = new ResizeObserver(resize);
     observer.observe(node);
@@ -49,7 +53,7 @@ export function Scene({ onOpenRoutines }: { onOpenRoutines(): void }) {
         {viewingToday && <Walker bounds={bounds} minute={minute} phase={phase} visible={data.settings.showCharacter} width={box.width} />}
         {viewingToday && data.settings.showAdvisor && data.settings.showCharacter && <Bird onNext={() => setAdviceIndex((index) => (index + 1) % Math.max(advice.length, 1))} x={characterX * box.width} />}
       </svg>
-      {viewingToday && data.settings.showAdvisor && data.settings.showCharacter && currentAdvice && <SpeechBubble advice={currentAdvice} onAction={action} width={box.pixelWidth} x={characterX} />}
+      {viewingToday && data.settings.showAdvisor && data.settings.showCharacter && currentAdvice && <SpeechBubble advice={currentAdvice} height={box.pixelHeight} onAction={action} width={box.pixelWidth} x={characterX} />}
       {!viewingToday && <p className="scene-date-note">{new Intl.DateTimeFormat("ko-KR", { month: "long", day: "numeric" }).format(new Date(`${selectedDate}T00:00:00`))}을 보고 있어요</p>}
     </section>
   );

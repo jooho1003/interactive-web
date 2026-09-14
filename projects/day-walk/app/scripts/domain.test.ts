@@ -5,6 +5,7 @@ import { ruleAdvisor } from "../src/domain/advisor.js";
 import { dueNotifications } from "../src/domain/notifications.js";
 import { applyRoutine, sortTasks, tasksReducer } from "../src/domain/tasks.js";
 import { DEFAULT_BOUNDS, clampBounds, formatMinute, formatMinuteWithDay, logicalNow, phaseOf, segmentOf, snap, xOf } from "../src/domain/time.js";
+import { houseVisual } from "../src/domain/visual.js";
 import { STORAGE_KEY, loadAppData } from "../src/store/storage.js";
 
 const bounds: DayBounds = { ...DEFAULT_BOUNDS };
@@ -23,6 +24,13 @@ test("time model handles boundaries, formatting, position, and logical midnight"
 test("clampBounds snaps and preserves the required gaps", () => {
   const result = clampBounds({ dayStart: 231, morningEnd: 240, afternoonEnd: 250, dayEnd: 1701 });
   assert.deepEqual(result, { dayStart: 240, morningEnd: 300, afternoonEnd: 360, dayEnd: 1680 });
+});
+
+test("house visuals deterministically choose a token color and permitted height", () => {
+  const first = houseVisual("Meeting");
+  assert.deepEqual(first, houseVisual("Meeting"));
+  assert.ok(first.colorIndex >= 0 && first.colorIndex < 5);
+  assert.ok(first.height >= 70 && first.height <= 90);
 });
 
 test("task sorting follows done, star, time, and creation order", () => {
