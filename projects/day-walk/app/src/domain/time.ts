@@ -4,6 +4,20 @@ export const DEFAULT_BOUNDS: DayBounds = { dayStart: 420, morningEnd: 720, after
 
 export function clamp(value: number, min: number, max: number) { return Math.min(max, Math.max(min, value)); }
 export function snap(value: number) { return Math.round(value / 15) * 15; }
+export function magneticMinute(value: number) {
+  const halfHour = Math.round(value / 30) * 30;
+  return Math.abs(value - halfHour) <= 5 ? halfHour : Math.round(value);
+}
+export function parseTimeInput(value: string, min: number, max: number): number | null {
+  const clean = value.trim();
+  const match = /^(\d{1,2}):(\d{2})$/.exec(clean) ?? /^(\d{1,2})(\d{2})$/.exec(clean);
+  if (!match) return null;
+  const hours = Number(match[1]), minutes = Number(match[2]);
+  if (hours > 24 || minutes > 59 || (hours === 24 && minutes !== 0)) return null;
+  let result = hours * 60 + minutes;
+  if (result < min && result + 1440 <= max) result += 1440;
+  return result >= min && result <= max ? result : null;
+}
 export function segmentOf(minute: number, bounds: DayBounds): Segment {
   return minute <= bounds.morningEnd ? "morning" : minute <= bounds.afternoonEnd ? "afternoon" : "evening";
 }
@@ -11,10 +25,10 @@ export function xOf(minute: number, bounds: DayBounds) {
   return clamp((minute - bounds.dayStart) / (bounds.dayEnd - bounds.dayStart), 0, 1);
 }
 export function clampBounds(input: DayBounds): DayBounds {
-  const dayStart = clamp(snap(input.dayStart), 240, 720);
-  const dayEnd = clamp(snap(input.dayEnd), Math.max(1260, dayStart + 180), 1680);
-  const morningEnd = clamp(snap(input.morningEnd), dayStart + 60, dayEnd - 120);
-  const afternoonEnd = clamp(snap(input.afternoonEnd), morningEnd + 60, dayEnd - 60);
+  const dayStart = clamp(Math.round(input.dayStart), 240, 720);
+  const dayEnd = clamp(Math.round(input.dayEnd), Math.max(1260, dayStart + 180), 1680);
+  const morningEnd = clamp(Math.round(input.morningEnd), dayStart + 60, dayEnd - 120);
+  const afternoonEnd = clamp(Math.round(input.afternoonEnd), morningEnd + 60, dayEnd - 60);
   return { dayStart, morningEnd, afternoonEnd, dayEnd };
 }
 export function formatMinute(minute: number) {

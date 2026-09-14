@@ -1,0 +1,132 @@
+/* Shared coordinates: the scene, time rail, columns and two dividers use the same widths. */
+.day-layout { position: relative; --scene-height: var(--thirds-scene-height); --scene-mobile-height: var(--thirds-scene-mobile-height); --thirds-board-height: max(var(--thirds-board-min), calc(100svh - var(--header-height) - var(--scene-height) - var(--thirds-rail-height))); }
+.day-boundaries { position: absolute; inset: 0; z-index: 7; pointer-events: none; }
+.boundary { left: var(--boundary-x); top: 0; bottom: 0; width: var(--boundary-hit-width); padding: 0; transform: translateX(-50%); pointer-events: none; cursor: ew-resize; user-select: none; outline-offset: calc(var(--border-current) * -1); }
+.boundary-drag-area { position: absolute; top: var(--scene-height); bottom: 0; inset-inline: 0; pointer-events: auto; touch-action: none; }
+.boundary-grip { pointer-events: auto; touch-action: none; }
+.boundary::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; border-left: var(--border) dashed var(--divider-ink); }
+.boundary::after { content: ""; position: absolute; top: 0; left: 50%; height: var(--scene-height); border-left: var(--border) dashed var(--divider-light); pointer-events: none; }
+.boundary-grip { position: absolute; top: calc(var(--scene-height) + var(--timeline-height) - var(--space-3)); left: 50%; display: grid; place-items: center; width: var(--boundary-grip-width); height: var(--space-4); transform: translateX(-50%); border: var(--border) solid var(--line); border-radius: var(--radius-sm); color: var(--ink-muted); background: var(--surface); font-size: var(--text-small); }
+.boundary-time { top: calc(var(--scene-height) - var(--space-4) * 2); }
+.boundary.is-dragging .boundary-time { opacity: 1; }
+.boundary:is(:hover, :focus-visible, .is-dragging)::before { border-color: var(--focus); border-left-width: var(--border-current); }
+.timeline { height: var(--thirds-rail-height); overflow: visible; background: var(--neighborhood-rail); color: var(--neighborhood-hud-ink); }
+.segments { transition: none; }
+.segments i { opacity: .2; }
+.segments i::after { content: none; }
+.time-tick { bottom: var(--space-1); font-weight: 600; pointer-events: none; }
+.hour-marks { position: absolute; inset: 0; pointer-events: none; }
+.hour-marks > span { position: absolute; top: var(--space-1); bottom: var(--space-1); display: flex; flex-direction: column; align-items: center; justify-content: space-between; transform: translateX(-50%); color: var(--hour-mark-ink); }
+.hour-marks i { height: var(--space-1); border-left: var(--border) solid currentColor; }
+.hour-marks small { font-size: var(--text-small); }
+.quick-add { cursor: crosshair; }
+.quick-popover { top: calc(100% + var(--space-2)); width: min(var(--scene-add-width), calc(100vw - var(--space-4))); border-radius: var(--radius-md); padding: var(--space-2); }
+.quick-popover input { min-height: var(--button-target); }
+.board { position: relative; min-height: var(--thirds-board-height); padding: 0; }
+.columns { grid-template-columns: var(--morning-width) var(--afternoon-width) var(--evening-width); border: 0; min-height: var(--thirds-board-height); }
+.columns > div { min-width: 0; }
+.column { min-width: 0; height: 100%; padding: var(--space-4); padding-top: calc(var(--space-4) * 1.5); border: 0; overflow-wrap: anywhere; }
+.column[data-current="true"] { outline: none; background: var(--column-active); }
+.column-period { display: block; margin-bottom: var(--space-2); color: var(--ink-muted); font-size: var(--text-small); font-variant-numeric: tabular-nums; }
+.column h2 { font-size: var(--text-heading); }
+.column p { font-size: var(--text-small); }
+.task { flex-wrap: wrap; gap: var(--space-1); }
+.task-title { flex: 1; min-width: var(--task-title-min); }
+.task > .time-chip { font-variant-numeric: tabular-nums; }
+.task details { position: relative; }
+.task details[open] { z-index: 9; }
+.task details[open] > button { min-width: var(--task-menu-width); background: var(--surface-raised); }
+.task.done { color: var(--ink-muted); }
+.add-task button { border: 0; border-radius: var(--pill-radius); width: auto; color: var(--focus); background: var(--add-task-bg); padding-inline: var(--space-3); }
+/* Clear morning, golden afternoon and luminous evening share the same framing. */
+.neighborhood-frame { filter: none; transform: none; }
+.neighborhood-day { position: absolute; inset: 0; mask-image: linear-gradient(90deg, transparent calc(var(--dawn-x) - 8%), black calc(var(--dawn-x) + 8%)); }
+.neighborhood-night { position: absolute; inset: 0; filter: none; mask-image: linear-gradient(90deg, transparent calc(var(--sunset-x) - 8%), black calc(var(--sunset-x) + 8%)); }
+.scene::before, .scene::after { content: none; }
+.neighborhood-hud { pointer-events: none; }
+.neighborhood-date { display: none; }
+.scene-controls { bottom: var(--space-2); }
+.scene-now-pin { bottom: 0; }
+.scene-walker-3d { bottom: var(--street-bottom); width: var(--thirds-walker-width); }
+.scene-task-marker { bottom: var(--street-bottom); width: var(--scene-flag-width); height: calc(var(--scene-flag-height) + var(--marker-row) * var(--flag-offset)); padding: 0; border: 0; background: transparent; pointer-events: auto; cursor: grab; touch-action: none; color: var(--neighborhood-hud-ink); z-index: 3; }
+.scene-task-marker::before { content: none; }
+.scene-task-marker:is(:hover, :focus-visible, .is-dragging) { z-index: 8; }
+.scene-task-marker.is-dragging { cursor: grabbing; }
+.scene-task-marker .neighborhood-flag { height: 100%; }
+.neighborhood-flag b { background: var(--neighborhood-label); clip-path: polygon(0 0, 100% 50%, 0 100%); }
+.scene-flag-label { position: absolute; left: 50%; bottom: calc(100% + var(--space-2)); display: grid; gap: var(--space-1); width: max-content; max-width: var(--marker-label-width); padding: var(--space-2) var(--space-3); background: var(--neighborhood-label); border-radius: var(--radius-md); transform: translateX(-50%); text-align: left; pointer-events: auto; }
+.scene-flag-label::after { content: ""; position: absolute; top: 100%; left: 50%; border-top: var(--space-2) solid var(--neighborhood-label); border-inline: var(--space-1) solid transparent; }
+.scene-flag-label b { font-size: var(--text-small); font-weight: 600; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; }
+.scene-flag-label small { font-size: var(--marker-time-size); opacity: .8; font-variant-numeric: tabular-nums; }
+.scene-task-marker.is-near-start .scene-flag-label { left: 50%; transform: translateX(calc(var(--space-2) * -1)); }
+.scene-task-marker.is-near-start .scene-flag-label::after { left: var(--space-2); }
+.scene-task-marker.is-near-end .scene-flag-label { left: 50%; transform: translateX(calc(-100% + var(--space-2))); }
+.scene-task-marker.is-near-end .scene-flag-label::after { left: auto; right: var(--space-2); }
+.scene-task-marker.is-reached:not(.is-done) .neighborhood-flag b { background: var(--neighborhood-label); opacity: 1; transform: none; }
+.scene-task-marker.is-done { opacity: .72; transform: translateX(-50%); filter: grayscale(1); }
+.scene-task-marker.is-done .scene-flag-label { background: var(--neighborhood-label-done); }
+.scene-task-marker.is-done .scene-flag-label::after { border-top-color: var(--neighborhood-label-done); }
+.scene-task-marker.is-done .scene-flag-label b { text-decoration: line-through; }
+.scene-task-marker.is-done .neighborhood-flag b { background: var(--neighborhood-label-done); transform: translateY(var(--space-4)) scaleX(.2); }
+.scene-add-popover { left: clamp(calc(var(--scene-add-width) / 2 + var(--space-2)), var(--add-x), calc(100% - var(--scene-add-width) / 2 - var(--space-2))); }
+/* The bird and its speech share a moving anchor beside the walker. */
+.scene-companion { position: absolute; bottom: calc(var(--street-bottom) + var(--companion-altitude)); left: clamp(var(--companion-edge), var(--companion-x), calc(100% - var(--companion-edge))); width: var(--companion-size); z-index: 6; transition: left var(--clock-flow-duration) linear; pointer-events: none; }
+.scene-companion .bird { display: block; width: var(--companion-size); height: var(--companion-size); padding: 0; border: 0; background: transparent; pointer-events: auto; filter: drop-shadow(var(--bird-shadow-filter)); }
+.bird-float { display: grid; place-items: center; width: 100%; height: 100%; animation: bird-hover var(--bird-hover-duration) ease-in-out infinite; }
+.scene-companion .bird:focus-visible { outline: var(--border-current) solid var(--neighborhood-hud-ink); border-radius: 50%; }
+.bird-art { position: relative; display: block; width: 100%; height: 100%; overflow: hidden; }
+.scene-companion .bird-art { width: var(--companion-art-size); height: var(--companion-art-size); }
+.bird-art .bird-matte { position: absolute; width: 0; height: 0; }
+.bird-sprite { display: block; width: 200%; max-width: none; height: 100%; object-fit: fill; pointer-events: none; user-select: none; animation: bird-flutter var(--bird-flutter-duration) steps(1) infinite; }
+@keyframes bird-flutter { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-50%); } }
+.scene-companion .speech-bubble { left: var(--space-2); bottom: calc(100% + var(--space-1)); width: min(var(--scene-bubble-width), var(--companion-bubble-mobile)); transform: none; z-index: 6; pointer-events: auto; padding: 0; gap: 0; border-color: var(--line); }
+.scene-companion.companion-left .speech-bubble { left: auto; right: var(--space-2); }
+.scene-companion .speech-bubble::after { left: var(--space-3); }
+.scene-companion.companion-left .speech-bubble::after { left: auto; right: var(--space-3); }
+.speech-bubble .speech-text { display: grid; gap: var(--space-2); width: 100%; border: 0; padding: var(--space-3); text-align: left; font-size: var(--text-small); background: transparent; }
+.speech-text small { color: var(--ink-muted); font-size: var(--marker-time-size); }
+.speech-bubble .speech-action { margin: 0 var(--space-3) var(--space-3); font-size: var(--text-small); }
+.scene-date-note { top: var(--space-4); }
+@keyframes bird-hover { 50% { transform: translateY(calc(var(--space-1) * -1)) rotate(-3deg); } }
+/* Calendar is an in-page month grid, including on touch screens. */
+.date-picker-popover { display: block; width: var(--calendar-width); padding: var(--space-3); }
+.calendar-toolbar { display: flex; align-items: center; gap: var(--space-1); margin-bottom: var(--space-3); }
+.calendar-toolbar label { flex: 1; min-width: 0; }
+.calendar-toolbar input { width: 100%; appearance: textfield; }
+.calendar-toolbar select { border: 0; background: var(--cinema-black); color: var(--cinema-ink); min-height: var(--button-target); }
+.calendar-weekdays, .calendar-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: var(--space-1); }
+.calendar-weekdays { text-align: center; margin-bottom: var(--space-2); font-size: var(--text-small); color: var(--hour-mark-ink); }
+.header .calendar-grid button { min-width: 0; min-height: var(--calendar-day-size); padding: 0; border: 0; border-radius: 50%; }
+.header .calendar-grid button[aria-current="date"] { outline: var(--border) solid var(--seg-afternoon); outline-offset: calc(var(--border) * -1); }
+.header .calendar-grid button[aria-pressed="true"] { background: var(--focus); color: var(--surface-raised); }
+.calendar-grid button:hover { background: var(--neighborhood-hud); }
+.calendar-footer { display: flex; align-items: center; justify-content: space-between; padding-top: var(--space-3); margin-top: var(--space-3); border-top: var(--border) solid var(--cinema-line); font-size: var(--text-small); }
+/* A flock makes one loop in the schedule board, then exits. */
+.board-celebration { position: absolute; inset: 0; z-index: 8; overflow: hidden; pointer-events: none; }
+.board-celebration-message { position: absolute; left: 50%; top: var(--celebration-message-top); width: max-content; max-width: calc(100% - var(--space-4)); transform: translateX(-50%); display: grid; gap: var(--space-2); padding: var(--space-4); background: var(--celebration-card); color: var(--ink); border-radius: var(--radius-md); box-shadow: var(--shadow-raised); text-align: center; }
+.board-celebration-message strong { font-size: var(--celebration-title); }
+.board-celebration-message button { justify-self: center; background: transparent; color: var(--ink-muted); border: 0; pointer-events: auto; }
+.celebration-flock { position: absolute; inset: var(--space-4); }
+.celebration-bird { position: absolute; width: var(--celebration-bird-size); height: var(--celebration-bird-size); offset-path: shape(from -10% 50%, curve to 20% 50% with 0% 40% / 8% 50%, curve to 80% 50% with 20% -10% / 80% -10%, curve to 20% 50% with 80% 110% / 20% 110%, curve to 115% 0% with 30% -10% / 90% 25%); offset-rotate: 0deg; animation: bird-board-lap var(--flock-duration) linear both; animation-delay: calc(var(--bird-index) * var(--flock-stagger)); }
+.celebration-bird:nth-child(2n) { margin-top: var(--space-3); }
+.celebration-bird .bird-sprite { animation-delay: calc(var(--bird-index) * var(--flock-stagger) * -1); }
+.bird-chirp { position: absolute; right: 0; top: calc(var(--space-2) * -1); color: var(--focus); animation: bird-hover var(--bird-hover-duration) ease-in-out infinite; }
+@keyframes bird-board-lap { 0% { offset-distance: 0%; opacity: 0; } 8% { opacity: 1; } 92% { opacity: 1; } 100% { offset-distance: 100%; opacity: 0; } }
+@media (max-width: 45rem) {
+  .day-layout { --scene-height: var(--thirds-scene-mobile-height); }
+  .timeline { height: var(--thirds-rail-height); }
+  .hour-marks small { display: none; }
+  .board { padding-top: var(--space-3); }
+  .columns { display: block; }
+  .column { padding-inline: var(--space-3); }
+  .tabs { padding-inline: var(--space-2); }
+  .boundary { bottom: auto; height: calc(var(--scene-height) + var(--thirds-rail-height)); }
+  .boundary-grip { top: calc(var(--scene-height) + var(--thirds-rail-height) - var(--space-3)); }
+  .scene-task-marker { --marker-label-width: var(--marker-label-mobile); --scene-flag-height: var(--mobile-flag-height); }
+  .scene-companion { left: clamp(var(--companion-edge), var(--companion-x), calc(100% - var(--companion-size))); }
+  .scene-companion .speech-bubble { left: auto; right: calc(var(--companion-x) * 0); width: var(--companion-bubble-mobile); transform: translateX(50%); }
+  .scene-companion:not(.companion-left) .speech-bubble { left: 0; right: auto; transform: none; }
+  .scene-companion.companion-left .speech-bubble { right: 0; transform: none; }
+  .date-picker-popover { left: 0; transform: none; max-width: calc(100vw - var(--space-4)); }
+  .header .calendar-grid button { min-height: var(--calendar-day-size); }
+}

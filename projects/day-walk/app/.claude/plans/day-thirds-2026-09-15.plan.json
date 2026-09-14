@@ -1,0 +1,16 @@
+{
+  "slug": "day-thirds",
+  "date": "2026-09-15",
+  "gate": { "G1": "PASS", "G2": "PASS", "G3": "PASS", "G4": "PASS", "G5": "PASS" },
+  "execution": "main session; model names record routing tiers",
+  "scope": "projects/day-walk/app",
+  "nodes": [
+    { "id": 1, "title": "좌표계·동작 설계", "domain": "architecture", "D1": 1, "D2": 2, "D3": 0, "D4": 2, "score": 5, "tier": "powerful", "agent": "main", "claude_model": "opus", "codex_model": "gpt-5.6-sol", "depends_on": [], "output": "공유 좌표와 상태 전이" },
+    { "id": 2, "title": "깃발·경계·보드", "domain": "frontend", "D1": 0, "D2": 1, "D3": 1, "D4": 1, "score": 3, "tier": "balanced", "agent": "main", "claude_model": "sonnet", "codex_model": "gpt-5.6-terra", "depends_on": [1], "output": "드래그·점선·배경" },
+    { "id": 3, "title": "날짜 달력", "domain": "frontend", "D1": 0, "D2": 1, "D3": 0, "D4": 1, "score": 2, "tier": "balanced", "agent": "main", "claude_model": "sonnet", "codex_model": "gpt-5.6-terra", "depends_on": [1], "output": "월 선택과 일 선택" },
+    { "id": 4, "title": "새 안내", "domain": "frontend", "D1": 0, "D2": 1, "D3": 1, "D4": 1, "score": 3, "tier": "balanced", "agent": "main", "claude_model": "sonnet", "codex_model": "gpt-5.6-terra", "depends_on": [1], "output": "숨김·복원·도달 안내" },
+    { "id": 5, "title": "완료 연출", "domain": "frontend", "D1": 0, "D2": 1, "D3": 0, "D4": 1, "score": 2, "tier": "balanced", "agent": "main", "claude_model": "sonnet", "codex_model": "gpt-5.6-terra", "depends_on": [1], "output": "하단 비행·지저귐" },
+    { "id": 6, "title": "동작 검증", "domain": "testing", "D1": 0, "D2": 1, "D3": 0, "D4": 1, "score": 2, "tier": "balanced", "agent": "main", "claude_model": "sonnet", "codex_model": "gpt-5.6-terra", "depends_on": [2, 3, 4, 5], "output": "단위·브라우저 테스트" },
+    { "id": 7, "title": "최종 검토", "domain": "review", "D1": 1, "D2": 2, "D3": 0, "D4": 2, "score": 5, "tier": "powerful", "agent": "main", "claude_model": "opus", "codex_model": "gpt-5.6-sol", "depends_on": [6], "output": "검증 보고·README" }
+  ]
+}
