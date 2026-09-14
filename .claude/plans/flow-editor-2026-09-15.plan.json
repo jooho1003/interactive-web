@@ -1,0 +1,21 @@
+{
+  "gate": "PASS",
+  "status": "designed — 실행 대기 (S1·S6은 다른 세션의 dawn-store 미커밋 작업 머지 후)",
+  "request": "Newtake·Connect Idea처럼 인터랙티브 작품의 영상·이미지 흐름을 노드로 보여 주고, 사이트 안에서 영상 추가·삭제(aimovie 관리자 목록) UI/UX — 양산용 공용 툴로 재설계",
+  "design": "docs/09-흐름-에디터-미디어-관리-설계.md",
+  "nodes": [
+    {"id":"N0","title":"설계 (docs/09, docs/03 갱신)","domain":"general","D1":2,"D2":2,"D3":0,"D4":2,"score":6,"tier":"powerful","agent":"main","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":[],"산출물":"docs/09","done":true},
+    {"id":"S1","title":"@iw/story-schema 추출 + dawn-store import 교체 + lint CLI 공유","domain":"general","D1":0,"D2":2,"D3":1,"D4":1,"score":4,"tier":"balanced","agent":"codex","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":["N0"],"blocked_by":"다른 세션 dawn-store 작업 머지","산출물":"packages/story-schema"},
+    {"id":"S2","title":"@iw/story-store local 어댑터 + 초안/히스토리/슬롯","domain":"general","D1":0,"D2":1,"D3":1,"D4":1,"score":3,"tier":"balanced","agent":"codex","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":["S1"],"산출물":"packages/story-store"},
+    {"id":"S3","title":"@iw/story-editor 셸 + 미디어 탭","domain":"frontend","D1":1,"D2":1,"D3":0,"D4":1,"score":3,"tier":"balanced","agent":"codex","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":["S2"],"산출물":"EditorShell, media/*"},
+    {"id":"S4","title":"흐름 탭 (React Flow 캔버스·Tab/Enter·엣지·인스펙터·검사·재생 추적)","domain":"frontend","D1":1,"D2":1,"D3":0,"D4":2,"score":4,"tier":"balanced","agent":"codex","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":["S3"],"산출물":"flow/*, inspector/*, problems/*"},
+    {"id":"S5a","title":"hub 어댑터 + 허브 Worker 작품 API·R2 멀티파트 업로드","domain":"security","D1":1,"D2":2,"D3":2,"D4":2,"score":7,"tier":"powerful","agent":"codex","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":["S4"],"requires_approval":true,"산출물":"projects/juho-lab/server, packages/story-store/hub.ts"},
+    {"id":"S5b","title":"편집 API 보안 리뷰 (소유자·same-origin·업로드 검증·gc)","domain":"security","D1":0,"D2":2,"D3":0,"D4":2,"score":4,"tier":"powerful","agent":"bkit:security-architect","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":["S5a"],"산출물":"보안 리뷰 결과"},
+    {"id":"S6","title":"dawn-store customization(브라우저 로컬 작품 편집) → 초안 모델 흡수·마이그레이션","domain":"frontend","D1":1,"D2":2,"D3":1,"D4":2,"score":6,"tier":"powerful","agent":"codex","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":["S3"],"blocked_by":"다른 세션 dawn-store 작업 머지","산출물":"설정 패널 → 편집기 진입 통일"},
+    {"id":"S7","title":"통합 검증 + 최종 리뷰 (두 번째 분기형 작품에서 무코딩 장면 추가)","domain":"review","D1":1,"D2":2,"D3":0,"D4":2,"score":5,"tier":"powerful","agent":"main","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":["S5b","S6"],"산출물":"QA 보고, docs/05 패밀리 B 갱신"}
+  ],
+  "gates": {"G1":"PASS","G2":"PASS","G3":"PASS","G4":"PASS","G5":"PASS"},
+  "powerful_exception": "5/9(56%) — 전부 하드 오버라이드/도메인 floor: N0 아키텍처, S5a·S5b 보안(floor powerful), S6 사용자 저장 데이터 마이그레이션, S7 최종 리뷰. 강등 가능한 노드 없음",
+  "requires_approval": ["S5a"],
+  "out_of_scope": ["노드 간 AI 이미지·영상 생성", "서브 캔버스", "동시 편집", "자막 타임라인 편집기"]
+}
