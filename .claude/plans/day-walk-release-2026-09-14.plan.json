@@ -1,8 +1,8 @@
 {
   "gate": "PASS",
-  "request": "Day Walk main 머지 + 허브(juho-lab) 등록 + 배포",
+  "request": "Day Walk main 머지 + 허브(jooho-lab) 등록 + 배포",
   "nodes": [
-    {"id":"R1","title":"허브 등록: include 스크립트 일반화, projects.js 항목, 공간 보기 집 개수 가드, 검증","domain":"general","D1":0,"D2":2,"D3":1,"D4":1,"score":4,"tier":"balanced","agent":"codex","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":[],"산출물":"projects/juho-lab/{scripts/include-experience.mjs,public/projects.js,public/scene.js,public/experiences/day-walk/}, 루트 build:hub"},
+    {"id":"R1","title":"허브 등록: include 스크립트 일반화, projects.js 항목, 공간 보기 집 개수 가드, 검증","domain":"general","D1":0,"D2":2,"D3":1,"D4":1,"score":4,"tier":"balanced","agent":"codex","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":[],"산출물":"projects/jooho-lab/{scripts/include-experience.mjs,public/projects.js,public/scene.js,public/experiences/day-walk/}, 루트 build:hub"},
     {"id":"R2","title":"리뷰 + main 머지 (다른 세션의 미커밋 변경과 충돌 없음 확인)","domain":"review","D1":0,"D2":1,"D3":1,"D4":2,"score":4,"tier":"powerful","agent":"main","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":["R1"],"산출물":"main 머지 커밋"},
     {"id":"R3","title":"허브 비공개 재배포 (OpenAI Sites, 커밋된 main 기준)","domain":"infra","D1":1,"D2":2,"D3":2,"D4":1,"score":6,"tier":"powerful","agent":"codex","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":["R2"],"requires_approval":true,"approval":"사용자 2026-09-14 '진행해줘' (머지·허브 등록·배포 3건 제시 후)","산출물":"배포된 비공개 사이트 URL"}
   ],

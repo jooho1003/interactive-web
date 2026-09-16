@@ -36,7 +36,7 @@ export function CinematicPrelude({ story, onEnter }: Props) {
       <div className="prelude-vignette" aria-hidden="true" />
       <div className="prelude-grain" aria-hidden="true" />
       <div className="prelude-topline">
-        <span>JUHO LAB / 01</span>
+        <span>JOOHO LAB / 01</span>
         <span>INTERACTIVE SHORT</span>
       </div>
       <section className="prelude-gate" aria-labelledby="prelude-title">

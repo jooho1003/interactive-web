@@ -1,9 +1,9 @@
-name: Juho Lab checks
+name: Jooho Lab checks
 on:
   push:
-    paths: ['projects/juho-lab/**', '.github/workflows/juho-lab-check.yml']
+    paths: ['projects/jooho-lab/**', '.github/workflows/jooho-lab-check.yml']
   pull_request:
-    paths: ['projects/juho-lab/**', '.github/workflows/juho-lab-check.yml']
+    paths: ['projects/jooho-lab/**', '.github/workflows/jooho-lab-check.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -17,4 +17,4 @@ jobs:
         with:
           node-version: 24
       - run: node scripts/validate.mjs
-        working-directory: projects/juho-lab
+        working-directory: projects/jooho-lab

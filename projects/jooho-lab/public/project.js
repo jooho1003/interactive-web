@@ -9,12 +9,12 @@ function el(tag, cls, text) { const node = document.createElement(tag); if(cls) 
 function link(text, href, cls) { const node=el('a', cls, text);node.href=href;return node; }
 host.replaceChildren();
 if (!project) {
-  document.title='작품을 찾을 수 없습니다 — JUHO LAB';
+  document.title='작품을 찾을 수 없습니다 — JOOHO LAB';
   const empty=el('section','page-empty');
   empty.append(el('p','eyebrow','WORK NOT FOUND'),el('h1','','작품을 찾을 수 없습니다.'),el('p','','주소를 확인하거나 전시실에서 작품을 골라 주세요.'),link('전시실로 돌아가기','./','primary-link'));
   host.append(empty);
 } else {
-  document.title=project.title+' — JUHO LAB';
+  document.title=project.title+' — JOOHO LAB';
   document.querySelector('meta[name="description"]').content=project.description;
   host.style.setProperty('--project-color',project.color);
   const hero=el('section','project-hero');

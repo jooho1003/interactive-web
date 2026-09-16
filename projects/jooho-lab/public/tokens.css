@@ -1,0 +1,2 @@
+@font-face{font-family:Jooho Sans;src:url('./assets/PretendardVariable.woff2') format('woff2');font-weight:45 920;font-style:normal;font-display:swap}
+:root{--sans:"Jooho Sans","Apple SD Gothic Neo",sans-serif;--mono:var(--sans);--text:#273e3c;--muted:#627674;--bg:#f8faf6;--accent:#365e53;--line:#d5dfd6;--font-scale:1}

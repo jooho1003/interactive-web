@@ -1,8 +1,8 @@
-# JUHO LAB — hub
+# JOOHO LAB — hub
 
-Role: the studio hub of this monorepo (see `docs/03-모노레포-설계.md` §0). Package `juho-lab`. Naming: studio `JUHO LAB`, the explorable space `JUHO's village`, code/folder/package `juho-lab`. Storage keys (`juho-village-*`, R2 `museum/*`) keep their historical names on purpose — renaming them drops saved data.
+Role: the studio hub of this monorepo (see `docs/03-모노레포-설계.md` §0). Package `jooho-lab`. Naming: studio `JOOHO LAB`, the explorable space `JOOHO's village`, code/folder/package `jooho-lab`. The 2026-09 naming update changed browser storage keys to `jooho-village-*` without migrating earlier saved data; R2 keeps `museum/*`.
 
-Deploy target: OpenAI Sites (Cloudflare Worker + R2 binding `MEDIA`, `.openai/hosting.json`). Build: `pnpm --filter juho-lab build` → `dist/client`, `dist/server`.
+Deploy target: OpenAI Sites (Cloudflare Worker + R2 binding `MEDIA`, `.openai/hosting.json`). Build: `pnpm --filter jooho-lab build` → `dist/client`, `dist/server`.
 
 ## Configuration map
 One source per layer; full table in docs/03 §0-5.

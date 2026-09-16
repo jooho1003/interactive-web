@@ -1,7 +1,7 @@
 import {projects,profile} from './projects.js';
 import {contentDefaults,cleanContent} from './content-schema.js';
 const originals=projects.map(p=>structuredClone(p));
-const localContentKey='juho-village-content-v1';
+const localContentKey='jooho-village-content-v1';
 let content=cleanContent(),revision=null,canEdit=true,remoteWritable=false,loadError='';
 export const getContent=()=>structuredClone(content);
 export const contentAccess=()=>({canEdit,remoteWritable,loadError});

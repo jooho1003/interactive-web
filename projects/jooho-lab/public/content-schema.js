@@ -1,6 +1,6 @@
 import {projects} from './projects.js';
 export const projectIds=projects.map(p=>p.id);
-export const contentDefaults={brand:'JUHO',eyebrow:'이주호의 작업 동네',title:'아이디어가 사는 곳.',description:'대화에서 시작해, 하나의 작품이 되기까지.',introduction:'이주호의 바이브 코딩 작업을 모은 작은 동네입니다.',footer:'JUHO — 계속 만들어가는 중.',accent:'#365b4d',room:'#9bc6e6',character:'/assets/village-walker.png',characterSize:1,characterSpeed:1,characterVisible:true,cameraSpeed:1,lighting:1,projects:{}};
+export const contentDefaults={brand:'JOOHO',eyebrow:'이주호의 작업 동네',title:'아이디어가 사는 곳.',description:'대화에서 시작해, 하나의 작품이 되기까지.',introduction:'이주호의 바이브 코딩 작업을 모은 작은 동네입니다.',footer:'JOOHO — 계속 만들어가는 중.',accent:'#365b4d',room:'#9bc6e6',character:'/assets/village-walker.png',characterSize:1,characterSpeed:1,characterVisible:true,cameraSpeed:1,lighting:1,projects:{}};
 const text=(v,f,max)=>typeof v==='string'?v.slice(0,max):f;
 const number=(v,f,min,max)=>Number.isFinite(v)?Math.min(max,Math.max(min,v)):f;
 const color=(v,f)=>/^#[0-9a-f]{6}$/i.test(v)?v:f;
