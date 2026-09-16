@@ -29,6 +29,8 @@ pnpm 워크스페이스다 (Node 24, `pnpm@9.13.2`). 루트에서 `pnpm install`
 
 ### Jooho Lab
 
+[프로덕션 사이트](https://interactive-web-app-three.vercel.app/)
+
 작품과 실험을 한곳에서 탐색하는 스튜디오 인덱스입니다.
 
 ![Jooho Lab 메인 페이지](docs/readme/jooho-lab.png)
