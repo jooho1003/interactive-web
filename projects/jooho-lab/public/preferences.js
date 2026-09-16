@@ -1,5 +1,5 @@
 import { projects } from './projects.js';
-export const preferenceKey='juho-village-preferences-v1';
+export const preferenceKey='jooho-village-preferences-v1';
 export const defaults={scale:1,zoom:1.1,motion:'system',view:'space',links:{}};
 let memory=null;
 export function cleanPreferences(value={}) {
@@ -24,7 +24,7 @@ export function initSettings(){
   $('#project-links-form').addEventListener('submit',e=>{e.preventDefault();const links={};dialog.querySelectorAll('[data-project-link]').forEach(input=>{links[input.dataset.projectLink]=input.value.trim()});update({...readPreferences(),links});});
   dialog.querySelectorAll('[data-settings-tab]').forEach(button=>button.addEventListener('click',()=>{const display=button.dataset.settingsTab==='display';$('#display-settings').hidden=!display;$('#links-settings').hidden=display;dialog.querySelectorAll('[data-settings-tab]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));status.textContent='';}));
   $('#settings-reset').addEventListener('click',()=>update(defaults));
-  $('#settings-export').addEventListener('click',()=>{const blob=new Blob([JSON.stringify(readPreferences(),null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='juho-village-settings.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+  $('#settings-export').addEventListener('click',()=>{const blob=new Blob([JSON.stringify(readPreferences(),null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='jooho-village-settings.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
   const open=document.querySelector('#settings-open');open.addEventListener('click',()=>{sync();status.textContent='';dialog.showModal()});$('#settings-close').addEventListener('click',()=>dialog.close());dialog.addEventListener('close',()=>open.focus());
   dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()}});
   if(new URL(location.href).searchParams.get('settings')==='1'){sync();dialog.showModal()}

@@ -6,8 +6,8 @@
   "scripts": {
     "dev:dawn": "pnpm --filter dawn-store dev",
     "build:dawn": "pnpm --filter dawn-store build",
-    "build:hub": "pnpm --filter day-walk build && pnpm --filter juho-lab include:experience day-walk && pnpm --filter juho-lab validate && pnpm --filter juho-lab build",
-    "build:hub:dawn": "pnpm build:dawn && pnpm --filter juho-lab include:experience dawn-store && pnpm --filter juho-lab validate",
+    "build:hub": "pnpm --filter day-walk build && pnpm --filter jooho-lab include:experience day-walk && pnpm --filter jooho-lab validate && pnpm --filter jooho-lab build",
+    "build:hub:dawn": "pnpm build:dawn && pnpm --filter jooho-lab include:experience dawn-store && pnpm --filter jooho-lab validate",
     "check": "pnpm -r --if-present check",
     "validate": "pnpm -r --if-present validate"
   }

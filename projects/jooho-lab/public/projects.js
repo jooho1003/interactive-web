@@ -1,11 +1,11 @@
 export const profile = {
-  name: '이주호', brand: 'JUHO LAB', github: 'https://github.com/jooho1003',
+  name: '이주호', brand: 'JOOHO LAB', github: 'https://github.com/jooho1003',
   introduction: 'AI와 함께 아이디어를 실제로 작동하는 도구와 경험으로 만듭니다. 화장품 규제부터 콘텐츠 자동화, 게임과 인터랙티브 웹까지. 직접 만들어 보고, 써 보고, 다시 고치는 중입니다.',
 };
 
 export const projects = [
   {
-    id: 'chemiforge', title: 'ChemiForge', subtitle: '복잡한 규제를, 근거 있는 답으로.',
+    id: 'chemiforge', liveUrl: 'https://chemi-forge.vercel.app/', title: 'ChemiForge', subtitle: '복잡한 규제를, 근거 있는 답으로.',
     category: 'AI 도구', type: 'REGULATORY INTELLIGENCE', number: '01', color: '#91bce8',
     description: '화장품 규제 문서를 바탕으로 질문에 답하고, 제품과 광고 문구 검토를 돕는 AI 규제 어드바이저입니다.',
     details: ['법령·가이드라인 원문을 연결하는 질의응답', '제품 및 광고 문구 검토를 돕는 워크플로', '한국·EU·미국 규제 자료 탐색'],
@@ -50,7 +50,7 @@ export const projects = [
     image: null, mark: 'MF', note: 'OpenAI Game Builders Seoul 2026 출품을 목표로 한 프로젝트입니다.',
   },
   {
-    id: 'spire', title: '종말의 탑', subtitle: '매번 다른 만남, 위로 향하는 모험.',
+    id: 'spire', liveUrl: 'https://tower-50.vercel.app/', title: '종말의 탑', subtitle: '매번 다른 만남, 위로 향하는 모험.',
     category: '게임', type: 'ACTION ROGUELIKE', number: '06', color: '#a4b58c',
     description: '방랑자와의 만남, 전투, 아이템 선택으로 이어지는 탑다운 액션 로그라이크. 캐릭터 선택부터 5층 탈출전까지의 흐름을 구현한 데모입니다.',
     details: ['캐릭터·무기 선택과 실시간 전투', '시드에 따라 달라지는 방랑자 조우', '휴식처·상점·아이템·보스 탈출전'],
