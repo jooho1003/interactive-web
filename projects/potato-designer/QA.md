@@ -71,3 +71,5 @@
 회귀 검사 소스: [scripts/browser-qa.mjs](scripts/browser-qa.mjs). 별도 검수용 Playwright Page를 함수에 전달합니다. 이 검사는 해당 앱의 초안을 초기화합니다. 외부 Google Fonts가 지연되는 상황을 관찰했으며, 저장소 차단 시나리오에서는 글꼴 요청도 차단해 시스템 글꼴로 기능을 확인했습니다.
 
 검수 한계: 모바일 크기는 Chromium 뷰포트로 확인했습니다. 실제 iOS/Android 기기, Safari/Firefox, 스크린 리더 검수는 수행하지 않았습니다.
+
+커밋·병합 후 검수(2026-09-23): 원격 JOOHO LAB 경로 변경을 통합하고 전체 pnpm check를 재실행했다. Windows 체크아웃의 CRLF로 생성물 최신성 검사가 잘못 실패하는 문제를 수정했다. build-layers.test.mjs는 CRLF 생성물을 허용하면서 실제 내용 변경은 계속 거부함을 검증한다. 프롬프트 보관함의 최신성 검사도 줄바꿈을 정규화한다.

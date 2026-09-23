@@ -559,7 +559,7 @@ const json = `${JSON.stringify(local.catalog, null, 2)}\n`;
 const outputs = [[path.join(HERE, 'gallery.html'), html], [path.join(HERE, 'catalog.json'), json]];
 
 if (checkOnly) {
-  const stale = outputs.filter(([file, text]) => !fs.existsSync(file) || fs.readFileSync(file, 'utf8') !== text);
+  const stale = outputs.filter(([file, text]) => !fs.existsSync(file) || fs.readFileSync(file, 'utf8').replace(/\r\n/g, '\n') !== text.replace(/\r\n/g, '\n'));
   if (stale.length) {
     console.error(`prompts: 생성물이 오래됐습니다 — ${stale.map(([f]) => path.relative(REPO, f)).join(', ')}\n  pnpm prompts:build 로 다시 만드세요.`);
     process.exit(1);
