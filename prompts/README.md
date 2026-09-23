@@ -17,7 +17,7 @@
 | [dawn-store.md](dawn-store.md) | 새벽 세 시 · Still Open — 편의점 컷 7장 + v2 교체본 + 도입 영상 + 소리 |
 | [day-walk.md](day-walk.md) | 하루 산책 — 주택가 배경 4장(원본·아침·오후·저녁), 새, 걷는 캐릭터 |
 | [potato-designer.md](potato-designer.md) | POTATO — 날아차기 캐릭터 |
-| [juho-lab.md](juho-lab.md) | JUHO LAB 허브 — 마을 파노라마, 배낭 로봇, 전시실 배경, 작품 표지 |
+| [jooho-lab.md](jooho-lab.md) | JOOHO LAB 허브 — 마을 파노라마, 배낭 로봇, 전시실 배경, 작품 표지 |
 | [templates.md](templates.md) | **다시 쓸 수 있는 프롬프트 틀** — 스타일 프레임, 프랍 시트, UI 킷, 조명만 바꾸기, 스프라이트, 영상 체인, 3D 변환 |
 
 표시: ✅ 프롬프트 원문 있음 · ❌ 기록 없음(다시 만들 수 없음) · ⏸ 프롬프트만 있고 아직 안 만듦
@@ -46,9 +46,9 @@
 | <img src="../projects/day-walk/app/public/media/day-walk-bird-v3.webp" width="120"> | 하루 산책 | [안내 새 (2프레임)](day-walk.md#05--안내-새-2프레임-bird-v3) | image_gen | ✅ |
 | <img src="../projects/day-walk/app/public/media/day-walk-walker-v2.webp" width="60"> | 하루 산책 | [걷는 캐릭터](day-walk.md#06--걷는-캐릭터-walker-v2) | 기록 없음 | ❌ |
 | <img src="../projects/potato-designer/dist/assets/character.png" width="90"> | POTATO | [날아차기 캐릭터](potato-designer.md#01--날아차기-캐릭터-characterpng) | image_gen (gpt-image) | ✅ |
-| <img src="../projects/juho-lab/public/assets/project-village.webp" width="120"> | JUHO LAB | [마을 파노라마 (집 6채)](juho-lab.md#01--마을-파노라마-project-village) | 기록 없음 | ❌ |
-| <img src="../projects/juho-lab/public/assets/village-walker.png" width="80"> | JUHO LAB | [배낭 로봇 산책자](juho-lab.md#02--배낭-로봇-산책자-village-walker) | gpt-image 2.0 | ❌ |
-| <img src="../projects/juho-lab/public/assets/atelier.webp" width="120"> | JUHO LAB | [어두운 전시실 (지금 안 씀)](juho-lab.md#03--어두운-전시실-atelier-지금-안-씀) | 기록 없음 | ❌ |
+| <img src="../projects/jooho-lab/public/assets/project-village.webp" width="120"> | JOOHO LAB | [마을 파노라마 (집 6채)](jooho-lab.md#01--마을-파노라마-project-village) | 기록 없음 | ❌ |
+| <img src="../projects/jooho-lab/public/assets/village-walker.png" width="80"> | JOOHO LAB | [배낭 로봇 산책자](jooho-lab.md#02--배낭-로봇-산책자-village-walker) | gpt-image 2.0 | ❌ |
+| <img src="../projects/jooho-lab/public/assets/atelier.webp" width="120"> | JOOHO LAB | [어두운 전시실 (지금 안 씀)](jooho-lab.md#03--어두운-전시실-atelier-지금-안-씀) | 기록 없음 | ❌ |
 
 ### 영상 · 소리 · 3D
 
@@ -57,7 +57,7 @@
 | <img src="../projects/dawn-store/app/public/media/gate-generated-v2.webp" width="120"> | 새벽 세 시 | [도입 화면 영상 8초](dawn-store.md#10--도입-화면-영상-gate-generated-v2) | ❌ |
 | 🔊 | 새벽 세 시 | [배경음·효과음 3개](dawn-store.md#11--소리-bgm--hover--click) | ❌ (제작 요청서만 있음) |
 | 🔊 | 하루 산책 | 효과음 — 코드로 합성(`src/audio/sfx.ts`), 파일·프롬프트 없음 | — |
-| 🧊 | — | **3D 모델(GLB)은 아직 없습니다.** POTATO 캐릭터는 2D 그림에 CSS 원근을 준 것이고, JUHO LAB 마을은 2D 파노라마를 three.js에 붙인 것입니다. 3D 만드는 틀은 [templates.md §7](templates.md#7-3d로-바꾸기) | — |
+| 🧊 | — | **3D 모델(GLB)은 아직 없습니다.** POTATO 캐릭터는 2D 그림에 CSS 원근을 준 것이고, JOOHO LAB 마을은 2D 파노라마를 three.js에 붙인 것입니다. 3D 만드는 틀은 [templates.md §7](templates.md#7-3d로-바꾸기) | — |
 
 ---
 
@@ -71,9 +71,9 @@
 | 새벽 세 시 소리 3개 | 배경음·효과음 | ffmpeg로 저장됨. 내용 요청서만 있음 |
 | 하루 산책 주택가 원본 v2 | 조명 변형 3장의 원본 | 사용자가 준 이미지일 가능성 있음 |
 | 하루 산책 걷는 캐릭터 | 산책 캐릭터 | v1은 저장소에 없음 |
-| JUHO LAB 마을 파노라마, 배낭 로봇, 전시실 | 허브 3D 마을 | 파일 메타데이터(C2PA)로 OpenAI gpt-image임만 확인 |
+| JOOHO LAB 마을 파노라마, 배낭 로봇, 전시실 | 허브 3D 마을 | 파일 메타데이터(C2PA)로 OpenAI gpt-image임만 확인 |
 
-작품 표지 3장(`chemiforge`, `spire`, `sasu`)은 각 프로젝트 자료를 가져온 것으로 보이며, 이 저장소에서 생성한 기록이 없습니다([juho-lab.md](juho-lab.md#04--작품-표지)).
+작품 표지 3장(`chemiforge`, `spire`, `sasu`)은 각 프로젝트 자료를 가져온 것으로 보이며, 이 저장소에서 생성한 기록이 없습니다([jooho-lab.md](jooho-lab.md#04--작품-표지)).
 
 ---
 

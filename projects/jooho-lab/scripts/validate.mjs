@@ -26,6 +26,16 @@ for (const file of await readdir(root)) {
 }
 const html = await readFile(resolve(root, 'index.html'), 'utf8');
 const { projectHref, detailHref } = await import(pathToFileURL(resolve(root, 'navigation.js')));
+const expectedDestinations = {
+  chemiforge: 'https://chemi-forge.vercel.app/',
+  sasu: 'https://sasu-alpha.vercel.app/',
+  'dawn-store': './experiences/dawn-store/',
+  spire: 'https://tower-50.vercel.app/',
+  'day-walk': './experiences/day-walk/',
+};
+for (const [id, href] of Object.entries(expectedDestinations)) {
+  assert.equal(projectHref(projects.find((project) => project.id === id)), href, `${id}: default destination`);
+}
 for (const project of projects) {
   for (const href of [projectHref(project), detailHref(project)]) {
     if (href.startsWith('./')) {

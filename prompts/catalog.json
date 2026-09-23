@@ -14,8 +14,8 @@
       "title": "POTATO — Designer in Motion"
     },
     {
-      "key": "juho-lab",
-      "title": "JUHO LAB (허브)"
+      "key": "jooho-lab",
+      "title": "JOOHO LAB (허브)"
     }
   ],
   "shared": {
@@ -33,7 +33,7 @@
       "video": null,
       "meta": {
         "파일": "app/public/media/hub.webp · 1920×1080 · 122KB",
-        "쓰이는 곳": "처음 hub(계산대) 노드. 지금 앱은 v2로 교체되어 이 파일을 쓰지 않음. 같은 파일이 허브의 작품 표지(juho-lab/public/assets/dawn.webp)로 쓰임",
+        "쓰이는 곳": "처음 hub(계산대) 노드. 지금 앱은 v2로 교체되어 이 파일을 쓰지 않음. 같은 파일이 허브의 작품 표지(jooho-lab/public/assets/dawn.webp)로 쓰임",
         "참조 이미지": "없음 — 이 그림이 다른 컷의 참조 ⭐",
         "후보": "4장 → 1장"
       },
@@ -390,12 +390,12 @@
       ]
     },
     {
-      "app": "juho-lab",
-      "appTitle": "JUHO LAB (허브)",
-      "id": "juho-lab--01--마을-파노라마-project-village",
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--01--마을-파노라마-project-village",
       "title": "01 · 마을 파노라마 (project-village)",
       "status": "missing",
-      "image": "projects/juho-lab/public/assets/project-village.webp",
+      "image": "projects/jooho-lab/public/assets/project-village.webp",
       "video": null,
       "meta": {
         "파일": "public/assets/project-village.webp · 2164×727 · 410KB",
@@ -405,12 +405,12 @@
       "prompts": []
     },
     {
-      "app": "juho-lab",
-      "appTitle": "JUHO LAB (허브)",
-      "id": "juho-lab--02--배낭-로봇-산책자-village-walker",
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--02--배낭-로봇-산책자-village-walker",
       "title": "02 · 배낭 로봇 산책자 (village-walker)",
       "status": "missing",
-      "image": "projects/juho-lab/public/assets/village-walker.png",
+      "image": "projects/jooho-lab/public/assets/village-walker.png",
       "video": null,
       "meta": {
         "파일": "public/assets/village-walker.png · 1254×1254, 투명 PNG · 1.1MB",
@@ -420,12 +420,12 @@
       "prompts": []
     },
     {
-      "app": "juho-lab",
-      "appTitle": "JUHO LAB (허브)",
-      "id": "juho-lab--03--어두운-전시실-atelier-지금-안-씀",
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--03--어두운-전시실-atelier-지금-안-씀",
       "title": "03 · 어두운 전시실 (atelier, 지금 안 씀)",
       "status": "missing",
-      "image": "projects/juho-lab/public/assets/atelier.webp",
+      "image": "projects/jooho-lab/public/assets/atelier.webp",
       "video": null,
       "meta": {
         "파일": "public/assets/atelier.webp · 1536×1024 · 158KB",
@@ -435,9 +435,9 @@
       "prompts": []
     },
     {
-      "app": "juho-lab",
-      "appTitle": "JUHO LAB (허브)",
-      "id": "juho-lab--04--작품-표지",
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--04--작품-표지",
       "title": "04 · 작품 표지",
       "status": "none",
       "image": null,

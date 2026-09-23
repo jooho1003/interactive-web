@@ -14,7 +14,7 @@
 | docs/09 D4·D5·D6·§5-2 | 편집기 동적 import, 초안/게시 분리, 로컬 어댑터, 오버레이 셸 | 허브 R2 어댑터는 L8b로 미룸(보안·승인) |
 | docs/10 potato 교훈 | 정지 ≠ 장면 초기화(host.pause 통일), localStorage 예외 처리, ID 기반 연결 | — |
 | dawn-store theme.json | 요소별 섹션 + desktop/mobile = 레이어 모델의 원형 | — |
-| juho-lab content-schema | clean 함수로 경계값 보정, 소유자 전용 ETag 저장 | 문구·작품 목록은 레이어가 아님(D1) — 기존 편집기에 남김 |
+| jooho-lab content-schema | clean 함수로 경계값 보정, 소유자 전용 ETag 저장 | 문구·작품 목록은 레이어가 아님(D1) — 기존 편집기에 남김 |
 
 ## 노드
 
@@ -28,7 +28,7 @@
 | L5 | layer-probe + check·CI | qa | 1 | 1 | 1 | 1 | 4 | balanced | bkit:qa-lead | sonnet | gpt-5.6-terra |
 | L6 | day-walk 레이어화 | frontend | 1 | 1 | 1 | 1 | 4 | balanced | codex | sonnet | gpt-5.6-terra |
 | L7 | dawn-store 레이어화 + 이관 | frontend | 1 | 2 | 1 | 2 | 6 | **powerful** | codex | opus | gpt-5.6-sol |
-| L8a | juho-lab 레이어화 | frontend | 1 | 1 | 1 | 1 | 4 | balanced | codex | sonnet | gpt-5.6-terra |
+| L8a | jooho-lab 레이어화 | frontend | 1 | 1 | 1 | 1 | 4 | balanced | codex | sonnet | gpt-5.6-terra |
 | L8b | 허브 게시 API + R2 이관 | security | 1 | 2 | 2 | 2 | 7 | **powerful** · 승인 필요 | codex | opus | gpt-5.6-sol |
 | L9 | 통합 검증·최종 리뷰 | review | 1 | 2 | 0 | 2 | 5 | **powerful** | main | opus | gpt-5.6-sol |
 

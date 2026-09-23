@@ -1,4 +1,4 @@
-# JUHO LAB (허브) — 에셋 프롬프트
+# JOOHO LAB (허브) — 에셋 프롬프트
 
 [← 전체 목록](README.md)
 
@@ -10,7 +10,7 @@
 
 ### 01 · 마을 파노라마 (project-village)
 
-<img src="../projects/juho-lab/public/assets/project-village.webp" width="640">
+<img src="../projects/jooho-lab/public/assets/project-village.webp" width="640">
 
 | 항목 | 내용 |
 |---|---|
@@ -27,7 +27,7 @@
 
 ### 02 · 배낭 로봇 산책자 (village-walker)
 
-<img src="../projects/juho-lab/public/assets/village-walker.png" width="260">
+<img src="../projects/jooho-lab/public/assets/village-walker.png" width="260">
 
 | 항목 | 내용 |
 |---|---|
@@ -43,7 +43,7 @@
 
 ### 03 · 어두운 전시실 (atelier, 지금 안 씀)
 
-<img src="../projects/juho-lab/public/assets/atelier.webp" width="480">
+<img src="../projects/jooho-lab/public/assets/atelier.webp" width="480">
 
 | 항목 | 내용 |
 |---|---|

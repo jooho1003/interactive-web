@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(HERE, '..');
-const APPS = ['dawn-store', 'day-walk', 'potato-designer', 'juho-lab'];
+const APPS = ['dawn-store', 'day-walk', 'potato-designer', 'jooho-lab'];
 const KEYS = { README: 'readme', templates: 'templates' };
 const MEDIA_EXT = /\.(webp|png|jpe?g|gif|webm|mp4|mp3|wav)$/i;
 const VIDEO_EXT = /\.(webm|mp4)$/i;

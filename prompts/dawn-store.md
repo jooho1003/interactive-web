@@ -48,7 +48,7 @@ No text, no captions, no watermarks, no brand logos.
 | 항목 | 내용 |
 |---|---|
 | 파일 | `app/public/media/hub.webp` · 1920×1080 · 122KB |
-| 쓰이는 곳 | 처음 `hub`(계산대) 노드. **지금 앱은 [v2](#09--계산대-v2-counter-generated-v2)로 교체되어 이 파일을 쓰지 않음.** 같은 파일이 허브의 작품 표지(`juho-lab/public/assets/dawn.webp`)로 쓰임 |
+| 쓰이는 곳 | 처음 `hub`(계산대) 노드. **지금 앱은 [v2](#09--계산대-v2-counter-generated-v2)로 교체되어 이 파일을 쓰지 않음.** 같은 파일이 허브의 작품 표지(`jooho-lab/public/assets/dawn.webp`)로 쓰임 |
 | 참조 이미지 | 없음 — 이 그림이 다른 컷의 참조 ⭐ |
 | 후보 | 4장 → 1장 |
 

@@ -151,4 +151,4 @@ Use case: precise-object-edit. Edit target: this exact two-frame bird sprite str
 효과음은 파일이 아니라 코드로 합성한다(`app/src/audio/sfx.ts`, WebAudio). 프롬프트 없음.
 
 ## 계획만 있는 것
-- JUHO LAB 마을 파노라마에 Day Walk 집 그려 넣기 — 프롬프트 없음([juho-lab.md](juho-lab.md#01--마을-파노라마-project-village)).
+- JOOHO LAB 마을 파노라마에 Day Walk 집 그려 넣기 — 프롬프트 없음([jooho-lab.md](jooho-lab.md#01--마을-파노라마-project-village)).
