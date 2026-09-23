@@ -8,7 +8,9 @@
     "build:dawn": "pnpm --filter dawn-store build",
     "build:hub": "pnpm --filter day-walk build && pnpm --filter juho-lab include:experience day-walk && pnpm --filter juho-lab validate && pnpm --filter juho-lab build",
     "build:hub:dawn": "pnpm build:dawn && pnpm --filter juho-lab include:experience dawn-store && pnpm --filter juho-lab validate",
-    "check": "pnpm -r --if-present check",
+    "check": "node prompts/build.mjs --check && pnpm -r --if-present check",
+    "prompts:build": "node prompts/build.mjs",
+    "prompts:check": "node prompts/build.mjs --check",
     "validate": "pnpm -r --if-present validate"
   }
 }

@@ -1,0 +1,9 @@
+{
+  "name": "@iw/layer-kit",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.js", "./lint": "./src/lint.js", "./probe": "./src/probe.js" },
+  "bin": { "layer-kit": "./bin/layer-kit.mjs" },
+  "scripts": { "check": "node --test test/*.test.mjs" }
+}

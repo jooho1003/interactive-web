@@ -25,7 +25,12 @@ pnpm 워크스페이스다 (Node 24, `pnpm@9.13.2`). 루트에서 `pnpm install`
 | `projects/dawn-store/app` | 작품 | `dawn-store` |
 | `projects/day-walk/app` | 산책 일정표 | `day-walk` |
 | `projects/juho-lab` | 허브 | `juho-lab` |
+| `projects/potato-designer` | 캐릭터 인터랙티브 포트폴리오 | `potato-designer` |
 | `packages/` | 공용 코드 (두 번째 소비자가 생길 때 추출) | — |
+
+### Potato Designer
+
+영상 레퍼런스 속 웹 화면을 참고한 캐릭터 포트폴리오입니다. 마우스에 반응하는 깊이감, 모션 재생, 분야별 분위기 전환과 작업 패널을 제공합니다. `pnpm --filter potato-designer dev`로 실행할 수 있으며 [사용 안내](projects/potato-designer/README.md)에 구현 범위와 수정 방법을 정리했습니다.
 
 ### Juho Lab
 
