@@ -4,3 +4,4 @@ User authorized commit and merge. Preserve the working app, layer kit, finalized
 
 G1–G5 PASS. Review/conflict judgment stays primary; no delegation. Layer contract: no new visual parameters; preserve verified 20 layers / 619 parameters and run generated-asset checks after integration.
 `pnpm check` passed on the integrated tree. Conflicts in README/package.json resolved; new prompt/design references follow the remote JOOHO LAB rename. Final merge/push state is recorded by main and origin/main refs.
+Main merge 6f11da8 was pushed and verified against origin/main. A post-checkout CRLF false-positive was then fixed with a regression test; the follow-up is committed and merged through fix/generated-check-line-endings.

@@ -45,6 +45,8 @@
     }
   ],
   "execution": "Inherited primary runtime; no subagents",
-  "status": "validated_ready_to_merge",
-  "validation": "pnpm check passed after integration; existing Dawn Store umbrella warning only. README/package conflicts resolved preserving both changes; prompt references follow JOOHO LAB rename."
+  "status": "complete",
+  "validation": "pnpm check passed after integration; existing Dawn Store umbrella warning only. README/package conflicts resolved preserving both changes; prompt references follow JOOHO LAB rename.",
+  "merged_commit": "6f11da8a2542bf81ee4c520bfceaf52ce469bbfd",
+  "followup": "Normalize generated-artifact checks after Windows checkout; CRLF regression passes and real changes remain rejected."
 }
