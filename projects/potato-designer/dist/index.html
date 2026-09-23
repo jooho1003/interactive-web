@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko" data-layer-scene="brand">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e9ebe8">
+  <meta name="description" content="POTATO DESIGNER — 경계를 넘나드는 디자인, 움직이는 아이디어. 캐릭터와 함께 탐험하는 인터랙티브 포트폴리오.">
+  <title>POTATO® — Designer in Motion</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./layers.css">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">콘텐츠로 건너뛰기</a>
+  <div class="site-shell">
+    <header class="header">
+      <a class="wordmark" href="#" aria-label="Potato Designer 홈"><span class="potato-mark">p.</span><span class="barcode" aria-hidden="true"></span><span class="brand-name" data-layer-text="header/brand">POTATO®</span></a>
+      <span class="header-note">INDEPENDENT DESIGNER<br>IDEAS WITHOUT LIMITS.</span>
+      <nav aria-label="메인 메뉴"><button data-dialog="work-dialog">Work <span>03</span></button><button data-dialog="about-dialog">About</button><button class="contact-link" data-dialog="contact-dialog">Let's talk <span aria-hidden="true">↗</span></button></nav>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="year year-start">2024<span>—</span></div>
+        <div class="stage" aria-hidden="true">
+          <div class="stage-word" data-layer-text="word/text">PLAY</div>
+          <div class="ground-shadow"></div>
+          <div class="character-motion"><div class="character-parallax"><img class="character" data-layer-image="character/src" src="./assets/character.png" alt="" width="1254" height="1254" fetchpriority="high" draggable="false"></div></div>
+          <div class="crosshair crosshair-one">+</div><div class="crosshair crosshair-two">+</div>
+        </div>
+
+        <div class="hero-copy">
+          <p class="eyebrow"><span aria-hidden="true">&gt;&gt;</span> Portfolio <span class="eyebrow-line"></span> <span class="accent">Potato Designer</span></p>
+          <h1 id="hero-title"><span id="hero-heading-text" data-layer-text="copy/title">POTATO
+DESIGNER</span><span class="title-dot">.</span></h1>
+          <p class="intro" data-layer-text="copy/intro">A little playful. A little unexpected.
+브랜드부터 디지털 경험까지,
+평범한 아이디어에 새로운 움직임을 만듭니다.</p>
+          <div class="hero-actions"><button class="button button-dark" data-dialog="work-dialog">VIEW SELECTED WORK <span aria-hidden="true">↗</span></button><button class="button button-outline" data-dialog="contact-dialog">START A PROJECT <span aria-hidden="true">↗</span></button></div>
+        </div>
+
+        <button class="play-stamp" id="replay" aria-label="캐릭터 모션 다시 재생"><span>MADE TO MOVE</span><b aria-hidden="true">↗</b><span>CLICK TO PLAY</span></button>
+        <aside class="disciplines" aria-label="디자인 분야별 분위기 선택"><span class="side-label">EXPLORING</span><button class="active" data-scene="brand" aria-pressed="true">Brand Design <span>01</span></button><button data-scene="digital" aria-pressed="false">Digital Experience <span>02</span></button><button data-scene="character" aria-pressed="false">Character Design <span>03</span></button><span class="side-foot">ONE MIND. MANY SIDES.</span></aside>
+        <div class="hero-bottom"><span class="year">2026<span>©</span></span><span class="interaction-hint"><span class="hint-line"></span> MOVE YOUR CURSOR. FEEL THE DEPTH.</span><button id="motion-toggle" class="motion-toggle" aria-pressed="false"><span class="motion-icon" aria-hidden="true">Ⅱ</span><span class="motion-label">PAUSE MOTION</span></button></div>
+      </section>
+
+      <div class="ticker" aria-label="Brand Design · Digital Experience · Character Design · Art Direction"><div class="ticker-track" aria-hidden="true"><span>Brand Design <i>✳</i> Digital Experience <i>✳</i> <em>Potato Designer</em> <i>✳</i> Character Design <i>✳</i> Art Direction <i>✳</i> </span><span>Brand Design <i>✳</i> Digital Experience <i>✳</i> <em>Potato Designer</em> <i>✳</i> Character Design <i>✳</i> Art Direction <i>✳</i> </span></div></div>
+      <footer class="footer"><span data-layer-text="footer/motto">GOOD DESIGN HAS A PERSONALITY.</span><span>DESIGNED TO BE DIFFERENT <span class="footer-star">✳</span></span><button data-dialog="about-dialog">A little about me <span aria-hidden="true">↗</span></button></footer>
+    </main>
+  </div>
+
+  <dialog id="work-dialog" class="sheet work-sheet" aria-labelledby="work-title">
+    <div class="sheet-top"><span>POTATO® / SELECTED EXPLORATIONS</span><button class="close-button" data-close aria-label="작업 모음 닫기">×</button></div>
+    <div id="work-list">
+      <p class="eyebrow accent">IDEAS IN DIFFERENT SHAPES</p>
+      <h2 id="work-title" data-layer-text="work/title">A SMALL SELECTION.
+A LOT OF PERSONALITY.</h2>
+      <p class="sheet-intro">세 가지 디자인 스터디. 상세 내용을 둘러보고, 마음에 드는 작업을 저장하거나 프로젝트 메모로 이어가세요.</p>
+      <div class="work-tools">
+        <div><label for="work-search">작업 검색</label><input id="work-search" type="search" placeholder="이름, 로고, 모션…" maxlength="100"></div>
+        <div><label for="work-category">분야</label><select id="work-category"><option value="all">전체 분야</option><option value="brand">브랜드 디자인</option><option value="digital">디지털 경험</option><option value="character">캐릭터 디자인</option></select></div>
+        <button class="button button-outline" id="saved-only" aria-pressed="false">관심 작업만 <span id="saved-count">0</span></button>
+      </div>
+      <p id="work-results" class="work-status" role="status"></p>
+      <div class="work-grid" id="work-grid"></div>
+      <div id="work-empty" class="work-empty" hidden><p>조건에 맞는 작업이 없습니다.</p><button class="button button-outline" id="reset-filters">전체 작업 보기</button></div>
+    </div>
+    <section id="work-detail" hidden aria-labelledby="detail-title">
+      <button id="back-to-works" class="text-button">← 작업 목록으로</button>
+      <p id="detail-category" class="eyebrow accent"></p><h2 id="detail-title" tabindex="-1"></h2>
+      <p id="detail-summary" class="detail-summary"></p>
+      <div class="detail-columns"><div><h3>출발점</h3><p id="detail-challenge"></p><h3>디자인 방식</h3><p id="detail-approach"></p></div><div><h3>구성 요소</h3><ul id="detail-deliverables"></ul><p class="study-note">실제 고객 사례가 아닌 포트폴리오 디자인 스터디입니다.</p></div></div>
+      <div class="detail-actions"><button id="detail-brief" class="button button-dark">이 작업으로 메모 시작 ↗</button><button id="detail-save" class="button button-outline" aria-pressed="false">관심 저장</button><button id="detail-preview" class="text-button">메인 분위기 적용 ↗</button></div>
+    </section>
+    <p id="favorites-status" class="work-status" role="status"></p>
+  </dialog>
+
+  <dialog id="about-dialog" class="sheet about-sheet" aria-labelledby="about-title"><div class="sheet-top"><span>POTATO® / ABOUT</span><button class="close-button" data-close aria-label="소개 닫기">×</button></div><p class="eyebrow accent">NOT YOUR REGULAR POTATO.</p><h2 id="about-title" data-layer-text="about/title">SERIOUS ABOUT DESIGN.
+PLAYFUL ABOUT LIFE.</h2><p class="about-copy" data-layer-text="about/body">좋은 디자인은 자기만의 표정이 있다고 믿습니다.
+브랜드의 작은 기호부터 화면을 가득 채우는 캐릭터까지.
+조금 다르게 보고, 자유롭게 실험하고, 오래 기억될 경험을 만듭니다.</p><div class="about-meta"><span>01 / BRAND IDENTITY</span><span>02 / DIGITAL EXPERIENCE</span><span>03 / CHARACTER DESIGN</span></div><p class="reference-note">이 페이지는 제공된 영상의 화면 구성에서 영감을 받은 인터랙티브 디자인 스터디입니다. 캐릭터는 새로 제작한 이미지이며 포인터와 모션에 반응합니다.</p><a class="reference-link" href="https://www.instagram.com/reels/DasmbuiBvvv/" target="_blank" rel="noopener noreferrer">영상 레퍼런스 보기 ↗</a></dialog>
+
+  <dialog id="contact-dialog" class="sheet contact-sheet" aria-labelledby="contact-title"><div class="sheet-top"><span>POTATO® / START SOMETHING</span><button class="close-button" data-close aria-label="프로젝트 메모 닫기">×</button></div><p class="eyebrow accent">EVERY GOOD THING STARTS WITH AN IDEA.</p><h2 id="contact-title" data-layer-text="contact/title">WHAT'S ON
+YOUR MIND?</h2><form id="brief-form"><div id="brief-reference" class="brief-reference" hidden><span>참고 작업 · <b id="brief-reference-title"></b></span><button id="remove-reference" type="button" aria-label="참고 작업 연결 해제">연결 해제 ×</button></div><label for="project-type">어떤 프로젝트를 생각하고 있나요?</label><select id="project-type" name="type"><option>브랜드 디자인</option><option>디지털 경험</option><option>캐릭터 디자인</option></select><label for="project-brief">아이디어를 간단히 남겨보세요.</label><textarea id="project-brief" name="brief" rows="4" placeholder="만들고 싶은 것, 좋아하는 분위기, 필요한 일정…" required maxlength="3000"></textarea><p class="form-note">초안은 이 브라우저에 자동 저장되며 서버로 전송되지 않습니다. 공용 기기에서는 사용 후 초안을 지워주세요.</p><p id="draft-status" role="status"></p><div class="draft-actions"><button class="button button-dark" type="submit">프로젝트 메모 저장 <span aria-hidden="true">↗</span></button><button class="clear-draft" id="clear-draft" type="button">초안 지우기</button></div><p id="form-status" role="status"></p></form></dialog>
+</body>
+</html>

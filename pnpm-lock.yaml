@@ -8,6 +8,8 @@ importers:
 
   .: {}
 
+  packages/layer-kit: {}
+
   projects/dawn-store/app:
     dependencies:
       react:
@@ -83,6 +85,8 @@ importers:
         version: 7.3.6(@types/node@24.13.4)(tsx@4.23.13)
 
   projects/jooho-lab: {}
+
+  projects/potato-designer: {}
 
 packages:
 

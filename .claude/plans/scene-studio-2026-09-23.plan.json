@@ -1,0 +1,85 @@
+{
+  "gates": {
+    "G1": "PASS",
+    "G2": "PASS",
+    "G3": "PASS",
+    "G4": "PASS",
+    "G5": "PASS"
+  },
+  "nodes": [
+    {
+      "id": "design",
+      "title": "Finalize scene editor contract",
+      "domain": "frontend",
+      "D1": 1,
+      "D2": 2,
+      "D3": 1,
+      "D4": 2,
+      "score": 6,
+      "tier": "powerful",
+      "agent": "primary",
+      "claude_model": "opus",
+      "codex_model": "gpt-5.6-sol",
+      "depends_on": [],
+      "output": "docs/12 finalized design",
+      "justification": "Architecture and ambiguous scope remain primary",
+      "status": "complete"
+    },
+    {
+      "id": "implement",
+      "title": "Shared layer kit and authenticated local editor",
+      "domain": "security",
+      "D1": 1,
+      "D2": 2,
+      "D3": 1,
+      "D4": 2,
+      "score": 6,
+      "tier": "powerful",
+      "agent": "primary",
+      "claude_model": "opus",
+      "codex_model": "gpt-5.6-sol",
+      "depends_on": [
+        "design"
+      ],
+      "output": "Layer runtime, editor, local persistence and publication",
+      "justification": "Admin authorization, file writes and visual state coordination",
+      "status": "complete"
+    },
+    {
+      "id": "review",
+      "title": "Regression and final review",
+      "domain": "review",
+      "D1": 0,
+      "D2": 2,
+      "D3": 1,
+      "D4": 2,
+      "score": 5,
+      "tier": "powerful",
+      "agent": "primary",
+      "claude_model": "opus",
+      "codex_model": "gpt-5.6-sol",
+      "depends_on": [
+        "implement"
+      ],
+      "output": "Tests, browser evidence and QA record",
+      "justification": "Final review stays primary",
+      "status": "complete"
+    }
+  ],
+  "execution": "Inherited primary runtime; no subagents; no external deployment",
+  "layerContract": "See companion MD; manifest inventory and lint/probe evidence required",
+  "status": "complete",
+  "evidence": {
+    "design": "docs/12-Scene-Studio-관리자-설계.md",
+    "qa": "projects/potato-designer/QA.md",
+    "browser": 140,
+    "layerProbe": {
+      "passed": 619,
+      "total": 619,
+      "conditional": 148
+    },
+    "lintErrors": 0,
+    "workspaceCheck": "passed; existing dawn-store umbrella warning",
+    "externalDeployment": false
+  }
+}

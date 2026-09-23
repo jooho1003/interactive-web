@@ -1,0 +1,9 @@
+{
+  "gates":{"G1":"PASS","G2":"PASS","G3":"PASS","G4":"PASS","G5":"PASS"},
+  "nodes":[
+    {"id":"design","title":"기능 흐름 및 학습 계약","domain":"frontend","D1":2,"D2":1,"D3":0,"D4":2,"score":5,"tier":"powerful","agent":"primary","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":[],"output":"탐색에서 메모까지의 흐름과 학습 문서","justification":"모호한 범위와 구조 판단은 직접 수행"},
+    {"id":"implementation","title":"작업 탐색·관심·메모 연결 구현","domain":"frontend","D1":0,"D2":1,"D3":1,"D4":1,"score":3,"tier":"balanced","agent":"primary","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":["design"],"output":"정적 앱 기능 및 학습 문서"},
+    {"id":"verification","title":"회귀 검사 및 최종 검토","domain":"review","D1":0,"D2":1,"D3":1,"D4":2,"score":4,"tier":"powerful","agent":"primary","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":["implementation"],"output":"브라우저 검증과 QA 기록","justification":"최종 검토 직접 수행"}
+  ],
+  "execution":"Routing preferences recorded; inherited primary runtime handles local reversible work."
+}

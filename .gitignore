@@ -8,6 +8,8 @@
 # 프로젝트 빌드 산출물과 의존성
 **/node_modules/
 **/dist/
+!projects/potato-designer/dist/
+!projects/potato-designer/dist/**
 **/test-results/
 **/playwright-report/
 
