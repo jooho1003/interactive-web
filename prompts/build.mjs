@@ -6,6 +6,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { esc, slug, plain, posix, splitDoc, makeInline, table as renderTable, metaList as renderMetaList } from '../tools/md-blocks.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(HERE, '..');
@@ -26,73 +27,8 @@ const siteAt = argv.indexOf('--site');
 const siteDir = siteAt >= 0 ? path.resolve(argv[siteAt + 1] ?? '') : null;
 
 const read = (name) => fs.readFileSync(path.join(HERE, `${name}.md`), 'utf8').replace(/\r\n/g, '\n');
-const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
-const slug = (s) => s.trim().toLowerCase().replace(/[^\p{L}\p{N}\p{M} _-]/gu, '').replace(/ /g, '-');
-const plain = (s) => s.replace(/`([^`]+)`/g, '$1').replace(/\*\*(.+?)\*\*/g, '$1').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/<[^>]+>/g, '').trim();
 const keyOf = (base) => KEYS[base] ?? base;
 const anchor = (key, frag) => `${key}--${frag}`;
-const posix = (p) => p.split(path.sep).join('/');
-
-// ── 마크다운 블록 ─────────────────────────────────────────────
-const BLOCK_START = /^(`{3,}|#{1,6} |---+\s*$|\||>|([-*]|\d+\.) )/;
-function parseBlocks(md) {
-  const lines = md.split('\n');
-  const blocks = [];
-  let i = 0;
-  while (i < lines.length) {
-    const line = lines[i];
-    let m;
-    if (!line.trim()) { i++; continue; }
-    if ((m = line.match(/^(`{3,})(.*)$/))) {
-      const fence = m[1];
-      const [lang = '', ...rest] = m[2].trim().split(/\s+/);
-      const body = [];
-      i++;
-      while (i < lines.length && !(lines[i].startsWith(fence) && !lines[i].slice(fence.length).trim())) body.push(lines[i++]);
-      i++;
-      const attrs = Object.fromEntries(rest.map((p) => p.split('=')).filter((p) => p.length === 2));
-      blocks.push({ type: 'code', lang, attrs, text: body.join('\n') });
-    } else if ((m = line.match(/^(#{1,6}) (.+)$/))) {
-      blocks.push({ type: 'heading', level: m[1].length, text: m[2].trim() });
-      i++;
-    } else if (/^---+\s*$/.test(line)) {
-      i++;
-    } else if (line.startsWith('|')) {
-      const rows = [];
-      while (i < lines.length && lines[i].startsWith('|')) rows.push(lines[i++]);
-      const cells = rows.filter((_, k) => k !== 1).map((r) => r.trim().replace(/^\||\|$/g, '').split('|').map((c) => c.trim()));
-      blocks.push({ type: 'table', head: cells[0], rows: cells.slice(1) });
-    } else if (line.startsWith('>')) {
-      const body = [];
-      while (i < lines.length && lines[i].startsWith('>')) body.push(lines[i++].replace(/^>\s?/, ''));
-      blocks.push({ type: 'quote', text: body.join(' ') });
-    } else if ((m = line.match(/^([-*]|\d+\.) /))) {
-      const ordered = /\d/.test(m[1]);
-      const items = [];
-      while (i < lines.length && /^([-*]|\d+\.) /.test(lines[i])) items.push(lines[i++].replace(/^([-*]|\d+\.) /, ''));
-      blocks.push({ type: 'list', ordered, items });
-    } else {
-      const body = [lines[i++]];
-      while (i < lines.length && lines[i].trim() && !BLOCK_START.test(lines[i])) body.push(lines[i++]);
-      blocks.push({ type: 'para', text: body.join('\n') });
-    }
-  }
-  return blocks;
-}
-
-// 문서 = 제목 + 머리말 + (## 절 | ### 카드) 목록
-function splitDoc(md) {
-  const doc = { title: '', intro: [], parts: [] };
-  let cur = null;
-  for (const b of parseBlocks(md)) {
-    if (b.type === 'heading' && b.level === 1) doc.title = b.text;
-    else if (b.type === 'heading' && (b.level === 2 || b.level === 3)) {
-      cur = { kind: b.level === 3 ? 'card' : 'section', title: b.text, blocks: [] };
-      doc.parts.push(cur);
-    } else (cur ? cur.blocks : doc.intro).push(b);
-  }
-  return doc;
-}
 
 // ── 경로·링크 ────────────────────────────────────────────────
 function media(rel, ctx) {
@@ -116,25 +52,7 @@ function link(url, ctx) {
   return { href: url, external: true };
 }
 
-const INLINE = /`([^`]+)`|\*\*(.+?)\*\*|\[([^\]]+)\]\(([^)\s]+)\)|<img\s+src="([^"]+)"(?:\s+width="\d+")?\s*\/?>|~~(.+?)~~/g;
-function inline(s, ctx) {
-  let out = '';
-  let last = 0;
-  for (const m of s.matchAll(INLINE)) {
-    out += esc(s.slice(last, m.index));
-    if (m[1] !== undefined) out += `<code>${esc(m[1])}</code>`;
-    else if (m[2] !== undefined) out += `<strong>${inline(m[2], ctx)}</strong>`;
-    else if (m[3] !== undefined) {
-      const l = link(m[4], ctx);
-      out += l.text
-        ? `<span class="path" title="저장소 경로">${inline(m[3], ctx)}</span>`
-        : `<a href="${esc(l.href)}"${l.external ? ' target="_blank" rel="noopener"' : ''}>${inline(m[3], ctx)}</a>`;
-    } else if (m[5] !== undefined) out += `<img src="${esc(media(m[5], ctx))}" alt="" loading="lazy">`;
-    else out += `<s>${inline(m[6], ctx)}</s>`;
-    last = m.index + m[0].length;
-  }
-  return (out + esc(s.slice(last))).replace(/\n/g, ' ');
-}
+const inline = makeInline({ link, media });
 
 // ── 블록 렌더링 ──────────────────────────────────────────────
 function code(b, ctx) {
@@ -155,13 +73,8 @@ function para(b, next, ctx) {
   const cls = t.startsWith('❌') ? 'note missing' : t.startsWith('⚠️') ? 'note warn' : t.startsWith('⏸') ? 'note wait' : '';
   return `<p${cls ? ` class="${cls}"` : ''}>${inline(t.replace(/^(❌|⚠️|⏸)\s*/, ''), ctx)}</p>`;
 }
-function table(b, ctx) {
-  const cells = (row, tag) => row.map((c) => `<${tag}>${inline(c, ctx)}</${tag}>`).join('');
-  return `<div class="table-wrap"><table><thead><tr>${cells(b.head, 'th')}</tr></thead><tbody>${b.rows.map((r) => `<tr>${cells(r, 'td')}</tr>`).join('')}</tbody></table></div>`;
-}
-function metaList(rows, ctx) {
-  return `<dl class="meta">${rows.map(([k, v]) => `<div><dt>${inline(k, ctx)}</dt><dd>${inline(v, ctx)}</dd></div>`).join('')}</dl>`;
-}
+const table = (b, ctx) => renderTable(b, inline, ctx);
+const metaList = (rows, ctx) => renderMetaList(rows, inline, ctx);
 function blocks(list, ctx) {
   return list.map((b, k) => {
     if (b.type === 'para') return /^\[← /.test(b.text) ? '' : para(b, list[k + 1], ctx);
