@@ -1,0 +1,278 @@
+{
+  "note": "생성물 — references/build.mjs가 references/*.md에서 만든다. 직접 고치지 않는다.",
+  "generatedFrom": [
+    "motionsites.md",
+    "notefolio-portfolios.md",
+    "patterns.md"
+  ],
+  "patterns": [
+    {
+      "id": "desktop-os",
+      "name": "데스크톱 OS 은유",
+      "families": [
+        "새 패턴"
+      ],
+      "sites": [
+        "bychudy"
+      ]
+    },
+    {
+      "id": "drive-to-explore",
+      "name": "게임형 공간 탐색",
+      "families": [
+        "A'"
+      ],
+      "sites": [
+        "bruno-simon"
+      ]
+    },
+    {
+      "id": "moodboard-canvas",
+      "name": "자유 배치 무드보드",
+      "families": [
+        "새 패턴"
+      ],
+      "sites": [
+        "annamills"
+      ]
+    },
+    {
+      "id": "hand-drawn",
+      "name": "손그림 표현",
+      "families": [
+        "새 패턴"
+      ],
+      "sites": [
+        "clarakirkpatrick"
+      ]
+    },
+    {
+      "id": "illustration-hero",
+      "name": "일러스트 히어로 모션",
+      "families": [
+        "새 패턴"
+      ],
+      "sites": [
+        "loonamessal"
+      ]
+    },
+    {
+      "id": "expand-gallery",
+      "name": "클릭하면 펼쳐지는 갤러리",
+      "families": [
+        "새 패턴"
+      ],
+      "sites": [
+        "julesesick"
+      ]
+    },
+    {
+      "id": "video-tile-catalog",
+      "name": "루프 영상 타일 카탈로그",
+      "families": [
+        "D"
+      ],
+      "sites": [
+        "motionsites"
+      ]
+    }
+  ],
+  "sites": [
+    {
+      "id": "motionsites",
+      "name": "MotionSites AI",
+      "url": "https://motionsites.ai/",
+      "file": "motionsites.md",
+      "anchor": "site-motionsites",
+      "notion": [
+        "3e9d12f2-3255-8115-b9a1-c0346ef28372",
+        "3e9d12f2-3255-811e-b650-c87820f02b71"
+      ],
+      "via": "@viktoroddy DM",
+      "importedAt": "2026-09-30",
+      "check": {
+        "status": "ok",
+        "date": "2026-09-30"
+      },
+      "patterns": [
+        "video-tile-catalog"
+      ],
+      "families": [
+        "D"
+      ],
+      "tech": [
+        "Vite 번들(assets/index-*.js)에 React·Radix UI·토스트(sonner)가 들어 있다(추정). 캔버스·WebGL·three·gsap 없음(<canvas> 0개). 미리보기는 전부 <video autoplay loop muted>(R2 저장소 mp4·blob). 뷰포트 안에 들어올 때 재생하는 구조(추정, IntersectionObserver 사용). 분석·광고 스크립트 다수"
+      ],
+      "usedIn": [],
+      "summary": "[레퍼런스] motionsites — MotionSites AI (https://motionsites.ai/) · 패턴 video-tile-catalog · ✅ 2026-09-30\n가져올 것: 공개 미리보기에서 보이는 첫 화면 구성·배경 모션·타이포 조합을 우리 요구로 다시 적는 방식. 결과물을 정지 이미지가 아니라 짧은 루프 영상 타일로 훑게 하는 고르기 화면(뷰포트에 들어올 때만 재생해 부담을 줄이는 방식 포함). 주소 파라미터로 상세를 여는 구조(뒤로 가기·공유가 된다)\n안 가져올 것: 유료 프롬프트 본문, 데모 외형 그대로의 복제, 타일 본체가 키보드로 열리지 않는 구성, 전 타일 영상 동시 재생 같은 무거운 첫 화면"
+    },
+    {
+      "id": "bychudy",
+      "name": "bychudy",
+      "url": "https://www.bychudy.com/",
+      "file": "notefolio-portfolios.md",
+      "anchor": "site-bychudy",
+      "notion": [
+        "3ead12f2-3255-81b6-99ab-daa10d99e0a4",
+        "3ead12f2-3255-8141-848c-c93822c5554a"
+      ],
+      "via": "@notefolio 큐레이션",
+      "importedAt": "2026-09-30",
+      "check": {
+        "status": "ok",
+        "date": "2026-09-30"
+      },
+      "patterns": [
+        "desktop-os"
+      ],
+      "families": [
+        "새 패턴"
+      ],
+      "tech": [
+        "Framer로 만든 사이트(<meta generator=\"Framer …\">, framerusercontent.com 스크립트). <canvas>·three 없음, 창·아이콘은 전부 DOM(tabindex=0 아이콘, role=dialog 툴팁). 반응형 구간은 Framer 기본 세 칸(≥1200 · 810~1199 · ≤809)"
+      ],
+      "usedIn": [],
+      "summary": "[레퍼런스] bychudy — bychudy (https://www.bychudy.com/) · 패턴 desktop-os · ✅ 2026-09-30\n가져올 것: 작업물을 창·아이콘으로 여는 익숙한 조작. 아이콘 흩뿌리기 + 이름표를 크게 두는 배치, 여러 창을 동시에 열고 제목 줄로 옮기는 자유도, 창 내용을 텍스트로 두는 구조(읽기·검색 가능)\n안 가져올 것: 데스크톱 화면을 그대로 흉내 낸 외형(맥 신호등 점·독 아이콘 모양), 모바일에서도 창을 겹치는 배치, 마우스로만 닫히는 창(Escape 없음), 처음 열 때 수십 초 걸리는 큰 이미지 묶음"
+    },
+    {
+      "id": "bruno-simon",
+      "name": "Bruno Simon",
+      "url": "https://bruno-simon.com/",
+      "file": "notefolio-portfolios.md",
+      "anchor": "site-bruno-simon",
+      "notion": [
+        "3ead12f2-3255-81b6-99ab-daa10d99e0a4",
+        "3ead12f2-3255-8141-848c-c93822c5554a"
+      ],
+      "via": "@notefolio 큐레이션",
+      "importedAt": "2026-09-30",
+      "check": {
+        "status": "ok",
+        "date": "2026-09-30"
+      },
+      "patterns": [
+        "drive-to-explore"
+      ],
+      "families": [
+        "A'"
+      ],
+      "tech": [
+        "<canvas> 1개가 화면 전체를 채우고 접근성 트리에는 canvas와 버튼 2개만 잡힌다. 스크립트는 번들 1개(약 4.9MB)와 분석 태그뿐. 번들에 three.js WebGPU 렌더러 코드(옵션 창에 \"Renderer WebGPU\" 표시), Rapier 물리, GSAP, Howler(소리)가 들어 있다. 다른 방문자 차가 보이고 말풍선(whisper)을 남기는 온라인 서버가 있다(\"Server connected\")"
+      ],
+      "usedIn": [],
+      "summary": "[레퍼런스] bruno-simon — Bruno Simon (https://bruno-simon.com/) · 패턴 drive-to-explore · ✅ 2026-09-30\n가져올 것: 공간을 돌아다니며 작업을 발견하는 탐색. \"Click to start\" 한 번으로 소리·시작을 묶고 카메라를 날려 주는 입장 연출, 메뉴에 조작 안내(키보드·터치·패드 탭)를 미리 두는 것, 길을 잃었을 때 쓰는 \"I'm stuck! Respawn\"·리셋·품질 설정, 지도로 위치를 보여 주는 보조 화면\n안 가져올 것: 작업 목록이 월드 안에만 있어 운전하지 않으면 못 보는 구조(DOM에 텍스트가 없어 읽기·검색도 어렵다), 차가 뒤집혀 길이 막히는 물리 조작을 필수로 두는 것, 약 5MB 번들과 WebGPU에 기대는 로딩, 방문자 차가 다 보이는 온라인 서버"
+    },
+    {
+      "id": "annamills",
+      "name": "Anna Mills",
+      "url": "https://annamills.xyz/",
+      "file": "notefolio-portfolios.md",
+      "anchor": "site-annamills",
+      "notion": [
+        "3ead12f2-3255-81b6-99ab-daa10d99e0a4",
+        "3ead12f2-3255-8141-848c-c93822c5554a"
+      ],
+      "via": "@notefolio 큐레이션",
+      "importedAt": "2026-09-30",
+      "check": {
+        "status": "ok",
+        "date": "2026-09-30"
+      },
+      "patterns": [
+        "moodboard-canvas"
+      ],
+      "families": [
+        "새 패턴"
+      ],
+      "tech": [
+        "Readymag로 만든 사이트(<meta generator=\"Readymag\">, st-p.rmcdn1.net/…/viewer.js, hls.js). 주소가 /1/~/5/ 페이지로 나뉜다. 화면은 .content-scroll-wrapper 안에서 스크롤되고(문서 자체는 스크롤되지 않음) 스티커는 <img>(rmwidget widget-picture … drag)다. <canvas> 1개(로고 글자 모핑용으로 추정), 오른쪽 필름 칸은 <video>"
+      ],
+      "usedIn": [],
+      "summary": "[레퍼런스] annamills — Anna Mills (https://annamills.xyz/) · 패턴 moodboard-canvas · ✅ 2026-09-30\n가져올 것: 스티커를 끌어 포스터를 만드는 참여형 무드보드(흩어 놓은 조각을 끌어 빈 판 위에 올리는 조작과 \"DRAG AND DROP\" 한 줄 안내), 첫 화면에서 글자만으로 메뉴를 세우는 간결함, 작업을 필름 스트립 영상으로 보여 주는 칸, 스크롤에 따라 로고 글자가 변하는 작은 모션\n안 가져올 것: 키보드·스크린리더로는 스티커에 닿지 않고 alt가 없는 구조, 초기화·완성본 저장 없이 끌기만 있는 놀이, 메뉴 글자가 이미지처럼 떠서 클릭 영역이 작은 배치, 끌 수 없는 사람을 위한 대체 경로(목록형)가 없는 무드보드"
+    },
+    {
+      "id": "clarakirkpatrick",
+      "name": "Clara Kirkpatrick",
+      "url": "https://clarakirkpatrick.com/",
+      "file": "notefolio-portfolios.md",
+      "anchor": "site-clarakirkpatrick",
+      "notion": [
+        "3ead12f2-3255-81b6-99ab-daa10d99e0a4",
+        "3ead12f2-3255-8141-848c-c93822c5554a"
+      ],
+      "via": "@notefolio 큐레이션",
+      "importedAt": "2026-09-30",
+      "check": {
+        "status": "ok",
+        "date": "2026-09-30"
+      },
+      "patterns": [
+        "hand-drawn"
+      ],
+      "families": [
+        "새 패턴"
+      ],
+      "tech": [
+        "Readymag로 만든 사이트(<meta generator=\"Readymag\">, st-p.rmcdn1.net/…/viewer.js 하나). <canvas> 0개. 화면 요소는 전부 rmwidget widget-picture 그림 조각(<img>)이고 호버 애니메이션 표시(has-onhover-animation)가 붙은 조각은 홈에서 1개다. 주소는 /1/~/7/ 페이지로 나뉘며 페이지는 가로로 이어져 옆으로 넘어간다(추정)"
+      ],
+      "usedIn": [],
+      "summary": "[레퍼런스] clarakirkpatrick — Clara Kirkpatrick (https://clarakirkpatrick.com/) · 패턴 hand-drawn · ✅ 2026-09-30\n가져올 것: 손그림 요소를 링크이자 메뉴로 쓰는 탐색(그림 속 물건을 눌러 작업으로 간다)과, 말풍선으로 사용법을 알려 주는 한 줄 안내, 호버 때 그림 한 조각만 움직이는 작은 장난(표지판 → 차가 빠진다)\n안 가져올 것: 제목·메뉴·말풍선 문구를 이미지에 굽는 것(우리 규칙: 문구는 레이어 파라미터, 이 사이트는 alt도 거의 없다), Tab으로 닿지 않고 키보드 대체 경로가 없는 그림 링크, 한 번 지나간 호버 모션이 돌아오지 않는 구조(되돌리기 없음), 문구 없는 그림만으로 메뉴를 알리는 것"
+    },
+    {
+      "id": "loonamessal",
+      "name": "Loona Messal",
+      "url": "https://loonamessal-art.com/",
+      "file": "notefolio-portfolios.md",
+      "anchor": "site-loonamessal",
+      "notion": [
+        "3ead12f2-3255-81b6-99ab-daa10d99e0a4",
+        "3ead12f2-3255-8141-848c-c93822c5554a"
+      ],
+      "via": "@notefolio 큐레이션",
+      "importedAt": "2026-09-30",
+      "check": {
+        "status": "ok",
+        "date": "2026-09-30"
+      },
+      "patterns": [
+        "illustration-hero"
+      ],
+      "families": [
+        "새 패턴"
+      ],
+      "tech": [
+        "Readymag로 만든 사이트(<meta generator=\"Readymag\">, viewer.js·viewer.css 하나씩, 글꼴은 Google Fonts Poppins). <canvas>·<video> 없음(홈). 화면은 .content-scroll-wrapper 안에서 스크롤되고(문서 자체는 스크롤되지 않음) 홈에서 그림 조각(rmwidget widget-picture)이 약 100개다. 주소는 /home/·/portfolio/·/about-me/·/contact-me/와 작품마다 /<작품이름>/로 나뉜다"
+      ],
+      "usedIn": [],
+      "summary": "[레퍼런스] loonamessal — Loona Messal (https://loonamessal-art.com/) · 패턴 illustration-hero · ✅ 2026-09-30\n가져올 것: 첫 화면을 큰 일러스트 하나로 채우고 가만히 있어도 조금씩 움직이게 하는 인상, 메뉴를 그림 소품(현수막을 끄는 비행기)에 얹어 일러스트 세계관 안에 넣는 방식, 스크롤에 따라 층마다 속도를 달리해 깊이를 주는 연출, 흘러가는 작품 타일 줄, 페이지 사이 로딩 바\n안 가져올 것: 멈출 수 없는 첫 화면 움직임(동작 줄이기 대응 없이), 메뉴·안내 글자를 그림에 굽는 것(문구는 레이어 파라미터), Tab으로 닿지 않는 메뉴·타일, 계속 흘러 눌러야 할 타일이 도망가는 줄(누르기 어렵다), 일러스트 용량을 줄이지 않은 채 이미지 100개를 한 화면에 싣는 구성(첫 내용 3초)"
+    },
+    {
+      "id": "julesesick",
+      "name": "Jules Esick",
+      "url": "https://www.julesesick.com/",
+      "file": "notefolio-portfolios.md",
+      "anchor": "site-julesesick",
+      "notion": [
+        "3ead12f2-3255-81b6-99ab-daa10d99e0a4",
+        "3ead12f2-3255-8141-848c-c93822c5554a"
+      ],
+      "via": "@notefolio 큐레이션",
+      "importedAt": "2026-09-30",
+      "check": {
+        "status": "ok",
+        "date": "2026-09-30"
+      },
+      "patterns": [
+        "expand-gallery"
+      ],
+      "families": [
+        "새 패턴"
+      ],
+      "tech": [
+        "Next.js 앱 라우터(/_next/static/chunks/app/(frontend)/page-….js)에 Tailwind 식 클래스(fixed inset-0 z-10 등)로 보인다(추정). 사진은 cdn.sanity.io 이미지 CDN(?w=960&h=640&fit=min&auto=format, 라이트박스는 w=1920). <canvas>·<video> 없음, 분석 스크립트 plausible.io. 처음 한 화면이 문서 스크롤 없이 4장(타일 8개 안팎)으로 끝난다"
+      ],
+      "usedIn": [],
+      "summary": "[레퍼런스] julesesick — Jules Esick (https://www.julesesick.com/) · 패턴 expand-gallery · ✅ 2026-09-30\n가져올 것: 사진을 누르면 그 자리에서 더 작은 여러 장으로 갈라지는 펼침(상세 화면으로 이동하지 않고 탐색이 이어진다), 호버 때만 나오는 크게 보기·좋아요 버튼, 라이트박스의 ←·→·Escape 키보드 조작과 닫은 뒤 포커스 복귀, 크게 볼 때 뒤를 그 사진 색으로 흐리게 까는 배경, 분류(Filter)·좋아요 묶음 내려받기 같은 작은 기능\n안 가져올 것: 갈라진 사진을 되돌릴 방법이 없는 것(접기·초기화 필요), 주소·히스토리가 바뀌지 않아 뒤로 가기가 사이트 이탈이 되는 구조, 같은 이름(Open lightbox)의 버튼 둘, alt 없는 사진, 호버에만 나오는 버튼이 터치에서는 닿지 않을 수 있는 구성, 새로고침마다 바뀌어 같은 사진을 다시 찾기 어려운 무작위 구성"
+    }
+  ]
+}
