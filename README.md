@@ -114,6 +114,7 @@ interactive-web/
 ├── docs/
 │   ├── research/          # 레퍼런스 사이트 실측과 화면 캡처
 │   └── transcripts/       # 세션·Q&A 전사
+├── references/            # 외부 인터랙티브 사이트 카드·패턴 색인(내부 참고용 캡처)
 └── projects/
     ├── dawn-store/
     │   ├── app/           # 인터랙티브 작품 플레이어
@@ -126,4 +127,5 @@ interactive-web/
 ```
 
 전체 연구·설계 문서의 시작점은 [`docs/00-README.md`](docs/00-README.md)입니다.
+인터랙티브를 만들 때 참고할 외부 사이트 카드와 패턴 색인은 [`references/`](references/README.md)에 있습니다.
 원본 영상·사진·음성처럼 큰 소스 파일은 저장소에 포함하지 않고 전사와 분석 결과만 관리합니다.
