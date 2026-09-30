@@ -1,0 +1,27 @@
+{
+  "gate": "PASS",
+  "status": "designed — 실행 대기 (L4는 다른 세션의 potato-designer 미커밋 작업이 커밋된 뒤)",
+  "request": "모든 인터랙티브를 레이어로 나누고, 레이어마다 설정으로 전부(진행·장면 포함) 바꿀 수 있게. 포테이토에 없던 것을 계기로 전 앱 공통 계약으로 설계",
+  "design": "docs/11-레이어-설정-시스템-설계.md",
+  "references": ["docs/03 §0·§3-1~3-3·§7 규칙7·§8", "docs/09 §2·§10", "docs/10", "AGENTS.md", "projects/potato-designer/dist", "projects/dawn-store/app/src/settings/customization.ts", "projects/dawn-store/app/public/theme.json", "projects/day-walk/app/src/scene", "projects/jooho-lab/public/content-schema.js"],
+  "nodes": [
+    {"id":"N0","title":"설계 (docs/11, AGENTS.md 레이어 계약, docs/00·03·09·10 갱신, 플랜)","domain":"general","D1":2,"D2":2,"D3":0,"D4":2,"score":6,"tier":"powerful","agent":"main","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":[],"산출물":"docs/11, AGENTS.md, CLAUDE.md, 본 플랜","done":true},
+    {"id":"L1","title":"@iw/layer-kit 코어 — define·values(resolve/clean/diff/migrate)·host·inputs·storage + d.ts + node:test","domain":"frontend","D1":1,"D2":1,"D3":1,"D4":1,"score":4,"tier":"balanced","agent":"codex","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":["N0"],"산출물":"packages/layer-kit/src/{index,define,values,host,inputs,storage,react}.js, types/index.d.ts, test/"},
+    {"id":"L2","title":"layer-kit Node 도구 — build(생성 CSS·values.js·HTML 굽기)·apply·lint(8규칙)·vendor·init CLI","domain":"general","D1":1,"D2":1,"D3":1,"D4":1,"score":4,"tier":"balanced","agent":"codex","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":["L1"],"산출물":"packages/layer-kit/src/node/*, bin/layer-kit.mjs, 루트 layers:* 스크립트"},
+    {"id":"L3","title":"설정 패널 — Shadow DOM 셸·레이어 목록·인스펙터·범위(장면×화면)·선택 모드·기록·변경 목록·파일","domain":"frontend","D1":1,"D2":1,"D3":0,"D4":2,"score":4,"tier":"balanced","agent":"codex","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":["L1"],"산출물":"packages/layer-kit/src/panel/*"},
+    {"id":"L4","title":"potato-designer 레이어화 — docs/11 §9-1 표 18개 레이어·장면 3·화면 4·pointer 입력, CSS 수치→var, vendor, 패널 연결, QA 확장","domain":"frontend","D1":1,"D2":1,"D3":1,"D4":1,"score":4,"tier":"balanced","agent":"codex","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":["L2","L3"],"blocked_by":"다른 세션의 potato-designer 미커밋 작업(2026-09-23) 커밋","산출물":"dist/layers.manifest.js, layers.values.json, layers.css, vendor/layer-kit, browser-qa 추가 항목"},
+    {"id":"L5","title":"layer-probe(모든 파라미터가 화면을 바꾸는지) + 전 앱 check·CI 연결","domain":"qa","D1":1,"D2":1,"D3":1,"D4":1,"score":4,"tier":"balanced","agent":"bkit:qa-lead","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":["L4"],"산출물":"packages/layer-kit/src/node/probe.js, 각 앱 check, .github/workflows"},
+    {"id":"L6","title":"day-walk 레이어화 + showCharacter/showAdvisor → viewer 파라미터 이관, 죽은 씬 컴포넌트 정리","domain":"frontend","D1":1,"D2":1,"D3":1,"D4":1,"score":4,"tier":"balanced","agent":"codex","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":["L4"],"산출물":"day-walk/app/src/layers.manifest.js, 이관 코드, 테스트"},
+    {"id":"L7","title":"dawn-store 레이어화 — theme 요소 섹션→레이어, customization-v1·preferences 1회 이관, docs/09 경계(meta·images→story) 반영","domain":"frontend","D1":1,"D2":2,"D3":1,"D4":2,"score":6,"tier":"powerful","agent":"codex","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":["L4"],"override":"저장된 사용자 데이터 마이그레이션","산출물":"dawn-store/app/src/layers.manifest.js, 이관 코드·테스트, docs/09 §10 6단계 갱신"},
+    {"id":"L8a","title":"jooho-lab 레이어화 — three.js fn 바인딩(파노라마·집·불빛·산책자·카메라), 편집기 시각 섹션을 레이어 패널로","domain":"frontend","D1":1,"D2":1,"D3":1,"D4":1,"score":4,"tier":"balanced","agent":"codex","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":["L4"],"산출물":"jooho-lab/public/layers.manifest.js, scene.js·village-motion.js 바인딩"},
+    {"id":"L8b","title":"허브 게시 API /api/layers/<work> (소유자 전용·ETag·서버 cleanValues) + R2 content.json 시각 필드 이관","domain":"security","D1":1,"D2":2,"D3":2,"D4":2,"score":7,"tier":"powerful","agent":"codex","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":["L8a"],"requires_approval":true,"override":"보안·권한 + 운영 R2 데이터 이관","산출물":"jooho-lab/server, R2 이관 스크립트, 보안 리뷰 기록"},
+    {"id":"L9","title":"통합 검증·최종 리뷰 — 네 앱 레이어 계약 충족, docs/10 교훈 기록","domain":"review","D1":1,"D2":2,"D3":0,"D4":2,"score":5,"tier":"powerful","agent":"main","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":["L5","L6","L7","L8b"],"override":"최종 리뷰","산출물":"검증 기록, docs/10 갱신"}
+  ],
+  "gates": {
+    "G1": "PASS — 11개 노드 모두 domain·D1~D4·score·tier·agent·모델·의존·산출물 기재",
+    "G2": "PASS — 아키텍처(N0)·데이터 마이그레이션(L7)·보안(L8b)·최종 리뷰(L9) 모두 powerful",
+    "G3": "PASS — security floor powerful(L8b) 충족, frontend·qa·review floor balanced 충족, ceiling 위반 없음",
+    "G4": "PASS — powerful 4/11(36%). 근거: N0 아키텍처, L7 저장된 사용자 데이터 이관, L8b 보안+운영 데이터, L9 최종 리뷰 — 전부 하드 오버라이드라 강등 불가",
+    "G5": "PASS — D3=2인 L8b에 requires_approval: true. 배포 노드 없음(배포는 사용자가 기존 절차로)"
+  }
+}

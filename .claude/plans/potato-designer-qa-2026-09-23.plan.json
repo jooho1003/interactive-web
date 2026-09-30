@@ -1,0 +1,10 @@
+{
+  "scope": "potato-designer",
+  "gates": {"G1":"PASS","G2":"PASS","G3":"PASS","G4":"PASS","G5":"PASS"},
+  "nodes": [
+    {"id":"scope","title":"Interpret scope and inspect browser defects","domain":"pm","D1":2,"D2":1,"D3":0,"D4":2,"score":5,"tier":"powerful","agent":"primary","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":[],"output":"Confirmed scope and reproduced defects","justification":"Ambiguous requirements stay with primary."},
+    {"id":"implement","title":"Repair layout and motion state; recover local drafts","domain":"frontend","D1":1,"D2":1,"D3":1,"D4":2,"score":5,"tier":"powerful","agent":"primary","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":["scope"],"output":"Updated static application","justification":"Coordinate reduced motion, user pause, dialog visibility, and resilient storage."},
+    {"id":"review","title":"Browser QA and final review","domain":"review","D1":0,"D2":1,"D3":1,"D4":2,"score":4,"tier":"powerful","agent":"primary","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":["implement"],"output":"QA evidence and final report","justification":"Final review is a hard override and stays with primary."}
+  ],
+  "execution": "Inherited primary model; local changes only"
+}
