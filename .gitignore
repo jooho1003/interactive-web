@@ -21,3 +21,8 @@ Thumbs.db
 # Playwright MCP 세션 로그
 .playwright-mcp/
 .site-publish/
+
+# 비밀값 (API 키)
+.env
+.env.*
+!.env.example
