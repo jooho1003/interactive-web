@@ -444,6 +444,179 @@
       "video": null,
       "meta": {},
       "prompts": []
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--05--lab-landscape--작업실-뒤-먼-풍경",
+      "title": "05 · lab-landscape — 작업실 뒤 먼 풍경",
+      "status": "ok",
+      "image": "projects/jooho-lab/public/assets/lab-landscape.jpg",
+      "video": null,
+      "meta": {
+        "파일": "public/assets/lab-landscape.jpg · 1536×768 · 493,610 bytes",
+        "쓰이는 곳": "외관과 창밖의 먼 배경 · landscape 레이어",
+        "도구": "fal.ai fal-ai/flux/schnell · text-to-image · 2026-10-01",
+        "참조 이미지": "없음",
+        "설정": "1장, 4 steps, seed 10012026, JPEG. scripts/prepare-spatial-assets.mjs --generate"
+      },
+      "prompts": [
+        {
+          "label": null,
+          "lang": "text",
+          "prepend": null,
+          "text": "Photographic panoramic landscape at blue hour, distant layered coastal mountains and calm water, a very low horizon in the bottom quarter, expansive pale desaturated blue sky with delicate peach clouds and a faint warm sunset on the right, refined atmospheric architectural photography background, natural subtle film grain, realistic, tranquil, no buildings, no people, no text, no borders. Wide landscape photograph."
+        }
+      ]
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--06--lab-pavilion--연결된-3d-작업실",
+      "title": "06 · lab-pavilion — 연결된 3D 작업실",
+      "status": "none",
+      "image": null,
+      "video": null,
+      "meta": {
+        "파일": "public/assets/lab-pavilion.glb, 원본 art/lab-pavilion.blend",
+        "쓰이는 곳": "외관 → 실제 입구 → 작업실 → 7개 전시물 · stage 레이어",
+        "도구": "Blender 4.5.12 LTS Python 모델링, Cycles diffuse bake, compositor denoise, glTF export · 2026-10-01",
+        "참조 이미지": "사용자 Instagram Ddb6_ISh8pA의 연속 공간 이동 개념. 원본 브랜드·이미지 복제 없음",
+        "설정": "scripts/build-spatial-lab.py가 정본. 2048² lightmap, 16 samples, seed 42, JPEG embedded GLB"
+      },
+      "prompts": []
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--07--실제-작품-화면--갤러리-대표-이미지-7장",
+      "title": "07 · 실제 작품 화면 — 갤러리 대표 이미지 7장",
+      "status": "none",
+      "image": "projects/jooho-lab/public/assets/work-chemiforge.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/work-*.webp · 아래 개별 크기 참고",
+        "쓰이는 곳": "stage 전시물, rail 썸네일, shell 작품 목록과 작품 상세. 내용은 projects.js에서 관리",
+        "도구": "Aside 실제 브라우저 캡처 · 2026-10-01. 생성 에셋 아님",
+        "참조 이미지": "projects/jooho-lab/art/captures/.png 원본 7장",
+        "설정": "원본 해상도·비율 유지, Pillow WebP quality=88, method=6. 재생성·합성·크롭 없음",
+        "프롬프트": "해당 없음 — 실제 프로젝트 화면 캡처"
+      },
+      "prompts": []
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--08--sasu--실제-화면-캡처",
+      "title": "08 · SASU — 실제 화면 캡처",
+      "status": "none",
+      "image": "projects/jooho-lab/public/assets/work-sasu.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/work-sasu.webp · 1725×1125 · 83,752B",
+        "쓰이는 곳": "stage 전시물 · rail 썸네일 · shell 목록 · 작품 상세",
+        "도구": "Aside 실제 브라우저 캡처 · 2026-10-01. 생성 에셋 아님",
+        "참조 이미지": "projects/jooho-lab/art/captures/sasu.png",
+        "설정": "원본 비율·해상도 유지, Pillow WebP quality=88, method=6",
+        "출처": "https://sasu-alpha.vercel.app/demo/d/bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb/cards/10000000-0000-4000-8000-000000000121",
+        "프롬프트": "해당 없음 — 실제 프로젝트 화면 캡처"
+      },
+      "prompts": []
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--09--숏폼-자동화--실제-화면-캡처",
+      "title": "09 · 숏폼 자동화 — 실제 화면 캡처",
+      "status": "none",
+      "image": "projects/jooho-lab/public/assets/work-shortform.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/work-shortform.webp · 1800×1125 · 80,494B",
+        "쓰이는 곳": "stage 전시물 · rail 썸네일 · shell 목록 · 작품 상세",
+        "도구": "Aside 실제 브라우저 캡처 · 2026-10-01. 생성 에셋 아님",
+        "참조 이미지": "projects/jooho-lab/art/captures/shortform.png",
+        "설정": "원본 비율·해상도 유지, Pillow WebP quality=88, method=6",
+        "출처": "http://localhost:3123/ep/B/2026-09-11/01?tab=preview",
+        "프롬프트": "해당 없음 — 실제 프로젝트 화면 캡처"
+      },
+      "prompts": []
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--10--새벽-세-시--실제-화면-캡처",
+      "title": "10 · 새벽 세 시 — 실제 화면 캡처",
+      "status": "none",
+      "image": "projects/jooho-lab/public/assets/work-dawn-store.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/work-dawn-store.webp · 1800×1125 · 120,550B",
+        "쓰이는 곳": "stage 전시물 · rail 썸네일 · shell 목록 · 작품 상세",
+        "도구": "Aside 실제 브라우저 캡처 · 2026-10-01. 생성 에셋 아님",
+        "참조 이미지": "projects/jooho-lab/art/captures/dawn-store.png",
+        "설정": "원본 비율·해상도 유지, Pillow WebP quality=88, method=6",
+        "출처": "http://127.0.0.1:8879/experiences/dawn-store/play.html",
+        "프롬프트": "해당 없음 — 실제 프로젝트 화면 캡처"
+      },
+      "prompts": []
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--11--market-front--실제-화면-캡처",
+      "title": "11 · MARKET FRONT — 실제 화면 캡처",
+      "status": "none",
+      "image": "projects/jooho-lab/public/assets/work-market-front.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/work-market-front.webp · 1800×1125 · 60,566B",
+        "쓰이는 곳": "stage 전시물 · rail 썸네일 · shell 목록 · 작품 상세",
+        "도구": "Aside 실제 브라우저 캡처 · 2026-10-01. 생성 에셋 아님",
+        "참조 이미지": "projects/jooho-lab/art/captures/market-front.png",
+        "설정": "원본 비율·해상도 유지, Pillow WebP quality=88, method=6",
+        "출처": "http://127.0.0.1:8891/",
+        "프롬프트": "해당 없음 — 실제 프로젝트 화면 캡처"
+      },
+      "prompts": []
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--12--종말의-탑--실제-화면-캡처",
+      "title": "12 · 종말의 탑 — 실제 화면 캡처",
+      "status": "none",
+      "image": "projects/jooho-lab/public/assets/work-spire.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/work-spire.webp · 1800×1125 · 100,400B",
+        "쓰이는 곳": "stage 전시물 · rail 썸네일 · shell 목록 · 작품 상세",
+        "도구": "Aside 실제 브라우저 캡처 · 2026-10-01. 생성 에셋 아님",
+        "참조 이미지": "projects/jooho-lab/art/captures/spire.png",
+        "설정": "원본 비율·해상도 유지, Pillow WebP quality=88, method=6",
+        "출처": "https://tower-50.vercel.app/",
+        "프롬프트": "해당 없음 — 실제 프로젝트 화면 캡처"
+      },
+      "prompts": []
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--13--하루-산책--실제-화면-캡처",
+      "title": "13 · 하루 산책 — 실제 화면 캡처",
+      "status": "none",
+      "image": "projects/jooho-lab/public/assets/work-day-walk.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/work-day-walk.webp · 1800×1125 · 57,422B",
+        "쓰이는 곳": "stage 전시물 · rail 썸네일 · shell 목록 · 작품 상세",
+        "도구": "Aside 실제 브라우저 캡처 · 2026-10-01. 생성 에셋 아님",
+        "참조 이미지": "projects/jooho-lab/art/captures/day-walk.png",
+        "설정": "원본 비율·해상도 유지, Pillow WebP quality=88, method=6",
+        "출처": "http://127.0.0.1:8879/experiences/day-walk/play.html",
+        "프롬프트": "해당 없음 — 실제 프로젝트 화면 캡처"
+      },
+      "prompts": []
     }
   ]
 }

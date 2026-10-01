@@ -11,7 +11,7 @@ export const projects = [
     details: ['법령·가이드라인 원문을 연결하는 질의응답', '제품 및 광고 문구 검토를 돕는 워크플로', '한국·EU·미국 규제 자료 탐색'],
     tags: ['Next.js', 'TypeScript', 'Supabase', 'AI'],
     url: 'https://github.com/jooho1003/chemiforge-regulation', linkLabel: '프로젝트 코드 보기',
-    image: './assets/chemiforge.webp', mark: 'Cf', note: '규제 정보 검토를 돕는 참고 도구입니다.',
+    image: './assets/work-chemiforge.webp', mark: 'Cf', note: '규제 정보 검토를 돕는 참고 도구입니다.',
   },
   {
     id: 'sasu', liveUrl: 'https://sasu-alpha.vercel.app/', title: '사수 · SASU', subtitle: '회의 다음의 결정을 돕는 AI.',
@@ -20,7 +20,7 @@ export const projects = [
     details: ['지금 결정해야 할 일을 모으는 결정 큐', '누가, 왜, 어떤 근거로 결정했는지 남기는 원장', '부서의 업무 맥락을 반영하는 질의응답'],
     tags: ['AI Agent', '업무 자동화', 'MVP'],
     url: 'https://github.com/jooho1003/sasu', linkLabel: '프로젝트 코드 보기',
-    image: './assets/sasu.webp', mark: 'S', note: '원티드 AI Championship 2026 출품을 준비하는 MVP입니다.',
+    image: './assets/work-sasu.webp', mark: 'S', note: '원티드 AI Championship 2026 출품을 준비하는 MVP입니다.',
   },
   {
     id: 'shortform', title: '숏폼 자동화', subtitle: '조사에서 렌더까지, 하나의 흐름.',
@@ -29,7 +29,7 @@ export const projects = [
     details: ['리서치와 콘텐츠 기획 연결', '클립 선택·미리보기·단계별 승인', 'Python·Remotion 기반 제작 파이프라인'],
     tags: ['Python', 'Remotion', 'Next.js'],
     url: 'https://github.com/jooho1003/shortform-automation', linkLabel: '프로젝트 코드 보기',
-    image: null, mark: '▶', note: '로컬 웹 콘솔 중심으로 사용하는 제작 도구입니다.',
+    image: './assets/work-shortform.webp', mark: '▶', note: '로컬 웹 콘솔 중심으로 사용하는 제작 도구입니다.',
   },
   {
     id: 'dawn-store', liveUrl: './experiences/dawn-store/', title: '새벽 세 시', subtitle: '선택하면서 걷는, 아주 짧은 밤.',
@@ -38,7 +38,7 @@ export const projects = [
     details: ['7개 장면과 선택에 따라 달라지는 탐색', '핫스팟·타임라인·숨겨진 장면', '한국어·영어 자막과 개인별 관람 설정'],
     tags: ['React', 'Vite', '인터랙션'],
     url: 'https://github.com/jooho1003/interactive-web', linkLabel: '프로젝트 코드 보기',
-    image: './assets/dawn.webp', mark: '03:00', note: 'Still Open — 편의점을 배경으로 한 인터랙티브 스토리입니다.',
+    image: './assets/work-dawn-store.webp', mark: '03:00', note: 'Still Open — 편의점을 배경으로 한 인터랙티브 스토리입니다.',
   },
   {
     id: 'market-front', title: 'MARKET FRONT', subtitle: '나라를 운영하는 선택의 드라마.',
@@ -47,7 +47,7 @@ export const projects = [
     details: ['국가 운영을 소재로 한 게임 디자인', '경제와 정책의 선택 구조', '2.5D 표현과 드라마 중심의 경험'],
     tags: ['게임 디자인', 'TypeScript', '2.5D'],
     url: 'https://github.com/jooho1003/market-front', linkLabel: '프로젝트 코드 보기',
-    image: null, mark: 'MF', note: 'OpenAI Game Builders Seoul 2026 출품을 목표로 한 프로젝트입니다.',
+    image: './assets/work-market-front.webp', mark: 'MF', note: 'OpenAI Game Builders Seoul 2026 출품을 목표로 한 프로젝트입니다.',
   },
   {
     id: 'spire', liveUrl: 'https://tower-50.vercel.app/', title: '종말의 탑', subtitle: '매번 다른 만남, 위로 향하는 모험.',
@@ -56,7 +56,7 @@ export const projects = [
     details: ['캐릭터·무기 선택과 실시간 전투', '시드에 따라 달라지는 방랑자 조우', '휴식처·상점·아이템·보스 탈출전'],
     tags: ['Phaser', 'React', 'TypeScript'],
     url: 'https://github.com/jooho1003/game-monorepo', linkLabel: '프로젝트 코드 보기',
-    image: './assets/spire.webp', mark: 'V', note: '플레이 가능한 초기 데모입니다.',
+    image: './assets/work-spire.webp', mark: 'V', note: '플레이 가능한 초기 데모입니다.',
   },
   {
     id: 'day-walk', liveUrl: './experiences/day-walk/', title: '하루 산책', subtitle: '하루를 세 번의 마감으로 걷는다.',
@@ -65,6 +65,6 @@ export const projects = [
     details: ['타임라인에 깃발을 꽂아 일정 추가, 끌어서 시간 변경', '따라다니는 새의 마감 조언과 완료 축하', '구간 경계 조절·루틴 저장·브라우저 알림'],
     tags: ['React', 'Vite', 'SVG'],
     url: 'https://github.com/jooho1003/interactive-web', linkLabel: '프로젝트 코드 보기',
-    image: null, mark: '☀', note: '브라우저에 저장되는 1인용 루틴 도구입니다.',
+    image: './assets/work-day-walk.webp', mark: '☀', note: '브라우저에 저장되는 1인용 루틴 도구입니다.',
   },
 ];
