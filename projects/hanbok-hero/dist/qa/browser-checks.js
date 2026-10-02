@@ -3,6 +3,18 @@
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 const pointer = (type, x, y, pointerType = 'mouse') => document.dispatchEvent(new PointerEvent(type, { clientX: x, clientY: y, pointerType, bubbles: true }));
 function collector() { const passed = [], failed = []; return { passed, failed, check: (ok, name) => (ok ? passed : failed).push(name) }; }
+// 사람이 실제로 움직이는 마우스(신뢰된 이벤트)가 검사 중간에 끼어들지 못하게 막는다. 합성 이벤트만 통과한다.
+const blockTrusted = event => { if (event.isTrusted) event.stopImmediatePropagation(); };
+function isolate() {
+  document.addEventListener('pointermove', blockTrusted, true);
+  document.addEventListener('pointerdown', blockTrusted, true);
+  return () => { document.removeEventListener('pointermove', blockTrusted, true); document.removeEventListener('pointerdown', blockTrusted, true); };
+}
+async function settle(gaze) {
+  gaze.reset();
+  const delay = (parseFloat(getComputedStyle(document.querySelector('.gaze-range')).transitionDelay) || 0) * 1000;
+  await wait(delay + 250);
+}
 function anchor() { const r = document.querySelector('.gaze-range').getBoundingClientRect(); return { cx: r.left + r.width / 2, cy: r.top + r.height / 2, r: r.width / 2 }; }
 
 export async function runProbe() {
@@ -16,43 +28,54 @@ export async function runChecks() {
   const { setValue } = await import('/vendor/layer-kit/index.js');
   const { check, passed, failed } = collector();
   await gaze.ready;
-  const still = document.querySelector('.character-still');
-  check(still.complete && still.naturalWidth > 0, '정면 그림 로딩');
-  check(gaze.state().ready && gaze.state().front === 'a', '시트 로딩 후 정면 칸이 앞 프레임');
-  const { cx, cy, r } = anchor();
-  pointer('pointermove', cx, cy); await wait(30);
-  check(gaze.state().zone.col === 0 && gaze.state().zone.row === 0, '중앙에서는 정면');
-  pointer('pointermove', cx + r, cy); await wait(30);
-  check(gaze.state().zone.col === 1 && gaze.state().zone.row === 0, '오른쪽을 본다');
-  check(document.querySelector('.hint').classList.contains('is-done'), '첫 반응 뒤 안내 숨김');
-  const front = document.querySelector('.sheet-frame.is-front');
-  check(front && front.style.getPropertyValue('--in-gaze-col') === '2', '앞 프레임이 오른쪽 칸(index 2)');
-  pointer('pointermove', cx + r * 0.3, cy); await wait(30);
-  check(gaze.state().zone.col === 1, '경계 안쪽(0.3)에서는 유지 — 히스테리시스');
-  pointer('pointermove', cx + r * 0.2, cy); await wait(30);
-  check(gaze.state().zone.col === 0, '0.2에서는 정면 복귀');
-  pointer('pointermove', cx, cy - r * 3); await wait(30);
-  check(gaze.state().zone.row === -1, '범위 밖 위쪽은 가장 바깥 칸');
-  const delay = (parseFloat(getComputedStyle(document.querySelector('.gaze-range')).transitionDelay) || 0) * 1000;
-  await wait(delay + 250);
-  check(gaze.state().zone.col === 0 && gaze.state().zone.row === 0, '멈춘 뒤 returnDelay 지나면 정면');
-  pointer('pointerdown', cx - r, cy, 'touch'); await wait(30);
-  check(gaze.state().zone.col === -1, '터치 탭으로 한 번 본다');
-  gaze.reset(); await wait(30);
-  pointer('pointermove', cx + r, cy, 'touch'); await wait(30);
-  check(gaze.state().zone.col === 0, '터치 이동은 무시');
-  check([...document.querySelectorAll('.nav a')].length === 3 && [...document.querySelectorAll('.nav a')].every(a => a.tabIndex >= 0), '메뉴 3개 키보드 도달');
-  const original = layerHost.values;
-  layerHost.setValues(setValue(original, 'hero', 'base', 'character', 'react', false)); await wait(30);
-  check(getComputedStyle(document.querySelector('.sheet-frame')).visibility === 'hidden', 'react 끄면 시트 숨김');
-  pointer('pointermove', cx + r, cy); await wait(30);
-  check(gaze.state().zone.col === 0, 'react 꺼진 동안 반응 없음');
-  layerHost.setValues(setValue(original, 'hero', 'base', 'character', 'cols', 1)); await wait(30);
-  pointer('pointermove', cx + r, cy); await wait(30);
-  check(document.querySelector('.sheet-frame.is-front').style.getPropertyValue('--in-gaze-col') === '0', 'cols 1이면 index 0 고정');
-  layerHost.setValues(original); gaze.reset();
-  check(document.documentElement.scrollWidth <= window.innerWidth, '가로 스크롤 없음');
-  return { passed, failed };
+  const release = isolate();
+  try {
+    await settle(gaze);
+    const still = document.querySelector('.character-still');
+    check(still.complete && still.naturalWidth > 0, '정면 그림 로딩');
+    const initialFront = document.querySelector('.sheet-frame.is-front');
+    check(gaze.state().ready && !!initialFront && initialFront.style.getPropertyValue('--in-gaze-col') === '1' && initialFront.style.getPropertyValue('--in-gaze-row') === '1', '시트 로딩 후 정면 칸이 앞 프레임');
+    const { cx, cy, r } = anchor();
+    pointer('pointermove', cx, cy); await wait(30);
+    check(gaze.state().zone.col === 0 && gaze.state().zone.row === 0, '중앙에서는 정면');
+    pointer('pointermove', cx + r, cy); await wait(30);
+    check(gaze.state().zone.col === 1 && gaze.state().zone.row === 0, '오른쪽을 본다');
+    check(document.querySelector('.hint').classList.contains('is-done'), '첫 반응 뒤 안내 숨김');
+    const front = document.querySelector('.sheet-frame.is-front');
+    check(!!front && front.style.getPropertyValue('--in-gaze-col') === '2', '앞 프레임이 오른쪽 칸(index 2)');
+    pointer('pointermove', cx + r * 0.3, cy); await wait(30);
+    check(gaze.state().zone.col === 1, '경계 안쪽(0.3)에서는 유지 — 히스테리시스');
+    pointer('pointermove', cx + r * 0.2, cy); await wait(30);
+    check(gaze.state().zone.col === 0, '0.2에서는 정면 복귀');
+    pointer('pointermove', cx, cy - r * 3); await wait(30);
+    check(gaze.state().zone.row === -1, '범위 밖 위쪽은 가장 바깥 칸');
+    const delay = (parseFloat(getComputedStyle(document.querySelector('.gaze-range')).transitionDelay) || 0) * 1000;
+    await wait(delay + 250);
+    check(gaze.state().zone.col === 0 && gaze.state().zone.row === 0, '멈춘 뒤 returnDelay 지나면 정면');
+    pointer('pointerdown', cx - r, cy, 'touch'); await wait(30);
+    check(gaze.state().zone.col === -1, '터치 탭으로 한 번 본다');
+    gaze.reset(); await wait(30);
+    pointer('pointermove', cx + r, cy, 'touch'); await wait(30);
+    check(gaze.state().zone.col === 0, '터치 이동은 무시');
+    check([...document.querySelectorAll('.nav a')].length === 3 && [...document.querySelectorAll('.nav a')].every(a => a.tabIndex >= 0), '메뉴 3개 키보드 도달');
+    const original = layerHost.values;
+    try {
+      layerHost.setValues(setValue(original, 'hero', 'base', 'character', 'react', false)); await wait(30);
+      check(getComputedStyle(document.querySelector('.sheet-frame')).visibility === 'hidden', 'react 끄면 시트 숨김');
+      pointer('pointermove', cx + r, cy); await wait(30);
+      check(gaze.state().zone.col === 0, 'react 꺼진 동안 반응 없음');
+      layerHost.setValues(setValue(original, 'hero', 'base', 'character', 'cols', 1)); await wait(30);
+      pointer('pointermove', cx + r, cy); await wait(30);
+      const narrowFront = document.querySelector('.sheet-frame.is-front');
+      check(!!narrowFront && narrowFront.style.getPropertyValue('--in-gaze-col') === '0', 'cols 1이면 index 0 고정');
+    } finally {
+      layerHost.setValues(original); gaze.reset();
+    }
+    check(document.documentElement.scrollWidth <= window.innerWidth, '가로 스크롤 없음');
+    return { passed, failed };
+  } finally {
+    release();
+  }
 }
 
 export async function runSheetFailure() {
@@ -60,24 +83,36 @@ export async function runSheetFailure() {
   const { gaze } = await import('/app.js');
   const { check, passed, failed } = collector();
   await gaze.ready;
-  check(gaze.state().ready === false, '시트 실패를 인지');
-  check(!document.querySelector('.sheet-frame.is-front'), '앞 프레임 없음 — 정면 그림만');
-  const { cx, cy, r } = anchor();
-  pointer('pointermove', cx + r, cy); await wait(30);
-  check(gaze.state().zone.col === 0, '시트 없이는 반응하지 않음');
-  return { passed, failed };
+  const release = isolate();
+  try {
+    await settle(gaze);
+    check(gaze.state().ready === false, '시트 실패를 인지');
+    check(!document.querySelector('.sheet-frame.is-front'), '앞 프레임 없음 — 정면 그림만');
+    const { cx, cy, r } = anchor();
+    pointer('pointermove', cx + r, cy); await wait(30);
+    check(gaze.state().zone.col === 0, '시트 없이는 반응하지 않음');
+    return { passed, failed };
+  } finally {
+    release();
+  }
 }
 
 export async function runReducedMotionChecks() {
   const { gaze } = await import('/app.js');
   const { check, passed, failed } = collector();
   await gaze.ready;
-  check(matchMedia('(prefers-reduced-motion: reduce)').matches, '동작 줄이기 에뮬레이션 켜짐');
-  check(getComputedStyle(document.querySelector('.sheet-frame')).visibility === 'hidden', '시트 프레임 숨김');
-  const { cx, cy, r } = anchor();
-  pointer('pointermove', cx + r, cy); await wait(30);
-  check(gaze.state().zone.col === 0, '반응 없음');
-  return { passed, failed };
+  const release = isolate();
+  try {
+    await settle(gaze);
+    check(matchMedia('(prefers-reduced-motion: reduce)').matches, '동작 줄이기 에뮬레이션 켜짐');
+    check(getComputedStyle(document.querySelector('.sheet-frame')).visibility === 'hidden', '시트 프레임 숨김');
+    const { cx, cy, r } = anchor();
+    pointer('pointermove', cx + r, cy); await wait(30);
+    check(gaze.state().zone.col === 0, '반응 없음');
+    return { passed, failed };
+  } finally {
+    release();
+  }
 }
 
 export function runNarrowChecks() {
