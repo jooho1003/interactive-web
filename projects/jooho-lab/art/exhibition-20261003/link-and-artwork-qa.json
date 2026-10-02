@@ -1,0 +1,122 @@
+[
+  {
+    "viewport": [
+      1440,
+      900
+    ],
+    "status": "PASS",
+    "images": [
+      {
+        "src": "http://127.0.0.1:8879/assets/exhibit-chemiforge.webp",
+        "width": 1024,
+        "height": 1280
+      },
+      {
+        "src": "http://127.0.0.1:8879/assets/exhibit-sasu.webp",
+        "width": 1024,
+        "height": 1280
+      },
+      {
+        "src": "http://127.0.0.1:8879/assets/exhibit-blog.webp",
+        "width": 1024,
+        "height": 1280
+      },
+      {
+        "src": "http://127.0.0.1:8879/assets/exhibit-dawn-store.webp",
+        "width": 1024,
+        "height": 1280
+      },
+      {
+        "src": "http://127.0.0.1:8879/assets/exhibit-instatoon.webp",
+        "width": 1080,
+        "height": 1350
+      },
+      {
+        "src": "http://127.0.0.1:8879/assets/exhibit-spire.webp",
+        "width": 1024,
+        "height": 1280
+      },
+      {
+        "src": "http://127.0.0.1:8879/assets/exhibit-day-walk.webp",
+        "width": 1024,
+        "height": 1280
+      }
+    ],
+    "links": {
+      "chemiforge": "https://chemiforge.com/",
+      "sasu": "https://sasu-alpha.vercel.app/",
+      "blog": "https://blog.naver.com/chip109",
+      "dawn-store": "https://interactive-web-app-three.vercel.app/experiences/dawn-store/",
+      "instatoon": "https://www.instagram.com/hansul_toon/",
+      "spire": "https://tower-50.vercel.app/",
+      "day-walk": "https://interactive-web-app-three.vercel.app/experiences/day-walk/"
+    },
+    "keyboardEscape": "hall",
+    "reset": "exterior",
+    "blogAndInstatoonDetails": "image loads; correct destination; no false source-code link",
+    "pageErrors": []
+  },
+  {
+    "viewport": [
+      390,
+      844
+    ],
+    "status": "PASS",
+    "images": [
+      {
+        "src": "http://127.0.0.1:8879/assets/exhibit-chemiforge.webp",
+        "width": 1024,
+        "height": 1280
+      },
+      {
+        "src": "http://127.0.0.1:8879/assets/exhibit-sasu.webp",
+        "width": 1024,
+        "height": 1280
+      },
+      {
+        "src": "http://127.0.0.1:8879/assets/exhibit-blog.webp",
+        "width": 1024,
+        "height": 1280
+      },
+      {
+        "src": "http://127.0.0.1:8879/assets/exhibit-dawn-store.webp",
+        "width": 1024,
+        "height": 1280
+      },
+      {
+        "src": "http://127.0.0.1:8879/assets/exhibit-instatoon.webp",
+        "width": 1080,
+        "height": 1350
+      },
+      {
+        "src": "http://127.0.0.1:8879/assets/exhibit-spire.webp",
+        "width": 1024,
+        "height": 1280
+      },
+      {
+        "src": "http://127.0.0.1:8879/assets/exhibit-day-walk.webp",
+        "width": 1024,
+        "height": 1280
+      }
+    ],
+    "links": {
+      "chemiforge": "https://chemiforge.com/",
+      "sasu": "https://sasu-alpha.vercel.app/",
+      "blog": "https://blog.naver.com/chip109",
+      "dawn-store": "https://interactive-web-app-three.vercel.app/experiences/dawn-store/",
+      "instatoon": "https://www.instagram.com/hansul_toon/",
+      "spire": "https://tower-50.vercel.app/",
+      "day-walk": "https://interactive-web-app-three.vercel.app/experiences/day-walk/"
+    },
+    "keyboardEscape": "hall",
+    "reset": "exterior",
+    "blogAndInstatoonDetails": "image loads; correct destination; no false source-code link",
+    "pageErrors": []
+  },
+  {
+    "actualDayWalkNavigation": "https://interactive-web-app-three.vercel.app/experiences/day-walk/",
+    "title": "하루 산책 · Day Walk",
+    "iframeMain": "Day Walk",
+    "status": "PASS"
+  }
+]

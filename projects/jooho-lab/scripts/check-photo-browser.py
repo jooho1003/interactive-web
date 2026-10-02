@@ -17,7 +17,15 @@ with sync_playwright() as p:
             page.on('pageerror',lambda error:errors.append(str(error)))
             mode='1' if name=='desktop' else 'mobile'
             page.goto(f'http://127.0.0.1:8879/?qa={mode}',wait_until='networkidle',timeout=60000)
-            page.wait_for_function("() => {const el=document.querySelector('#qa-report');if(!el?.textContent)return false;return ['PASS','FAIL'].includes(JSON.parse(el.textContent).status)}",timeout=120000)
+            try:
+                page.wait_for_function("() => {const el=document.querySelector('#qa-report');if(!el?.textContent)return false;return ['PASS','FAIL'].includes(JSON.parse(el.textContent).status)}",timeout=120000)
+            except Exception as error:
+                partial=page.locator('#qa-report').inner_text()
+                report=json.loads(partial) if partial else {'results':[]}
+                report.update(status='TIMEOUT',error=str(error),pageErrors=errors)
+                (OUT/f'{PREFIX}-{name}-qa.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf8')
+                print(name,'TIMEOUT',report.get('results',[])[-1:],flush=True)
+                raise
             report=json.loads(page.locator('#qa-report').inner_text());report['browser']='Headless Playwright Chromium';report['pageErrors']=errors
             (OUT/f'{PREFIX}-{name}-qa.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf8')
             print(name,report['status'],report.get('count'),report.get('error',''),flush=True)

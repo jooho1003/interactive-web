@@ -1,15 +1,17 @@
-import manifest from './layers.manifest.js';
+const village=document.body.dataset.portfolio==='village';
+const {default:manifest}=await import(village?'./village.layers.manifest.js':'./layers.manifest.js');
 import {emptyValues,createLayerHost,setValue,validateValues,resolve} from './vendor/layer-kit/index.js';
-const key='jooho-lab-spatial-layers-v1';
+const key=village?'jooho-lab-village-layers-v1':'jooho-lab-spatial-layers-v1';
 let published=emptyValues(manifest);
 try{const saved=JSON.parse(localStorage.getItem(key));const checked=validateValues(manifest,saved);if(!checked.errors.length)published=checked.values;}catch{}
 export const layerHost=createLayerHost({manifest,published});
 export function initLayerSettings(){
   const settings=document.querySelector('#settings-dialog');
-  const launch=document.createElement('button');launch.type='button';launch.className='layer-launch';launch.textContent='공간 레이어 조정';settings.querySelector('h2').after(launch);
+  const launch=document.createElement('button');launch.type='button';launch.className='layer-launch';launch.textContent=village?'동네 레이어 조정':'공간 레이어 조정';settings.querySelector('h2').after(launch);
   const dialog=document.createElement('dialog');dialog.className='layers-dialog';dialog.setAttribute('aria-labelledby','layers-title');
   dialog.innerHTML='<button type="button" class="dialog-close" aria-label="레이어 설정 닫기">×</button><h2 id="layers-title">공간 레이어</h2><p>이 브라우저에 저장됩니다. 작품 문구와 이미지는 기존 전시 편집에서 변경하세요.</p><div class="layer-scopes"><label>적용 장면<select id="layer-scene"><option value="all">모든 장면</option></select></label><label>적용 화면<select id="layer-screen"><option value="base">모든 화면</option><option value="mobile">모바일</option></select></label></div><div id="layer-fields"></div><p id="layer-status" role="status"></p><div class="settings-actions"><button type="button" id="layer-reset">레이어 초기화</button><button type="button" id="layer-export">설정 내보내기</button></div>';
   document.body.append(dialog);layerHost.refresh();
+  if(village)dialog.querySelector('h2').textContent='동네 레이어';
   const scene=dialog.querySelector('#layer-scene'),screen=dialog.querySelector('#layer-screen'),fields=dialog.querySelector('#layer-fields'),status=dialog.querySelector('#layer-status');
   for(const [id,item]of Object.entries(manifest.scenes)){const option=document.createElement('option');option.value=id;option.textContent=item.label;scene.append(option);}
   function save(values){try{layerHost.setValues(values);try{localStorage.setItem(key,JSON.stringify(values));status.textContent='이 브라우저에 저장했습니다.'}catch{status.textContent='화면에 적용했습니다. 저장이 차단되어 내보내기를 이용해 주세요.'}}catch(e){status.textContent=e.message}}

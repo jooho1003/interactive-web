@@ -9,6 +9,8 @@ import { exhibitBays } from './spatial-route.js';
 
 await loadContent();
 const $ = (selector) => document.querySelector(selector);
+const village = document.body.dataset.portfolio === 'village';
+const visitKey = village ? 'jooho-lab-village-visit-v1' : sessionKey;
 const list = $('#project-list');
 const grid = $('#project-grid');
 const detail = $('#project-detail');
@@ -17,8 +19,8 @@ const arrivalHash = location.hash;
 // 3D 벽에는 구운 칸 수만큼만 건다. 나머지 작품은 선택해도 카메라가 움직이지 않고(scene.select가 무시) 정보·링크만 바뀐다.
 const wallProjects = projects.slice(0, exhibitBays);
 const onWall = (id) => wallProjects.some((p) => p.id === id);
-const visit = readVisit(projects);
-let selected = visit?.selected || 'dawn-store';
+const visit = readVisit(projects, visitKey);
+let selected = visit?.selected || (village ? 'sasu' : 'dawn-store');
 let category = visit?.category || '전체';
 let query = visit?.query || '';
 $('#search').value = query;
@@ -28,17 +30,17 @@ let view = 'space';
 let sceneVisible = true;
 let movementControl=false,wheelTotal=0,wheelTime=0,wheelDirection=0,wheelGestureUsed=false;
 function movementHint(){
-  $('#space-hint').textContent=view==='list'?'작품을 누르면 해당 페이지로 이동합니다.':movementControl?'드래그해서 시점 이동 · 휠은 페이지 스크롤 · Esc로 순차 모드':'휠 위·아래로 작품을 따라 이동 · 드래그 모드에서 자유롭게 둘러보기';
+  $('#space-hint').textContent=view==='list'?'작품을 누르면 해당 페이지로 이동합니다.':village?'좌우로 관람 · 건물을 눌러 입장':movementControl?'드래그해서 시점 이동 · 휠은 페이지 스크롤 · Esc로 순차 모드':'휠 위·아래로 작품을 따라 이동 · 드래그 모드에서 자유롭게 둘러보기';
 }
 function setMovementControl(enabled){
-  movementControl=enabled;wheelTotal=0;wheelDirection=0;wheelGestureUsed=false;scene?.setDragEnabled(enabled);
+  movementControl=enabled;wheelTotal=0;wheelDirection=0;wheelGestureUsed=false;scene?.setDragEnabled?.(enabled);
   $('#movement-toggle').setAttribute('aria-pressed',String(enabled));
   $('#movement-toggle').textContent=enabled?'드래그 모드 켜짐':'드래그 모드';
   $('#space').dataset.control=String(enabled);movementHint();
 }
 $('#movement-toggle').addEventListener('click',()=>setMovementControl(!movementControl));
 $('.exhibition').addEventListener('wheel',event=>{
-  if(movementControl||view!=='space'||!scene||event.ctrlKey||document.querySelector('dialog[open]')||event.target.closest('input,textarea,select,.project-detail,#gallery-pagination'))return;
+  if(village||movementControl||view!=='space'||!scene||event.ctrlKey||document.querySelector('dialog[open]')||event.target.closest('input,textarea,select,.project-detail,#gallery-pagination'))return;
   if(Math.abs(event.deltaX)>Math.abs(event.deltaY)||!event.deltaY)return;
   const direction=Math.sign(event.deltaY),now=performance.now();
   if(now-wheelTime>180||direction!==wheelDirection){wheelTotal=0;wheelGestureUsed=false;}
@@ -154,7 +156,8 @@ function renderIndex() {
     const art = element('span', 'film-card-art');
     if (project.image) { const img = element('img'); img.src = project.image; img.alt = ''; img.loading = 'lazy'; art.append(img); }
     else art.append(element('span', 'film-card-mark', project.mark));
-    b.append(art, element('span', 'film-card-name', project.title));
+    if (village) b.textContent = project.number;
+    else b.append(art, element('span', 'film-card-name', project.title));
     b.addEventListener('click', () => changeSelection(project.id));
     return b;
   }));
@@ -184,7 +187,7 @@ function setView(next) {
   $('#world-prev').hidden = view === 'list'; $('#world-next').hidden = view === 'list'; $('#gallery-pagination').hidden = view === 'list'; $('#reset-camera').hidden = view === 'list'; $('#motion-toggle').hidden = view === 'list';
   $('#space-hint').textContent = view === 'space' ? '작업을 선택하면 그 공간으로 안내합니다' : '작품을 누르면 해당 페이지로 이동합니다';
   syncSceneActivity();
-  $('#movement-toggle').hidden=view!=='space';if(view!=='space')setMovementControl(false);movementHint();
+  $('#movement-toggle').hidden=village||view!=='space';if(view!=='space')setMovementControl(false);movementHint();
 }
 $('#space-view').addEventListener('click', () => setView('space'));
 $('#list-view').addEventListener('click', () => setView('list'));
@@ -224,7 +227,7 @@ window.addEventListener('hashchange', () => applyHash());
 renderIndex(); changeSelection(selected, false); applyHash(arrivalHash); setMotion(motion);
 setView(visit?.view || readPreferences().view);
 if (visit) { setView(visit.view); requestAnimationFrame(() => requestAnimationFrame(() => scrollTo(0, visit.scrollY))); }
-window.addEventListener('pagehide', () => { try { sessionStorage.setItem(sessionKey, JSON.stringify({selected, category, query, view, scrollY})); } catch {} });
+window.addEventListener('pagehide', () => { try { sessionStorage.setItem(visitKey, JSON.stringify({selected, category, query, view, scrollY})); } catch {} });
 function openProject(id) { const project = projects.find(p => p.id === id); if (project) { changeSelection(id); location.assign(projectHref(project)); } }
 registerPortfolioTools(projects, (id) => {
   category = '전체'; query = ''; $('#search').value = '';
@@ -253,11 +256,12 @@ function spatialState({state, destination}) {
 $('#spatial-enter').addEventListener('click', () => scene?.enter());
 $('#spatial-back').addEventListener('click', () => scene?.back());
 layerHost.subscribe(()=>{if($('.exhibition').dataset.stage==='exterior')$('#spatial-enter').textContent=$('#spatial-enter').dataset.label;});
-import('./spatial-scene.js').then(async ({ createGallery }) => {
-  scene = await createGallery($('#scene'), wallProjects, changeSelection, fallback, openProject, spatialState);
+import(village ? './scene.js' : './spatial-scene.js').then(async ({ createGallery }) => {
+  scene = await createGallery($('#scene'), wallProjects, changeSelection, fallback, openProject, village ? projectHref : spatialState);
   scene.select(selected, false); scene.filter(visibleProjects().map((p) => p.id).filter(onWall));
   scene.setZoom(readPreferences().zoom);scene.refreshContent?.(getContent());
-  scene.setReducedMotion(motion); scene.setDragEnabled(movementControl); syncSceneActivity();
+  scene.setReducedMotion(motion); scene.setDragEnabled?.(movementControl); syncSceneActivity();
+  if (village) layerHost.refresh();
   $('#scene-status').hidden = true;
   $('#spatial-enter').disabled = false;
 }).catch(fallback);
@@ -268,7 +272,8 @@ initSettings();
 initLayerSettings();
 initEditor(document.querySelector('#settings-dialog'));
 applyContent();
-window.addEventListener('museum-content',()=>{renderIndex();changeSelection(selected,false,false);scene?.refreshContent?.(getContent())});
+if (village) layerHost.refresh();
+window.addEventListener('museum-content',()=>{renderIndex();changeSelection(selected,false,false);scene?.refreshContent?.(getContent());if(village)layerHost.refresh()});
 let lastSettings = readPreferences();
 window.addEventListener('portfolio-settings', event => {
   const prefs = event.detail;
@@ -279,4 +284,4 @@ window.addEventListener('portfolio-settings', event => {
 
 window.addEventListener('scroll',()=>document.querySelector('.site-header').classList.toggle('scrolled',scrollY>40),{passive:true});
 export {layerHost};
-export const inspectScene=()=>scene?.inspect();
+export const inspectScene=()=>{const state=scene?.inspect();return village&&state?{...state,visibility:{sceneVisible,view,hidden:document.hidden}}:state};

@@ -1,0 +1,15 @@
+[
+  {
+    "check": "persistence, entering/walking override and page isolation",
+    "status": "PASS"
+  },
+  {
+    "check": "blocked storage keeps live values and exports recovery JSON",
+    "status": "PASS"
+  },
+  {
+    "check": "actual Day Walk production navigation",
+    "url": "https://interactive-web-app-three.vercel.app/experiences/day-walk/",
+    "status": "PASS"
+  }
+]

@@ -164,3 +164,17 @@ Final Aside visual check: selected spire directly from the exterior with full mo
 - 벽에 없는 작품을 고르면 카메라는 그대로, 정보 패널만 바뀐다(`scene.select`가 모르는 id를 무시). 작업실 안에서 Enter는 그 작품을 바로 열고, 바깥에서는 원래대로 작업실에 들어간다. 장면 필터에는 벽 작품만 넘긴다.
 - `spatial-browser-qa.js`의 "작품 = 7" 단정 6곳을 "벽 = 7칸, 레일·목록 = 전체 작품 수"로 나눴다. Playwright Chromium 1440×900 **143/143 PASS**, `/__qa/mobile` 390px **144/144 PASS**, `validate` PASS(8 projects). 체험 페이지 iframe 안에서 왼쪽 끝 → 얼굴 칸 0, 오른쪽 끝 → 12 확인.
 - 미확인: Aside 실제 창(가려져 있어 렌더링이 초당 2프레임), 실제 터치 기기.
+
+## 2026-10-03 · 운영 작품의 전시 이미지
+
+- bkit Plan → Design → Do → Check → Act. 계획/설계는 `docs/01-plan/features/exhibition-art.plan.md`, `docs/02-design/features/exhibition-art.design.md`. 운영 주소가 없는 숏폼 자동화/Market Front는 사용자 정정에 따라 **그날의 먹거리**와 **한술툰**으로 교체했다. 총 7작품을 유지한다.
+- Aside에서 실제 운영 7사이트를 열어 확인했다. Day Walk는 사용자 지정 `https://interactive-web-app-three.vercel.app/experiences/day-walk/`, ChemiForge는 리다이렉트된 `https://chemiforge.com/`을 사용한다. localhost는 바뀐 LAB의 표시/동작 검수에만 사용했고 생성 참조로 쓰지 않았다. 공개 화면/원본 출처는 `art/exhibition-20261003/sources.json`.
+- 별도 전시 키 비주얼 **6개 생성**, 한술툰은 **공개 1편 표지 원작 1개 재사용**. 무크롭·원본 비율 유지 WebP 7개 총 **1,354,226B**. 모든 최종 이미지와 Day Walk 데스크톱/모바일 전시 캡처를 직접 검수했다. ChemiForge 가로 원본 직접 사용 후보는 세로 액자에서 작게 보여 원본의 구성을 참조한 세로 생성본으로 교체했다. 이전 캡처/공개 다운로드/생성 원본과 실제 프롬프트는 보존한다. 정본은 prompts 카드 20.
+- **7층/57파라미터 유지**, 새 레이어/고정값 없음. 이미지·제목·링크는 목록 콘텐츠이며 기존 소유자 override를 유지한다. GLB **4,701,148B**, 카메라·전시 좌표·이동 시간·경로 코드는 이번 작업에서 바꾸지 않았다.
+- 최종 headless browser harness: **desktop 1440×900 141 PASS / mobile 390×844 142 PASS / short-mobile 390×600 142 PASS**, 각 **57/57 파라미터 probe**, pageErrors 0. 첫 입장 각각 **7.308초 / 5.932초 / 6.073초**. 전체 그림 표시, 설명 패널 분리, 선택/되돌리기, 드래그, 키보드, 동작 줄이기, 빈 검색과 WebGL 대체 화면 통과. `art/exhibition-*-qa.json`.
+- 첫 후보는 가로 폭만 검사하던 확대 QA가 세로 작품을 반영하지 못해 실패했다. 가로 또는 세로 표시 크기를 검사하도록 수정했고 전체 이미지/설명 충돌/동선/이동 시간 기준은 유지했다. 수정 후 첫 desktop 재검사의 입장 **9.306초**는 기존 8.5초 기준 미달로 보존했다. 최종 재검사가 위 7.308초이며 성능 기준을 낮추지 않았다. 실패 기록: `exhibition-first-desktop-qa.json`, `exhibition-second-desktop-qa.json`.
+- 실제 마우스 held drag→해제, 입장→외관 복귀도 PASS. 추가 desktop/mobile 검사에서 7개 이미지 decode, 7개 실제 운영 href, Escape→작업실/초기화→외관, 블로그·한술툰 상세 이미지/링크와 중복 소스 코드 링크 제거를 확인했다. **Day Walk 버튼을 클릭해 실제 운영 페이지와 Day Walk iframe까지 진입 PASS**. 기록: `art/exhibition-20261003/link-and-artwork-qa.json`; 캡처: 같은 폴더의 `gallery-day-walk-desktop.png`, `gallery-day-walk-mobile.png`.
+- Aside에서 운영 참조와 LAB 미리보기를 확인했으나 선택 화면 캡처가 timeout되어 사용자에게 알리고 headless Playwright로 전환했다. 실제 기기 GPU/FPS 측정은 미실행.
+- root `pnpm check` 통과. 마지막 ChemiForge 이미지/세로 QA 조정 후 앱 `check`/`build`, `prompts:check`, `references:check` 통과: layer lint 오류 0, 77,077 경로 샘플, 이미지/GLB 예산 정상. 프롬프트 보관함 42카드로 재생성. 운영 LAB 배포와 원격 claude.ai 보관함 재게시는 미실행.
+- 로컬 보관함과 `.bkit/runtime/prompt-gallery-site`/`reference-gallery-site` 재게시 패키지를 갱신했다. 검증 환경은 Node 22.16.0/pnpm 9.13.2이며 저장소가 지정한 Node 24 검증은 미실행.
+- 재사용 조건: 웹 UI 전체 캡처를 전시 표지로 강제하지 않는다. 실제 운영 화면을 근거로 주제를 그리되 원작 만화의 캐릭터/글자를 보존한다. 세로 그림은 높이까지 포함해 확대를 검수하며 그림 전체와 설명 패널의 경계를 함께 확인한다.

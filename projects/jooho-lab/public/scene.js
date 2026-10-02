@@ -1,4 +1,5 @@
 import { createVillageMotion } from './village-motion.js';
+import { layerHost } from './spatial-layers.js';
 import * as THREE from './assets/three.module.min.js';
 
 export function createGallery(container, projects, onSelect, onFailure, onOpen, getHref) {
@@ -8,18 +9,20 @@ export function createGallery(container, projects, onSelect, onFailure, onOpen, 
   const scene=new THREE.Scene(), camera=new THREE.OrthographicCamera(-10,10,7,-7,.1,80);
   camera.position.z=20;
   const width=36, height=width/(2164/727);
-  const centers=[.10,.26,.42,.58,.745,.92], tops=[.22,.34,.26,.32,.27,.06];
-  const sceneProjects=projects.slice(0,centers.length);
-  let selected='dawn-store',ids=sceneProjects.map(p=>p.id),frame=0,active=true,reduced=false,zoom=1.1,cameraSpeed=1,down=null,suppressClick=false;
-  let x=centers[3]*width-width/2,goal=x,viewWidth=20,viewHeight=14,offset=0,parallax=0,last=0,dirty=true;
-  const tex=new THREE.TextureLoader().load('./assets/project-village.webp',()=>{dirty=true;requestRender()},undefined,onFailure);tex.colorSpace=THREE.SRGBColorSpace;
+  // layer-fixed: Six original buildings and one foreground walking path match the unchanged panorama.
+  const centers=[.10,.26,.42,.58,.745,.92,.92], tops=[.22,.34,.26,.32,.27,.06,.81];
+  const sceneProjects=projects;
+  let selected='sasu',ids=sceneProjects.map(p=>p.id),frame=0,active=true,reduced=false,zoom=1.1,cameraSpeed=1,down=null,suppressClick=false,textureVersion=0;
+  let x=centers[1]*width-width/2,goal=x,viewWidth=20,viewHeight=14,offset=0,parallax=0,last=0,dirty=true;
+  let image=layerHost.get('stage','image');
+  const tex=new THREE.TextureLoader().load(image,()=>{dirty=true;requestRender()},undefined,onFailure);tex.colorSpace=THREE.SRGBColorSpace;
   tex.anisotropy=Math.min(renderer.capabilities.getMaxAnisotropy(),4);
   const panorama=new THREE.Mesh(new THREE.PlaneGeometry(width,height),new THREE.MeshBasicMaterial({map:tex}));scene.add(panorama);
   const projectX=id=>{const index=sceneProjects.findIndex(p=>p.id===id);return index < 0 ? null : (centers[index]-.5)*width;};
   const motion=createVillageMotion(container,sceneProjects,onSelect,onOpen,projectX);
   const labels=sceneProjects.map((p,index)=>{
     const anchor=document.createElement('a');anchor.className='scene-label';anchor.href=getHref(p);anchor.dataset.worldProject=p.id;
-    anchor.setAttribute('aria-label',p.title+' 건물로 들어가기');
+    anchor.setAttribute('aria-label',p.title+(p.id==='day-walk'?' 산책길로 들어가기':' 건물로 들어가기'));
     const text=document.createElement('span');text.className='world-label';text.textContent=p.title;
     const arrow=document.createElement('small');arrow.textContent='들어가기 ↗';text.append(arrow);anchor.append(text);
     anchor.addEventListener('click',event=>{
@@ -31,15 +34,18 @@ export function createGallery(container, projects, onSelect, onFailure, onOpen, 
   function clamp(value){const edge=Math.max(0,(width-viewWidth/camera.zoom)/2);return THREE.MathUtils.clamp(value,-edge,edge)}
   function target(){const i=sceneProjects.findIndex(p=>p.id===selected);if(i>=0)goal=(centers[i]-.5)*width}
   function requestRender(){if(active&&!frame)frame=requestAnimationFrame(draw)}
-  function resize(){const w=container.clientWidth,h=container.clientHeight;if(!w||!h)return;viewHeight=(w<620?12.4:11.6)/zoom;viewWidth=viewHeight*w/h;camera.left=-viewWidth/2;camera.right=viewWidth/2;camera.top=viewHeight/2;camera.bottom=-viewHeight/2;camera.position.y=w<620?-.25:0;camera.updateProjectionMatrix();renderer.setSize(w,h,false);target();dirty=true;requestRender()}
-  function draw(now){frame=0;if(!active)return;const dt=Math.min((now-last)/1000||.016,.05);last=now;const blend=reduced?1:1-Math.exp(-dt*6.5*cameraSpeed);const aim=clamp(goal+offset+parallax);const moving=Math.abs(aim-x)>.001;x+=(aim-x)*blend;camera.position.x=x;camera.position.y=container.clientWidth<620?-.25:0;const cameraMoving=motion.update(now,dt,camera);camera.updateMatrixWorld();
+  function resize(){const w=container.clientWidth,h=container.clientHeight;if(!w||!h)return;viewHeight=(w<620?12.4:11.6)/(zoom*layerHost.get('stage','zoom'));viewWidth=viewHeight*w/h;camera.left=-viewWidth/2;camera.right=viewWidth/2;camera.top=viewHeight/2;camera.bottom=-viewHeight/2;camera.position.y=w<620?-.25:0;camera.updateProjectionMatrix();renderer.setSize(w,h,false);target();dirty=true;requestRender()}
+  function draw(now){frame=0;if(!active)return;const dt=Math.min((now-last)/1000||.016,.05);last=now;const blend=reduced?1:1-Math.exp(-dt*layerHost.get('stage','damping')*layerHost.get('stage','speed')*cameraSpeed);const aim=clamp(goal+offset+parallax);const moving=Math.abs(aim-x)>.001;x+=(aim-x)*blend;camera.position.x=x;camera.position.y=container.clientWidth<620?-.25:0;const cameraMoving=motion.update(now,dt,camera);camera.updateMatrixWorld();
     for(const {anchor,id,index} of labels){
       const cx=(centers[index]-.5)*width;
-      const topY=(.5-tops[index])*height,bottomY=(.5-.76)*height;
-      const a=new THREE.Vector3(cx-2.1,topY,.1).project(camera),b=new THREE.Vector3(cx+2.1,bottomY,.1).project(camera);
+      const topY=(.5-tops[index])*height,bottomY=(.5-(index===6?.87:.76))*height,half=index===6?1.5:2.1;
+      const a=new THREE.Vector3(cx-half,topY,.1).project(camera),b=new THREE.Vector3(cx+half,bottomY,.1).project(camera);
       const left=(a.x*.5+.5)*container.clientWidth,top=(-a.y*.5+.5)*container.clientHeight;
-      anchor.style.left=left+'px';anchor.style.top=top+'px';anchor.style.width=((b.x-a.x)*.5*container.clientWidth)+'px';anchor.style.height=((a.y-b.y)*.5*container.clientHeight)+'px';
-      anchor.hidden=!ids.includes(id)||b.x < -1||a.x > 1;anchor.classList.toggle('selected',id===selected);anchor.setAttribute('aria-current',String(id===selected));
+      // layer-fixed: Reserve room below every nameplate for the hint, recovery controls and stop selector.
+      const bottom=Math.min((-b.y*.5+.5)*container.clientHeight,container.clientHeight-(container.clientWidth<620?300:220));
+      const hitTop=Math.min(top,bottom-24);
+      anchor.style.left=left+'px';anchor.style.top=hitTop+'px';anchor.style.width=((b.x-a.x)*.5*container.clientWidth)+'px';anchor.style.height=(bottom-hitTop)+'px';
+      anchor.hidden=!ids.includes(id)||b.x < -1||a.x > 1||(id==='day-walk'&&selected!==id)||(id==='spire'&&selected==='day-walk');anchor.classList.toggle('selected',id===selected);anchor.setAttribute('aria-current',String(id===selected));
     }
     motion.decorate((wx,wy)=>{const v=new THREE.Vector3(wx,wy,.1).project(camera);return [(v.x*.5+.5)*container.clientWidth,(-v.y*.5+.5)*container.clientHeight]},ids,container.clientHeight,viewHeight);
     if(dirty||moving||cameraMoving){renderer.render(scene,camera);dirty=false}if(moving||cameraMoving||!reduced)requestRender();
@@ -49,7 +55,7 @@ export function createGallery(container, projects, onSelect, onFailure, onOpen, 
   surface.addEventListener('pointermove',e=>{
     if(motion.entering)return;
     if(down){const dx=e.clientX-down.x,dy=e.clientY-down.y;down.max=Math.max(down.max,Math.hypot(dx,dy));if(Math.abs(dx)>10&&Math.abs(dx)>Math.abs(dy)){surface.setPointerCapture(e.pointerId);offset=-dx/container.clientWidth*viewWidth}}
-    else if(!reduced&&e.pointerType==='mouse'){const b=surface.getBoundingClientRect();parallax=((e.clientX-b.left)/b.width-.5)*.18}
+    else if(!reduced&&e.pointerType==='mouse'){const b=surface.getBoundingClientRect();parallax=((e.clientX-b.left)/b.width-.5)*layerHost.get('stage','parallax')}
     dirty=true;requestRender();
   });
   function reset(){down=null;offset=0;parallax=0;surface.classList.remove('dragging');dirty=true;requestRender()}
@@ -63,5 +69,10 @@ export function createGallery(container, projects, onSelect, onFailure, onOpen, 
   surface.addEventListener('wheel',e=>{if(motion.entering||e.ctrlKey||ids.length<2||Math.abs(e.deltaX)<=Math.abs(e.deltaY))return;e.preventDefault();const now=performance.now();if(now-lastWheel<450)return;wheel+=e.deltaX;if(Math.abs(wheel)>45){const i=ids.indexOf(selected);onSelect(ids[Math.max(0,Math.min(ids.length-1,i+(wheel>0?1:-1)))]);wheel=0;lastWheel=now}},{passive:false});
   renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();active=false;cancelAnimationFrame(frame);frame=0;onFailure()});
   new ResizeObserver(resize).observe(container);resize();
-  return {refreshContent(value){cameraSpeed=value.cameraSpeed;motion.configure(value);panorama.material.color.setScalar(Math.min(1.15,.72+.28*value.lighting));labels.forEach(({anchor,index})=>{const p=sceneProjects[index];anchor.href=getHref(p);anchor.setAttribute('aria-label',p.title+' 건물로 들어가기');const label=anchor.querySelector('.world-label');label.firstChild.textContent=p.title;});dirty=true;requestRender()},enter(id){if(ids.includes(id))motion.enter(id)},select(id){if(!ids.includes(id))return;motion.select(id);selected=id;target();dirty=true;requestRender()},filter(next){ids=next.filter(id=>sceneProjects.some(p=>p.id===id));dirty=true;requestRender()},reset(){target();reset()},setReducedMotion(value){reduced=value;motion.reduce(value);reset()},setZoom(value){zoom=value;resize()},refreshLinks(){labels.forEach(({anchor,index})=>anchor.href=getHref(sceneProjects[index]))},setActive(value){if(!value)motion.pause();active=value;if(active){last=0;resize()}else{cancelAnimationFrame(frame);frame=0}}};
+  layerHost.subscribe(()=>{
+    const next=layerHost.get('stage','image');
+    if(next!==image){image=next;const version=++textureVersion;new THREE.TextureLoader().load(image,texture=>{if(version!==textureVersion){texture.dispose();return}texture.colorSpace=THREE.SRGBColorSpace;const previous=panorama.material.map;panorama.material.map=texture;previous.dispose();dirty=true;requestRender()},undefined,()=>{if(version===textureVersion)onFailure()})}
+    resize();
+  });
+  return {inspect(){return {active,goal,x,frame,state:motion.entering?'entering':'walking',selected,camera:[camera.position.x,camera.position.y,camera.zoom],viewHeight,drawCalls:renderer.info.render.calls,bindings:{zoom:layerHost.get('stage','zoom'),speed:layerHost.get('stage','speed'),damping:layerHost.get('stage','damping'),parallax:layerHost.get('stage','parallax')}}},refreshContent(value){cameraSpeed=value.cameraSpeed;motion.configure(value);panorama.material.color.setScalar(Math.min(1.15,.72+.28*value.lighting));labels.forEach(({anchor,index})=>{const p=sceneProjects[index];anchor.href=getHref(p);anchor.setAttribute('aria-label',p.title+(p.id==='day-walk'?' 산책길로 들어가기':' 건물로 들어가기'));const label=anchor.querySelector('.world-label');label.firstChild.textContent=p.title;});dirty=true;requestRender()},enter(id){if(ids.includes(id))motion.enter(id)},back(){motion.pause()},select(id){if(!ids.includes(id))return;motion.select(id);selected=id;target();dirty=true;requestRender()},filter(next){ids=next.filter(id=>sceneProjects.some(p=>p.id===id));motion.pause();dirty=true;requestRender()},reset(){motion.pause();onSelect('sasu');reset()},setReducedMotion(value){reduced=value;motion.reduce(value);reset()},setZoom(value){zoom=value;resize()},refreshLinks(){labels.forEach(({anchor,index})=>anchor.href=getHref(sceneProjects[index]))},setActive(value){if(!value)motion.pause();active=value;if(active){last=0;resize()}else{cancelAnimationFrame(frame);frame=0}}};
 }

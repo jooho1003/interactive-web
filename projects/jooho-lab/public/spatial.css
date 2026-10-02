@@ -90,3 +90,5 @@ html[data-motion=reduce]{scroll-behavior:auto}
  .exhibition[data-stage=project] #spatial-controls button{min-height:34px;padding:6px 12px;font-size:.7rem}
 }
 @media(max-width:650px){.gallery-toolbar{gap:6px}#movement-toggle{font-size:.65rem;padding:6px 9px;min-height:34px}.project-detail{max-width:90%}}
+/* layer-fixed: Keep the alternate village destination reachable on compact screens. */
+.site-header nav>a[href="./village.html"]{display:block}

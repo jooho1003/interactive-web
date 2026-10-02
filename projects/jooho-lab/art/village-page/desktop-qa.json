@@ -1,0 +1,338 @@
+{
+  "status": "PASS",
+  "viewport": [
+    1440,
+    900
+  ],
+  "count": 64,
+  "probes": {
+    "total": 42,
+    "passed": 42,
+    "failed": [],
+    "conditional": 0
+  },
+  "results": [
+    {
+      "name": "village manifest isolated",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "original panorama",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no pavilion request",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all numbered stops",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "return to exhibition",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "select chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls chemiforge",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":219.671875,\"y\":679.984375,\"width\":175.125,\"height\":43.046875,\"top\":679.984375,\"right\":394.796875,\"bottom\":723.03125,\"left\":219.671875},\"footer\":{\"x\":0,\"y\":747.34375,\"width\":1440,\"height\":61.65625,\"top\":747.34375,\"right\":1440,\"bottom\":809,\"left\":0}}"
+    },
+    {
+      "name": "select sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls sasu",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":632.9921875,\"y\":679.984375,\"width\":173.984375,\"height\":43.046875,\"top\":679.984375,\"right\":806.9765625,\"bottom\":723.03125,\"left\":632.9921875},\"footer\":{\"x\":0,\"y\":747.34375,\"width\":1440,\"height\":61.65625,\"top\":747.34375,\"right\":1440,\"bottom\":809,\"left\":0}}"
+    },
+    {
+      "name": "select blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls blog",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":632.2109375,\"y\":679.984375,\"width\":175.546875,\"height\":43.046875,\"top\":679.984375,\"right\":807.7578125,\"bottom\":723.03125,\"left\":632.2109375},\"footer\":{\"x\":0,\"y\":747.34375,\"width\":1440,\"height\":61.65625,\"top\":747.34375,\"right\":1440,\"bottom\":809,\"left\":0}}"
+    },
+    {
+      "name": "select dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls dawn-store",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":643.140625,\"y\":679.984375,\"width\":153.6875,\"height\":43.046875,\"top\":679.984375,\"right\":796.828125,\"bottom\":723.03125,\"left\":643.140625},\"footer\":{\"x\":0,\"y\":747.34375,\"width\":1440,\"height\":61.65625,\"top\":747.34375,\"right\":1440,\"bottom\":809,\"left\":0}}"
+    },
+    {
+      "name": "select instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls instatoon",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":652.7421875,\"y\":679.984375,\"width\":134.484375,\"height\":43.046875,\"top\":679.984375,\"right\":787.2265625,\"bottom\":723.03125,\"left\":652.7421875},\"footer\":{\"x\":0,\"y\":747.34375,\"width\":1440,\"height\":61.65625,\"top\":747.34375,\"right\":1440,\"bottom\":809,\"left\":0}}"
+    },
+    {
+      "name": "select spire",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop spire",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination spire",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name spire",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls spire",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":1119,\"y\":680,\"width\":150.375,\"height\":43.046875,\"top\":680,\"right\":1269.375,\"bottom\":723.046875,\"left\":1119},\"footer\":{\"x\":0,\"y\":747.34375,\"width\":1440,\"height\":61.65625,\"top\":747.34375,\"right\":1440,\"bottom\":809,\"left\":0}}"
+    },
+    {
+      "name": "select day-walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop day-walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination day-walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name day-walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls day-walk",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":1119.015625,\"y\":680,\"width\":150.375,\"height\":43.046875,\"top\":680,\"right\":1269.390625,\"bottom\":723.046875,\"left\":1119.015625},\"footer\":{\"x\":0,\"y\":747.34375,\"width\":1440,\"height\":61.65625,\"top\":747.34375,\"right\":1440,\"bottom\":809,\"left\":0}}"
+    },
+    {
+      "name": "eighth work remains accessible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "eighth work keeps finite camera",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Day Walk path marked",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "reset to original selection",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "keyboard next",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "keyboard home",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "animated entry",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "entry cancel focused",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "entry cancellation",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "cancel focus restored",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Escape cancels",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "list cancels entry",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "empty state",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "empty recovery",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "real camera zoom",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "real character size",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all parameters probed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all layer bindings pass",
+      "pass": true,
+      "detail": "{\"total\":42,\"passed\":42,\"failed\":[],\"conditional\":0}"
+    },
+    {
+      "name": "settings survives hidden shell",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "layer panel opens",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "layer panel focus restores",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no horizontal overflow",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "context loss fallback",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "cannot reopen failed WebGL",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "pageErrors": [],
+  "browser": "Headless Playwright Chromium"
+}
