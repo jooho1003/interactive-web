@@ -18,6 +18,7 @@
 | [day-walk.md](day-walk.md) | 하루 산책 — 주택가 배경 4장(원본·아침·오후·저녁), 새, 걷는 캐릭터 |
 | [potato-designer.md](potato-designer.md) | POTATO — 날아차기 캐릭터 |
 | [jooho-lab.md](jooho-lab.md) | JOOHO LAB 허브 — 기존 마을·표지 + fal 풍경·Blender 3D 작업실·실제 작품 캡처 7장 + Tripo P2.0 건물·의자 후보 + 촬영 PBR/HDRI 개선 |
+| [hanbok-hero.md](hanbok-hero.md) | 한복 히어로 — 정면 기준 컷 · 고개 돌리는 영상 · 몸 고정 + 얼굴 시트 · 배경 |
 | [templates.md](templates.md) | **다시 쓸 수 있는 프롬프트 틀** — 스타일 프레임, 프랍 시트, UI 킷, 조명만 바꾸기, 스프라이트, 영상 체인, 3D 변환 |
 
 표시: ✅ 프롬프트 원문 있음 · ❌ 기록 없음(다시 만들 수 없음) · ⏸ 프롬프트만 있고 아직 안 만듦
@@ -54,6 +55,10 @@
 | <img src="../projects/jooho-lab/public/assets/village-walker.png" width="80"> | JOOHO LAB | [배낭 로봇 산책자](jooho-lab.md#02--배낭-로봇-산책자-village-walker) | gpt-image 2.0 | ❌ |
 | <img src="../projects/jooho-lab/public/assets/atelier.webp" width="120"> | JOOHO LAB | [어두운 전시실 (지금 안 씀)](jooho-lab.md#03--어두운-전시실-atelier-지금-안-씀) | 기록 없음 | ❌ |
 | <img src="../projects/jooho-lab/public/assets/work-spire.webp" width="120"> | JOOHO LAB | [실제 작품 대표 화면 7장](jooho-lab.md#07--실제-작품-화면--갤러리-대표-이미지-7장) | Aside 캡처 | 생성 에셋 아님 |
+| <img src="../projects/hanbok-hero/art/superseded/hanbok-still.webp" width="120"> | 한복 히어로 | [정면 기준 컷 `hanbok-still`](hanbok-hero.md#01--정면-기준-컷-hanbok-still-) (2026-10-03 교체, 이력) | fal Kontext(참조 2장) + 로컬 rembg | ✅ |
+| <img src="../projects/hanbok-hero/art/superseded/hanbok-sheet.webp" width="120"> | 한복 히어로 | [3×3 방향 시트 `hanbok-sheet`](hanbok-hero.md#02--33-방향-시트-hanbok-sheet-) (2026-10-03 교체, 영상은 04의 원본) | fal Kling 영상 → 프레임 → 로컬 rembg | ✅ |
+| <img src="../projects/hanbok-hero/dist/assets/palace.webp" width="120"> | 한복 히어로 | [배경 — 경회루 야경 `palace`](hanbok-hero.md#03--배경--경회루-야경-palace-) | fal flux-pro ultra | ✅ |
+| <img src="../projects/hanbok-hero/dist/assets/scholar-still.webp" width="120"> | 한복 히어로 | [몸 고정 + 얼굴 시트 `scholar-still`·`body`·`heads`](hanbok-hero.md#04--몸-고정--얼굴-시트-scholar-still--scholar-body--scholar-heads-) | 02 영상 프레임 → 로컬 rembg → `build-heads.py` (새 생성 없음) | ✅ |
 
 ### 영상 · 소리 · 3D
 

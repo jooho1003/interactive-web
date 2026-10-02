@@ -1,6 +1,8 @@
 {
   "note": "생성물 — references/build.mjs가 references/*.md에서 만든다. 직접 고치지 않는다.",
   "generatedFrom": [
+    "archify.md",
+    "instagram-reposts.md",
     "motionsites.md",
     "notefolio-portfolios.md",
     "patterns.md"
@@ -75,9 +77,305 @@
       "sites": [
         "motionsites"
       ]
+    },
+    {
+      "id": "scene-form",
+      "name": "장면을 입힌 입력 폼",
+      "families": [
+        "새 패턴"
+      ],
+      "sites": [
+        "lunara-login",
+        "type-the-pass"
+      ]
+    },
+    {
+      "id": "pointer-reactive",
+      "name": "포인터를 따라 반응하는 요소",
+      "families": [
+        "새 패턴"
+      ],
+      "sites": [
+        "lunara-login",
+        "lovart-interactive-assets"
+      ]
+    },
+    {
+      "id": "card-dashboard",
+      "name": "카드형 대시보드 마이크로 인터랙션",
+      "families": [
+        "새 패턴"
+      ],
+      "sites": [
+        "codexr-dashboard"
+      ]
+    },
+    {
+      "id": "media-hero",
+      "name": "풀블리드 영상 히어로와 수치 바",
+      "families": [
+        "D"
+      ],
+      "sites": [
+        "manara-hero"
+      ]
+    },
+    {
+      "id": "scroll-journey-3d",
+      "name": "스크롤로 따라가는 3D 여정",
+      "families": [
+        "A"
+      ],
+      "sites": [
+        "everest"
+      ]
+    },
+    {
+      "id": "scroll-product-story",
+      "name": "스크롤로 넘기는 제품 이야기",
+      "families": [
+        "새 패턴"
+      ],
+      "sites": [
+        "ascenta"
+      ]
+    },
+    {
+      "id": "explorable-diagram",
+      "name": "탐색하는 구조도",
+      "families": [
+        "새 패턴"
+      ],
+      "sites": [
+        "archify"
+      ]
     }
   ],
   "sites": [
+    {
+      "id": "archify",
+      "name": "Archify",
+      "url": "https://tt-a1i.github.io/archify/",
+      "file": "archify.md",
+      "anchor": "site-archify",
+      "notion": [
+        "3ead12f2-3255-810f-bd01-d423fdf96bbb"
+      ],
+      "via": "Archify 소개 DM(REBORN LABS)",
+      "importedAt": "2026-10-01",
+      "check": {
+        "status": "ok",
+        "date": "2026-10-01"
+      },
+      "patterns": [
+        "explorable-diagram"
+      ],
+      "families": [
+        "새 패턴"
+      ],
+      "tech": [
+        "구조도 하나가 외부 리소스 0개인 HTML 한 장(약 750KB, 인라인 스크립트 약 400KB). SVG(viewBox 0 0 1096 684)를 CSS transform: translate() scale()로 움직이는 카메라. d3·mermaid·elk·GSAP 없음. 노드는 g[role=button][tabindex=0][aria-pressed], 관계선도 role=button이고 로빙 tabindex. 상태를 주소 해시로 공유(#focus= &reach= #route=a~b #lens= #relation=, history.replaceState). 내보내기는 MediaRecorder WebM 등. 홈·갤러리는 GitHub Pages 정적 페이지(갤러리 CSS에 Tailwind v4 표기), 결과물은 sandbox iframe으로 끼운다"
+      ],
+      "usedIn": [],
+      "summary": "[레퍼런스] archify — Archify (https://tt-a1i.github.io/archify/) · 패턴 explorable-diagram · ✅ 2026-10-01\n가져올 것: 고른 대상의 위·아래 흐름만 남기는 초점 모드와 두 지점 경로 따라가기, 상태를 해시에 담아 링크로 공유하는 방식(replaceState라 뒤로 가기가 쌓이지 않음), 확대 단계에 따라 세부를 드러내는 정보 밀도 조절, Escape 한 번으로 모든 강조를 푸는 되돌리기, 노드를 버튼으로 만든 키보드 구조, 사용자가 누르는 모션 정지 버튼, 외부 리소스 없는 한 장짜리 결과물\n안 가져올 것: 단축키 수십 개를 그대로 들여오기(우리 작품에는 몇 개면 된다), 휠·끌기 이동이 없는 탐색(넓은 그림에서는 필요하다), 갤러리 필터가 주소에 안 남는 점, 구조도를 \"검증된 사실\"처럼 보이게 하는 문구(도구도 실제 운영 안전성을 증명하지 않는다고 밝힌다)"
+    },
+    {
+      "id": "everest",
+      "name": "Everest · The Ascent",
+      "url": "https://everest.suraj.work/",
+      "file": "instagram-reposts.md",
+      "anchor": "site-everest",
+      "notion": [
+        "3e9d12f2-3255-81af-bcb5-db57c7fdfc64"
+      ],
+      "via": "@studiodle_ 릴스 \"2027홈페이지 트렌드#4\"(리포스트)에 나온 사이트",
+      "importedAt": "2026-10-01",
+      "check": {
+        "status": "ok",
+        "date": "2026-10-01"
+      },
+      "patterns": [
+        "scroll-journey-3d"
+      ],
+      "families": [
+        "A"
+      ],
+      "tech": [
+        "Vite 번들, three.js r170 WebGL2(EffectComposer 후처리, InstancedMesh, ShaderMaterial), 지형은 높이 지도 PNG + 위성 텍스처 webp(AWS Terrain Tiles·Esri 영상), Lenis 부드러운 스크롤, AudioContext, PointerLock. 리소스 33개·전송 약 6.9MB. setPixelRatio(min(dpr, 1.5))와 자동 성능 모드(추정). WebGL이 없으면 \"This experience needs WebGL…\" 대체 문구"
+      ],
+      "usedIn": [
+        "JOOHO LAB 공간 갤러리 · 2026-10-01 · 순차 휠 이동과 수동 카메라 모드 분리",
+        "작품 바로 가기 유지; 2026-10-02 건물 정교화에서 기존 카메라·모바일 렌더 예산 재사용"
+      ],
+      "summary": "[레퍼런스] everest — Everest · The Ascent (https://everest.suraj.work/) · 패턴 scroll-journey-3d · ✅ 2026-10-01\n가져올 것: 스크롤 진행률 하나로 3D 카메라·HUD 숫자·단계 패널을 함께 묶는 구조(숫자가 바뀌는 것만으로 이동감이 생긴다). 같은 여정을 스크롤·자동 재생·자유 비행 세 방식으로 보게 하는 선택지. 자동 재생의 배속·±10초·탐색 슬라이더 조작. 모바일에서 3D를 억지로 돌리지 않고 글 기록으로 바꾸는 대체 화면. 기다리는 동안 무엇을 만드는지 말해 주는 로딩 문구\n안 가져올 것: 단계 목록을 숨겨 바로 가기 경로를 없앤 구성, 보이지 않는 요소가 포커스를 받는 것, 수십 초 걸리는 첫 진입, 6만 px짜리 스크롤에 의존한 진행(스크롤바로 위치를 가늠하기 어렵다)"
+    },
+    {
+      "id": "ascenta",
+      "name": "ASCENTA Sparkling Watermelon",
+      "url": "https://ascentatrack.com/watermelon/",
+      "file": "instagram-reposts.md",
+      "anchor": "site-ascenta",
+      "notion": [
+        "3ebd12f2-3255-8167-8dfd-d0f5981c98f5"
+      ],
+      "via": "@ascenta.studio 릴스(리포스트)",
+      "importedAt": "2026-10-01",
+      "check": {
+        "status": "ok",
+        "date": "2026-10-01"
+      },
+      "patterns": [
+        "scroll-product-story"
+      ],
+      "families": [
+        "새 패턴"
+      ],
+      "tech": [
+        "정적 HTML + Lenis(lerp .12). 화면 전체에 고정된 2D <canvas id=\"film\"> 하나에 스크롤 진행률 → 프레임 번호로 이미지 시퀀스를 그린다: frames/f_0001…1000.webp(1928×1072, 1,000장, 주석상 RIFE 보간), framemap.js(240점 진행률 지도), Worker 풀의 createImageBitmap 디코드. video·WebGL·GSAP 없음. 문구 블록(.beat)은 data-from/data-to 진행률 구간에서만 켜지고 data-box(프레임 좌표)를 화면 cover 계산으로 옮겨 놓는다. 장바구니는 결제 없는 데모(checkout.js, localStorage)"
+      ],
+      "usedIn": [],
+      "summary": "[레퍼런스] ascenta — ASCENTA Sparkling Watermelon (https://ascentatrack.com/watermelon/) · 패턴 scroll-product-story · ✅ 2026-10-01\n가져올 것: 스크롤 진행률 → 프레임 번호 지도(구간마다 속도를 다르게 줄 수 있다), 문구를 프레임 속 물체 좌표에 붙여 화면 비율이 바뀌어도 같은 자리에 두는 방식, 진행률 구간으로 문구를 켜고 끄는 선언형 구조, 거친 입력 기기용 저해상도 프레임 묶음, 동작 줄이기에서 대표 프레임 한 장으로 바꾸기, 이야기 끝을 바로 행동(팩 고르기)으로 잇는 흐름\n안 가져올 것: 약 90MB 프레임을 첫 방문에 모두 받는 구성, 화면 밖에 남아 포커스를 잡는 서랍, 닫은 뒤 포커스 복귀 없음, 주소가 안 바뀌어 공유할 수 없는 메뉴 이동, 제품 사진·문구"
+    },
+    {
+      "id": "lunara-login",
+      "name": "Lunara 로그인",
+      "url": "https://www.instagram.com/_code_and_chill_/",
+      "file": "instagram-reposts.md",
+      "anchor": "site-lunara-login",
+      "notion": [
+        "3ead12f2-3255-811f-8570-f6173deeb88d"
+      ],
+      "via": "@_code_and_chill_ 릴스(리포스트)",
+      "importedAt": "2026-10-01",
+      "check": {
+        "status": "pending",
+        "date": "2026-10-01"
+      },
+      "patterns": [
+        "scene-form",
+        "pointer-reactive"
+      ],
+      "families": [
+        "새 패턴"
+      ],
+      "tech": [
+        "(추정, 캡처 아래 코드 패널에서 읽음) HTML·CSS·JS 한 장. 카드에 backdrop-filter: blur(24px) saturate(1.3), 달에 mix-blend-mode: screen과 숨 쉬듯 커졌다 작아지는 애니메이션, pointermove로 --rx·--ry CSS 변수를 바꿔 카드를 기울임, 로그인 때 버튼에 dooropen 클래스를 붙임"
+      ],
+      "usedIn": [],
+      "summary": "[레퍼런스] lunara-login — Lunara 로그인 (https://www.instagram.com/_code_and_chill_/) · 패턴 scene-form, pointer-reactive · ⏸ 2026-10-01\n가져올 것: 폼 자체는 그대로 두고 배경 장면 + 버튼 상태 연출로만 기억에 남게 하는 방식. 성공을 버튼 안 작은 이야기(사람이 문으로 들어감)로 보여 주는 피드백. 포인터 기울기를 CSS 변수 두 개로 처리하는 가벼운 구조\n안 가져올 것: 입력란 대비가 낮은 어두운 유리 카드, 성공 연출만 있고 실패·로딩 상태가 안 보이는 구성, 동작 줄이기 끄는 경로가 보이지 않는 반복 애니메이션"
+    },
+    {
+      "id": "type-the-pass",
+      "name": "TYPE THE PASS!",
+      "url": "https://www.instagram.com/danielsnows/",
+      "file": "instagram-reposts.md",
+      "anchor": "site-type-the-pass",
+      "notion": [
+        "3ebd12f2-3255-8140-88d5-ed4526d12339"
+      ],
+      "via": "@danielsnows 카루셀 9장(리포스트)",
+      "importedAt": "2026-10-01",
+      "check": {
+        "status": "pending",
+        "date": "2026-10-01"
+      },
+      "patterns": [
+        "scene-form"
+      ],
+      "families": [
+        "새 패턴"
+      ],
+      "tech": [
+        "캡션 기준: Figma(UI·애니메이션), Google Flow(영상 생성), CapCut(후반), 서체 TOMORROW·Asta Sans. 실제 웹 구현이 아니라 모션 시안이다"
+      ],
+      "usedIn": [],
+      "summary": "[레퍼런스] type-the-pass — TYPE THE PASS! (https://www.instagram.com/danielsnows/) · 패턴 scene-form · ⏸ 2026-10-01\n가져올 것: 입력 행위 하나를 첫 화면의 놀이로 만드는 구성(입력하면 캐릭터가 반응한다). 강한 단색 배경 + 검정 대비 + 키워드 알약으로 정보량을 줄이는 배치\n안 가져올 것: 브랜드 캐릭터·라임 스트랩 외형, 유료 템플릿(Figma for Motion) 내용, 아무 의미 없는 비밀번호 입력을 진짜 보안 화면처럼 보이게 하는 문구"
+    },
+    {
+      "id": "codexr-dashboard",
+      "name": "Dashboard V5",
+      "url": "https://topmate.io/code_xr/2321150",
+      "file": "instagram-reposts.md",
+      "anchor": "site-codexr-dashboard",
+      "notion": [
+        "3ead12f2-3255-8189-902f-d6c2fe7734fb",
+        "3ead12f2-3255-8125-b1c8-d298948cd3e4",
+        "3ead12f2-3255-810b-88e3-cdce79b33a1d"
+      ],
+      "via": "@code.xr 릴스(리포스트)",
+      "importedAt": "2026-10-01",
+      "check": {
+        "status": "pending",
+        "date": "2026-10-01"
+      },
+      "patterns": [
+        "card-dashboard"
+      ],
+      "families": [
+        "새 패턴"
+      ],
+      "tech": [
+        "캡션·판매 페이지 기준 React + CSS + Framer Motion. 캡처 하단 코드에 <motion.div whileHover={{ y: -5 }} className=\"glass-card …\">(카드가 호버 때 5px 떠오름)"
+      ],
+      "usedIn": [],
+      "summary": "[레퍼런스] codexr-dashboard — Dashboard V5 (https://topmate.io/code_xr/2321150) · 패턴 card-dashboard · ⏸ 2026-10-01\n가져올 것: 정보 카드 여러 장 중 행동을 부르는 카드 한두 장에만 강조색을 주는 위계, 카드 호버 리프트처럼 작은 마이크로 인터랙션을 한 곳(카드 공통)에서 관리하는 구조, 목록 선택 → 옆 상세 패널\n안 가져올 것: 유료 소스 코드, 데이터 없는 화려한 차트(방사형 차트는 값 읽기가 어렵다), 호버 전용 정보"
+    },
+    {
+      "id": "lovart-interactive-assets",
+      "name": "Lovart Interactive Assets 스킬",
+      "url": "https://www.instagram.com/thedesignely/",
+      "file": "instagram-reposts.md",
+      "anchor": "site-lovart-interactive-assets",
+      "notion": [
+        "3ebd12f2-3255-8193-9d31-cac9cfdc8299"
+      ],
+      "via": "@thedesignely 릴스(리포스트)",
+      "importedAt": "2026-10-01",
+      "check": {
+        "status": "pending",
+        "date": "2026-10-01"
+      },
+      "patterns": [
+        "pointer-reactive"
+      ],
+      "families": [
+        "새 패턴"
+      ],
+      "tech": [
+        "캡션 기준: AI 디자인 도구 Lovart의 사용자 스킬 \"Interactive Assets\"가 이미지 트레일·시선 따라오기·360° 회전 오브젝트를 만들고 자동 보정·배경 제거 후 HTML로 내보낸다. 그 HTML을 Framer에 붙인다"
+      ],
+      "usedIn": [
+        "한복 히어로 (projects/hanbok-hero) — 방향 프레임 교체 방식만 가져옴; 2026-10-03 몸은 고정하고 얼굴 칸만 바꾸는 방식(13×2)으로 재작업"
+      ],
+      "summary": "[레퍼런스] lovart-interactive-assets — Lovart Interactive Assets 스킬 (https://www.instagram.com/thedesignely/) · 패턴 pointer-reactive · ⏸ 2026-10-01\n가져올 것: 정지 그림 한 장을 방향별 프레임 몇 장(시선 방향)으로 늘려 포인터 위치에 따라 바꾸는 방식. 배경 제거·자동 보정을 에셋 단계에서 끝내고 웹에는 결과만 붙이는 분업\n안 가져올 것: 생성 도구가 만든 HTML을 검토 없이 붙이기, 캐릭터 외형, 포인터가 없으면 아무 일도 없는 첫 화면"
+    },
+    {
+      "id": "manara-hero",
+      "name": "MANARA by Ariana",
+      "url": "https://www.instagram.com/w.wearebrand/",
+      "file": "instagram-reposts.md",
+      "anchor": "site-manara-hero",
+      "notion": [
+        "3ebd12f2-3255-8162-ab51-fed722005d41"
+      ],
+      "via": "@w.wearebrand 릴스 \"Websites in 2026\"(리포스트)",
+      "importedAt": "2026-10-01",
+      "check": {
+        "status": "pending",
+        "date": "2026-10-01"
+      },
+      "patterns": [
+        "media-hero"
+      ],
+      "families": [
+        "D"
+      ],
+      "tech": [
+        "확인 못 함"
+      ],
+      "usedIn": [],
+      "summary": "[레퍼런스] manara-hero — MANARA by Ariana (https://www.instagram.com/w.wearebrand/) · 패턴 media-hero · ⏸ 2026-10-01\n가져올 것: 결정에 필요한 숫자 네 개를 히어로 하단 바 한 줄에 모으는 배치, 주 버튼·보조 버튼 두 개만 두는 첫 화면\n안 가져올 것: 부동산 문구·가격, 영상만 크고 읽을 글이 사진 위에 얹혀 대비가 흔들리는 구성"
+    },
     {
       "id": "motionsites",
       "name": "MotionSites AI",
@@ -159,7 +457,10 @@
       "tech": [
         "<canvas> 1개가 화면 전체를 채우고 접근성 트리에는 canvas와 버튼 2개만 잡힌다. 스크립트는 번들 1개(약 4.9MB)와 분석 태그뿐. 번들에 three.js WebGPU 렌더러 코드(옵션 창에 \"Renderer WebGPU\" 표시), Rapier 물리, GSAP, Howler(소리)가 들어 있다. 다른 방문자 차가 보이고 말풍선(whisper)을 남기는 온라인 서버가 있다(\"Server connected\")"
       ],
-      "usedIn": [],
+      "usedIn": [
+        "JOOHO LAB 공간 갤러리 · 2026-10-01 · 초기화와 DOM 작품 목록 대체 경로; 2026-10-02 건물 정교화에서도 복귀·목록 경로 유지; 2026-10-03 별도 작업 동네 복원: 초기화/목록 대체/공간 탐색",
+        "운전·이미지·브랜드는 옮기지 않음"
+      ],
       "summary": "[레퍼런스] bruno-simon — Bruno Simon (https://bruno-simon.com/) · 패턴 drive-to-explore · ✅ 2026-09-30\n가져올 것: 공간을 돌아다니며 작업을 발견하는 탐색. \"Click to start\" 한 번으로 소리·시작을 묶고 카메라를 날려 주는 입장 연출, 메뉴에 조작 안내(키보드·터치·패드 탭)를 미리 두는 것, 길을 잃었을 때 쓰는 \"I'm stuck! Respawn\"·리셋·품질 설정, 지도로 위치를 보여 주는 보조 화면\n안 가져올 것: 작업 목록이 월드 안에만 있어 운전하지 않으면 못 보는 구조(DOM에 텍스트가 없어 읽기·검색도 어렵다), 차가 뒤집혀 길이 막히는 물리 조작을 필수로 두는 것, 약 5MB 번들과 WebGPU에 기대는 로딩, 방문자 차가 다 보이는 온라인 서버"
     },
     {
@@ -187,7 +488,9 @@
       "tech": [
         "Readymag로 만든 사이트(<meta generator=\"Readymag\">, st-p.rmcdn1.net/…/viewer.js, hls.js). 주소가 /1/~/5/ 페이지로 나뉜다. 화면은 .content-scroll-wrapper 안에서 스크롤되고(문서 자체는 스크롤되지 않음) 스티커는 <img>(rmwidget widget-picture … drag)다. <canvas> 1개(로고 글자 모핑용으로 추정), 오른쪽 필름 칸은 <video>"
       ],
-      "usedIn": [],
+      "usedIn": [
+        "JOOHO LAB · 2026-10-03 전시 대표 이미지: 그림 중심의 소개와 원본 종횡비 유지만 참고; 사이트 이미지·브랜드·격자 동작은 옮기지 않음"
+      ],
       "summary": "[레퍼런스] annamills — Anna Mills (https://annamills.xyz/) · 패턴 moodboard-canvas · ✅ 2026-09-30\n가져올 것: 스티커를 끌어 포스터를 만드는 참여형 무드보드(흩어 놓은 조각을 끌어 빈 판 위에 올리는 조작과 \"DRAG AND DROP\" 한 줄 안내), 첫 화면에서 글자만으로 메뉴를 세우는 간결함, 작업을 필름 스트립 영상으로 보여 주는 칸, 스크롤에 따라 로고 글자가 변하는 작은 모션\n안 가져올 것: 키보드·스크린리더로는 스티커에 닿지 않고 alt가 없는 구조, 초기화·완성본 저장 없이 끌기만 있는 놀이, 메뉴 글자가 이미지처럼 떠서 클릭 영역이 작은 배치, 끌 수 없는 사람을 위한 대체 경로(목록형)가 없는 무드보드"
     },
     {
@@ -215,7 +518,9 @@
       "tech": [
         "Readymag로 만든 사이트(<meta generator=\"Readymag\">, st-p.rmcdn1.net/…/viewer.js 하나). <canvas> 0개. 화면 요소는 전부 rmwidget widget-picture 그림 조각(<img>)이고 호버 애니메이션 표시(has-onhover-animation)가 붙은 조각은 홈에서 1개다. 주소는 /1/~/7/ 페이지로 나뉘며 페이지는 가로로 이어져 옆으로 넘어간다(추정)"
       ],
-      "usedIn": [],
+      "usedIn": [
+        "JOOHO LAB 작업 동네 · 2026-10-03 · 기존 집 그림에 이름 있는 DOM 링크를 대응하고 키보드·취소·목록 대체 제공; 원작 그림·폰트·소품 모션은 옮기지 않음"
+      ],
       "summary": "[레퍼런스] clarakirkpatrick — Clara Kirkpatrick (https://clarakirkpatrick.com/) · 패턴 hand-drawn · ✅ 2026-09-30\n가져올 것: 손그림 요소를 링크이자 메뉴로 쓰는 탐색(그림 속 물건을 눌러 작업으로 간다)과, 말풍선으로 사용법을 알려 주는 한 줄 안내, 호버 때 그림 한 조각만 움직이는 작은 장난(표지판 → 차가 빠진다)\n안 가져올 것: 제목·메뉴·말풍선 문구를 이미지에 굽는 것(우리 규칙: 문구는 레이어 파라미터, 이 사이트는 alt도 거의 없다), Tab으로 닿지 않고 키보드 대체 경로가 없는 그림 링크, 한 번 지나간 호버 모션이 돌아오지 않는 구조(되돌리기 없음), 문구 없는 그림만으로 메뉴를 알리는 것"
     },
     {
@@ -271,7 +576,9 @@
       "tech": [
         "Next.js 앱 라우터(/_next/static/chunks/app/(frontend)/page-….js)에 Tailwind 식 클래스(fixed inset-0 z-10 등)로 보인다(추정). 사진은 cdn.sanity.io 이미지 CDN(?w=960&h=640&fit=min&auto=format, 라이트박스는 w=1920). <canvas>·<video> 없음, 분석 스크립트 plausible.io. 처음 한 화면이 문서 스크롤 없이 4장(타일 8개 안팎)으로 끝난다"
       ],
-      "usedIn": [],
+      "usedIn": [
+        "JOOHO LAB · 2026-10-03 전시 대표 이미지: 그림 중심의 소개와 원본 종횡비 유지만 참고; 사이트 이미지·브랜드·격자 동작은 옮기지 않음"
+      ],
       "summary": "[레퍼런스] julesesick — Jules Esick (https://www.julesesick.com/) · 패턴 expand-gallery · ✅ 2026-09-30\n가져올 것: 사진을 누르면 그 자리에서 더 작은 여러 장으로 갈라지는 펼침(상세 화면으로 이동하지 않고 탐색이 이어진다), 호버 때만 나오는 크게 보기·좋아요 버튼, 라이트박스의 ←·→·Escape 키보드 조작과 닫은 뒤 포커스 복귀, 크게 볼 때 뒤를 그 사진 색으로 흐리게 까는 배경, 분류(Filter)·좋아요 묶음 내려받기 같은 작은 기능\n안 가져올 것: 갈라진 사진을 되돌릴 방법이 없는 것(접기·초기화 필요), 주소·히스토리가 바뀌지 않아 뒤로 가기가 사이트 이탈이 되는 구조, 같은 이름(Open lightbox)의 버튼 둘, alt 없는 사진, 호버에만 나오는 버튼이 터치에서는 닿지 않을 수 있는 구성, 새로고침마다 바뀌어 같은 사진을 다시 찾기 어려운 무작위 구성"
     }
   ]

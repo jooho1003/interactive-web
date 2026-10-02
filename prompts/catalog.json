@@ -16,6 +16,10 @@
     {
       "key": "jooho-lab",
       "title": "JOOHO LAB (허브)"
+    },
+    {
+      "key": "hanbok-hero",
+      "title": "한복 히어로"
     }
   ],
   "shared": {
@@ -791,6 +795,95 @@
         "설정": "원본 비율·해상도 유지, Pillow WebP quality=88, method=6",
         "출처": "http://127.0.0.1:8879/experiences/day-walk/play.html",
         "프롬프트": "해당 없음 — 실제 프로젝트 화면 캡처"
+      },
+      "prompts": []
+    },
+    {
+      "app": "hanbok-hero",
+      "appTitle": "한복 히어로",
+      "id": "hanbok-hero--01--정면-기준-컷-hanbok-still-",
+      "title": "01 · 정면 기준 컷 (hanbok-still) ✅",
+      "status": "ok",
+      "image": "projects/hanbok-hero/art/superseded/hanbok-still.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/hanbok-hero/art/superseded/hanbok-still.webp(2026-10-03까지 dist/assets/) · 2048×2048 · 262KB · 알파 있음(모서리 알파 0)",
+        "쓰이는 곳": "레이어 character 파라미터 still. 시트 로딩 전·동작 줄이기·react 끔·시트 실패 시 보이는 정면 그림. 시트가 반응 중이면 숨는다",
+        "도구·모드": "fal.ai fal-ai/flux-pro/kontext/max/multi (참조 2장 + 텍스트) → fal-ai/clarity-upscaler 2× → 로컬 rembg(isnet-general-use, alpha matting) · 2026-10-03",
+        "참조 이미지": "1) 화풍: 등불 든 소녀 콘셉트 아트(사용자 제공, docs/참고/풍.jpg, 미추적) 2) 디자인: 갓 쓴 선비 일러스트(사용자 제공, docs/참고/디자인.jpg, 미추적). 둘 다 외부 작가 작품 — 그대로 옮기지 않는다",
+        "설정": "image_urls: [화풍, 디자인] · seed: 8 · aspect_ratio: 1:1 · guidance_scale: 3.5 · safety_tolerance: 2 · 출력 1024² → clarity 2048² → webp q90"
+      },
+      "prompts": [
+        {
+          "label": "프롬프트 원문",
+          "lang": "text",
+          "prepend": null,
+          "text": "Paint a NEW portrait. Painting style: copy the FIRST image exactly — rough dry-brush strokes, scratchy canvas grain, soft smudged edges, muted desaturated palette, dusty warm light, semi-realistic anime face with large calm eyes. Character design and colors: copy the SECOND image's outfit faithfully — a Korean Joseon scholar wearing a black gat hat (tall flat-topped crown, wide round brim, a string of jade and amber beads hanging under the chin), a white dopo overcoat with wide deep-navy-blue borders on the collar, sleeve ends and hem, a tan-peach inner robe, a long peach-brown sash tied at the waist with a blue cord, red tassel ornaments, and books bound with cord at his side. Keep these exact colors: white, deep navy blue, tan peach-brown, black, small red accents. Pose: front-facing, framed from the top of the gat to the waist so the face is large, the gat tilted back so his whole face is visible, eyes looking straight at the viewer, shoulders square, hands folded at the waist. Centered with generous margin on a perfectly plain flat uniform light gray backdrop. No scroll, no leaves, no text, no calligraphy, no watermark, no signature, no logo, no floor line."
+        }
+      ]
+    },
+    {
+      "app": "hanbok-hero",
+      "appTitle": "한복 히어로",
+      "id": "hanbok-hero--02--33-방향-시트-hanbok-sheet-",
+      "title": "02 · 3×3 방향 시트 (hanbok-sheet) ✅",
+      "status": "ok",
+      "image": "projects/hanbok-hero/art/superseded/hanbok-sheet.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/hanbok-hero/art/superseded/hanbok-sheet.webp(2026-10-03까지 dist/assets/) · 3072×3072(칸 1024, 칸마다 4px 투명 여백) · 607KB · 알파 있음",
+        "쓰이는 곳": "레이어 character 파라미터 sheet. 포인터 방향에 따라 칸을 즉시 교체(fade·follow 0 — 크로스페이드는 두 머리가 겹쳐 잔상처럼 보여 껐다). 행: 좌상·상·우상 / 좌·정면·우 / 좌하·하·우하",
+        "도구·모드": "fal.ai fal-ai/kling-video/v2.1/standard/image-to-video (01의 1024² 원본 입력) → ffmpeg fps=3 30프레임 → 로컬 rembg 9장 → ffmpeg xstack 조립 · 2026-10-03",
+        "참조 이미지": "01 원본(Kontext 출력, 배경 제거 전)",
+        "설정": "duration: \"10\" · cfg_scale: 0.5 · negative_prompt: \"blur, distortion, extra people, camera movement, zoom, text, watermark, hands moving\" · 출력 1440×1440 24fps · webp q88"
+      },
+      "prompts": [
+        {
+          "label": "프롬프트 원문",
+          "lang": "text",
+          "prepend": null,
+          "text": "Static camera, plain backdrop, the painted Korean Joseon scholar in a black gat hat and white dopo keeps his body, shoulders, hands and hat perfectly still. Only his head and eyes move, slowly and smoothly, like he is following something near the viewer. No zoom, no camera motion, no other people, consistent lighting. Sequence: he turns his head and eyes to look to his left, returns to center, turns to look to his right, returns to center, then looks up, returns to center, then looks down, and returns to center."
+        }
+      ]
+    },
+    {
+      "app": "hanbok-hero",
+      "appTitle": "한복 히어로",
+      "id": "hanbok-hero--03--배경--경회루-야경-palace-",
+      "title": "03 · 배경 — 경회루 야경 (palace) ✅",
+      "status": "ok",
+      "image": "projects/hanbok-hero/dist/assets/palace.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/hanbok-hero/dist/assets/palace.webp · 1920×1072 · 111KB",
+        "쓰이는 곳": "레이어 paper 파라미터 image(cover). 위에 vignette 0.5",
+        "도구·모드": "fal.ai fal-ai/flux-pro/v1.1-ultra 텍스트→이미지 · 2026-10-02 (정정 전 생성; 다음 교체 시 Codex)",
+        "참조 이미지": "없음",
+        "설정": "aspect_ratio: 16:9 · seed: 23 · raw: false · 출력 2752×1536 → 1920 폭 webp q82"
+      },
+      "prompts": [
+        {
+          "label": "프롬프트 원문",
+          "lang": "text",
+          "prepend": null,
+          "text": "Photographic cinematic wide shot of Gyeonghoeru pavilion at Gyeongbokgung Palace, Seoul, KOREA at dusk, for a website hero background: the large Korean wooden pavilion with a curved grey giwa roof and tall stone pillars standing in a still lotus pond, reflections on the water, willow and pine trees, Inwangsan mountain behind, soft indigo blue-hour sky with a thin moon, warm lantern glow, slight haze. Authentically Korean Joseon architecture, not Chinese, not Japanese, no red sun, no flags, no people, no text, no signboard, no nameplate, no hanging plaques under the eaves, bare wooden eaves only."
+        }
+      ]
+    },
+    {
+      "app": "hanbok-hero",
+      "appTitle": "한복 히어로",
+      "id": "hanbok-hero--04--몸-고정--얼굴-시트-scholar-still--scholar-body--scholar-heads-",
+      "title": "04 · 몸 고정 + 얼굴 시트 (scholar-still · scholar-body · scholar-heads) ✅",
+      "status": "none",
+      "image": "projects/hanbok-hero/dist/assets/scholar-heads.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/hanbok-hero/dist/assets/scholar-still.webp 1440×1440 · 112KB / scholar-body.webp 1440×1440 · 71KB / scholar-heads.webp 7644×952(칸 588×476, 13×2) · 660KB · 셋 다 알파(모서리 알파 0)",
+        "쓰이는 곳": "레이어 character — still 정면 그림(반응 전·동작 줄이기·react 끔·실패 시), body 얼굴 자리를 비운 몸(반응 중), sheet 얼굴 칸(창 headX 22.917 · headY 0 · headW 58.333 · headH 47.222 %, cols 13 · rows 2). 쉬는 칸(아래 행 가운데) + 몸 = 정면 그림",
+        "도구·모드": "새 생성 없음. 02의 Kling 영상(1440² 24fps 241프레임) → 로컬 rembg(isnet-general-use, 알파 매팅) → projects/hanbok-hero/scripts/assets/build-heads.py(위상 상관으로 몸 흔들림 정렬 + TV-L1 광학 흐름으로 깃 맞춤 + 띠 섞기) → PIL WebP · 2026-10-03",
+        "참조 이미지": "없음(02 영상 프레임만)",
+        "설정": "기준 몸 프레임 110 · 위 행 56 50 44 38 32 26 2 136 142 148 156 164 170 · 아래 행 80 84 88 92 96 102 110 212 208 204 200 198 196 · 머리 영역 x330–1170 y0–680 · 깃 맞춤 띠 y450–530 · 색 섞기 띠 y455–620 · 가장자리 페더 30px · 축소 0.7 · WebP q88(정면·몸) / q86(시트)"
       },
       "prompts": []
     }
