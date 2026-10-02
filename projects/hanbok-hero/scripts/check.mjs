@@ -13,7 +13,7 @@ for (const file of ['studio.js', 'bridge.js']) {
   const syntax = spawnSync(process.execPath, ['--check', fileURLToPath(new URL('../admin/' + file, import.meta.url))], { encoding: 'utf8' });
   if (syntax.status !== 0) throw new Error(syntax.stderr);
 }
-for (const marker of ['class="gaze-range"', 'class="character-still"', 'sheet-frame sheet-a', 'class="character-sheet"', 'class="hint-pointer"', 'class="hint-touch"']) {
+for (const marker of ['class="gaze-range"', 'class="character-still"', 'class="character-body"', 'class="character-head"', 'class="character-sheet"', 'class="hint-pointer"', 'class="hint-touch"']) {
   if (!html.includes(marker)) throw new Error('Missing element: ' + marker);
 }
 console.log(`PASS: entrypoint, ${new Set(refs).size} local assets, syntax, required elements.`);

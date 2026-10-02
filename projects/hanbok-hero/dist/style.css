@@ -10,16 +10,15 @@ body { margin: 0; min-height: 100vh; overflow: hidden; opacity: var(--L-global-o
 .paper::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: var(--L-paper-vignette); background-image: radial-gradient(ellipse at center, transparent var(--L-paper-vignetteInner), rgba(0, 0, 0, 1) 100%); } /* layer-fixed: 비네트 모양(중앙 타원)과 끝 색(검정) — 세기는 vignette가 맡는다 */
 
 .character { position: absolute; left: var(--L-character-x); top: var(--L-character-y); width: var(--L-character-size); aspect-ratio: 1; translate: -50% -50%; visibility: var(--L-character-visible); opacity: var(--L-character-opacity); } /* layer-fixed: 정사각 상자, 중심 기준 배치 */
-/* JS가 읽는 값의 정본: 반응 범위(크기), 시선 기준점(top), 되돌아오는 시간(transition-delay) */
-.gaze-range { position: absolute; left: 50%; top: var(--L-character-anchorY); width: calc(var(--L-character-range) * 2); height: calc(var(--L-character-range) * 2); translate: -50% -50%; border-radius: 50%; pointer-events: none; visibility: hidden; transition-delay: var(--L-character-returnDelay); } /* layer-fixed: 보이지 않는 측정용 원 — 가로 중앙, 지름 = range × 2 */
-.character-still { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; user-select: none; -webkit-user-drag: none; } /* layer-fixed: 정면 그림은 상자를 채운다 */
-.character.use-sheet .character-still { visibility: hidden; } /* layer-fixed: 시트가 반응 중이면 정면 그림을 숨겨 이중 외곽선을 막는다 */
-.sheet-frame { position: absolute; inset: 0; overflow: hidden; opacity: 0; z-index: 1; --in-gaze-col: 1; --in-gaze-row: 1; visibility: var(--L-character-react); transition: none; } /* layer-fixed: 두 겹 프레임 — 기본은 투명, 칸 번호는 JS가 넣는다 */
-.sheet-frame.is-front { opacity: 1; z-index: 2; transition: opacity var(--L-character-fade) ease var(--L-character-follow); } /* layer-fixed: 들어오는 프레임만 위에서 페이드(기본 0ms = 즉시 교체, 잔상 없음). 전환 이징은 디자인 고정 */
-.sheet-frame.was-front { opacity: 1; z-index: 1; transition: none; } /* layer-fixed: 나가는 프레임은 페이드가 끝날 때까지 불투명하게 아래에 둔다 */
-.sheet-frame.is-instant { transition: none; } /* layer-fixed: 첫 프레임은 정면 그림과 같은 칸이라 페이드 없이 바꾼다 */
-/* layer-fixed: 시트 칸 계산식 — 이미지를 cols×rows 배로 키우고 한 칸만큼 밀어 보여 준다 */
-.character-sheet { position: absolute; left: 0; top: 0; width: calc(var(--L-character-cols) * 100%); height: calc(var(--L-character-rows) * 100%); translate: calc(var(--in-gaze-col) * -100% / var(--L-character-cols)) calc(var(--in-gaze-row) * -100% / var(--L-character-rows)); user-select: none; -webkit-user-drag: none; }
+/* JS가 읽는 값의 정본: 반응 범위(크기), 시선 기준점(top), 따라가는 시간(transition-duration), 되돌아오는 시간(transition-delay) */
+.gaze-range { position: absolute; left: 50%; top: var(--L-character-anchorY); width: calc(var(--L-character-range) * 2); height: calc(var(--L-character-range) * 2); translate: -50% -50%; border-radius: 50%; pointer-events: none; visibility: hidden; transition-property: none; transition-duration: var(--L-character-follow); transition-delay: var(--L-character-returnDelay); } /* layer-fixed: 보이지 않는 측정용 원 — 가로 중앙, 지름 = range × 2, 실제로 전환하는 속성은 없다 */
+.character-still, .character-body { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; user-select: none; -webkit-user-drag: none; } /* layer-fixed: 정면 그림·몸 그림은 같은 상자를 채운다 */
+.character-body, .character-head { visibility: hidden; } /* layer-fixed: 얼굴 시트가 준비되기 전에는 정면 그림만 */
+.character.use-sheet .character-still { visibility: hidden; } /* layer-fixed: 반응 중에는 몸 + 얼굴 칸이 정면 그림을 대신한다(정면 칸 + 몸 = 정면 그림) */
+.character.use-sheet .character-body, .character.use-sheet .character-head { visibility: var(--L-character-react); }
+.character-head { position: absolute; left: var(--L-character-headX); top: var(--L-character-headY); width: var(--L-character-headW); height: var(--L-character-headH); overflow: hidden; --in-cell-x: 0; --in-cell-y: 0; } /* layer-fixed: 얼굴 칸 창 — 한 칸만 보이고 칸 번호는 JS가 넣는다 */
+/* layer-fixed: 시트 칸 계산식 — 이미지를 cols×rows 배로 키우고 한 칸만큼 밀어 보여 준다. 창 하나에서 칸만 바꾸므로 두 얼굴이 겹치는 순간(잔상)이 없다 */
+.character-sheet { position: absolute; left: 0; top: 0; max-width: none; width: calc(var(--L-character-cols) * 100%); height: calc(var(--L-character-rows) * 100%); translate: calc(var(--in-cell-x) * -100% / var(--L-character-cols)) calc(var(--in-cell-y) * -100% / var(--L-character-rows)); user-select: none; -webkit-user-drag: none; }
 
 .title { position: absolute; left: var(--L-title-x); top: var(--L-title-y); margin: 0; font-family: var(--L-title-font); color: var(--L-title-color); visibility: var(--L-title-visible); opacity: var(--L-title-opacity); text-shadow: 0 1px 2px rgba(0, 0, 0, .45); } /* layer-fixed: 절대 배치, 제목 기본 여백 제거, 어두운 배경 대비용 얇은 그림자 */
 .title-name { display: block; font-size: var(--L-title-size); font-weight: var(--L-title-weight); letter-spacing: var(--L-title-letterSpacing); line-height: var(--L-title-lineHeight); } /* layer-fixed: 이름은 한 줄 블록 */
@@ -39,4 +38,4 @@ body { margin: 0; min-height: 100vh; overflow: hidden; opacity: var(--L-global-o
 
 @media (hover: none) { .hint-pointer { display: none; } } /* layer-fixed: 입력 방식별 안내 */
 @media (hover: hover) { .hint-touch { display: none; } } /* layer-fixed: 입력 방식별 안내 */
-@media (prefers-reduced-motion: reduce) { .sheet-frame { visibility: hidden; transition: none; } .hint { animation: none; visibility: hidden; } } /* layer-fixed: 동작 줄이기 */
+@media (prefers-reduced-motion: reduce) { .character.use-sheet .character-still { visibility: visible; } .character.use-sheet .character-body, .character.use-sheet .character-head { visibility: hidden; } .hint { animation: none; visibility: hidden; } } /* layer-fixed: 동작 줄이기 */

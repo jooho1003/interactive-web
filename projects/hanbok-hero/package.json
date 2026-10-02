@@ -8,7 +8,6 @@
     "build": "node scripts/build-layers.mjs && node scripts/check.mjs",
     "check": "node --test scripts/*.test.mjs && node scripts/check.mjs && node scripts/layer-check.mjs",
     "layers:build": "node scripts/build-layers.mjs",
-    "layers:lint": "node scripts/layer-check.mjs",
-    "assets:placeholder": "node scripts/make-placeholders.mjs"
+    "layers:lint": "node scripts/layer-check.mjs"
   }
 }

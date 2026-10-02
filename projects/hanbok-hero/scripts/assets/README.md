@@ -11,6 +11,9 @@
 | `gen-video.mjs` | 정면 컷 URL로 머리 돌리는 영상 (`fal-ai/kling-video/v2.1/standard/image-to-video`, 10초) — `node gen-video.mjs <원본 PNG의 fal URL>` |
 | `frames.mjs` | 영상에서 프레임 추출 + 번호 격자 — `node frames.mjs head-turn.mp4 fr 3` |
 | `rmbg-batch.mjs` | 고른 프레임 번호들을 업로드 → 배경 제거(동시 5개씩, fal 동시 요청 한도 10) — `node rmbg-batch.mjs fr alpha 20 23 10 …` |
+| `build-heads.py` | **2026-10-03 현재 화면에 쓰는 세 장**을 만든다: 영상 프레임 + rembg 알파 → 몸 흔들림 정렬(위상 상관) → 목 아래 띠에서 광학 흐름으로 깃을 맞추며 기준 몸(프레임 110)과 섞기 → 머리 영역만 13×2 시트. `python build-heads.py <프레임 폴더> <알파 폴더> <출력 폴더> [--preview]` — 칸 배치·영역·띠는 파일 위 상수 |
 | `assemble.mjs` | 프레임을 칸 크기로 맞춰 `xstack`으로 시트 조립(칸마다 4px 투명 여백) — `node assemble.mjs out.png 1024 3 3 <9개 파일>` |
 
 순서: `gen-queen` → 고르기 → `rmbg`(정면) → `gen-video` → `frames` → 얼굴 격자 보고 번호 고르기 → `rmbg-batch` → `assemble` → `ffmpeg -c:v libwebp -quality 88 -pix_fmt yuva420p`로 webp. 배경은 `gen-background` → 고르기 → `ffmpeg -vf scale=1920:-2 -c:v libwebp -quality 82`.
+
+2026-10-03 얼굴 시트: `ffmpeg -i scholar-seq10.mp4 -start_number 0 full/f%03d.png` → 고른 프레임만 `rembg-local.py`와 같은 설정으로 알파 → `build-heads.py` → PIL WebP(정면·몸 q88, 시트 q86). 원본 영상(`scholar-seq10.mp4`, 1440² 24fps 10초)은 저장소에 넣지 않는다(`.gitignore`의 `*.mp4`).

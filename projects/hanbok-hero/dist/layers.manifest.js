@@ -205,38 +205,83 @@ export default {
         "still": {
           "label": "정면 그림",
           "type": "image",
-          "default": "./assets/hanbok-still.webp",
+          "default": "./assets/scholar-still.webp",
           "attr": [
             "img.character-still",
             "src"
           ]
         },
-        "sheet": {
-          "label": "방향 시트",
+        "body": {
+          "label": "몸 그림(얼굴 자리 비움)",
           "type": "image",
-          "default": "./assets/hanbok-sheet.webp",
+          "default": "./assets/scholar-body.webp",
+          "attr": [
+            "img.character-body",
+            "src"
+          ]
+        },
+        "sheet": {
+          "label": "얼굴 방향 시트",
+          "type": "image",
+          "default": "./assets/scholar-heads.webp",
           "attr": [
             "img.character-sheet",
             "src"
           ]
         },
         "cols": {
-          "label": "시트 가로 칸 수",
+          "label": "시트 가로 칸 수(좌→우 고개 방향)",
           "type": "number",
-          "default": 3,
+          "default": 13,
+          "min": 1,
+          "max": 25,
+          "step": 1,
+          "unit": ""
+        },
+        "rows": {
+          "label": "시트 세로 칸 수(위 행 = 얼굴 높이, 아래 행 = 아래를 봄)",
+          "type": "number",
+          "default": 2,
           "min": 1,
           "max": 5,
           "step": 1,
           "unit": ""
         },
-        "rows": {
-          "label": "시트 세로 칸 수",
+        "headX": {
+          "label": "얼굴 칸 가로 위치",
           "type": "number",
-          "default": 3,
+          "default": 22.917,
+          "min": -50,
+          "max": 150,
+          "step": 0.001,
+          "unit": "%"
+        },
+        "headY": {
+          "label": "얼굴 칸 세로 위치",
+          "type": "number",
+          "default": 0,
+          "min": -50,
+          "max": 150,
+          "step": 0.001,
+          "unit": "%"
+        },
+        "headW": {
+          "label": "얼굴 칸 너비",
+          "type": "number",
+          "default": 58.333,
           "min": 1,
-          "max": 5,
-          "step": 1,
-          "unit": ""
+          "max": 100,
+          "step": 0.001,
+          "unit": "%"
+        },
+        "headH": {
+          "label": "얼굴 칸 높이",
+          "type": "number",
+          "default": 47.222,
+          "min": 1,
+          "max": 100,
+          "step": 0.001,
+          "unit": "%"
         },
         "x": {
           "label": "가로 위치",
@@ -302,25 +347,16 @@ export default {
           }
         },
         "follow": {
-          "label": "따라가는 지연",
+          "label": "따라가는 시간(작을수록 바로 따라감)",
           "type": "number",
-          "default": 0,
-          "min": 0,
-          "max": 1000,
-          "step": 10,
-          "unit": "ms"
-        },
-        "fade": {
-          "label": "크로스페이드",
-          "type": "number",
-          "default": 0,
+          "default": 110,
           "min": 0,
           "max": 1000,
           "step": 10,
           "unit": "ms"
         },
         "returnDelay": {
-          "label": "되돌아오는 시간",
+          "label": "창을 떠난 뒤 정면으로 돌아오는 시간",
           "type": "number",
           "default": 900,
           "min": 0,
@@ -756,19 +792,19 @@ export default {
   ],
   "fixed": [
     {
-      "reason": "레이아웃(absolute 무대, 정사각 캐릭터 상자, 두 겹 프레임 overflow, 글자 크기 기준 100%·기본 여백 0)과 시트 칸 계산식(cols·rows에서 유도)은 구조다."
+      "reason": "레이아웃(absolute 무대, 정사각 캐릭터 상자, 얼굴 칸 창 overflow, 글자 크기 기준 100%·기본 여백 0)과 시트 칸 계산식(cols·rows에서 유도)은 구조다."
     },
     {
-      "reason": "크로스페이드는 들어오는 프레임만 나가는 프레임 위에서 페이드하고, 나가는 프레임은 페이드가 끝날 때까지 불투명하게 아래에 둔다. 시트가 반응 중이면(use-sheet) 정면 그림을 숨겨 이중 외곽선을 막는다. 첫 프레임은 정면 그림과 같은 칸이라 페이드 없이 바꾼다. 모두 두 겹 프레임 구조의 일부다."
+      "reason": "얼굴 칸은 창 하나에서 칸 번호만 바꾼다(크로스페이드 없음 — 두 얼굴이 겹치면 잔상이 된다). 반응 중(use-sheet)에는 정면 그림 대신 몸 그림 + 얼굴 칸을 보이고, 정면 칸 + 몸 그림은 정면 그림과 픽셀이 같아 바뀌는 순간이 보이지 않는다. 얼굴 칸 창 위치·크기(headX·headY·headW·headH)는 시트를 만든 영역과 같아야 한다(scripts/assets/build-heads.py RECT)."
     },
     {
-      "reason": "크로스페이드·안내 페이드의 이징(ease)은 디자인 고정이다. 길이와 지연은 character.fade·character.follow·hint.fade·hint.hideAfter가 맡는다."
+      "reason": "안내 페이드의 이징(ease)은 디자인 고정이다. 길이와 지연은 hint.fade·hint.hideAfter가 맡는다. 고개가 따라가는 곡선은 지수 감쇠로 고정하고 시간 상수만 character.follow로 연다."
     },
     {
       "reason": "비네트 모양(중앙 타원)과 끝 색(검정)은 고정하고 세기(vignette)와 시작 위치(vignetteInner)만 파라미터로 둔다. 보조 글(소개)은 기본 굵기 400이다."
     },
     {
-      "reason": "gaze.js의 히스테리시스 문턱(ENTER 0.38 · LEAVE 0.28)은 입력 안정성 상수다. 파라미터로 열면 떨림 방지 보증이 깨진다."
+      "reason": "gaze.js의 칸 경계 히스테리시스(HYSTERESIS 0.15칸)는 입력 안정성 상수다. 파라미터로 열면 경계에서 떨림 방지 보증이 깨진다."
     },
     {
       "reason": "문서 메타(title·description·alt)는 build-layers가 src만 다시 쓰므로 바인딩하지 않는다; 정면 그림을 바꾸면 alt를 손으로 고친다."
@@ -777,7 +813,7 @@ export default {
       "reason": "보이기 끔은 호스트가 data-layer-hidden 속성으로 표시하고 CSS가 display:none으로 받는다. 포커스 링 색·터치 타깃 크기는 접근성 대비를 위해 고정한다."
     },
     {
-      "reason": "입력 방식(hover) 미디어 규칙으로 포인터/터치 안내를 고르고, prefers-reduced-motion에서 시트 프레임을 숨기는 것은 기능 구조다."
+      "reason": "입력 방식(hover) 미디어 규칙으로 포인터/터치 안내를 고르고, prefers-reduced-motion에서 몸 그림·얼굴 칸을 숨기고 정면 그림을 보이는 것은 기능 구조다."
     },
     {
       "reason": "메뉴는 가운데 정렬(translate -50%)이라 nav.x는 가운데 기준이다. 글꼴 후보 목록(Noto Serif KR·Song Myung·Nanum Myeongjo·시스템)은 index.html의 Google Fonts 링크와 짝이며, 목록 밖 글꼴은 불러오지 않는다."

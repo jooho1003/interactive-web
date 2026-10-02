@@ -2,12 +2,14 @@
 
 브랜치 `hanbok-hero`(main `0003760`에서 분기). 코드·관리자·검수·문서가 끝났고, **실제 그림도 넣었다** — 2026-10-03 확정: 갓 쓴 조선 선비(사용자 참조 2장 — 화풍 `docs/참고/풍.jpg`, 디자인 `docs/참고/디자인.jpg`, 둘 다 미추적 외부 작품)를 Kontext multi로 만든 `hanbok-still.webp`·Kling 영상에서 뽑은 `hanbok-sheet.webp`, 경회루 야경 `palace.webp`. 카드는 ✅, 재검수는 QA.md 마지막 절. **규칙: 정지 이미지는 Codex `image_gen`(또는 `codex exec`)으로, fal은 영상에만.** fal 잔액은 2026-10-03 소진 — 영상이 더 필요하면 충전 뒤 진행. 배경 제거는 `scripts/assets/rembg-local.py`(Python `rembg`)로 로컬 처리한다. 사용자 피드백으로 바뀐 점: 크로스페이드 대신 즉시 교체, 화면 높이만큼 큰 인물, 명조 웹폰트, 버튼 레이어, 어두운 팔레트. **국적 단서 주의**: 노란 병풍+붉은 원은 일장기로, 붉은 기둥+금색은 중국풍으로 읽힌다 — 경회루·박석·뇌록 단청·쪽머리처럼 한국 고유 명사를 프롬프트에 박고 "not Chinese, not Japanese"를 넣는다. 아래 §1은 다시 만들거나 다른 캐릭터로 바꿀 때의 절차다. 재현 스크립트는 `scripts/assets/`. 작업 규칙은 `AGENTS.md`(레이어 계약, 에셋 프롬프트 기록)를 따른다.
 
+**2026-10-03 얼굴 따라가기 재작업** — 3×3 전체 프레임 시트를 버리고 "몸 한 장 고정 + 얼굴 칸 13×2"로 바꿨다(`scholar-still`·`scholar-body`·`scholar-heads`, 같은 Kling 영상에서 `scripts/assets/build-heads.py`로 로컬 생성). 크로스페이드·두 겹 프레임을 없애고 연속 좌표로 사이 칸을 하나씩 지나며 따라간다. 마우스가 멈춰도 계속 바라보고 창을 떠날 때만 정면으로 돌아온다. 이전 정면 컷·3×3 시트는 `art/superseded/`, 자리표시 생성기(`make-placeholders`)는 새 칸 구조와 맞지 않아 지웠다. 아래 §1·§2는 그 전 기록이며, §2의 1·4·5번은 이번에 해결됐다. 검수 결과는 QA.md "2026-10-03 얼굴 따라가기 재작업".
+
 ## 현재 상태
 
 | 항목 | 상태 |
 |---|---|
 | 실행 | `pnpm --filter hanbok-hero dev` → http://localhost:4178 (관리자 `/admin`) |
-| 검사 | `pnpm --filter hanbok-hero check` 통과 — 테스트 5, lint 6 layers / 59 parameters, 오류 0 |
+| 검사 | `pnpm --filter hanbok-hero check` 통과 — 테스트 4, lint 7 layers / 74 parameters, 오류 0 (2026-10-03) |
 | 브라우저 검수 | `dist/qa/browser-checks.js` — probe 59/59, `runChecks` 22, 동작 줄이기 4, 390px 6, 시트 실패·회복 5 (Playwright MCP Chromium, 자리표시 에셋 기준). 절차·결과는 [QA.md](QA.md) |
 | 설계·플랜 | `.claude/plans/2026-10-02-hanbok-hero.md`, `.claude/plans/2026-10-02-hanbok-hero-plan.md` |
 | 프롬프트 카드 | [`prompts/hanbok-hero.md`](../../prompts/hanbok-hero.md) — 01 정면 컷, 02 3×3 시트, 둘 다 ⏸ |
