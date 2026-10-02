@@ -16,6 +16,12 @@ try{
   click('#space-view');await wait(()=>inspectScene().geometries>7);
   check('scene uses real meshes',inspectScene().geometries>7&&inspectScene().drawCalls>0,JSON.stringify(inspectScene()));check('seven project selectors',$('#gallery-pagination').children.length===7);
   await wait(()=>inspectScene().posters===7);check('all seven posters have loaded imagery',inspectScene().posters===7);
+  check('architecture exports real PBR normal and roughness maps',inspectScene().surfaces.normalMap&&inspectScene().surfaces.roughnessMap);
+  check('photographed HDRI environment loaded',inspectScene().surfaces.environment==='HDRI');
+  check('photographed gravel PBR maps loaded',inspectScene().surfaces.gravelMaps);
+  check('six repeating architectural materials / separate AO',inspectScene().surfaces.detailMaterials===6&&inspectScene().surfaces.occlusionMap);
+  check('baked gallery fixtures cover every artwork',inspectScene().surfaces.galleryLights===projects.length&&inspectScene().surfaces.galleryLightMap);
+  await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
   check('seven representative screenshots',projects.every(p=>p.image?.startsWith('./assets/work-'))&&$('#gallery-pagination').querySelectorAll('img').length===7);
   check('no horizontal overflow',document.documentElement.scrollWidth<=innerWidth+1);
   setPreferences({...savedPreferences,motion:'full'});
@@ -24,7 +30,7 @@ try{
   check('default mode is sequential camera tour',$('#movement-toggle').getAttribute('aria-pressed')==='false');
   click('#movement-toggle');check('drag mode preserves page wheel',!wheel(120)&&inspectScene().state==='exterior');click('#movement-toggle');
   check('pinch zoom preserved',!wheel(120,{ctrlKey:true}));check('horizontal scroll preserved',!wheel(4,{deltaX:100}));
-  const t=performance.now();check('wheel advances into hall',wheel(120));wheel(120);check('same gesture cannot skip hall',inspectScene().destination==='hall');await wait(()=>inspectScene().state==='hall');check('real doorway / hall destination',Math.abs(inspectScene().camera[2]-3)<.01);check('travel is time based',performance.now()-t<8500);
+  const t=performance.now();check('wheel advances into hall',wheel(120));wheel(120);check('same gesture cannot skip hall',inspectScene().destination==='hall');await wait(()=>inspectScene().state==='hall');check('real doorway / hall destination',Math.abs(inspectScene().camera[2]-3)<.01);check('travel is time based',performance.now()-t<8500,String(performance.now()-t));
   const approachStart=performance.now();wheel(120);await wait(()=>inspectScene().state==='project');const first=$('#gallery-pagination button').dataset.id;check('hall advances to first work',inspectScene().selected===first);
   check('slow approach to close viewing aisle',performance.now()-approachStart>=3000&&Math.abs(inspectScene().camera[2]+4.185)<.001);
   const imageWidth=()=>Math.max(...inspectScene().artwork.corners.map(p=>p.x))-Math.min(...inspectScene().artwork.corners.map(p=>p.x));
@@ -75,16 +81,22 @@ try{
   check('Escape only releases movement control',$('#movement-toggle').getAttribute('aria-pressed')==='false'&&inspectScene().state==='hall');
   $('#space').dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}));check('second Escape exits hall',inspectScene().state==='exterior');
   // Probe each layer parameter against its concrete attribute or computed-style binding.
-  const props={opacity:'opacity',visible:'visibility',x:'left',y:'top',size:'width',color:'color',height:'height',width:'width',gap:'gap',bottom:'bottom',paper:'background-color',ink:'color'};
+  const props={opacity:'opacity',visible:'visibility',x:'left',y:'top',size:'width',color:'color',height:'height',width:'width',gap:'gap',bottom:'bottom',paper:'background-color',ink:'color',shade:'opacity',brightness:'filter'};
   for(const layer of layerHost.manifest.layers)for(const [key,param]of Object.entries(layer.params)){
     const node=param.attr?$(param.attr[0]):$(layer.el.split(',')[0]);
     const property=layer.id==='intro'&&key==='size'?'font-size':layer.id==='landscape'&&key==='color'?'background-color':props[key];
-    const target=layer.id==='intro'&&key==='size'?$('.intro h1'):layer.id==='landscape'&&key==='color'?$('.exhibition'):layer.id==='rail'&&key==='size'?$('.film-card'):key==='paper'||key==='ink'?$('.index-section'):node;
-    const before=param.attr?node.getAttribute(param.attr[1]):key==='visible'?node.hasAttribute('data-layer-hidden'):getComputedStyle(target).getPropertyValue(property);
+    const target=key==='shade'?$('.space'):layer.id==='intro'&&key==='size'?$('.intro h1'):layer.id==='landscape'&&key==='color'?$('.exhibition'):layer.id==='rail'&&key==='size'?$('.film-card'):key==='paper'||key==='ink'?$('.index-section'):node;
+    const computed=()=>getComputedStyle(target,key==='shade'?'::after':null).getPropertyValue(property);
+    const before=param.attr?node.getAttribute(param.attr[1]):key==='visible'?node.hasAttribute('data-layer-hidden'):computed();
     const current=layerHost.get(layer.id,key);let value=param.type==='boolean'?!current:param.type==='number'?(current===param.min?param.max:param.min):param.type==='color'?'#193da9':param.type==='image'?'./assets/dawn.webp':'테스트 입장';
-    layerHost.setValues(setValue(savedLayers,layerHost.scene,'base',layer.id,key,value));await new Promise(r=>requestAnimationFrame(r));
-    const after=param.attr?node.getAttribute(param.attr[1]):key==='visible'?node.hasAttribute('data-layer-hidden'):getComputedStyle(target).getPropertyValue(property);
-    check(`layer ${layer.id}.${key}`,before!==after,`${before} -> ${after}`);layerHost.setValues(savedLayers);
+    // CSS/attribute bindings are synchronous; renderer uniforms update in the
+    // MutationObserver microtask. A timer observes both without waiting for a
+    // throttled background iframe animation frame for every parameter.
+    layerHost.setValues(setValue(savedLayers,layerHost.scene,'base',layer.id,key,value));await new Promise(r=>setTimeout(r,40));
+    const after=param.attr?node.getAttribute(param.attr[1]):key==='visible'?node.hasAttribute('data-layer-hidden'):computed();
+    check(`layer ${layer.id}.${key}`,before!==after,`${before} -> ${after}`);
+    if(layer.id==='stage'&&key in inspectScene().surfaces)check(`renderer ${key}`,inspectScene().surfaces[key]===value,JSON.stringify(inspectScene().surfaces));
+    layerHost.setValues(savedLayers);
   }
   check('renderer survives layer changes',inspectScene().drawCalls>0);
   layerHost.setValues(setValue(savedLayers,'all','base','shell','visible',false));check('hidden shell preserves settings recovery',getComputedStyle($('#settings-open')).display!=='none'&&!$('#settings-open').closest('[data-layer-hidden]'));layerHost.setValues(savedLayers);

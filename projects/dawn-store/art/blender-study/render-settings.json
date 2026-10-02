@@ -1,0 +1,18 @@
+{
+  "engine": "Cycles",
+  "resolution": [
+    1920,
+    1080
+  ],
+  "seed": 31,
+  "cameras": [
+    {
+      "name": "counter",
+      "samples": 256
+    },
+    {
+      "name": "coffee",
+      "samples": 128
+    }
+  ]
+}

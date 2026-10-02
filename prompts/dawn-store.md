@@ -271,3 +271,26 @@ ffmpeg -i in.png -vf "scale=1920:-2" -c:v libwebp -quality 80 -compression_level
 ```
 
 한도는 컷당 400KB, 전체 3MB다. 넘으면 quality를 70으로 낮추고, 그래도 넘으면 긴 변을 1600으로 줄인다.
+
+### 12 · blender-night-store — 계산대·커피 렌더 시험
+
+<img src="../projects/dawn-store/art/blender-study/counter.webp" width="480">
+<img src="../projects/dawn-store/art/blender-study/coffee.webp" width="480">
+
+| 항목 | 내용 |
+|---|---|
+| 파일 | `projects/dawn-store/art/blender-study/counter.png` 1920×1080 · 2,053,696B; `coffee.png` 동일 크기 · 1,907,354B. WebP 68,596B / 40,614B. `night-store.blend` 원본 |
+| 쓰이는 곳 | 계산대/커피 미디어 층 후보. 기본 앱 미적용 |
+| 도구 | Blender 4.5.12 LTS · Cycles CPU · 2026-10-02. AI 생성 아님 |
+| 참조 이미지 | 기존 계산대 v2를 시각 확인, 모델 입력 이미지 아님 |
+| 설정 | seed 31 · AgX/denoise · 계산대 256/커피 128샘플 · 렌즈 38/58mm, f/2.8 · 반사 12/굴절 8 |
+| 재현 | `projects/dawn-store/scripts/render-store.py`, `render-study-camera.py`; [설정](../projects/dawn-store/art/blender-study/render-settings.json), [촬영 재질 출처](../art/materials/README.md) |
+
+**무엇을 그리나** — 실제 유리 반사, 종이컵·영수증·진열대·금속·석재, 따뜻한 작은 등과 청백색 형광등이 있는 같은 밤 편의점의 두 카메라.
+자연어 생성 프롬프트는 없다. 아래는 사용자 제작 요청 원문이고 형상·광원은 연결된 Python 소스에 있다.
+
+```text
+그럼 새벽세시를 좀 더 블렌더 고품질 렌더로 만들어보고 jooho lab은  3d를 기반으로 한 단계 더 다듬는걸로 해보자.
+```
+
+**생성 후 확인** — 실제 PNG 두 장의 반사·형상·심도·해상도를 확인했다. 외부 이미지 3개 pack. 상품이 규칙적이고 사용 흔적이 부족해서 기존 컷보다 사실적이라는 합격 판단은 하지 않았고 후보로 보관한다. 커피 256샘플 진행은 계산대 완성 후 중단하고 128샘플로 재렌더했다. 비 없음/단일 광원 초기 방향과 달리 현 v2의 물방울·작은 따뜻한 조명을 참고했고 사람은 만들지 않았다. 정지 렌더 두 장이며 영상이 아니다.

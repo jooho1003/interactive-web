@@ -1,14 +1,29 @@
 const n=(label,value,min,max,step=.1,unit='')=>({label,type:'number',default:value,min,max,step,unit});
 const color=(label,value)=>({label,type:'color',default:value});
 const visibility=()=>({visible:{label:'보이기',type:'boolean',default:true,on:'visible',off:'hidden'},opacity:n('불투명도',1,0,1,.05)});
+const surface={
+  ambient:{...n('하늘 간접광',.8,0,2,.05),attr:['#scene','data-ambient']},
+  sunlight:{...n('햇빛 세기',1.5,0,4,.1),attr:['#scene','data-sunlight']},
+  interiorLight:{...n('실내 간접광',32,0,80,1),attr:['#scene','data-interior-light']},
+  galleryLight:{...n('전시 조명',20,0,50,1),attr:['#scene','data-gallery-light']},
+  interiorTint:{...color('실내 조명색','#ffe8c9'),attr:['#scene','data-interior-tint']},
+  reflections:{...n('환경 반사',.75,0,2,.05),attr:['#scene','data-reflections']},
+  surfaceTint:{...color('건물 표면색','#ffffff'),attr:['#scene','data-surface-tint']},
+  surfaceRelief:{...n('표면 요철',.2,0,1.5,.05),attr:['#scene','data-surface-relief']},
+  surfaceRoughness:{...n('표면 거칠기 배율',1,.5,1.5,.05),attr:['#scene','data-surface-roughness']},
+  glassOpacity:{...n('창 유리 농도',.12,0,.4,.01),attr:['#scene','data-glass-opacity']},
+  occlusion:{...n('접촉 그림자',.35,0,1,.05),attr:['#scene','data-occlusion']},
+  groundTint:{...color('마당 재질색','#a8ab9b'),attr:['#scene','data-ground-tint']},
+  waterRoughness:{...n('수면 거칠기',.08,.02,.4,.01),attr:['#scene','data-water-roughness']},
+};
 export default{
   work:'jooho-lab',version:1,initialScene:'exterior',
   breakpoints:[{id:'mobile',label:'모바일',media:'(max-width:1000px)'}],
   previewScreens:[{id:'base',label:'데스크톱',width:1440,matches:[]},{id:'mobile',label:'모바일',width:390,media:'(max-width:1000px)',matches:['mobile']}],
   scenes:{exterior:{label:'외관'},hall:{label:'작업실'},project:{label:'작품'}},
   layers:[
-    {id:'stage',label:'3D 공간 · 카메라',el:'#scene',params:{...visibility(),fov:{...n('화각',48,35,70,1),attr:['#scene','data-fov']},speed:{...n('이동 속도 배율',1,.5,2,.1),attr:['#scene','data-speed']},approachSeconds:{...n('작품 접근 시간',4.2,2.5,7,.1),attr:['#scene','data-approach-seconds']},slideSeconds:{...n('작품 간 이동 시간',1.8,1,3,.1),attr:['#scene','data-slide-seconds']},parallax:{...n('포인터 반응',.16,0,.4,.02),attr:['#scene','data-parallax']},dragStrength:{...n('드래그 반응',1.2,.4,2,.1),attr:['#scene','data-drag-strength']},dragLimit:{...n('시점 회전 범위',.32,.1,.4,.02),attr:['#scene','data-drag-limit']},damping:{...n('카메라 따라오는 속도',9,4,16,1),attr:['#scene','data-damping']},exposure:{...n('노출 배율',1.15,.5,2,.05),attr:['#scene','data-exposure']}}},
-    {id:'landscape',label:'먼 풍경',el:'#lab-landscape',params:{...visibility(),image:{label:'배경 이미지',type:'image',default:'./assets/lab-landscape.jpg',attr:['#lab-landscape','src']},height:n('배경 높이',77,40,100,1,'vh'),color:color('하늘색','#9cabb4')}},
+    {id:'stage',label:'3D 공간 · 카메라',el:'#scene',params:{...visibility(),...surface,fov:{...n('화각',48,35,70,1),attr:['#scene','data-fov']},speed:{...n('이동 속도 배율',1,.5,2,.1),attr:['#scene','data-speed']},approachSeconds:{...n('작품 접근 시간',4.2,2.5,7,.1),attr:['#scene','data-approach-seconds']},slideSeconds:{...n('작품 간 이동 시간',1.8,1,3,.1),attr:['#scene','data-slide-seconds']},parallax:{...n('포인터 반응',.16,0,.4,.02),attr:['#scene','data-parallax']},dragStrength:{...n('드래그 반응',1.2,.4,2,.1),attr:['#scene','data-drag-strength']},dragLimit:{...n('시점 회전 범위',.32,.1,.4,.02),attr:['#scene','data-drag-limit']},damping:{...n('카메라 따라오는 속도',9,4,16,1),attr:['#scene','data-damping']},exposure:{...n('노출 배율',1.15,.5,2,.05),attr:['#scene','data-exposure']}}},
+    {id:'landscape',label:'먼 풍경',el:'#lab-landscape',params:{...visibility(),image:{label:'배경 이미지',type:'image',default:'./assets/lab-landscape.jpg',attr:['#lab-landscape','src']},height:n('배경 높이',77,40,100,1,'vh'),brightness:n('풍경 밝기',1.18,.6,1.6,.02),color:color('하늘색','#b6c7cb'),shade:n('화면 음영',.4,0,1,.05)}},
     {id:'intro',label:'첫 인사',el:'.intro',params:{...visibility(),x:n('가로 위치',5,0,40,1,'vw'),y:{...n('세로 위치',36,12,65,1,'vh'),at:{mobile:24}},size:{...n('제목 크기',4.4,1.5,7,.1,'rem'),at:{mobile:2.7}},color:color('글자색','#f5f1e7')}},
     {id:'detail',label:'작품 설명',el:'.project-detail',params:{...visibility(),x:n('가로 위치',5,0,40,1,'vw'),y:{...n('세로 위치',31,15,60,1,'%'),at:{mobile:56}},width:n('설명 너비',340,240,550,10,'px'),color:color('글자색','#f5f1e7')}},
     {id:'rail',label:'작품 썸네일',el:'#gallery-pagination',params:{...visibility(),size:{...n('썸네일 너비',100,64,160,4,'px'),at:{mobile:80}},gap:n('간격',12,4,28,1,'px'),bottom:{...n('아래 여백',30,12,100,2,'px'),at:{mobile:22}}}},
@@ -23,6 +38,8 @@ export default{
     'Minimum control hit areas, canvas inset, responsive layout constraints, z-index, borders and navigation state visibility are structural/accessibility rules.',
     'Registry text/images, owner content editor and existing preference controls retain their existing sources; no server migration.',
     'Settings opener and editing dialogs are always visible, independent of presentation layers, so users can recover from hidden/transparent layers.',
-    'Render light positions/colors, shadow resolution, DPR limits and material definitions are the fixed initial art direction in Blender/runtime; exposure remains adjustable.',
+    'Physical cladding joints, glazing thickness, UV layout and CC0 photographed source maps are build coordinates: changing them requires rebuilding the model and checking the same views. Runtime surface tint/relief/roughness, contact occlusion, ground tint, glass opacity, water roughness and light/reflection intensity are adjustable.',
+    'Light positions/colors, CC0 1K HDRI environment source, baked indirect emission contribution and meter-scale photographic UV density, shadow resolution and DPR limits are fixed art-direction/performance constraints; stage exposes their intensity and exposure, landscape exposes presentation shade.',
+    'Seven gallery spots are baked in Blender at their physical fixtures onto UV0. The galleryLight normalization (20), side fill ratio and fixture coordinates are installation constants; interiorLight/galleryLight/interiorTint expose real uniform intensity and color. Furniture details remain outside the existing camera corridor.',
   ],
 };
