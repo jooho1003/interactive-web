@@ -243,3 +243,5 @@ Static camera, plain light gray studio backdrop, [인물] keeps [his/her] body, 
 스크립트: `projects/hanbok-hero/scripts/assets/`(`gen-video.mjs`, `frames.mjs`, `assemble.mjs`). 키는 `FAL_KEY` 환경 변수, 저장소에 넣지 않는다.
 
 **국적 단서** — 한국 전통 소재는 모델이 중국·일본으로 흘러가기 쉽다. 노란 병풍 위 붉은 원은 일장기로, 붉은 기둥·금색 과다는 중국풍으로 읽힌다. 경회루·근정전·박석·뇌록 단청·당의·쪽머리·비녀·첩지 같은 고유 명사를 쓰고 `strictly not Chinese hanfu, not Japanese kimono`와 금지 목록(관·쌍계·현판·글자)을 함께 적는다. 인물은 "3D collectible"보다 "game splash art, painterly digital painting, dramatic rim lighting"이 레퍼런스(회화풍)에 가깝다.
+
+**참조 2장으로 그림체·디자인 분리** — 텍스트만으로는 그림체가 흔들린다. 화풍 참조 1장 + 디자인 참조 1장을 Kontext multi에 넣고 `Using the FIRST image only as the painting style reference (…) and the SECOND image only as the character design reference (…), paint a NEW image: …`처럼 역할을 나눈다. 포즈·프레이밍·배경(단색)·금지 목록(no text, no watermark, no signature)은 끝에 적는다. 결과 격자를 사용자에게 보여 고르게 한 뒤 영상→프레임으로 간다. 정지 이미지는 Codex가 원칙이고 fal은 영상만 쓴다.

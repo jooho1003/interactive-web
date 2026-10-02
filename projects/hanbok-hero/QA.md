@@ -73,6 +73,22 @@
 
 발견·해결: ① 첫 실내 배경의 붉은 해+노란 병풍이 일장기처럼 보임 → 경회루로 교체. ② 인페인팅으로 현판을 지우면 현판을 다시 그림 → 그 배경은 버림. ③ 모바일 100vw 상자가 390.4px로 0.4px 넘침 → 98vw. ④ 페이드 0에서 기존 시간 검사 2개가 구조적으로 실패 → 검사 분기 추가.
 
+## 2026-10-03 그림체·캐릭터 확정 (사용자 참조 2장)
+
+피드백: "그림체부터 잡아줘", "화풍은 K5, 디자인·색은 참조를 더", "이미지 생성은 Codex로". 사용자가 준 화풍 참조 1장과 디자인 참조 1장을 Kontext multi에 넣어 갓 쓴 선비 정면 컷(S8)을 확정했고, Kling 영상 → 프레임 9장 → 로컬 rembg → 3×3 시트. fal 잔액이 소진돼 업스케일 이후는 로컬 rembg로 처리했다. 정지 이미지는 앞으로 Codex로 만든다(`prompts/hanbok-hero.md` 규칙).
+
+| 범위 | 결과 |
+|---|---|
+| `pnpm check` | 테스트 5, 엔트리·에셋·문법 PASS, lint 7 layers / 70 parameters 오류 0 |
+| layer-kit probe | 70/70 |
+| 작품 `runChecks` | 21/21 ×2 |
+| 동작 줄이기 | 4/4 |
+| 390px `runNarrowChecks` | 6/6 |
+| `alphaReport` | 정면 2048² · 시트 3072² · 모서리 알파 0 |
+| 육안 | 데스크톱·모바일 캡처 `.playwright-mcp/scholar-*.jpg` — 경회루 위 선비, 포인터 방향으로 시선 |
+
+발견: fal `aura-sr`가 잔액 잠금(403)으로 실패 → `clarity-upscaler`로 2×. 이후 fal 업로드까지 막혀(`Exhausted balance`) 배경 제거를 로컬 `rembg`(isnet-general-use)로 대체했고 결과는 birefnet과 구분되지 않았다.
+
 ## 미검수
 
 - 실제 터치 기기(에뮬레이션만 했다), 스크린리더, Safari.
