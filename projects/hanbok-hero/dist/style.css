@@ -1,0 +1,35 @@
+/* layer-fixed: 레이아웃·숨김 속성·포커스 링·입력 방식/동작 줄이기 미디어 규칙은 구조이며 매니페스트 fixed에 이유를 적었다 */
+* { box-sizing: border-box; }
+html { font-size: calc(100% * var(--L-global-fontScale)); color: var(--ink); font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif; visibility: var(--L-global-visible); }
+body { margin: 0; min-height: 100vh; overflow: hidden; opacity: var(--L-global-opacity); }
+[data-layer-hidden] { display: none !important; } /* layer-fixed: 보이기 끔은 호스트 속성 */
+.stage { position: relative; width: 100vw; height: 100vh; height: 100dvh; overflow: hidden; }
+
+.paper { position: absolute; inset: 0; background: var(--L-paper-color); visibility: var(--L-paper-visible); opacity: var(--L-paper-opacity); }
+.paper-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.paper::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: var(--L-paper-vignette); background: radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, .55) 100%); }
+
+.character { position: absolute; left: var(--L-character-x); top: var(--L-character-y); width: var(--L-character-size); aspect-ratio: 1; translate: -50% -50%; visibility: var(--L-character-visible); opacity: var(--L-character-opacity); }
+/* JS가 읽는 값의 정본: 반응 범위(크기), 시선 기준점(top), 되돌아오는 시간(transition-delay) */
+.gaze-range { position: absolute; left: 50%; top: var(--L-character-anchorY); width: calc(var(--L-character-range) * 2); height: calc(var(--L-character-range) * 2); translate: -50% -50%; border-radius: 50%; pointer-events: none; visibility: hidden; transition-delay: var(--L-character-returnDelay); }
+.character-still { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; user-select: none; -webkit-user-drag: none; }
+.sheet-frame { position: absolute; inset: 0; overflow: hidden; opacity: 0; --in-gaze-col: 1; --in-gaze-row: 1; visibility: var(--L-character-react); transition: opacity var(--L-character-fade) ease var(--L-character-follow); }
+.sheet-frame.is-front { opacity: 1; }
+/* layer-fixed: 시트 칸 계산식 — 이미지를 cols×rows 배로 키우고 한 칸만큼 밀어 보여 준다 */
+.character-sheet { position: absolute; left: 0; top: 0; width: calc(var(--L-character-cols) * 100%); height: calc(var(--L-character-rows) * 100%); translate: calc(var(--in-gaze-col) * -100% / var(--L-character-cols)) calc(var(--in-gaze-row) * -100% / var(--L-character-rows)); user-select: none; -webkit-user-drag: none; }
+
+.title { position: absolute; left: var(--L-title-x); top: var(--L-title-y); margin: 0; color: var(--L-title-color); visibility: var(--L-title-visible); opacity: var(--L-title-opacity); }
+.title-name { display: block; font-size: var(--L-title-size); font-weight: 700; letter-spacing: -.02em; line-height: 1.05; }
+.title-tagline { display: block; margin-top: .6em; font-size: calc(var(--L-title-size) * .3); font-weight: 400; color: var(--muted); }
+
+.nav { position: absolute; left: var(--L-nav-x); top: var(--L-nav-y); display: flex; gap: 1.5em; font-size: var(--L-nav-size); color: var(--L-nav-color); visibility: var(--L-nav-visible); opacity: var(--L-nav-opacity); }
+.nav a { color: inherit; text-decoration: none; padding: .4em .2em; min-height: 44px; display: inline-flex; align-items: center; } /* layer-fixed: 터치 타깃 */
+.nav a:focus-visible { outline: 2px solid #1357ad; outline-offset: 3px; } /* layer-fixed: 포커스 링 대비 */
+
+.hint { position: absolute; left: var(--L-hint-x); top: var(--L-hint-y); translate: -100% 0; margin: 0; font-size: var(--L-hint-size); color: var(--L-hint-color); visibility: var(--L-hint-visible); opacity: var(--L-hint-opacity); animation: hint-out 400ms ease var(--L-hint-hideAfter) both; }
+.hint.is-done { animation: none; opacity: 0; visibility: hidden; transition: opacity .4s; } /* layer-fixed: 첫 반응 뒤 숨김 */
+@keyframes hint-out { to { opacity: 0; visibility: hidden; } }
+
+@media (hover: none) { .hint-pointer { display: none; } } /* layer-fixed: 입력 방식별 안내 */
+@media (hover: hover) { .hint-touch { display: none; } }
+@media (prefers-reduced-motion: reduce) { .sheet-frame { visibility: hidden; transition: none; } .hint { animation: none; } } /* layer-fixed: 동작 줄이기 */

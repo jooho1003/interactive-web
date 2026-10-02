@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko" data-layer-scene="hero">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3ede4">
+  <meta name="description" content="한복을 입은 캐릭터가 시선으로 맞이하는 포트폴리오 첫 화면.">
+  <title>JOOHO LAB — 한복 히어로</title>
+  <link rel="stylesheet" href="./layers.css">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <main class="stage" id="main">
+    <div class="paper" aria-hidden="true"><img class="paper-image" data-layer-image="paper/image" src="./assets/blank.png" alt="" draggable="false"></div>
+    <nav class="nav" aria-label="메뉴">
+      <a href="#about" data-layer-text="nav/item1">About</a>
+      <a href="#work" data-layer-text="nav/item2">Work</a>
+      <a href="#contact" data-layer-text="nav/item3">Contact</a>
+    </nav>
+    <div class="character">
+      <div class="gaze-range" aria-hidden="true"></div>
+      <img class="character-still" data-layer-image="character/still" src="./assets/hanbok-still.png" alt="한복을 입은 여성 캐릭터가 정면을 바라본다" width="1024" height="1024" fetchpriority="high" draggable="false">
+      <div class="sheet-frame sheet-a" aria-hidden="true"><img class="character-sheet" data-layer-image="character/sheet" src="./assets/hanbok-sheet.png" alt="" draggable="false"></div>
+    </div>
+    <h1 class="title"><span class="title-name" data-layer-text="title/name">이주호</span><span class="title-tagline" data-layer-text="title/tagline">인터랙티브를 만드는 사람</span></h1>
+    <p class="hint"><span class="hint-pointer" data-layer-text="hint/pointerText">마우스를 움직여 보세요</span><span class="hint-touch" data-layer-text="hint/touchText">화면을 눌러 보세요</span></p>
+  </main>
+</body>
+</html>
