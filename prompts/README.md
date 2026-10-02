@@ -31,6 +31,7 @@
 
 | | 작품 | 에셋 | 도구 | 프롬프트 |
 |---|---|---|---|---|
+| <img src="../projects/jooho-lab/public/assets/exhibit-day-walk.webp" width="120"> | JOOHO LAB | [운영 작품 전시 이미지 7개](jooho-lab.md#20--exhibition-art--운영-작품의-전시-키-비주얼) | image_gen · 운영 원본 | ✅ |
 | <img src="../projects/jooho-lab/art/interior-after-interior.png" width="120"> | JOOHO LAB | [밝은 풍경·실내 마감](jooho-lab.md#19--lab-bright-interior--밝은-풍경과-정교한-실내) | Blender · Three.js | ✅ 제작 요청·소스 |
 | <img src="../projects/jooho-lab/art/clean-after-exterior.png" width="120"> | JOOHO LAB | [얼룩 없는 건물 표면](jooho-lab.md#18--lab-clean-stone--얼룩-없는-건물-표면) | Blender · Three.js | ✅ 제작 요청·소스 |
 | <img src="../projects/dawn-store/art/blender-study/counter.webp" width="120"> | 새벽 세 시 | [Blender 시험](dawn-store.md#12--blender-night-store--계산대커피-렌더-시험) | Blender Cycles | ✅ 제작 요청·소스 |

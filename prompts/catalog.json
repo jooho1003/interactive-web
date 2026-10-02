@@ -579,7 +579,7 @@
       "video": null,
       "meta": {
         "파일": "public/assets/project-village.webp · 2164×727 · 410KB",
-        "쓰이는 곳": "3D 마을 배경(scene.js) — 레이어 panorama·houses(docs/11 §9-4)",
+        "쓰이는 곳": "별도 village.html의 초기 작업 동네 배경(scene.js) — 현재 레이어 stage; 집/산책길 DOM 이름표는 labels. 2026-10-03 원본 재사용, 새 생성 없음",
         "도구": "❌ 기록 없음 (2026-09-12 월드 설정 플랜의 에셋 에이전트)"
       },
       "prompts": []
@@ -594,7 +594,7 @@
       "video": null,
       "meta": {
         "파일": "public/assets/village-walker.png · 1254×1254, 투명 PNG · 1.1MB",
-        "쓰이는 곳": "마을을 걸어 다니는 기본 마스코트 — 레이어 walker",
+        "쓰이는 곳": "별도 village.html에서 걸어 다니는 기본 마스코트 — 현재 레이어 character. 2026-10-03 투명 원본 그대로 재사용; 이미지·기본 보이기/크기/속도는 공유 편집기, 레이어에서 추가 크기/속도·보이기/불투명도 조정",
         "도구": "파일 메타데이터(C2PA): gpt-image 2.0, OpenAI 서명, 2026-09-12"
       },
       "prompts": []
@@ -797,6 +797,66 @@
         "프롬프트": "해당 없음 — 실제 프로젝트 화면 캡처"
       },
       "prompts": []
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--20--exhibition-art--운영-작품의-전시-키-비주얼",
+      "title": "20 · exhibition-art — 운영 작품의 전시 키 비주얼",
+      "status": "ok",
+      "image": "projects/jooho-lab/public/assets/exhibit-chemiforge.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/exhibit-*.webp 7개 · 총 1,354,226B · 아래 크기 표 참조",
+        "쓰이는 곳": "JOOHO LAB stage 작품 패널 · rail 썸네일 · detail/목록/소개 페이지. 작품 목록 데이터이며 image 편집은 기존 소유자 편집기를 사용",
+        "도구": "built-in image_gen 참조 생성 6개 + Aside 공개 만화 원본 재사용 1개 · 2026-10-03. image_gen 모델명·시드는 노출되지 않음",
+        "참조 이미지": "projects/jooho-lab/art/exhibition-20261003/.png — 실제 운영 화면 7개. ChemiForge 생성은 같은 폴더의 다운로드 운영 hero chemiforge-hero.webp를 참조. 실제 전달 경로는 prompts.json. localhost 캡처를 생성 참조로 사용하지 않음",
+        "설정": "생성 후보 각 1개, 세로 4:5 요청/1122×1402 원본. 최종 1024×1280 WebP quality86/method6. 한술툰 운영 원본은 무크롭·비율 유지 quality90/method6"
+      },
+      "prompts": [
+        {
+          "label": "사용자 요청 원문",
+          "lang": "text",
+          "prepend": null,
+          "text": "지금 각 사이트별로 전시이미지가 별로야. 특히 day walk는 https://interactive-web-app-three.vercel.app/experiences/day-walk/ 이거거든? 로컬 말고 실제 운영주소를 이용해. 그리고 캡쳐본이 별로면 별도로 해당 사이트를 나타내는 이미지를 뽑아. 전시회처럼.\n그 두개는 운영 주소가 없다. 대신 블로그랑 인스타툰이 있잖아."
+        },
+        {
+          "label": "하루 산책 생성 프롬프트 원문",
+          "lang": "text",
+          "prepend": null,
+          "text": "Use case: stylized-concept\nAsset type: standalone portrait artwork for the Day Walk project, displayed in a contemporary art exhibition. Create one premium 4:5 portrait image, not a framed mockup.\nInput image: reference screenshot from the ACTUAL production Day Walk website, reference for the neighborhood, female walking character, bird, and warm animated feature-film look. Do not reproduce any interface.\nPrimary request: turn the application's beautiful neighborhood and day-to-night walking theme into an exhibition-worthy key visual.\nScene: a winding residential walking path through a lush intimate neighborhood of charming gabled homes and one understated modern home. The same continuous world travels from fresh pale-blue morning in the upper left through warm afternoon/amber sunset in the center to indigo evening and lit windows on the right. Natural atmospheric transition, no separate panels or hard division. The curved path brings depth into the portrait.\nSubject: a small but clearly visible female walker in a purple jacket, blue trousers and light sneakers, accompanied by one tiny bird, drawing on the reference character. She is an everyday person walking through her day. Preserve the friendly scale, crisp architectural detail, foliage and cinematic sunlight of the actual project.\nComposition: full-bleed portrait composition, a clear visual center, character in the lower third, detailed homes midground, generous sky with atmospheric depth. Rich feature animation lighting, tasteful finely textured materials, no toy diorama, no UI-looking checklist.\nConstraints: no title, no typography, no lettering, no date, no clocks, no dashboards, no web browser, no logo, no watermark, no frame, no fake product interface. This is a concept artwork representing the existing app, not a screenshot."
+        },
+        {
+          "label": "사수 생성 프롬프트 원문",
+          "lang": "text",
+          "prepend": null,
+          "text": "Use case: photorealistic-natural\nAsset type: standalone 4:5 portrait editorial exhibition artwork representing SASU, an AI colleague that connects team conversations and original records to a clear decision.\nInput image: screenshot of the actual public SASU website, reference only for emerald-green brand direction and the idea of evidence-backed team decisions. Do not reproduce the interface or text.\nScene and subject: an elegant tactile sculptural still life on warm ivory paper. Several thin cream pages and translucent green glass strips begin loosely separated near the lower left, gently converge along precise fine emerald threads into one upright, beautifully resolved dark-green folded paper form near the upper center. The single resolved form stands for a decision, the connected paper layers for preserved context. Real paper edges, subtly impressed lines without writing, glass with believable refraction. A restrained small copper paper fastener provides human scale. Thoughtful, understandable, crafted rather than generic AI symbols.\nStyle: premium editorial studio photography, contemporary museum art print, refined physical materials, daylight from the left casting long soft shadows, warm ivory and deep emerald with quiet gray-green reflections. Strong deliberate portrait composition and abundant calm negative space, detailed but no clutter.\nConstraints: absolutely no words, letters, numbers, interface cards, buttons, logos, watermarks, robot faces, brains, neon circuits, presentation mockup, or picture frame. Create the artwork itself."
+        },
+        {
+          "label": "그날의 먹거리 생성 프롬프트 원문",
+          "lang": "text",
+          "prepend": null,
+          "text": "Use case: photorealistic-natural\nAsset type: one 4:5 portrait photographic exhibition artwork representing the Korean food diary blog '그날의 먹거리'. Not a website screenshot and not a framed mockup.\nInput image: actual live food blog screenshot, reference for the honest everyday dining and personal food-note theme; do not copy the interface or writing. This is illustrative editorial key art, not a photograph claiming to document a particular restaurant visit.\nScene: an intimate everyday neighborhood restaurant tabletop by a window. A beautifully natural ceramic plate of several salmon and white-fish nigiri sushi is the main subject, reflecting the blog's publicly visible sushi diary. Nearby are a small bowl of miso soup, a tiny soy dish and plain wooden chopsticks. A small open cream notebook with entirely blank pages and a pencil sit to the side to suggest recording the meal. No other food, no branded packaging, no lavish feast. Slightly lived-in wooden table, genuine ceramic glaze, believable fresh fish translucency and restrained natural highlights.\nComposition: carefully composed elevated three-quarter viewpoint, main plate centered in the middle third with breathing room, notebook partially visible below, portrait visual hierarchy. Warm soft late-afternoon window light, natural editorial food photography, gentle film grain, appetizing but understated, beautiful yet ordinary. No human figures or hands.\nConstraints: no text, no typography, no letters or numbers even on notebook, no restaurant logos, no price tags, no web UI, no watermark, no frames. Do not make a generic stock-photo collage."
+        },
+        {
+          "label": "새벽 세 시 생성 프롬프트 원문",
+          "lang": "text",
+          "prepend": null,
+          "text": "Use case: photorealistic-natural\nAsset type: one standalone 4:5 portrait cinematic exhibition artwork for the existing interactive story '새벽 세 시 / Still Open'.\nInput image: actual production screenshot, reference for the empty Korean convenience store, rain-soaked windows, fluorescent light, solitude and subdued film mood. Do not reproduce the site's interface, subtitles or outside person.\nScene: outside an unbranded small Korean neighborhood convenience store at three in the morning, looking diagonally through rain-streaked glass. A softly glowing cold-white fluorescent interior with real shelves and a quiet window counter. One plain takeaway coffee cup on that counter provides the intimate narrative anchor. Warm amber fridge highlights are a tiny contrast. Wet pavement in the lower third reflects the still-lit window. The street disappears into blue-black quiet; the cup and glass stay clearly legible. Store architecture believable and restrained.\nComposition: portrait film-still framing, closer than the wide screenshot, vertically emphasize reflections and the warmly occupied-looking but entirely empty interior; beautiful depth through glass, a feeling of waiting, finely observed raindrops, premium live-action cinematography, gentle analog grain, controlled highlights, luminous shadows rather than crushed darkness.\nConstraints: no people, no silhouettes, no text, no subtitle, no typography, no clock digits, no brands, no menus, no browser or controls, no watermark, no frame. Produce only the artwork, inspired by the real site's visual atmosphere."
+        },
+        {
+          "label": "종말의 탑 생성 프롬프트 원문",
+          "lang": "text",
+          "prepend": null,
+          "text": "Use case: stylized-concept\nAsset type: one standalone premium 4:5 portrait game key artwork for the existing 'The End's Tower / 종말의 탑' project displayed as a gallery art print.\nInput image: ACTUAL production website screenshot. Reference the specific towering ruined black-stone spire with glowing ember-red fissures, forested ruins, huge vertical scale, stairs and storm mist. Preserve this visual identity rather than invent a different fantasy universe. Do not copy the interface text.\nScene: a monumental jagged black stone tower rising through storm-gray clouds, fine ember-red cracks glowing within its many ruined arched chambers. Ancient mossy steps lead from the lower foreground across a ruined stone bridge into a single warm orange entrance. Dense subdued forest and weathered stone on either side. No characters needed; the path itself makes ascent feel possible. Strong readable silhouette, intricate masonry, atmospheric scale, a pale cool break in the sky makes the tower legible.\nStyle: polished painterly dark-fantasy game key art with cinematic depth, crisp central architectural detail, atmospheric textured edges, restrained soot-gray, deep forest green and amber-red palette. Portrait art print hierarchy: unmistakable tall tower as focal point, leading path below, enough contrast to read when hung in a bright virtual gallery.\nConstraints: no text, no title, no logos, no numbers, no menus, no browser, no health bars, no watermark, no frame, no unrelated monsters. Create the artwork itself, not a gallery mockup."
+        },
+        {
+          "label": "ChemiForge 추가 생성 프롬프트 원문",
+          "lang": "text",
+          "prepend": null,
+          "text": "Use case: photorealistic-natural\nAsset type: standalone 4:5 portrait exhibition key artwork representing ChemiForge Regulation.\nInput image: the actual public production-site hero image, supporting visual reference for its physical materials and blue evidence-line motif. Create a portrait reinterpretation rather than a screenshot or a cropped landscape.\nPrimary request: retain the original's clear glass cosmetic-formulation sample vial, layered unprinted regulatory-paper sheets, translucent glass/paper shapes and one thin cobalt-blue line with tiny circular evidence nodes, and recompose them elegantly as a vertical photographic still life.\nComposition: a deliberate portrait arrangement that fills the gallery print: layered white textured pages and muted navy/cool blue swatches step upward from the lower quarter to the upper third, with the glass sample vial in the central-right middle. A thin blue evidence line travels vertically through the paper layers towards the vial. Balanced calm white negative space with a tactile subject large enough to read in an exhibition. Preserve real glass refraction, delicate water bubbles, paper fiber and shadow detail. Pale ceramic or frosted-glass plane beneath, no additional objects.\nStyle and lighting: premium scientific/editorial still-life photography, soft daylight from upper left, very subtle long shadows, cool ivory, pale blue and muted navy. Refined, restrained, physical, credible, warm enough to be welcoming. Keep the actual reference's feel; no fantasy lab or generic tech iconography.\nConstraints: no text or lettering on pages or vial, no logo, no regulatory numbers, no labels, no graphs or axes, no dashboard, no web controls, no watermark, no frame or mockup. The blue connecting line is the reference's conceptual evidence motif, not a claim about a measurement."
+        }
+      ]
     },
     {
       "app": "jooho-lab",

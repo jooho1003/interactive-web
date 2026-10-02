@@ -1,0 +1,24 @@
+[
+  {
+    "file": "projects/jooho-lab/public/assets/project-village.webp",
+    "mode": "unchanged original reuse",
+    "size": [
+      2164,
+      727
+    ],
+    "bytes": 420278,
+    "sha256": "be91d0553ef490bc497f246dcdb1b0d405771b07f89bcc19b234af3fe8ba178e",
+    "promptStatus": "original generation prompt not recorded; see cards 01/02"
+  },
+  {
+    "file": "projects/jooho-lab/public/assets/village-walker.png",
+    "mode": "unchanged original reuse",
+    "size": [
+      1254,
+      1254
+    ],
+    "bytes": 1161836,
+    "sha256": "60730e6e17abfae6908ffff3708733d1036c33c3578781a908b9ea4bab8df761",
+    "promptStatus": "original generation prompt not recorded; see cards 01/02"
+  }
+]

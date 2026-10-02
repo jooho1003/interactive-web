@@ -27,11 +27,13 @@ for (const file of await readdir(root)) {
 const html = await readFile(resolve(root, 'index.html'), 'utf8');
 const { projectHref, detailHref } = await import(pathToFileURL(resolve(root, 'navigation.js')));
 const expectedDestinations = {
-  chemiforge: 'https://chemi-forge.vercel.app/',
+  chemiforge: 'https://chemiforge.com/',
   sasu: 'https://sasu-alpha.vercel.app/',
-  'dawn-store': './experiences/dawn-store/',
+  blog: 'https://blog.naver.com/chip109',
+  'dawn-store': 'https://interactive-web-app-three.vercel.app/experiences/dawn-store/',
+  instatoon: 'https://www.instagram.com/hansul_toon/',
   spire: 'https://tower-50.vercel.app/',
-  'day-walk': './experiences/day-walk/',
+  'day-walk': 'https://interactive-web-app-three.vercel.app/experiences/day-walk/',
   'hanbok-hero': './experiences/hanbok-hero/',
 };
 for (const [id, href] of Object.entries(expectedDestinations)) {
@@ -46,7 +48,7 @@ for (const project of projects) {
     } else assert.equal(new URL(href).protocol, 'https:');
   }
 }
-for (const file of ['project.html']) {
+for (const file of ['project.html', 'village.html']) {
   const markup = await readFile(resolve(root,file),'utf8');
   for (const match of markup.matchAll(/(?:src|href)="(\.\/[^"#]+)"/g)) { let p=resolve(root,match[1].split('?')[0]); if((await stat(p)).isDirectory())p=resolve(p,'index.html');assert.ok((await stat(p)).isFile(),match[1]); }
 }
@@ -84,4 +86,13 @@ const css = await readFile(resolve(root, 'style.css'), 'utf8');
 for (const match of css.matchAll(/url\(['"]?(\.\/[^)'"\s]+)['"]?\)/g)) assert.ok((await stat(resolve(root, match[1]))).isFile(), match[1]);
 assert.equal([...html.matchAll(/id="([^"]+)"/g)].length, new Set([...html.matchAll(/id="([^"]+)"/g)].map(m => m[1])).size, 'unique element IDs');
 console.log(`PASS: ${projects.length} projects, source syntax, imports, local assets, CSS assets, preferences bounds/safe links/font file, unique IDs, and static hosting manifest.`);
+const {default:villageManifest}=await import(pathToFileURL(resolve(root,'village.layers.manifest.js')));
+const {lint}=await import('../../../packages/layer-kit/src/lint.js');
+const villageLint=lint(villageManifest,await readFile(resolve(root,'village.css'),'utf8'));
+assert.deepEqual(villageLint.errors,[]);
+assert.ok(html.includes('href="./village.html"'),'main links to village');
+const villageHTML=await readFile(resolve(root,'village.html'),'utf8');
+assert.ok(villageHTML.includes('data-portfolio="village"')&&villageHTML.includes('href="./"'),'village returns to main');
+assert.ok(!villageHTML.includes('spatial.css')&&!villageHTML.includes('lab-landscape'),'village uses its original visual');
+console.log(`PASS: village page, return links, ${villageLint.layers} layers / ${villageLint.parameters} parameters, layer lint 0 errors.`);
 await import('./verify-spatial.mjs');

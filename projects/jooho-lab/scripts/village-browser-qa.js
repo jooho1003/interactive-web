@@ -1,0 +1,71 @@
+import {layerHost,inspectScene} from '/app.js';
+import {setValue} from '/vendor/layer-kit/index.js';
+import {probe} from '/__qa/layer-probe.js';
+import {projects} from '/projects.js';
+import {readPreferences,setPreferences} from '/preferences.js';
+const $=s=>document.querySelector(s),results=[],savedLayers=layerHost.values,savedPreferences=readPreferences();
+const report=document.createElement('pre');report.id='village-qa-report';report.style.cssText='position:relative;white-space:pre-wrap;overflow-wrap:anywhere';document.body.append(report);
+const check=(name,pass,detail='')=>{results.push({name,pass,detail});if(!pass)throw Error(name+': '+detail)};
+const wait=async test=>{const start=performance.now();while(!test()){if(performance.now()-start>10000)throw Error('wait timeout '+JSON.stringify(inspectScene()));await new Promise(r=>setTimeout(r,30))}};
+const click=s=>$(s).click();
+try{
+  await wait(()=>inspectScene()?.drawCalls>0);
+  setPreferences({...savedPreferences,view:'space',motion:'reduce'});
+  check('village manifest isolated',layerHost.manifest.work==='jooho-lab-village');
+  check('original panorama',layerHost.get('stage','image')==='./assets/project-village.webp');
+  check('no pavilion request',!performance.getEntriesByType('resource').some(r=>/lab-pavilion|spatial-scene|lab-landscape/.test(r.name)));
+  check('all numbered stops',$('#gallery-pagination').children.length===projects.length);
+  check('return to exhibition',$('.village-return').getAttribute('href')==='./');
+  for(const project of projects.slice(0,7)){
+    click(`#gallery-pagination [data-id="${project.id}"]`);
+    await wait(()=>{const link=$(`[data-world-project="${project.id}"]`),box=link.getBoundingClientRect();return !link.hidden&&link.getAttribute('aria-current')==='true'&&box.right>0&&box.left<innerWidth});
+    check('select '+project.id,inspectScene().selected===project.id);
+    const link=$(`[data-world-project="${project.id}"]`),box=link.getBoundingClientRect(),space=$('#space').getBoundingClientRect();
+    check('visible stop '+project.id,!link.hidden&&box.width>0&&box.right>space.left&&box.left<space.right);
+    check('operating destination '+project.id,link.href===(readPreferences().links[project.id]||project.liveUrl));
+    check('DOM name '+project.id,link.getAttribute('aria-label').includes(project.title));
+    const plate=link.querySelector('.world-label').getBoundingClientRect();
+    check('nameplate clears controls '+project.id,plate.bottom<$('.gallery-footer').getBoundingClientRect().top&&plate.bottom<$('#gallery-pagination').getBoundingClientRect().top,JSON.stringify({plate:plate.toJSON(),footer:$('.gallery-footer').getBoundingClientRect().toJSON()}));
+  }
+  click('#gallery-pagination [data-id="hanbok-hero"]');
+  check('eighth work remains accessible',!$('[data-world-project="hanbok-hero"]')&&$('#project-detail a').getAttribute('href')==='./experiences/hanbok-hero/');
+  check('eighth work keeps finite camera',inspectScene().camera.every(Number.isFinite));
+  check('Day Walk path marked',$('[data-world-project="day-walk"]').getAttribute('aria-label').includes('산책길'));
+  click('#reset-camera');await wait(()=>inspectScene().selected==='sasu');check('reset to original selection',inspectScene().selected==='sasu');
+  $('#space').focus();$('#space').dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true}));check('keyboard next',inspectScene().selected==='blog');
+  $('#space').dispatchEvent(new KeyboardEvent('keydown',{key:'Home',bubbles:true}));check('keyboard home',inspectScene().selected==='sasu');
+  setPreferences({...savedPreferences,view:'space',motion:'full'});
+  click('[data-world-project="sasu"]');check('animated entry',inspectScene().state==='entering'&&!$('.entry-veil').hidden);
+  check('entry cancel focused',document.activeElement===$('.entry-veil button'));
+  $('.entry-veil button').click();check('entry cancellation',inspectScene().state==='walking'&&$('.entry-veil').hidden);
+  check('cancel focus restored',document.activeElement===$('[data-world-project="sasu"]')||document.activeElement===$('#space'));
+  click('[data-world-project="sasu"]');$('#space').dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}));check('Escape cancels',inspectScene().state==='walking');
+  click('[data-world-project="sasu"]');click('#list-view');check('list cancels entry',inspectScene().state==='walking'&&!$('#project-grid').hidden);click('#space-view');
+  $('#search').value='no-such-village-project';$('#search').dispatchEvent(new Event('input',{bubbles:true}));check('empty state',!$('#empty-state').hidden&&$('#gallery-pagination').children.length===0);
+  $('#search').value='';$('#search').dispatchEvent(new Event('input',{bubbles:true}));check('empty recovery',$('#gallery-pagination').children.length===projects.length);
+  setPreferences({...savedPreferences,view:'space',motion:'reduce'});
+  click('#reset-camera');await new Promise(r=>setTimeout(r,150));
+  const before=inspectScene().viewHeight;
+  layerHost.setValues(setValue(savedLayers,'all','base','stage','zoom',1.2));await new Promise(r=>setTimeout(r,80));
+  check('real camera zoom',inspectScene().viewHeight<before);layerHost.setValues(savedLayers);
+  const beforeSize=$('.village-walker').style.width;
+  layerHost.setValues(setValue(savedLayers,'all','base','character','size',1.4));await new Promise(r=>setTimeout(r,80));
+  check('real character size',parseFloat($('.village-walker').style.width)>parseFloat(beforeSize));layerHost.setValues(savedLayers);
+  // The veil is conditional UI. Probe its real styles without starting a navigation timer.
+  $('.entry-veil').hidden=false;
+  $('.entry-veil').style.setProperty('--entry-progress','1');
+  const probes=await probe(layerHost);
+  $('.entry-veil').hidden=true;
+  $('.entry-veil').style.setProperty('--entry-progress','0');
+  check('all parameters probed',probes.total===42);
+  check('all layer bindings pass',probes.passed===42,JSON.stringify(probes));
+  layerHost.setValues(setValue(savedLayers,'all','base','shell','visible',false));check('settings survives hidden shell',getComputedStyle($('#settings-open')).display!=='none');layerHost.setValues(savedLayers);
+  click('#settings-open');click('.layer-launch');check('layer panel opens',$('.layers-dialog').open);
+  $('.layers-dialog').close();await wait(()=>document.activeElement===$('#settings-open'));check('layer panel focus restores',document.activeElement===$('#settings-open'));
+  check('no horizontal overflow',document.documentElement.scrollWidth<=innerWidth);
+  const gl=$('#scene canvas').getContext('webgl2');gl.getExtension('WEBGL_lose_context').loseContext();await wait(()=>$('#space-view').disabled);
+  check('context loss fallback',!$('#project-grid').hidden&&$('#project-grid').children.length===projects.length);
+  setPreferences({...savedPreferences,view:'space'});check('cannot reopen failed WebGL',$('#space').hidden);
+  report.textContent=JSON.stringify({status:'PASS',viewport:[innerWidth,innerHeight],count:results.length,probes,results},null,2);
+}catch(error){report.textContent=JSON.stringify({status:'FAIL',error:error.stack,results},null,2)}
+finally{layerHost.setValues(savedLayers);setPreferences(savedPreferences);window.scrollTo(0,0)}

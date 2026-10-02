@@ -22,7 +22,7 @@ try{
   check('six repeating architectural materials / separate AO',inspectScene().surfaces.detailMaterials===6&&inspectScene().surfaces.occlusionMap);
   check('baked gallery fixtures cover every wall artwork',inspectScene().surfaces.galleryLights===Math.min(projects.length,7)&&inspectScene().surfaces.galleryLightMap);
   await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
-  check('one representative screenshot per project',projects.every(p=>p.image?.startsWith('./assets/work-'))&&$('#gallery-pagination').querySelectorAll('img').length===projects.length);
+  check('seven curated wall artworks and all rail thumbnails',projects.slice(0,7).every(p=>p.image?.startsWith('./assets/exhibit-'))&&$('#gallery-pagination').querySelectorAll('img').length===projects.length);
   check('no horizontal overflow',document.documentElement.scrollWidth<=innerWidth+1);
   setPreferences({...savedPreferences,motion:'full'});
   if(mode==='mobile')check('mobile media queries active',matchMedia('(max-width:650px)').matches);
@@ -34,7 +34,9 @@ try{
   const approachStart=performance.now();wheel(120);await wait(()=>inspectScene().state==='project');const first=$('#gallery-pagination button').dataset.id;check('hall advances to first work',inspectScene().selected===first);
   check('slow approach to close viewing aisle',performance.now()-approachStart>=3000&&Math.abs(inspectScene().camera[2]+4.185)<.001);
   const imageWidth=()=>Math.max(...inspectScene().artwork.corners.map(p=>p.x))-Math.min(...inspectScene().artwork.corners.map(p=>p.x));
-  const widthBeforeSlide=imageWidth();check('selected artwork fills more of the viewport',widthBeforeSlide>$('#scene').clientWidth*(innerWidth<=1000?.6:.32));
+  const widthBeforeSlide=imageWidth(),artHeight=Math.max(...inspectScene().artwork.corners.map(p=>p.y))-Math.min(...inspectScene().artwork.corners.map(p=>p.y));
+  // Portrait art fills the vertical viewing area; forcing landscape width would crop it.
+  check('selected artwork fills its viewing area',widthBeforeSlide>$('#scene').clientWidth*(innerWidth<=1000?.6:.32)||artHeight>$('#scene').clientHeight*(innerWidth<=1000?.25:.32));
   const depth=inspectScene().camera[2];wheel(120);await new Promise(r=>setTimeout(r,350));check('wheel next slides laterally',Math.abs(inspectScene().camera[2]-depth)<.001);await wait(()=>inspectScene().state==='project');
   check('sideways movement preserves artwork magnification',Math.abs(imageWidth()-widthBeforeSlide)<1);
   wheel(-120);await wait(()=>inspectScene().state==='project');check('wheel up returns to previous work',inspectScene().selected===first);click('#movement-toggle');check('drag mode releases wheel',!wheel(120));

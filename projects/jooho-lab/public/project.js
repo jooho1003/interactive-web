@@ -31,7 +31,7 @@ if (!project) {
   const hasDestination=projectHref(project)!==detailHref(project);
   if(hasDestination) info.append(link(projectAction(project)+' ↗',projectHref(project),'primary-link'));
   else info.append(el('p','availability','현재는 작업 소개와 소스 코드를 볼 수 있습니다.'));
-  const code=link('소스 코드 보기 ↗',project.url,hasDestination?'code-link':'primary-link');code.target='_blank';code.rel='noopener noreferrer';info.append(code);
+  if(project.url!==project.liveUrl){const code=link(project.linkLabel+' ↗',project.url,hasDestination?'code-link':'primary-link');code.target='_blank';code.rel='noopener noreferrer';info.append(code);}
   info.append(link('← 전시실로 돌아가기','./','detail-more'));
   body.append(description,info);
   const next=projects[(projects.indexOf(project)+1)%projects.length];

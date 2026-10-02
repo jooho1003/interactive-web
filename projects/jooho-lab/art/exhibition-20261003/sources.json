@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-03",
+  "source": "Aside: actual production sites, not localhost",
+  "sites": {
+    "chemiforge": "https://chemiforge.com/",
+    "sasu": "https://sasu-alpha.vercel.app/",
+    "blog": "https://blog.naver.com/chip109",
+    "dawn-store": "https://interactive-web-app-three.vercel.app/experiences/dawn-store/",
+    "instatoon": "https://www.instagram.com/hansul_toon/",
+    "spire": "https://tower-50.vercel.app/",
+    "day-walk": "https://interactive-web-app-three.vercel.app/experiences/day-walk/"
+  },
+  "reuse": {
+    "instatoon": "Public first episode cover downloaded from observed Instagram main img. Temporary signed CDN URL intentionally omitted; canonical profile above."
+  },
+  "generated": [
+    "day-walk",
+    "sasu",
+    "blog",
+    "dawn-store",
+    "spire",
+    "chemiforge"
+  ],
+  "encoding": "Generated 6: no-crop thumbnail 1024x1280 WebP quality86 method6; Instagram original: no-crop 1080x1350 quality90 method6",
+  "assets": [
+    {
+      "file": "exhibit-blog.webp",
+      "width": 1024,
+      "height": 1280,
+      "bytes": 133738
+    },
+    {
+      "file": "exhibit-chemiforge.webp",
+      "width": 1024,
+      "height": 1280,
+      "bytes": 111846
+    },
+    {
+      "file": "exhibit-dawn-store.webp",
+      "width": 1024,
+      "height": 1280,
+      "bytes": 253814
+    },
+    {
+      "file": "exhibit-day-walk.webp",
+      "width": 1024,
+      "height": 1280,
+      "bytes": 350876
+    },
+    {
+      "file": "exhibit-instatoon.webp",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 100580
+    },
+    {
+      "file": "exhibit-sasu.webp",
+      "width": 1024,
+      "height": 1280,
+      "bytes": 113020
+    },
+    {
+      "file": "exhibit-spire.webp",
+      "width": 1024,
+      "height": 1280,
+      "bytes": 290352
+    }
+  ],
+  "referenceHero": "https://chemiforge.com/_next/image?url=%2Fimages%2Fbrand%2Fevidence-hero.png&w=1080&q=75"
+}

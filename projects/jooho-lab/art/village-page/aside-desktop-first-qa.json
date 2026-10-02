@@ -1,0 +1,131 @@
+{
+  "status": "FAIL",
+  "error": "Error: wait timeout {\"active\":false,\"goal\":15.120000000000001,\"x\":2.8799999999999986,\"frame\":0,\"state\":\"walking\",\"selected\":\"spire\",\"camera\":[2.8799999999999986,0,1],\"viewHeight\":10.545454545454545,\"drawCalls\":1,\"bindings\":{\"zoom\":1,\"speed\":1,\"damping\":6.5,\"parallax\":0.18},\"visibility\":{\"sceneVisible\":true,\"view\":\"space\",\"hidden\":true}}\n    at wait (http://127.0.0.1:8879/__qa/village-run.js:9:109)\n    at async http://127.0.0.1:8879/__qa/village-run.js:21:5",
+  "results": [
+    {
+      "name": "village manifest isolated",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "original panorama",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no pavilion request",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "seven numbered stops",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "return to exhibition",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "select chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "select sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "select blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "select dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "select instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name instatoon",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}
