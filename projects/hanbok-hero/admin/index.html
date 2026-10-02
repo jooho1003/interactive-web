@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Scene Studio · 한복 히어로</title><link rel="stylesheet" href="/admin/studio.css"><script type="module" src="/admin/studio.js"></script></head>
+<body>
+  <aside class="panel">
+    <h1>Scene Studio <small>한복 히어로</small></h1>
+    <div class="row"><label>장면 <select id="scene"></select></label><label>화면 <select id="screen"></select></label><label>적용 범위 <select id="scope"><option value="all" selected>공통</option><option value="scene">이 장면</option></select></label></div>
+    <nav id="layers" aria-label="레이어"></nav>
+    <section id="inspector" aria-live="polite"></section>
+    <div class="row actions">
+      <button id="save">초안 저장</button><button id="publish">게시</button>
+      <select id="versions" aria-label="게시 이력"></select><button id="restore">이 버전 불러오기</button>
+      <button id="export">내보내기</button><label class="file">불러오기 <input id="import" type="file" accept="application/json"></label>
+    </div>
+    <p id="status" role="status"></p>
+  </aside>
+  <section class="preview" aria-label="실제 작품 미리보기"><div class="frame"><iframe id="preview" src="/?studio=1" title="작품 미리보기"></iframe></div></section>
+</body></html>
