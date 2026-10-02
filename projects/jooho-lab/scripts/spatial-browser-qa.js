@@ -14,15 +14,15 @@ try{
   await wait(()=>inspectScene());check('GLB loaded / exterior',inspectScene().state==='exterior');
   // A prior context-loss run may leave a saved list-view visit on reload.
   click('#space-view');await wait(()=>inspectScene().geometries>7);
-  check('scene uses real meshes',inspectScene().geometries>7&&inspectScene().drawCalls>0,JSON.stringify(inspectScene()));check('seven project selectors',$('#gallery-pagination').children.length===7);
-  await wait(()=>inspectScene().posters===7);check('all seven posters have loaded imagery',inspectScene().posters===7);
+  check('scene uses real meshes',inspectScene().geometries>7&&inspectScene().drawCalls>0,JSON.stringify(inspectScene()));check('one selector per project',$('#gallery-pagination').children.length===projects.length);
+  await wait(()=>inspectScene().posters===Math.min(projects.length,7));check('posters fill the seven baked bays',inspectScene().posters===Math.min(projects.length,7));
   check('architecture exports real PBR normal and roughness maps',inspectScene().surfaces.normalMap&&inspectScene().surfaces.roughnessMap);
   check('photographed HDRI environment loaded',inspectScene().surfaces.environment==='HDRI');
   check('photographed gravel PBR maps loaded',inspectScene().surfaces.gravelMaps);
   check('six repeating architectural materials / separate AO',inspectScene().surfaces.detailMaterials===6&&inspectScene().surfaces.occlusionMap);
-  check('baked gallery fixtures cover every artwork',inspectScene().surfaces.galleryLights===projects.length&&inspectScene().surfaces.galleryLightMap);
+  check('baked gallery fixtures cover every wall artwork',inspectScene().surfaces.galleryLights===Math.min(projects.length,7)&&inspectScene().surfaces.galleryLightMap);
   await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
-  check('seven representative screenshots',projects.every(p=>p.image?.startsWith('./assets/work-'))&&$('#gallery-pagination').querySelectorAll('img').length===7);
+  check('one representative screenshot per project',projects.every(p=>p.image?.startsWith('./assets/work-'))&&$('#gallery-pagination').querySelectorAll('img').length===projects.length);
   check('no horizontal overflow',document.documentElement.scrollWidth<=innerWidth+1);
   setPreferences({...savedPreferences,motion:'full'});
   if(mode==='mobile')check('mobile media queries active',matchMedia('(max-width:650px)').matches);
@@ -102,8 +102,8 @@ try{
   layerHost.setValues(setValue(savedLayers,'all','base','shell','visible',false));check('hidden shell preserves settings recovery',getComputedStyle($('#settings-open')).display!=='none'&&!$('#settings-open').closest('[data-layer-hidden]'));layerHost.setValues(savedLayers);
   $('#search').value='no-such-project-qa';$('#search').dispatchEvent(new Event('input',{bubbles:true}));check('empty search state',!$('#empty-state').hidden&&$('#gallery-pagination').children.length===0);
   click('#spatial-enter');check('empty hall disables destination button',$('#spatial-enter').disabled);
-  $('#search').value='';$('#search').dispatchEvent(new Event('input',{bubbles:true}));check('search restore',$('#gallery-pagination').children.length===7);
-  click('#list-view');check('list fallback accessible',!$('#project-grid').hidden&&$('#project-grid').children.length===7);click('#space-view');
+  $('#search').value='';$('#search').dispatchEvent(new Event('input',{bubbles:true}));check('search restore',$('#gallery-pagination').children.length===projects.length);
+  click('#list-view');check('list fallback accessible',!$('#project-grid').hidden&&$('#project-grid').children.length===projects.length);click('#space-view');
   click('#settings-open');click('.layer-launch');check('layer settings opens',$('.layers-dialog').open);$('.layers-dialog').close();
   check('draw calls under budget',inspectScene().drawCalls<65,JSON.stringify(inspectScene()));
   const gl=$('#scene canvas').getContext('webgl2');gl.getExtension('WEBGL_lose_context').loseContext();await wait(()=>$('#space-view').disabled);check('context loss exposes list',!$('#project-grid').hidden);setPreferences({...readPreferences(),view:'list'});setPreferences({...readPreferences(),view:'space'});check('preferences cannot reenter failed space',!$('#project-grid').hidden&&$('#space').hidden);

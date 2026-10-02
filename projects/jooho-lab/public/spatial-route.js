@@ -3,6 +3,8 @@ export const exterior={eye:[12,5.4,24],look:[-3.7,2,0]};
 export const hall={eye:[0,1.85,3],look:[2.4,1.65,-1.4]};
 export const entrance=[{eye:[5,3.3,14],look:[0,2,2]},{eye:[0,2.1,8.3],look:[0,2,-3]},{eye:[0,1.85,3.7],look:[0,2,-6.5]},hall];
 export const exhibitX=(index,count)=>(index-(count-1)/2)*2.15;
+// lab-pavilion.glb에 구운 전시 칸 수(build-spatial-lab.py의 range(7)). 이보다 뒤의 작품은 벽에 걸지 않고 레일·목록·작업 소개로만 연다.
+export const exhibitBays=7;
 // Fade manual offsets out while passing through the narrow architectural doorway.
 export const cameraInputEnvelope=z=>Math.min(1,Math.max(0,(Math.abs(z-6)-1)/3));
 export function exhibitPose(index,count,distance=2.4){const x=exhibitX(index,count);return{eye:[x,2.3,-6.585+distance],look:[x,2.3,-6.585],focus:1};}

@@ -1,0 +1,41 @@
+/* layer-fixed: 레이아웃·숨김 속성·포커스 링·입력 방식/동작 줄이기 미디어 규칙은 구조이며 매니페스트 fixed에 이유를 적었다 */
+* { box-sizing: border-box; } /* layer-fixed: 상자 크기 계산 방식 */
+html { font-size: calc(100% * var(--L-global-fontScale)); font-family: var(--L-global-font); visibility: var(--L-global-visible); } /* layer-fixed: 100%는 브라우저 기본 글자 크기 기준 */
+body { margin: 0; min-height: 100vh; overflow: hidden; opacity: var(--L-global-opacity); } /* layer-fixed: 한 화면 무대 — 여백·스크롤 없음 */
+[data-layer-hidden] { display: none !important; } /* layer-fixed: 보이기 끔은 호스트 속성 */
+.stage { position: relative; width: 100vw; height: 100vh; height: 100dvh; overflow: hidden; } /* layer-fixed: 화면을 채우는 무대 */
+
+.paper { position: absolute; inset: 0; background: var(--L-paper-color); visibility: var(--L-paper-visible); opacity: var(--L-paper-opacity); } /* layer-fixed: 무대 전체를 덮는 배경 */
+.paper-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; } /* layer-fixed: 배경 그림은 무대를 채운다 */
+.paper::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: var(--L-paper-vignette); background-image: radial-gradient(ellipse at center, transparent var(--L-paper-vignetteInner), rgba(0, 0, 0, 1) 100%); } /* layer-fixed: 비네트 모양(중앙 타원)과 끝 색(검정) — 세기는 vignette가 맡는다 */
+
+.character { position: absolute; left: var(--L-character-x); top: var(--L-character-y); width: var(--L-character-size); aspect-ratio: 1; translate: -50% -50%; visibility: var(--L-character-visible); opacity: var(--L-character-opacity); } /* layer-fixed: 정사각 상자, 중심 기준 배치 */
+/* JS가 읽는 값의 정본: 반응 범위(크기), 시선 기준점(top), 따라가는 시간(transition-duration), 되돌아오는 시간(transition-delay) */
+.gaze-range { position: absolute; left: 50%; top: var(--L-character-anchorY); width: calc(var(--L-character-range) * 2); height: calc(var(--L-character-range) * 2); translate: -50% -50%; border-radius: 50%; pointer-events: none; visibility: hidden; transition-property: none; transition-duration: var(--L-character-follow); transition-delay: var(--L-character-returnDelay); } /* layer-fixed: 보이지 않는 측정용 원 — 가로 중앙, 지름 = range × 2, 실제로 전환하는 속성은 없다 */
+.character-still, .character-body { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; user-select: none; -webkit-user-drag: none; } /* layer-fixed: 정면 그림·몸 그림은 같은 상자를 채운다 */
+.character-body, .character-head { visibility: hidden; } /* layer-fixed: 얼굴 시트가 준비되기 전에는 정면 그림만 */
+.character.use-sheet .character-still { visibility: hidden; } /* layer-fixed: 반응 중에는 몸 + 얼굴 칸이 정면 그림을 대신한다(정면 칸 + 몸 = 정면 그림) */
+.character.use-sheet .character-body, .character.use-sheet .character-head { visibility: var(--L-character-react); }
+.character-head { position: absolute; left: var(--L-character-headX); top: var(--L-character-headY); width: var(--L-character-headW); height: var(--L-character-headH); overflow: hidden; --in-cell-x: 0; --in-cell-y: 0; } /* layer-fixed: 얼굴 칸 창 — 한 칸만 보이고 칸 번호는 JS가 넣는다 */
+/* layer-fixed: 시트 칸 계산식 — 이미지를 cols×rows 배로 키우고 한 칸만큼 밀어 보여 준다. 창 하나에서 칸만 바꾸므로 두 얼굴이 겹치는 순간(잔상)이 없다 */
+.character-sheet { position: absolute; left: 0; top: 0; max-width: none; width: calc(var(--L-character-cols) * 100%); height: calc(var(--L-character-rows) * 100%); translate: calc(var(--in-cell-x) * -100% / var(--L-character-cols)) calc(var(--in-cell-y) * -100% / var(--L-character-rows)); user-select: none; -webkit-user-drag: none; }
+
+.title { position: absolute; left: var(--L-title-x); top: var(--L-title-y); margin: 0; font-family: var(--L-title-font); color: var(--L-title-color); visibility: var(--L-title-visible); opacity: var(--L-title-opacity); text-shadow: 0 1px 2px rgba(0, 0, 0, .45); } /* layer-fixed: 절대 배치, 제목 기본 여백 제거, 어두운 배경 대비용 얇은 그림자 */
+.title-name { display: block; font-size: var(--L-title-size); font-weight: var(--L-title-weight); letter-spacing: var(--L-title-letterSpacing); line-height: var(--L-title-lineHeight); } /* layer-fixed: 이름은 한 줄 블록 */
+.title-tagline { display: block; margin-top: var(--L-title-taglineGap); font-size: calc(var(--L-title-size) * var(--L-title-taglineScale)); font-weight: 400; font-family: var(--L-global-font); color: var(--muted); } /* layer-fixed: 보조 글은 본문 글꼴·기본 굵기 */
+
+.nav { position: absolute; left: var(--L-nav-x); top: var(--L-nav-y); translate: -50% 0; display: flex; gap: var(--L-nav-gap); font-size: var(--L-nav-size); color: var(--L-nav-color); visibility: var(--L-nav-visible); opacity: var(--L-nav-opacity); text-shadow: 0 1px 2px rgba(0, 0, 0, .45); } /* layer-fixed: 메뉴는 가로 한 줄, x는 가운데 기준, 대비용 그림자 */
+.nav a { color: inherit; text-decoration: none; padding: .4em .2em; min-height: 44px; display: inline-flex; align-items: center; letter-spacing: .08em; } /* layer-fixed: 터치 타깃, 메뉴 자간은 디자인 고정 */
+.nav a:focus-visible { outline: 2px solid #f3e9d8; outline-offset: 3px; } /* layer-fixed: 포커스 링 대비(어두운 배경) */
+
+.cta { position: absolute; left: var(--L-cta-x); top: var(--L-cta-y); display: inline-flex; align-items: center; min-height: 44px; padding: var(--L-cta-padY) var(--L-cta-padX); font-size: var(--L-cta-size); color: var(--L-cta-color); background: var(--L-cta-background); visibility: var(--L-cta-visible); opacity: var(--L-cta-opacity); text-decoration: none; letter-spacing: .06em; border-radius: 2px; } /* layer-fixed: 버튼 터치 타깃·자간·모서리 */
+.cta:hover { filter: brightness(1.08); } /* layer-fixed: 호버 상태 표시 */
+.cta:focus-visible { outline: 2px solid #f3e9d8; outline-offset: 3px; } /* layer-fixed: 포커스 링 대비 */
+
+.hint { white-space: nowrap; /* layer-fixed: 안내는 한 줄, 폭이 좁아도 글자 단위로 꺾이지 않게 */ position: absolute; left: var(--L-hint-x); top: var(--L-hint-y); translate: -100% 0; margin: 0; font-size: var(--L-hint-size); color: var(--L-hint-color); visibility: var(--L-hint-visible); opacity: var(--L-hint-opacity); animation: hint-out var(--L-hint-fade) ease var(--L-hint-hideAfter) both; } /* layer-fixed: x는 오른쪽 끝 기준, 이징은 디자인 고정 */
+.hint.is-done > span { opacity: 0; visibility: hidden; transition: opacity var(--L-hint-fade), visibility 0s var(--L-hint-fade); } /* layer-fixed: 첫 반응 뒤 숨김 — 페이드가 끝난 뒤 visibility를 내린다. .hint 자체는 hint-out 애니메이션이 opacity를 잡고 있어 Chrome이 전환을 시작하지 않으므로 글자 줄(자식)에 건다 */
+@keyframes hint-out { to { opacity: 0; visibility: hidden; } } /* layer-fixed: 사라진 끝 상태 */
+
+@media (hover: none) { .hint-pointer { display: none; } } /* layer-fixed: 입력 방식별 안내 */
+@media (hover: hover) { .hint-touch { display: none; } } /* layer-fixed: 입력 방식별 안내 */
+@media (prefers-reduced-motion: reduce) { .character.use-sheet .character-still { visibility: visible; } .character.use-sheet .character-body, .character.use-sheet .character-head { visibility: hidden; } .hint { animation: none; visibility: hidden; } } /* layer-fixed: 동작 줄이기 */

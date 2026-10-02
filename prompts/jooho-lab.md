@@ -377,3 +377,21 @@ Photographic panoramic landscape at blue hour, distant layered coastal mountains
 **무엇을 보여 주나** — 저녁 동네와 아침·점심·저녁 마감 목록.
 
 **캡처 후 확인** — 원본 이미지와 갤러리의 전체 비율을 확인했다. 선택 배경·브라우저 표시·공통 한계는 07 카드에 기록했다.
+
+### 21 · 선비 — 실제 화면 캡처
+
+<img src="../projects/jooho-lab/public/assets/work-hanbok-hero.webp" width="360">
+
+| 항목 | 내용 |
+|---|---|
+| 파일 | `projects/jooho-lab/public/assets/work-hanbok-hero.webp` · 1800×1125 · 131,862B |
+| 쓰이는 곳 | rail 썸네일 · shell 목록 · 작품 상세(08번). 3D 벽에는 걸지 않는다 — 전시관에 구운 칸이 7개라 8번째부터는 목록·레일·작업 소개로만 연다 |
+| 도구 | Playwright Chromium 캡처(1440×900, 배율 1.25) · 2026-10-03. 생성 에셋 아님 |
+| 참조 이미지 | `projects/jooho-lab/art/captures/hanbok-hero.png` |
+| 설정 | 원본 비율·해상도 유지, Pillow WebP quality=88, method=6 |
+| 출처 | http://127.0.0.1:8897/experiences/hanbok-hero/play.html · 포인터를 이름 쪽(왼쪽 아래)에 두어 선비가 고개를 돌린 상태, 안내 문구가 사라진 뒤 |
+| 프롬프트 | 해당 없음 — 실제 프로젝트 화면 캡처 |
+
+**무엇을 보여 주나** — 경회루 야경 위에서 갓 쓴 선비가 이름 쪽으로 고개를 돌린 첫 화면.
+
+**캡처 후 확인** — 원본을 열어 비율·안내 문구 없음·얼굴 칸(왼쪽 끝) 확인. Aside 창이 가려져 캡처가 시간 초과돼 Playwright로 찍었다. 선비 히어로의 그림 출처는 [hanbok-hero.md](hanbok-hero.md).

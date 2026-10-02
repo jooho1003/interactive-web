@@ -59,6 +59,7 @@
 | <img src="../projects/hanbok-hero/art/superseded/hanbok-sheet.webp" width="120"> | 한복 히어로 | [3×3 방향 시트 `hanbok-sheet`](hanbok-hero.md#02--33-방향-시트-hanbok-sheet-) (2026-10-03 교체, 영상은 04의 원본) | fal Kling 영상 → 프레임 → 로컬 rembg | ✅ |
 | <img src="../projects/hanbok-hero/dist/assets/palace.webp" width="120"> | 한복 히어로 | [배경 — 경회루 야경 `palace`](hanbok-hero.md#03--배경--경회루-야경-palace-) | fal flux-pro ultra | ✅ |
 | <img src="../projects/hanbok-hero/dist/assets/scholar-still.webp" width="120"> | 한복 히어로 | [몸 고정 + 얼굴 시트 `scholar-still`·`body`·`heads`](hanbok-hero.md#04--몸-고정--얼굴-시트-scholar-still--scholar-body--scholar-heads-) | 02 영상 프레임 → 로컬 rembg → `build-heads.py` (새 생성 없음) | ✅ |
+| <img src="../projects/jooho-lab/public/assets/work-hanbok-hero.webp" width="120"> | JOOHO LAB | [선비 — 실제 화면 캡처](jooho-lab.md#21--선비--실제-화면-캡처) | Playwright 캡처 | ✅ |
 
 ### 영상 · 소리 · 3D
 

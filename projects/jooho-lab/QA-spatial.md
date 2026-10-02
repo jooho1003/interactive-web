@@ -157,3 +157,10 @@ Final Aside visual check: selected spire directly from the exterior with full mo
 - 앱 check/build 통과: lint 오류 0, 77,077 경로 샘플, 6재질의 UV0 조명/AO·UV1 표면 및 7개 fixture 메타데이터 검수. 전송 한도 6MB 유지. 제작 정본은 prompts 카드 19. 이전 clean 캡처는 보존한다. 외부 서비스 배포/기존 claude.ai 보관함 재게시는 미실행, 로컬 보관함과 재게시 패키지만 갱신한다.
 - 재사용: 고정 전시 조명은 물리 fixture에서 새 UV atlas에 굽고 runtime uniform으로 세기/색을 조절하면 매 프레임 추가 조명 비용을 피할 수 있다. 베이크가 존재한다는 검사만으로 충분하지 않으며 빛이 등기구에 막히는지 실제 지도와 최종 화면을 함께 확인한다.
 - 최종 광원 방출점 보정/조명 기본값 20 조정 후 GLB **4,701,148B**, app check/build 및 1440×900 외관/실내 재캡처·실제 드래그/입장/복귀 통과. 전체 141/142 검사는 동일한 기하/런타임의 직전 조명 설정에서 실행했고, 마지막 지도/기본 밝기 변경은 이 시각·입력 검수로 확인했다. 카드 19/로컬 보관함 갱신.
+
+## 2026-10-03 · 선비(hanbok-hero) 작품 연결
+
+- 8번째 작품 `hanbok-hero`를 `include:experience`로 `public/experiences/hanbok-hero/`에 넣고 `projects.js`·`validate.mjs`에 등록했다. 전시관은 칸을 7개만 구웠으므로(`exhibitBays`) 3D 벽에는 앞 7작품만 걸고, 선비는 레일·목록·작업 소개·체험 페이지로 연다. 처음에 8개를 모두 벽에 넘기자 `exhibitX(i, 8)` 때문에 기존 7작품까지 구운 액자에서 1.075m씩 밀려 되돌렸다.
+- 벽에 없는 작품을 고르면 카메라는 그대로, 정보 패널만 바뀐다(`scene.select`가 모르는 id를 무시). 작업실 안에서 Enter는 그 작품을 바로 열고, 바깥에서는 원래대로 작업실에 들어간다. 장면 필터에는 벽 작품만 넘긴다.
+- `spatial-browser-qa.js`의 "작품 = 7" 단정 6곳을 "벽 = 7칸, 레일·목록 = 전체 작품 수"로 나눴다. Playwright Chromium 1440×900 **143/143 PASS**, `/__qa/mobile` 390px **144/144 PASS**, `validate` PASS(8 projects). 체험 페이지 iframe 안에서 왼쪽 끝 → 얼굴 칸 0, 오른쪽 끝 → 12 확인.
+- 미확인: Aside 실제 창(가려져 있어 렌더링이 초당 2프레임), 실제 터치 기기.

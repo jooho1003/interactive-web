@@ -5,6 +5,7 @@ import { projectHref, detailHref, projectAction, readVisit, sessionKey } from '.
 import { projects, profile } from './projects.js';
 import { registerPortfolioTools } from './webmcp.js';
 import {layerHost, initLayerSettings} from './spatial-layers.js';
+import { exhibitBays } from './spatial-route.js';
 
 await loadContent();
 const $ = (selector) => document.querySelector(selector);
@@ -13,6 +14,9 @@ const grid = $('#project-grid');
 const detail = $('#project-detail');
 const filters = $('#filters');
 const arrivalHash = location.hash;
+// 3D 벽에는 구운 칸 수만큼만 건다. 나머지 작품은 선택해도 카메라가 움직이지 않고(scene.select가 무시) 정보·링크만 바뀐다.
+const wallProjects = projects.slice(0, exhibitBays);
+const onWall = (id) => wallProjects.some((p) => p.id === id);
 const visit = readVisit(projects);
 let selected = visit?.selected || 'dawn-store';
 let category = visit?.category || '전체';
@@ -141,7 +145,7 @@ function renderIndex() {
   $('#project-count').textContent = String(available.length).padStart(2, '0');
   $('#empty-state').hidden = available.length !== 0;
   $('#result-status').textContent = `${available.length}개 프로젝트`;
-  scene?.filter(available.map((p) => p.id));
+  scene?.filter(available.map((p) => p.id).filter(onWall));
   $('#gallery-pagination').replaceChildren(...available.map(project => {
     const b = element('button', 'film-card'); b.type = 'button'; b.dataset.id = project.id;
     b.style.setProperty('--card-color', project.color);
@@ -191,7 +195,7 @@ motionQuery.addEventListener('change', () => { if(readPreferences().motion === '
 $('#space').addEventListener('keydown', (event) => {
   if (event.target !== $('#space')) return;
   if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); moveSelection(event.key === 'ArrowRight' ? 1 : -1); }
-  if (event.key === 'Enter') { event.preventDefault(); if (visibleProjects().length) { if(scene) scene.enter(selected); else openProject(selected); } }
+  if (event.key === 'Enter') { event.preventDefault(); if (visibleProjects().length) { if(scene && (onWall(selected) || scene.inspect().state === 'exterior')) scene.enter(selected); else openProject(selected); } }
   if (event.key === 'Home') { event.preventDefault(); scene?.reset(); }
   if (event.key === 'Escape') { event.preventDefault(); if(movementControl){setMovementControl(false);event.stopPropagation();}else scene?.back(); }
 });
@@ -250,8 +254,8 @@ $('#spatial-enter').addEventListener('click', () => scene?.enter());
 $('#spatial-back').addEventListener('click', () => scene?.back());
 layerHost.subscribe(()=>{if($('.exhibition').dataset.stage==='exterior')$('#spatial-enter').textContent=$('#spatial-enter').dataset.label;});
 import('./spatial-scene.js').then(async ({ createGallery }) => {
-  scene = await createGallery($('#scene'), projects, changeSelection, fallback, openProject, spatialState);
-  scene.select(selected, false); scene.filter(visibleProjects().map((p) => p.id));
+  scene = await createGallery($('#scene'), wallProjects, changeSelection, fallback, openProject, spatialState);
+  scene.select(selected, false); scene.filter(visibleProjects().map((p) => p.id).filter(onWall));
   scene.setZoom(readPreferences().zoom);scene.refreshContent?.(getContent());
   scene.setReducedMotion(motion); scene.setDragEnabled(movementControl); syncSceneActivity();
   $('#scene-status').hidden = true;
