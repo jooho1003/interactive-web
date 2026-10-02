@@ -36,12 +36,12 @@ export default {
     { "id": "character", "label": "반응 캐릭터", "group": "무대", "el": ".character", "params": {
       "visible": { "label": "보이기", "type": "boolean", "default": true, "on": "visible", "off": "hidden" },
       "opacity": { "label": "불투명도", "type": "number", "default": 1, "min": 0, "max": 1, "step": 0.01, "unit": "" },
-      "still": { "label": "정면 그림", "type": "image", "default": "./assets/hanbok-still.png", "attr": ["img.character-still", "src"] },
-      "sheet": { "label": "방향 시트", "type": "image", "default": "./assets/hanbok-sheet.png", "attr": ["img.character-sheet", "src"] },
+      "still": { "label": "정면 그림", "type": "image", "default": "./assets/hanbok-still.webp", "attr": ["img.character-still", "src"] },
+      "sheet": { "label": "방향 시트", "type": "image", "default": "./assets/hanbok-sheet.webp", "attr": ["img.character-sheet", "src"] },
       "cols": { "label": "시트 가로 칸 수", "type": "number", "default": 3, "min": 1, "max": 5, "step": 1, "unit": "" },
       "rows": { "label": "시트 세로 칸 수", "type": "number", "default": 3, "min": 1, "max": 5, "step": 1, "unit": "" },
       "x": { "label": "가로 위치", "type": "number", "default": 62, "min": -50, "max": 150, "step": 0.1, "unit": "%", "at": { "mobile": 50 } },
-      "y": { "label": "세로 위치", "type": "number", "default": 56, "min": -50, "max": 150, "step": 0.1, "unit": "%", "at": { "mobile": 46 } },
+      "y": { "label": "세로 위치", "type": "number", "default": 63, "min": -50, "max": 150, "step": 0.1, "unit": "%", "at": { "wide": 64, "tablet": 77, "mobile": 78.5 } },
       "size": { "label": "크기", "type": "number", "default": 46, "min": 10, "max": 120, "step": 0.1, "unit": "vw", "at": { "wide": 40, "tablet": 60, "mobile": 92 } },
       "anchorY": { "label": "시선 기준점 높이", "type": "number", "default": 28, "min": 0, "max": 100, "step": 0.1, "unit": "%" },
       "range": { "label": "반응 범위", "type": "number", "default": 420, "min": 40, "max": 1200, "step": 1, "unit": "px", "at": { "tablet": 300, "mobile": 200 } },
@@ -63,7 +63,7 @@ export default {
       "taglineScale": { "label": "소개 글자 비율", "type": "number", "default": 0.3, "min": 0.2, "max": 1, "step": 0.01, "unit": "" },
       "taglineGap": { "label": "이름과 소개 간격", "type": "number", "default": 0.6, "min": 0, "max": 3, "step": 0.05, "unit": "em" },
       "x": { "label": "가로 위치", "type": "number", "default": 6, "min": -50, "max": 150, "step": 0.1, "unit": "%" },
-      "y": { "label": "세로 위치", "type": "number", "default": 64, "min": -50, "max": 150, "step": 0.1, "unit": "%", "at": { "mobile": 72 } }
+      "y": { "label": "세로 위치", "type": "number", "default": 64, "min": -50, "max": 150, "step": 0.1, "unit": "%", "at": { "mobile": 12 } }
     } },
     { "id": "nav", "label": "메뉴", "group": "글", "el": ".nav", "params": {
       "visible": { "label": "보이기", "type": "boolean", "default": true, "on": "visible", "off": "hidden" },
@@ -85,7 +85,7 @@ export default {
       "color": { "label": "글자 색", "type": "color", "default": "#7a6f66" },
       "size": { "label": "글자 크기", "type": "number", "default": 0.9, "min": 0.6, "max": 2, "step": 0.05, "unit": "rem" },
       "x": { "label": "오른쪽 끝 위치", "type": "number", "default": 94, "min": -50, "max": 150, "step": 0.1, "unit": "%" },
-      "y": { "label": "세로 위치", "type": "number", "default": 90, "min": -50, "max": 150, "step": 0.1, "unit": "%" },
+      "y": { "label": "세로 위치", "type": "number", "default": 90, "min": -50, "max": 150, "step": 0.1, "unit": "%", "at": { "mobile": 54 } },
       "hideAfter": { "label": "자동으로 사라지는 시간", "type": "number", "default": 6000, "min": 0, "max": 30000, "step": 100, "unit": "ms" },
       "fade": { "label": "사라지는 시간", "type": "number", "default": 400, "min": 0, "max": 2000, "step": 10, "unit": "ms" }
     } }

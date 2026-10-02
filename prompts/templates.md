@@ -225,3 +225,19 @@ ffmpeg -ss 00:00:00.5 -i cut.mp4 -frames:v 1 cut_poster.png
 | 결과를 원본과 **겹쳐서** 확인 | 겹쳐 바꾸기·전후 비교는 1픽셀 어긋남도 보인다 |
 | 한 번에 여러 장 뽑아 고른다 | 한 장에 만족하려 하면 오래 걸린다 |
 | **원문 그대로 기록한다** — [README 카드 양식](README.md#새-에셋을-만들면) | 기록이 없으면 같은 것을 다시 만들 수 없다. 이미 그런 에셋이 여럿이다([README 빠진 기록](README.md#빠진-기록--다시-만들-수-없는-것)) |
+
+## 11. 영상에서 방향 프레임 뽑기 (2.5D 시선·회전 시트)
+
+**검증됨 — 한복 히어로 3×3 시트.** 한 장을 여러 방향으로 따로 그리면 인물이 흔들린다. 대신 정면 한 장으로 **짧은 영상**을 만들고 프레임을 고르면 모든 칸이 같은 인물·같은 조명이다.
+
+1. 정면 컷은 **단색 배경**으로 뽑는다(투명 요청 대신). 배경 제거는 뒤에서 `fal-ai/birefnet/v2`로.
+2. image-to-video(`fal-ai/kling-video/v2.1/standard/image-to-video`, 10초, `cfg_scale 0.5`)에 아래 틀로 요청한다.
+
+```text
+Static camera, plain light gray studio backdrop, [인물] keeps [his/her] body, shoulders and hands perfectly still. Only [his/her] head and eyes move, slowly and smoothly, like [he/she] is following something near the viewer. No zoom, no camera motion, no other people, consistent lighting. Sequence: [looks to the left, returns to center, looks to the right, returns to center, then looks up, returns to center, then looks down, and returns to center].
+```
+
+3. `ffmpeg -vf fps=3`로 프레임을 뽑고 얼굴만 잘라 번호 격자(contact sheet)로 본 뒤 방향별로 고른다. 눈 깜빡임 프레임은 뺀다. 모델이 "자기 왼쪽"을 보는 순서라 화면 기준 좌우가 뒤집힌다.
+4. 고른 프레임을 배경 제거 → `ffmpeg xstack`으로 칸 크기에 맞춰 조립. **칸마다 4px 투명 여백**을 두지 않으면 소수점 픽셀에서 이웃 칸이 1px 비친다. webp(q88, 알파)로 2MB 아래.
+
+스크립트: `projects/hanbok-hero/scripts/assets/`(`gen-video.mjs`, `frames.mjs`, `assemble.mjs`). 키는 `FAL_KEY` 환경 변수, 저장소에 넣지 않는다.

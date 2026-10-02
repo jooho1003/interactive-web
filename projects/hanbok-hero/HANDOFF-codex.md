@@ -1,6 +1,6 @@
 # 한복 히어로 — Codex 인수인계 (2026-10-02)
 
-브랜치 `hanbok-hero`(main `0003760`에서 분기). 코드·관리자·검수·문서는 끝났고 **실제 캐릭터 그림만 남았다.** 지금은 `scripts/make-placeholders.mjs`가 만든 자리표시 PNG로 돌아간다. 작업 규칙은 `AGENTS.md`(레이어 계약, 에셋 프롬프트 기록)를 따른다.
+브랜치 `hanbok-hero`(main `0003760`에서 분기). 코드·관리자·검수·문서가 끝났고, **실제 캐릭터 그림도 2026-10-02 fal.ai 경로(아래 경로 B)로 만들어 넣었다** — `dist/assets/hanbok-still.webp`·`hanbok-sheet.webp`, 카드는 ✅, 재검수는 QA.md "실제 에셋 재검수". 아래 §1은 다시 만들거나 다른 캐릭터로 바꿀 때의 절차다. 재현 스크립트는 `scripts/assets/`. 작업 규칙은 `AGENTS.md`(레이어 계약, 에셋 프롬프트 기록)를 따른다.
 
 ## 현재 상태
 

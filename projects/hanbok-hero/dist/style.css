@@ -29,7 +29,7 @@ body { margin: 0; min-height: 100vh; overflow: hidden; opacity: var(--L-global-o
 .nav a { color: inherit; text-decoration: none; padding: .4em .2em; min-height: 44px; display: inline-flex; align-items: center; } /* layer-fixed: 터치 타깃 */
 .nav a:focus-visible { outline: 2px solid #1357ad; outline-offset: 3px; } /* layer-fixed: 포커스 링 대비 */
 
-.hint { position: absolute; left: var(--L-hint-x); top: var(--L-hint-y); translate: -100% 0; margin: 0; font-size: var(--L-hint-size); color: var(--L-hint-color); visibility: var(--L-hint-visible); opacity: var(--L-hint-opacity); animation: hint-out var(--L-hint-fade) ease var(--L-hint-hideAfter) both; } /* layer-fixed: x는 오른쪽 끝 기준, 이징은 디자인 고정 */
+.hint { white-space: nowrap; /* layer-fixed: 안내는 한 줄, 폭이 좁아도 글자 단위로 꺾이지 않게 */ position: absolute; left: var(--L-hint-x); top: var(--L-hint-y); translate: -100% 0; margin: 0; font-size: var(--L-hint-size); color: var(--L-hint-color); visibility: var(--L-hint-visible); opacity: var(--L-hint-opacity); animation: hint-out var(--L-hint-fade) ease var(--L-hint-hideAfter) both; } /* layer-fixed: x는 오른쪽 끝 기준, 이징은 디자인 고정 */
 .hint.is-done > span { opacity: 0; visibility: hidden; transition: opacity var(--L-hint-fade), visibility 0s var(--L-hint-fade); } /* layer-fixed: 첫 반응 뒤 숨김 — 페이드가 끝난 뒤 visibility를 내린다. .hint 자체는 hint-out 애니메이션이 opacity를 잡고 있어 Chrome이 전환을 시작하지 않으므로 글자 줄(자식)에 건다 */
 @keyframes hint-out { to { opacity: 0; visibility: hidden; } } /* layer-fixed: 사라진 끝 상태 */
 
