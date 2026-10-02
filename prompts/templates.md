@@ -241,3 +241,5 @@ Static camera, plain light gray studio backdrop, [인물] keeps [his/her] body, 
 4. 고른 프레임을 배경 제거 → `ffmpeg xstack`으로 칸 크기에 맞춰 조립. **칸마다 4px 투명 여백**을 두지 않으면 소수점 픽셀에서 이웃 칸이 1px 비친다. webp(q88, 알파)로 2MB 아래.
 
 스크립트: `projects/hanbok-hero/scripts/assets/`(`gen-video.mjs`, `frames.mjs`, `assemble.mjs`). 키는 `FAL_KEY` 환경 변수, 저장소에 넣지 않는다.
+
+**국적 단서** — 한국 전통 소재는 모델이 중국·일본으로 흘러가기 쉽다. 노란 병풍 위 붉은 원은 일장기로, 붉은 기둥·금색 과다는 중국풍으로 읽힌다. 경회루·근정전·박석·뇌록 단청·당의·쪽머리·비녀·첩지 같은 고유 명사를 쓰고 `strictly not Chinese hanfu, not Japanese kimono`와 금지 목록(관·쌍계·현판·글자)을 함께 적는다. 인물은 "3D collectible"보다 "game splash art, painterly digital painting, dramatic rim lighting"이 레퍼런스(회화풍)에 가깝다.

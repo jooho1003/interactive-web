@@ -47,13 +47,21 @@ export async function runChecks() {
     const outgoing = document.querySelector('.sheet-frame.was-front');
     const frontStyle = front ? getComputedStyle(front) : null;
     const total = frontStyle ? ((parseFloat(frontStyle.transitionDelay) || 0) + (parseFloat(frontStyle.transitionDuration) || 0)) * 1000 : 0;
-    await wait(Math.max(0, total / 2 - 30));
-    check(!!outgoing && getComputedStyle(outgoing).opacity === '1' && parseFloat(getComputedStyle(front).opacity) < 1, '전환 중 나가는 프레임은 불투명하게 아래에 남는다');
     const hintLine = [...document.querySelector('.hint').children].find(el => getComputedStyle(el).display !== 'none');
-    const hintOpacity = hintLine ? parseFloat(getComputedStyle(hintLine).opacity) : NaN;
-    check(hintOpacity > 0 && hintOpacity < 1 && getComputedStyle(hintLine).visibility === 'visible', '안내는 바로 꺼지지 않고 hint.fade 동안 페이드');
-    await wait(total / 2 + 80);
-    check(!!outgoing && !outgoing.classList.contains('was-front') && getComputedStyle(outgoing).opacity === '0' && getComputedStyle(front).opacity === '1', '전환이 끝나면 나가는 프레임을 내린다');
+    if (total > 0) {
+      await wait(Math.max(0, total / 2 - 30));
+      check(!!outgoing && getComputedStyle(outgoing).opacity === '1' && parseFloat(getComputedStyle(front).opacity) < 1, '전환 중 나가는 프레임은 불투명하게 아래에 남는다');
+      const hintOpacity = hintLine ? parseFloat(getComputedStyle(hintLine).opacity) : NaN;
+      check(hintOpacity > 0 && hintOpacity < 1 && getComputedStyle(hintLine).visibility === 'visible', '안내는 바로 꺼지지 않고 hint.fade 동안 페이드');
+      await wait(total / 2 + 80);
+      check(!!outgoing && !outgoing.classList.contains('was-front') && getComputedStyle(outgoing).opacity === '0' && getComputedStyle(front).opacity === '1', '전환이 끝나면 나가는 프레임을 내린다');
+    } else {
+      // fade·follow가 0이면 즉시 교체: 두 프레임이 겹쳐 보이는 순간(잔상)이 없어야 한다
+      await wait(40);
+      check(!!front && getComputedStyle(front).opacity === '1' && (!outgoing || (!outgoing.classList.contains('was-front') && getComputedStyle(outgoing).opacity === '0')), '즉시 교체: 앞 프레임만 보이고 나가는 프레임은 바로 내려간다(잔상 없음)');
+      await wait((parseFloat(getComputedStyle(hintLine).transitionDuration) || 0) * 1000 + 80);
+      check(getComputedStyle(hintLine).visibility === 'hidden', '안내는 hint.fade 뒤 숨는다');
+    }
     pointer('pointermove', cx + r * 0.3, cy); await wait(30);
     check(gaze.state().zone.col === 1, '경계 안쪽(0.3)에서는 유지 — 히스테리시스');
     pointer('pointermove', cx + r * 0.2, cy); await wait(30);

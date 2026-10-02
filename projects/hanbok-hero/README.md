@@ -33,4 +33,4 @@ pnpm --filter hanbok-hero assets:placeholder   # 실제 그림이 없을 때 자
 
 ## 에셋
 
-프롬프트와 확인 절차는 [`prompts/hanbok-hero.md`](../../prompts/hanbok-hero.md). 실제 그림은 fal.ai(flux-pro 정면 컷 → birefnet 배경 제거 → Kling 영상 → 프레임 9장 → 3×3 시트)로 만들었고 재현 스크립트는 [`scripts/assets/`](scripts/assets/README.md)에 있다. `assets:placeholder`는 PNG 자리표시를 만들 뿐이며 매니페스트 기본값은 webp를 가리키므로, 자리표시로 돌리려면 관리자에서 이미지를 바꾼다.
+프롬프트와 확인 절차는 [`prompts/hanbok-hero.md`](../../prompts/hanbok-hero.md). 실제 그림은 fal.ai(flux-pro ultra 회화풍 정면 컷 → birefnet 배경 제거 → Kling 영상 → 프레임 9장 → 3×3 시트, 배경은 경회루 야경)로 만들었고 재현 스크립트는 [`scripts/assets/`](scripts/assets/README.md)에 있다. 글꼴은 Google Fonts(Noto Serif KR·Song Myung·Nanum Myeongjo)를 `index.html`에서 불러오며 매니페스트 `global.font`·`title.font`로 고른다. `assets:placeholder`는 PNG 자리표시를 만들 뿐이며 매니페스트 기본값은 webp를 가리키므로, 자리표시로 돌리려면 관리자에서 이미지를 바꾼다.

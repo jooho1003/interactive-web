@@ -1,0 +1,7 @@
+import { run, download } from './fal.mjs';
+export const prompt = `Game splash art, semi-realistic anime illustration, painterly digital painting with visible brush strokes and dramatic rim lighting, highly detailed concept art of a young Joseon dynasty queen of KOREA, as seen in Korean historical dramas. Authentic Korean hanbok court dress, strictly not Chinese hanfu and not Japanese kimono: a jade-green dangui jacket with intricate gold geumbak patterns, a red goreum ribbon, and a wide crimson chima skirt. Korean hairstyle only: hair parted in the middle and pulled back smoothly into a low jjok-meori chignon at the nape, a long jade binyeo hairpin through it, a small gilt cheopji ornament at the center parting — NO tall buns, NO double buns, NO crown, NO hanfu hair loops. Elegant, composed, slightly mysterious expression, lips closed, eyes looking straight at the viewer, shoulders square, hands folded at the waist inside the sleeves, a few strands of hair catching the light, rich silk texture, cinematic contrast, masterpiece quality.
+Framed from the top of the hair to the waist, centered, generous margin, in front of a perfectly plain flat uniform light gray backdrop (#d9d9d9), no scenery, no text, no UI, no floor line, no cast shadow.`;
+for (const seed of [14, 71]) {
+  const out = await run('fal-ai/flux-pro/v1.1-ultra', { prompt, aspect_ratio: '1:1', seed, enable_safety_checker: true, output_format: 'png', raw: false });
+  const img = out.images[0]; console.log(seed, img.width, img.height, img.url); await download(img.url, `q7-${seed}.png`);
+}
