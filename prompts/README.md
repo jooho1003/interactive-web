@@ -14,10 +14,10 @@
 
 | 파일 | 내용 |
 |---|---|
-| [dawn-store.md](dawn-store.md) | 새벽 세 시 · Still Open — 편의점 컷 7장 + v2 교체본 + 도입 영상 + 소리 |
+| [dawn-store.md](dawn-store.md) | 새벽 세 시 · Still Open — 편의점 컷 7장 + v2 교체본 + 도입 영상 + 소리 + Blender 렌더 시험 |
 | [day-walk.md](day-walk.md) | 하루 산책 — 주택가 배경 4장(원본·아침·오후·저녁), 새, 걷는 캐릭터 |
 | [potato-designer.md](potato-designer.md) | POTATO — 날아차기 캐릭터 |
-| [jooho-lab.md](jooho-lab.md) | JOOHO LAB 허브 — 기존 마을·표지 + fal 풍경·Blender 3D 작업실·실제 작품 캡처 7장 |
+| [jooho-lab.md](jooho-lab.md) | JOOHO LAB 허브 — 기존 마을·표지 + fal 풍경·Blender 3D 작업실·실제 작품 캡처 7장 + Tripo P2.0 건물·의자 후보 + 촬영 PBR/HDRI 개선 |
 | [templates.md](templates.md) | **다시 쓸 수 있는 프롬프트 틀** — 스타일 프레임, 프랍 시트, UI 킷, 조명만 바꾸기, 스프라이트, 영상 체인, 3D 변환 |
 
 표시: ✅ 프롬프트 원문 있음 · ❌ 기록 없음(다시 만들 수 없음) · ⏸ 프롬프트만 있고 아직 안 만듦
@@ -30,6 +30,10 @@
 
 | | 작품 | 에셋 | 도구 | 프롬프트 |
 |---|---|---|---|---|
+| <img src="../projects/jooho-lab/art/interior-after-interior.png" width="120"> | JOOHO LAB | [밝은 풍경·실내 마감](jooho-lab.md#19--lab-bright-interior--밝은-풍경과-정교한-실내) | Blender · Three.js | ✅ 제작 요청·소스 |
+| <img src="../projects/jooho-lab/art/clean-after-exterior.png" width="120"> | JOOHO LAB | [얼룩 없는 건물 표면](jooho-lab.md#18--lab-clean-stone--얼룩-없는-건물-표면) | Blender · Three.js | ✅ 제작 요청·소스 |
+| <img src="../projects/dawn-store/art/blender-study/counter.webp" width="120"> | 새벽 세 시 | [Blender 시험](dawn-store.md#12--blender-night-store--계산대커피-렌더-시험) | Blender Cycles | ✅ 제작 요청·소스 |
+| <img src="../projects/jooho-lab/art/photo-after-exterior.png" width="120"> | JOOHO LAB | [촬영 PBR·HDRI](jooho-lab.md#17--lab-photo-pbr--촬영-재질hdri근접-표면-개선) | Blender · Three.js | ✅ 제작 요청·소스 |
 | <img src="../projects/dawn-store/app/public/media/hub.webp" width="120"> | 새벽 세 시 | [계산대 `hub`](dawn-store.md#01--hub--계산대) ⭐ 기준 컷 | GPT Image 2.5 | ✅ |
 | <img src="../projects/dawn-store/app/public/media/intro.webp" width="120"> | 새벽 세 시 | [유리문 `intro`](dawn-store.md#02--intro--유리문) | GPT Image 2.5 | ✅ |
 | <img src="../projects/dawn-store/app/public/media/coffee.webp" width="120"> | 새벽 세 시 | [식은 커피 `coffee`](dawn-store.md#03--coffee--식은-커피) | GPT Image 2.5 | ✅ |
@@ -55,6 +59,7 @@
 
 | | 작품 | 에셋 | 프롬프트 |
 |---|---|---|---|
+| <img src="../projects/jooho-lab/art/realism-after-exterior.png" width="120"> | JOOHO LAB | [건물 구조·PBR 재질 정교화](jooho-lab.md#16--lab-pavilion-realism--건물-구조재질-정교화) | 사용자 요청 원문 · 절차 제작 스크립트 |
 | <img src="../projects/dawn-store/app/public/media/gate-generated-v2.webp" width="120"> | 새벽 세 시 | [도입 화면 영상 8초](dawn-store.md#10--도입-화면-영상-gate-generated-v2) | ❌ |
 | 🔊 | 새벽 세 시 | [배경음·효과음 3개](dawn-store.md#11--소리-bgm--hover--click) | ❌ (제작 요청서만 있음) |
 | 🔊 | 하루 산책 | 효과음 — 코드로 합성(`src/audio/sfx.ts`), 파일·프롬프트 없음 | — |

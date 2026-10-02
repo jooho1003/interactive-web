@@ -1,5 +1,142 @@
 # JOOHO LAB (허브) — 에셋 프롬프트
 
+### 19 · lab-bright-interior — 밝은 풍경과 정교한 실내
+
+<img src="../projects/jooho-lab/art/interior-after-interior.png" width="480">
+
+| 항목 | 내용 |
+|---|---|
+| 파일·크기 | `projects/jooho-lab/public/assets/lab-pavilion.glb` · 4,701,148B; 편집 원본 `art/lab-pavilion.blend`; `art/interior-after-exterior.png` / `art/interior-after-interior.png` · 1440×900 |
+| 쓰이는 곳 | `stage` 가구·전시 마감·실내 조명, `landscape` 배경 밝기/음영. 헤더는 기존 `shell`/`controls` 색 재사용 |
+| 도구·모드 | Blender 4.5.12 LTS / Cycles CPU 베이크, 절차 모델링·PBR 지도, Three.js r180 실시간 공간. AI 이미지 생성 없음 |
+| 참조 | 승인된 카드 18의 깨끗한 외관/실내 캡처. 기존 풍경 사진 파일은 그대로 사용하고 CSS 밝기를 조절 |
+| 설정 | 풍경 brightness 1.18 / shade .4 / 마당 #a8ab9b. 실내 간접광 32, 전시 조명 20, 색 #ffe8c9. 조명 2048²·32샘플, AO 2048²·64샘플·거리 .8m, 두 지도 모두 denoise. UV0 조명/AO, UV1 표면. 직물 512² 반복 지도, 조형물 96×24 분할·smooth normals |
+| 재현 | `python scripts/prepare-photo-textures.py` → `blender -b --threads 4 --python scripts/build-spatial-lab.py`; 기존 원본 재질/조명 갱신은 `blender -b art/lab-pavilion.blend --threads 4 --python scripts/export-photo-surfaces.py` |
+
+**한국어 요약** — 배경을 밝히고 과한 화면 음영을 줄인다. 전시물을 종이색 마운트와 가는 금속 테두리로 마감하고 전용 fixture의 빛을 더한다. 직물 짜임·쿠션·책상 키캡/노트/서랍/컵, 곡면이 매끄럽고 받침에 연결된 금속 조형물을 만든다. 승인된 석재에 얼룩을 다시 넣지 않는다. 색·조명·배경 밝기는 57개 레이어 설정의 일부로 조절한다.
+
+생성 모델에 보낸 별도 프롬프트는 없다. **사용자 요청 원문 그대로**:
+
+```text
+훨씬 괜찮다. 배경도 좀 밝게 해주고 내부도 퀄리티 올려줘~
+```
+
+**후보 선택과 생성 후 확인** — 실시간 spot 7개 후보는 데스크톱 첫 이동 검사 12.273초로 렌더 비용이 커서 탈락했다. 최종본은 Blender에서 새 형상에 맞춰 fixture 조명을 굽고 웹에서 색/세기만 조절한다. 이전 atlas를 새 UV에 재사용하지 않는다. 동선·입구·작품 좌표는 유지한다. 실제 비교/입력/레이어 검수 결과와 한계는 [QA](../projects/jooho-lab/QA-spatial.md)에 남긴다. 카드 18 캡처는 보존한다. 목재·자갈·HDRI의 CC0 출처는 카드 17, 풍경 원본 출처는 기존 풍경 카드와 같다.
+
+전체 회귀 desktop 141/mobile 142/short-mobile 142 및 57/57 파라미터 probe 통과. 마지막 광원 방출점/기본 밝기 보정은 외관·실내 재캡처와 실제 드래그·입장·복귀로 확인했다. 최종 app check/build 통과. 외부 서비스 배포는 하지 않았다.
+
+### 18 · lab-clean-stone — 얼룩 없는 건물 표면
+
+<img src="../projects/jooho-lab/art/clean-after-exterior.png" width="480">
+
+| 항목 | 내용 |
+|---|---|
+| 파일 | `projects/jooho-lab/public/assets/lab-pavilion.glb` · 4,357,584B, pack된 `art/lab-pavilion.blend`; 캡처 `art/clean-after-exterior.png`, `art/clean-after-interior.png` · 1440×900 |
+| 쓰이는 곳 | `stage` 외벽·실내 벽·바닥·디딤돌·좌석 표면 |
+| 도구·모드 | Blender 4.5.12 LTS 재질 교체·AO 베이크 / Python Pillow 절차 재질 데이터 / Three.js r180. AI 이미지 생성 없음 |
+| 참조 | 자체 카드 16의 깔끔한 인상과 카드 17의 얼룩진 외관 비교. 외부 이미지 없음 |
+| 설정 | 시드 42, 512² 색·노멀·거칠기·높이 지도. limestone RGB 246/244/238, honed stone 244/241/233, 색 입자 ±1. AO 2048²·64샘플·거리 0.8m·Blender denoise. 기존 stage 요철 .2/AO .35와 6재질 tint 유지 |
+| 재현 | `prepare-photo-textures.py` → `blender -b art/lab-pavilion.blend --threads 4 --python scripts/export-photo-surfaces.py`; 전체 모델 재현 `build-spatial-lab.py`도 같은 표면을 사용 |
+
+**한국어 요약** — 큰 풍화 얼룩과 작은 돌바닥 반복 무늬를 제거해 균일한 밝은 석재로 만든다. 미세 입자, 실제 패널 줄눈, 목재 결, 환경 반사는 남긴다. 옛 색 베이크와 거친 AO가 얼룩을 재도입하지 않도록 정리한다. 카드 17의 벽·바닥은 사용자 피드백으로 교체했으며 당시 캡처는 이력으로 보존했다. 촬영 재질이면 항상 더 좋은 결과라고 판단하지 않는다.
+
+생성 모델에 보낸 별도 프롬프트는 없다. **사용자 요청 원문 그대로**:
+
+```text
+이 전이 훨씬 나은데 건물이 너무 얼룩덜룩해. 좀 더 깔끔해야지.
+```
+
+**생성 후 확인** — 모바일 두 크기 각 134검사와 레이어 53파라미터 probe 통과. 데스크톱 첫 이동 시간은 기준을 넘어 전체 PASS로 표시하지 않았다. 상세 비교·브라우저 결과는 [QA](../projects/jooho-lab/QA-spatial.md). 새 지도는 절차 생성이며 공유 CC0 사진 원본을 편집하지 않았다. 목재·자갈·HDRI 출처는 카드 17과 같다. 원격 서비스 배포는 하지 않았다.
+
+### 17 · lab-photo-pbr — 촬영 재질·HDRI·근접 표면 개선
+
+<img src="../projects/jooho-lab/art/photo-after-exterior.png" width="480">
+
+| 항목 | 내용 |
+|---|---|
+| 파일 | `projects/jooho-lab/public/assets/lab-pavilion.glb` · 5,299,628B. pack된 원본 `art/lab-pavilion.blend`, 캡처 `art/photo-after-exterior.png`, `art/photo-after-interior.png` 1440×900 |
+| 쓰이는 곳 | stage(건물·마당·반사·광원), 기존 landscape |
+| 도구 | Blender 4.5.12 LTS + Three.js r180 · 2026-10-02. 촬영 재질, AI 생성 없음 |
+| 참조 이미지 | 이전 `art/realism-after-exterior.png`, `art/realism-after-interior.png`와 비교 |
+| 설정 | GI 64샘플 · lightmap 3072², AO 2048² · UV1 사진 1K를 2m/직물 0.3m로 반복. UV0 그림자/작은 간접광 기여. JPEG 색 82/노멀 88, GLB 85 |
+| 출처 | [Poly Haven 공유 CC0 소스·해시](../art/materials/README.md). Overcast Industrial Courtyard HDRI 1K. 마당 runtime 512² 3맵 합계 290,624B |
+| 재현 | `prepare-photo-textures.py` → `build-spatial-lab.py`; 재질만 갱신은 `export-photo-surfaces.py` |
+
+**무엇을 다듬나** — 촬영 벽 미세 입자·목재·석재·자갈과 HDRI를 적용한다. 사진을 큰 아틀라스에만 굽지 않고 실제 크기로 반복해 근접 질감을 유지한다. 접촉 그림자·마당 색을 포함해 7층 53개 설정을 renderer에서 검수한다. 재질 6그룹으로 외관 44 draw calls(반사 포함).
+자연어 3D 생성 프롬프트는 없다. 사용자 요청 원문:
+
+```text
+그럼 새벽세시를 좀 더 블렌더 고품질 렌더로 만들어보고 jooho lab은  3d를 기반으로 한 단계 더 다듬는걸로 해보자.
+```
+
+**생성 후 확인** — 원본 16파일 MD5/출처/CC0 확인. 초기 단일 아틀라스 후보는 근접 질감이 흐려서 수정했다. 사진/노멀/거칠기 UV1과 AO UV0를 GLB에 보존했다. tint는 exporter 누락을 피해 표준 baseColorFactor로 명시했다. 8.4MB 원본 JPEG 후보는 6MB 한도를 넘어 탈락, 해상도 그대로 웹 인코딩한 5.30MB를 채택했다. shader/buffer는 첫 입장 전 준비한다. 나무·풍경·소품은 아직 실사 스캔이 아니며 영화 수준 완성으로 표현하지 않는다. 카드 16의 파일은 이번 개선본으로 갱신됐다. [QA](../projects/jooho-lab/QA-spatial.md).
+
+
+### 16 · lab-pavilion-realism — 건물 구조·재질 정교화
+
+<img src="../projects/jooho-lab/art/realism-after-exterior.png" width="480">
+
+| 항목 | 내용 |
+|---|---|
+| 파일 | `projects/jooho-lab/public/assets/lab-pavilion.glb` · 3,764,564B. 원본 `art/lab-pavilion.blend`. 비교 캡처 `art/realism-before-exterior.png`, `art/realism-after-exterior.png` · 1800×1125 |
+| 쓰이는 곳 | JOOHO LAB 외관·작업실·작품 장면, 레이어 `stage`; 화면 음영은 `landscape.shade` |
+| 도구 | Blender 4.5.12 LTS / Cycles CPU, Python 절차 모델링·베이크; Three r180 PBR 및 Reflector · 2026-10-02 |
+| 참조 이미지 | 기존 Blender 건물과 동일 시점의 웹 화면. 외부 사진·AI 이미지 없음 |
+| 설정 | 시드 42, diffuse 3072×3072 / tangent normal 2048×2048 / roughness 2048×2048, Cycles 32 samples, diffuse denoise, GLB JPEG quality 92. 데스크톱 평면 반사 512×512 / MSAA 0, ≤650px 추가 반사 패스 끔. 자갈은 Canvas 512px 시드 42, 물리 2m 반복 |
+| 재현 | `projects/jooho-lab/scripts/build-spatial-lab.py`; 브라우저 재질·반사·자갈은 `public/spatial-scene.js`, 조절값 정본은 `public/layers.manifest.js` |
+
+**무엇을 그리나** — 기존 건물의 석재 패널 이음새, 지붕 금속 마감과 음영 틈, 창틀 깊이와 유리, 목재·석재 요철과 거칠기, 잎 형태를 정교하게 만든다. 수면에 실제 건물을 반사하고 주변 지면의 자갈을 표현한다. 이동 동선과 전시 7개는 유지한다. Tripo 후보는 쓰지 않는다.
+
+**사용자 제작 요청 원문** — AI 생성 모델에 보낸 프롬프트는 없으며, 아래 요청을 절차 모델링으로 구현했다. 원문을 대체하는 가상의 생성 프롬프트를 만들지 않는다.
+
+```text
+좀 더 영상 같고 사실적인 건물이면 좋겠어. 일단 정교하게 다듬어줘.
+```
+
+**생성 후 확인** — 기존 emission-only 건물을 표면 요철·거칠기 지도와 약한 베이크 발광을 가진 PBR 재질로 변경. 동일 외관 시점에서 패널 분할·처마 깊이·실제 건물 반사가 확인됨. 기본 치수·입구·전시 위치와 기존 6MB 전송 제한 유지. 이전 유리 없는/단순 환경광 수면 버전은 구조와 재질 반응이 부족해 교체. 사진 기반 재질이나 오프라인 영상 렌더는 아니며, 웹 실시간 화면의 정교화다. 상세 브라우저 검수와 한계: [QA](../projects/jooho-lab/QA-spatial.md).
+
+### 15 · lab-pavilion-tripo — 전시관 건물 전체 후보
+
+<img src="../projects/jooho-lab/art/tripo/lab-pavilion-preview.webp" width="480">
+
+| 항목 | 내용 |
+|---|---|
+| 파일 | 검수 캡처 `projects/jooho-lab/art/tripo/lab-pavilion-preview.webp` · 819×556 · 10,532B. GLB는 내보내기 제한으로 미확보 |
+| 쓰이는 곳 | JOOHO LAB 건물 교체 후보 · 미적용 · 예정 레이어 `architecture` |
+| 도구 | Tripo Studio Smart Mesh P2.0 · 브라우저 text-to-3D · 2026-10-02 |
+| 참조 이미지 | 없음 |
+| 설정 | 남은 무료 체험 1회 사용, 메시 생성 비용 0, 후보 1개, 공개, Quad 면 4,095 / 버텍스 3,596. 완료 후 Studio의 `텍스처 20` 자동 재질 생성 성공(기존 무료 잔액 200→180). 별도 텍스처 프롬프트 입력란은 없었음. 내보내기 창에는 `4k Current` 표시(다운로드로 실제 해상도 확인은 못 함) |
+| 모델 | [Studio 작업](https://studio.tripo3d.ai/ko/workspace/generate/24252813-eff2-4d98-b581-b7bf4c63f29b) |
+
+**무엇을 그리나** — 기존 석회석·목재·브론즈 전시관을 참고한 단층 건물 전체. 중앙 입구, 빈 실내 통로, 후면 전시 패널 7개를 명시했다. 사용자가 소품보다 건물부터 만들라고 바로잡아 의자/조형물 우선 계획을 변경했다. docs/04의 개별 오브젝트 생성 원칙과 달리 건물 전체를 한 번에 생성하는 시험이며, 실내가 막히거나 합쳐지는 결함을 별도로 검수한다.
+
+```text
+A complete single-storey contemporary art gallery pavilion, isolated architectural 3D building, not furniture. Rectangular 18m wide, 16m deep, 5m high. Refined warm limestone walls, thin flat cantilevered roof with deep overhang, ribbed timber soffit, slender bronze facade mullions, travertine floor and a low stone foundation. Front facade has a wide central doorway, 3.6m wide and 4.2m tall, genuinely open with no door or glass blocking it. Large open window bays reveal a hollow interior gallery hall, realistic wall thickness, continuous empty central walking aisle from entrance to rear wall. Seven evenly spaced blank rectangular artwork mounting panels across the rear interior wall. Restrained Japanese modernist architecture, precise clean edges and construction details, coherent roof/walls/floor, clean quad topology. One complete building only. No chairs, tables, sculptures, plants, people, text, logos, artwork images, terrain or surrounding buildings.
+```
+
+**생성 후 확인** — 메시·재질 생성 성공, 무료 체험 횟수 소진, 잔액 180. 실제 마우스 회전으로 평지붕·외벽·기단과 전면 열린 공간을 확인했다. 재질은 크림색 벽과 어두운 외벽·프레임으로 나왔으며 목재 처마 디테일은 뚜렷하지 않다. 정면에 보이는 후면 패널은 3개로, 요청한 7개와 다르다. 내부 오른쪽에 요청하지 않은 단/가구 같은 형상이 보이고 프레임·모서리가 불규칙하다. 정확한 중앙 입구·실내 동선·치수·충돌·전체 내부 연결은 다운로드 없이는 검증할 수 없다. 기존 Blender 전시관의 개선본으로 채택하지 않았다. GLB / `4k Current`로 정상 내보내기를 실행했으나 Pro/Max 구독 안내가 나와 파일을 받지 못했다. [제한 화면](../projects/jooho-lab/art/tripo/lab-pavilion-export-gate.png). 앱 건물 교체·레이어 변경·배포는 미실행. 메시 전후 정면·측면 캡처는 `art/tripo/lab-pavilion-*`에 보관했다.
+
+### 14 · lounge-chair — 스마트 메시 라운지 체어 후보
+
+<img src="../projects/jooho-lab/art/tripo/lounge-chair-preview.webp" width="360">
+
+| 항목 | 내용 |
+|---|---|
+| 파일 | 검수 캡처 `projects/jooho-lab/art/tripo/lounge-chair-preview.webp` · 901×853 · 29,380B. GLB는 내보내기 제한으로 받지 못함 |
+| 쓰이는 곳 | JOOHO LAB 라운지 의자 교체 후보 · 미적용. 예정 레이어 `lounge-chair` |
+| 도구 | Tripo Studio Smart Mesh P2.0 · 브라우저 text-to-3D · 2026-10-02 |
+| 참조 이미지 | 없음 |
+| 설정 | 무료 체험 1회, 생성 비용 0, 후보 1개, 공개, Quad. UI 결과: 면 6,374 / 버텍스 5,567. 텍스처 추가 생성 안 함 |
+| 모델 | [Studio 작업](https://studio.tripo3d.ai/ko/workspace/generate/bcb900f9-2dea-4906-9110-a0f220fe9c23) · 객체 `tripo_4db9b9f5_2e18_4023_ae22_cc42cde448fd` |
+
+**무엇을 그리나** — 조용한 전시관에 놓을 오크 프레임과 아이보리 리넨 쿠션의 라운지 체어 한 개. 기존 파빌리온의 따뜻한 재질에 맞춰 독립 소품으로 요청했다.
+
+```text
+A single refined contemporary lounge armchair for a quiet architectural gallery. Sculptural solid smoked oak frame, broad softly curved armrests, rounded joinery, four short sturdy wooden legs. Thick ivory woven linen seat and back cushions with subtle fabric texture and realistic seams. Warm natural materials, understated Japanese Scandinavian design, premium furniture craftsmanship. Complete freestanding chair, front three-quarter view, accurately proportioned, clean production-ready quad topology, detailed PBR materials. No person, no text, no logo, no floor, no room, no other objects.
+```
+
+**생성 후 확인** — 무료 생성 성공, Studio 잔액 200 유지, 체험 2회→1회. 정면 와이어프레임과 실제 마우스 회전 후 측면을 확인했다. 쿠션·팔걸이·프레임·다리 형태가 생성됐지만 쿠션 표면은 각져 보이며, 프롬프트의 PBR 요청과 달리 현재 모델은 텍스처 없는 회색 메시다. 웹용 최종 품질 합격으로 판단하지 않는다. GLB 형식을 선택하고 정상 내보내기를 두 번 시도했으나 모두 Pro/Max 구독 안내가 나왔다. [제한 화면](../projects/jooho-lab/art/tripo/lounge-chair-export-gate.png). 다운로드·최적화·앱 적용은 미완료이며, 생성 후보를 스크린샷으로 대체해 앱에 넣지 않았다. 무료 체험 1회는 남겼다. 유료 구독이나 충전은 하지 않았다.
+
 [← 전체 목록](README.md)
 
 작품을 모아 보여 주는 3D 공간 갤러리입니다. 현재는 Blender 파빌리온과 Three.js 카메라를 사용합니다. 아래 기존 마을 기록은 이전 버전의 이력입니다.
