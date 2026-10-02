@@ -32,4 +32,4 @@ body { margin: 0; min-height: 100vh; overflow: hidden; opacity: var(--L-global-o
 
 @media (hover: none) { .hint-pointer { display: none; } } /* layer-fixed: 입력 방식별 안내 */
 @media (hover: hover) { .hint-touch { display: none; } }
-@media (prefers-reduced-motion: reduce) { .sheet-frame { visibility: hidden; transition: none; } .hint { animation: none; } } /* layer-fixed: 동작 줄이기 */
+@media (prefers-reduced-motion: reduce) { .sheet-frame { visibility: hidden; transition: none; } .hint { animation: none; visibility: hidden; } } /* layer-fixed: 동작 줄이기 */
