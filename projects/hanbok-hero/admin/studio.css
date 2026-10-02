@@ -16,4 +16,5 @@ body { margin: 0; display: grid; grid-template-columns: 380px 1fr; height: 100vh
 #status { min-height: 1.5em; color: #b4321f; white-space: pre-wrap; } #status.ok { color: #2a7a3b; }
 .preview { display: grid; place-items: center; overflow: auto; padding: 16px; }
 .frame { background: #fff; box-shadow: 0 10px 40px rgba(0, 0, 0, .18); }
-#preview { display: block; border: 0; width: 1440px; height: 900px; max-width: 100%; }
+#preview { display: block; border: 0; width: 1440px; height: 900px; }
+.scope-note { margin: 0 0 6px; font-size: 11px; color: #777; }
