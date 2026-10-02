@@ -38,6 +38,8 @@ Full figure within a square frame, genuine transparent background (real alpha ch
 | 참조 이미지 | `hanbok-still.png` (같은 인물·의상·크기 유지용) |
 | 설정 | 1:1 · 투명 배경 |
 
+출력 크기가 1024²뿐이면 칸이 약 341px라 화면(약 660 CSS px)에서 정면 그림보다 흐려진다 → 2048² 이상으로 요청하거나 업스케일한다.
+
 **한국어 요약** — 01과 같은 인물을 3×3 칸에 9번 그린다. 칸마다 고개와 시선 방향만 다르다(왼쪽 위·위·오른쪽 위 / 왼쪽·정면·오른쪽 / 왼쪽 아래·아래·오른쪽 아래). 몸 자세·크기·위치는 모든 칸에서 똑같다.
 
 **프롬프트 원문**
@@ -49,7 +51,7 @@ Row 1: looking up-left, looking up, looking up-right. Row 2: looking left, looki
 Head turns are subtle (about 15 degrees), eyes clearly follow the same direction. Character centered in each cell with the same generous transparent padding, fully visible, no overlaps. True transparent RGBA background, no checkerboard drawn, no floor, no shadow. Avoid green.
 ```
 
-**생성 후 확인** — `alphaReport('/assets/hanbok-sheet.png')` 모서리 알파 0. 작품 페이지에서 마우스를 돌려 9칸이 같은 인물·같은 위치인지 본다. 칸 사이에서 몸이 튀면 ① 가운데 칸을 기준으로 다시 요청하거나 ② 5방향(정면·좌·우·상·하)으로 줄인다. 줄이면 매니페스트 `cols`·`rows`가 아니라 시트 칸 자체를 3×3로 유지하되 대각선 칸에 가장 가까운 직교 칸을 복사해 넣는다(코드 변경 없음). 이 결정과 이유를 이 카드에 적는다.
+**생성 후 확인** — `alphaReport('/assets/hanbok-sheet.png')` 모서리 알파 0. 작품 페이지에서 마우스를 돌려 9칸이 같은 인물·같은 위치인지 본다. 시트가 앞에 나올 때 정면 외곽선이 비치지 않는지(이중 외곽선) 확인한다. 칸 사이에서 몸이 튀면 ① 가운데 칸을 기준으로 다시 요청하거나 ② 5방향(정면·좌·우·상·하)으로 줄인다. 5방향으로 줄여도 시트는 3×3 그대로 두고 매니페스트 `cols`·`rows`도 바꾸지 않는다. 좌상·우상 칸은 '위' 칸을, 좌하·우하 칸은 '아래' 칸을 복사해 넣는다(코드 변경 없음). 이 결정과 이유를 이 카드에 적는다.
 
 ## 03 · 배경 (paper) — 없음
 
