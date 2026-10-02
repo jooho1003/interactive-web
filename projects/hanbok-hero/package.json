@@ -1,0 +1,14 @@
+{
+  "name": "hanbok-hero",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build-layers.mjs && node scripts/check.mjs",
+    "check": "node --test scripts/*.test.mjs && node scripts/check.mjs && node scripts/layer-check.mjs",
+    "layers:build": "node scripts/build-layers.mjs",
+    "layers:lint": "node scripts/layer-check.mjs",
+    "assets:placeholder": "node scripts/make-placeholders.mjs"
+  }
+}
