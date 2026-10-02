@@ -1,4 +1,5 @@
 // 포인터 → 시선 구역. DOM 없음. 축마다 ENTER를 넘어야 옆 칸, LEAVE 아래로 내려와야 정면(히스테리시스).
+// layer-fixed: 히스테리시스 문턱은 입력 안정성 상수. 파라미터로 열면 떨림 방지 보증이 깨진다
 export const ENTER = 0.38;
 export const LEAVE = 0.28;
 export function axisZone(n, prev = 0, enter = ENTER, leave = LEAVE) {

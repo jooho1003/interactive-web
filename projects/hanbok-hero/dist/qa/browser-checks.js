@@ -35,6 +35,7 @@ export async function runChecks() {
     check(still.complete && still.naturalWidth > 0, '정면 그림 로딩');
     const initialFront = document.querySelector('.sheet-frame.is-front');
     check(gaze.state().ready && !!initialFront && initialFront.style.getPropertyValue('--in-gaze-col') === '1' && initialFront.style.getPropertyValue('--in-gaze-row') === '1', '시트 로딩 후 정면 칸이 앞 프레임');
+    check(getComputedStyle(still).visibility === 'hidden', '시트가 반응 중이면 정면 그림 숨김(이중 외곽선 없음)');
     const { cx, cy, r } = anchor();
     pointer('pointermove', cx, cy); await wait(30);
     check(gaze.state().zone.col === 0 && gaze.state().zone.row === 0, '중앙에서는 정면');
@@ -43,6 +44,16 @@ export async function runChecks() {
     check(document.querySelector('.hint').classList.contains('is-done'), '첫 반응 뒤 안내 숨김');
     const front = document.querySelector('.sheet-frame.is-front');
     check(!!front && front.style.getPropertyValue('--in-gaze-col') === '2', '앞 프레임이 오른쪽 칸(index 2)');
+    const outgoing = document.querySelector('.sheet-frame.was-front');
+    const frontStyle = front ? getComputedStyle(front) : null;
+    const total = frontStyle ? ((parseFloat(frontStyle.transitionDelay) || 0) + (parseFloat(frontStyle.transitionDuration) || 0)) * 1000 : 0;
+    await wait(Math.max(0, total / 2 - 30));
+    check(!!outgoing && getComputedStyle(outgoing).opacity === '1' && parseFloat(getComputedStyle(front).opacity) < 1, '전환 중 나가는 프레임은 불투명하게 아래에 남는다');
+    const hintLine = [...document.querySelector('.hint').children].find(el => getComputedStyle(el).display !== 'none');
+    const hintOpacity = hintLine ? parseFloat(getComputedStyle(hintLine).opacity) : NaN;
+    check(hintOpacity > 0 && hintOpacity < 1 && getComputedStyle(hintLine).visibility === 'visible', '안내는 바로 꺼지지 않고 hint.fade 동안 페이드');
+    await wait(total / 2 + 80);
+    check(!!outgoing && !outgoing.classList.contains('was-front') && getComputedStyle(outgoing).opacity === '0' && getComputedStyle(front).opacity === '1', '전환이 끝나면 나가는 프레임을 내린다');
     pointer('pointermove', cx + r * 0.3, cy); await wait(30);
     check(gaze.state().zone.col === 1, '경계 안쪽(0.3)에서는 유지 — 히스테리시스');
     pointer('pointermove', cx + r * 0.2, cy); await wait(30);
@@ -62,6 +73,7 @@ export async function runChecks() {
     try {
       layerHost.setValues(setValue(original, 'hero', 'base', 'character', 'react', false)); await wait(30);
       check(getComputedStyle(document.querySelector('.sheet-frame')).visibility === 'hidden', 'react 끄면 시트 숨김');
+      check(getComputedStyle(still).visibility === 'visible', 'react 끄면 정면 그림 보임');
       pointer('pointermove', cx + r, cy); await wait(30);
       check(gaze.state().zone.col === 0, 'react 꺼진 동안 반응 없음');
       layerHost.setValues(setValue(original, 'hero', 'base', 'character', 'cols', 1)); await wait(30);
@@ -79,8 +91,9 @@ export async function runChecks() {
 }
 
 export async function runSheetFailure() {
-  // 시트 경로를 깨뜨린 새 페이지에서 호출한다: 정면만 남아야 한다.
-  const { gaze } = await import('/app.js');
+  // 시트 경로를 깨뜨린 새 페이지에서 호출한다: 정면만 남아야 하고, 시트를 바꾸면 새로고침 없이 회복해야 한다.
+  const { layerHost, gaze } = await import('/app.js');
+  const { setValue } = await import('/vendor/layer-kit/index.js');
   const { check, passed, failed } = collector();
   await gaze.ready;
   const release = isolate();
@@ -91,6 +104,16 @@ export async function runSheetFailure() {
     const { cx, cy, r } = anchor();
     pointer('pointermove', cx + r, cy); await wait(30);
     check(gaze.state().zone.col === 0, '시트 없이는 반응하지 않음');
+    check(getComputedStyle(document.querySelector('.character-still')).visibility === 'visible', '정면 그림 보임');
+    const original = layerHost.values;
+    const sheetDefault = layerHost.manifest.layers.find(layer => layer.id === 'character').params.sheet.default;
+    try {
+      layerHost.setValues(setValue(original, layerHost.scene, 'base', 'character', 'sheet', sheetDefault));
+      for (let i = 0; i < 40 && !gaze.state().ready; i++) await wait(50);
+      check(gaze.state().ready && !!document.querySelector('.sheet-frame.is-front'), '시트를 바꾸면 새로고침 없이 회복');
+    } finally {
+      layerHost.setValues(original);
+    }
     return { passed, failed };
   } finally {
     release();
@@ -106,6 +129,7 @@ export async function runReducedMotionChecks() {
     await settle(gaze);
     check(matchMedia('(prefers-reduced-motion: reduce)').matches, '동작 줄이기 에뮬레이션 켜짐');
     check(getComputedStyle(document.querySelector('.sheet-frame')).visibility === 'hidden', '시트 프레임 숨김');
+    check(getComputedStyle(document.querySelector('.character-still')).visibility === 'visible', '정면 그림 보임');
     const { cx, cy, r } = anchor();
     pointer('pointermove', cx + r, cy); await wait(30);
     check(gaze.state().zone.col === 0, '반응 없음');
@@ -115,15 +139,27 @@ export async function runReducedMotionChecks() {
   }
 }
 
-export function runNarrowChecks() {
+export async function runNarrowChecks() {
+  const { gaze } = await import('/app.js');
   const { check, passed, failed } = collector();
-  const inView = el => { const r = el.getBoundingClientRect(); return r.left >= 0 && r.right <= window.innerWidth && r.top >= 0 && r.bottom <= window.innerHeight; };
-  check(window.innerWidth <= 650, '390px 뷰포트');
-  check(document.documentElement.scrollWidth <= window.innerWidth, '가로 스크롤 없음');
-  check(inView(document.querySelector('.title')), '이름이 화면 안');
-  check(inView(document.querySelector('.nav')), '메뉴가 화면 안');
-  check(inView(document.querySelector('.character')), '캐릭터가 화면 안');
-  return { passed, failed };
+  await gaze.ready;
+  const release = isolate();
+  try {
+    const inView = el => { const r = el.getBoundingClientRect(); return r.left >= 0 && r.right <= window.innerWidth && r.top >= 0 && r.bottom <= window.innerHeight; };
+    check(window.innerWidth <= 650, '390px 뷰포트');
+    check(document.documentElement.scrollWidth <= window.innerWidth, '가로 스크롤 없음');
+    check(inView(document.querySelector('.title')), '이름이 화면 안');
+    check(inView(document.querySelector('.nav')), '메뉴가 화면 안');
+    check(inView(document.querySelector('.character')), '캐릭터가 화면 안');
+    await settle(gaze);
+    const { cx, cy, r } = anchor();
+    pointer('pointerdown', Math.max(2, cx - r * 0.9), cy, 'touch'); await wait(30);
+    check(gaze.state().zone.col === -1, '좁은 화면 안쪽 터치 탭으로 옆을 본다');
+    gaze.reset();
+    return { passed, failed };
+  } finally {
+    release();
+  }
 }
 
 export async function alphaReport(src) {

@@ -13,7 +13,10 @@ async function api(path, options) {
   if (!response.ok) throw new Error(data.error || `${response.status} 요청 실패`);
   return data;
 }
-function push() { bridge?.setValues(values); }
+function push() {
+  if (values === undefined) return;
+  try { bridge?.setValues(values); } catch (error) { status('미리보기에 적용하지 못했습니다: ' + error.message); }
+}
 function accept(next) { state = next; values = next.values; render(); push(); if (next.conflict) status('게시본이 바뀌었습니다. 내보내기로 초안을 보관한 뒤 다시 불러오세요.'); }
 let rows = new Map();
 const isOverridden = (layer, key) => { const [s, v] = scope(); return scopeMap(JSON.parse(JSON.stringify(values)), s, v)[layer]?.[key] !== undefined; };
@@ -50,7 +53,7 @@ function control(layer, key, param, value) {
   else if (param.type === 'select') { input = el('select'); for (const option of param.options) { const o = el('option', option.label); o.value = option.value; o.selected = option.value === value; input.append(o); } input.onchange = () => update(layer.id, key, input.value); }
   else if (param.type === 'image') {
     input = el('label', value.length > 60 ? '(업로드한 이미지)' : value); const file = el('input'); file.type = 'file'; file.accept = 'image/png,image/jpeg,image/webp'; file.style.display = 'block';
-    file.onchange = () => { const picked = file.files[0]; if (!picked) return; if (picked.size > 2000000) return status('이미지는 2MB 이하만 올릴 수 있습니다.'); const reader = new FileReader(); reader.onload = () => { update(layer.id, key, reader.result); renderInspector(); }; reader.readAsDataURL(picked); };
+    file.onchange = () => { const picked = file.files[0]; if (!picked) return; if (!['image/png', 'image/jpeg', 'image/webp'].includes(picked.type)) { file.value = ''; return status('PNG·JPEG·WebP 이미지만 올릴 수 있습니다.'); } if (picked.size > 2000000) return status('이미지는 2MB 이하만 올릴 수 있습니다.'); const reader = new FileReader(); reader.onload = () => { update(layer.id, key, reader.result); renderInspector(); }; reader.readAsDataURL(picked); };
     input.append(file);
   }
   const reset = el('button', '되돌리기'); reset.disabled = !overridden; reset.onclick = () => update(layer.id, key, undefined);
@@ -62,7 +65,7 @@ function renderInspector() {
   const layer = manifest.layers.find(item => item.id === selected), current = resolved()[layer.id];
   const [s, v] = scope();
   rows = new Map();
-  $('inspector').replaceChildren(el('h2', `${layer.label} · ${s === 'all' ? '공통' : manifest.scenes[s].label} · ${v === 'base' ? '기본 화면' : screen().label}`), el('p', '우선순위: 이 장면 > 화면별 > 공통. 기본 화면에서 바꾼 값은 모든 화면 크기에 적용됩니다. 화면 크기마다 다르게 두려면 화면을 먼저 고르세요.', 'scope-note'), ...Object.entries(layer.params).map(([key, param]) => control(layer, key, param, current[key])));
+  $('inspector').replaceChildren(el('h2', `${layer.label} · ${s === 'all' ? '공통' : manifest.scenes[s].label} · ${v === 'base' ? '기본 화면' : screen().label}`), el('p', '우선순위: 이 장면 > 화면별(매니페스트 화면 기본값 포함) > 공통. 공통·기본 화면 값은 화면별 값이 없는 화면에만 적용되고, 이 장면 값은 모든 화면 크기를 덮습니다. 화면 크기마다 다르게 두려면 화면을 먼저 고르세요.', 'scope-note'), ...Object.entries(layer.params).map(([key, param]) => control(layer, key, param, current[key])));
 }
 function renderVersions(list) { $('versions').replaceChildren(...list.map(name => { const o = el('option', name); o.value = name; return o; })); $('restore').disabled = !list.length; }
 function render() { renderLayers(); renderInspector(); $('preview').style.width = screen().width + 'px'; }
