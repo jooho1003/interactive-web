@@ -12,6 +12,7 @@
 !projects/potato-designer/dist/**
 !projects/hanbok-hero/dist/
 !projects/hanbok-hero/dist/**
+projects/hanbok-hero/.studio/
 **/test-results/
 **/playwright-report/
 

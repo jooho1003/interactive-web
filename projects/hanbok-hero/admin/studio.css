@@ -1,0 +1,19 @@
+* { box-sizing: border-box; }
+body { margin: 0; display: grid; grid-template-columns: 380px 1fr; height: 100vh; font: 13px/1.5 system-ui, sans-serif; color: #222; background: #e9e6e1; }
+.panel { overflow: auto; padding: 14px; background: #fff; border-right: 1px solid #ddd; }
+.panel h1 { font-size: 16px; margin: 0 0 10px; } .panel h1 small { font-weight: 400; color: #777; margin-left: 6px; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; } .row label { display: flex; flex-direction: column; gap: 2px; font-size: 12px; color: #555; }
+#layers { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+#layers button { padding: 6px 10px; border: 1px solid #ccc; border-radius: 999px; background: #fafafa; cursor: pointer; }
+#layers button[aria-pressed="true"] { background: #222; color: #fff; border-color: #222; }
+.param { display: grid; grid-template-columns: 110px 1fr auto; gap: 6px; align-items: center; padding: 6px 0; border-bottom: 1px solid #eee; }
+.param .label { color: #444; } .param .label.set::after { content: " ●"; color: #dc593c; }
+.param input[type="number"], .param textarea, .param select { width: 100%; } .param input[type="range"] { width: 100%; }
+.param .num { display: flex; gap: 6px; } .param .num input[type="number"] { width: 84px; }
+.param button { padding: 2px 6px; font-size: 11px; }
+.actions button, .actions .file { padding: 6px 10px; border: 1px solid #bbb; border-radius: 6px; background: #f6f6f6; cursor: pointer; }
+.actions .file input { display: none; }
+#status { min-height: 1.5em; color: #b4321f; white-space: pre-wrap; } #status.ok { color: #2a7a3b; }
+.preview { display: grid; place-items: center; overflow: auto; padding: 16px; }
+.frame { background: #fff; box-shadow: 0 10px 40px rgba(0, 0, 0, .18); }
+#preview { display: block; border: 0; width: 1440px; height: 900px; max-width: 100%; }
