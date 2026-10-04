@@ -5,7 +5,7 @@ import {setValue,variable,cssValue} from './index.js';
 // Restores values and CSSOM even on failure. Run in a dedicated QA page.
 export async function probe(host){
   const original=host.values,manifest=host.manifest,root=document.documentElement;
-  const sheets=[...document.styleSheets].filter(sheet=>sheet.href?.endsWith('/style.css'));
+  const sheets=[...document.styleSheets].filter(sheet=>(manifest.stylesheets||['/style.css']).some(name=>sheet.href?.endsWith(name)));
   const references=new Map(),keyframes=[];
   function scan(rules,media=[],animation=null){for(const rule of rules){
     if(rule.type===CSSRule.MEDIA_RULE){scan(rule.cssRules,[...media,rule],animation);continue;}

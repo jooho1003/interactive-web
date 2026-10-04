@@ -1,0 +1,12 @@
+{
+  "gates": {"G1":"PASS","G2":"PASS","G3":"PASS","G4":"PASS","G5":"PASS"},
+  "nodes": [
+    {"id":"include","title":"Register and embed Potato","domain":"frontend","D1":0,"D2":1,"D3":0,"D4":1,"score":2,"tier":"balanced","agent":"primary","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":[],"output":"Registry, embedded snapshot, refresh command, keyboard entry"},
+    {"id":"review","title":"Verify hub entry and return","domain":"review","D1":0,"D2":1,"D3":0,"D4":2,"score":3,"tier":"powerful","agent":"primary","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":["include"],"output":"Browser QA, layer lint/probe, documentation","justification":"Final review hard override; primary execution"},
+    {"id":"publish","title":"Update existing Site if accessible","domain":"general","D1":0,"D2":0,"D3":2,"D4":0,"score":2,"tier":"balanced","agent":"primary","claude_model":"sonnet","codex_model":"gpt-5.6-luna","depends_on":["review"],"output":"Existing audience and Site preserved","authorization":"User requested existing Site edit; sites skill default publication","external_blocker":"NOT_FOUND for existing project; connected owner Sites list empty"}
+  ],
+  "execution":"Inherited primary runtime; no subagents",
+  "status":"local_complete_publication_blocked",
+  "validation":{"workspace":"pnpm check passed; existing Dawn umbrella warning","hub":"8 projects, build passed","browser":"search/filter/empty/reset, detail URL, embedded entry/return/state restore, Enter without house, 320px/reduced motion, grid entry passed","layerLintErrors":0,"embeddedProbe":{"total":619,"passed":619,"conditional":148},"runtimeErrors":0,"failedLocalResponses":0},
+  "publication":"Existing Site NOT_FOUND and owner Sites list empty; Site identity unchanged; not deployed"
+}

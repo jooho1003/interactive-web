@@ -1,6 +1,7 @@
 import {getContent,contentAccess,previewContent,saveContent,uploadImage} from './content.js';
 import {cleanContent,contentDefaults} from './content-schema.js';
 import {projects} from './projects.js';
+import {initVillageLayerEditor} from './village-layers.js';
 export function initEditor(dialog){
   let saved=getContent(),draft=getContent(),busy=false,dirty=false;
   const tabs=dialog.querySelector('.settings-tabs');
@@ -9,6 +10,7 @@ export function initEditor(dialog){
   dialog.querySelector('#settings-status').before(editor);
   const tab=document.createElement('button');tab.type='button';tab.dataset.settingsTab='exhibition';tab.textContent='전시 편집';tab.setAttribute('aria-pressed','false');tabs.prepend(tab);
   const access=contentAccess(),status=editor.querySelector('#editor-status'),fields=editor.querySelector('#editor-fields');
+  const layerTab=document.createElement('button');layerTab.type='button';layerTab.dataset.editorSection='layers';layerTab.textContent='마을 레이어';layerTab.setAttribute('aria-pressed','false');editor.querySelector('.editor-sections').append(layerTab);
   const say=(message,error=false)=>{status.textContent=message;status.classList.toggle('error',error)};
   function changed(){dirty=true;try{previewContent(draft);say('미리보기 중입니다. 전시 저장을 누르면 방문자에게 반영됩니다.')}catch(e){say(e.message,true)}}
   function field(label,key,multiline=false,object=draft){const wrap=document.createElement('label');wrap.className='editor-field';const name=document.createElement('span');name.textContent=label;const input=document.createElement(multiline?'textarea':'input');if(!multiline)input.type='text';input.value=object[key]??'';input.maxLength=multiline?1500:250;input.dataset.contentField=key;input.addEventListener('input',()=>{object[key]=input.value;changed()});wrap.append(name,input);fields.append(wrap);}
@@ -19,6 +21,7 @@ export function initEditor(dialog){
     if(section==='character'){image('안내 캐릭터','character',draft,contentDefaults.character);const label=document.createElement('label');label.className='editor-field';const check=document.createElement('input');check.type='checkbox';check.checked=draft.characterVisible;check.addEventListener('change',()=>{draft.characterVisible=check.checked;changed()});label.append(check,document.createTextNode(' 캐릭터 표시'));fields.append(label);range('캐릭터 크기','characterSize',.4,2.5,.1);range('산책 속도','characterSpeed',0,2,.1)}
     if(section==='space'){for(const [label,key] of [['조명 포인트 색','accent'],['하늘 배경 색','room']]){field(label,key);const input=fields.lastElementChild.querySelector('input');input.type='color'}range('카메라 이동 속도','cameraSpeed',.5,2,.1);range('장면 밝기','lighting',.4,1.8,.1)}
     if(section==='art'){for(const p of projects){const heading=document.createElement('h3');heading.textContent=p.number+' / '+p.title;fields.append(heading);const value=draft.projects[p.id]??={title:p.title,subtitle:p.subtitle,description:p.description,image:p.image||'',link:''};field('작품 이름','title',false,value);field('한 줄 소개','subtitle',false,value);field('작품 설명','description',true,value);field('입장 주소 (비우면 기본 연결)','link',false,value);image('전시 이미지','image',value,p.image||'')}}
+    if(section==='layers')initVillageLayerEditor(fields);
     fields.querySelectorAll('input,textarea,button').forEach(el=>el.disabled=!access.canEdit);
   }
   editor.querySelectorAll('[data-editor-section]').forEach(b=>b.addEventListener('click',()=>{section=b.dataset.editorSection;editor.querySelectorAll('[data-editor-section]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render()}));

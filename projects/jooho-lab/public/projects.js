@@ -67,4 +67,13 @@ export const projects = [
     url: 'https://github.com/jooho1003/interactive-web', linkLabel: '프로젝트 코드 보기',
     image: null, mark: '☀', note: '브라우저에 저장되는 1인용 루틴 도구입니다.',
   },
+  {
+    id: 'potato-designer', liveUrl: './experiences/potato-designer/', title: 'POTATO', subtitle: '경계를 넘나드는 디자인, 움직이는 아이디어.',
+    category: '인터랙티브', type: 'DESIGNER IN MOTION', number: '08', color: '#e0bd42',
+    description: '포인터에 반응하는 캐릭터와 함께 브랜드·디지털·캐릭터 디자인을 탐색하는 인터랙티브 포트폴리오 스터디입니다.',
+    details: ['세 가지 디자인 분야와 캐릭터 모션 전환', '작업 검색·상세 탐색·관심 작업 저장', '참고 작업을 연결한 프로젝트 메모 작성·다운로드'],
+    tags: ['JavaScript', 'CSS', '인터랙션'],
+    url: 'https://github.com/jooho1003/interactive-web/tree/main/projects/potato-designer', linkLabel: '프로젝트 코드 보기',
+    image: './assets/potato.png', mark: 'p.', note: '생성한 2D 캐릭터에 CSS 원근과 회전을 적용한 디자인 스터디입니다.',
+  },
 ];

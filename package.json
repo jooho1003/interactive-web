@@ -8,6 +8,7 @@
     "build:dawn": "pnpm --filter dawn-store build",
     "build:hub": "pnpm --filter day-walk build && pnpm --filter jooho-lab include:experience day-walk && pnpm --filter jooho-lab validate && pnpm --filter jooho-lab build",
     "build:hub:dawn": "pnpm build:dawn && pnpm --filter jooho-lab include:experience dawn-store && pnpm --filter jooho-lab validate",
+    "build:hub:potato": "pnpm --filter potato-designer build && pnpm --filter jooho-lab include:experience potato-designer && pnpm --filter jooho-lab validate && pnpm --filter jooho-lab build",
     "check": "node prompts/build.mjs --check && pnpm -r --if-present check",
     "prompts:build": "node prompts/build.mjs",
     "prompts:check": "node prompts/build.mjs --check",

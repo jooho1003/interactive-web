@@ -33,4 +33,12 @@ Writes require Sites-authenticated identity with the verified owner's email allo
 
 Existing Dawn interactive experience remains embedded at `/experiences/dawn-store/`; SASU opens its live service. Projects without confirmed live services open their introduction pages. Existing source code and links are preserved.
 
+POTATO is registered as work 08, with search/category filtering, collection cards, owner content editing and a detail page. Its embedded portfolio opens at `/experiences/potato-designer/`; the existing experience header returns to the exhibition. Refresh its snapshot and reused character cover with root `pnpm build:hub:potato`. Asset provenance: [Potato prompt card](../../prompts/potato-designer.md). Browser verification and publication limits: [QA.md](QA.md).
+
+The original panorama retains its six houses. A separate illustrated panel extends the street with Day Walk (07) and POTATO (08); all eight destinations have house labels, camera travel, lights, walking character and click/Enter entrance. New registry entries also need a house declaration, which `validate` now checks to prevent silent omission.
+
+Settings → Exhibition editing → 마을 레이어 edits eight house overlays and the new image panel (9 layers, 89 parameters). Positions, click areas, label size/colors, lights, panel position/size/image/brightness/blend, visibility and opacity support common, project-scene and mobile values. Undo, restore, browser-local save and JSON export are provided; save failure keeps the current view. These values are separate from shared R2 content and are not published to other visitors. Authored defaults are in `public/layers.manifest.js`/`layers.values.json`; build emits CSS/runtime/vendor copies. The original canvas, camera, character and remaining hub UI still need the full docs/11 migration.
+
+Extension image: `public/assets/village-extension-v1.png`; [generation prompt and inspection](../../prompts/jooho-lab.md). The shared probe supports the manifest's stylesheet list so parameters in `village-style.css` are observed. Attribute coordinate bindings are also checked against actual projected DOM sizes in browser QA.
+
 Village scene reads shared character image, visibility, scale/speed, camera speed and brightness. Project images remain on collection and detail pages. The panorama depicts the houses; changing a project thumbnail does not reconstruct its house. Reduced motion skips travel and entry animation. The canvas redraws on camera/content changes; DOM character motion does not force an idle WebGL redraw.

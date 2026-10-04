@@ -374,7 +374,7 @@
       "video": null,
       "meta": {
         "파일": "dist/assets/character.png · 1254×1254, 투명 PNG · 1.6MB",
-        "쓰이는 곳": "메인 무대 캐릭터. 마우스 따라 기울기·등장 모션·떠다님 — 레이어 character(docs/11 §9-1, 파라미터 src)",
+        "쓰이는 곳": "메인 무대 캐릭터. 마우스 따라 기울기·등장 모션·떠다님 — 레이어 character(docs/11 §9-1, 파라미터 src). 2026-10-04: JOOHO LAB 작품 08 표지(public/assets/potato.png)와 내장 체험에도 같은 파일을 재사용; 새 생성 없음. 허브 카드 표지는 목록 콘텐츠이며 시각 레이어 이관은 docs/11의 기존 후속 범위",
         "도구": "내장 image_gen. 파일 메타데이터(C2PA)에도 ChatGPT / gpt-image, OpenAI 서명",
         "만든 날": "2026-09-22",
         "참조 이미지": "없음 (영상 레퍼런스는 글로만 참고)",
@@ -444,6 +444,31 @@
       "video": null,
       "meta": {},
       "prompts": []
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--05--하루-산책potato-건물-확장-village-extension-v1",
+      "title": "05 · 하루 산책·POTATO 건물 확장 (village-extension-v1)",
+      "status": "ok",
+      "image": "projects/jooho-lab/public/assets/village-extension-v1.png",
+      "video": null,
+      "meta": {
+        "파일": "public/assets/village-extension-v1.png · 1254×1254 · 2,420,243 bytes · 불투명 PNG",
+        "쓰이는 곳": "상단 마을 오른쪽 확장 그림, 레이어 village-extension; 클릭/라벨/불빛 레이어 house-day-walk·house-potato-designer",
+        "도구·모드": "내장 image_gen · 기존 그림을 스타일/접합 기준으로 참조한 확장 패널 제작, transparent_background: false",
+        "만든 날": "2026-10-04",
+        "참조 이미지": "public/assets/project-village.webp — 기존 6채 그림의 재질·하늘·광장·입구 높이 기준. 원본 파일은 유지",
+        "설정": "정사각형 1024×1024를 프롬프트에 요청; 실제 반환은 1254×1254. 두 건물만, 읽을 수 있는 문구·UI·사람·로봇 없음"
+      },
+      "prompts": [
+        {
+          "label": null,
+          "lang": "text",
+          "prepend": null,
+          "text": "Create a seamless RIGHT-HAND EXTENSION panel for the supplied miniature village panorama. The supplied image is a style and edge-continuity reference, not something to repeat. OUTPUT: one square 1024x1024 illustration containing EXACTLY TWO new adjacent buildings, full facades and entrances, no other buildings. Preserve the reference's premium handcrafted 3D miniature clay/stone rendering, daylight, clear pastel blue sky, warm sandy stone plaza, cypress trees, flowers, miniature streetlamps, front-facing slightly elevated orthographic view, scale and sharpness. Match the reference's vertical arrangement: sky in upper ~25%, building door thresholds on a horizontal line at 76% from the top, pale stone plaza continuing across lower 24%. Left building center at 27% image width: 'Day Walk' as a cozy honey-yellow and sage-green walking/routine cottage, with an analog sun clock, small blue bird ornament, three tiny colorful pennant flags on the roof, garden plants and a clear central wooden front door. Right building center at 73% width: 'POTATO' as a sophisticated charcoal and ivory designer atelier with soft yellow accents, striped awning, playful rounded sculptural sign resembling a small potato form, oversized pencil sculpture, creative shapes visible through windows and a clear central front door. No human characters. No robots. No readable text, numbers, letters, logos or UI. Both houses fit completely inside frame with sky above roofs and clearly separated entry doors. Left edge and right edge have unobtrusive sky and sandy plaza/cypress foliage so this square panel can be placed immediately right of the existing panoramic village. Do not depict the original six buildings, especially do not repeat the stone tower."
+        }
+      ]
     }
   ]
 }

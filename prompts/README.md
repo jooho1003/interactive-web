@@ -16,8 +16,8 @@
 |---|---|
 | [dawn-store.md](dawn-store.md) | 새벽 세 시 · Still Open — 편의점 컷 7장 + v2 교체본 + 도입 영상 + 소리 |
 | [day-walk.md](day-walk.md) | 하루 산책 — 주택가 배경 4장(원본·아침·오후·저녁), 새, 걷는 캐릭터 |
-| [potato-designer.md](potato-designer.md) | POTATO — 날아차기 캐릭터 |
-| [jooho-lab.md](jooho-lab.md) | JOOHO LAB 허브 — 마을 파노라마, 배낭 로봇, 전시실 배경, 작품 표지 |
+| [potato-designer.md](potato-designer.md) | POTATO — 날아차기 캐릭터, JOOHO LAB 작품 표지로 재사용 |
+| [jooho-lab.md](jooho-lab.md) | JOOHO LAB 허브 — 마을 파노라마, 하루 산책·POTATO 건물 확장, 배낭 로봇, 전시실 배경, 작품 표지 |
 | [templates.md](templates.md) | **다시 쓸 수 있는 프롬프트 틀** — 스타일 프레임, 프랍 시트, UI 킷, 조명만 바꾸기, 스프라이트, 영상 체인, 3D 변환 |
 
 표시: ✅ 프롬프트 원문 있음 · ❌ 기록 없음(다시 만들 수 없음) · ⏸ 프롬프트만 있고 아직 안 만듦
@@ -86,6 +86,7 @@
 | 한 곳만 바꾸는 편집은 "나머지는 픽셀 그대로"를 명시하고, 결과를 원본과 겹쳐서 확인한다 | 새벽 세 시 `reflection` | [templates §5](templates.md#5-한-곳만-바꾸기-편집) |
 | "투명 배경"을 요청해도 **체커보드 무늬를 그려 버린다.** 순수 초록(#00FF00) 배경으로 받고 화면에서 빼는 게 확실하다 | 하루 산책 새 | [templates §6](templates.md#6-스프라이트-시트-투명-배경) |
 | 이미지 안에 글자를 넣지 않는다. 문구는 레이어 파라미터로 따로 둔다 | 전체 | [docs/11](../docs/11-레이어-설정-시스템-설계.md) |
+| **인터랙티브 웹의 기본 그림**은 3D 피규어처럼 렌더된 투명 PNG 한 장이다(2026-10-04 결정). 입체감은 그림 속 과감한 원근이 만들고, 웹은 CSS로 10° 안팎만 기울인다. 바닥 그림자는 그림에 넣지 않고 CSS로 따로 그린다 | POTATO 캐릭터 | [templates §2](templates.md#2-캐릭터-단독-투명-배경) · [docs/14](../docs/14-2.5D-이미지-제작-방식.md) |
 
 ---
 

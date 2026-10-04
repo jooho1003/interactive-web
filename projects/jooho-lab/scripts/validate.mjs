@@ -9,6 +9,8 @@ const { projects, profile } = await import(pathToFileURL(resolve(root, 'projects
 assert.ok(profile.name && profile.introduction);
 assert.ok(projects.length > 0);
 assert.equal(new Set(projects.map((p) => p.id)).size, projects.length);
+const {default:layers}=await import(pathToFileURL(resolve(root,'layers.manifest.js')));
+for(const project of projects)assert.ok(layers.layers.some(layer=>layer.id==='house-'+project.id),project.id+': missing village house declaration');
 for (const p of projects) {
   for (const field of ['id', 'title', 'subtitle', 'category', 'description', 'url', 'linkLabel']) assert.ok(typeof p[field] === 'string' && p[field].trim(), `${p.id}: ${field}`);
   assert.equal(new URL(p.url).protocol, 'https:');
@@ -32,6 +34,7 @@ const expectedDestinations = {
   'dawn-store': './experiences/dawn-store/',
   spire: 'https://tower-50.vercel.app/',
   'day-walk': './experiences/day-walk/',
+  'potato-designer': './experiences/potato-designer/',
 };
 for (const [id, href] of Object.entries(expectedDestinations)) {
   assert.equal(projectHref(projects.find((project) => project.id === id)), href, `${id}: default destination`);

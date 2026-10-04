@@ -1,0 +1,13 @@
+{
+  "gates":{"G1":"PASS","G2":"PASS","G3":"PASS","G4":"PASS","G5":"PASS"},
+  "nodes":[
+    {"id":"design","title":"Preserve original village and extend its renderer","domain":"architecture","D1":0,"D2":1,"D3":0,"D4":2,"score":3,"tier":"powerful","agent":"primary","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":[],"output":"Plan and layer contracts","justification":"Architecture hard override"},
+    {"id":"asset","title":"Generate two-house extension","domain":"design","D1":0,"D2":0,"D3":0,"D4":1,"score":1,"tier":"balanced","agent":"primary","claude_model":"sonnet","codex_model":"gpt-5.6-luna","depends_on":["design"],"output":"Versioned extension bitmap and prompt record"},
+    {"id":"implement","title":"Connect eight houses and editable layout","domain":"frontend","D1":0,"D2":1,"D3":0,"D4":1,"score":2,"tier":"balanced","agent":"primary","claude_model":"sonnet","codex_model":"gpt-5.6-terra","depends_on":["design","asset"],"output":"World rendering, layer settings, build"},
+    {"id":"review","title":"Verify displayed destinations and reversible settings","domain":"review","D1":0,"D2":1,"D3":0,"D4":2,"score":3,"tier":"powerful","agent":"primary","claude_model":"opus","codex_model":"gpt-5.6-sol","depends_on":["implement"],"output":"Browser QA and lint/probe evidence","justification":"Final review hard override"}
+  ],
+  "execution":"Inherited primary runtime; no subagents",
+  "status":"local_complete_publication_blocked",
+  "validation":{"workspace":"pnpm check passed; existing Dawn umbrella warning","houses":8,"layerLintErrors":0,"probe":{"total":89,"passed":89},"potatoProbe":{"total":619,"passed":619},"browser":"7/8 visible and click entry/return/cancel, 320px/reduced/keyboard, actual geometry edit/undo/save/reload, storage failure, empty/reset passed","runtimeErrors":0,"failedLocalResponses":0},
+  "limits":"Original canvas/camera/walker/full hub layer migration incomplete. Existing Sites connection unavailable; not deployed."
+}

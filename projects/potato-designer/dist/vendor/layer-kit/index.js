@@ -123,7 +123,7 @@ export function createLayerHost({ manifest, published, root = document.documentE
       else if (param.attr) for (const el of document.querySelectorAll(param.attr[0])) { if (el.getAttribute(param.attr[1]) !== value) el.setAttribute(param.attr[1], value); }
       else root.style.setProperty(param.css || variable(layer.id, key), cssValue(param, value));
     }
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', current.paper?.color || '#e9ebe8');
+    if(current.paper?.color)document.querySelector('meta[name="theme-color"]')?.setAttribute('content', current.paper.color);
     for (const callback of listeners) callback({ scene, current });
   }
   for (const [,query] of queries) query.addEventListener('change', apply);

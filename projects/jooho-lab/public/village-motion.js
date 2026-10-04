@@ -5,8 +5,7 @@ export function createVillageMotion(container, projects, onSelect, onOpen, proje
   let settings=getContent();
   let reduced=false, trip=null, entry=null, timer=0, scale=1, lift=0, bank=0, elapsed=0, walkerX=projectX('dawn-store')+1.9, selected='dawn-store',step=0;
   const walker=document.createElement('img');walker.src=settings.character;walker.alt='';walker.className='village-walker';walker.setAttribute('aria-hidden','true');walker.draggable=false;container.append(walker);
-  const colors=['#7de8f0','#b8f5b9','#ead5ff','#ffe5a2','#ffd099','#c5ddff'];
-  const lights=projects.map((p,i)=>{const el=document.createElement('span');el.className='building-light';el.style.setProperty('--light',colors[i]);el.setAttribute('aria-hidden','true');container.append(el);return el});
+  const lights=projects.map((p,i)=>{const el=document.createElement('span');el.className='building-light';el.dataset.worldLight=p.id;el.setAttribute('aria-hidden','true');container.append(el);return el});
   const veil=document.createElement('div');veil.className='entry-veil';veil.hidden=true;
   const title=document.createElement('strong'),cancel=document.createElement('button');cancel.type='button';cancel.textContent='머무르기 · Esc';veil.append(title,cancel);container.parentElement.append(veil);
   function cancelEntry(restoreFocus=false){if(!entry)return;const id=entry.id;clearTimeout(timer);timer=0;entry=null;veil.hidden=true;container.parentElement.classList.remove('entering');if(restoreFocus)container.querySelector(`[data-world-project="${id}"]`)?.focus({preventScroll:true})}
@@ -32,7 +31,7 @@ export function createVillageMotion(container, projects, onSelect, onOpen, proje
       return Math.abs(scale-before[0])+Math.abs(lift-before[1])+Math.abs(bank-before[2])>.00001;
     },
     decorate(project,ids,containerHeight,viewHeight){
-      projects.forEach((p,i)=>{const [x,y]=project(projectX(p.id),-2.5),el=lights[i];el.style.transform=`translate(${x}px,${Math.min(y,containerHeight-96)}px) translate(-50%,-50%) scale(${scale})`;el.style.opacity=ids.includes(p.id)&&!reduced?String((p.id===selected?.45:.13)*(.75+.25*Math.sin(elapsed*(1.2+i*.18)+i))):'0'});
+      projects.forEach((p,i)=>{const [x,y]=project(projectX(p.id),-2.5),el=lights[i];el.style.transform=`translate(${x}px,${Math.min(y,containerHeight-96)}px) translate(-50%,-50%) scale(${scale})`;el.style.setProperty('--ambient-opacity',ids.includes(p.id)&&!reduced?String((p.id===selected?.45:.13)*(.75+.25*Math.sin(elapsed*(1.2+i*.18)+i))):'0')});
       const home=projectX(selected),target=home+1.9+Math.sin(elapsed*.35*settings.characterSpeed)*.6,direction=target-walkerX;
       walkerX+=reduced?home+1.9-walkerX:Math.sign(direction)*Math.min(Math.abs(direction),1.5*step*settings.characterSpeed);
       const [x,y]=project(walkerX,-4.55+(reduced?0:Math.abs(Math.sin(elapsed*9*settings.characterSpeed))*.07));

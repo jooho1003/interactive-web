@@ -15,6 +15,13 @@ const experiences = {
     title: '하루 산책 · Day Walk',
     frameLabel: '하루 산책 루틴 앱',
   },
+  'potato-designer': {
+    source: '../potato-designer/dist',
+    title: 'POTATO · Designer in Motion',
+    frameLabel: 'POTATO 인터랙티브 포트폴리오',
+    cover: 'assets/character.png',
+    coverTarget: 'potato.png',
+  },
 };
 const id = process.argv[2];
 const experience = experiences[id];
@@ -32,6 +39,7 @@ try {
 const target = resolve(root, `public/experiences/${id}`);
 await mkdir(target, { recursive: true });
 await cp(source, target, { recursive: true });
+if (experience.cover) await cp(resolve(source, experience.cover), resolve(root, 'public/assets', experience.coverTarget));
 const prefix = `/experiences/${id}`;
 async function rewrite(folder) {
   for (const file of await readdir(folder, { withFileTypes: true })) {
