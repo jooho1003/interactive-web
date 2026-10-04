@@ -1,0 +1,186 @@
+{
+  "id": "3d-production-pipeline-2026-09-23",
+  "date": "2026-09-23",
+  "status": "complete",
+  "scope": "설계 문서와 구현 순서만 작성. 런타임 구현·도구 설치·생성 요청·구독·배포는 수행하지 않는다.",
+  "execution": "현재 상속된 primary 런타임이 직접 수행한다. model 필드는 저장소 라우팅 기준이며 실제 모델 전환/하위 에이전트 호출을 뜻하지 않는다.",
+  "references": [
+    "docs/00-README.md",
+    "docs/01-강연-핵심-정리.md",
+    "docs/03-모노레포-설계.md",
+    "docs/04-제작-가이드.md",
+    "docs/05-템플릿-카탈로그.md",
+    "docs/06-강연-영상-분석.md",
+    "docs/10-인터랙티브-개발-참고원칙.md",
+    "docs/11-레이어-설정-시스템-설계.md",
+    "docs/12-Scene-Studio-관리자-설계.md",
+    "projects/potato-designer/README.md",
+    "projects/potato-designer/QA.md",
+    "packages/layer-kit/src/index.js",
+    "packages/layer-kit/src/lint.js",
+    "packages/layer-kit/src/probe.js",
+    "prompts/README.md"
+  ],
+  "nodes": [
+    {
+      "id": "D1",
+      "title": "기존 앱·레이어 구현과 공식 도구 계약 조사",
+      "domain": "explore",
+      "D1": 0,
+      "D2": 1,
+      "D3": 0,
+      "D4": 1,
+      "score": 2,
+      "tier": "balanced",
+      "agent": "primary",
+      "claude_model": "sonnet",
+      "codex_model": "gpt-5.6-terra",
+      "depends_on": [],
+      "산출물": "현재 구현/미구현 경계와 공식 출처",
+      "status": "complete"
+    },
+    {
+      "id": "D2",
+      "title": "Meshy·Blender·Three.js 자산/장면/레이어 아키텍처 설계",
+      "domain": "general",
+      "D1": 1,
+      "D2": 2,
+      "D3": 0,
+      "D4": 2,
+      "score": 5,
+      "tier": "powerful",
+      "agent": "primary",
+      "claude_model": "opus",
+      "codex_model": "gpt-5.6-sol",
+      "depends_on": [
+        "D1"
+      ],
+      "산출물": "docs/13-3D-공통-제작-파이프라인-설계.md",
+      "status": "complete",
+      "justification": "아키텍처 및 모호한 요구 구체화는 직접 수행"
+    },
+    {
+      "id": "D3",
+      "title": "제작 API·비용·로컬 보관·게시 경계 설계",
+      "domain": "security",
+      "D1": 1,
+      "D2": 1,
+      "D3": 0,
+      "D4": 2,
+      "score": 4,
+      "tier": "powerful",
+      "agent": "primary",
+      "claude_model": "opus",
+      "codex_model": "gpt-5.6-sol",
+      "depends_on": [
+        "D2"
+      ],
+      "산출물": "설계 §자동화/비용/자산 보관 및 게시 계약",
+      "status": "complete",
+      "justification": "API 자격증명과 외부 유료 작업 경계는 보안 하드 오버라이드"
+    },
+    {
+      "id": "D4",
+      "title": "정본 설계와 기존 안내 문서 연결",
+      "domain": "mechanical",
+      "D1": 0,
+      "D2": 1,
+      "D3": 0,
+      "D4": 1,
+      "score": 2,
+      "tier": "balanced",
+      "agent": "primary",
+      "claude_model": "sonnet",
+      "codex_model": "gpt-5.6-terra",
+      "depends_on": [
+        "D2",
+        "D3"
+      ],
+      "산출물": "docs/00,04,10 및 Potato README 링크",
+      "status": "complete"
+    },
+    {
+      "id": "D5",
+      "title": "플랜 필드·문서 링크·변경 범위 검사",
+      "domain": "qa",
+      "D1": 0,
+      "D2": 1,
+      "D3": 0,
+      "D4": 1,
+      "score": 2,
+      "tier": "balanced",
+      "agent": "primary",
+      "claude_model": "sonnet",
+      "codex_model": "gpt-5.6-terra",
+      "depends_on": [
+        "D4"
+      ],
+      "산출물": "문서 검증 결과",
+      "status": "complete"
+    },
+    {
+      "id": "D6",
+      "title": "요구사항 누락과 기존 계약 충돌 최종 검토",
+      "domain": "review",
+      "D1": 0,
+      "D2": 2,
+      "D3": 0,
+      "D4": 2,
+      "score": 4,
+      "tier": "powerful",
+      "agent": "primary",
+      "claude_model": "opus",
+      "codex_model": "gpt-5.6-sol",
+      "depends_on": [
+        "D5"
+      ],
+      "산출물": "최종 설계 및 완료 기록",
+      "status": "complete",
+      "justification": "최종 리뷰는 점수와 관계없이 직접 수행"
+    }
+  ],
+  "gates": {
+    "G1": "PASS",
+    "G2": "PASS",
+    "G3": "PASS",
+    "G4": "PASS",
+    "G5": "PASS"
+  },
+  "gateNotes": {
+    "G1": "모든 노드 필드·의존성과 아래 layerContract 기록",
+    "G2": "아키텍처/보안/최종 리뷰 powerful·primary",
+    "G3": "explore/mechanical ceiling balanced, security floor powerful 준수",
+    "G4": "powerful 3/6=50%; D2 아키텍처, D3 보안, D6 최종 리뷰 모두 하드 오버라이드 근거 명시",
+    "G5": "현재 모든 노드 D3=0, 로컬 문서 편집만 실행. 후속 유료 생성·외부 게시는 구현 계약에서 예산/범위를 정한 후 실행"
+  },
+  "layerContract": {
+    "proposed": [
+      "character의 기존 이미지 모드 유지와 3D 모드/assetId/XYZ/clip/재질/입력 반응",
+      "three-stage, camera-rig, lighting, environment, ground-shadow, load-status, model-controls",
+      "기존 DOM 20개 레이어와 장면/화면 override 및 undo/redo 재사용"
+    ],
+    "fixed": [
+      "좌표계·단위·ID/해시·자산 버전 규칙",
+      "렌더 파이프라인·접근성/정지 우선순위·리소스 해제·보안 범위"
+    ],
+    "implementationGap": "현재 layer-kit은 CSS/text/attr만 구현. fn 바인딩·캔버스 pick·3D probe는 후속 구현.",
+    "lint": "미실행: 설계 작업이며 runtime/manifest 변경 없음",
+    "probe": "미실행: 3D 어댑터·GLB 미구현. 기존 DOM 619/619와 구분"
+  },
+  "evidence": {
+    "localLinksChecked": 23,
+    "planNodesChecked": 6,
+    "documentStructure": "PASS: 코드 펜스·신규 파일 공백 검사",
+    "diffCheck": "PASS",
+    "review": "사용자 결정·정본/출력 분리·레이어 계약·비용/파일 보관·현재 구현 경계 검토 완료",
+    "notExecuted": [
+      "유료 생성",
+      "Blender 실행/렌더/export",
+      "앱 런타임 변경",
+      "3D lint/probe",
+      "실제 모바일 검수",
+      "외부 배포"
+    ],
+    "implementationStatus": "not_started"
+  }
+}
