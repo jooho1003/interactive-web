@@ -31,3 +31,8 @@ Thumbs.db
 .env
 .env.*
 !.env.example
+
+# 3D·스크립트 작업 부산물 (Blender 자동 백업, export 로그, 파이썬 캐시)
+*.blend1
+__pycache__/
+projects/jooho-lab/art/*-export.log
