@@ -1,0 +1,39 @@
+/* layer-fixed: Shared layout, responsive controls and hit areas retain the original village. */
+[data-layer-hidden]{display:none!important}
+.exhibition{min-height:600px}
+#scene canvas{visibility:var(--L-stage-visible);opacity:var(--L-stage-opacity)}
+.intro{visibility:var(--L-intro-visible);opacity:var(--L-intro-opacity);left:var(--L-intro-x);top:var(--L-intro-y);color:var(--L-intro-color)}
+.intro h1{font-size:var(--L-intro-size)}
+.intro .eyebrow,.intro-copy{color:var(--L-intro-color)}
+.scene-label{visibility:var(--L-labels-visible);opacity:var(--L-labels-opacity)}
+.world-label,.scene-label.selected .world-label{font-size:var(--L-labels-size);padding-inline:var(--L-labels-padding)}
+.scene-label.selected .world-label{background:var(--L-labels-color);border-color:var(--L-labels-color)}
+.village-walker{visibility:var(--L-character-visible);opacity:var(--L-character-opacity)}
+.building-light{visibility:var(--L-ambient-visible);filter:opacity(var(--L-ambient-opacity));width:var(--L-ambient-size);height:var(--L-ambient-size);background:radial-gradient(ellipse,color-mix(in srgb,var(--light) 50%,var(--L-ambient-color)),transparent 70%)}
+.entry-veil{visibility:var(--L-entry-visible);opacity:var(--L-entry-opacity);background:color-mix(in srgb,var(--L-entry-color) calc(var(--entry-progress,0)*98%),transparent)}
+.gallery-pagination,.world-arrow,.gallery-footer,.collection-scroll,.gallery-toolbar{visibility:var(--L-controls-visible);opacity:var(--L-controls-opacity)}
+.gallery-pagination{bottom:var(--L-controls-bottom)}
+.gallery-pagination button{width:var(--L-controls-size);height:var(--L-controls-size)}
+.gallery-pagination button[aria-pressed=true]{background:var(--L-controls-color)}
+.site-header .brand,.site-header nav>a,#about-open,.index-section,.site-footer,#about-dialog{visibility:var(--L-shell-visible);opacity:var(--L-shell-opacity)}
+body,.index-section,.site-footer{background:var(--L-shell-paper);color:var(--L-shell-ink)}
+.site-header,.settings-trigger{color:var(--L-shell-ink)}
+#spatial-controls,#movement-toggle{display:none}
+.gallery-toolbar{display:flex;gap:8px;align-items:center}
+.village-return{font-size:.85rem;padding:9px 15px;border-radius:24px;background:#ffffffc9;color:var(--L-shell-ink);border:1px solid #48695333}
+.scene-buttons{display:flex;justify-content:center;gap:12px;pointer-events:auto;margin-top:8px}
+.scene-buttons button{border:0;border-radius:18px;padding:7px 10px;background:#fff9;color:var(--L-shell-ink);font-size:.75rem}
+.layer-launch,.layer-scopes select,.layer-field input,.layers-dialog .settings-actions button{accent-color:#365b4d}
+.layer-launch{padding:9px 14px;border:1px solid #c8d5c3;background:#edf3e9;border-radius:8px}
+.layers-dialog{max-height:85svh;max-width:700px;overflow:auto}
+.layer-scopes{display:flex;gap:16px;margin-bottom:16px;flex-wrap:wrap}
+.layer-scopes label{display:flex;gap:8px;align-items:center}
+.layer-scopes select{padding:7px}
+#layer-fields details{padding:12px 0;border-bottom:1px solid #d4dfd0}
+.layer-field{display:grid;grid-template-columns:1fr 1fr 45px;gap:12px;align-items:center;margin:12px 0;font-size:.85rem}
+.layer-field input{min-width:0;width:100%}
+.site-header nav>a[href="./"]{display:block}
+@media(max-width:620px){.site-header nav{gap:10px}.gallery-toolbar{width:max-content;max-width:94%;justify-content:center}.village-return{font-size:.75rem;padding:8px 10px}.layer-field{grid-template-columns:1fr 1fr 32px}.gallery-footer{bottom:150px}}
+
+/* layer-fixed: Shared label controls compose with per-house settings across manifests. */
+:root{--village-label-size:var(--L-labels-size);--village-label-opacity:var(--L-labels-opacity)}

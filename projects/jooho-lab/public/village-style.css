@@ -1,27 +1,30 @@
-/* layer-fixed: absolute projection boxes and pointer routing belong to the camera renderer. */
+/* layer-fixed: absolute projection boxes and pointer routing belong to the camera renderer; .9rem normalizes the shared label-size default. */
 [data-layer-hidden]{display:none!important}
 .village-extension{position:absolute;pointer-events:none;display:var(--L-village-extension-visible);opacity:var(--L-village-extension-opacity);mask-image:linear-gradient(to right,transparent,black var(--L-village-extension-leftBlend));filter:brightness(calc(var(--scene-brightness,1) * var(--L-village-extension-brightness)))}
-[data-world-project="chemiforge"]{display:var(--L-house-chemiforge-visible);opacity:var(--L-house-chemiforge-opacity)}
-#scene [data-world-project="chemiforge"] .world-label{font-size:var(--L-house-chemiforge-labelSize);color:var(--L-house-chemiforge-labelColor);background:var(--L-house-chemiforge-labelBackground)}
+#scene [data-world-project="chemiforge"]{display:var(--L-house-chemiforge-visible);opacity:calc(var(--L-house-chemiforge-opacity) * var(--village-label-opacity))}
+#scene [data-world-project="chemiforge"] .world-label{font-size:calc(var(--L-house-chemiforge-labelSize) + var(--village-label-size) - .9rem);color:var(--L-house-chemiforge-labelColor);background:var(--L-house-chemiforge-labelBackground)}
 [data-world-light="chemiforge"]{display:var(--L-house-chemiforge-visible);--light:var(--L-house-chemiforge-lightColor);opacity:calc(var(--ambient-opacity,0) * var(--L-house-chemiforge-opacity))}
-[data-world-project="sasu"]{display:var(--L-house-sasu-visible);opacity:var(--L-house-sasu-opacity)}
-#scene [data-world-project="sasu"] .world-label{font-size:var(--L-house-sasu-labelSize);color:var(--L-house-sasu-labelColor);background:var(--L-house-sasu-labelBackground)}
+#scene [data-world-project="sasu"]{display:var(--L-house-sasu-visible);opacity:calc(var(--L-house-sasu-opacity) * var(--village-label-opacity))}
+#scene [data-world-project="sasu"] .world-label{font-size:calc(var(--L-house-sasu-labelSize) + var(--village-label-size) - .9rem);color:var(--L-house-sasu-labelColor);background:var(--L-house-sasu-labelBackground)}
 [data-world-light="sasu"]{display:var(--L-house-sasu-visible);--light:var(--L-house-sasu-lightColor);opacity:calc(var(--ambient-opacity,0) * var(--L-house-sasu-opacity))}
-[data-world-project="shortform"]{display:var(--L-house-shortform-visible);opacity:var(--L-house-shortform-opacity)}
-#scene [data-world-project="shortform"] .world-label{font-size:var(--L-house-shortform-labelSize);color:var(--L-house-shortform-labelColor);background:var(--L-house-shortform-labelBackground)}
-[data-world-light="shortform"]{display:var(--L-house-shortform-visible);--light:var(--L-house-shortform-lightColor);opacity:calc(var(--ambient-opacity,0) * var(--L-house-shortform-opacity))}
-[data-world-project="dawn-store"]{display:var(--L-house-dawn-store-visible);opacity:var(--L-house-dawn-store-opacity)}
-#scene [data-world-project="dawn-store"] .world-label{font-size:var(--L-house-dawn-store-labelSize);color:var(--L-house-dawn-store-labelColor);background:var(--L-house-dawn-store-labelBackground)}
+#scene [data-world-project="blog"]{display:var(--L-house-blog-visible);opacity:calc(var(--L-house-blog-opacity) * var(--village-label-opacity))}
+#scene [data-world-project="blog"] .world-label{font-size:calc(var(--L-house-blog-labelSize) + var(--village-label-size) - .9rem);color:var(--L-house-blog-labelColor);background:var(--L-house-blog-labelBackground)}
+[data-world-light="blog"]{display:var(--L-house-blog-visible);--light:var(--L-house-blog-lightColor);opacity:calc(var(--ambient-opacity,0) * var(--L-house-blog-opacity))}
+#scene [data-world-project="dawn-store"]{display:var(--L-house-dawn-store-visible);opacity:calc(var(--L-house-dawn-store-opacity) * var(--village-label-opacity))}
+#scene [data-world-project="dawn-store"] .world-label{font-size:calc(var(--L-house-dawn-store-labelSize) + var(--village-label-size) - .9rem);color:var(--L-house-dawn-store-labelColor);background:var(--L-house-dawn-store-labelBackground)}
 [data-world-light="dawn-store"]{display:var(--L-house-dawn-store-visible);--light:var(--L-house-dawn-store-lightColor);opacity:calc(var(--ambient-opacity,0) * var(--L-house-dawn-store-opacity))}
-[data-world-project="market-front"]{display:var(--L-house-market-front-visible);opacity:var(--L-house-market-front-opacity)}
-#scene [data-world-project="market-front"] .world-label{font-size:var(--L-house-market-front-labelSize);color:var(--L-house-market-front-labelColor);background:var(--L-house-market-front-labelBackground)}
-[data-world-light="market-front"]{display:var(--L-house-market-front-visible);--light:var(--L-house-market-front-lightColor);opacity:calc(var(--ambient-opacity,0) * var(--L-house-market-front-opacity))}
-[data-world-project="spire"]{display:var(--L-house-spire-visible);opacity:var(--L-house-spire-opacity)}
-#scene [data-world-project="spire"] .world-label{font-size:var(--L-house-spire-labelSize);color:var(--L-house-spire-labelColor);background:var(--L-house-spire-labelBackground)}
+#scene [data-world-project="instatoon"]{display:var(--L-house-instatoon-visible);opacity:calc(var(--L-house-instatoon-opacity) * var(--village-label-opacity))}
+#scene [data-world-project="instatoon"] .world-label{font-size:calc(var(--L-house-instatoon-labelSize) + var(--village-label-size) - .9rem);color:var(--L-house-instatoon-labelColor);background:var(--L-house-instatoon-labelBackground)}
+[data-world-light="instatoon"]{display:var(--L-house-instatoon-visible);--light:var(--L-house-instatoon-lightColor);opacity:calc(var(--ambient-opacity,0) * var(--L-house-instatoon-opacity))}
+#scene [data-world-project="spire"]{display:var(--L-house-spire-visible);opacity:calc(var(--L-house-spire-opacity) * var(--village-label-opacity))}
+#scene [data-world-project="spire"] .world-label{font-size:calc(var(--L-house-spire-labelSize) + var(--village-label-size) - .9rem);color:var(--L-house-spire-labelColor);background:var(--L-house-spire-labelBackground)}
 [data-world-light="spire"]{display:var(--L-house-spire-visible);--light:var(--L-house-spire-lightColor);opacity:calc(var(--ambient-opacity,0) * var(--L-house-spire-opacity))}
-[data-world-project="day-walk"]{display:var(--L-house-day-walk-visible);opacity:var(--L-house-day-walk-opacity)}
-#scene [data-world-project="day-walk"] .world-label{font-size:var(--L-house-day-walk-labelSize);color:var(--L-house-day-walk-labelColor);background:var(--L-house-day-walk-labelBackground)}
+#scene [data-world-project="day-walk"]{display:var(--L-house-day-walk-visible);opacity:calc(var(--L-house-day-walk-opacity) * var(--village-label-opacity))}
+#scene [data-world-project="day-walk"] .world-label{font-size:calc(var(--L-house-day-walk-labelSize) + var(--village-label-size) - .9rem);color:var(--L-house-day-walk-labelColor);background:var(--L-house-day-walk-labelBackground)}
 [data-world-light="day-walk"]{display:var(--L-house-day-walk-visible);--light:var(--L-house-day-walk-lightColor);opacity:calc(var(--ambient-opacity,0) * var(--L-house-day-walk-opacity))}
-[data-world-project="potato-designer"]{display:var(--L-house-potato-designer-visible);opacity:var(--L-house-potato-designer-opacity)}
-#scene [data-world-project="potato-designer"] .world-label{font-size:var(--L-house-potato-designer-labelSize);color:var(--L-house-potato-designer-labelColor);background:var(--L-house-potato-designer-labelBackground)}
+#scene [data-world-project="potato-designer"]{display:var(--L-house-potato-designer-visible);opacity:calc(var(--L-house-potato-designer-opacity) * var(--village-label-opacity))}
+#scene [data-world-project="potato-designer"] .world-label{font-size:calc(var(--L-house-potato-designer-labelSize) + var(--village-label-size) - .9rem);color:var(--L-house-potato-designer-labelColor);background:var(--L-house-potato-designer-labelBackground)}
 [data-world-light="potato-designer"]{display:var(--L-house-potato-designer-visible);--light:var(--L-house-potato-designer-lightColor);opacity:calc(var(--ambient-opacity,0) * var(--L-house-potato-designer-opacity))}
+#scene [data-world-project="hanbok-hero"]{display:var(--L-house-hanbok-hero-visible);opacity:calc(var(--L-house-hanbok-hero-opacity) * var(--village-label-opacity))}
+#scene [data-world-project="hanbok-hero"] .world-label{font-size:calc(var(--L-house-hanbok-hero-labelSize) + var(--village-label-size) - .9rem);color:var(--L-house-hanbok-hero-labelColor);background:var(--L-house-hanbok-hero-labelBackground)}
+[data-world-light="hanbok-hero"]{display:var(--L-house-hanbok-hero-visible);--light:var(--L-house-hanbok-hero-lightColor);opacity:calc(var(--ambient-opacity,0) * var(--L-house-hanbok-hero-opacity))}

@@ -14,10 +14,11 @@
 
 | 파일 | 내용 |
 |---|---|
-| [dawn-store.md](dawn-store.md) | 새벽 세 시 · Still Open — 편의점 컷 7장 + v2 교체본 + 도입 영상 + 소리 |
+| [dawn-store.md](dawn-store.md) | 새벽 세 시 · Still Open — 편의점 컷 7장 + v2 교체본 + 도입 영상 + 소리 + Blender 렌더 시험 |
 | [day-walk.md](day-walk.md) | 하루 산책 — 주택가 배경 4장(원본·아침·오후·저녁), 새, 걷는 캐릭터 |
 | [potato-designer.md](potato-designer.md) | POTATO — 날아차기 캐릭터, JOOHO LAB 작품 표지로 재사용 |
-| [jooho-lab.md](jooho-lab.md) | JOOHO LAB 허브 — 마을 파노라마, 하루 산책·POTATO 건물 확장, 배낭 로봇, 전시실 배경, 작품 표지 |
+| [jooho-lab.md](jooho-lab.md) | JOOHO LAB 허브 — 기존 마을·표지·하루 산책/POTATO 건물 확장 + fal 풍경·Blender 3D 작업실·실제 작품 캡처 7장 + Tripo P2.0 건물·의자 후보 + 촬영 PBR/HDRI 개선 |
+| [hanbok-hero.md](hanbok-hero.md) | 한복 히어로 — 정면 기준 컷 · 고개 돌리는 영상 · 몸 고정 + 얼굴 시트 · 배경 |
 | [templates.md](templates.md) | **다시 쓸 수 있는 프롬프트 틀** — 스타일 프레임, 프랍 시트, UI 킷, 조명만 바꾸기, 스프라이트, 영상 체인, 3D 변환 |
 
 표시: ✅ 프롬프트 원문 있음 · ❌ 기록 없음(다시 만들 수 없음) · ⏸ 프롬프트만 있고 아직 안 만듦
@@ -30,6 +31,11 @@
 
 | | 작품 | 에셋 | 도구 | 프롬프트 |
 |---|---|---|---|---|
+| <img src="../projects/jooho-lab/public/assets/exhibit-day-walk.webp" width="120"> | JOOHO LAB | [운영 작품 전시 이미지 7개](jooho-lab.md#20--exhibition-art--운영-작품의-전시-키-비주얼) | image_gen · 운영 원본 | ✅ |
+| <img src="../projects/jooho-lab/art/interior-after-interior.png" width="120"> | JOOHO LAB | [밝은 풍경·실내 마감](jooho-lab.md#19--lab-bright-interior--밝은-풍경과-정교한-실내) | Blender · Three.js | ✅ 제작 요청·소스 |
+| <img src="../projects/jooho-lab/art/clean-after-exterior.png" width="120"> | JOOHO LAB | [얼룩 없는 건물 표면](jooho-lab.md#18--lab-clean-stone--얼룩-없는-건물-표면) | Blender · Three.js | ✅ 제작 요청·소스 |
+| <img src="../projects/dawn-store/art/blender-study/counter.webp" width="120"> | 새벽 세 시 | [Blender 시험](dawn-store.md#12--blender-night-store--계산대커피-렌더-시험) | Blender Cycles | ✅ 제작 요청·소스 |
+| <img src="../projects/jooho-lab/art/photo-after-exterior.png" width="120"> | JOOHO LAB | [촬영 PBR·HDRI](jooho-lab.md#17--lab-photo-pbr--촬영-재질hdri근접-표면-개선) | Blender · Three.js | ✅ 제작 요청·소스 |
 | <img src="../projects/dawn-store/app/public/media/hub.webp" width="120"> | 새벽 세 시 | [계산대 `hub`](dawn-store.md#01--hub--계산대) ⭐ 기준 컷 | GPT Image 2.5 | ✅ |
 | <img src="../projects/dawn-store/app/public/media/intro.webp" width="120"> | 새벽 세 시 | [유리문 `intro`](dawn-store.md#02--intro--유리문) | GPT Image 2.5 | ✅ |
 | <img src="../projects/dawn-store/app/public/media/coffee.webp" width="120"> | 새벽 세 시 | [식은 커피 `coffee`](dawn-store.md#03--coffee--식은-커피) | GPT Image 2.5 | ✅ |
@@ -49,15 +55,22 @@
 | <img src="../projects/jooho-lab/public/assets/project-village.webp" width="120"> | JOOHO LAB | [마을 파노라마 (집 6채)](jooho-lab.md#01--마을-파노라마-project-village) | 기록 없음 | ❌ |
 | <img src="../projects/jooho-lab/public/assets/village-walker.png" width="80"> | JOOHO LAB | [배낭 로봇 산책자](jooho-lab.md#02--배낭-로봇-산책자-village-walker) | gpt-image 2.0 | ❌ |
 | <img src="../projects/jooho-lab/public/assets/atelier.webp" width="120"> | JOOHO LAB | [어두운 전시실 (지금 안 씀)](jooho-lab.md#03--어두운-전시실-atelier-지금-안-씀) | 기록 없음 | ❌ |
+| <img src="../projects/jooho-lab/public/assets/work-spire.webp" width="120"> | JOOHO LAB | [실제 작품 대표 화면 7장](jooho-lab.md#07--실제-작품-화면--갤러리-대표-이미지-7장) | Aside 캡처 | 생성 에셋 아님 |
+| <img src="../projects/hanbok-hero/art/superseded/hanbok-still.webp" width="120"> | 한복 히어로 | [정면 기준 컷 `hanbok-still`](hanbok-hero.md#01--정면-기준-컷-hanbok-still-) (2026-10-03 교체, 이력) | fal Kontext(참조 2장) + 로컬 rembg | ✅ |
+| <img src="../projects/hanbok-hero/art/superseded/hanbok-sheet.webp" width="120"> | 한복 히어로 | [3×3 방향 시트 `hanbok-sheet`](hanbok-hero.md#02--33-방향-시트-hanbok-sheet-) (2026-10-03 교체, 영상은 04의 원본) | fal Kling 영상 → 프레임 → 로컬 rembg | ✅ |
+| <img src="../projects/hanbok-hero/dist/assets/palace.webp" width="120"> | 한복 히어로 | [배경 — 경회루 야경 `palace`](hanbok-hero.md#03--배경--경회루-야경-palace-) | fal flux-pro ultra | ✅ |
+| <img src="../projects/hanbok-hero/dist/assets/scholar-still.webp" width="120"> | 한복 히어로 | [몸 고정 + 얼굴 시트 `scholar-still`·`body`·`heads`](hanbok-hero.md#04--몸-고정--얼굴-시트-scholar-still--scholar-body--scholar-heads-) | 02 영상 프레임 → 로컬 rembg → `build-heads.py` (새 생성 없음) | ✅ |
+| <img src="../projects/jooho-lab/public/assets/work-hanbok-hero.webp" width="120"> | JOOHO LAB | [선비 — 실제 화면 캡처](jooho-lab.md#21--선비--실제-화면-캡처) | Playwright 캡처 | ✅ |
 
 ### 영상 · 소리 · 3D
 
 | | 작품 | 에셋 | 프롬프트 |
 |---|---|---|---|
+| <img src="../projects/jooho-lab/art/realism-after-exterior.png" width="120"> | JOOHO LAB | [건물 구조·PBR 재질 정교화](jooho-lab.md#16--lab-pavilion-realism--건물-구조재질-정교화) | 사용자 요청 원문 · 절차 제작 스크립트 |
 | <img src="../projects/dawn-store/app/public/media/gate-generated-v2.webp" width="120"> | 새벽 세 시 | [도입 화면 영상 8초](dawn-store.md#10--도입-화면-영상-gate-generated-v2) | ❌ |
 | 🔊 | 새벽 세 시 | [배경음·효과음 3개](dawn-store.md#11--소리-bgm--hover--click) | ❌ (제작 요청서만 있음) |
 | 🔊 | 하루 산책 | 효과음 — 코드로 합성(`src/audio/sfx.ts`), 파일·프롬프트 없음 | — |
-| 🧊 | — | **3D 모델(GLB)은 아직 없습니다.** POTATO 캐릭터는 2D 그림에 CSS 원근을 준 것이고, JOOHO LAB 마을은 2D 파노라마를 three.js에 붙인 것입니다. 3D 만드는 틀은 [templates.md §7](templates.md#7-3d로-바꾸기) | — |
+| 🧊 | JOOHO LAB | [Blender 파빌리온 GLB와 원본](jooho-lab.md#06--lab-pavilion--연결된-3d-작업실) · 실제 3D 공간. 기존 마을 파노라마와 POTATO 캐릭터는 2D 이력 | 제작 절차 기록 |
 
 ---
 

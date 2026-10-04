@@ -84,6 +84,8 @@ importers:
         specifier: ^7.1.3
         version: 7.3.6(@types/node@24.13.4)(tsx@4.23.13)
 
+  projects/hanbok-hero: {}
+
   projects/jooho-lab: {}
 
   projects/potato-designer: {}

@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const experiences = {
+  'potato-designer': {source:'../potato-designer/dist',title:'POTATO · Designer in Motion',frameLabel:'POTATO 인터랙티브 디자인 포트폴리오',cover:'assets/character.png',coverTarget:'potato.png'},
   'dawn-store': {
     source: '../dawn-store/app/dist',
     title: '새벽 세 시 · Still Open',
@@ -15,12 +16,10 @@ const experiences = {
     title: '하루 산책 · Day Walk',
     frameLabel: '하루 산책 루틴 앱',
   },
-  'potato-designer': {
-    source: '../potato-designer/dist',
-    title: 'POTATO · Designer in Motion',
-    frameLabel: 'POTATO 인터랙티브 포트폴리오',
-    cover: 'assets/character.png',
-    coverTarget: 'potato.png',
+  'hanbok-hero': {
+    source: '../hanbok-hero/dist',
+    title: '선비 · 한복 히어로',
+    frameLabel: '마우스를 따라 고개를 돌리는 선비 첫 화면',
   },
 };
 const id = process.argv[2];
@@ -39,7 +38,7 @@ try {
 const target = resolve(root, `public/experiences/${id}`);
 await mkdir(target, { recursive: true });
 await cp(source, target, { recursive: true });
-if (experience.cover) await cp(resolve(source, experience.cover), resolve(root, 'public/assets', experience.coverTarget));
+if(experience.cover)await cp(resolve(source,experience.cover),resolve(root,'public/assets',experience.coverTarget));
 const prefix = `/experiences/${id}`;
 async function rewrite(folder) {
   for (const file of await readdir(folder, { withFileTypes: true })) {
@@ -55,5 +54,5 @@ await rewrite(target);
 const htmlPath = resolve(target, 'index.html');
 const html = await readFile(htmlPath, 'utf8');
 await writeFile(resolve(target, 'play.html'), html);
-await writeFile(htmlPath, `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${experience.title}</title><style>*{box-sizing:border-box}body{margin:0;background:#0d1011;color:#ddc9a9;font:14px system-ui}.experience-return{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 16px}.experience-return a{color:inherit;text-decoration:none}.experience-return a:focus-visible{outline:2px solid #edca94;outline-offset:4px}.experience-return span{font-size:12px}iframe{display:block;width:100%;height:calc(100svh - 44px);border:0}</style></head><body><header class="experience-return"><a href="../../">← 전시실로 돌아가기</a><span>${experience.title}</span></header><iframe title="${experience.frameLabel}" src="./play.html" allow="autoplay; fullscreen"></iframe></body></html>`);
+await writeFile(htmlPath, `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${experience.title}</title><style>*{box-sizing:border-box}body{margin:0;background:#0d1011;color:#ddc9a9;font:14px system-ui}.experience-return{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 16px}.experience-return a{color:inherit;text-decoration:none}.experience-return a:focus-visible{outline:2px solid #edca94;outline-offset:4px}.experience-return span{font-size:12px}iframe{display:block;width:100%;height:calc(100svh - 44px);border:0}</style></head><body><header class="experience-return"><a href="../../">← 전시실로 돌아가기</a><span>${experience.title}</span></header><script>try{if(sessionStorage.getItem('jooho-lab-return-page-v1')==='village.html'){const link=document.querySelector('.experience-return a');link.href='../../village.html';link.textContent='← 작업 동네로 돌아가기'}}catch{}</script><iframe title="${experience.frameLabel}" src="./play.html" allow="autoplay; fullscreen"></iframe></body></html>`);
 console.log(`Included ${id} snapshot and scoped asset URLs.`);

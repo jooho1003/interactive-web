@@ -46,3 +46,5 @@
 이번 변경은 콘텐츠 등록이며 새 시각 레이어/파라미터/고정값을 도입하지 않았다. 허브의 전체 레이어 이관은 docs/11의 기존 미구현 범위다. probe의 조건부 활성화 검사를 실제 모든 hover/모달/기기 상황 검수와 동일하게 해석하지 않는다.
 
 로컬 검수 스크립트/캡처는 Git에서 제외하는 `.site-publish/check-potato.cjs`, `potato-hub-desktop.png`, `potato-embedded-desktop.png`, `potato-embedded-mobile.png`에 남겼다. 실제 iOS/Android, Safari/Firefox, 스크린 리더, 호스팅 R2/인증·저장 실패, claude.ai 보관함 재게시와 프로덕션 동작은 이번에 확인하지 않았다. 새 저장 코드는 추가하지 않았다.
+
+최신 원격 main 통합 결과와 별도 동네 페이지·9작품/2개 호스트 구조는 [QA-village.md](QA-village.md)의 2026-10-04 기록을 따른다. 위 6집/미이관 설명은 통합 전 로컬 이력이다.

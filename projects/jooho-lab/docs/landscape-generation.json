@@ -1,0 +1,14 @@
+{
+  "model": "fal-ai/flux/schnell",
+  "input": {
+    "prompt": "Photographic panoramic landscape at blue hour, distant layered coastal mountains and calm water, a very low horizon in the bottom quarter, expansive pale desaturated blue sky with delicate peach clouds and a faint warm sunset on the right, refined atmospheric architectural photography background, natural subtle film grain, realistic, tranquil, no buildings, no people, no text, no borders. Wide landscape photograph.",
+    "image_size": {
+      "width": 1536,
+      "height": 768
+    },
+    "num_images": 1,
+    "num_inference_steps": 4,
+    "seed": 10012026,
+    "output_format": "jpeg"
+  }
+}

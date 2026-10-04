@@ -16,6 +16,10 @@
     {
       "key": "jooho-lab",
       "title": "JOOHO LAB (허브)"
+    },
+    {
+      "key": "hanbok-hero",
+      "title": "한복 히어로"
     }
   ],
   "shared": {
@@ -240,6 +244,31 @@
       "prompts": []
     },
     {
+      "app": "dawn-store",
+      "appTitle": "새벽 세 시 · Still Open",
+      "id": "dawn-store--12--blender-night-store--계산대커피-렌더-시험",
+      "title": "12 · blender-night-store — 계산대·커피 렌더 시험",
+      "status": "ok",
+      "image": "projects/dawn-store/art/blender-study/counter.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/dawn-store/art/blender-study/counter.png 1920×1080 · 2,053,696B; coffee.png 동일 크기 · 1,907,354B. WebP 68,596B / 40,614B. night-store.blend 원본",
+        "쓰이는 곳": "계산대/커피 미디어 층 후보. 기본 앱 미적용",
+        "도구": "Blender 4.5.12 LTS · Cycles CPU · 2026-10-02. AI 생성 아님",
+        "참조 이미지": "기존 계산대 v2를 시각 확인, 모델 입력 이미지 아님",
+        "설정": "seed 31 · AgX/denoise · 계산대 256/커피 128샘플 · 렌즈 38/58mm, f/2.8 · 반사 12/굴절 8",
+        "재현": "projects/dawn-store/scripts/render-store.py, render-study-camera.py; 설정, 촬영 재질 출처"
+      },
+      "prompts": [
+        {
+          "label": null,
+          "lang": "text",
+          "prepend": null,
+          "text": "그럼 새벽세시를 좀 더 블렌더 고품질 렌더로 만들어보고 jooho lab은  3d를 기반으로 한 단계 더 다듬는걸로 해보자."
+        }
+      ]
+    },
+    {
       "app": "day-walk",
       "appTitle": "하루 산책 · Day Walk",
       "id": "day-walk--01--주택가-원본-v2",
@@ -392,6 +421,157 @@
     {
       "app": "jooho-lab",
       "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--19--lab-bright-interior--밝은-풍경과-정교한-실내",
+      "title": "19 · lab-bright-interior — 밝은 풍경과 정교한 실내",
+      "status": "ok",
+      "image": "projects/jooho-lab/art/interior-after-interior.png",
+      "video": null,
+      "meta": {
+        "파일·크기": "projects/jooho-lab/public/assets/lab-pavilion.glb · 4,701,148B; 편집 원본 art/lab-pavilion.blend; art/interior-after-exterior.png / art/interior-after-interior.png · 1440×900",
+        "쓰이는 곳": "stage 가구·전시 마감·실내 조명, landscape 배경 밝기/음영. 헤더는 기존 shell/controls 색 재사용",
+        "도구·모드": "Blender 4.5.12 LTS / Cycles CPU 베이크, 절차 모델링·PBR 지도, Three.js r180 실시간 공간. AI 이미지 생성 없음",
+        "참조": "승인된 카드 18의 깨끗한 외관/실내 캡처. 기존 풍경 사진 파일은 그대로 사용하고 CSS 밝기를 조절",
+        "설정": "풍경 brightness 1.18 / shade .4 / 마당 #a8ab9b. 실내 간접광 32, 전시 조명 20, 색 #ffe8c9. 조명 2048²·32샘플, AO 2048²·64샘플·거리 .8m, 두 지도 모두 denoise. UV0 조명/AO, UV1 표면. 직물 512² 반복 지도, 조형물 96×24 분할·smooth normals",
+        "재현": "python scripts/prepare-photo-textures.py → blender -b --threads 4 --python scripts/build-spatial-lab.py; 기존 원본 재질/조명 갱신은 blender -b art/lab-pavilion.blend --threads 4 --python scripts/export-photo-surfaces.py"
+      },
+      "prompts": [
+        {
+          "label": null,
+          "lang": "text",
+          "prepend": null,
+          "text": "훨씬 괜찮다. 배경도 좀 밝게 해주고 내부도 퀄리티 올려줘~"
+        }
+      ]
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--18--lab-clean-stone--얼룩-없는-건물-표면",
+      "title": "18 · lab-clean-stone — 얼룩 없는 건물 표면",
+      "status": "ok",
+      "image": "projects/jooho-lab/art/clean-after-exterior.png",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/lab-pavilion.glb · 4,357,584B, pack된 art/lab-pavilion.blend; 캡처 art/clean-after-exterior.png, art/clean-after-interior.png · 1440×900",
+        "쓰이는 곳": "stage 외벽·실내 벽·바닥·디딤돌·좌석 표면",
+        "도구·모드": "Blender 4.5.12 LTS 재질 교체·AO 베이크 / Python Pillow 절차 재질 데이터 / Three.js r180. AI 이미지 생성 없음",
+        "참조": "자체 카드 16의 깔끔한 인상과 카드 17의 얼룩진 외관 비교. 외부 이미지 없음",
+        "설정": "시드 42, 512² 색·노멀·거칠기·높이 지도. limestone RGB 246/244/238, honed stone 244/241/233, 색 입자 ±1. AO 2048²·64샘플·거리 0.8m·Blender denoise. 기존 stage 요철 .2/AO .35와 6재질 tint 유지",
+        "재현": "prepare-photo-textures.py → blender -b art/lab-pavilion.blend --threads 4 --python scripts/export-photo-surfaces.py; 전체 모델 재현 build-spatial-lab.py도 같은 표면을 사용"
+      },
+      "prompts": [
+        {
+          "label": null,
+          "lang": "text",
+          "prepend": null,
+          "text": "이 전이 훨씬 나은데 건물이 너무 얼룩덜룩해. 좀 더 깔끔해야지."
+        }
+      ]
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--17--lab-photo-pbr--촬영-재질hdri근접-표면-개선",
+      "title": "17 · lab-photo-pbr — 촬영 재질·HDRI·근접 표면 개선",
+      "status": "ok",
+      "image": "projects/jooho-lab/art/photo-after-exterior.png",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/lab-pavilion.glb · 5,299,628B. pack된 원본 art/lab-pavilion.blend, 캡처 art/photo-after-exterior.png, art/photo-after-interior.png 1440×900",
+        "쓰이는 곳": "stage(건물·마당·반사·광원), 기존 landscape",
+        "도구": "Blender 4.5.12 LTS + Three.js r180 · 2026-10-02. 촬영 재질, AI 생성 없음",
+        "참조 이미지": "이전 art/realism-after-exterior.png, art/realism-after-interior.png와 비교",
+        "설정": "GI 64샘플 · lightmap 3072², AO 2048² · UV1 사진 1K를 2m/직물 0.3m로 반복. UV0 그림자/작은 간접광 기여. JPEG 색 82/노멀 88, GLB 85",
+        "출처": "Poly Haven 공유 CC0 소스·해시. Overcast Industrial Courtyard HDRI 1K. 마당 runtime 512² 3맵 합계 290,624B",
+        "재현": "prepare-photo-textures.py → build-spatial-lab.py; 재질만 갱신은 export-photo-surfaces.py"
+      },
+      "prompts": [
+        {
+          "label": null,
+          "lang": "text",
+          "prepend": null,
+          "text": "그럼 새벽세시를 좀 더 블렌더 고품질 렌더로 만들어보고 jooho lab은  3d를 기반으로 한 단계 더 다듬는걸로 해보자."
+        }
+      ]
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--16--lab-pavilion-realism--건물-구조재질-정교화",
+      "title": "16 · lab-pavilion-realism — 건물 구조·재질 정교화",
+      "status": "ok",
+      "image": "projects/jooho-lab/art/realism-after-exterior.png",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/lab-pavilion.glb · 3,764,564B. 원본 art/lab-pavilion.blend. 비교 캡처 art/realism-before-exterior.png, art/realism-after-exterior.png · 1800×1125",
+        "쓰이는 곳": "JOOHO LAB 외관·작업실·작품 장면, 레이어 stage; 화면 음영은 landscape.shade",
+        "도구": "Blender 4.5.12 LTS / Cycles CPU, Python 절차 모델링·베이크; Three r180 PBR 및 Reflector · 2026-10-02",
+        "참조 이미지": "기존 Blender 건물과 동일 시점의 웹 화면. 외부 사진·AI 이미지 없음",
+        "설정": "시드 42, diffuse 3072×3072 / tangent normal 2048×2048 / roughness 2048×2048, Cycles 32 samples, diffuse denoise, GLB JPEG quality 92. 데스크톱 평면 반사 512×512 / MSAA 0, ≤650px 추가 반사 패스 끔. 자갈은 Canvas 512px 시드 42, 물리 2m 반복",
+        "재현": "projects/jooho-lab/scripts/build-spatial-lab.py; 브라우저 재질·반사·자갈은 public/spatial-scene.js, 조절값 정본은 public/layers.manifest.js"
+      },
+      "prompts": [
+        {
+          "label": null,
+          "lang": "text",
+          "prepend": null,
+          "text": "좀 더 영상 같고 사실적인 건물이면 좋겠어. 일단 정교하게 다듬어줘."
+        }
+      ]
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--15--lab-pavilion-tripo--전시관-건물-전체-후보",
+      "title": "15 · lab-pavilion-tripo — 전시관 건물 전체 후보",
+      "status": "ok",
+      "image": "projects/jooho-lab/art/tripo/lab-pavilion-preview.webp",
+      "video": null,
+      "meta": {
+        "파일": "검수 캡처 projects/jooho-lab/art/tripo/lab-pavilion-preview.webp · 819×556 · 10,532B. GLB는 내보내기 제한으로 미확보",
+        "쓰이는 곳": "JOOHO LAB 건물 교체 후보 · 미적용 · 예정 레이어 architecture",
+        "도구": "Tripo Studio Smart Mesh P2.0 · 브라우저 text-to-3D · 2026-10-02",
+        "참조 이미지": "없음",
+        "설정": "남은 무료 체험 1회 사용, 메시 생성 비용 0, 후보 1개, 공개, Quad 면 4,095 / 버텍스 3,596. 완료 후 Studio의 텍스처 20 자동 재질 생성 성공(기존 무료 잔액 200→180). 별도 텍스처 프롬프트 입력란은 없었음. 내보내기 창에는 4k Current 표시(다운로드로 실제 해상도 확인은 못 함)",
+        "모델": "Studio 작업"
+      },
+      "prompts": [
+        {
+          "label": null,
+          "lang": "text",
+          "prepend": null,
+          "text": "A complete single-storey contemporary art gallery pavilion, isolated architectural 3D building, not furniture. Rectangular 18m wide, 16m deep, 5m high. Refined warm limestone walls, thin flat cantilevered roof with deep overhang, ribbed timber soffit, slender bronze facade mullions, travertine floor and a low stone foundation. Front facade has a wide central doorway, 3.6m wide and 4.2m tall, genuinely open with no door or glass blocking it. Large open window bays reveal a hollow interior gallery hall, realistic wall thickness, continuous empty central walking aisle from entrance to rear wall. Seven evenly spaced blank rectangular artwork mounting panels across the rear interior wall. Restrained Japanese modernist architecture, precise clean edges and construction details, coherent roof/walls/floor, clean quad topology. One complete building only. No chairs, tables, sculptures, plants, people, text, logos, artwork images, terrain or surrounding buildings."
+        }
+      ]
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--14--lounge-chair--스마트-메시-라운지-체어-후보",
+      "title": "14 · lounge-chair — 스마트 메시 라운지 체어 후보",
+      "status": "ok",
+      "image": "projects/jooho-lab/art/tripo/lounge-chair-preview.webp",
+      "video": null,
+      "meta": {
+        "파일": "검수 캡처 projects/jooho-lab/art/tripo/lounge-chair-preview.webp · 901×853 · 29,380B. GLB는 내보내기 제한으로 받지 못함",
+        "쓰이는 곳": "JOOHO LAB 라운지 의자 교체 후보 · 미적용. 예정 레이어 lounge-chair",
+        "도구": "Tripo Studio Smart Mesh P2.0 · 브라우저 text-to-3D · 2026-10-02",
+        "참조 이미지": "없음",
+        "설정": "무료 체험 1회, 생성 비용 0, 후보 1개, 공개, Quad. UI 결과: 면 6,374 / 버텍스 5,567. 텍스처 추가 생성 안 함",
+        "모델": "Studio 작업 · 객체 tripo_4db9b9f5_2e18_4023_ae22_cc42cde448fd"
+      },
+      "prompts": [
+        {
+          "label": null,
+          "lang": "text",
+          "prepend": null,
+          "text": "A single refined contemporary lounge armchair for a quiet architectural gallery. Sculptural solid smoked oak frame, broad softly curved armrests, rounded joinery, four short sturdy wooden legs. Thick ivory woven linen seat and back cushions with subtle fabric texture and realistic seams. Warm natural materials, understated Japanese Scandinavian design, premium furniture craftsmanship. Complete freestanding chair, front three-quarter view, accurately proportioned, clean production-ready quad topology, detailed PBR materials. No person, no text, no logo, no floor, no room, no other objects."
+        }
+      ]
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
       "id": "jooho-lab--01--마을-파노라마-project-village",
       "title": "01 · 마을 파노라마 (project-village)",
       "status": "missing",
@@ -399,7 +579,7 @@
       "video": null,
       "meta": {
         "파일": "public/assets/project-village.webp · 2164×727 · 410KB",
-        "쓰이는 곳": "3D 마을 배경(scene.js) — 레이어 panorama·houses(docs/11 §9-4)",
+        "쓰이는 곳": "별도 village.html의 초기 작업 동네 배경(scene.js) — 현재 레이어 stage; 집/산책길 DOM 이름표는 labels. 2026-10-03 원본 재사용, 새 생성 없음",
         "도구": "❌ 기록 없음 (2026-09-12 월드 설정 플랜의 에셋 에이전트)"
       },
       "prompts": []
@@ -414,7 +594,7 @@
       "video": null,
       "meta": {
         "파일": "public/assets/village-walker.png · 1254×1254, 투명 PNG · 1.1MB",
-        "쓰이는 곳": "마을을 걸어 다니는 기본 마스코트 — 레이어 walker",
+        "쓰이는 곳": "별도 village.html에서 걸어 다니는 기본 마스코트 — 현재 레이어 character. 2026-10-03 투명 원본 그대로 재사용; 이미지·기본 보이기/크기/속도는 공유 편집기, 레이어에서 추가 크기/속도·보이기/불투명도 조정",
         "도구": "파일 메타데이터(C2PA): gpt-image 2.0, OpenAI 서명, 2026-09-12"
       },
       "prompts": []
@@ -448,8 +628,260 @@
     {
       "app": "jooho-lab",
       "appTitle": "JOOHO LAB (허브)",
-      "id": "jooho-lab--05--하루-산책potato-건물-확장-village-extension-v1",
-      "title": "05 · 하루 산책·POTATO 건물 확장 (village-extension-v1)",
+      "id": "jooho-lab--05--lab-landscape--작업실-뒤-먼-풍경",
+      "title": "05 · lab-landscape — 작업실 뒤 먼 풍경",
+      "status": "ok",
+      "image": "projects/jooho-lab/public/assets/lab-landscape.jpg",
+      "video": null,
+      "meta": {
+        "파일": "public/assets/lab-landscape.jpg · 1536×768 · 493,610 bytes",
+        "쓰이는 곳": "외관과 창밖의 먼 배경 · landscape 레이어",
+        "도구": "fal.ai fal-ai/flux/schnell · text-to-image · 2026-10-01",
+        "참조 이미지": "없음",
+        "설정": "1장, 4 steps, seed 10012026, JPEG. scripts/prepare-spatial-assets.mjs --generate"
+      },
+      "prompts": [
+        {
+          "label": null,
+          "lang": "text",
+          "prepend": null,
+          "text": "Photographic panoramic landscape at blue hour, distant layered coastal mountains and calm water, a very low horizon in the bottom quarter, expansive pale desaturated blue sky with delicate peach clouds and a faint warm sunset on the right, refined atmospheric architectural photography background, natural subtle film grain, realistic, tranquil, no buildings, no people, no text, no borders. Wide landscape photograph."
+        }
+      ]
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--06--lab-pavilion--연결된-3d-작업실",
+      "title": "06 · lab-pavilion — 연결된 3D 작업실",
+      "status": "none",
+      "image": null,
+      "video": null,
+      "meta": {
+        "파일": "public/assets/lab-pavilion.glb, 원본 art/lab-pavilion.blend",
+        "쓰이는 곳": "외관 → 실제 입구 → 작업실 → 7개 전시물 · stage 레이어",
+        "도구": "Blender 4.5.12 LTS Python 모델링, Cycles diffuse bake, compositor denoise, glTF export · 2026-10-01",
+        "참조 이미지": "사용자 Instagram Ddb6_ISh8pA의 연속 공간 이동 개념. 원본 브랜드·이미지 복제 없음",
+        "설정": "scripts/build-spatial-lab.py가 정본. 2048² lightmap, 16 samples, seed 42, JPEG embedded GLB"
+      },
+      "prompts": []
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--07--실제-작품-화면--갤러리-대표-이미지-7장",
+      "title": "07 · 실제 작품 화면 — 갤러리 대표 이미지 7장",
+      "status": "none",
+      "image": "projects/jooho-lab/public/assets/work-chemiforge.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/work-*.webp · 아래 개별 크기 참고",
+        "쓰이는 곳": "stage 전시물, rail 썸네일, shell 작품 목록과 작품 상세. 내용은 projects.js에서 관리",
+        "도구": "Aside 실제 브라우저 캡처 · 2026-10-01. 생성 에셋 아님",
+        "참조 이미지": "projects/jooho-lab/art/captures/.png 원본 7장",
+        "설정": "원본 해상도·비율 유지, Pillow WebP quality=88, method=6. 재생성·합성·크롭 없음",
+        "프롬프트": "해당 없음 — 실제 프로젝트 화면 캡처"
+      },
+      "prompts": []
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--08--sasu--실제-화면-캡처",
+      "title": "08 · SASU — 실제 화면 캡처",
+      "status": "none",
+      "image": "projects/jooho-lab/public/assets/work-sasu.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/work-sasu.webp · 1725×1125 · 83,752B",
+        "쓰이는 곳": "stage 전시물 · rail 썸네일 · shell 목록 · 작품 상세",
+        "도구": "Aside 실제 브라우저 캡처 · 2026-10-01. 생성 에셋 아님",
+        "참조 이미지": "projects/jooho-lab/art/captures/sasu.png",
+        "설정": "원본 비율·해상도 유지, Pillow WebP quality=88, method=6",
+        "출처": "https://sasu-alpha.vercel.app/demo/d/bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb/cards/10000000-0000-4000-8000-000000000121",
+        "프롬프트": "해당 없음 — 실제 프로젝트 화면 캡처"
+      },
+      "prompts": []
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--09--숏폼-자동화--실제-화면-캡처",
+      "title": "09 · 숏폼 자동화 — 실제 화면 캡처",
+      "status": "none",
+      "image": "projects/jooho-lab/public/assets/work-shortform.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/work-shortform.webp · 1800×1125 · 80,494B",
+        "쓰이는 곳": "stage 전시물 · rail 썸네일 · shell 목록 · 작품 상세",
+        "도구": "Aside 실제 브라우저 캡처 · 2026-10-01. 생성 에셋 아님",
+        "참조 이미지": "projects/jooho-lab/art/captures/shortform.png",
+        "설정": "원본 비율·해상도 유지, Pillow WebP quality=88, method=6",
+        "출처": "http://localhost:3123/ep/B/2026-09-11/01?tab=preview",
+        "프롬프트": "해당 없음 — 실제 프로젝트 화면 캡처"
+      },
+      "prompts": []
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--10--새벽-세-시--실제-화면-캡처",
+      "title": "10 · 새벽 세 시 — 실제 화면 캡처",
+      "status": "none",
+      "image": "projects/jooho-lab/public/assets/work-dawn-store.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/work-dawn-store.webp · 1800×1125 · 120,550B",
+        "쓰이는 곳": "stage 전시물 · rail 썸네일 · shell 목록 · 작품 상세",
+        "도구": "Aside 실제 브라우저 캡처 · 2026-10-01. 생성 에셋 아님",
+        "참조 이미지": "projects/jooho-lab/art/captures/dawn-store.png",
+        "설정": "원본 비율·해상도 유지, Pillow WebP quality=88, method=6",
+        "출처": "http://127.0.0.1:8879/experiences/dawn-store/play.html",
+        "프롬프트": "해당 없음 — 실제 프로젝트 화면 캡처"
+      },
+      "prompts": []
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--11--market-front--실제-화면-캡처",
+      "title": "11 · MARKET FRONT — 실제 화면 캡처",
+      "status": "none",
+      "image": "projects/jooho-lab/public/assets/work-market-front.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/work-market-front.webp · 1800×1125 · 60,566B",
+        "쓰이는 곳": "stage 전시물 · rail 썸네일 · shell 목록 · 작품 상세",
+        "도구": "Aside 실제 브라우저 캡처 · 2026-10-01. 생성 에셋 아님",
+        "참조 이미지": "projects/jooho-lab/art/captures/market-front.png",
+        "설정": "원본 비율·해상도 유지, Pillow WebP quality=88, method=6",
+        "출처": "http://127.0.0.1:8891/",
+        "프롬프트": "해당 없음 — 실제 프로젝트 화면 캡처"
+      },
+      "prompts": []
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--12--종말의-탑--실제-화면-캡처",
+      "title": "12 · 종말의 탑 — 실제 화면 캡처",
+      "status": "none",
+      "image": "projects/jooho-lab/public/assets/work-spire.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/work-spire.webp · 1800×1125 · 100,400B",
+        "쓰이는 곳": "stage 전시물 · rail 썸네일 · shell 목록 · 작품 상세",
+        "도구": "Aside 실제 브라우저 캡처 · 2026-10-01. 생성 에셋 아님",
+        "참조 이미지": "projects/jooho-lab/art/captures/spire.png",
+        "설정": "원본 비율·해상도 유지, Pillow WebP quality=88, method=6",
+        "출처": "https://tower-50.vercel.app/",
+        "프롬프트": "해당 없음 — 실제 프로젝트 화면 캡처"
+      },
+      "prompts": []
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--13--하루-산책--실제-화면-캡처",
+      "title": "13 · 하루 산책 — 실제 화면 캡처",
+      "status": "none",
+      "image": "projects/jooho-lab/public/assets/work-day-walk.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/work-day-walk.webp · 1800×1125 · 57,422B",
+        "쓰이는 곳": "stage 전시물 · rail 썸네일 · shell 목록 · 작품 상세",
+        "도구": "Aside 실제 브라우저 캡처 · 2026-10-01. 생성 에셋 아님",
+        "참조 이미지": "projects/jooho-lab/art/captures/day-walk.png",
+        "설정": "원본 비율·해상도 유지, Pillow WebP quality=88, method=6",
+        "출처": "http://127.0.0.1:8879/experiences/day-walk/play.html",
+        "프롬프트": "해당 없음 — 실제 프로젝트 화면 캡처"
+      },
+      "prompts": []
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--20--exhibition-art--운영-작품의-전시-키-비주얼",
+      "title": "20 · exhibition-art — 운영 작품의 전시 키 비주얼",
+      "status": "ok",
+      "image": "projects/jooho-lab/public/assets/exhibit-chemiforge.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/exhibit-*.webp 7개 · 총 1,354,226B · 아래 크기 표 참조",
+        "쓰이는 곳": "JOOHO LAB stage 작품 패널 · rail 썸네일 · detail/목록/소개 페이지. 작품 목록 데이터이며 image 편집은 기존 소유자 편집기를 사용",
+        "도구": "built-in image_gen 참조 생성 6개 + Aside 공개 만화 원본 재사용 1개 · 2026-10-03. image_gen 모델명·시드는 노출되지 않음",
+        "참조 이미지": "projects/jooho-lab/art/exhibition-20261003/.png — 실제 운영 화면 7개. ChemiForge 생성은 같은 폴더의 다운로드 운영 hero chemiforge-hero.webp를 참조. 실제 전달 경로는 prompts.json. localhost 캡처를 생성 참조로 사용하지 않음",
+        "설정": "생성 후보 각 1개, 세로 4:5 요청/1122×1402 원본. 최종 1024×1280 WebP quality86/method6. 한술툰 운영 원본은 무크롭·비율 유지 quality90/method6"
+      },
+      "prompts": [
+        {
+          "label": "사용자 요청 원문",
+          "lang": "text",
+          "prepend": null,
+          "text": "지금 각 사이트별로 전시이미지가 별로야. 특히 day walk는 https://interactive-web-app-three.vercel.app/experiences/day-walk/ 이거거든? 로컬 말고 실제 운영주소를 이용해. 그리고 캡쳐본이 별로면 별도로 해당 사이트를 나타내는 이미지를 뽑아. 전시회처럼.\n그 두개는 운영 주소가 없다. 대신 블로그랑 인스타툰이 있잖아."
+        },
+        {
+          "label": "하루 산책 생성 프롬프트 원문",
+          "lang": "text",
+          "prepend": null,
+          "text": "Use case: stylized-concept\nAsset type: standalone portrait artwork for the Day Walk project, displayed in a contemporary art exhibition. Create one premium 4:5 portrait image, not a framed mockup.\nInput image: reference screenshot from the ACTUAL production Day Walk website, reference for the neighborhood, female walking character, bird, and warm animated feature-film look. Do not reproduce any interface.\nPrimary request: turn the application's beautiful neighborhood and day-to-night walking theme into an exhibition-worthy key visual.\nScene: a winding residential walking path through a lush intimate neighborhood of charming gabled homes and one understated modern home. The same continuous world travels from fresh pale-blue morning in the upper left through warm afternoon/amber sunset in the center to indigo evening and lit windows on the right. Natural atmospheric transition, no separate panels or hard division. The curved path brings depth into the portrait.\nSubject: a small but clearly visible female walker in a purple jacket, blue trousers and light sneakers, accompanied by one tiny bird, drawing on the reference character. She is an everyday person walking through her day. Preserve the friendly scale, crisp architectural detail, foliage and cinematic sunlight of the actual project.\nComposition: full-bleed portrait composition, a clear visual center, character in the lower third, detailed homes midground, generous sky with atmospheric depth. Rich feature animation lighting, tasteful finely textured materials, no toy diorama, no UI-looking checklist.\nConstraints: no title, no typography, no lettering, no date, no clocks, no dashboards, no web browser, no logo, no watermark, no frame, no fake product interface. This is a concept artwork representing the existing app, not a screenshot."
+        },
+        {
+          "label": "사수 생성 프롬프트 원문",
+          "lang": "text",
+          "prepend": null,
+          "text": "Use case: photorealistic-natural\nAsset type: standalone 4:5 portrait editorial exhibition artwork representing SASU, an AI colleague that connects team conversations and original records to a clear decision.\nInput image: screenshot of the actual public SASU website, reference only for emerald-green brand direction and the idea of evidence-backed team decisions. Do not reproduce the interface or text.\nScene and subject: an elegant tactile sculptural still life on warm ivory paper. Several thin cream pages and translucent green glass strips begin loosely separated near the lower left, gently converge along precise fine emerald threads into one upright, beautifully resolved dark-green folded paper form near the upper center. The single resolved form stands for a decision, the connected paper layers for preserved context. Real paper edges, subtly impressed lines without writing, glass with believable refraction. A restrained small copper paper fastener provides human scale. Thoughtful, understandable, crafted rather than generic AI symbols.\nStyle: premium editorial studio photography, contemporary museum art print, refined physical materials, daylight from the left casting long soft shadows, warm ivory and deep emerald with quiet gray-green reflections. Strong deliberate portrait composition and abundant calm negative space, detailed but no clutter.\nConstraints: absolutely no words, letters, numbers, interface cards, buttons, logos, watermarks, robot faces, brains, neon circuits, presentation mockup, or picture frame. Create the artwork itself."
+        },
+        {
+          "label": "그날의 먹거리 생성 프롬프트 원문",
+          "lang": "text",
+          "prepend": null,
+          "text": "Use case: photorealistic-natural\nAsset type: one 4:5 portrait photographic exhibition artwork representing the Korean food diary blog '그날의 먹거리'. Not a website screenshot and not a framed mockup.\nInput image: actual live food blog screenshot, reference for the honest everyday dining and personal food-note theme; do not copy the interface or writing. This is illustrative editorial key art, not a photograph claiming to document a particular restaurant visit.\nScene: an intimate everyday neighborhood restaurant tabletop by a window. A beautifully natural ceramic plate of several salmon and white-fish nigiri sushi is the main subject, reflecting the blog's publicly visible sushi diary. Nearby are a small bowl of miso soup, a tiny soy dish and plain wooden chopsticks. A small open cream notebook with entirely blank pages and a pencil sit to the side to suggest recording the meal. No other food, no branded packaging, no lavish feast. Slightly lived-in wooden table, genuine ceramic glaze, believable fresh fish translucency and restrained natural highlights.\nComposition: carefully composed elevated three-quarter viewpoint, main plate centered in the middle third with breathing room, notebook partially visible below, portrait visual hierarchy. Warm soft late-afternoon window light, natural editorial food photography, gentle film grain, appetizing but understated, beautiful yet ordinary. No human figures or hands.\nConstraints: no text, no typography, no letters or numbers even on notebook, no restaurant logos, no price tags, no web UI, no watermark, no frames. Do not make a generic stock-photo collage."
+        },
+        {
+          "label": "새벽 세 시 생성 프롬프트 원문",
+          "lang": "text",
+          "prepend": null,
+          "text": "Use case: photorealistic-natural\nAsset type: one standalone 4:5 portrait cinematic exhibition artwork for the existing interactive story '새벽 세 시 / Still Open'.\nInput image: actual production screenshot, reference for the empty Korean convenience store, rain-soaked windows, fluorescent light, solitude and subdued film mood. Do not reproduce the site's interface, subtitles or outside person.\nScene: outside an unbranded small Korean neighborhood convenience store at three in the morning, looking diagonally through rain-streaked glass. A softly glowing cold-white fluorescent interior with real shelves and a quiet window counter. One plain takeaway coffee cup on that counter provides the intimate narrative anchor. Warm amber fridge highlights are a tiny contrast. Wet pavement in the lower third reflects the still-lit window. The street disappears into blue-black quiet; the cup and glass stay clearly legible. Store architecture believable and restrained.\nComposition: portrait film-still framing, closer than the wide screenshot, vertically emphasize reflections and the warmly occupied-looking but entirely empty interior; beautiful depth through glass, a feeling of waiting, finely observed raindrops, premium live-action cinematography, gentle analog grain, controlled highlights, luminous shadows rather than crushed darkness.\nConstraints: no people, no silhouettes, no text, no subtitle, no typography, no clock digits, no brands, no menus, no browser or controls, no watermark, no frame. Produce only the artwork, inspired by the real site's visual atmosphere."
+        },
+        {
+          "label": "종말의 탑 생성 프롬프트 원문",
+          "lang": "text",
+          "prepend": null,
+          "text": "Use case: stylized-concept\nAsset type: one standalone premium 4:5 portrait game key artwork for the existing 'The End's Tower / 종말의 탑' project displayed as a gallery art print.\nInput image: ACTUAL production website screenshot. Reference the specific towering ruined black-stone spire with glowing ember-red fissures, forested ruins, huge vertical scale, stairs and storm mist. Preserve this visual identity rather than invent a different fantasy universe. Do not copy the interface text.\nScene: a monumental jagged black stone tower rising through storm-gray clouds, fine ember-red cracks glowing within its many ruined arched chambers. Ancient mossy steps lead from the lower foreground across a ruined stone bridge into a single warm orange entrance. Dense subdued forest and weathered stone on either side. No characters needed; the path itself makes ascent feel possible. Strong readable silhouette, intricate masonry, atmospheric scale, a pale cool break in the sky makes the tower legible.\nStyle: polished painterly dark-fantasy game key art with cinematic depth, crisp central architectural detail, atmospheric textured edges, restrained soot-gray, deep forest green and amber-red palette. Portrait art print hierarchy: unmistakable tall tower as focal point, leading path below, enough contrast to read when hung in a bright virtual gallery.\nConstraints: no text, no title, no logos, no numbers, no menus, no browser, no health bars, no watermark, no frame, no unrelated monsters. Create the artwork itself, not a gallery mockup."
+        },
+        {
+          "label": "ChemiForge 추가 생성 프롬프트 원문",
+          "lang": "text",
+          "prepend": null,
+          "text": "Use case: photorealistic-natural\nAsset type: standalone 4:5 portrait exhibition key artwork representing ChemiForge Regulation.\nInput image: the actual public production-site hero image, supporting visual reference for its physical materials and blue evidence-line motif. Create a portrait reinterpretation rather than a screenshot or a cropped landscape.\nPrimary request: retain the original's clear glass cosmetic-formulation sample vial, layered unprinted regulatory-paper sheets, translucent glass/paper shapes and one thin cobalt-blue line with tiny circular evidence nodes, and recompose them elegantly as a vertical photographic still life.\nComposition: a deliberate portrait arrangement that fills the gallery print: layered white textured pages and muted navy/cool blue swatches step upward from the lower quarter to the upper third, with the glass sample vial in the central-right middle. A thin blue evidence line travels vertically through the paper layers towards the vial. Balanced calm white negative space with a tactile subject large enough to read in an exhibition. Preserve real glass refraction, delicate water bubbles, paper fiber and shadow detail. Pale ceramic or frosted-glass plane beneath, no additional objects.\nStyle and lighting: premium scientific/editorial still-life photography, soft daylight from upper left, very subtle long shadows, cool ivory, pale blue and muted navy. Refined, restrained, physical, credible, warm enough to be welcoming. Keep the actual reference's feel; no fantasy lab or generic tech iconography.\nConstraints: no text or lettering on pages or vial, no logo, no regulatory numbers, no labels, no graphs or axes, no dashboard, no web controls, no watermark, no frame or mockup. The blue connecting line is the reference's conceptual evidence motif, not a claim about a measurement."
+        }
+      ]
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--21--선비--실제-화면-캡처",
+      "title": "21 · 선비 — 실제 화면 캡처",
+      "status": "none",
+      "image": "projects/jooho-lab/public/assets/work-hanbok-hero.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/work-hanbok-hero.webp · 1800×1125 · 131,862B",
+        "쓰이는 곳": "rail 썸네일 · shell 목록 · 작품 상세(08번). 3D 벽에는 걸지 않는다 — 전시관에 구운 칸이 7개라 8번째부터는 목록·레일·작업 소개로만 연다",
+        "도구": "Playwright Chromium 캡처(1440×900, 배율 1.25) · 2026-10-03. 생성 에셋 아님",
+        "참조 이미지": "projects/jooho-lab/art/captures/hanbok-hero.png",
+        "설정": "원본 비율·해상도 유지, Pillow WebP quality=88, method=6",
+        "출처": "http://127.0.0.1:8897/experiences/hanbok-hero/play.html · 포인터를 이름 쪽(왼쪽 아래)에 두어 선비가 고개를 돌린 상태, 안내 문구가 사라진 뒤",
+        "프롬프트": "해당 없음 — 실제 프로젝트 화면 캡처"
+      },
+      "prompts": []
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--22--하루-산책potato-건물-확장-village-extension-v1",
+      "title": "22 · 하루 산책·POTATO 건물 확장 (village-extension-v1)",
       "status": "ok",
       "image": "projects/jooho-lab/public/assets/village-extension-v1.png",
       "video": null,
@@ -469,6 +901,95 @@
           "text": "Create a seamless RIGHT-HAND EXTENSION panel for the supplied miniature village panorama. The supplied image is a style and edge-continuity reference, not something to repeat. OUTPUT: one square 1024x1024 illustration containing EXACTLY TWO new adjacent buildings, full facades and entrances, no other buildings. Preserve the reference's premium handcrafted 3D miniature clay/stone rendering, daylight, clear pastel blue sky, warm sandy stone plaza, cypress trees, flowers, miniature streetlamps, front-facing slightly elevated orthographic view, scale and sharpness. Match the reference's vertical arrangement: sky in upper ~25%, building door thresholds on a horizontal line at 76% from the top, pale stone plaza continuing across lower 24%. Left building center at 27% image width: 'Day Walk' as a cozy honey-yellow and sage-green walking/routine cottage, with an analog sun clock, small blue bird ornament, three tiny colorful pennant flags on the roof, garden plants and a clear central wooden front door. Right building center at 73% width: 'POTATO' as a sophisticated charcoal and ivory designer atelier with soft yellow accents, striped awning, playful rounded sculptural sign resembling a small potato form, oversized pencil sculpture, creative shapes visible through windows and a clear central front door. No human characters. No robots. No readable text, numbers, letters, logos or UI. Both houses fit completely inside frame with sky above roofs and clearly separated entry doors. Left edge and right edge have unobtrusive sky and sandy plaza/cypress foliage so this square panel can be placed immediately right of the existing panoramic village. Do not depict the original six buildings, especially do not repeat the stone tower."
         }
       ]
+    },
+    {
+      "app": "hanbok-hero",
+      "appTitle": "한복 히어로",
+      "id": "hanbok-hero--01--정면-기준-컷-hanbok-still-",
+      "title": "01 · 정면 기준 컷 (hanbok-still) ✅",
+      "status": "ok",
+      "image": "projects/hanbok-hero/art/superseded/hanbok-still.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/hanbok-hero/art/superseded/hanbok-still.webp(2026-10-03까지 dist/assets/) · 2048×2048 · 262KB · 알파 있음(모서리 알파 0)",
+        "쓰이는 곳": "레이어 character 파라미터 still. 시트 로딩 전·동작 줄이기·react 끔·시트 실패 시 보이는 정면 그림. 시트가 반응 중이면 숨는다",
+        "도구·모드": "fal.ai fal-ai/flux-pro/kontext/max/multi (참조 2장 + 텍스트) → fal-ai/clarity-upscaler 2× → 로컬 rembg(isnet-general-use, alpha matting) · 2026-10-03",
+        "참조 이미지": "1) 화풍: 등불 든 소녀 콘셉트 아트(사용자 제공, docs/참고/풍.jpg, 미추적) 2) 디자인: 갓 쓴 선비 일러스트(사용자 제공, docs/참고/디자인.jpg, 미추적). 둘 다 외부 작가 작품 — 그대로 옮기지 않는다",
+        "설정": "image_urls: [화풍, 디자인] · seed: 8 · aspect_ratio: 1:1 · guidance_scale: 3.5 · safety_tolerance: 2 · 출력 1024² → clarity 2048² → webp q90"
+      },
+      "prompts": [
+        {
+          "label": "프롬프트 원문",
+          "lang": "text",
+          "prepend": null,
+          "text": "Paint a NEW portrait. Painting style: copy the FIRST image exactly — rough dry-brush strokes, scratchy canvas grain, soft smudged edges, muted desaturated palette, dusty warm light, semi-realistic anime face with large calm eyes. Character design and colors: copy the SECOND image's outfit faithfully — a Korean Joseon scholar wearing a black gat hat (tall flat-topped crown, wide round brim, a string of jade and amber beads hanging under the chin), a white dopo overcoat with wide deep-navy-blue borders on the collar, sleeve ends and hem, a tan-peach inner robe, a long peach-brown sash tied at the waist with a blue cord, red tassel ornaments, and books bound with cord at his side. Keep these exact colors: white, deep navy blue, tan peach-brown, black, small red accents. Pose: front-facing, framed from the top of the gat to the waist so the face is large, the gat tilted back so his whole face is visible, eyes looking straight at the viewer, shoulders square, hands folded at the waist. Centered with generous margin on a perfectly plain flat uniform light gray backdrop. No scroll, no leaves, no text, no calligraphy, no watermark, no signature, no logo, no floor line."
+        }
+      ]
+    },
+    {
+      "app": "hanbok-hero",
+      "appTitle": "한복 히어로",
+      "id": "hanbok-hero--02--33-방향-시트-hanbok-sheet-",
+      "title": "02 · 3×3 방향 시트 (hanbok-sheet) ✅",
+      "status": "ok",
+      "image": "projects/hanbok-hero/art/superseded/hanbok-sheet.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/hanbok-hero/art/superseded/hanbok-sheet.webp(2026-10-03까지 dist/assets/) · 3072×3072(칸 1024, 칸마다 4px 투명 여백) · 607KB · 알파 있음",
+        "쓰이는 곳": "레이어 character 파라미터 sheet. 포인터 방향에 따라 칸을 즉시 교체(fade·follow 0 — 크로스페이드는 두 머리가 겹쳐 잔상처럼 보여 껐다). 행: 좌상·상·우상 / 좌·정면·우 / 좌하·하·우하",
+        "도구·모드": "fal.ai fal-ai/kling-video/v2.1/standard/image-to-video (01의 1024² 원본 입력) → ffmpeg fps=3 30프레임 → 로컬 rembg 9장 → ffmpeg xstack 조립 · 2026-10-03",
+        "참조 이미지": "01 원본(Kontext 출력, 배경 제거 전)",
+        "설정": "duration: \"10\" · cfg_scale: 0.5 · negative_prompt: \"blur, distortion, extra people, camera movement, zoom, text, watermark, hands moving\" · 출력 1440×1440 24fps · webp q88"
+      },
+      "prompts": [
+        {
+          "label": "프롬프트 원문",
+          "lang": "text",
+          "prepend": null,
+          "text": "Static camera, plain backdrop, the painted Korean Joseon scholar in a black gat hat and white dopo keeps his body, shoulders, hands and hat perfectly still. Only his head and eyes move, slowly and smoothly, like he is following something near the viewer. No zoom, no camera motion, no other people, consistent lighting. Sequence: he turns his head and eyes to look to his left, returns to center, turns to look to his right, returns to center, then looks up, returns to center, then looks down, and returns to center."
+        }
+      ]
+    },
+    {
+      "app": "hanbok-hero",
+      "appTitle": "한복 히어로",
+      "id": "hanbok-hero--03--배경--경회루-야경-palace-",
+      "title": "03 · 배경 — 경회루 야경 (palace) ✅",
+      "status": "ok",
+      "image": "projects/hanbok-hero/dist/assets/palace.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/hanbok-hero/dist/assets/palace.webp · 1920×1072 · 111KB",
+        "쓰이는 곳": "레이어 paper 파라미터 image(cover). 위에 vignette 0.5",
+        "도구·모드": "fal.ai fal-ai/flux-pro/v1.1-ultra 텍스트→이미지 · 2026-10-02 (정정 전 생성; 다음 교체 시 Codex)",
+        "참조 이미지": "없음",
+        "설정": "aspect_ratio: 16:9 · seed: 23 · raw: false · 출력 2752×1536 → 1920 폭 webp q82"
+      },
+      "prompts": [
+        {
+          "label": "프롬프트 원문",
+          "lang": "text",
+          "prepend": null,
+          "text": "Photographic cinematic wide shot of Gyeonghoeru pavilion at Gyeongbokgung Palace, Seoul, KOREA at dusk, for a website hero background: the large Korean wooden pavilion with a curved grey giwa roof and tall stone pillars standing in a still lotus pond, reflections on the water, willow and pine trees, Inwangsan mountain behind, soft indigo blue-hour sky with a thin moon, warm lantern glow, slight haze. Authentically Korean Joseon architecture, not Chinese, not Japanese, no red sun, no flags, no people, no text, no signboard, no nameplate, no hanging plaques under the eaves, bare wooden eaves only."
+        }
+      ]
+    },
+    {
+      "app": "hanbok-hero",
+      "appTitle": "한복 히어로",
+      "id": "hanbok-hero--04--몸-고정--얼굴-시트-scholar-still--scholar-body--scholar-heads-",
+      "title": "04 · 몸 고정 + 얼굴 시트 (scholar-still · scholar-body · scholar-heads) ✅",
+      "status": "none",
+      "image": "projects/hanbok-hero/dist/assets/scholar-heads.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/hanbok-hero/dist/assets/scholar-still.webp 1440×1440 · 112KB / scholar-body.webp 1440×1440 · 71KB / scholar-heads.webp 7644×952(칸 588×476, 13×2) · 660KB · 셋 다 알파(모서리 알파 0)",
+        "쓰이는 곳": "레이어 character — still 정면 그림(반응 전·동작 줄이기·react 끔·실패 시), body 얼굴 자리를 비운 몸(반응 중), sheet 얼굴 칸(창 headX 22.917 · headY 0 · headW 58.333 · headH 47.222 %, cols 13 · rows 2). 쉬는 칸(아래 행 가운데) + 몸 = 정면 그림",
+        "도구·모드": "새 생성 없음. 02의 Kling 영상(1440² 24fps 241프레임) → 로컬 rembg(isnet-general-use, 알파 매팅) → projects/hanbok-hero/scripts/assets/build-heads.py(위상 상관으로 몸 흔들림 정렬 + TV-L1 광학 흐름으로 깃 맞춤 + 띠 섞기) → PIL WebP · 2026-10-03",
+        "참조 이미지": "없음(02 영상 프레임만)",
+        "설정": "기준 몸 프레임 110 · 위 행 56 50 44 38 32 26 2 136 142 148 156 164 170 · 아래 행 80 84 88 92 96 102 110 212 208 204 200 198 196 · 머리 영역 x330–1170 y0–680 · 깃 맞춤 띠 y450–530 · 색 섞기 띠 y455–620 · 가장자리 페더 30px · 축소 0.7 · WebP q88(정면·몸) / q86(시트)"
+      },
+      "prompts": []
     }
   ]
 }

@@ -1,0 +1,109 @@
+{
+  "status": "FAIL",
+  "mode": "1",
+  "error": "Error: travel is time based: 12272.899999976158\n    at check (http://127.0.0.1:8879/__qa/run.js:8:154)\n    at http://127.0.0.1:8879/__qa/run.js:33:288",
+  "results": [
+    {
+      "name": "GLB loaded / exterior",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "scene uses real meshes",
+      "pass": true,
+      "detail": "{\"state\":\"exterior\",\"destination\":\"exterior\",\"selected\":\"dawn-store\",\"camera\":[12,5.4,24],\"renderCamera\":[12,5.4,24],\"orbit\":{\"x\":0,\"y\":0},\"dragging\":false,\"artwork\":{\"corners\":[{\"x\":927.1986040271754,\"y\":439.45729892141134},{\"x\":927.8665090077303,\"y\":409.19344206922216},{\"x\":973.8538767406524,\"y\":442.40602919756213},{\"x\":974.6921391009874,\"y\":411.4135613873182}],\"repeat\":[1,1],\"offset\":[0,0]},\"surfaces\":{\"interiorLight\":32,\"galleryLight\":10,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":6,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true},\"drawCalls\":44,\"triangles\":159618,\"geometries\":22,\"posters\":7}"
+    },
+    {
+      "name": "seven project selectors",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all seven posters have loaded imagery",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "architecture exports real PBR normal and roughness maps",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "photographed HDRI environment loaded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "photographed gravel PBR maps loaded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "six repeating architectural materials / separate AO",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "gallery fixture lights cover every artwork",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "seven representative screenshots",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no horizontal overflow",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "SUIT font loaded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "default mode is sequential camera tour",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "drag mode preserves page wheel",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "pinch zoom preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "horizontal scroll preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wheel advances into hall",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "same gesture cannot skip hall",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "real doorway / hall destination",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "travel is time based",
+      "pass": false,
+      "detail": "12272.899999976158"
+    }
+  ],
+  "browser": "Headless Playwright Chromium",
+  "pageErrors": []
+}

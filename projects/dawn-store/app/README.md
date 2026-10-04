@@ -38,3 +38,5 @@ pnpm run check:all      # 위 검사 전체
 작품 내용은 `public/story.json`, 디자인은 `public/theme.json`에서 관리한다. 관람 설정은 원본 파일을 수정하지 않는다. 새 `settings.desktop` / `settings.mobile` 토큰으로 패널 크기·간격·글자 크기를 변경할 수 있다. 원본 제작용 `../seed/theme.json`에도 동일한 변경을 반영한다.
 
 다음 제작 도구 확장은 텍스트·테마의 실시간 미리보기, 검증된 JSON 내보내기, 핫스팟 좌표 편집 순서로 진행할 수 있다. 현재 구현 범위는 관람 설정이며 콘텐츠 관리자·저장 서버는 포함하지 않는다.
+
+2026-10-02: [Blender 렌더 시험](../art/blender-study/README.md)을 제작했다. 계산대·커피 정지 컷과 pack된 Blender 원본이며 비교 결과 기본 미디어는 교체하지 않았다. [생성/렌더 기록](../../../prompts/dawn-store.md).

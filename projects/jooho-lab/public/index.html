@@ -5,31 +5,32 @@
   <title>JOOHO LAB — 아이디어를 실제로 만드는 곳</title>
   <meta name="description" content="이주호의 바이브 코딩 포트폴리오. AI 도구, 콘텐츠 자동화, 게임, 인터랙티브 웹 프로젝트를 둘러보세요.">
   <meta name="theme-color" content="#141517"><link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="./assets/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="./style.css"><script type="module" src="./app.js"></script>
-  <link rel="stylesheet" href="./layers.css"><link rel="stylesheet" href="./village-style.css">
+  <link rel="preload" href="./assets/SUIT-Variable.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="./style.css"><link rel="stylesheet" href="./spatial.css"><script type="module" src="./app.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#project-index">프로젝트 목록으로 이동</a>
   <header class="site-header">
-    <a class="brand" href="./" aria-label="JOOHO LAB 홈">JOOHO<span class="brand-light">’s village</span></a>
-    <nav aria-label="주 메뉴"><a href="#project-index">전체 작업</a><button id="about-open" type="button">소개</button><button id="settings-open" class="settings-trigger" type="button"><span aria-hidden="true">⚙</span> 설정</button></nav>
+    <a class="brand" href="./" aria-label="JOOHO LAB 홈">JOOHO LAB</a>
+    <nav aria-label="주 메뉴"><a href="./village.html">작업 동네</a><a href="#project-index">전체 작업</a><button id="about-open" type="button">소개</button><button id="settings-open" class="settings-trigger" type="button"><span aria-hidden="true">⚙</span> 설정</button></nav>
   </header>
   <main id="work">
-    <div class="exhibition">
+    <div class="exhibition" data-stage="exterior">
     
-    <section class="intro" aria-labelledby="page-title"><p class="eyebrow">이주호의 작업 동네</p><h1 id="page-title">아이디어가 사는 곳.</h1><p class="intro-copy">옆으로 둘러보고, 마음에 드는 작업에 들어가 보세요.</p></section>
+    <section class="intro" aria-labelledby="page-title"><p class="eyebrow">이주호의 인터랙티브 포트폴리오</p><h1 id="page-title">아이디어를 실제로.</h1><p class="intro-copy">관심 있는 작업을 골라 그 안으로 들어가 보세요.</p></section>
     <section class="workspace" aria-label="프로젝트 갤러리">
       <div class="gallery-wrap">
-        <div class="gallery-toolbar"><div class="gallery-title"><span class="mono">THE COLLECTION</span><span>SELECT A WORK</span></div><div class="view-switch" role="group" aria-label="보기 방식"><button id="space-view" type="button" aria-pressed="true">공간 보기</button><button id="list-view" type="button" aria-pressed="false">목록 보기</button></div></div>
-        <div id="space" class="space" tabindex="0" role="group" aria-label="작업 동네. 드래그 또는 방향키로 이동하고, 집을 누르거나 Enter로 들어가세요.">
-          <div id="scene"><img class="village-extension" src="./assets/village-extension-v1.png" alt="" aria-hidden="true" draggable="false"></div>
+        <div class="gallery-toolbar"><button id="movement-toggle" type="button" aria-pressed="false" aria-controls="space" aria-describedby="space-hint">드래그 모드</button><div class="view-switch" role="group" aria-label="보기 방식"><button id="space-view" type="button" aria-pressed="true">공간 탐색</button><button id="list-view" type="button" aria-pressed="false">목록 보기</button></div></div>
+        <div id="space" class="space" tabindex="0" role="group" aria-label="3D 작업실. 방향키로 작업 선택, Enter로 이동, Escape로 돌아가기, Home으로 외부 이동.">
+          <img id="lab-landscape" src="./assets/lab-landscape.jpg" alt="" aria-hidden="true">
+          <div id="scene"></div>
           
           <div id="scene-status" class="scene-status" role="status">프로젝트 공간을 준비하고 있습니다.</div>
         </div>
+        <div id="spatial-controls"><p id="spatial-status" role="status">01 / THE ARRIVAL</p><button id="spatial-enter" type="button" disabled>작업실 들어가기 ↗</button><button id="spatial-back" type="button" hidden>← 작업실로</button></div>
         <button id="world-prev" class="world-arrow prev" type="button" aria-label="이전 작업으로 이동">←</button><button id="world-next" class="world-arrow next" type="button" aria-label="다음 작업으로 이동">→</button>
         <div id="project-grid" class="project-grid" hidden></div>
-        <div id="gallery-pagination" class="gallery-pagination" role="group" aria-label="작업 동네 위치 선택"></div>
-        <div class="gallery-footer"><p id="space-hint"><span aria-hidden="true">↔</span> 좌우로 관람 · 작품을 눌러 입장</p><div class="scene-buttons"><button id="motion-toggle" type="button" aria-pressed="false">움직임 줄이기</button><button id="reset-camera" type="button" aria-label="시점 초기화">⟲</button></div></div>
+        <div id="gallery-pagination" class="gallery-pagination" role="group" aria-label="프로젝트 선택"></div>
+        <div class="gallery-footer"><p id="space-hint">작업을 선택하면 그 공간으로 안내합니다</p><div class="scene-buttons"><button id="motion-toggle" type="button" aria-pressed="false">움직임 줄이기</button><button id="reset-camera" type="button" aria-label="건물 밖으로 돌아가기">⟲</button></div></div>
       </div>
       <aside id="project-detail" class="project-detail" aria-labelledby="detail-title"></aside>
     </section>

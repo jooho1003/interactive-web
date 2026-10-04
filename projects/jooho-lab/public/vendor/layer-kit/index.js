@@ -105,18 +105,31 @@ export function compileCSS(manifest, values) {
   }
   return css;
 }
+// Multiple manifests can control the same DOM; each host owns its hiding state.
+const hiddenOwners = new WeakMap();
 export function createLayerHost({ manifest, published, root = document.documentElement }) {
   let values = published, scene = manifest.initialScene;
   const listeners = new Set();
   const queries = manifest.breakpoints.map(item => [item.id, matchMedia(item.media)]);
-  let current;
+  let current, previousHidden = new Set();
+  const owner = {};
   function apply() {
     root.dataset.layerScene = scene;
     current = resolve(manifest, values, scene, queries.filter(([,query]) => query.matches).map(([id]) => id));
     const hidden = new Set();
     for (const layer of manifest.layers) if (current[layer.id].visible === false) for (const element of document.querySelectorAll(layer.el)) hidden.add(element);
-    for (const element of document.querySelectorAll('[data-layer-hidden]')) if (!hidden.has(element)) element.removeAttribute('data-layer-hidden');
-    for (const element of hidden) element.setAttribute('data-layer-hidden', '');
+    for (const element of previousHidden) if (!hidden.has(element)) {
+      const owners = hiddenOwners.get(element);
+      owners?.delete(owner);
+      if (!owners?.size) element.removeAttribute('data-layer-hidden');
+    }
+    for (const element of hidden) {
+      let owners = hiddenOwners.get(element);
+      if (!owners) hiddenOwners.set(element, owners = new Set());
+      owners.add(owner);
+      element.setAttribute('data-layer-hidden', '');
+    }
+    previousHidden = hidden;
     for (const layer of manifest.layers) for (const [key, param] of Object.entries(layer.params)) {
       const value = current[layer.id][key];
       if (param.text) for (const el of document.querySelectorAll(param.text)) { if (el.textContent !== value) el.textContent = value; }

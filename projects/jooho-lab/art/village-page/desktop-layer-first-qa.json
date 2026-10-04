@@ -1,0 +1,253 @@
+{
+  "status": "FAIL",
+  "error": "Error: all layer bindings pass: {\"total\":42,\"passed\":41,\"failed\":[{\"layer\":\"entry\",\"key\":\"color\",\"passed\":false,\"conditional\":false}],\"conditional\":0}\n    at check (http://127.0.0.1:8879/__qa/village-run.js:8:85)\n    at http://127.0.0.1:8879/__qa/village-run.js:54:3",
+  "results": [
+    {
+      "name": "village manifest isolated",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "original panorama",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no pavilion request",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "seven numbered stops",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "return to exhibition",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "select chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "select sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "select blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "select dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "select instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "select spire",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop spire",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination spire",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name spire",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "select day-walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop day-walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination day-walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name day-walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Day Walk path marked",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "reset to original selection",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "keyboard next",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "keyboard home",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "animated entry",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "entry cancel focused",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "entry cancellation",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "cancel focus restored",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Escape cancels",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "list cancels entry",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "empty state",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "empty recovery",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "real camera zoom",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "real character size",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all parameters probed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all layer bindings pass",
+      "pass": false,
+      "detail": "{\"total\":42,\"passed\":41,\"failed\":[{\"layer\":\"entry\",\"key\":\"color\",\"passed\":false,\"conditional\":false}],\"conditional\":0}"
+    }
+  ],
+  "pageErrors": [],
+  "browser": "Headless Playwright Chromium"
+}

@@ -10,6 +10,9 @@
 **/dist/
 !projects/potato-designer/dist/
 !projects/potato-designer/dist/**
+!projects/hanbok-hero/dist/
+!projects/hanbok-hero/dist/**
+projects/hanbok-hero/.studio/
 **/test-results/
 **/playwright-report/
 
@@ -23,3 +26,8 @@ Thumbs.db
 # Playwright MCP 세션 로그
 .playwright-mcp/
 .site-publish/
+
+# 비밀값 (API 키)
+.env
+.env.*
+!.env.example

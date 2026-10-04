@@ -1,0 +1,749 @@
+{
+  "status": "PASS",
+  "mode": "mobile",
+  "count": 134,
+  "scene": {
+    "state": "project",
+    "destination": "project",
+    "selected": "day-walk",
+    "camera": [
+      6.449999999999999,
+      2.3,
+      -4.1850000000000005
+    ],
+    "renderCamera": [
+      6.449999999999999,
+      2.3,
+      -4.1850000000000005
+    ],
+    "orbit": {
+      "x": 0,
+      "y": 0
+    },
+    "dragging": false,
+    "artwork": {
+      "corners": [
+        {
+          "x": 62.903225806451665,
+          "y": 386.4004838709678
+        },
+        {
+          "x": 62.903225806451665,
+          "y": 221.27951612903232
+        },
+        {
+          "x": 327.09677419354836,
+          "y": 386.4004838709678
+        },
+        {
+          "x": 327.09677419354836,
+          "y": 221.27951612903232
+        }
+      ],
+      "repeat": [
+        1,
+        1
+      ],
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "surfaces": {
+      "environment": "HDRI",
+      "gravelMaps": true,
+      "occlusion": 0.35,
+      "detailMaterials": 6,
+      "occlusionMap": true,
+      "groundTint": "#838876",
+      "ambient": 0.8,
+      "sunlight": 1.5,
+      "reflections": 0.75,
+      "surfaceTint": "#ffffff",
+      "surfaceRelief": 0.2,
+      "surfaceRoughness": 1,
+      "glassOpacity": 0.12,
+      "waterRoughness": 0.08,
+      "normalMap": true,
+      "roughnessMap": true
+    },
+    "drawCalls": 14,
+    "triangles": 55950,
+    "geometries": 21,
+    "posters": 7
+  },
+  "results": [
+    {
+      "name": "GLB loaded / exterior",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "scene uses real meshes",
+      "pass": true,
+      "detail": "{\"state\":\"exterior\",\"destination\":\"exterior\",\"selected\":\"dawn-store\",\"camera\":[12,5.4,24],\"renderCamera\":[12,5.4,24],\"orbit\":{\"x\":0,\"y\":0},\"dragging\":false,\"artwork\":{\"corners\":[{\"x\":338.9780073974227,\"y\":414.67409594283384},{\"x\":339.4421206991634,\"y\":393.6443702542981},{\"x\":371.3977875953084,\"y\":416.7231073804638},{\"x\":371.9802787027362,\"y\":395.18708506700057}],\"repeat\":[1,1],\"offset\":[0,0]},\"surfaces\":{\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":6,\"occlusionMap\":true,\"groundTint\":\"#838876\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true},\"drawCalls\":20,\"triangles\":57344,\"geometries\":21,\"posters\":7}"
+    },
+    {
+      "name": "seven project selectors",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all seven posters have loaded imagery",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "architecture exports real PBR normal and roughness maps",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "photographed HDRI environment loaded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "photographed gravel PBR maps loaded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "six repeating architectural materials / separate AO",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "seven representative screenshots",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no horizontal overflow",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile media queries active",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "SUIT font loaded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "default mode is sequential camera tour",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "drag mode preserves page wheel",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "pinch zoom preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "horizontal scroll preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wheel advances into hall",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "same gesture cannot skip hall",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "real doorway / hall destination",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "travel is time based",
+      "pass": true,
+      "detail": "6184.900000035763"
+    },
+    {
+      "name": "hall advances to first work",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "slow approach to close viewing aisle",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "selected artwork fills more of the viewport",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wheel next slides laterally",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "sideways movement preserves artwork magnification",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wheel up returns to previous work",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "drag mode releases wheel",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "interrupted selection reaches latest project",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "project description visible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "direct URL preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "camera moves while pointer is still held",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "second pointer cannot interrupt active drag",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "drag reverses camera continuously",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "drag release does not select another work",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "pointer cancellation releases drag",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "focused artwork keeps pointer camera motion",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "back through hall to exterior",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "reduced motion is immediate",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "full artwork chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork chemiforge",
+      "pass": true,
+      "detail": "{\"left\":62.903225806451665,\"right\":327.09677419354836,\"top\":221.27951612903232,\"bottom\":386.4004838709678,\"copy\":{\"x\":19.5,\"y\":472.625,\"width\":339.296875,\"height\":191.359375,\"top\":472.625,\"right\":358.796875,\"bottom\":663.984375,\"left\":19.5}}"
+    },
+    {
+      "name": "full artwork sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork sasu",
+      "pass": true,
+      "detail": "{\"left\":62.903225806451665,\"right\":327.09677419354836,\"top\":217.6899298737728,\"bottom\":389.99007012622724,\"copy\":{\"x\":19.5,\"y\":472.625,\"width\":339.296875,\"height\":191.359375,\"top\":472.625,\"right\":358.796875,\"bottom\":663.984375,\"left\":19.5}}"
+    },
+    {
+      "name": "full artwork shortform",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork shortform",
+      "pass": true,
+      "detail": "{\"left\":62.903225806451665,\"right\":327.09677419354836,\"top\":221.27951612903232,\"bottom\":386.4004838709678,\"copy\":{\"x\":19.5,\"y\":472.625,\"width\":339.296875,\"height\":191.359375,\"top\":472.625,\"right\":358.796875,\"bottom\":663.984375,\"left\":19.5}}"
+    },
+    {
+      "name": "full artwork dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork dawn-store",
+      "pass": true,
+      "detail": "{\"left\":62.903225806451644,\"right\":327.09677419354836,\"top\":221.27951612903232,\"bottom\":386.4004838709678,\"copy\":{\"x\":19.5,\"y\":472.625,\"width\":339.296875,\"height\":191.359375,\"top\":472.625,\"right\":358.796875,\"bottom\":663.984375,\"left\":19.5}}"
+    },
+    {
+      "name": "full artwork market-front",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork market-front",
+      "pass": true,
+      "detail": "{\"left\":62.903225806451665,\"right\":327.09677419354836,\"top\":221.27951612903232,\"bottom\":386.4004838709678,\"copy\":{\"x\":19.5,\"y\":472.625,\"width\":339.296875,\"height\":187.078125,\"top\":472.625,\"right\":358.796875,\"bottom\":659.703125,\"left\":19.5}}"
+    },
+    {
+      "name": "full artwork spire",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork spire",
+      "pass": true,
+      "detail": "{\"left\":62.903225806451665,\"right\":327.09677419354836,\"top\":221.27951612903232,\"bottom\":386.4004838709678,\"copy\":{\"x\":19.5,\"y\":472.625,\"width\":339.296875,\"height\":191.359375,\"top\":472.625,\"right\":358.796875,\"bottom\":663.984375,\"left\":19.5}}"
+    },
+    {
+      "name": "full artwork day-walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork day-walk",
+      "pass": true,
+      "detail": "{\"left\":62.903225806451665,\"right\":327.09677419354836,\"top\":221.27951612903232,\"bottom\":386.4004838709678,\"copy\":{\"x\":19.5,\"y\":472.625,\"width\":339.296875,\"height\":191.359375,\"top\":472.625,\"right\":358.796875,\"bottom\":663.984375,\"left\":19.5}}"
+    },
+    {
+      "name": "bounded orbit keeps full artwork -1",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "bounded orbit clears copy -1",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "bounded orbit keeps full artwork 1",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "bounded orbit clears copy 1",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "last work releases downward wheel",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Home returns to exterior",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Enter enters hall",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Escape only releases movement control",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "second Escape exits hall",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "layer stage.visible",
+      "pass": true,
+      "detail": "false -> true"
+    },
+    {
+      "name": "layer stage.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer stage.ambient",
+      "pass": true,
+      "detail": "0.8 -> 0"
+    },
+    {
+      "name": "renderer ambient",
+      "pass": true,
+      "detail": "{\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":6,\"occlusionMap\":true,\"groundTint\":\"#838876\",\"ambient\":0,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.sunlight",
+      "pass": true,
+      "detail": "1.5 -> 0"
+    },
+    {
+      "name": "renderer sunlight",
+      "pass": true,
+      "detail": "{\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":6,\"occlusionMap\":true,\"groundTint\":\"#838876\",\"ambient\":0.8,\"sunlight\":0,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.reflections",
+      "pass": true,
+      "detail": "0.75 -> 0"
+    },
+    {
+      "name": "renderer reflections",
+      "pass": true,
+      "detail": "{\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":6,\"occlusionMap\":true,\"groundTint\":\"#838876\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.surfaceTint",
+      "pass": true,
+      "detail": "#ffffff -> #193da9"
+    },
+    {
+      "name": "renderer surfaceTint",
+      "pass": true,
+      "detail": "{\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":6,\"occlusionMap\":true,\"groundTint\":\"#838876\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#193da9\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.surfaceRelief",
+      "pass": true,
+      "detail": "0.2 -> 0"
+    },
+    {
+      "name": "renderer surfaceRelief",
+      "pass": true,
+      "detail": "{\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":6,\"occlusionMap\":true,\"groundTint\":\"#838876\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.surfaceRoughness",
+      "pass": true,
+      "detail": "1 -> 0.5"
+    },
+    {
+      "name": "renderer surfaceRoughness",
+      "pass": true,
+      "detail": "{\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":6,\"occlusionMap\":true,\"groundTint\":\"#838876\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":0.5,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.glassOpacity",
+      "pass": true,
+      "detail": "0.12 -> 0"
+    },
+    {
+      "name": "renderer glassOpacity",
+      "pass": true,
+      "detail": "{\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":6,\"occlusionMap\":true,\"groundTint\":\"#838876\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.occlusion",
+      "pass": true,
+      "detail": "0.35 -> 0"
+    },
+    {
+      "name": "renderer occlusion",
+      "pass": true,
+      "detail": "{\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0,\"detailMaterials\":6,\"occlusionMap\":true,\"groundTint\":\"#838876\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.groundTint",
+      "pass": true,
+      "detail": "#838876 -> #193da9"
+    },
+    {
+      "name": "renderer groundTint",
+      "pass": true,
+      "detail": "{\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":6,\"occlusionMap\":true,\"groundTint\":\"#193da9\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.waterRoughness",
+      "pass": true,
+      "detail": "0.08 -> 0.02"
+    },
+    {
+      "name": "renderer waterRoughness",
+      "pass": true,
+      "detail": "{\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":6,\"occlusionMap\":true,\"groundTint\":\"#838876\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.02,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.fov",
+      "pass": true,
+      "detail": "48 -> 35"
+    },
+    {
+      "name": "layer stage.speed",
+      "pass": true,
+      "detail": "1 -> 0.5"
+    },
+    {
+      "name": "layer stage.approachSeconds",
+      "pass": true,
+      "detail": "4.2 -> 2.5"
+    },
+    {
+      "name": "layer stage.slideSeconds",
+      "pass": true,
+      "detail": "1.8 -> 1"
+    },
+    {
+      "name": "layer stage.parallax",
+      "pass": true,
+      "detail": "0.16 -> 0"
+    },
+    {
+      "name": "layer stage.dragStrength",
+      "pass": true,
+      "detail": "1.2 -> 0.4"
+    },
+    {
+      "name": "layer stage.dragLimit",
+      "pass": true,
+      "detail": "0.32 -> 0.1"
+    },
+    {
+      "name": "layer stage.damping",
+      "pass": true,
+      "detail": "9 -> 4"
+    },
+    {
+      "name": "layer stage.exposure",
+      "pass": true,
+      "detail": "1.15 -> 0.5"
+    },
+    {
+      "name": "layer landscape.visible",
+      "pass": true,
+      "detail": "false -> true"
+    },
+    {
+      "name": "layer landscape.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer landscape.image",
+      "pass": true,
+      "detail": "./assets/lab-landscape.jpg -> ./assets/dawn.webp"
+    },
+    {
+      "name": "layer landscape.height",
+      "pass": true,
+      "detail": "649.875px -> 337.594px"
+    },
+    {
+      "name": "layer landscape.color",
+      "pass": true,
+      "detail": "rgb(156, 171, 180) -> rgb(25, 61, 169)"
+    },
+    {
+      "name": "layer landscape.shade",
+      "pass": true,
+      "detail": "0.65 -> 0"
+    },
+    {
+      "name": "layer intro.visible",
+      "pass": true,
+      "detail": "false -> true"
+    },
+    {
+      "name": "layer intro.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer intro.x",
+      "pass": true,
+      "detail": "19.5px -> 0px"
+    },
+    {
+      "name": "layer intro.y",
+      "pass": true,
+      "detail": "202.56px -> 101.28px"
+    },
+    {
+      "name": "layer intro.size",
+      "pass": true,
+      "detail": "43.2px -> 24px"
+    },
+    {
+      "name": "layer intro.color",
+      "pass": true,
+      "detail": "rgb(245, 241, 231) -> rgb(25, 61, 169)"
+    },
+    {
+      "name": "layer detail.visible",
+      "pass": true,
+      "detail": "false -> true"
+    },
+    {
+      "name": "layer detail.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer detail.x",
+      "pass": true,
+      "detail": "19.5px -> 0px"
+    },
+    {
+      "name": "layer detail.y",
+      "pass": true,
+      "detail": "56% -> 15%"
+    },
+    {
+      "name": "layer detail.width",
+      "pass": true,
+      "detail": "min(340px, 87%) -> min(240px, 87%)"
+    },
+    {
+      "name": "layer detail.color",
+      "pass": true,
+      "detail": "rgb(245, 241, 231) -> rgb(25, 61, 169)"
+    },
+    {
+      "name": "layer rail.visible",
+      "pass": true,
+      "detail": "false -> true"
+    },
+    {
+      "name": "layer rail.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer rail.size",
+      "pass": true,
+      "detail": "80px -> 64px"
+    },
+    {
+      "name": "layer rail.gap",
+      "pass": true,
+      "detail": "12px -> 4px"
+    },
+    {
+      "name": "layer rail.bottom",
+      "pass": true,
+      "detail": "22px -> 12px"
+    },
+    {
+      "name": "layer controls.visible",
+      "pass": true,
+      "detail": "false -> true"
+    },
+    {
+      "name": "layer controls.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer controls.color",
+      "pass": true,
+      "detail": "rgb(245, 241, 231) -> rgb(25, 61, 169)"
+    },
+    {
+      "name": "layer controls.bottom",
+      "pass": true,
+      "detail": "205px -> 125px"
+    },
+    {
+      "name": "layer controls.enterLabel",
+      "pass": true,
+      "detail": "\uc791\uc5c5\uc2e4 \ub4e4\uc5b4\uac00\uae30 \u2197 -> \ud14c\uc2a4\ud2b8 \uc785\uc7a5"
+    },
+    {
+      "name": "layer shell.visible",
+      "pass": true,
+      "detail": "false -> true"
+    },
+    {
+      "name": "layer shell.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer shell.paper",
+      "pass": true,
+      "detail": "rgb(236, 233, 225) -> rgb(25, 61, 169)"
+    },
+    {
+      "name": "layer shell.ink",
+      "pass": true,
+      "detail": "rgb(40, 53, 47) -> rgb(25, 61, 169)"
+    },
+    {
+      "name": "renderer survives layer changes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "hidden shell preserves settings recovery",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "empty search state",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "empty hall disables destination button",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "search restore",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "list fallback accessible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "layer settings opens",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "draw calls under budget",
+      "pass": true,
+      "detail": "{\"state\":\"project\",\"destination\":\"project\",\"selected\":\"day-walk\",\"camera\":[6.449999999999999,2.3,-4.1850000000000005],\"renderCamera\":[6.449999999999999,2.3,-4.1850000000000005],\"orbit\":{\"x\":0,\"y\":0},\"dragging\":false,\"artwork\":{\"corners\":[{\"x\":62.903225806451665,\"y\":386.4004838709678},{\"x\":62.903225806451665,\"y\":221.27951612903232},{\"x\":327.09677419354836,\"y\":386.4004838709678},{\"x\":327.09677419354836,\"y\":221.27951612903232}],\"repeat\":[1,1],\"offset\":[0,0]},\"surfaces\":{\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":6,\"occlusionMap\":true,\"groundTint\":\"#838876\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true},\"drawCalls\":14,\"triangles\":55950,\"geometries\":21,\"posters\":7}"
+    },
+    {
+      "name": "context loss exposes list",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "preferences cannot reenter failed space",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "browser": "Headless Playwright Chromium",
+  "pageErrors": []
+}

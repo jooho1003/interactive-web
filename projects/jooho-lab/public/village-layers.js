@@ -1,7 +1,7 @@
-import manifest from './layers.manifest.js';
-import published from './layers.values.js';
+import manifest from './village-houses.manifest.js';
+import published from './village-houses.values.js';
 import {createLayerHost,resolve,setValue} from './vendor/layer-kit/index.js';
-export const layerHost=createLayerHost({manifest,published});
+export const layerHost=createLayerHost({manifest,published,root:document.querySelector('#scene')});
 const storageKey='jooho-village-layers-v1';
 let saved=layerHost.values,storageError=false;
 try{const raw=localStorage.getItem(storageKey);if(raw){layerHost.setValues(JSON.parse(raw));saved=layerHost.values;}}catch{storageError=true;}

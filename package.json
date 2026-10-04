@@ -2,16 +2,21 @@
   "name": "interactive-web",
   "private": true,
   "packageManager": "pnpm@9.13.2",
-  "engines": { "node": ">=24" },
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "dev:dawn": "pnpm --filter dawn-store dev",
     "build:dawn": "pnpm --filter dawn-store build",
     "build:hub": "pnpm --filter day-walk build && pnpm --filter jooho-lab include:experience day-walk && pnpm --filter jooho-lab validate && pnpm --filter jooho-lab build",
     "build:hub:dawn": "pnpm build:dawn && pnpm --filter jooho-lab include:experience dawn-store && pnpm --filter jooho-lab validate",
-    "build:hub:potato": "pnpm --filter potato-designer build && pnpm --filter jooho-lab include:experience potato-designer && pnpm --filter jooho-lab validate && pnpm --filter jooho-lab build",
-    "check": "node prompts/build.mjs --check && pnpm -r --if-present check",
+    "check": "node prompts/build.mjs --check && node references/build.mjs --check && node --test tools/md-blocks.test.mjs references/build.test.mjs && pnpm -r --if-present check",
+    "references:build": "node references/build.mjs",
+    "references:check": "node references/build.mjs --check",
+    "references:test": "node --test tools/md-blocks.test.mjs references/build.test.mjs",
     "prompts:build": "node prompts/build.mjs",
     "prompts:check": "node prompts/build.mjs --check",
-    "validate": "pnpm -r --if-present validate"
+    "validate": "pnpm -r --if-present validate",
+    "build:hub:potato": "pnpm --filter potato-designer build && pnpm --filter jooho-lab include:experience potato-designer && pnpm --filter jooho-lab validate && pnpm --filter jooho-lab build"
   }
 }
