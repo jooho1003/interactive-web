@@ -7,11 +7,17 @@ import {lint} from '../../../packages/layer-kit/src/lint.js';
 import {emptyValues,setValue,resolve,validateValues} from '../../../packages/layer-kit/src/index.js';
 const css=await readFile(new URL('../public/spatial.css',import.meta.url),'utf8');
 const result=lint(manifest,css);assert.deepEqual(result.errors,[]);
+const published=JSON.parse(await readFile(new URL('../public/layers.values.json',import.meta.url),'utf8'));assert.deepEqual(validateValues(manifest,published).errors,[],'published layer values are valid');
 assert.equal(await readFile(new URL('../public/vendor/layer-kit/index.js',import.meta.url),'utf8'),await readFile(new URL('../../../packages/layer-kit/src/index.js',import.meta.url),'utf8'),'layer-kit vendor matches source');
 let samples=0;
 function checkRoute(start,destination,end){
   const points=routeTo(start,destination,end);assert.deepEqual(sampleRoute(points,0),start);assert.deepEqual(sampleRoute(points,1),points.at(-1));
   for(let i=0;i<=1000;i++){const p=sampleRoute(points,i/1000);assert.ok(p.eye.every(Number.isFinite));
+    // The museum facade closes side bays; reserve a 0.2m camera clearance at
+    // both stone wings and the raised bridge, including interrupted routes.
+    const [x,y,z]=p.eye;
+    assert.ok(!(Math.abs(x)>2.8&&Math.abs(x)<9.2&&y>-.2&&y<7.1&&z>5.95&&z<7.096),'camera clears museum stone wings');
+    assert.ok(!(Math.abs(x)<9.8&&y>6.425&&y<7.475&&z>4.375&&z<7.225),'camera clears raised museum bridge');
     if(p.eye[2]>5.55&&p.eye[2]<6.25){assert.ok(Math.abs(p.eye[0])<1.6,'camera crosses real doorway');assert.equal(cameraInputEnvelope(p.eye[2]),0,'manual orbit and parallax cannot enter doorway jambs');}
     if(p.eye[2]<5.55){assert.ok(p.eye[1]<4.4,'camera below ceiling');assert.ok(Math.abs(p.eye[0])<8.5,'camera inside side walls');}
     samples++;

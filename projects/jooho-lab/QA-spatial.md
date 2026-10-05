@@ -205,3 +205,79 @@ Final Aside visual check: selected spire directly from the exterior with full mo
 - 실패/해결 이력: Aside 외관 화면을 확인했으나 전체 회귀18항목 뒤 hall 대기가 timeout(`aside-qa.json`), 후속 캡처도 CDP timeout. 기본 headless의 SwiftShader가 느려 짧은 fade-in 관찰과 입장 시간 측정(9.197초)이 불안정했다. GPU 진단 후 실제 Intel GPU로 검사하고 단계 대기를 rAF로 바꿨으며 앱 시간/검사 기준은 완화하지 않았다. 새 검사가 project 상태로 끝나 기존 controls.bottom probe를 방해한 것은 기존 외관 준비 상태로 복구해 해결했다. 읽기 전용 설계 대조에서 나온 작업실 페이지 변경/fade-in 검증 갭을 위 구현·검사로 해결했다.
 - root `pnpm check`, app `check`/`build`, 프롬프트47항목/레퍼런스 보관함 재생성·최신성 및 diff whitespace 검사PASS. Node22.16.0/pnpm9.13.2/Blender4.5 환경이다. 로컬 보관함과 재게시 패키지만 갱신하며 운영 전시관·원격 claude.ai 게시·Node24·실제 휴대폰 GPU/FPS·R2 쓰기는 미실행. 저장 실패 코드는 이번에 바꾸거나 별도로 검사하지 않았다.
 - 재사용 조건: 작품 목록/현재 선택과 실제 표시 페이지를 분리한다. 구운 전시물 구조를 바꾸면 같은 광원·UV로 조명/AO도 다시 만든다. 카메라/그림 앞면 좌표는 정본을 공유한다. headless Windows의 시간 검증은 renderer를 확인하고 SwiftShader 결과를 실제 GPU 성능으로 해석하지 않는다.
+
+## 2026-10-05 · POTATO만 2.5D 시범 적용
+
+- bkit Plan/Design/Do/Analyze/Act, 범위는 POTATO 한 작품의 작은 깊이 반응이다. docs/00·10·14·11, POTATO README/QA·입력/그림자 구현, LAB README/QA와 references bruno-simon/loonamessal을 읽었다. 그림과 그림자를 분리하는 원칙을 가져오며 실제3D 문 통과/카메라·그림 콘텐츠·다른 작품을 유지한다. 새 이미지/모델·반복 떠다님·공용 모듈 추출 없음.
+- 기존 투명 texture/contain 비율에 depth=.12m·scale=.94·shift=.025/.018m·tilt=4°를 합성한다. 종이와 충돌하지 않도록 모서리 후퇴량으로 실제 각도를 제한한다. 별도 unit shader plane의 radial alpha로 타원 그림자를 만들고 너비/높이/위치/색/농도/반응을 조절한다. image는 기존 콘텐츠 편집기가 맡으며 새 파일 에셋/생성 프롬프트는 없다.
+- POTATO 앞에서만 반응하며 다른 작품/이동에서 원래 좌표/비율로 복구한다. leave에서 중앙으로 돌아오고 터치·reduced·manual drag는 정적인 깊이를 유지한다. 기존 포인터 damping/rAF를 재사용해 반복 애니메이션 루프를 추가하지 않았다. Shader는 기존 compileAsync/dispose 경로에 포함되고 raycaster 대상에서 제외되어 클릭을 가리지 않는다.
+- 레이어 계약: **9레이어81파라미터**, 새 `potato-card`8개/`potato-shadow`7개. visible/opacity와 입력·깊이·크기·그림자 시각값은 attr로 실제 renderer에 연결하고 MutationObserver에 등록했다. 단위 plane/gradient 수식·물리 전시 좌표와 종이 여유·touch/reduced 조건은 fixed 이유로 기록했다. lint0, **1440/390/320px 각각81/81 probe PASS**. 새15개는 활성 POTATO의 실제 mesh 변환/가시성/불투명도와 shader uniform/크기로 별도 검증했다(`renderer-probe.json`,15PASS, page/console 오류0).
+- 최종 전체 회귀 **desktop228 / mobile229 / narrow229 PASS**, JavaScript 오류0. 포인터에 따른 캐릭터/그림자 반대 방향 반응·작은 각도·leave 복귀·touch move/tap·reduced 정적 깊이·enabled off의 원래 평면·다른 작품 복구와 기존 페이지 전환/검색/키보드/원본 비율/컨텍스트 손실 대체를 확인했다. `art/gallery-potato-depth/{desktop,mobile,narrow}-qa.json`. 효과 on/off 및 세 화면의 캡처를 열어 그림자·이미지 비율·잘림 없음을 확인했다.
+- 읽기 전용 설계 대조에서 mouse hover 뒤 이동 없는 touch tap이 이전 기울기를 남기는 문제를 찾았다. headless 재현에서 rotation±.01914로 실패한 뒤 pointerdown에서 touch 종류/포인터 중앙을 갱신하고 wake했다. 수정 후 rotation0 및 추가 전체 회귀 항목PASS. 첫 manifest camelCase layer ID가 lint 규칙과 맞지 않아 kebab-case로 바로잡았다. Aside 실제 선택/상태는 확인했으나 CDP screenshot timeout으로 캡처는 Intel Arc D3D11 headless에서 수행했다.
+- root `pnpm check`, 앱 `check`/`build`, references 보관함 재생성/최신성·diff whitespace 검사PASS. Node22.16/pnpm9.13.2 환경. 실제 휴대폰/Safari/Firefox/FPS·운영 배포·원격 보관함 게시·Node24·저장소 차단 재검사는 미실행. 새 설정의 저장/되돌리기는 기존 layer-kit 경로를 재사용한다.
+- 다음 재사용 조건: 이미지의 baked 원근은 재생성하지 않고 작은 plane 변환으로 보강한다. plane 비율을 fit에 보관해 설정/상태가 반복되어도 배율이 누적되지 않게 한다. touch move뿐 아니라 mouse→touch down 전환도 검사한다. 공간에서 큰 회전/뒷면이 필요하면 이 방법의 검증 범위를 넘는다.
+
+## 2026-10-05 · 박물관 외관 시안 (gallery-museum-exterior)
+
+- 사용자 의도 정정: 작은 시범의 대상은 POTATO 캐릭터가 아니라 **건물/인테리어 자체의 표현**이다. 이전 캐릭터 시범 기록은 별도 이력으로 남기고 이번에는 외관부터 적용했다. 국립중앙박물관 공식 건축 개요의 수평 석재 매스·중앙 열린마당을 참고했다. 원작 건물/사진/브랜드를 복제하지 않았다.
+- 변경: 양쪽 높이6.9m 석재 매스, 중앙6m 빈 통로, 높이6.625m 위 연결 보, 낮은 수평창/줄눈. 얇은 기존 지붕의 전면 돌출을 줄였고 외부 eye[12,7,28]/look[-3.7,2.4,0]으로 넓혔다. 안쪽 문/실내 전시7칸/가구/관람 경로는 유지했다. Blender4.5 재베이크/GLB5,174,556B, PBR7종/조명7개/UV0 조명·AO/UV1 재질 및6MB 예산 PASS. 이전 모델/packed 원본·외관을 `art/gallery-museum-exterior/*-before.*`에 보존했다.
+- 레이어 계약: 변경은 기존 `stage` 내부 모델, **9레이어81파라미터 유지**. 보이기/불투명도·표면색/거칠기/요철·조명/반사/노출을 기존 설정으로 조절한다. 새 외벽/창 분할/보·카메라 좌표는 재베이크와 동선 검사가 필요한 물리 구조값으로 fixed에 이유를 적었다. lint0, 1440/390/320px 각각 **81/81 probe PASS**.
+- 앱 검사에서 중단/역방향 포함 **110,110 route samples PASS**. 새 석재 외벽/보에 카메라 여유.2m 검사 추가. 읽기 전용 bkit 설계 대조도 수동 orbit 상한을 포함해 외벽 본체 충돌0을 확인했다(리뷰의 별도 수치에는 클래딩/parallax/near plane가 포함되지 않는다).
+- 최종 브라우저 **desktop228 / mobile229 / narrow229 PASS**, JavaScript 오류0. 기존 키보드/포인터/터치/검색·빈 결과/전환 취소/입장·복귀/동작 줄이기/설정 probe 회귀를 통과했다. 첫 회귀 실패는 외부 z=24를 고정한 QA 기대값이었다. 실제 새 pose로 복귀함을 확인한 뒤 canonical `exterior.eye`의 세 좌표와 비교하도록 수정했고 최종 회귀를 다시 통과했다.
+- 세 화면 외관·홀·하루 산책/POTATO/선비 캡처를 저장했고 데스크톱 전후 및 모바일 외관/실내 캡처를 열어 확인했다. 세로 화면은 기존 중앙 입구 중심 근경을 유지하므로 양쪽 건물 끝은 화면 밖에 있다. Aside에서 로컬 입장/복귀를 확인했지만 screenshot CDP timeout으로 캡처는 Intel Arc D3D11 Playwright fallback을 사용했다. 결과/캡처: `art/gallery-museum-exterior`.
+- root `pnpm check`, 앱 check/build, prompts/references 재생성·최신성 검사 PASS. 제작 요청/원본/도구·설정은 중앙 prompts 카드25에 기록했고 로컬 보관함 게시용 폴더도 재생성했다. 운영 배포/원격 보관함 게시·실제 휴대폰/Safari/Firefox/FPS·Node24 검증은 하지 않았다(Node22.16/pnpm9.13.2). 새 저장 경로는 없으며 저장 실패 검사는 이번에 재실행하지 않았다.
+- 다음 재사용 조건: “2.5D를 일부 적용”이라는 표현만으로 전시 작품 효과를 선택하지 않는다. 사용자가 바꾸려는 대상(건물/인테리어/작품)과 원하는 인상을 먼저 구분한다. 실제 내부 이동을 유지하면서 건축 인상을 바꿀 때는 이미지 한 장보다 기존 모델의 외관 형태/재질을 수정하고 문·천장·중단 경로를 함께 검사한다.
+
+
+## 2026-10-05 · 사진 참고 분홍 꽃나무 (gallery-plum-trees)
+
+- bkit Plan → Design → Do → 읽기 전용 설계 대조 Check → Act. 사용자 사진의 검은 굽은 줄기/비대칭 가지/잔분홍 꽃을 참고한 투명 PNG1개(1086×1448 RGBA,2,796,507B)를 제작했다. 외부4개 식재 위치만2.5D 카드로 바꾸고 실내 녹색 나무/건물/관람 경로를 유지했다. Blender4.5 재베이크 모델4,247,256B,7PBR/7조명/UV0 조명·AO/UV1 재질 및6MB 예산 PASS. 이전 모델/외관은 art/gallery-plum-trees/*-before.*에 보존했다.
+- 새 courtyard-trees10파라미터 포함 **10레이어91파라미터**, layer-kit lint0.1440/390/320px 각각 **91/91 probe PASS** 및 새 파라미터 실제 renderer 반응 PASS. 높이/가지 폭/뿌리 가로·하단 기준/밝기/색/방향/이미지/보이기/opacity를 조절한다. 식재 좌표/원래 높이 비율/화단 높이/정적 방향/alpha 기준/외벽 바깥 clipping은 manifest fixed에 이유를 기록했다.
+- Check에서 낮은 opacity의 그림자 외곽과 초기 이미지 전체 실패를 발견해 수정했다. RGBA depth shader는 실제 opacity uniform을 alphaTest 앞에서 곱한다. 교체 실패는 이전 map 유지, 최초/기본 PNG 모두 실패는 투명 DataTexture로 나무만 숨기고 전시관을 열며 이후 정상 이미지 변경으로 복구한다. abort→정상 입장→이미지 복구 targeted **PASS**, pageErrors0.
+- 실내 캡처에서 외부 카드의 가지가 벽 안으로 뻗는 분홍 줄무늬를 발견했다. x=±9.12m 바깥 clipping을 색상/그림자에 적용하고 좌/우 custom depth material도 분리했다. 반대 clipping plane 캐시 재사용을 방지하며 양쪽 map/opacity/alpha/shader hook/dispose를 동기화한다. 최종 실내 캡처에서 줄무늬 제거를 확인했다.
+- 최종 브라우저 **desktop1440×900 255 / mobile390×844 256 / narrow320×700 256 PASS**, JavaScript 오류0. 입장/복귀/중단·역방향/키보드/터치 입력/검색 빈 결과/동작 줄이기/기존 POTATO 효과/전 설정 probe를 확인했다. 앱 check: **110,110 route samples**, GLB/레이어 검사 PASS. 앱 build와 root pnpm check PASS. 결과/15캡처는 art/gallery-plum-trees, 최초 실패 결과는 initial-image-failure.json. 외관 전후/세 화면/홀 캡처를 직접 열어 검수했다.
+- Aside에서 로컬 입장/복귀를 확인했고 최종 외관 탭을 열어뒀다. screenshot CDP timeout을 안내한 뒤 Intel Arc D3D11 Playwright fallback으로 캡처/회귀를 실행했다. 한 장의 나무 이미지이므로 측면에서 평면이 드러날 수 있고, 기존 모바일 입구 중심 구도에서는 나무가 화면 밖이다. 자유 회전 가능한 나무 모델/사진 수준 건물 구현 완료라고 표현하지 않는다.
+- 프롬프트 원문/사용자 참조/생성본/알파 범위/접지 기준은 중앙 prompts 카드26. prompts:build와 로컬 보관함 게시용 폴더 재생성을 완료했다. 운영/원격 보관함 게시·실제 휴대폰·Safari/Firefox·FPS·Node24 검증은 하지 않았다(Node22.16/pnpm9.13.2). 새 저장 경로는 없고 기존 저장 실패 테스트는 이번에 재실행하지 않았다.
+- 재사용 조건: 2.5D 외부 장식은 바닥 접지·알파 가장자리뿐 아니라 실내 관통을 확인한다. depth shader에 CPU opacity가 실제 반영되는지 확인하고 clipping이 다르면 depth material도 분리한다. 계획/설계/분석은 docs의 gallery-plum-trees 기록을 따른다.
+
+
+## 2026-10-05 · 두 나무 형태·위치와 건물 관통 수정 (gallery-tree-pair)
+
+- 사용자 확인: 이전 clip-plane 시안도 건물을 뚫어 보이며 두 그루가 같은 형태였다. 이전 검수의 "실내 줄무늬 제거"는 기본 홀 한 구도 결과에 한정돼 실제 나무 카드 전체가 외벽/지붕 밖에 있다는 증거가 아니었다. 이번에는 반복4그루를 서로 다른 두 에셋과 두 식재 위치로 변경했다. 앞은 굽은 단일 줄기/넓은 수관(12.3,0),높이4.7m; 뒤는 가는 줄기/세로 수관(12.5,-7.8),높이6.1m. 실내 작은 나무/건물/동선/카메라는 그대로다.
+- 외부4개 고정 화단을 Blender에서 제거해 재베이크했다. GLB4,219,684B,7PBR/7조명/UV0 조명·AO/UV1 재질 및6MB 예산 PASS. 새 화단은 각각 실제 나무 뿌리 좌표를 따라간다. 이전 모델/외관은 art/gallery-tree-pair/*-before.*에 보존했다.
+- 가지를 벽에서 자르는 shader clipping 의존을 제거했다. 모든 설정/이미지 변경마다 실제4정점의 회전/크기/뿌리 기준을 적용한 minX를 계산해 **나무 면 전체와 화단 전체를 x≥10.2m**에 유지한다. 가장 넓은 지붕/보 x=9.8m보다.4m 바깥이다. 기본 실제 minX:앞10.712489m,뒤10.667639m. 설정한 x가 안전 위치보다 안쪽이면 실제 뿌리를 바깥으로 보정한다.
+- Check에서 geometry.boundingBox 캐시가 오래된 root 기준을 쓰는 결함을 발견했다. 정점 변경 후 boundingBox/Sphere를 갱신하고 안전보정/inspect 모두 setFromObject(mesh,true)로 실제 정점을 계산한다. 두 나무 각각 baseX0/1 ×yaw±25 ×maxheight8/spread1.3/minx10의8조합도 PASS. 화단은 처음부터 transparent:true이며 opacity0에서 visible/castShadow를 끈다. 나무 그림자 shader도 opacity를 반영하고 depth material은 그루마다 분리한다.
+- 레이어:앞 courtyard-trees/뒤 courtyard-tree-back 각각13파라미터, 전체 **11레이어107파라미터**, lint0. 보이기/opacity/이미지/높이/폭/뿌리 가로·하단 기준/밝기/색/방향/x/z/화단 색을 조절한다. y접지·화단 치수·최대 건물 경계+안전 간격·alpha 기준·초기 시점 방향은 fixed에 이유를 기록했다. 세 화면 **107/107 probe**와 두 나무 모든 파라미터 실제 renderer·안전 위치·화단 좌표 검사 PASS.
+- 최종 브라우저 **desktop1440×900 321 / mobile390×844 322 / narrow320×700 322 PASS**, JS 오류0. 입장/복귀/전환 취소/키보드·터치 입력/빈 검색/동작 줄이기/기존 POTATO 반응을 포함한다. 두 기본PNG 전체 abort→나무만 숨기고 전시관 입장→앞 나무를 다른 이미지로 복구 targeted PASS. 앱 check(110,110 route samples)/build와 root pnpm check PASS. 결과/15캡처:art/gallery-tree-pair. 외관과 데스크톱/320px 실내 캡처에서 관통한 꽃가지 없음 확인.
+- bkit Plan/Design→Do→읽기 전용 설계 대조 Check→캐시/화단 결함 수정 Act를 사용했다. 사용자 사진 참고 built-in image_gen 독립2개 PNG는 중앙 prompts 카드27/28, 정확한 프롬프트·생성 경로·알파를 기록했다. prompts:build와 로컬 보관함 게시용 폴더 재생성 PASS. 외부 레퍼런스 패턴은 해당 없음.
+- Aside 로컬 탭을 최종 외관으로 새로 열었다. screenshot CDP timeout을 안내한 뒤 Intel Arc D3D11 Playwright fallback으로 검수했다. 모바일의 기존 입구 중심 구도에서 나무는 화면 밖이며, 한 장의 이미지라 측면에서는 평면이 드러날 수 있다. 운영/원격 보관함 게시·실제 휴대폰/Safari/Firefox·FPS·Node24는 미검증(Node22.16/pnpm9.13.2). 기존 저장 실패 검사는 새 저장 경로가 없어 재실행하지 않았다.
+- 재사용 조건: 나무가 건물을 관통하지 않는다는 요구는 실제 변환된 geometry 전체와 지붕까지 포함하는 안전 공간으로 검증한다. 기본 사진 한 장/벽 clipping/오래된 Box3 캐시를 충분한 증거로 삼지 않는다.
+
+
+## 2026-10-05 · 두 나무 동시 노출 위치 조정
+
+- 사용자가 두 그루가 동시에 보이도록 위치만 살짝 다르게 요청했다. 기존 Plan/Design/QA를 참고해 bkit 소규모 Plan/Design→Do→Check를 수행했다. 새 에셋/카메라/건물/이동 코드는 바꾸지 않았다. 외부 레퍼런스는 해당 없음.
+- 기존 레이어의 x/z 기본값4개만 조정:굽은 나무(12.3,0)→**(11.8,-2)**,곧은 나무(12.5,-7.8)→**(13,0)**. 같은 외관 구도에서 두 줄기와 두 화단을 동시에 구분할 수 있게 했다. 레이어 계약은11레이어107파라미터/fixed 안전 경계 그대로다. 화단도 뿌리 위치를 따른다.
+- desktop QA **321PASS**,107/107probe 및 실제 renderer/안전 검사PASS,JS오류0. 세 화면1440/390/320px의 기본 위치/건물 안전 간격/입장·복귀를 확인하고 외관/홀6캡처를 저장했다. 기본 두 나무 실제minX=[10.212433, 11.168627]m≥10.2m. 앱check(110,110route samples/lint0/GLB예산)/buildPASS. 결과는 art/gallery-tree-position. 모바일 전체 harness는 이전321/322검수 이후 재실행하지 않았으며, 이번에는 위치/입장·복귀를 확인했다.
+- Aside로 최종 위치 attr값과 로컬 외관 재로딩을 확인했다. 캡처CDP timeout 안내 후 Playwright D3D11 fallback을 사용했다. 데스크톱 외관/홀 캡처를 직접 열어 두 줄기·화단 노출과 실내 관통 없음 확인. 기존 모바일 입구 중심 구도와 측면 평면 노출 한계는 유지된다. 배포/실제 휴대폰 검증은 하지 않았다.
+
+## 2026-10-05 · 공간 레이어 수정 모드
+
+- bkit Plan/Design→Do→Check 및 읽기 전용 리뷰 적용. `bychudy`의 선택/텍스트 창, `annamills`의 직접 끌기만 참고하고 원작 외형·이미지는 가져오지 않았다. 자료와 레이어 계약은 `docs/01-plan/features/gallery-layer-editor.plan.md`, 설계·분석은 같은 feature 문서에 기록했다. 참고 카드 쓰인 작품/로컬 보관함 갱신. 원격 보관함은 게시하지 않았다.
+- 상단 레이어 수정/설정 진입, 우측 패널(모바일 하단), 선택 테두리·이동 손잡이·화면 pick, 바닥/작품 평면/DOM 위치, 숫자·방향키, 명시 저장, 초안 표시, undo/복구/초기화/JSON 구현. 저장은 기존 브라우저 키이며 원격 저장/게시가 아니다. 전체12레이어131파라미터, lint오류0, probe131/131PASS(외관/작품의 적용 장면 결과 합산).
+- `python scripts/check-layer-editor.py`: **53/53PASS**, JS오류0. 데스크톱 실제 드래그·독립 두 나무·DOM 정확 이동·포인터/카메라 입력 분리·Escape 취소·Ctrl+S 입력 반영·저장/재로딩·장면 override·POTATO/그림자·편집창 숨김/투명 복구·저장 실패/JSON을 확인했다. 390/360px 실제 CDP 터치 드래그와 저장 유지, 미리보기/패널 분리·저장버튼 접근·overflow0, 1024/1100px POTATO 설명 겹침 해소를 확인했다. `art/gallery-layer-editor`의5캡처를 직접 확인했다.
+- 기존 공간 harness 데스크톱 **345PASS**, 모바일 **346PASS**. 새 131파라미터 attr/CSS 바인딩 포함. 전시 이동/복귀·키보드/페이지 전환·작품 비율·빈 검색·목록 대체·context loss PASS. `pnpm check` 전체PASS, 공유layer-kit9테스트PASS, 앱buildPASS. Node22.16에서 검수했으며 저장소권장Node24는 별도 미검증이다. 기존 dawn-store의 unavailable umbrella 경고1개는 유지된다.
+- 수정한 실제 결함: 개별3D visible attr가 공용canvas DOM을 숨기지 않게 함(공유host 회귀테스트), 선택renderer/앱 설명 동기화, 입력 중 단축키 저장, 범위 읽기/쓰기 일치. 모바일 손잡이가 하늘에 있을 때 바닥 ray가 실패하므로 실제 뿌리 투영점 기준 상대 drag를 쓴다. 좁은 편집미리보기에서는 선택하지 않은 안내/썸네일을 숨기고 POTATO 편집 시 설명을 잠시 숨긴다. 패널너비는 모바일40px 보정·viewport상한을 적용하며 설정은 여전히 반영된다.
+- 건물의 실제 mesh/UV/카메라 경로를 이동·재구성하지 않는다. stage는 렌더 화면 위치이며 나무는 기존 실제 정점 전체 안전보정을 유지한다. 모드 종료 후 화각/표시는 돌아오고 미저장 초안은 남는다. 실제 iOS/Android기기·브라우저 간 동기화·운영 배포는 하지 않았다.
+# 2026-10-05 — 레이어 배포용 저장
+
+bkit Plan → Design → Do → Check. [계획](../../docs/01-plan/features/gallery-layer-publish.plan.md)·[설계](../../docs/02-design/features/gallery-layer-publish.design.md)·[분석](../../docs/03-analysis/gallery-layer-publish.analysis.md).
+
+- 로컬 저장은 `public/layers.values.json`을 갱신하며 정적 빌드가 해당 파일을 배포 기본값으로 읽는다. 기존 Chrome localStorage 형식은 로컬에서만 이관하고 파일과 다르면 미저장 표시한다. 배포에서는 이전 게시본 초안이 새 기본값을 가리지 않는다.
+- Node 임시 파일 API 통합 검사 PASS: 실제 디스크 저장·새 읽기, 잘못된 작품/범위/JSON, Origin/Host, 256KB, revision 충돌, 동시 PUT [200,409], 파일 실패. 로컬 전용 loopback·고정 경로·직렬화·원자적 rename.
+- 실제 Aside 탭에서 새 안내와 저장 성공 확인. 당시 탭 값은 빈 override, localStorage는 null. 사용자가 편집한 Chrome 프로필은 디버깅 연결이 없어 직접 읽지 못했다. 기존 Chrome에서 저장→새로고침→파일 저장이 필요한 상태이며, 사용자 배치를 이미 이관했다고 주장하지 않는다.
+- `check-layer-editor.py` **54/54 PASS**, 실제 pointer/touch·모바일/Ctrl+S·저장 실패/JSON 내보내기, layer probe **131/131 PASS**. 파일 저장 테스트는 API 격리로 실제 값 파일을 덮지 않는다.
+- `check-layer-publish.py` **19/19 PASS**: 빌드 파일 일치, 별도 정적 서버의 빈 브라우저에 비어 있지 않은 게시값 적용, 렌더러 x좌표, 모바일·작품 범위, 동일 게시본 초안 복원/새 게시본 초안 만료, 이전 localStorage 무시, 브라우저 저장 실패, API GET 500/403/잘못된 JSON·값 차단, legacy 로컬 이관, 지연 저장 중 추가 편집과 저장본 복구.
+- 리뷰에서 발견한 API 읽기 오류를 브라우저 초안 성공으로 처리하는 문제를 수정했다. 404만 정적 미지원으로 처리하고 실제 읽기 오류는 저장을 차단한다.
+- 루트 `pnpm check`, 앱 `pnpm build` PASS. 12레이어/131파라미터 유지, lint 오류 0. 새 에셋·프롬프트 없음. 기존 Node>=24 안내와 Dawn umbrella 경고는 이번 변경의 실패가 아니다.
+- 결과: `art/gallery-layer-publish/publish-qa.json`, `art/gallery-layer-editor/editor-qa.json`·`layer-probe.json`. 원격 배포/커밋/push, 사용자의 Chrome 원본 배치 이관, 실제 iOS/Safari/Firefox는 이번에 검증하지 않았다.

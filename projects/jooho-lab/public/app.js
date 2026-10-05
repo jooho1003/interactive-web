@@ -39,6 +39,7 @@ function setMovementControl(enabled){
 }
 $('#movement-toggle').addEventListener('click',()=>setMovementControl(!movementControl));
 $('.exhibition').addEventListener('wheel',event=>{
+  if(document.body.dataset.layerEditing==='true')return;
   if(village||movementControl||view!=='space'||!scene||event.ctrlKey||document.querySelector('dialog[open]')||event.target.closest('input,textarea,select,.project-detail,#gallery-pagination'))return;
   if(Math.abs(event.deltaX)>Math.abs(event.deltaY)||!event.deltaY)return;
   const direction=Math.sign(event.deltaY),now=performance.now();
@@ -195,7 +196,7 @@ function setMotion(reduce) { motion = reduce; document.documentElement.dataset.m
 $('#motion-toggle').addEventListener('click', () => setMotion(!motion));
 motionQuery.addEventListener('change', () => { if(readPreferences().motion === 'system') setMotion(effectiveMotion()); });
 $('#space').addEventListener('keydown', (event) => {
-  if (event.target !== $('#space')) return;
+  if (document.body.dataset.layerEditing==='true'||event.target !== $('#space')) return;
   if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); moveSelection(event.key === 'ArrowRight' ? 1 : -1); }
   if (event.key === 'Enter') { event.preventDefault(); if (visibleProjects().length) { if(scene && (onWall(selected) || scene.inspect().state === 'exterior')) scene.enter(selected); else openProject(selected); } }
   if (event.key === 'Home') { event.preventDefault(); scene?.reset(); }
@@ -263,12 +264,13 @@ import(village ? './scene.js' : './spatial-scene.js').then(async ({ createGaller
   if (village) layerHost.refresh();
   $('#scene-status').hidden = true;
   $('#spatial-enter').disabled = false;
+  if(!village)window.dispatchEvent(new Event('spatial-scene-ready'));
 }).catch(fallback);
 
 $('#world-prev').addEventListener('click', () => moveSelection(-1));
 $('#world-next').addEventListener('click', () => moveSelection(1));
 initSettings();
-initLayerSettings();
+initLayerSettings({getScene:()=>scene,showSpace:()=>{setView('space');setMovementControl(false);},showProject:id=>changeSelection(id,false,true)});
 initEditor(document.querySelector('#settings-dialog'));
 applyContent();
 if (village) layerHost.refresh();

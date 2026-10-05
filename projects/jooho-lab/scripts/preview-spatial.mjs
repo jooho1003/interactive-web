@@ -1,10 +1,13 @@
 import {createServer} from 'node:http';
 import {readFile,stat} from 'node:fs/promises';
 import {resolve,extname,sep} from 'node:path';
+import {layerPersistence} from './layer-persistence.mjs';
 const root=resolve('public');
-const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css','.jpg':'image/jpeg','.png':'image/png','.webp':'image/webp','.woff2':'font/woff2','.glb':'model/gltf-binary','.svg':'image/svg+xml'};
+const layers=layerPersistence(resolve(root,'layers.values.json'));
+const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.json':'application/json; charset=utf-8','.css':'text/css','.jpg':'image/jpeg','.png':'image/png','.webp':'image/webp','.woff2':'font/woff2','.glb':'model/gltf-binary','.svg':'image/svg+xml'};
 createServer(async(req,res)=>{try{
   const url=new URL(req.url,'http://localhost');
+  if(url.pathname==='/api/layers'){await layers(req,res);return;}
   if(url.pathname==='/__qa/mobile'){res.setHeader('Content-Type','text/html');res.end('<html><body style="margin:0;background:#222"><iframe title="390px mobile QA" src="/?qa=mobile" style="width:390px;height:844px;border:0"></iframe></body></html>');return;}
   if(url.pathname==='/__qa/run.js'){res.setHeader('Content-Type','text/javascript');res.end(await readFile('scripts/spatial-browser-qa.js'));return;}
   if(url.pathname==='/__qa/village-run.js'){res.setHeader('Content-Type','text/javascript');res.end(await readFile('scripts/village-browser-qa.js'));return;}

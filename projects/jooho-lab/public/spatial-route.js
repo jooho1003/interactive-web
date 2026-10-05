@@ -1,5 +1,5 @@
 // One clear aisle connects the exterior, hall and all exhibits.
-export const exterior={eye:[12,5.4,24],look:[-3.7,2,0]};
+export const exterior={eye:[12,7,28],look:[-3.7,2.4,0]};
 export const hall={eye:[0,1.85,3],look:[2.4,1.65,-1.4]};
 export const entrance=[{eye:[5,3.3,14],look:[0,2,2]},{eye:[0,2.1,8.3],look:[0,2,-3]},{eye:[0,1.85,3.7],look:[0,2,-6.5]},hall];
 export const exhibitX=(index,count)=>(index-(count-1)/2)*2.15;

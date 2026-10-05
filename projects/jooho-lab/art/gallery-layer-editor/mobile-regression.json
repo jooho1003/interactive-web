@@ -1,0 +1,1950 @@
+{
+  "status": "PASS",
+  "mode": "mobile",
+  "count": 346,
+  "scene": {
+    "trees": {
+      "id": "courtyard-trees",
+      "visible": true,
+      "opacity": 1,
+      "height": 4.7,
+      "spread": 1,
+      "baseX": 0.38955479860305786,
+      "baseY": 0.03192281723022461,
+      "color": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "yaw": 0,
+      "x": 11.8,
+      "z": -2,
+      "requestedX": 11.8,
+      "minX": 10.212433183539241,
+      "planterX": 11.8,
+      "planterZ": -2,
+      "planterTint": "#d1c6b4",
+      "image": "./assets/plum-spreading-v2.png",
+      "imageStatus": "ready",
+      "shadowOpacity": 1,
+      "shadowAlphaTest": 0.45,
+      "shadowShader": true,
+      "shadowShaderOpacity": 1,
+      "count": 2,
+      "items": [
+        {
+          "id": "courtyard-trees",
+          "visible": true,
+          "opacity": 1,
+          "height": 4.7,
+          "spread": 1,
+          "baseX": 0.38955479860305786,
+          "baseY": 0.03192281723022461,
+          "color": [
+            0.9,
+            0.9,
+            0.9
+          ],
+          "yaw": 0,
+          "x": 11.8,
+          "z": -2,
+          "requestedX": 11.8,
+          "minX": 10.212433183539241,
+          "planterX": 11.8,
+          "planterZ": -2,
+          "planterTint": "#d1c6b4",
+          "image": "./assets/plum-spreading-v2.png",
+          "imageStatus": "ready",
+          "shadowOpacity": 1,
+          "shadowAlphaTest": 0.45,
+          "shadowShader": true,
+          "shadowShaderOpacity": 1
+        },
+        {
+          "id": "courtyard-tree-back",
+          "visible": true,
+          "opacity": 1,
+          "height": 6.1,
+          "spread": 1,
+          "baseX": 0.5395299196243286,
+          "baseY": 0.01665675640106201,
+          "color": [
+            0.9,
+            0.9,
+            0.9
+          ],
+          "yaw": 0,
+          "x": 13,
+          "z": 0,
+          "requestedX": 13,
+          "minX": 11.168627423030244,
+          "planterX": 13,
+          "planterZ": 0,
+          "planterTint": "#d1c6b4",
+          "image": "./assets/plum-upright-v2.png",
+          "imageStatus": "ready",
+          "shadowOpacity": 1,
+          "shadowAlphaTest": 0.45,
+          "shadowShader": true,
+          "shadowShaderOpacity": 1
+        }
+      ],
+      "separateShadows": true,
+      "clearsBuilding": true
+    },
+    "potato": {
+      "visible": true,
+      "opacity": 1,
+      "position": [
+        -6.449999999999999,
+        2.3,
+        -6.75
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        0.7857142857142857,
+        1
+      ],
+      "shadow": {
+        "visible": false,
+        "position": [
+          -6.449999999999999,
+          1.6099999999999999,
+          -6.752
+        ],
+        "scale": [
+          1.1,
+          0.24,
+          1
+        ],
+        "color": "#25303a",
+        "opacity": 0.18
+      }
+    },
+    "state": "exterior",
+    "destination": "exterior",
+    "selected": "hanbok-hero",
+    "wallPage": 1,
+    "targetWallPage": 1,
+    "pageTransition": null,
+    "transition": null,
+    "wallProjects": [
+      "potato-designer",
+      "hanbok-hero",
+      "village"
+    ],
+    "camera": [
+      12,
+      7,
+      28
+    ],
+    "renderCamera": [
+      12,
+      7.000000000000002,
+      28
+    ],
+    "orbit": {
+      "x": 0,
+      "y": 0
+    },
+    "dragging": false,
+    "artwork": {
+      "corners": [
+        {
+          "x": 237.70576728219427,
+          "y": 414.36732444405845
+        },
+        {
+          "x": 237.84514499368203,
+          "y": 396.7468878579164
+        },
+        {
+          "x": 263.65150766276844,
+          "y": 416.23147110120203
+        },
+        {
+          "x": 263.87962951972185,
+          "y": 398.2974901209692
+        }
+      ],
+      "repeat": [
+        1,
+        1
+      ],
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "surfaces": {
+      "frameTint": "#cec3ad",
+      "frameRoughness": 0.55,
+      "paperRoughness": 0.92,
+      "artBrightness": 0.96,
+      "paperTint": "#fffdf5",
+      "interiorLight": 32,
+      "galleryLight": 20,
+      "interiorTint": "#ffe8c9",
+      "galleryLights": 7,
+      "galleryLightMap": true,
+      "environment": "HDRI",
+      "gravelMaps": true,
+      "occlusion": 0.35,
+      "detailMaterials": 7,
+      "occlusionMap": true,
+      "groundTint": "#a8ab9b",
+      "ambient": 0.8,
+      "sunlight": 1.5,
+      "reflections": 0.75,
+      "surfaceTint": "#ffffff",
+      "surfaceRelief": 0.2,
+      "surfaceRoughness": 1,
+      "glassOpacity": 0.12,
+      "waterRoughness": 0.08,
+      "normalMap": true,
+      "roughnessMap": true
+    },
+    "drawCalls": 20,
+    "triangles": 78024,
+    "geometries": 31,
+    "posters": 10
+  },
+  "results": [
+    {
+      "name": "GLB loaded / exterior",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "scene uses real meshes",
+      "pass": true,
+      "detail": "{\"trees\":{\"id\":\"courtyard-trees\",\"visible\":true,\"opacity\":1,\"height\":4.7,\"spread\":1,\"baseX\":0.38955479860305786,\"baseY\":0.03192281723022461,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":11.8,\"z\":-2,\"requestedX\":11.8,\"minX\":10.212433183539241,\"planterX\":11.8,\"planterZ\":-2,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-spreading-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1,\"count\":2,\"items\":[{\"id\":\"courtyard-trees\",\"visible\":true,\"opacity\":1,\"height\":4.7,\"spread\":1,\"baseX\":0.38955479860305786,\"baseY\":0.03192281723022461,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":11.8,\"z\":-2,\"requestedX\":11.8,\"minX\":10.212433183539241,\"planterX\":11.8,\"planterZ\":-2,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-spreading-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1},{\"id\":\"courtyard-tree-back\",\"visible\":true,\"opacity\":1,\"height\":6.1,\"spread\":1,\"baseX\":0.5395299196243286,\"baseY\":0.01665675640106201,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":13,\"z\":0,\"requestedX\":13,\"minX\":11.168627423030244,\"planterX\":13,\"planterZ\":0,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-upright-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}],\"separateShadows\":true,\"clearsBuilding\":true},\"potato\":{\"visible\":false,\"opacity\":1,\"position\":[-6.449999999999999,2.3,-6.75],\"rotation\":[0,0,0],\"scale\":[1,0.7857142857142857,1],\"shadow\":{\"visible\":false,\"position\":[-6.449999999999999,1.6099999999999999,-6.752],\"scale\":[1.1,0.24,1],\"color\":\"#25303a\",\"opacity\":0.18}},\"state\":\"exterior\",\"destination\":\"exterior\",\"selected\":\"dawn-store\",\"wallPage\":0,\"targetWallPage\":0,\"pageTransition\":null,\"transition\":null,\"wallProjects\":[\"chemiforge\",\"sasu\",\"blog\",\"dawn-store\",\"instatoon\",\"spire\",\"day-walk\"],\"camera\":[12,7,28],\"renderCamera\":[12,7.000000000000002,28],\"orbit\":{\"x\":0,\"y\":0},\"dragging\":false,\"artwork\":{\"corners\":[{\"x\":318.45089292620986,\"y\":429.43516231740193},{\"x\":319.30380087931326,\"y\":392.23849460272714},{\"x\":347.382477228677,\"y\":431.69075580814257},{\"x\":348.4555121626052,\"y\":393.79479248450485}],\"repeat\":[1,1],\"offset\":[0,0]},\"surfaces\":{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true},\"drawCalls\":22,\"triangles\":78028,\"geometries\":27,\"posters\":10}"
+    },
+    {
+      "name": "one selector per project",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "every project has a wall artwork",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "architecture exports real PBR normal and roughness maps",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "photographed HDRI environment loaded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "whole tree cards stay outside building and roof",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "trees use independent shadow materials",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "two distinct flowering photo trees loaded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "failed tree image preserves visible previous image",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "low opacity retains tree geometry",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "tree depth shares opacity and alpha cutoff",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "tree depth shader applies texture opacity",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "tree extreme clearance courtyard-trees/0/-25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "tree extreme clearance courtyard-trees/0/25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "tree extreme clearance courtyard-trees/1/-25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "tree extreme clearance courtyard-trees/1/25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "tree extreme clearance courtyard-tree-back/0/-25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "tree extreme clearance courtyard-tree-back/0/25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "tree extreme clearance courtyard-tree-back/1/-25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "tree extreme clearance courtyard-tree-back/1/25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "photographed gravel PBR maps loaded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "seven repeating architectural materials / separate AO",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "baked gallery fixtures cover every wall artwork",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "seven curated wall artworks and all rail thumbnails",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no horizontal overflow",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile media queries active",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "SUIT font loaded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "default mode is sequential camera tour",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "drag mode preserves page wheel",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "pinch zoom preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "horizontal scroll preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wheel advances into hall",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "same gesture cannot skip hall",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "real doorway / hall destination",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "travel is time based",
+      "pass": true,
+      "detail": "5628"
+    },
+    {
+      "name": "hall advances to first work",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "slow approach to close viewing aisle",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "selected artwork fills its viewing area",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wheel next slides laterally",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "sideways movement preserves artwork magnification",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wheel up returns to previous work",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "drag mode releases wheel",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "interrupted selection reaches latest project",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "project description visible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "direct URL preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "camera moves while pointer is still held",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "second pointer cannot interrupt active drag",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "drag reverses camera continuously",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "drag release does not select another work",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "pointer cancellation releases drag",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "focused artwork keeps pointer camera motion",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "back through hall to exterior",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "reduced motion is immediate",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "keyboard crosses from last baked bay to POTATO",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "keyboard restores first page artwork",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wall destination chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wall page chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "full artwork chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork chemiforge",
+      "pass": true,
+      "detail": "{\"left\":107.87741935483872,\"right\":282.1225806451613,\"top\":194.93677419354847,\"bottom\":412.7432258064516,\"copy\":{\"x\":19.5,\"y\":472.625,\"width\":339.296875,\"height\":191.359375,\"top\":472.625,\"right\":358.796875,\"bottom\":663.984375,\"left\":19.5}}"
+    },
+    {
+      "name": "wall destination sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wall page sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "full artwork sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork sasu",
+      "pass": true,
+      "detail": "{\"left\":107.87741935483872,\"right\":282.1225806451613,\"top\":194.93677419354847,\"bottom\":412.7432258064516,\"copy\":{\"x\":19.5,\"y\":472.625,\"width\":339.296875,\"height\":191.359375,\"top\":472.625,\"right\":358.796875,\"bottom\":663.984375,\"left\":19.5}}"
+    },
+    {
+      "name": "wall destination blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wall page blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "full artwork blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork blog",
+      "pass": true,
+      "detail": "{\"left\":107.87741935483872,\"right\":282.1225806451613,\"top\":194.93677419354847,\"bottom\":412.7432258064516,\"copy\":{\"x\":19.5,\"y\":472.625,\"width\":339.296875,\"height\":191.359375,\"top\":472.625,\"right\":358.796875,\"bottom\":663.984375,\"left\":19.5}}"
+    },
+    {
+      "name": "wall destination dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wall page dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "full artwork dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork dawn-store",
+      "pass": true,
+      "detail": "{\"left\":107.87741935483872,\"right\":282.1225806451613,\"top\":194.93677419354847,\"bottom\":412.7432258064516,\"copy\":{\"x\":19.5,\"y\":472.625,\"width\":339.296875,\"height\":191.359375,\"top\":472.625,\"right\":358.796875,\"bottom\":663.984375,\"left\":19.5}}"
+    },
+    {
+      "name": "wall destination instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wall page instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "full artwork instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork instatoon",
+      "pass": true,
+      "detail": "{\"left\":107.87741935483872,\"right\":282.1225806451613,\"top\":194.93677419354847,\"bottom\":412.7432258064517,\"copy\":{\"x\":19.5,\"y\":472.625,\"width\":339.296875,\"height\":191.359375,\"top\":472.625,\"right\":358.796875,\"bottom\":663.984375,\"left\":19.5}}"
+    },
+    {
+      "name": "wall destination spire",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wall page spire",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "full artwork spire",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork spire",
+      "pass": true,
+      "detail": "{\"left\":107.87741935483872,\"right\":282.1225806451613,\"top\":194.93677419354847,\"bottom\":412.7432258064516,\"copy\":{\"x\":19.5,\"y\":472.625,\"width\":339.296875,\"height\":191.359375,\"top\":472.625,\"right\":358.796875,\"bottom\":663.984375,\"left\":19.5}}"
+    },
+    {
+      "name": "wall destination day-walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wall page day-walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "full artwork day-walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork day-walk",
+      "pass": true,
+      "detail": "{\"left\":107.87741935483872,\"right\":282.1225806451613,\"top\":194.93677419354847,\"bottom\":412.7432258064516,\"copy\":{\"x\":19.5,\"y\":472.625,\"width\":339.296875,\"height\":191.359375,\"top\":472.625,\"right\":358.796875,\"bottom\":663.984375,\"left\":19.5}}"
+    },
+    {
+      "name": "wall destination potato-designer",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wall page potato-designer",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "full artwork potato-designer",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork potato-designer",
+      "pass": true,
+      "detail": "{\"left\":108.79449915110352,\"right\":281.2055008488965,\"top\":217.63449915110365,\"bottom\":390.0455008488965,\"copy\":{\"x\":19.5,\"y\":472.625,\"width\":339.296875,\"height\":191.359375,\"top\":472.625,\"right\":358.796875,\"bottom\":663.984375,\"left\":19.5}}"
+    },
+    {
+      "name": "wall destination hanbok-hero",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wall page hanbok-hero",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "full artwork hanbok-hero",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork hanbok-hero",
+      "pass": true,
+      "detail": "{\"left\":107.87741935483872,\"right\":282.1225806451613,\"top\":249.38838709677427,\"bottom\":358.2916129032258,\"copy\":{\"x\":19.5,\"y\":472.625,\"width\":339.296875,\"height\":191.359375,\"top\":472.625,\"right\":358.796875,\"bottom\":663.984375,\"left\":19.5}}"
+    },
+    {
+      "name": "wall destination village",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wall page village",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "full artwork village",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork village",
+      "pass": true,
+      "detail": "{\"left\":107.87741935483872,\"right\":282.1225806451613,\"top\":274.5709999403734,\"bottom\":333.1090000596268,\"copy\":{\"x\":19.5,\"y\":472.625,\"width\":339.296875,\"height\":191.359375,\"top\":472.625,\"right\":358.796875,\"bottom\":663.984375,\"left\":19.5}}"
+    },
+    {
+      "name": "bounded orbit keeps full artwork -1",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "bounded orbit clears copy -1",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "bounded orbit keeps full artwork 1",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "bounded orbit clears copy 1",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "last work releases downward wheel",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Home returns to exterior",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Enter enters hall",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Escape only releases movement control",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "second Escape exits hall",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "page fade starts with previous artworks",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "page fade holds camera before cover",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "covered midpoint changes displayed page",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "page transition restores transparent veil",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "same page uses adjacent distance",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "rapid page selection reaches latest work",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Escape cancels page veil",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "list view pauses page transition",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Home cancels page veil",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "reduced motion finishes pending page change",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "empty search cancels pending page change",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "fade-in select finishes cleanly",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "fade-in Escape finishes cleanly",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "fade-in Home finishes cleanly",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "fade-in filter finishes cleanly",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "hall page selection starts covered transition",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "hall page swap retains entry route",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "hall page transition still approaches artwork",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "slide maximum changes actual duration",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "slide minimum changes interrupted duration",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "page duration setting affects elapsed transition",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "POTATO depth has a separate shadow",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "POTATO image and shadow respond separately",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "POTATO tilt stays small",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "POTATO touch tap clears mouse tilt",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "POTATO pointer leave restores pose",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "POTATO touch keeps static depth",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "POTATO reduced motion keeps static depth",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "POTATO effect off restores original plane",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "other works reset POTATO depth",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "layer courtyard-trees.visible",
+      "pass": true,
+      "detail": "true -> false"
+    },
+    {
+      "name": "safe tree courtyard-trees.visible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.visible",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-trees\",\"visible\":false,\"opacity\":1,\"height\":4.7,\"spread\":1,\"baseX\":0.38955479860305786,\"baseY\":0.03192281723022461,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":11.8,\"z\":-2,\"requestedX\":11.8,\"minX\":10.212433183539241,\"planterX\":11.8,\"planterZ\":-2,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-spreading-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}"
+    },
+    {
+      "name": "layer courtyard-trees.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "safe tree courtyard-trees.opacity",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.opacity",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-trees\",\"visible\":false,\"opacity\":0,\"height\":4.7,\"spread\":1,\"baseX\":0.38955479860305786,\"baseY\":0.03192281723022461,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":11.8,\"z\":-2,\"requestedX\":11.8,\"minX\":10.212433183539241,\"planterX\":11.8,\"planterZ\":-2,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-spreading-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":0,\"shadowAlphaTest\":0,\"shadowShader\":true,\"shadowShaderOpacity\":0}"
+    },
+    {
+      "name": "layer courtyard-trees.image",
+      "pass": true,
+      "detail": "./assets/plum-spreading-v2.png -> ./assets/dawn.webp"
+    },
+    {
+      "name": "safe tree courtyard-trees.image",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.image",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-trees\",\"visible\":true,\"opacity\":1,\"height\":4.7,\"spread\":1,\"baseX\":0.38955479860305786,\"baseY\":0.03192281723022461,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":13.454874431921828,\"z\":-2,\"requestedX\":11.8,\"minX\":10.2,\"planterX\":13.454874431921828,\"planterZ\":-2,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/dawn.webp\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}"
+    },
+    {
+      "name": "layer courtyard-trees.height",
+      "pass": true,
+      "detail": "4.7 -> 3"
+    },
+    {
+      "name": "safe tree courtyard-trees.height",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.height",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-trees\",\"visible\":true,\"opacity\":1,\"height\":3,\"spread\":1,\"baseX\":0.38955479860305786,\"baseY\":0.03192281723022461,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":11.8,\"z\":-2,\"requestedX\":11.8,\"minX\":10.786659478854835,\"planterX\":11.8,\"planterZ\":-2,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-spreading-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}"
+    },
+    {
+      "name": "layer courtyard-trees.spread",
+      "pass": true,
+      "detail": "1 -> 0.7"
+    },
+    {
+      "name": "safe tree courtyard-trees.spread",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.spread",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-trees\",\"visible\":true,\"opacity\":1,\"height\":4.7,\"spread\":0.7,\"baseX\":0.38955479860305786,\"baseY\":0.03192281723022461,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":11.8,\"z\":-2,\"requestedX\":11.8,\"minX\":10.68870322847747,\"planterX\":11.8,\"planterZ\":-2,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-spreading-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}"
+    },
+    {
+      "name": "layer courtyard-trees.baseX",
+      "pass": true,
+      "detail": "0.3895547945205479 -> 0"
+    },
+    {
+      "name": "safe tree courtyard-trees.baseX",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.baseX",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-trees\",\"visible\":true,\"opacity\":1,\"height\":4.7,\"spread\":1,\"baseX\":0,\"baseY\":0.03192281723022461,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":11.8,\"z\":-2,\"requestedX\":11.8,\"minX\":11.8,\"planterX\":11.8,\"planterZ\":-2,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-spreading-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}"
+    },
+    {
+      "name": "layer courtyard-trees.baseY",
+      "pass": true,
+      "detail": "0.03192279138827023 -> 0"
+    },
+    {
+      "name": "safe tree courtyard-trees.baseY",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.baseY",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-trees\",\"visible\":true,\"opacity\":1,\"height\":4.7,\"spread\":1,\"baseX\":0.38955479860305786,\"baseY\":0,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":11.8,\"z\":-2,\"requestedX\":11.8,\"minX\":10.212433183539241,\"planterX\":11.8,\"planterZ\":-2,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-spreading-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}"
+    },
+    {
+      "name": "layer courtyard-trees.brightness",
+      "pass": true,
+      "detail": "0.9 -> 0.5"
+    },
+    {
+      "name": "safe tree courtyard-trees.brightness",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.brightness",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-trees\",\"visible\":true,\"opacity\":1,\"height\":4.7,\"spread\":1,\"baseX\":0.38955479860305786,\"baseY\":0.03192281723022461,\"color\":[0.5,0.5,0.5],\"yaw\":0,\"x\":11.8,\"z\":-2,\"requestedX\":11.8,\"minX\":10.212433183539241,\"planterX\":11.8,\"planterZ\":-2,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-spreading-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}"
+    },
+    {
+      "name": "layer courtyard-trees.tint",
+      "pass": true,
+      "detail": "#ffffff -> #193da9"
+    },
+    {
+      "name": "safe tree courtyard-trees.tint",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.tint",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-trees\",\"visible\":true,\"opacity\":1,\"height\":4.7,\"spread\":1,\"baseX\":0.38955479860305786,\"baseY\":0.03192281723022461,\"color\":[0.008749095585367716,0.04199857769719735,0.3570797076438023],\"yaw\":0,\"x\":11.8,\"z\":-2,\"requestedX\":11.8,\"minX\":10.212433183539241,\"planterX\":11.8,\"planterZ\":-2,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-spreading-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}"
+    },
+    {
+      "name": "layer courtyard-trees.yaw",
+      "pass": true,
+      "detail": "0 -> -25"
+    },
+    {
+      "name": "safe tree courtyard-trees.yaw",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.yaw",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-trees\",\"visible\":true,\"opacity\":1,\"height\":4.7,\"spread\":1,\"baseX\":0.38955479860305786,\"baseY\":0.03192281723022461,\"color\":[0.9,0.9,0.9],\"yaw\":-25,\"x\":11.8,\"z\":-2,\"requestedX\":11.8,\"minX\":10.356702933611498,\"planterX\":11.8,\"planterZ\":-2,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-spreading-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}"
+    },
+    {
+      "name": "layer courtyard-trees.x",
+      "pass": true,
+      "detail": "11.8 -> 10"
+    },
+    {
+      "name": "safe tree courtyard-trees.x",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer courtyard-trees.safeX",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "layer courtyard-trees.z",
+      "pass": true,
+      "detail": "-2 -> -12"
+    },
+    {
+      "name": "safe tree courtyard-trees.z",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.z",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-trees\",\"visible\":true,\"opacity\":1,\"height\":4.7,\"spread\":1,\"baseX\":0.38955479860305786,\"baseY\":0.03192281723022461,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":11.8,\"z\":-12,\"requestedX\":11.8,\"minX\":10.212433183539241,\"planterX\":11.8,\"planterZ\":-12,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-spreading-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}"
+    },
+    {
+      "name": "layer courtyard-trees.planterTint",
+      "pass": true,
+      "detail": "#d1c6b4 -> #193da9"
+    },
+    {
+      "name": "safe tree courtyard-trees.planterTint",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.planterTint",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-trees\",\"visible\":true,\"opacity\":1,\"height\":4.7,\"spread\":1,\"baseX\":0.38955479860305786,\"baseY\":0.03192281723022461,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":11.8,\"z\":-2,\"requestedX\":11.8,\"minX\":10.212433183539241,\"planterX\":11.8,\"planterZ\":-2,\"planterTint\":\"#193da9\",\"image\":\"./assets/plum-spreading-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}"
+    },
+    {
+      "name": "layer courtyard-tree-back.visible",
+      "pass": true,
+      "detail": "true -> false"
+    },
+    {
+      "name": "safe tree courtyard-tree-back.visible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.visible",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-tree-back\",\"visible\":false,\"opacity\":1,\"height\":6.1,\"spread\":1,\"baseX\":0.5395299196243286,\"baseY\":0.01665675640106201,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":13,\"z\":0,\"requestedX\":13,\"minX\":11.168627423030244,\"planterX\":13,\"planterZ\":0,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-upright-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}"
+    },
+    {
+      "name": "layer courtyard-tree-back.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "safe tree courtyard-tree-back.opacity",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.opacity",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-tree-back\",\"visible\":false,\"opacity\":0,\"height\":6.1,\"spread\":1,\"baseX\":0.5395299196243286,\"baseY\":0.01665675640106201,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":13,\"z\":0,\"requestedX\":13,\"minX\":11.168627423030244,\"planterX\":13,\"planterZ\":0,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-upright-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":0,\"shadowAlphaTest\":0,\"shadowShader\":true,\"shadowShaderOpacity\":0}"
+    },
+    {
+      "name": "layer courtyard-tree-back.image",
+      "pass": true,
+      "detail": "./assets/plum-upright-v2.png -> ./assets/dawn.webp"
+    },
+    {
+      "name": "safe tree courtyard-tree-back.image",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.image",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-tree-back\",\"visible\":true,\"opacity\":1,\"height\":6.1,\"spread\":1,\"baseX\":0.5395299196243286,\"baseY\":0.01665675640106201,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":16.04717436255681,\"z\":0,\"requestedX\":13,\"minX\":10.2,\"planterX\":16.04717436255681,\"planterZ\":0,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/dawn.webp\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}"
+    },
+    {
+      "name": "layer courtyard-tree-back.height",
+      "pass": true,
+      "detail": "6.1 -> 3"
+    },
+    {
+      "name": "safe tree courtyard-tree-back.height",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.height",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-tree-back\",\"visible\":true,\"opacity\":1,\"height\":3,\"spread\":1,\"baseX\":0.5395299196243286,\"baseY\":0.01665675640106201,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":13,\"z\":0,\"requestedX\":13,\"minX\":12.09932496214602,\"planterX\":13,\"planterZ\":0,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-upright-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}"
+    },
+    {
+      "name": "layer courtyard-tree-back.spread",
+      "pass": true,
+      "detail": "1 -> 0.7"
+    },
+    {
+      "name": "safe tree courtyard-tree-back.spread",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.spread",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-tree-back\",\"visible\":true,\"opacity\":1,\"height\":6.1,\"spread\":0.7000000000000001,\"baseX\":0.5395299196243286,\"baseY\":0.01665675640106201,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":13,\"z\":0,\"requestedX\":13,\"minX\":11.71803919612117,\"planterX\":13,\"planterZ\":0,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-upright-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}"
+    },
+    {
+      "name": "layer courtyard-tree-back.baseX",
+      "pass": true,
+      "detail": "0.5395299145299145 -> 0"
+    },
+    {
+      "name": "safe tree courtyard-tree-back.baseX",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.baseX",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-tree-back\",\"visible\":true,\"opacity\":1,\"height\":6.1,\"spread\":1,\"baseX\":0,\"baseY\":0.01665675640106201,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":13,\"z\":0,\"requestedX\":13,\"minX\":13,\"planterX\":13,\"planterZ\":0,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-upright-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}"
+    },
+    {
+      "name": "layer courtyard-tree-back.baseY",
+      "pass": true,
+      "detail": "0.01665675193337299 -> 0"
+    },
+    {
+      "name": "safe tree courtyard-tree-back.baseY",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.baseY",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-tree-back\",\"visible\":true,\"opacity\":1,\"height\":6.1,\"spread\":1,\"baseX\":0.5395299196243286,\"baseY\":0,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":13,\"z\":0,\"requestedX\":13,\"minX\":11.168627423030244,\"planterX\":13,\"planterZ\":0,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-upright-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}"
+    },
+    {
+      "name": "layer courtyard-tree-back.brightness",
+      "pass": true,
+      "detail": "0.9 -> 0.5"
+    },
+    {
+      "name": "safe tree courtyard-tree-back.brightness",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.brightness",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-tree-back\",\"visible\":true,\"opacity\":1,\"height\":6.1,\"spread\":1,\"baseX\":0.5395299196243286,\"baseY\":0.01665675640106201,\"color\":[0.5,0.5,0.5],\"yaw\":0,\"x\":13,\"z\":0,\"requestedX\":13,\"minX\":11.168627423030244,\"planterX\":13,\"planterZ\":0,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-upright-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}"
+    },
+    {
+      "name": "layer courtyard-tree-back.tint",
+      "pass": true,
+      "detail": "#ffffff -> #193da9"
+    },
+    {
+      "name": "safe tree courtyard-tree-back.tint",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.tint",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-tree-back\",\"visible\":true,\"opacity\":1,\"height\":6.1,\"spread\":1,\"baseX\":0.5395299196243286,\"baseY\":0.01665675640106201,\"color\":[0.008749095585367716,0.04199857769719735,0.3570797076438023],\"yaw\":0,\"x\":13,\"z\":0,\"requestedX\":13,\"minX\":11.168627423030244,\"planterX\":13,\"planterZ\":0,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-upright-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}"
+    },
+    {
+      "name": "layer courtyard-tree-back.yaw",
+      "pass": true,
+      "detail": "0 -> -25"
+    },
+    {
+      "name": "safe tree courtyard-tree-back.yaw",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.yaw",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-tree-back\",\"visible\":true,\"opacity\":1,\"height\":6.1,\"spread\":1,\"baseX\":0.5395299196243286,\"baseY\":0.01665675640106201,\"color\":[0.9,0.9,0.9],\"yaw\":-25,\"x\":13,\"z\":0,\"requestedX\":13,\"minX\":11.367854611636881,\"planterX\":13,\"planterZ\":0,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-upright-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}"
+    },
+    {
+      "name": "layer courtyard-tree-back.x",
+      "pass": true,
+      "detail": "13 -> 10"
+    },
+    {
+      "name": "safe tree courtyard-tree-back.x",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer courtyard-tree-back.safeX",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "layer courtyard-tree-back.z",
+      "pass": true,
+      "detail": "0 -> -12"
+    },
+    {
+      "name": "safe tree courtyard-tree-back.z",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.z",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-tree-back\",\"visible\":true,\"opacity\":1,\"height\":6.1,\"spread\":1,\"baseX\":0.5395299196243286,\"baseY\":0.01665675640106201,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":13,\"z\":-12,\"requestedX\":13,\"minX\":11.168627423030244,\"planterX\":13,\"planterZ\":-12,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-upright-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}"
+    },
+    {
+      "name": "layer courtyard-tree-back.planterTint",
+      "pass": true,
+      "detail": "#d1c6b4 -> #193da9"
+    },
+    {
+      "name": "safe tree courtyard-tree-back.planterTint",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "renderer trees.planterTint",
+      "pass": true,
+      "detail": "{\"id\":\"courtyard-tree-back\",\"visible\":true,\"opacity\":1,\"height\":6.1,\"spread\":1,\"baseX\":0.5395299196243286,\"baseY\":0.01665675640106201,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":13,\"z\":0,\"requestedX\":13,\"minX\":11.168627423030244,\"planterX\":13,\"planterZ\":0,\"planterTint\":\"#193da9\",\"image\":\"./assets/plum-upright-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}"
+    },
+    {
+      "name": "layer potato-card.positionX",
+      "pass": true,
+      "detail": "0 -> -0.12"
+    },
+    {
+      "name": "layer potato-card.positionY",
+      "pass": true,
+      "detail": "0 -> -0.12"
+    },
+    {
+      "name": "layer potato-card.visible",
+      "pass": true,
+      "detail": "true -> false"
+    },
+    {
+      "name": "layer potato-card.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer potato-card.enabled",
+      "pass": true,
+      "detail": "true -> false"
+    },
+    {
+      "name": "layer potato-card.depth",
+      "pass": true,
+      "detail": "0.12 -> 0"
+    },
+    {
+      "name": "layer potato-card.scale",
+      "pass": true,
+      "detail": "0.94 -> 0.75"
+    },
+    {
+      "name": "layer potato-card.shiftX",
+      "pass": true,
+      "detail": "0.025 -> 0"
+    },
+    {
+      "name": "layer potato-card.shiftY",
+      "pass": true,
+      "detail": "0.018 -> 0"
+    },
+    {
+      "name": "layer potato-card.tilt",
+      "pass": true,
+      "detail": "4 -> 0"
+    },
+    {
+      "name": "layer potato-shadow.positionX",
+      "pass": true,
+      "detail": "0 -> -0.12"
+    },
+    {
+      "name": "layer potato-shadow.positionY",
+      "pass": true,
+      "detail": "0 -> -0.12"
+    },
+    {
+      "name": "layer potato-shadow.visible",
+      "pass": true,
+      "detail": "true -> false"
+    },
+    {
+      "name": "layer potato-shadow.opacity",
+      "pass": true,
+      "detail": "0.18 -> 0"
+    },
+    {
+      "name": "layer potato-shadow.color",
+      "pass": true,
+      "detail": "#25303a -> #193da9"
+    },
+    {
+      "name": "layer potato-shadow.width",
+      "pass": true,
+      "detail": "1.1 -> 0.5"
+    },
+    {
+      "name": "layer potato-shadow.height",
+      "pass": true,
+      "detail": "0.24 -> 0.1"
+    },
+    {
+      "name": "layer potato-shadow.y",
+      "pass": true,
+      "detail": "-0.69 -> -0.9"
+    },
+    {
+      "name": "layer potato-shadow.shift",
+      "pass": true,
+      "detail": "0.04 -> 0"
+    },
+    {
+      "name": "layer stage.positionX",
+      "pass": true,
+      "detail": "0px -> -1200px"
+    },
+    {
+      "name": "layer stage.positionY",
+      "pass": true,
+      "detail": "0px -> 0px -1200px"
+    },
+    {
+      "name": "layer stage.visible",
+      "pass": true,
+      "detail": "false -> true"
+    },
+    {
+      "name": "layer stage.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer stage.ambient",
+      "pass": true,
+      "detail": "0.8 -> 0"
+    },
+    {
+      "name": "renderer ambient",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.sunlight",
+      "pass": true,
+      "detail": "1.5 -> 0"
+    },
+    {
+      "name": "renderer sunlight",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":0,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.interiorLight",
+      "pass": true,
+      "detail": "32 -> 0"
+    },
+    {
+      "name": "renderer interiorLight",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":0,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.galleryLight",
+      "pass": true,
+      "detail": "20 -> 0"
+    },
+    {
+      "name": "renderer galleryLight",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":0,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.interiorTint",
+      "pass": true,
+      "detail": "#ffe8c9 -> #193da9"
+    },
+    {
+      "name": "renderer interiorTint",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#193da9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.reflections",
+      "pass": true,
+      "detail": "0.75 -> 0"
+    },
+    {
+      "name": "renderer reflections",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.surfaceTint",
+      "pass": true,
+      "detail": "#ffffff -> #193da9"
+    },
+    {
+      "name": "renderer surfaceTint",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#193da9\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.surfaceRelief",
+      "pass": true,
+      "detail": "0.2 -> 0"
+    },
+    {
+      "name": "renderer surfaceRelief",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.surfaceRoughness",
+      "pass": true,
+      "detail": "1 -> 0.5"
+    },
+    {
+      "name": "renderer surfaceRoughness",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":0.5,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.glassOpacity",
+      "pass": true,
+      "detail": "0.12 -> 0"
+    },
+    {
+      "name": "renderer glassOpacity",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.occlusion",
+      "pass": true,
+      "detail": "0.35 -> 0"
+    },
+    {
+      "name": "renderer occlusion",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.groundTint",
+      "pass": true,
+      "detail": "#a8ab9b -> #193da9"
+    },
+    {
+      "name": "renderer groundTint",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#193da9\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.waterRoughness",
+      "pass": true,
+      "detail": "0.08 -> 0.02"
+    },
+    {
+      "name": "renderer waterRoughness",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.02,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.frameTint",
+      "pass": true,
+      "detail": "#cec3ad -> #193da9"
+    },
+    {
+      "name": "renderer frameTint",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#193da9\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.frameRoughness",
+      "pass": true,
+      "detail": "0.55 -> 0.2"
+    },
+    {
+      "name": "renderer frameRoughness",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.2,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.paperTint",
+      "pass": true,
+      "detail": "#fffdf5 -> #193da9"
+    },
+    {
+      "name": "renderer paperTint",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#193da9\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.paperRoughness",
+      "pass": true,
+      "detail": "0.92 -> 0.5"
+    },
+    {
+      "name": "renderer paperRoughness",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.5,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.artBrightness",
+      "pass": true,
+      "detail": "0.96 -> 0.7"
+    },
+    {
+      "name": "renderer artBrightness",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.7,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.fov",
+      "pass": true,
+      "detail": "48 -> 35"
+    },
+    {
+      "name": "layer stage.speed",
+      "pass": true,
+      "detail": "1 -> 0.5"
+    },
+    {
+      "name": "layer stage.approachSeconds",
+      "pass": true,
+      "detail": "4.2 -> 2.5"
+    },
+    {
+      "name": "layer stage.slideSeconds",
+      "pass": true,
+      "detail": "1.8 -> 1"
+    },
+    {
+      "name": "layer stage.slideMinSeconds",
+      "pass": true,
+      "detail": "0.6 -> 0.2"
+    },
+    {
+      "name": "layer stage.slideMaxSeconds",
+      "pass": true,
+      "detail": "4.8 -> 3"
+    },
+    {
+      "name": "layer stage.pageSeconds",
+      "pass": true,
+      "detail": "0.85 -> 0.3"
+    },
+    {
+      "name": "layer stage.pageTint",
+      "pass": true,
+      "detail": "#e8e4db -> #193da9"
+    },
+    {
+      "name": "layer stage.parallax",
+      "pass": true,
+      "detail": "0.16 -> 0"
+    },
+    {
+      "name": "layer stage.dragStrength",
+      "pass": true,
+      "detail": "1.2 -> 0.4"
+    },
+    {
+      "name": "layer stage.dragLimit",
+      "pass": true,
+      "detail": "0.32 -> 0.1"
+    },
+    {
+      "name": "layer stage.damping",
+      "pass": true,
+      "detail": "9 -> 4"
+    },
+    {
+      "name": "layer stage.exposure",
+      "pass": true,
+      "detail": "1.15 -> 0.5"
+    },
+    {
+      "name": "layer landscape.positionX",
+      "pass": true,
+      "detail": "0px -> -1200px"
+    },
+    {
+      "name": "layer landscape.positionY",
+      "pass": true,
+      "detail": "0px -> 0px -1200px"
+    },
+    {
+      "name": "layer landscape.visible",
+      "pass": true,
+      "detail": "false -> true"
+    },
+    {
+      "name": "layer landscape.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer landscape.image",
+      "pass": true,
+      "detail": "./assets/lab-landscape.jpg -> ./assets/dawn.webp"
+    },
+    {
+      "name": "layer landscape.height",
+      "pass": true,
+      "detail": "649.875px -> 337.594px"
+    },
+    {
+      "name": "layer landscape.brightness",
+      "pass": true,
+      "detail": "brightness(1.18) -> brightness(0.6)"
+    },
+    {
+      "name": "layer landscape.color",
+      "pass": true,
+      "detail": "rgb(182, 199, 203) -> rgb(25, 61, 169)"
+    },
+    {
+      "name": "layer landscape.shade",
+      "pass": true,
+      "detail": "0.4 -> 0"
+    },
+    {
+      "name": "layer intro.positionX",
+      "pass": true,
+      "detail": "0px -> -1200px"
+    },
+    {
+      "name": "layer intro.positionY",
+      "pass": true,
+      "detail": "0px -> 0px -1200px"
+    },
+    {
+      "name": "layer intro.visible",
+      "pass": true,
+      "detail": "false -> true"
+    },
+    {
+      "name": "layer intro.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer intro.x",
+      "pass": true,
+      "detail": "19.5px -> 0px"
+    },
+    {
+      "name": "layer intro.y",
+      "pass": true,
+      "detail": "202.56px -> 101.28px"
+    },
+    {
+      "name": "layer intro.size",
+      "pass": true,
+      "detail": "43.2px -> 24px"
+    },
+    {
+      "name": "layer intro.color",
+      "pass": true,
+      "detail": "rgb(245, 241, 231) -> rgb(25, 61, 169)"
+    },
+    {
+      "name": "layer detail.positionX",
+      "pass": true,
+      "detail": "0px -> -1200px"
+    },
+    {
+      "name": "layer detail.positionY",
+      "pass": true,
+      "detail": "0px -> 0px -1200px"
+    },
+    {
+      "name": "layer detail.visible",
+      "pass": true,
+      "detail": "false -> true"
+    },
+    {
+      "name": "layer detail.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer detail.x",
+      "pass": true,
+      "detail": "19.5px -> 0px"
+    },
+    {
+      "name": "layer detail.y",
+      "pass": true,
+      "detail": "56% -> 15%"
+    },
+    {
+      "name": "layer detail.width",
+      "pass": true,
+      "detail": "min(340px, 87%) -> min(240px, 87%)"
+    },
+    {
+      "name": "layer detail.color",
+      "pass": true,
+      "detail": "rgb(245, 241, 231) -> rgb(25, 61, 169)"
+    },
+    {
+      "name": "layer rail.positionX",
+      "pass": true,
+      "detail": "0px -> -1200px"
+    },
+    {
+      "name": "layer rail.positionY",
+      "pass": true,
+      "detail": "0px -> 0px -1200px"
+    },
+    {
+      "name": "layer rail.visible",
+      "pass": true,
+      "detail": "false -> true"
+    },
+    {
+      "name": "layer rail.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer rail.size",
+      "pass": true,
+      "detail": "80px -> 64px"
+    },
+    {
+      "name": "layer rail.gap",
+      "pass": true,
+      "detail": "12px -> 4px"
+    },
+    {
+      "name": "layer rail.bottom",
+      "pass": true,
+      "detail": "22px -> 12px"
+    },
+    {
+      "name": "layer controls.positionX",
+      "pass": true,
+      "detail": "0px -> -1200px"
+    },
+    {
+      "name": "layer controls.positionY",
+      "pass": true,
+      "detail": "0px -> 0px -1200px"
+    },
+    {
+      "name": "layer controls.visible",
+      "pass": true,
+      "detail": "false -> true"
+    },
+    {
+      "name": "layer controls.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer controls.color",
+      "pass": true,
+      "detail": "rgb(245, 241, 231) -> rgb(25, 61, 169)"
+    },
+    {
+      "name": "layer controls.bottom",
+      "pass": true,
+      "detail": "205px -> 125px"
+    },
+    {
+      "name": "layer controls.enterLabel",
+      "pass": true,
+      "detail": "작업실 들어가기 ↗ -> 테스트 입장"
+    },
+    {
+      "name": "layer shell.positionX",
+      "pass": true,
+      "detail": "0px -> -1200px"
+    },
+    {
+      "name": "layer shell.positionY",
+      "pass": true,
+      "detail": "0px -> 0px -1200px"
+    },
+    {
+      "name": "layer shell.visible",
+      "pass": true,
+      "detail": "false -> true"
+    },
+    {
+      "name": "layer shell.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer shell.paper",
+      "pass": true,
+      "detail": "rgb(236, 233, 225) -> rgb(25, 61, 169)"
+    },
+    {
+      "name": "layer shell.ink",
+      "pass": true,
+      "detail": "rgb(40, 53, 47) -> rgb(25, 61, 169)"
+    },
+    {
+      "name": "layer editor.visible",
+      "pass": true,
+      "detail": "false -> true"
+    },
+    {
+      "name": "layer editor.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer editor.panelWidth",
+      "pass": true,
+      "detail": "390px -> 340px"
+    },
+    {
+      "name": "layer editor.paper",
+      "pass": true,
+      "detail": "rgb(244, 242, 237) -> rgb(25, 61, 169)"
+    },
+    {
+      "name": "layer editor.ink",
+      "pass": true,
+      "detail": "rgb(40, 53, 47) -> rgb(25, 61, 169)"
+    },
+    {
+      "name": "layer editor.accent",
+      "pass": true,
+      "detail": "rgb(49, 90, 215) -> rgb(25, 61, 169)"
+    },
+    {
+      "name": "renderer survives layer changes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "hidden shell preserves settings recovery",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "empty search state",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "empty hall disables destination button",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "search restore",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "list fallback accessible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "layer settings opens",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "draw calls under budget",
+      "pass": true,
+      "detail": "{\"trees\":{\"id\":\"courtyard-trees\",\"visible\":true,\"opacity\":1,\"height\":4.7,\"spread\":1,\"baseX\":0.38955479860305786,\"baseY\":0.03192281723022461,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":11.8,\"z\":-2,\"requestedX\":11.8,\"minX\":10.212433183539241,\"planterX\":11.8,\"planterZ\":-2,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-spreading-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1,\"count\":2,\"items\":[{\"id\":\"courtyard-trees\",\"visible\":true,\"opacity\":1,\"height\":4.7,\"spread\":1,\"baseX\":0.38955479860305786,\"baseY\":0.03192281723022461,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":11.8,\"z\":-2,\"requestedX\":11.8,\"minX\":10.212433183539241,\"planterX\":11.8,\"planterZ\":-2,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-spreading-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1},{\"id\":\"courtyard-tree-back\",\"visible\":true,\"opacity\":1,\"height\":6.1,\"spread\":1,\"baseX\":0.5395299196243286,\"baseY\":0.01665675640106201,\"color\":[0.9,0.9,0.9],\"yaw\":0,\"x\":13,\"z\":0,\"requestedX\":13,\"minX\":11.168627423030244,\"planterX\":13,\"planterZ\":0,\"planterTint\":\"#d1c6b4\",\"image\":\"./assets/plum-upright-v2.png\",\"imageStatus\":\"ready\",\"shadowOpacity\":1,\"shadowAlphaTest\":0.45,\"shadowShader\":true,\"shadowShaderOpacity\":1}],\"separateShadows\":true,\"clearsBuilding\":true},\"potato\":{\"visible\":true,\"opacity\":1,\"position\":[-6.449999999999999,2.3,-6.75],\"rotation\":[0,0,0],\"scale\":[1,0.7857142857142857,1],\"shadow\":{\"visible\":false,\"position\":[-6.449999999999999,1.6099999999999999,-6.752],\"scale\":[1.1,0.24,1],\"color\":\"#25303a\",\"opacity\":0.18}},\"state\":\"exterior\",\"destination\":\"exterior\",\"selected\":\"hanbok-hero\",\"wallPage\":1,\"targetWallPage\":1,\"pageTransition\":null,\"transition\":null,\"wallProjects\":[\"potato-designer\",\"hanbok-hero\",\"village\"],\"camera\":[12,7,28],\"renderCamera\":[12,7.000000000000002,28],\"orbit\":{\"x\":0,\"y\":0},\"dragging\":false,\"artwork\":{\"corners\":[{\"x\":237.70576728219427,\"y\":414.36732444405845},{\"x\":237.84514499368203,\"y\":396.7468878579164},{\"x\":263.65150766276844,\"y\":416.23147110120203},{\"x\":263.87962951972185,\"y\":398.2974901209692}],\"repeat\":[1,1],\"offset\":[0,0]},\"surfaces\":{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true},\"drawCalls\":20,\"triangles\":78024,\"geometries\":31,\"posters\":10}"
+    },
+    {
+      "name": "context loss exposes list",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "preferences cannot reenter failed space",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "pageErrors": []
+}

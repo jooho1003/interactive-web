@@ -2,7 +2,8 @@ import {layerHost,inspectScene} from '/app.js';
 import {readPreferences,setPreferences} from '/preferences.js';
 import {setValue} from '/vendor/layer-kit/index.js';
 import {projects} from '/projects.js';
-import {exhibitBays,exhibitPage,exhibitSlot,exhibitX} from '/spatial-route.js';
+import {exterior,exhibitBays,exhibitPage,exhibitSlot,exhibitX} from '/spatial-route.js';
+import {Color} from '/assets/three.module.min.js';
 const $=s=>document.querySelector(s),results=[];
 const mode=new URL(location.href).searchParams.get('qa');
 const report=document.createElement('pre');report.id='qa-report';report.style.cssText='position:relative;z-index:100;background:#fff;color:#111;padding:20px;white-space:pre-wrap;overflow-wrap:anywhere';document.body.append(report);
@@ -20,6 +21,24 @@ try{
   await wait(()=>inspectScene().posters===projects.length);check('every project has a wall artwork',inspectScene().posters===projects.length);
   check('architecture exports real PBR normal and roughness maps',inspectScene().surfaces.normalMap&&inspectScene().surfaces.roughnessMap);
   check('photographed HDRI environment loaded',inspectScene().surfaces.environment==='HDRI');
+  check('whole tree cards stay outside building and roof',inspectScene().trees.clearsBuilding);
+  check('trees use independent shadow materials',inspectScene().trees.separateShadows);
+  check('two distinct flowering photo trees loaded',inspectScene().trees.count===2&&new Set(inspectScene().trees.items.map(t=>t.image)).size===2&&inspectScene().trees.imageStatus==='ready'&&inspectScene().trees.visible);
+  const treeImageBefore=inspectScene().trees.image;
+  layerHost.setValues(setValue(savedLayers,'all','base','courtyard-trees','image','./assets/missing-tree-qa.png'));
+  await wait(()=>inspectScene().trees.imageStatus==='error');
+  check('failed tree image preserves visible previous image',inspectScene().trees.image===treeImageBefore&&inspectScene().trees.visible);
+  layerHost.setValues(savedLayers);await wait(()=>inspectScene().trees.imageStatus==='ready');
+  layerHost.setValues(setValue(savedLayers,'all','base','courtyard-trees','opacity',.2));await wait(()=>Math.abs(inspectScene().trees.opacity-.2)<.001);
+  check('low opacity retains tree geometry',inspectScene().trees.visible);
+  check('tree depth shares opacity and alpha cutoff',Math.abs(inspectScene().trees.shadowOpacity-.2)<.001&&Math.abs(inspectScene().trees.shadowAlphaTest-.09)<.001);
+  check('tree depth shader applies texture opacity',inspectScene().trees.shadowShader&&Math.abs(inspectScene().trees.shadowShaderOpacity-.2)<.001);layerHost.setValues(savedLayers);
+  for(const id of ['courtyard-trees','courtyard-tree-back'])for(const baseX of [0,1])for(const yaw of [-25,25]){
+    let values=savedLayers;for(const [key,value] of Object.entries({x:10,height:8,spread:1.3,baseX,yaw}))values=setValue(values,'all','base',id,key,value);
+    layerHost.setValues(values);await new Promise(r=>setTimeout(r,40));
+    check(`tree extreme clearance ${id}/${baseX}/${yaw}`,inspectScene().trees.items.every(t=>t.minX>=10.2-1e-5));
+  }
+  layerHost.setValues(savedLayers);
   check('photographed gravel PBR maps loaded',inspectScene().surfaces.gravelMaps);
   check('seven repeating architectural materials / separate AO',inspectScene().surfaces.detailMaterials===7&&inspectScene().surfaces.occlusionMap);
   check('baked gallery fixtures cover every wall artwork',inspectScene().surfaces.galleryLights===Math.min(projects.length,7)&&inspectScene().surfaces.galleryLightMap);
@@ -60,7 +79,7 @@ try{
   check('pointer cancellation releases drag',!inspectScene().dragging&&inspectScene().selected==='sasu');
   click('#movement-toggle');await wait(()=>Math.abs(inspectScene().orbit.x)<.001);
   const hoverBefore=inspectScene().renderCamera[0];$('#scene').dispatchEvent(new PointerEvent('pointermove',{clientX:innerWidth,clientY:innerHeight/2,bubbles:true}));await wait(()=>Math.abs(inspectScene().renderCamera[0]-hoverBefore)>.03);check('focused artwork keeps pointer camera motion',inspectScene().state==='project');$('#scene').dispatchEvent(new PointerEvent('pointerleave'));
-  click('#spatial-back');await wait(()=>inspectScene().state==='hall');click('#spatial-back');await wait(()=>inspectScene().state==='exterior');check('back through hall to exterior',inspectScene().camera[2]===24);
+  click('#spatial-back');await wait(()=>inspectScene().state==='hall');click('#spatial-back');await wait(()=>inspectScene().state==='exterior');check('back through hall to exterior',inspectScene().camera.every((v,i)=>v===exterior.eye[i]));
   setPreferences({...savedPreferences,motion:'reduce'});click('#gallery-pagination button[data-id="day-walk"]');check('reduced motion is immediate',inspectScene().state==='project');
   $('#space').focus();$('#space').dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true}));
   check('keyboard crosses from last baked bay to POTATO',inspectScene().selected==='potato-designer'&&inspectScene().wallPage===1&&inspectScene().state==='project');
@@ -140,12 +159,33 @@ try{
   layerHost.setValues(setValue(savedLayers,layerHost.scene,'base','stage','pageSeconds',1.4));await new Promise(r=>setTimeout(r,40));
   setPreferences({...savedPreferences,motion:'full'});const pageStarted=performance.now();choose(7);await wait(()=>inspectScene().state==='project');check('page duration setting affects elapsed transition',performance.now()-pageStarted>=1200);setPreferences({...savedPreferences,motion:'reduce'});layerHost.setValues(savedLayers);
   // Probe each layer parameter against its concrete attribute or computed-style binding.
+  setPreferences({...savedPreferences,motion:'reduce'});choose(7);
+  check('POTATO depth has a separate shadow',inspectScene().potato.shadow.visible&&Math.abs(inspectScene().potato.position[2]+6.63)<.001);
+  setPreferences({...savedPreferences,motion:'full'});
+  const potatoBox=$('#scene').getBoundingClientRect(),potatoX=inspectScene().potato.position[0];
+  $('#scene').dispatchEvent(new PointerEvent('pointermove',{pointerType:'mouse',clientX:potatoBox.left+potatoBox.width*.8,clientY:potatoBox.top+potatoBox.height*.3,bubbles:true}));
+  await wait(()=>inspectScene().potato.rotation[1]>.02);
+  check('POTATO image and shadow respond separately',inspectScene().potato.position[0]>potatoX&&inspectScene().potato.shadow.position[0]<potatoX);
+  check('POTATO tilt stays small',inspectScene().potato.rotation.every(v=>Math.abs(v)<=Math.PI/45+.001));
+  $('#scene').dispatchEvent(new PointerEvent('pointerdown',{pointerType:'touch',pointerId:107,button:0,clientX:potatoBox.right,clientY:potatoBox.top,bubbles:true}));await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+  check('POTATO touch tap clears mouse tilt',inspectScene().potato.rotation.every(v=>v===0)&&inspectScene().potato.shadow.visible);
+  $('#scene').dispatchEvent(new PointerEvent('pointercancel',{pointerType:'touch',pointerId:107,bubbles:true}));
+  $('#scene').dispatchEvent(new PointerEvent('pointerleave',{pointerType:'mouse',bubbles:true}));await wait(()=>Math.abs(inspectScene().potato.rotation[1])<.001);
+  check('POTATO pointer leave restores pose',Math.abs(inspectScene().potato.position[0]-potatoX)<.001);
+  $('#scene').dispatchEvent(new PointerEvent('pointermove',{pointerType:'touch',clientX:potatoBox.right,clientY:potatoBox.top,bubbles:true}));await new Promise(requestAnimationFrame);
+  check('POTATO touch keeps static depth',inspectScene().potato.rotation.every(v=>v===0)&&inspectScene().potato.shadow.visible);
+  setPreferences({...savedPreferences,motion:'reduce'});
+  check('POTATO reduced motion keeps static depth',inspectScene().potato.rotation.every(v=>v===0)&&inspectScene().potato.shadow.visible);
+  layerHost.setValues(setValue(savedLayers,layerHost.scene,'base','potato-card','enabled',false));await wait(()=>!inspectScene().potato.shadow.visible);
+  check('POTATO effect off restores original plane',inspectScene().potato.position[2]===-6.75&&inspectScene().potato.scale[0]===1);
+  layerHost.setValues(savedLayers);await wait(()=>inspectScene().potato.shadow.visible);
+  choose(8);check('other works reset POTATO depth',!inspectScene().potato.shadow.visible&&inspectScene().potato.position[2]===-6.75);
   $('#space').dispatchEvent(new KeyboardEvent('keydown',{key:'Home',bubbles:true}));
-  const props={opacity:'opacity',visible:'visibility',x:'left',y:'top',size:'width',color:'color',height:'height',width:'width',gap:'gap',bottom:'bottom',paper:'background-color',ink:'color',shade:'opacity',brightness:'filter'};
+  const props={opacity:'opacity',visible:'visibility',x:'left',y:'top',positionX:'translate',positionY:'translate',panelWidth:'width',accent:'border-top-color',size:'width',color:'color',height:'height',width:'width',gap:'gap',bottom:'bottom',paper:'background-color',ink:'color',shade:'opacity',brightness:'filter'};
   for(const layer of layerHost.manifest.layers)for(const [key,param]of Object.entries(layer.params)){
     const node=param.attr?$(param.attr[0]):$(layer.el.split(',')[0]);
     const property=layer.id==='intro'&&key==='size'?'font-size':layer.id==='landscape'&&key==='color'?'background-color':props[key];
-    const target=key==='shade'?$('.space'):layer.id==='intro'&&key==='size'?$('.intro h1'):layer.id==='landscape'&&key==='color'?$('.exhibition'):layer.id==='rail'&&key==='size'?$('.film-card'):key==='paper'||key==='ink'?$('.index-section'):node;
+    const target=key==='shade'?$('.space'):layer.id==='intro'&&key==='size'?$('.intro h1'):layer.id==='landscape'&&key==='color'?$('.exhibition'):layer.id==='rail'&&key==='size'?$('.film-card'):layer.id==='editor'?(key==='accent'?$('#layer-selection'):node):key==='paper'||key==='ink'?$('.index-section'):node;
     const computed=()=>getComputedStyle(target,key==='shade'?'::after':null).getPropertyValue(property);
     const before=param.attr?node.getAttribute(param.attr[1]):key==='visible'?node.hasAttribute('data-layer-hidden'):computed();
     const current=layerHost.get(layer.id,key);let value=param.type==='boolean'?!current:param.type==='number'?(current===param.min?param.max:param.min):param.type==='color'?'#193da9':param.type==='image'?'./assets/dawn.webp':'테스트 입장';
@@ -156,7 +196,19 @@ try{
     const after=param.attr?node.getAttribute(param.attr[1]):key==='visible'?node.hasAttribute('data-layer-hidden'):computed();
     check(`layer ${layer.id}.${key}`,before!==after,`${before} -> ${after}`);
     if(layer.id==='stage'&&key in inspectScene().surfaces)check(`renderer ${key}`,inspectScene().surfaces[key]===value,JSON.stringify(inspectScene().surfaces));
+    if(layer.id==='courtyard-trees'||layer.id==='courtyard-tree-back'){
+      const currentTree=()=>inspectScene().trees.items.find(t=>t.id===layer.id);
+      if(key==='image')await wait(()=>currentTree().image===value&&currentTree().imageStatus==='ready');
+      const tree=currentTree();
+      check(`safe tree ${layer.id}.${key}`,tree.minX>=10.2-1e-5&&Math.abs(tree.planterX-tree.x)<1e-6&&Math.abs(tree.planterZ-tree.z)<1e-6);
+      if(key==='x')check(`renderer ${layer.id}.safeX`,tree.x>=value-1e-5);
+      if(key==='tint'||key==='brightness'){
+        const expected=new Color(layerHost.get(layer.id,'tint')).multiplyScalar(layerHost.get(layer.id,'brightness')).toArray();
+        check(`renderer trees.${key}`,tree.color.every((v,i)=>Math.abs(v-expected[i])<1e-6),JSON.stringify(tree));
+      }else if(key!=='x'&&key in tree)check(`renderer trees.${key}`,typeof value==='number'?Math.abs(tree[key]-value)<1e-6:tree[key]===value,JSON.stringify(tree));
+    }
     layerHost.setValues(savedLayers);
+    if(layer.id==='courtyard-trees'||layer.id==='courtyard-tree-back')await wait(()=>inspectScene().trees.items.every(t=>t.imageStatus==='ready'));
   }
   check('renderer survives layer changes',inspectScene().drawCalls>0);
   layerHost.setValues(setValue(savedLayers,'all','base','shell','visible',false));check('hidden shell preserves settings recovery',getComputedStyle($('#settings-open')).display!=='none'&&!$('#settings-open').closest('[data-layer-hidden]'));layerHost.setValues(savedLayers);
@@ -164,7 +216,7 @@ try{
   click('#spatial-enter');check('empty hall disables destination button',$('#spatial-enter').disabled);
   $('#search').value='';$('#search').dispatchEvent(new Event('input',{bubbles:true}));check('search restore',$('#gallery-pagination').children.length===projects.length);
   click('#list-view');check('list fallback accessible',!$('#project-grid').hidden&&$('#project-grid').children.length===projects.length);click('#space-view');
-  click('#settings-open');click('.layer-launch');check('layer settings opens',$('.layers-dialog').open);$('.layers-dialog').close();
+  click('#settings-open');click('.layer-launch');check('layer settings opens',!$('#spatial-layer-editor').hidden);click('#layer-edit-close');
   check('draw calls under budget',inspectScene().drawCalls<65,JSON.stringify(inspectScene()));
   const gl=$('#scene canvas').getContext('webgl2');gl.getExtension('WEBGL_lose_context').loseContext();await wait(()=>$('#space-view').disabled);check('context loss exposes list',!$('#project-grid').hidden);setPreferences({...readPreferences(),view:'list'});setPreferences({...readPreferences(),view:'space'});check('preferences cannot reenter failed space',!$('#project-grid').hidden&&$('#space').hidden);
   report.textContent=JSON.stringify({status:'PASS',mode,count:results.length,scene:inspectScene(),results},null,2);

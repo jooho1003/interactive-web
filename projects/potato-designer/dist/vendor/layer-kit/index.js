@@ -117,7 +117,9 @@ export function createLayerHost({ manifest, published, root = document.documentE
     root.dataset.layerScene = scene;
     current = resolve(manifest, values, scene, queries.filter(([,query]) => query.matches).map(([id]) => id));
     const hidden = new Set();
-    for (const layer of manifest.layers) if (current[layer.id].visible === false) for (const element of document.querySelectorAll(layer.el)) hidden.add(element);
+    // Attribute-bound visibility is owned by the renderer (e.g. one tree in a
+    // shared canvas). Only DOM-bound visibility hides the host element itself.
+    for (const layer of manifest.layers) if (!layer.params.visible?.attr && current[layer.id].visible === false) for (const element of document.querySelectorAll(layer.el)) hidden.add(element);
     for (const element of previousHidden) if (!hidden.has(element)) {
       const owners = hiddenOwners.get(element);
       owners?.delete(owner);

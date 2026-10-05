@@ -94,3 +94,62 @@ html[data-motion=reduce]{scroll-behavior:auto}
 @media(max-width:650px){.gallery-toolbar{gap:6px}#movement-toggle{font-size:.65rem;padding:6px 9px;min-height:34px}.project-detail{max-width:90%}}
 /* layer-fixed: Keep the alternate village destination reachable on compact screens. */
 .site-header nav>a[href="./village.html"]{display:block}
+
+#scene{translate:var(--L-stage-positionX) var(--L-stage-positionY)}
+#lab-landscape{translate:var(--L-landscape-positionX) var(--L-landscape-positionY)}
+.intro{translate:var(--L-intro-positionX) var(--L-intro-positionY)}
+.project-detail{translate:var(--L-detail-positionX) var(--L-detail-positionY)}
+#gallery-pagination{translate:var(--L-rail-positionX) var(--L-rail-positionY)}
+#spatial-controls,.gallery-footer,.world-arrow{translate:var(--L-controls-positionX) var(--L-controls-positionY)}
+.site-header .brand,.site-header nav>a,#about-open,.index-section,.site-footer,#about-dialog{translate:var(--L-shell-positionX) var(--L-shell-positionY)}
+/* layer-fixed: editor placement, stacking, hit areas and capture handles are
+   structural/accessibility rules; colors, width, opacity belong to editor. */
+#layer-edit-toggle{min-height:40px;padding:8px 12px;border:1px solid currentColor;background:var(--L-editor-paper);color:var(--L-editor-ink);font-size:.74rem}
+#spatial-layer-editor{position:fixed;inset:0 0 0 auto;z-index:30;width:min(var(--L-editor-panelWidth),100vw);background:var(--L-editor-paper);color:var(--L-editor-ink);opacity:var(--L-editor-opacity);visibility:var(--L-editor-visible);border-left:1px solid currentColor;padding:22px;display:flex;flex-direction:column;overflow:auto;overscroll-behavior:contain;font-family:var(--sans)}
+#spatial-layer-editor>*{flex-shrink:0}#spatial-layer-editor #layer-fields{flex:1;min-height:50px;overflow:auto;overscroll-behavior:contain}
+#spatial-layer-editor[hidden],#layer-selection[hidden]{display:none}
+#spatial-layer-editor header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+#spatial-layer-editor small{font-size:.6rem;letter-spacing:.16em}#spatial-layer-editor h2{font-size:1.25rem;margin:4px 0 0}
+#spatial-layer-editor button{min-height:44px;border:1px solid currentColor;background:transparent;color:inherit;padding:8px 12px;cursor:pointer}
+#spatial-layer-editor #layer-edit-close{width:44px;font-size:1.5rem}
+#spatial-layer-editor .layer-edit-help,#layer-drag-hint,#layer-status{font-size:.75rem;line-height:1.7}
+#spatial-layer-editor .layer-scopes{gap:10px;margin:16px 0}
+#spatial-layer-editor .layer-scopes label{flex:1;min-width:0}
+#spatial-layer-editor select{width:100%;min-width:0;max-width:none;min-height:40px;border:1px solid currentColor;background:var(--L-editor-paper);color:inherit;font:inherit;padding:8px;font-size:.75rem}
+.layer-picker{display:grid;gap:8px;font-size:.75rem}.layer-edit-field{display:grid;grid-template-columns:minmax(0,1fr) minmax(80px,110px);gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid color-mix(in srgb,currentColor 18%,transparent);font-size:.74rem}
+.layer-edit-field input{min-width:0;width:100%;min-height:36px;padding:5px 8px;border:1px solid currentColor;background:var(--L-editor-paper);color:inherit;font:inherit}
+.layer-edit-field input[type=checkbox]{width:22px;height:22px;min-height:0;justify-self:end;accent-color:var(--L-editor-accent)}
+.layer-edit-field input[type=color]{padding:2px}
+#spatial-layer-editor footer{margin-top:18px}.layer-edit-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#spatial-layer-editor #layer-save{background:var(--L-editor-accent);border-color:var(--L-editor-accent);color:var(--L-editor-paper)}
+#spatial-layer-editor button:disabled{opacity:.4;cursor:default}
+#layer-selection{position:fixed;z-index:25;border:2px solid var(--L-editor-accent);color:var(--L-editor-accent);opacity:var(--L-editor-opacity);visibility:var(--L-editor-visible);pointer-events:none}
+#layer-drag-handle{position:absolute;pointer-events:auto;touch-action:none;min-height:34px;max-width:260px;padding:5px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:var(--L-editor-accent);color:var(--L-editor-paper);border:0;font:.7rem var(--sans);cursor:move}
+#spatial-layer-editor :focus-visible,#layer-drag-handle:focus-visible,#layer-edit-toggle:focus-visible{outline:2px solid var(--L-editor-accent);outline-offset:3px}
+body[data-layer-editing=true] .exhibition{width:calc(100% - var(--L-editor-panelWidth))}
+body[data-layer-editing=true]{overflow:hidden}
+body[data-layer-editing=true] .site-header{right:var(--L-editor-panelWidth)}
+body[data-layer-editing=true] #scene{touch-action:none}
+body[data-layer-editing=true] #movement-toggle,body[data-layer-editing=true] .view-switch{display:none}
+.layer-scope-options summary{display:none;font-size:.75rem;min-height:36px;padding:6px 0;cursor:pointer}
+/* layer-fixed: reveal the object being edited without an overlapping copy
+   panel; select the detail layer to edit that panel, or close to show it again. */
+body[data-layer-editing=true][data-layer-selected=potato-card] .project-detail,
+body[data-layer-editing=true][data-layer-selected=potato-shadow] .project-detail{display:none}
+@media(max-width:800px){
+ body[data-layer-editing=true] .exhibition{width:100%;height:36svh;min-height:0}
+ body[data-layer-editing=true] .site-header{right:0}
+ /* layer-fixed: the compact dock adds 40px for field labels, bounded by the
+    viewport. Its width remains adjustable instead of masking panelWidth. */
+ #spatial-layer-editor{inset:auto 0 0 auto;height:64svh;width:min(calc(var(--L-editor-panelWidth) + 40px),100vw);border-left:0;border-top:1px solid currentColor;padding:14px}
+ #layer-edit-toggle{font-size:.65rem;padding:6px 8px;min-height:34px}
+ #spatial-layer-editor header{margin-bottom:6px}#spatial-layer-editor .layer-edit-help{display:none}#spatial-layer-editor .layer-scopes{margin:8px 0}#spatial-layer-editor footer{margin-top:8px}#layer-drag-hint{margin:8px 0}
+ #spatial-layer-editor h2{font-size:1rem}#spatial-layer-editor small{display:none}#spatial-layer-editor #layer-status{margin:5px 0 8px}
+ .layer-scope-options summary{display:block}
+ body[data-layer-editing=true] .gallery-toolbar{left:14px;right:auto;top:78px}
+ body[data-layer-editing=true]:not([data-layer-selected=intro]) .intro,
+ body[data-layer-editing=true]:not([data-layer-selected=controls]) #spatial-controls,
+ body[data-layer-editing=true]:not([data-layer-selected=controls]) .gallery-footer,
+ body[data-layer-editing=true]:not([data-layer-selected=controls]) .world-arrow,
+ body[data-layer-editing=true]:not([data-layer-selected=rail]) #gallery-pagination{display:none}
+}

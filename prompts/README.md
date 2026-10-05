@@ -31,6 +31,8 @@
 
 | | 작품 | 에셋 | 도구 | 프롬프트 |
 |---|---|---|---|---|
+| <img src="../projects/jooho-lab/public/assets/plum-spreading-v2.png" width="120"> | JOOHO LAB | [앞쪽 굽은 꽃나무](jooho-lab.md#27--plum-spreading-v2--굽은-줄기--넓은-수관) | image_gen | ✅ |
+| <img src="../projects/jooho-lab/public/assets/plum-upright-v2.png" width="120"> | JOOHO LAB | [뒤쪽 곧은 꽃나무](jooho-lab.md#28--plum-upright-v2--가는-줄기--세로-수관) | image_gen | ✅ |
 | <img src="../projects/jooho-lab/public/assets/exhibit-day-walk.webp" width="120"> | JOOHO LAB | [운영 작품 전시 이미지 7개](jooho-lab.md#20--exhibition-art--운영-작품의-전시-키-비주얼) | image_gen · 운영 원본 | ✅ |
 | <img src="../projects/jooho-lab/art/interior-after-interior.png" width="120"> | JOOHO LAB | [밝은 풍경·실내 마감](jooho-lab.md#19--lab-bright-interior--밝은-풍경과-정교한-실내) | Blender · Three.js | ✅ 제작 요청·소스 |
 | <img src="../projects/jooho-lab/art/clean-after-exterior.png" width="120"> | JOOHO LAB | [얼룩 없는 건물 표면](jooho-lab.md#18--lab-clean-stone--얼룩-없는-건물-표면) | Blender · Three.js | ✅ 제작 요청·소스 |
@@ -55,6 +57,8 @@
 | <img src="../projects/jooho-lab/public/assets/project-village.webp" width="120"> | JOOHO LAB | [마을 파노라마 (집 6채)](jooho-lab.md#01--마을-파노라마-project-village) | 기록 없음 | ❌ |
 | <img src="../projects/jooho-lab/public/assets/village-seonbi-v1.png" width="120"> | JOOHO LAB | [선비 독립 한옥](jooho-lab.md#23--선비-독립-한옥--village-seonbi-v1) | image_gen (참조 생성) | ✅ |
 | <img src="../projects/jooho-lab/art/gallery-natural-refinement/desktop-day-walk.png" width="120"> | JOOHO LAB | [가벼운 액자와 전시 마감](jooho-lab.md#24--lab-light-gallery--가벼운-액자와-전시-마감) | Blender · 절차 모델/조명·AO 재베이크 | ✅ 제작 요청·소스 |
+| <img src="../projects/jooho-lab/art/gallery-museum-exterior/desktop-exterior-preview.png" width="120"> | JOOHO LAB | [박물관 느낌의 외관 시안](jooho-lab.md#25--lab-museum-exterior--박물관-느낌의-외관-시안) | Blender · 절차 모델/조명·AO 재베이크 | ✅ 제작 요청·소스 |
+| <img src="../projects/jooho-lab/public/assets/plum-tree-v1.png" width="100"> | JOOHO LAB | [사진 참고 분홍 꽃나무](jooho-lab.md#26--plum-tree-v1--사진-참고-분홍-꽃나무) | image_gen · 투명 참조 생성 | ✅ |
 | <img src="../projects/jooho-lab/public/assets/village-walker.png" width="80"> | JOOHO LAB | [배낭 로봇 산책자](jooho-lab.md#02--배낭-로봇-산책자-village-walker) | gpt-image 2.0 | ❌ |
 | <img src="../projects/jooho-lab/public/assets/atelier.webp" width="120"> | JOOHO LAB | [어두운 전시실 (지금 안 씀)](jooho-lab.md#03--어두운-전시실-atelier-지금-안-씀) | 기록 없음 | ❌ |
 | <img src="../projects/jooho-lab/public/assets/work-spire.webp" width="120"> | JOOHO LAB | [실제 작품 대표 화면 7장](jooho-lab.md#07--실제-작품-화면--갤러리-대표-이미지-7장) | Aside 캡처 | 생성 에셋 아님 |

@@ -1,0 +1,78 @@
+[
+  {
+    "name": "build includes exact committed values",
+    "pass": true
+  },
+  {
+    "name": "fresh visitor loads published file",
+    "pass": true
+  },
+  {
+    "name": "published tree position reaches renderer",
+    "pass": true
+  },
+  {
+    "name": "static save labeled as browser draft",
+    "pass": true
+  },
+  {
+    "name": "static browser draft retains on same published version",
+    "pass": true
+  },
+  {
+    "name": "new deployment replaces obsolete browser draft",
+    "pass": true
+  },
+  {
+    "name": "old local-only storage never masks deployed defaults",
+    "pass": true
+  },
+  {
+    "name": "static storage failure keeps draft dirty",
+    "pass": true
+  },
+  {
+    "name": "no static runtime errors",
+    "pass": true
+  },
+  {
+    "name": "mobile published responsive scope applied",
+    "pass": true
+  },
+  {
+    "name": "published project mobile scope applied",
+    "pass": true
+  },
+  {
+    "name": "API 500 cannot claim browser save success",
+    "pass": true
+  },
+  {
+    "name": "API 403 cannot claim browser save success",
+    "pass": true
+  },
+  {
+    "name": "API bad-values cannot claim browser save success",
+    "pass": true
+  },
+  {
+    "name": "API bad-json cannot claim browser save success",
+    "pass": true
+  },
+  {
+    "name": "legacy local edits preserved and marked unpublished",
+    "pass": true
+  },
+  {
+    "name": "duplicate save blocked while request is pending",
+    "pass": true
+  },
+  {
+    "name": "edit during save remains an unsaved draft",
+    "pass": true
+  },
+  {
+    "name": "restore uses actual saved request snapshot",
+    "pass": true
+  }
+]

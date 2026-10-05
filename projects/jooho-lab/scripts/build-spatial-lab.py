@@ -78,9 +78,9 @@ for x in range(-8,9,2):
 box('Rear wall',(0,2.5,-7),(18,5,.35),plaster)
 box('West wall',(-8.8,2.5,-.6),(.3,5,13.1),stone)
 box('East wall',(8.8,2.5,-.6),(.3,5,13.1),stone)
-box('Roof',(0,5.0,-.1),(19,.28,16.2),stone,.04)
-box('Roof shadow reveal',(0,4.82,-.1),(18.8,.055,16),dark,.008)
-box('Roof metal coping',(0,5.16,-.1),(19.04,.045,16.24),dark,.012)
+box('Roof',(0,5.0,-.8),(19,.28,13.2),stone,.04)
+box('Roof shadow reveal',(0,4.82,-.8),(18.8,.055,13),dark,.008)
+box('Roof metal coping',(0,5.16,-.8),(19.04,.045,13.24),dark,.012)
 # Thin cladding stays outside the existing structural walls and camera corridor.
 for side in [-1,1]:
     for row in range(5):
@@ -94,11 +94,20 @@ for x in [-8.6,-5.7,-2.5,2.5,5.7,8.6]:
     box('Mullion bronze cap',(x,2.4,5.932),(.045,4.76,.025),brass,.004)
 box('Facade lintel',(0,4.35,5.8),(17.4,.12,.18),dark)
 box('Facade sill',(0,.12,5.8),(17.4,.12,.18),dark)
-# Floating limestone screen creates depth outside without blocking the entrance.
-box('West facade monolith',(-6.65,2.38,6.0),(4.0,4.76,.42),stone,.03)
-for column in range(4):
-    for row in range(4):
-        box('Facade cut limestone',(-8.15+column, .61+row*1.18,6.235),(.992,1.172,.055),stone,.008)
+# Museum-like horizontal wings and a tall open central forecourt. These are
+# physical build coordinates (stage.fixed): the original inner doorway remains.
+for side in [-1,1]:
+    box('Museum upper wing',(side*6,5.9,-.05),(6,2,13.3),stone,.025)
+    box('Museum facade base',(side*6,.55,6.5),(6,1.1,.7),stone,.018)
+    box('Museum facade upper',(side*6,4.5,6.5),(6,4.8,.7),stone,.018)
+    for edge in [3.12,8.88]:box('Museum window jamb',(side*edge,1.6,6.5),(.24,1.0,.7),stone,.006)
+    box('Museum recessed glazing',(side*6,1.6,6.62),(5.52,1.0,.025),glass)
+    for x in [3.75,5.25,6.75,8.25]:box('Museum window mullion',(side*x,1.6,6.66),(.045,1.0,.06),dark)
+    for row in range(5):
+        for column in range(6):box('Museum cut-stone cladding',(side*(3.5+column),2.595+row*.955,6.876),(.986,.94,.04),stone,.003)
+    for column in range(6):box('Museum base cladding',(side*(3.5+column),.55,6.876),(.986,1.075,.04),stone,.003)
+box('Museum connecting stone beam',(0,6.95,5.8),(19.2,.65,2.45),stone,.02)
+box('Museum beam shadow reveal',(0,6.59,5.8),(18.9,.045,2.28),dark)
 # Glazing only in side bays: no pane intersects the open central entrance.
 for left,right in [(-4.6,-2.56),(2.56,5.64),(5.76,8.54)]:
     box('Facade glazing',((left+right)/2,2.22,5.8),(right-left,4.12,.016),glass)
@@ -195,7 +204,10 @@ def tree(x,z,h):
             mesh.update();o=bpy.data.objects.new('Olive leaf',mesh);bpy.context.collection.objects.link(o);o.location=pos(lx,ly,lz)
             o.data.materials.append(green if leaf%3 else green2)
             o.rotation_euler=(random.random()*2,random.random()*3,random.random()*3)
-for args in [(-10,4,4.8),(10,3,5.2),(-12,-5,6),(12,-5,5.6),(-7.8,-1.8,2.7)]:tree(*args)
+# Outdoor planting uses the separately configurable photo cutout in Three.js.
+# Keep the small indoor tree and its physical planter unchanged.
+tree(-7.8,-1.8,2.7)
+# Outdoor planters now follow the two configurable tree roots at runtime.
 
 # Clean seeded stone maps and CC0 photographed oak; provenance is in prompts.
 LIBRARY=ROOT.parents[1]/'art'/'materials'
