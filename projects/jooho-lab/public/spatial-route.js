@@ -3,11 +3,18 @@ export const exterior={eye:[12,5.4,24],look:[-3.7,2,0]};
 export const hall={eye:[0,1.85,3],look:[2.4,1.65,-1.4]};
 export const entrance=[{eye:[5,3.3,14],look:[0,2,2]},{eye:[0,2.1,8.3],look:[0,2,-3]},{eye:[0,1.85,3.7],look:[0,2,-6.5]},hall];
 export const exhibitX=(index,count)=>(index-(count-1)/2)*2.15;
-// lab-pavilion.glb에 구운 전시 칸 수(build-spatial-lab.py의 range(7)). 이보다 뒤의 작품은 벽에 걸지 않고 레일·목록·작업 소개로만 연다.
+// lab-pavilion.glb에 구운 전시 칸 수. 추가 작품은 같은 칸을 다음 페이지에서 사용한다.
 export const exhibitBays=7;
+export const exhibitSlot=index=>index%exhibitBays;
+export const exhibitPage=index=>Math.floor(index/exhibitBays);
+export const artworkZ=-6.75;
+export function slideDuration(from,to,base,min,max){
+  const distance=Math.hypot(...to.eye.map((v,i)=>v-from.eye[i]));
+  return Math.max(min,Math.min(max,base*distance/2.15));
+}
 // Fade manual offsets out while passing through the narrow architectural doorway.
 export const cameraInputEnvelope=z=>Math.min(1,Math.max(0,(Math.abs(z-6)-1)/3));
-export function exhibitPose(index,count,distance=2.4){const x=exhibitX(index,count);return{eye:[x,2.3,-6.585+distance],look:[x,2.3,-6.585],focus:1};}
+export function exhibitPose(index,count,distance=2.4){const x=exhibitX(index,count);return{eye:[x,2.3,artworkZ+distance],look:[x,2.3,artworkZ],focus:1};}
 export function containArtwork(width,height){const scale=Math.min(1.43/width,1.82/height);return[width*scale/1.43,height*scale/1.82];}
 export function nextStop(stage,id,ids,direction){
   const stops=['exterior','hall',...ids];

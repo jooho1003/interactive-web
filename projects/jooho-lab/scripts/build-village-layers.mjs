@@ -5,7 +5,11 @@ import manifest from '../public/village-houses.manifest.js';
 const root=new URL('../public/',import.meta.url),check=process.argv.includes('--check');
 const values=JSON.parse(await readFile(new URL('village-houses.values.json',root),'utf8'));
 const valid=validateValues(manifest,values);if(valid.errors.length)throw Error(valid.errors.join('\n'));
-let style='/* layer-fixed: absolute projection boxes and pointer routing belong to the camera renderer; .9rem normalizes the shared label-size default. */\n[data-layer-hidden]{display:none!important}\n.village-extension{position:absolute;pointer-events:none;display:var(--L-village-extension-visible);opacity:var(--L-village-extension-opacity);mask-image:linear-gradient(to right,transparent,black var(--L-village-extension-leftBlend));filter:brightness(calc(var(--scene-brightness,1) * var(--L-village-extension-brightness)))}\n';
+let style='/* layer-fixed: absolute projection boxes and pointer routing belong to the camera renderer; .9rem normalizes the shared label-size default. */\n[data-layer-hidden]{display:none!important}\n';
+for(const layer of manifest.layers.filter(layer=>layer.id.endsWith('extension'))){
+  const v=key=>`var(--L-${layer.id}-${key})`;
+  style+=`${layer.el}{position:absolute;pointer-events:none;display:${v('visible')};opacity:${v('opacity')};mask-image:linear-gradient(to right,transparent,black ${v('leftBlend')});filter:brightness(calc(var(--scene-brightness,1) * ${v('brightness')}))}\n`;
+}
 for(const layer of manifest.layers.filter(layer=>layer.id.startsWith('house-'))){
   const id=layer.id.slice('house-'.length),v=key=>`var(--L-${layer.id}-${key})`,house=`[data-world-project="${id}"]`;
   style+=`#scene ${house}{display:${v('visible')};opacity:calc(${v('opacity')} * var(--village-label-opacity))}\n#scene ${house} .world-label{font-size:calc(${v('labelSize')} + var(--village-label-size) - .9rem);color:${v('labelColor')};background:${v('labelBackground')}}\n[data-world-light="${id}"]{display:${v('visible')};--light:${v('lightColor')};opacity:calc(var(--ambient-opacity,0) * ${v('opacity')})}\n`;

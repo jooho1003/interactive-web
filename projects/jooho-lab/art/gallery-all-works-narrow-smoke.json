@@ -1,0 +1,88 @@
+{
+  "status": "PASS",
+  "viewport": [
+    320,
+    700
+  ],
+  "selections": [
+    {
+      "id": "potato-designer",
+      "camera": [
+        -6.449999999999999,
+        2.3,
+        -4.1850000000000005
+      ],
+      "page": 1,
+      "wall": [
+        "potato-designer",
+        "hanbok-hero",
+        "village"
+      ]
+    },
+    {
+      "id": "hanbok-hero",
+      "camera": [
+        -4.3,
+        2.3,
+        -4.1850000000000005
+      ],
+      "page": 1,
+      "wall": [
+        "potato-designer",
+        "hanbok-hero",
+        "village"
+      ]
+    },
+    {
+      "id": "village",
+      "camera": [
+        -2.15,
+        2.3,
+        -4.1850000000000005
+      ],
+      "page": 1,
+      "wall": [
+        "potato-designer",
+        "hanbok-hero",
+        "village"
+      ]
+    },
+    {
+      "id": "day-walk",
+      "camera": [
+        6.449999999999999,
+        2.3,
+        -4.1850000000000005
+      ],
+      "page": 0,
+      "wall": [
+        "chemiforge",
+        "sasu",
+        "blog",
+        "dawn-store",
+        "instatoon",
+        "spire",
+        "day-walk"
+      ]
+    },
+    {
+      "id": "potato-designer",
+      "camera": [
+        -6.449999999999999,
+        2.3,
+        -4.1850000000000005
+      ],
+      "page": 1,
+      "wall": [
+        "potato-designer",
+        "hanbok-hero",
+        "village"
+      ]
+    }
+  ],
+  "keyboard": true,
+  "search": true,
+  "experienceReturn": true,
+  "villageReturn": true,
+  "pageErrors": []
+}

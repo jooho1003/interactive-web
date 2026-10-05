@@ -53,6 +53,8 @@
 | <img src="../projects/day-walk/app/public/media/day-walk-walker-v2.webp" width="60"> | 하루 산책 | [걷는 캐릭터](day-walk.md#06--걷는-캐릭터-walker-v2) | 기록 없음 | ❌ |
 | <img src="../projects/potato-designer/dist/assets/character.png" width="90"> | POTATO | [날아차기 캐릭터](potato-designer.md#01--날아차기-캐릭터-characterpng) | image_gen (gpt-image) | ✅ |
 | <img src="../projects/jooho-lab/public/assets/project-village.webp" width="120"> | JOOHO LAB | [마을 파노라마 (집 6채)](jooho-lab.md#01--마을-파노라마-project-village) | 기록 없음 | ❌ |
+| <img src="../projects/jooho-lab/public/assets/village-seonbi-v1.png" width="120"> | JOOHO LAB | [선비 독립 한옥](jooho-lab.md#23--선비-독립-한옥--village-seonbi-v1) | image_gen (참조 생성) | ✅ |
+| <img src="../projects/jooho-lab/art/gallery-natural-refinement/desktop-day-walk.png" width="120"> | JOOHO LAB | [가벼운 액자와 전시 마감](jooho-lab.md#24--lab-light-gallery--가벼운-액자와-전시-마감) | Blender · 절차 모델/조명·AO 재베이크 | ✅ 제작 요청·소스 |
 | <img src="../projects/jooho-lab/public/assets/village-walker.png" width="80"> | JOOHO LAB | [배낭 로봇 산책자](jooho-lab.md#02--배낭-로봇-산책자-village-walker) | gpt-image 2.0 | ❌ |
 | <img src="../projects/jooho-lab/public/assets/atelier.webp" width="120"> | JOOHO LAB | [어두운 전시실 (지금 안 씀)](jooho-lab.md#03--어두운-전시실-atelier-지금-안-씀) | 기록 없음 | ❌ |
 | <img src="../projects/jooho-lab/public/assets/work-spire.webp" width="120"> | JOOHO LAB | [실제 작품 대표 화면 7장](jooho-lab.md#07--실제-작품-화면--갤러리-대표-이미지-7장) | Aside 캡처 | 생성 에셋 아님 |

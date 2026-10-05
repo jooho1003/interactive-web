@@ -3,7 +3,7 @@ import {GLTFLoader} from './assets/GLTFLoader.js';
 import {Reflector} from './assets/Reflector.js';
 import {HDRLoader} from './assets/HDRLoader.js';
 import manifest from './layers.manifest.js';
-import {exterior,hall,exhibitPose,exhibitX,routeTo,sampleRoute,containArtwork,nextStop,cameraInputEnvelope} from './spatial-route.js';
+import {exterior,hall,exhibitPose,exhibitX,exhibitBays,exhibitSlot,exhibitPage,artworkZ,slideDuration,routeTo,sampleRoute,containArtwork,nextStop,cameraInputEnvelope} from './spatial-route.js';
 
 export async function createGallery(container,projects,onSelect,onFailure,onOpen,onState=()=>{}){
   const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'high-performance'});
@@ -36,11 +36,13 @@ export async function createGallery(container,projects,onSelect,onFailure,onOpen
   let model;
   try{model=(await new GLTFLoader().loadAsync('./assets/lab-pavilion.glb')).scene;}
   catch(error){renderer.dispose();renderer.domElement.remove();environment.dispose();throw error;}
-  let architecture,glazing,pool,gravel;const architectureMaterials=[];
+  let architecture,glazing,pool,gravel,paper,frameMaterial;const architectureMaterials=[];
   model.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;
     for(const mat of Array.isArray(o.material)?o.material:[o.material]){
       if(mat.name.startsWith('Pavilion PBR')){architectureMaterials.push(mat);mat.userData.baseTint=mat.color.clone();}
       if(mat.name==='Pavilion PBR limestone and oak')architecture=mat;
+      if(mat.name==='Pavilion PBR Gallery paper')paper=mat;
+      if(mat.name==='Gallery champagne frame')frameMaterial=mat;
       if(mat.name==='Architectural glass'){glazing=mat;mat.depthWrite=false;o.castShadow=false;mat.side=THREE.DoubleSide;}
       if(mat.name==='Still reflecting pool')pool=mat;
       if(mat.name==='Charcoal gravel')gravel=mat;
@@ -73,6 +75,7 @@ export async function createGallery(container,projects,onSelect,onFailure,onOpen
   poolReflection.onBeforeRender=function(...args){const wasVisible=pool?.visible;if(pool)pool.visible=false;reflectedRender.apply(this,args);if(pool)pool.visible=wasVisible;};
   const defaults=manifest.layers.find(l=>l.id==='stage').params;
   const setting=key=>Number(container.dataset[key]??defaults[key].default);
+  const pageVeil=document.createElement('div');pageVeil.className='gallery-page-veil';pageVeil.setAttribute('aria-hidden','true');container.append(pageVeil);
   function updateSurfaces(){
     ambient.intensity=setting('ambient');sun.intensity=setting('sunlight');
     fill.intensity=setting('interiorLight');side.intensity=setting('interiorLight')*.6;
@@ -86,16 +89,22 @@ export async function createGallery(container,projects,onSelect,onFailure,onOpen
     poolReflection.material.uniforms.blur.value=setting('waterRoughness')*.02;
     poolReflection.material.uniforms.strength.value=Math.min(.85,setting('reflections')*.8);
     poolReflection.visible=setting('reflections')>0&&container.clientWidth>650;
+    pageVeil.style.setProperty('--gallery-page-tint',container.dataset.pageTint??defaults.pageTint.default);
+    if(frameMaterial){frameMaterial.color.set(container.dataset.frameTint??defaults.frameTint.default);frameMaterial.roughness=setting('frameRoughness');}
+    if(paper){paper.color.multiply(new THREE.Color(container.dataset.paperTint??defaults.paperTint.default));paper.roughness=setting('paperRoughness');}
+    for(const p of posters.values())p.mesh.material.color.setScalar(setting('artBrightness'));
   }
-  updateSurfaces();
   const posterGroup=new THREE.Group();world.add(posterGroup);
   const textureLoader=new THREE.TextureLoader(),posters=new Map();
   await document.fonts.load('500 26px "SUIT"');
   function graphic(p){const canvas=document.createElement('canvas');canvas.width=512;canvas.height=652;const c=canvas.getContext('2d');c.fillStyle=p.color;c.fillRect(0,0,512,652);c.strokeStyle='#ffffff55';c.strokeRect(25,25,462,602);c.fillStyle='#fff4de';c.font='18px SUIT';c.fillText('JOOHO LAB / '+p.number,48,73);c.font='bold 94px SUIT';c.fillText(p.mark,48,310,415);c.font='26px SUIT';c.fillText(p.title,48,555,420);c.font='17px SUIT';c.fillText(p.category,48,590,420);const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;return texture;}
   projects.forEach((p,i)=>{
-    const mesh=new THREE.Mesh(new THREE.PlaneGeometry(1.43,1.82),new THREE.MeshBasicMaterial({color:p.color}));
-    mesh.position.set(exhibitX(i,projects.length),2.3,-6.585);mesh.userData.id=p.id;posterGroup.add(mesh);posters.set(p.id,{mesh,url:null,version:0});
+    const mesh=new THREE.Mesh(new THREE.PlaneGeometry(1.43,1.82),new THREE.MeshBasicMaterial({color:p.color,transparent:true}));
+    mesh.position.set(exhibitX(exhibitSlot(i),exhibitBays),2.3,artworkZ);mesh.userData.id=p.id;posterGroup.add(mesh);posters.set(p.id,{mesh,page:exhibitPage(i),url:null,version:0});
   });
+  updateSurfaces();
+  let paintedPage=0,pageTransition=null,pageAlpha=0;
+  function veil(alpha){pageAlpha=alpha;pageVeil.style.setProperty('--gallery-page-alpha',alpha);}
   let current={eye:[...exterior.eye],look:[...exterior.look]},selected=projects[0]?.id;
   let state='exterior',destination='exterior',transition=null,reduced=false,active=true,destroyed=false;
   let zoom=1,speed=1,lighting=1,raf=0,lastTime=performance.now(),visible=projects.map(p=>p.id),pointer={x:0,y:0},smoothPointer={x:0,y:0},down=null;
@@ -103,17 +112,25 @@ export async function createGallery(container,projects,onSelect,onFailure,onOpen
   let dragEnabled=false,drag=null;
   const orbit={x:0,y:0},smoothOrbit={x:0,y:0};
   const raycaster=new THREE.Raycaster();
+  const pageFor=id=>exhibitPage(Math.max(0,projects.findIndex(p=>p.id===id)));
+  function showPage(){for(const [id,p]of posters)p.mesh.visible=visible.includes(id)&&p.page===paintedPage;}
   function announce(){container.dataset.stage=state;container.dataset.destination=destination;onState({state,destination,selected});}
   function travel(next,id=selected){
     selected=id;destination=next;
-    const pose=exhibitPose(Math.max(0,projects.findIndex(p=>p.id===id)),projects.length);
+    const pose=exhibitPose(exhibitSlot(Math.max(0,projects.findIndex(p=>p.id===id))),exhibitBays);
     const points=routeTo(current,next,pose);
     const lateral=next==='project'&&current.eye[2]<2;
-    const approach=Number(container.dataset.approachSeconds);
-    transition={points,elapsed:0,duration:next==='exterior'?4.2:current.eye[2]>6?5.6+(next==='project'?approach-2.2:0):next==='project'?(lateral?Number(container.dataset.slideSeconds):approach):2.2};
-    state='travel';pointer={x:0,y:0};orbit.x=0;orbit.y=0;announce();if(reduced){smoothOrbit.x=0;smoothOrbit.y=0;finish();}else wake();
+    const approach=setting('approachSeconds');
+    const route={points,elapsed:0,duration:next==='exterior'?4.2:current.eye[2]>6?5.6+(next==='project'?approach-2.2:0):next==='project'?(lateral?slideDuration(current,pose,setting('slideSeconds'),setting('slideMinSeconds'),setting('slideMaxSeconds')):approach):2.2};
+    state='travel';pointer={x:0,y:0};orbit.x=0;orbit.y=0;
+    if(next==='project'&&!reduced&&(pageTransition||pageFor(id)!==paintedPage)){
+      transition=null;pageTransition={phase:'out',elapsed:0,duration:setting('pageSeconds')/2,startAlpha:pageAlpha,page:pageFor(id),pose,routeAfter:lateral?null:route};announce();wake();return;
+    }
+    pageTransition=null;veil(0);if(next==='project')paintedPage=pageFor(id);showPage();
+    transition=route;
+    announce();if(reduced){smoothOrbit.x=0;smoothOrbit.y=0;finish();}else wake();
   }
-  function finish(renderNow=true){if(!transition)return;current=transition.points.at(-1);transition=null;state=destination;announce();if(renderNow)render();}
+  function finish(renderNow=true){if(!transition&&!pageTransition)return;if(pageTransition){const p=pageTransition;paintedPage=p.page;pageTransition=null;veil(0);showPage();if(p.routeAfter&&!reduced){transition=p.routeAfter;return;}current=p.pose;}else current=transition.points.at(-1);transition=null;state=destination;announce();if(renderNow)render();}
   function resize(){const r=container.getBoundingClientRect();if(!r.width||!r.height)return;
     const mobile=r.width<650;renderer.setPixelRatio(Math.min(devicePixelRatio,mobile?1.25:1.75));renderer.setSize(r.width,r.height,false);
     poolReflection.visible=!mobile&&setting('reflections')>0;
@@ -127,7 +144,7 @@ export async function createGallery(container,projects,onSelect,onFailure,onOpen
     const artWidth=Math.max(...[...posters.values()].map(p=>1.43*p.mesh.scale.x));
     const artHeight=Math.max(...[...posters.values()].map(p=>1.82*p.mesh.scale.y));
     const span=Math.max(artHeight*r.height/height,artWidth*r.width/width/camera.aspect)*1.24;
-    const pose=exhibitPose(0,projects.length),distance=pose.eye[2]-pose.look[2];
+    const pose=exhibitPose(0,exhibitBays),distance=pose.eye[2]-pose.look[2];
     focusFrame={x:(left+right)/2/r.width,y:(top+bottom)/2/r.height,fov:THREE.MathUtils.radToDeg(2*Math.atan(span/(2*distance)))};
     render();}
   function render(){
@@ -148,14 +165,16 @@ export async function createGallery(container,projects,onSelect,onFailure,onOpen
   }
   function frame(time){raf=0;const dt=Math.max(0,(time-lastTime)/1000);lastTime=time;if(!active||destroyed)return;
     if(transition){transition.elapsed+=dt*speed*Number(container.dataset.speed||1);const t=Math.min(1,transition.elapsed/transition.duration);current=sampleRoute(transition.points,t*t*t*(t*(t*6-15)+10));if(t===1)finish(false);}
+    if(pageTransition){const p=pageTransition;p.elapsed+=dt*speed*setting('speed');const t=Math.min(1,p.elapsed/p.duration),e=t*t*(3-2*t);veil(p.phase==='out'?p.startAlpha+(1-p.startAlpha)*e:1-e);
+      if(t===1){if(p.phase==='out'){if(!p.routeAfter)current=p.pose;paintedPage=p.page;showPage();p.phase='in';p.elapsed=0;veil(1);}else finish(false);}}
     const damping=1-Math.exp(-dt*Number(container.dataset.damping||9));smoothPointer.x+=(pointer.x-smoothPointer.x)*damping;smoothPointer.y+=(pointer.y-smoothPointer.y)*damping;
     smoothOrbit.x+=(orbit.x-smoothOrbit.x)*(reduced?1:damping);smoothOrbit.y+=(orbit.y-smoothOrbit.y)*(reduced?1:damping);
-    render();if(transition||Math.abs(pointer.x-smoothPointer.x)+Math.abs(pointer.y-smoothPointer.y)+Math.abs(orbit.x-smoothOrbit.x)+Math.abs(orbit.y-smoothOrbit.y)>.0001)raf=requestAnimationFrame(frame);
+    render();if(transition||pageTransition||Math.abs(pointer.x-smoothPointer.x)+Math.abs(pointer.y-smoothPointer.y)+Math.abs(orbit.x-smoothOrbit.x)+Math.abs(orbit.y-smoothOrbit.y)>.0001)raf=requestAnimationFrame(frame);
   }
   function wake(){if(active&&!raf&&!destroyed){lastTime=performance.now();raf=requestAnimationFrame(frame);}}
-  function refresh(){for(const p of projects){const item=posters.get(p.id);if(item.version&&item.url===p.image)continue;item.mesh.material.color.set('#ffffff');
+  function refresh(){for(const p of projects){const item=posters.get(p.id);if(item.version&&item.url===p.image)continue;item.mesh.material.color.setScalar(setting('artBrightness'));
     item.url=p.image;const version=++item.version;item.mesh.scale.set(1,1,1);item.mesh.material.map?.dispose();item.mesh.material.map=null;item.mesh.material.needsUpdate=true;
-    if(!p.image){item.mesh.material.color.set('#ffffff');item.mesh.material.map=graphic(p);item.mesh.material.needsUpdate=true;}
+    if(!p.image){item.mesh.material.map=graphic(p);item.mesh.material.needsUpdate=true;}
     else textureLoader.load(p.image,tex=>{if(destroyed||version!==item.version){tex.dispose();return}tex.colorSpace=THREE.SRGBColorSpace;
       const [sx,sy]=containArtwork(tex.image.width,tex.image.height);item.mesh.scale.set(sx,sy,1);
       tex.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());item.mesh.material.map=tex;item.mesh.material.needsUpdate=true;resize();wake();},undefined,()=>{if(destroyed||version!==item.version)return;item.mesh.material.color.set(p.color);wake();});
@@ -183,7 +202,7 @@ export async function createGallery(container,projects,onSelect,onFailure,onOpen
   container.addEventListener('pointermove',onPointerMove);container.addEventListener('pointerdown',onPointerDown);container.addEventListener('pointerup',onPointerUp);container.addEventListener('pointercancel',onCancel);container.addEventListener('pointerleave',onLeave);renderer.domElement.addEventListener('webglcontextlost',onLost);
   const resizeObserver=new ResizeObserver(resize);resizeObserver.observe(container);
   const mutation=new MutationObserver(records=>{if(!records.some(r=>r.oldValue!==container.getAttribute(r.attributeName)))return;updateSurfaces();renderer.toneMappingExposure=(Number(container.dataset.exposure)||1.15)*lighting;if(records.some(r=>r.attributeName==='data-fov'&&r.oldValue!==container.getAttribute(r.attributeName)))resize();wake();});mutation.observe(container,{attributes:true,attributeOldValue:true,attributeFilter:['data-fov','data-parallax','data-speed','data-exposure','data-drag-strength','data-drag-limit','data-damping',...Object.values(defaults).filter(p=>p.attr).map(p=>p.attr[1])]});
-  refresh();resize();
+  showPage();refresh();resize();
   // Warm interior programs/buffers while the loading controls are still disabled.
   // First entry should not pay for uploading surfaces hidden in the exterior view.
   await renderer.compileAsync(world,camera);
@@ -197,14 +216,14 @@ export async function createGallery(container,projects,onSelect,onFailure,onOpen
       else{if(next===selected&&destination==='project')return false;onSelect(next);}
       return true;
     },
-    select(id,move=true){if(!posters.has(id)||!visible.includes(id)||(move&&id===selected&&destination==='project'))return;selected=id;if(move)travel('project',id);else announce();},
+    select(id,move=true){if(!posters.has(id)||!visible.includes(id)||(move&&id===selected&&destination==='project'))return;if(move)travel('project',id);else{selected=id;if(!pageTransition)paintedPage=pageFor(id);showPage();announce();wake();}},
     enter(){if(state==='exterior'||destination==='exterior')travel('hall');else if(visible.length)travel('project',selected);},
     back(){travel(state==='hall'||destination==='hall'?'exterior':'hall');},reset(){if(state!=='exterior')travel('exterior');},
-    filter(ids){visible=ids;for(const [id,p]of posters)p.mesh.visible=ids.includes(id);if(!ids.length&&(state==='project'||destination==='project'))travel('hall');else announce();wake();},
+    filter(ids){visible=ids;showPage();if(!ids.length&&(state==='project'||destination==='project'))travel('hall');else announce();wake();},
     setReducedMotion(value){reduced=value;if(value){smoothOrbit.x=orbit.x;smoothOrbit.y=orbit.y;finish();}wake();},setZoom(value){zoom=value;resize();},
     setActive(value){active=value;if(!active&&raf){cancelAnimationFrame(raf);raf=0}else wake();},
     refreshContent(value){speed=value.cameraSpeed;lighting=value.lighting;renderer.toneMappingExposure=(Number(container.dataset.exposure)||1.15)*lighting;refresh();},refreshLinks(){},
-    inspect(){const mesh=posters.get(selected)?.mesh;const corners=mesh?[-1,1].flatMap(x=>[-1,1].map(y=>new THREE.Vector3(x*1.43/2,y*1.82/2,0).applyMatrix4(mesh.matrixWorld).project(camera))).map(p=>({x:(p.x+1)*viewport.width/2,y:(1-p.y)*viewport.height/2})):[];return{state,destination,selected,camera:[...current.eye],renderCamera:camera.position.toArray(),orbit:{...smoothOrbit},dragging:Boolean(drag),artwork:{corners,repeat:mesh?.material.map?.repeat.toArray(),offset:mesh?.material.map?.offset.toArray()},surfaces:{interiorLight:fill.intensity,galleryLight:architecture?.emissiveIntensity*20,interiorTint:'#'+fill.color.getHexString(),galleryLights:model.userData.bakedGalleryLights,galleryLightMap:Boolean(architecture?.emissiveMap),environment:environmentSource,gravelMaps:Boolean(gravel?.map&&gravel?.normalMap&&gravel?.roughnessMap),occlusion:architecture?.aoMapIntensity,detailMaterials:architectureMaterials.length,occlusionMap:Boolean(architecture?.aoMap),groundTint:gravel?'#'+gravel.color.getHexString():null,ambient:ambient.intensity,sunlight:sun.intensity,reflections:architecture?.envMapIntensity,surfaceTint:architecture?'#'+architecture.color.clone().multiply(new THREE.Color(1/architecture.userData.baseTint.r,1/architecture.userData.baseTint.g,1/architecture.userData.baseTint.b)).getHexString():null,surfaceRelief:architecture?.normalScale.x,surfaceRoughness:architecture?.roughness,glassOpacity:glazing?.opacity,waterRoughness:pool?.roughness,normalMap:Boolean(architecture?.normalMap),roughnessMap:Boolean(architecture?.roughnessMap)},drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,posters:[...posters.values()].filter(p=>p.mesh.material.map).length};},
-    destroy(){destroyed=true;cancelAnimationFrame(raf);resizeObserver.disconnect();mutation.disconnect();container.removeEventListener('pointermove',onPointerMove);container.removeEventListener('pointerdown',onPointerDown);container.removeEventListener('pointerup',onPointerUp);container.removeEventListener('pointerleave',onLeave);container.removeEventListener('pointercancel',onCancel);world.traverse(o=>{o.geometry?.dispose();if(o.material){for(const texture of new Set([o.material.map,o.material.normalMap,o.material.roughnessMap,o.material.metalnessMap,o.material.emissiveMap,o.material.aoMap]))texture?.dispose();o.material.dispose();}});poolReflection.dispose();environment.dispose();renderer.dispose();renderer.domElement.remove();},
+    inspect(){const mesh=posters.get(selected)?.mesh;const corners=mesh?[-1,1].flatMap(x=>[-1,1].map(y=>new THREE.Vector3(x*1.43/2,y*1.82/2,0).applyMatrix4(mesh.matrixWorld).project(camera))).map(p=>({x:(p.x+1)*viewport.width/2,y:(1-p.y)*viewport.height/2})):[];return{state,destination,selected,wallPage:paintedPage,targetWallPage:pageFor(selected),pageTransition:pageTransition?{phase:pageTransition.phase,alpha:pageAlpha}:null,transition:transition?{duration:transition.duration,elapsed:transition.elapsed}:null,wallProjects:[...posters].filter(([,p])=>p.mesh.visible).map(([id])=>id),camera:[...current.eye],renderCamera:camera.position.toArray(),orbit:{...smoothOrbit},dragging:Boolean(drag),artwork:{corners,repeat:mesh?.material.map?.repeat.toArray(),offset:mesh?.material.map?.offset.toArray()},surfaces:{frameTint:frameMaterial?'#'+frameMaterial.color.getHexString():null,frameRoughness:frameMaterial?.roughness,paperRoughness:paper?.roughness,artBrightness:mesh?.material.color.r,paperTint:paper?'#'+paper.color.clone().multiply(new THREE.Color(1/paper.userData.baseTint.r,1/paper.userData.baseTint.g,1/paper.userData.baseTint.b)).multiply(new THREE.Color().setRGB(1/new THREE.Color(container.dataset.surfaceTint??defaults.surfaceTint.default).r,1/new THREE.Color(container.dataset.surfaceTint??defaults.surfaceTint.default).g,1/new THREE.Color(container.dataset.surfaceTint??defaults.surfaceTint.default).b)).getHexString():null,interiorLight:fill.intensity,galleryLight:architecture?.emissiveIntensity*20,interiorTint:'#'+fill.color.getHexString(),galleryLights:model.userData.bakedGalleryLights,galleryLightMap:Boolean(architecture?.emissiveMap),environment:environmentSource,gravelMaps:Boolean(gravel?.map&&gravel?.normalMap&&gravel?.roughnessMap),occlusion:architecture?.aoMapIntensity,detailMaterials:architectureMaterials.length,occlusionMap:Boolean(architecture?.aoMap),groundTint:gravel?'#'+gravel.color.getHexString():null,ambient:ambient.intensity,sunlight:sun.intensity,reflections:architecture?.envMapIntensity,surfaceTint:architecture?'#'+architecture.color.clone().multiply(new THREE.Color(1/architecture.userData.baseTint.r,1/architecture.userData.baseTint.g,1/architecture.userData.baseTint.b)).getHexString():null,surfaceRelief:architecture?.normalScale.x,surfaceRoughness:architecture?.roughness,glassOpacity:glazing?.opacity,waterRoughness:pool?.roughness,normalMap:Boolean(architecture?.normalMap),roughnessMap:Boolean(architecture?.roughnessMap)},drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,posters:[...posters.values()].filter(p=>p.mesh.material.map).length};},
+    destroy(){destroyed=true;cancelAnimationFrame(raf);resizeObserver.disconnect();mutation.disconnect();container.removeEventListener('pointermove',onPointerMove);container.removeEventListener('pointerdown',onPointerDown);container.removeEventListener('pointerup',onPointerUp);container.removeEventListener('pointerleave',onLeave);container.removeEventListener('pointercancel',onCancel);world.traverse(o=>{o.geometry?.dispose();if(o.material){for(const texture of new Set([o.material.map,o.material.normalMap,o.material.roughnessMap,o.material.metalnessMap,o.material.emissiveMap,o.material.aoMap]))texture?.dispose();o.material.dispose();}});poolReflection.dispose();environment.dispose();renderer.dispose();renderer.domElement.remove();pageVeil.remove();},
   };
 }

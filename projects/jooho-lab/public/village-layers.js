@@ -8,7 +8,7 @@ try{const raw=localStorage.getItem(storageKey);if(raw){layerHost.setValues(JSON.
 
 export function initVillageLayerEditor(container){
   const panel=document.createElement('section');panel.className='village-layer-editor';
-  const intro=document.createElement('p');intro.textContent='마을 건물의 위치·라벨·불빛과 7·8번 그림을 조정합니다. 모바일 값은 모바일 화면에서 적용되며, 저장은 이 브라우저에만 적용됩니다.';
+  const intro=document.createElement('p');intro.textContent='마을 건물의 위치·라벨·불빛과 7·8·9번 그림을 조정합니다. 모바일 값은 모바일 화면에서 적용되며, 저장은 이 브라우저에만 적용됩니다.';
   panel.append(intro);
   const select=(label,entries)=>{const wrap=document.createElement('label');wrap.className='editor-field';const text=document.createElement('span');text.textContent=label;const input=document.createElement('select');for(const[value,title]of entries){const option=document.createElement('option');option.value=value;option.textContent=title;input.append(option);}wrap.append(text,input);panel.append(wrap);return input;};
   const layer=select('레이어',manifest.layers.map(l=>[l.id,l.label]));layer.value='house-day-walk';

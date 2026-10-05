@@ -11,7 +11,9 @@ assert.ok(projects.length > 0);
 assert.equal(new Set(projects.map((p) => p.id)).size, projects.length);
 assert.equal(new Set(projects.map(p=>p.number)).size,projects.length,'unique work numbers');
 const {default:houses}=await import(pathToFileURL(resolve(root,'village-houses.manifest.js')));
-for(const p of projects)assert.ok(houses.layers.some(l=>l.id==='house-'+p.id),p.id+': house parameters');
+for(const p of projects.filter(p=>p.id!=='village'))assert.ok(houses.layers.some(l=>l.id==='house-'+p.id),p.id+': house parameters');
+const houseLayers=houses.layers.filter(l=>l.id.startsWith('house-'));
+assert.equal(new Set(houseLayers.map(l=>l.params.x.default)).size,houseLayers.length,'each work has a separate house');
 for (const p of projects) {
   for (const field of ['id', 'title', 'subtitle', 'category', 'description', 'url', 'linkLabel']) assert.ok(typeof p[field] === 'string' && p[field].trim(), `${p.id}: ${field}`);
   assert.equal(new URL(p.url).protocol, 'https:');
@@ -30,6 +32,7 @@ for (const file of await readdir(root)) {
 const html = await readFile(resolve(root, 'index.html'), 'utf8');
 const { projectHref, detailHref } = await import(pathToFileURL(resolve(root, 'navigation.js')));
 const expectedDestinations = {
+  village:'./village.html',
   'potato-designer':'./experiences/potato-designer/',
   chemiforge: 'https://chemiforge.com/',
   sasu: 'https://sasu-alpha.vercel.app/',

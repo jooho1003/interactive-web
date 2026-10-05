@@ -1,0 +1,350 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "house links 9",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "distinct house coordinates",
+      "passed": true,
+      "detail": [
+        -14.4,
+        -8.64,
+        -2.88,
+        2.88,
+        8.82,
+        15.12,
+        21,
+        26.3,
+        33
+      ]
+    },
+    {
+      "name": "visible spire",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "selected spire",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "nameplate clears number buttons spire",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "visible day-walk",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "selected day-walk",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "nameplate clears number buttons day-walk",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "visible potato-designer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "selected potato-designer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "nameplate clears number buttons potato-designer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "visible hanbok-hero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "selected hanbok-hero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "nameplate clears number buttons hanbok-hero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "short drag keeps distance",
+      "passed": true,
+      "detail": {
+        "active": true,
+        "selected": "blog",
+        "goal": -0.8552735854640154,
+        "x": -0.8552735854640154,
+        "frame": 0,
+        "state": "walking",
+        "camera": [
+          -0.8552735854640154,
+          0,
+          1
+        ],
+        "viewHeight": 10.545454545454545,
+        "drawCalls": 1,
+        "bindings": {
+          "zoom": 1,
+          "speed": 1,
+          "damping": 6.5,
+          "parallax": 0.18
+        },
+        "visibility": {
+          "sceneVisible": true,
+          "view": "space",
+          "hidden": false
+        }
+      }
+    },
+    {
+      "name": "long drag moves farther",
+      "passed": true,
+      "detail": {
+        "before": -2.88,
+        "short": {
+          "active": true,
+          "selected": "blog",
+          "goal": -0.8552735854640154,
+          "x": -0.8552735854640154,
+          "frame": 0,
+          "state": "walking",
+          "camera": [
+            -0.8552735854640154,
+            0,
+            1
+          ],
+          "viewHeight": 10.545454545454545,
+          "drawCalls": 1,
+          "bindings": {
+            "zoom": 1,
+            "speed": 1,
+            "damping": 6.5,
+            "parallax": 0.18
+          },
+          "visibility": {
+            "sceneVisible": true,
+            "view": "space",
+            "hidden": false
+          }
+        },
+        "long": {
+          "active": true,
+          "selected": "instatoon",
+          "goal": 9.26836313575205,
+          "x": 9.26836313575205,
+          "frame": 0,
+          "state": "walking",
+          "camera": [
+            9.26836313575205,
+            0,
+            1
+          ],
+          "viewHeight": 10.545454545454545,
+          "drawCalls": 1,
+          "bindings": {
+            "zoom": 1,
+            "speed": 1,
+            "damping": 6.5,
+            "parallax": 0.18
+          },
+          "visibility": {
+            "sceneVisible": true,
+            "view": "space",
+            "hidden": false
+          }
+        }
+      }
+    },
+    {
+      "name": "long drag skips multiple houses",
+      "passed": true,
+      "detail": {
+        "active": true,
+        "selected": "instatoon",
+        "goal": 9.26836313575205,
+        "x": 9.26836313575205,
+        "frame": 0,
+        "state": "walking",
+        "camera": [
+          9.26836313575205,
+          0,
+          1
+        ],
+        "viewHeight": 10.545454545454545,
+        "drawCalls": 1,
+        "bindings": {
+          "zoom": 1,
+          "speed": 1,
+          "damping": 6.5,
+          "parallax": 0.18
+        },
+        "visibility": {
+          "sceneVisible": true,
+          "view": "space",
+          "hidden": false
+        }
+      }
+    },
+    {
+      "name": "released position persists",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "continuous drag advances",
+      "passed": true,
+      "detail": {
+        "active": true,
+        "selected": "spire",
+        "goal": 15.173816966047188,
+        "x": 15.173816966047188,
+        "frame": 0,
+        "state": "walking",
+        "camera": [
+          15.173816966047188,
+          0,
+          1
+        ],
+        "viewHeight": 10.545454545454545,
+        "drawCalls": 1,
+        "bindings": {
+          "zoom": 1,
+          "speed": 1,
+          "damping": 6.5,
+          "parallax": 0.18
+        },
+        "visibility": {
+          "sceneVisible": true,
+          "view": "space",
+          "hidden": false
+        }
+      }
+    },
+    {
+      "name": "reverse drag returns",
+      "passed": true,
+      "detail": {
+        "active": true,
+        "selected": "spire",
+        "goal": 13.823997926037718,
+        "x": 13.823997926037718,
+        "frame": 0,
+        "state": "walking",
+        "camera": [
+          13.823997926037718,
+          0,
+          1
+        ],
+        "viewHeight": 10.545454545454545,
+        "drawCalls": 1,
+        "bindings": {
+          "zoom": 1,
+          "speed": 1,
+          "damping": 6.5,
+          "parallax": 0.18
+        },
+        "visibility": {
+          "sceneVisible": true,
+          "view": "space",
+          "hidden": false
+        }
+      }
+    },
+    {
+      "name": "right edge reaches Seonbi",
+      "passed": true,
+      "detail": {
+        "active": true,
+        "selected": "hanbok-hero",
+        "goal": 32.461636363636366,
+        "x": 32.461636363636366,
+        "frame": 0,
+        "state": "walking",
+        "camera": [
+          32.461636363636366,
+          0,
+          1
+        ],
+        "viewHeight": 10.545454545454545,
+        "drawCalls": 0,
+        "bindings": {
+          "zoom": 1,
+          "speed": 1,
+          "damping": 6.5,
+          "parallax": 0.18
+        },
+        "visibility": {
+          "sceneVisible": true,
+          "view": "space",
+          "hidden": false
+        }
+      }
+    },
+    {
+      "name": "Seonbi remains visible at edge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "reset selection",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "keyboard next",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Home returns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Seonbi destination",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "return selected Seonbi",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "animated entry",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Escape cancels entry",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no JS errors",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "errors": []
+}

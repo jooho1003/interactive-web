@@ -18,7 +18,7 @@ Project link precedence is currently spread over three places (registry `url`/`l
 
 ## Portfolio gallery
 
-The home page loads an actual Blender-authored pavilion (`assets/lab-pavilion.glb`) with a perspective Three.js camera. Enter the building, choose one of seven exhibits, return to the studio or exterior. The thumbnail rail selects camera destinations; project links open their existing destinations directly. Projects without images get generated typographic exhibit posters. The list view, owner editor, shared R2 content, and uploads remain available.
+The home page loads an actual Blender-authored pavilion (`assets/lab-pavilion.glb`) with a perspective Three.js camera. Enter the building, choose any work, return to the studio or exterior. All ten works use the same selection and camera flow; registry-order pages reuse the seven baked bays. The thumbnail rail selects camera destinations; project links open their existing destinations directly. Projects without images get generated typographic exhibit posters. The list view, owner editor, shared R2 content, and uploads remain available.
 
 ## Spatial scene (2026-10-01)
 
@@ -64,7 +64,7 @@ The village has **8 layers / 42 parameters**, walking/entering scene overrides a
 - Hub and project pages use locally hosted [SUIT Variable](https://github.com/sun-typeface/SUIT), distributed under OFL-1.1; license at `public/assets/SUIT-LICENSE.txt`. Embedded standalone experiences keep their own art direction.
 - Viewport-fit framing sets the minimum field of view while inspecting work, so camera preferences cannot crop the image. Movement release and settings controls remain available independently of presentation layers.
 - Seven curated exhibition artworks in `public/assets/exhibit-*.webp` (1,354,226 bytes total) are shared by the scene, rail, list and detail pages. Six reference-guided image_gen key visuals plus one public Instagram cover replace full-interface screenshots. References come from actual production sites; Day Walk opens the user-specified Vercel URL. Blog and Hansul Toon replace the two projects without production URLs. [Sources and exact prompts](../../prompts/jooho-lab.md#20--exhibition-art--운영-작품의-전시-키-비주얼); source art: `art/exhibition-20261003/`. Owner image/link overrides retain priority.
-- 2026-10-03: an eighth work, **선비 (hanbok-hero)**, is included as a standalone experience (`public/experiences/hanbok-hero/`, `include:experience hanbok-hero`) with `work-hanbok-hero.webp`. The pavilion bakes exactly seven bays (`exhibitBays` in `spatial-route.js`), so only the first seven works hang on the 3D wall; later works appear in the rail, list and detail pages, and selecting them updates the panel without moving the camera (Enter opens the work).
+- 2026-10-03: **선비 (hanbok-hero)** is included as a standalone experience (`public/experiences/hanbok-hero/`, `include:experience hanbok-hero`) with `work-hanbok-hero.webp`. Since 2026-10-05, POTATO·선비·작업 동네 also hang on the 3D wall: later registry pages reuse the seven baked bays (`exhibitBays` in `spatial-route.js`), keeping original frames, lights and safe camera coordinates. Only the current page and matching search results are visible. Work 10 **작업 동네** opens `village.html` and uses the original panorama as its cover; the village itself keeps nine physical destinations. All three use the existing rail/list/detail/editor controls. Transparent cover images retain their alpha on the exhibit backboard. [QA](QA-spatial.md).
 
 ### Photographic surface refinement (2026-10-02)
 CC0 photo material sources and a 1K HDRI are documented in `../../art/materials/sources.json`. Six architectural PBR materials keep meter-scale texture detail on UV1; a separate UV0 atlas carries contact occlusion and a small indirect emission contribution. Ground uses photographic color/normal/roughness. Stage exposes ground tint and contact shadow strength (7 layers, 53 parameters). This remains real interactive 3D, not a rendered film.
@@ -88,3 +88,21 @@ The Blender master adds paper mounts/thin bronze frames, woven upholstery and cu
 하루 산책과 POTATO 집을 기존 마을 오른쪽에 `assets/village-extension-v1.png`로 연결했다. 건물 위치·클릭 영역·라벨·불빛과 확장 그림은 `village-houses.manifest.js`의 10개 레이어 / 99개 파라미터로 조정한다. 공용 동네 연출은 `village.layers.manifest.js`의 8개 레이어 / 42개 파라미터, 전시관은 `layers.manifest.js`의 7개 레이어 / 57개 파라미터를 유지한다. 동네의 설정 → 전시 편집 → 마을 레이어에서 조정·되돌리기·브라우저 저장·내보내기를 제공한다. 저장 실패 시 적용 중인 값은 유지된다.
 
 `pnpm build:hub:potato`는 Potato 빌드, 체험 스냅샷/표지 복사, 허브 검사/빌드를 실행한다. Potato/선비 체험의 복귀 버튼은 이전에 연 전시관 또는 동네로 돌아간다. 생성 프롬프트는 [카드 22](../../prompts/jooho-lab.md#22--하루-산책potato-건물-확장-village-extension-v1), 통합 검수는 [QA-village.md](QA-village.md)에 기록한다.
+
+## 작업 동네 집·이동 보완 (2026-10-05)
+
+선비를 탑 앞길에서 분리해 `assets/village-seonbi-v1.png`의 독립 한옥으로 연결했다. 이제 자기 링크인 작업 동네를 제외한 작품9개에 서로 다른 집이 있다. 집·확장 그림은 11레이어/108파라미터, 공용 동네는 8레이어/43파라미터다. 새 그림의 이미지·위치·크기·밝기·연결부 블렌드와 안내 버튼 아래 여백(`controls.footerBottom`)을 설정에서 조절한다. 생성 원문은 [카드23](../../prompts/jooho-lab.md#23--선비-독립-한옥--village-seonbi-v1).
+
+드래그는 실제 시작 카메라에서 입력 거리만큼 이동하며 손을 놓은 위치를 유지한다. 가장 가까운 작품을 선택하고 번호·방향키는 기존 작품 안내를 사용한다. 첫/마지막 집을 지나 빈 공간만 보이지 않도록 경계를 제한한다. 모바일에서는 이름표와 움직임 버튼을 분리해 실제 입장을 막지 않는다.
+
+로컬 미리보기 서버(8879)를 실행한 뒤 저장소 루트에서 `python projects/jooho-lab/scripts/check-village-movement.py`로 거리·연속 드래그·입장/복귀를, `python projects/jooho-lab/scripts/check-village-touch.py`로 실제 CDP 터치·세로 스크롤 및 기존 마을 QA를 확인한다. Aside가 응답하지 않을 때 사용하는 헤드리스 검수 스크립트다. 결과·제약은 [QA-village.md](QA-village.md).
+
+2026-10-05 전시관 시각 개선 검토: [POTATO 제작 방식과 비교한 기록](../../docs/03-analysis/jooholab-potato-visual-review.md). 현재 코드의 즉시 페이지 그림 교체와 거리와 무관한 이동 시간을 확인했고, 실제 화면에서 액자/받침의 시각적 무게를 관찰했다. 3D 동선을 유지하면서 전환·조명/액자·선택된 캐릭터의 작은 깊이 반응을 순서대로 개선하는 제안이다. 구현/품질 검증은 아직 수행하지 않았다.
+
+## 전시관 이동·전시 마감 개선 (2026-10-05)
+
+검토1·2를 구현했다. 같은 페이지 이동은 실제 거리에 비례하고 최소/최대 시간을 둔다. 페이지가 바뀌면 설정된 색의 가림막 안에서 그림을 교체한 뒤 나타낸다. 작업실/외관의 페이지 선택은 기존 문 통과·접근 경로를 이어가며, 재선택·뒤로 가기·초기화·동작 줄이기와 목록 전환을 처리한다.
+
+큰 목재판을 없애고 종이 받침·18mm 액자·얇은 선반으로 바꿨다. 새 종이는 일곱 번째 건물 재질이며 조명·접촉 그림자를 다시 구웠다. 설정은 **7레이어/66파라미터**: 이동 최소/최대 시간, 페이지 전환 시간/색, 액자·종이 색/거칠기, 작품 밝기를 추가했다. 치수와 조명 배치는 모델 재빌드 값으로 기록한다. 캐릭터 반응(검토3)은 이번 범위에 포함하지 않는다.
+
+절차/원본은 [에셋 카드24](../../prompts/jooho-lab.md#24--lab-light-gallery--가벼운-액자와-전시-마감), 검증은 [QA-spatial](QA-spatial.md). Aside 검사가 지연될 때 로컬8879 미리보기에서 `python scripts/check-natural-gallery.py`로 같은 QA를 실행하고 `art/gallery-natural-refinement`에 결과와 세 화면 크기 캡처를 저장한다.

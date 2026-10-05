@@ -1,0 +1,14 @@
+{
+  "common": {
+    "total": 43,
+    "passed": 43,
+    "failed": [],
+    "conditional": 0
+  },
+  "buildings": {
+    "total": 108,
+    "passed": 108,
+    "failed": [],
+    "conditional": 0
+  }
+}

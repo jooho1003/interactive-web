@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "fullMotionTouchDrag": {
+    "before": {
+      "active": true,
+      "selected": "blog",
+      "goal": -2.88,
+      "x": -2.8804647260223395,
+      "frame": 121,
+      "state": "walking",
+      "camera": [
+        -2.8804647260223395,
+        -0.2462085018649371,
+        0.9985781881993514
+      ],
+      "viewHeight": 11.272727272727272,
+      "drawCalls": 1,
+      "bindings": {
+        "zoom": 1,
+        "speed": 1,
+        "damping": 6.5,
+        "parallax": 0.18
+      },
+      "visibility": {
+        "sceneVisible": true,
+        "view": "space",
+        "hidden": false
+      }
+    },
+    "after": {
+      "active": true,
+      "selected": "dawn-store",
+      "goal": 1.19336206848772,
+      "x": 1.1933388653228028,
+      "frame": 260,
+      "state": "walking",
+      "camera": [
+        1.1933388653228028,
+        -0.24885495192056814,
+        0.999570606970213
+      ],
+      "viewHeight": 11.272727272727272,
+      "drawCalls": 1,
+      "bindings": {
+        "zoom": 1,
+        "speed": 1,
+        "damping": 6.5,
+        "parallax": 0.18
+      },
+      "visibility": {
+        "sceneVisible": true,
+        "view": "space",
+        "hidden": false
+      }
+    }
+  },
+  "verticalScrollY": 245
+}

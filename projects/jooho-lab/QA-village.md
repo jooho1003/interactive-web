@@ -47,3 +47,29 @@ bkit Plan → Design → Do → Check → Act. 계획/설계: `docs/01-plan/feat
 Day Walk 운영 주소 클릭은 테스트에서 로컬 스냅샷으로 응답을 대체해 주소·동작을 확인했다. 해당 검수는 운영 서버의 가용성 검사가 아니다. 실제 모바일 GPU, 운영 R2/인증, 온라인 배포와 claude.ai 보관함 재게시 미실행. 기존 새벽 앱의 unavailable umbrella 분기 경고 1개는 남아 있다. 이전 검수 결과/실패 이력은 위 기록대로 보존한다.
 
 최종 재검수: 동네 9목적지, 7·8번 실제 건물 클릭→입장/취소/포커스 복구/복귀, 320px·동작 줄이기·좌우키/Enter, 집 너비 실투영 변화·되돌리기·저장/새로고침·저장 실패 시 값 유지·빈 검색/복원 PASS. 최종 house probe **99/99**, 오류 0. 로컬 검수/캡처는 Git 제외 `.site-publish/check-merged-village.cjs`, `check-merged-potato.cjs`, `check-merged-contracts.cjs`에 보존한다.
+
+## 2026-10-05 · 독립 집9채와 거리 기반 드래그
+
+bkit Plan→Design→Do→Check→Act→QA→Report. 계획/설계/분석/보고는 `docs/*/village-houses-movement.*.md`. 실제 참고: docs/00·10·14, 이 앱 README/QA, 기존 확장 프롬프트 카드22, references의 bruno-simon·clarakirkpatrick. 기존 파노라마/DOM 링크/키보드·목록 대체를 재사용하고 실제 건물 모델이나 운전 물리는 적용하지 않았다.
+
+**확인된 원인과 해결**
+
+- 작품 목적지는9개지만 실제 집은8채였다. 선비가 종말의 탑 x15.12를 공유하고 두 이름표를 번갈아 숨겼다. 새 한옥 패널 `seonbi-extension`과 독립 `house-hanbok-hero`(x33/top.14/bottom.76/width4.2)로9채를 만들고 이름표 교대 조건을 제거했다.
+- pointerup은 드래그 길이와 무관하게 다음/이전 작품 하나만 선택했다. 실제 시작 카메라 x에서 화면 이동을 월드 거리로 환산하고 최종 위치를 유지한다. 번호/설명은 가장 가까운 작품에 맞춘다. 반복·역방향 드래그도 이어진다.
+- 끝까지 끌면 모바일에서 한옥을 지나 정원만 보였다. 그림 끝과 마지막 집 중심 중 안쪽으로 카메라 끝 경계를 제한해 목적지를 계속 볼 수 있게 했다.
+- 모바일의 움직임 버튼이 이름표를 가려 실제 클릭을 막았다. 공용 `controls.footerBottom`(데스크톱70px/모바일220px)을 추가해 둘을 분리했다. 오래된 QA의 선비 제외/7개 목적지/Day Walk 산책길 가정을 현재9채와 안전한 주소 비교로 갱신했다.
+
+**실제 검증**
+
+| 검사 | 결과·근거 |
+|---|---|
+| Aside | 기존 마을/POTATO 실제 화면 및 새 선비 링크 확인. 최종 로컬 탭 `village.html#project=hanbok-hero` 갱신 |
+| 거리 이동·입장/복귀 | 1440×900 31항목, 390×844 30항목, 320×700 30항목 PASS. 짧은/긴 드래그·여러 집 이동·종료 위치 유지·연속/역방향·오른쪽 끝·초기화·방향키/Home·실제 선비 체험과 뒤로 복귀·입장/Escape·오버플로/JS 오류 없음 |
+| full motion 터치 | CDP의 실제 touchStart/Move/End: 390px 수평 드래그 거리·종료 위치 유지·세로 페이지 스크롤 PASS (`art/village-houses-touch-qa.json`) |
+| 기존 동네 QA | 데스크톱/390px/320px 각각75항목 PASS. 작품9개 실제 선택/링크/DOM 이름표/컨트롤 비겹침, 빈 결과/복구, 동작 줄이기, 레이어 설정/포커스, WebGL 손실 후 목록 대체 포함 (`art/village-houses-*-full-qa.json`) |
+| layer-kit | 공용8레이어/43파라미터, 집·확장11레이어/108파라미터. lint 오류0. 데스크톱·모바일 모두43/43+108/108 probe PASS (`art/village-houses-*-probe.json`) |
+| 빌드·보관함 | 앱 check/build PASS. prompts:build·references:build 완료. 새 원문·설정·후보 선택은 prompts/jooho-lab 카드23 |
+
+검수 스크립트: `scripts/check-village-movement.py`, `scripts/check-village-touch.py`(저장소 루트에서 실행, 로컬8879 서버 필요). 스크린샷 `art/village-houses-{desktop,mobile,narrow}.png`는 실제 브라우저 캡처다.
+
+**재사용 조건·확인 한계** — 작품 링크 수만 검사하면 실제 집 누락을 놓친다. 기본 집 좌표의 중복 회귀 검사와 실제 이름표 클릭을 함께 확인한다. 제스처는 선택 인덱스보다 실제 카메라에서 시작해야 멈춘 위치가 유지된다. 에셋 경계의 장식 여백은 마지막 목적지를 지나게 할 수 있으므로 집 중심도 고려한다. 공용 매니페스트 probe에는 실제 CSS 파일을 stylesheets로 선언한다. Aside의 갱신 캡처는 CDP 시간 초과로 실패해 사전 안내 후 헤드리스 Playwright를 사용했다. 실제 휴대폰 하드웨어와 수정 후 운영 사이트는 미확인. Node22.16.0에서 앱 check/build는 통과했으며 저장소 요구 Node>=24 경고는 남아 있다. 기존 저장 레이어의 사용자 지정 좌표는 강제로 초기화하지 않았다. 프롬프트/레퍼런스 웹 보관함은 로컬 생성물을 갱신했다.

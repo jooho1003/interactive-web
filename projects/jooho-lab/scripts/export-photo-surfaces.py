@@ -12,6 +12,7 @@ CONFIG={
     'Travertine':('honed_stone',2,(.82,.77,.68)),
     'Travertine light':('honed_stone',2,(.92,.87,.77)),
     'Linen':('woven_linen',.8,(.7,.64,.53)),
+    'Gallery paper':('clean_limestone',.8,(.98,.97,.93)),
 }
 
 def denoise_map(source_image, root, filename, data=False):

@@ -13,6 +13,7 @@
 .entry-veil{visibility:var(--L-entry-visible);opacity:var(--L-entry-opacity);background:color-mix(in srgb,var(--L-entry-color) calc(var(--entry-progress,0)*98%),transparent)}
 .gallery-pagination,.world-arrow,.gallery-footer,.collection-scroll,.gallery-toolbar{visibility:var(--L-controls-visible);opacity:var(--L-controls-opacity)}
 .gallery-pagination{bottom:var(--L-controls-bottom)}
+.gallery-footer{bottom:var(--L-controls-footerBottom)}
 .gallery-pagination button{width:var(--L-controls-size);height:var(--L-controls-size)}
 .gallery-pagination button[aria-pressed=true]{background:var(--L-controls-color)}
 .site-header .brand,.site-header nav>a,#about-open,.index-section,.site-footer,#about-dialog{visibility:var(--L-shell-visible);opacity:var(--L-shell-opacity)}
@@ -33,7 +34,7 @@ body,.index-section,.site-footer{background:var(--L-shell-paper);color:var(--L-s
 .layer-field{display:grid;grid-template-columns:1fr 1fr 45px;gap:12px;align-items:center;margin:12px 0;font-size:.85rem}
 .layer-field input{min-width:0;width:100%}
 .site-header nav>a[href="./"]{display:block}
-@media(max-width:620px){.site-header nav{gap:10px}.gallery-toolbar{width:max-content;max-width:94%;justify-content:center}.village-return{font-size:.75rem;padding:8px 10px}.layer-field{grid-template-columns:1fr 1fr 32px}.gallery-footer{bottom:150px}}
+@media(max-width:620px){.site-header nav{gap:10px}.gallery-toolbar{width:max-content;max-width:94%;justify-content:center}.village-return{font-size:.75rem;padding:8px 10px}.layer-field{grid-template-columns:1fr 1fr 32px}}
 
 /* layer-fixed: Shared label controls compose with per-house settings across manifests. */
 :root{--village-label-size:var(--L-labels-size);--village-label-opacity:var(--L-labels-opacity)}

@@ -11,6 +11,8 @@ body:has(.exhibition:not([data-stage=exterior])) .site-header{color:var(--L-cont
 .space{cursor:default;touch-action:pan-y}
 .space:after{position:absolute;inset:0;height:100%;content:'';pointer-events:none;background:linear-gradient(90deg,#111c236b,transparent 55%),linear-gradient(0deg,#0c171fe8,transparent 37%),linear-gradient(180deg,#17232b88,transparent 28%);opacity:var(--L-landscape-shade);z-index:1}
 #scene{opacity:var(--L-stage-opacity);visibility:var(--L-stage-visible)}
+/* layer-fixed: veil fills the same camera surface; alpha is transition progress. */
+.gallery-page-veil{position:absolute;inset:0;pointer-events:none;background:var(--gallery-page-tint);opacity:var(--gallery-page-alpha,0);z-index:1}
 #lab-landscape{position:absolute;inset:0;width:100%;height:var(--L-landscape-height);object-fit:cover;opacity:var(--L-landscape-opacity);visibility:var(--L-landscape-visible);filter:brightness(var(--L-landscape-brightness))}
 .intro{left:var(--L-intro-x);top:var(--L-intro-y);transform:none;text-align:left;width:480px;max-width:88%;color:var(--L-intro-color);opacity:var(--L-intro-opacity);visibility:var(--L-intro-visible)}
 .intro .eyebrow{color:inherit;font-size:.68rem;font-weight:400;letter-spacing:.16em;margin-bottom:24px}

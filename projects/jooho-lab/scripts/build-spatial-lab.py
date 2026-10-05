@@ -44,6 +44,8 @@ green=material('Olive foliage',(.105,.16,.085),.9)
 green2=material('Olive leaf silver',(.19,.23,.14),.9)
 earth=material('Charcoal gravel',(.11,.12,.105),1)
 brass=material('Brushed brass',(.46,.3,.13),.28,.75)
+paper=material('Gallery paper',(.98,.97,.93),.92)
+frame=material('Gallery champagne frame',(.63,.58,.48),.5,.25)
 
 def pos(x,y,z):return (x,-z,y)
 def box(name, xyz, size, mat, bevel=0):
@@ -110,12 +112,11 @@ box('Rear cove',(0,3.98,-6.75),(16,.04,.08),light)
 # Seven bays receive live project artwork in Three.js, never baked project text.
 for i in range(7):
     x=(i-3)*2.15
-    box('Exhibit backing',(x,2.22,-6.73),(1.75,2.65,.15),wood,.035)
-    box('Exhibit paper mount',(x,2.3,-6.62),(1.51,1.91,.04),plaster,.006)
+    box('Exhibit paper mount',(x,2.3,-6.79),(1.51,1.91,.05),paper,.004)
     for side in [-1,1]:
-        box('Fine exhibit frame',(x+side*.766,2.3,-6.625),(.014,1.94,.045),brass,.003)
-        box('Fine exhibit frame',(x,2.3+side*.962,-6.625),(1.546,.014,.045),brass,.003)
-    box('Exhibit shelf',(x,.77,-6.32),(1.8,.12,.72),stone,.035)
+        box('Fine exhibit frame',(x+side*.766,2.3,-6.76),(.018,1.94,.036),frame,.003)
+        box('Fine exhibit frame',(x,2.3+side*.962,-6.76),(1.546,.018,.036),frame,.003)
+    box('Exhibit shelf',(x,1.23,-6.71),(1.62,.055,.26),stone,.012)
     pole('Gallery spotlight stem',(x,4.55,-5.7),(x,4.3,-5.7),.035,dark)
     pole('Gallery spotlight',(x,4.3,-5.7),(x,4.13,-5.95),.10,dark)
 
@@ -198,8 +199,8 @@ for args in [(-10,4,4.8),(10,3,5.2),(-12,-5,6),(12,-5,5.6),(-7.8,-1.8,2.7)]:tree
 
 # Clean seeded stone maps and CC0 photographed oak; provenance is in prompts.
 LIBRARY=ROOT.parents[1]/'art'/'materials'
-architectural=[stone,plaster,wood,floor,floor2,fabric]
-for mat,asset,meters,tint in [(stone,'clean_limestone',2,(.68,.61,.51,1)),(plaster,'clean_limestone',2,(.92,.89,.81,1)),(wood,'white_oak_veneer',2,(.36,.22,.12,1)),(floor,'honed_stone',2,(.82,.77,.68,1)),(floor2,'honed_stone',2,(.92,.87,.77,1)),(fabric,'woven_linen',.8,(.7,.64,.53,1))]:
+architectural=[stone,plaster,wood,floor,floor2,fabric,paper]
+for mat,asset,meters,tint in [(stone,'clean_limestone',2,(.68,.61,.51,1)),(plaster,'clean_limestone',2,(.92,.89,.81,1)),(wood,'white_oak_veneer',2,(.36,.22,.12,1)),(floor,'honed_stone',2,(.82,.77,.68,1)),(floor2,'honed_stone',2,(.92,.87,.77,1)),(fabric,'woven_linen',.8,(.7,.64,.53,1)),(paper,'clean_limestone',.8,(.98,.97,.93,1))]:
     nodes=mat.node_tree.nodes;links=mat.node_tree.links;p=nodes.get('Principled BSDF')
     coord=nodes.new('ShaderNodeTexCoord');mapping=nodes.new('ShaderNodeVectorMath');mapping.operation='SCALE';mapping.inputs['Scale'].default_value=1/meters
     links.new(coord.outputs['Object'],mapping.inputs[0])

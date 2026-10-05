@@ -903,6 +903,62 @@
       ]
     },
     {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--23--선비-독립-한옥--village-seonbi-v1",
+      "title": "23 · 선비 독립 한옥 — village-seonbi-v1",
+      "status": "ok",
+      "image": "projects/jooho-lab/public/assets/village-seonbi-v1.png",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/village-seonbi-v1.png · 1254×1254 · 2,433,251B · 불투명 PNG",
+        "쓰이는 곳": "작업 동네 오른쪽 끝, 이미지 레이어 seonbi-extension; 링크·이름표·불빛 house-hanbok-hero",
+        "도구·모드": "내장 image_gen · 기존 확장 패널의 재질/접합을 참조한 새 그림 · 2026-10-05",
+        "참조 이미지": "projects/jooho-lab/public/assets/village-extension-v1.png",
+        "설정": "정사각형, 후보1개, transparent_background=false, 후처리 없음"
+      },
+      "prompts": [
+        {
+          "label": "프롬프트 원문 그대로",
+          "lang": "text",
+          "prepend": null,
+          "text": "Create a seamless RIGHT-HAND EXTENSION panel for the supplied miniature village panorama panel. Use the supplied image only as a style, sky-color, ground-height and edge-continuity reference; do not repeat its two buildings. OUTPUT: one square illustration with EXACTLY ONE new full building, a welcoming Korean hanok scholar's house for the 'Seonbi' project. Preserve the reference's premium handcrafted 3D miniature clay/stone rendering, daylight, clear pastel blue sky, warm sandy stone plaza, detailed foliage, miniature streetlamps, front-facing slightly elevated orthographic view, scale and sharpness. Match vertical arrangement: open sky above the roof, building door threshold at 76% from top, sandy plaza across lower 24%. House entrance centered at 40% image width. One charming two-level Korean-inspired scholar's house, dark curved tiled roof with gently upturned eaves, warm ivory plaster, dark wooden beams, paper lattice windows, one clearly visible central wooden entrance, elegant round black gat scholar hat ornament above entrance, a small brush and inkstone display in a lit window. No person. Keep roof and entire house fully inside image. Rightmost 25% is quiet open garden, low greenery, sky and plaza, providing breathing room beyond the final house. Both edges have unobtrusive blue sky and sandy plaza/cypress foliage for joining to existing panel. No additional houses, no tower, no clock cottage, no potato atelier. Absolutely no readable text, letters, numbers, logos, UI, watermarks, humans or robots. This is a new square panorama extension asset, not a screenshot or mockup."
+        }
+      ]
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--24--lab-light-gallery--가벼운-액자와-전시-마감",
+      "title": "24 · lab-light-gallery — 가벼운 액자와 전시 마감",
+      "status": "ok",
+      "image": "projects/jooho-lab/art/gallery-natural-refinement/desktop-day-walk.png",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/lab-pavilion.glb · 4,631,904B, packed 원본 art/lab-pavilion.blend, 조명/AO art/lab-gallery-light.png·art/lab-occlusion.png 각각2048²",
+        "쓰이는 곳": "전시관 실제3D 모델, 레이어 stage",
+        "도구·모드": "Blender4.5 · 기존 절차 모델 수정/재베이크/GLB export · 2026-10-05",
+        "참조 이미지": "POTATO 제작 방식과 기존 전시관 화면/모델. AI 이미지 참조 생성은 하지 않음",
+        "설정": "기존7칸 유지. 종이1.51×1.91m, 프레임18mm, 선반1.62×.055×.26m, 그림z=-6.75. Cycles 조명32samples/AO64samples·거리.8m·denoise, CPU4threads. detail UV1, light/AO UV0",
+        "후보/원본": "큰 목재판·두꺼운 선반을 이번 수정으로 교체. 이전 GLB/Blender는 art/gallery-natural-refinement/lab-pavilion-before.* 보존",
+        "프롬프트": "해당 없음 — 새 AI 생성이 아닌 Blender 절차 제작. 사용자 요청 원문과 재현 명령은 아래"
+      },
+      "prompts": [
+        {
+          "label": "제작 요청 원문 그대로",
+          "lang": "text",
+          "prepend": null,
+          "text": "1번이랑 2번 진행하자."
+        },
+        {
+          "label": null,
+          "lang": "powershell",
+          "prepend": null,
+          "text": "& 'C:/Program Files/Blender Foundation/Blender 4.5/blender.exe' --background --threads 4 --python scripts/build-spatial-lab.py"
+        }
+      ]
+    },
+    {
       "app": "hanbok-hero",
       "appTitle": "한복 히어로",
       "id": "hanbok-hero--01--정면-기준-컷-hanbok-still-",

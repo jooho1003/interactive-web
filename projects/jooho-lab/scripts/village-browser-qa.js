@@ -16,21 +16,21 @@ try{
   check('no pavilion request',!performance.getEntriesByType('resource').some(r=>/lab-pavilion|spatial-scene|lab-landscape/.test(r.name)));
   check('all numbered stops',$('#gallery-pagination').children.length===projects.length);
   check('return to exhibition',$('.village-return').getAttribute('href')==='./');
-  for(const project of projects.slice(0,7)){
+  for(const project of projects.filter(p=>p.id!=='village')){
     click(`#gallery-pagination [data-id="${project.id}"]`);
     await wait(()=>{const link=$(`[data-world-project="${project.id}"]`),box=link.getBoundingClientRect();return !link.hidden&&link.getAttribute('aria-current')==='true'&&box.right>0&&box.left<innerWidth});
     check('select '+project.id,inspectScene().selected===project.id);
     const link=$(`[data-world-project="${project.id}"]`),box=link.getBoundingClientRect(),space=$('#space').getBoundingClientRect();
     check('visible stop '+project.id,!link.hidden&&box.width>0&&box.right>space.left&&box.left<space.right);
-    check('operating destination '+project.id,link.href===(readPreferences().links[project.id]||project.liveUrl));
+    check('operating destination '+project.id,link.href===new URL(readPreferences().links[project.id]||project.liveUrl,location.href).href);
     check('DOM name '+project.id,link.getAttribute('aria-label').includes(project.title));
     const plate=link.querySelector('.world-label').getBoundingClientRect();
-    check('nameplate clears controls '+project.id,plate.bottom<$('.gallery-footer').getBoundingClientRect().top&&plate.bottom<$('#gallery-pagination').getBoundingClientRect().top,JSON.stringify({plate:plate.toJSON(),footer:$('.gallery-footer').getBoundingClientRect().toJSON()}));
+    const footer=$('.gallery-footer').getBoundingClientRect();
+    check('nameplate clears controls '+project.id,(plate.bottom<footer.top||plate.top>footer.bottom)&&plate.bottom<$('#gallery-pagination').getBoundingClientRect().top,JSON.stringify({plate:plate.toJSON(),footer:footer.toJSON()}));
   }
   click('#gallery-pagination [data-id="hanbok-hero"]');
-  check('eighth work remains accessible',!$('[data-world-project="hanbok-hero"]')&&$('#project-detail a').getAttribute('href')==='./experiences/hanbok-hero/');
-  check('eighth work keeps finite camera',inspectScene().camera.every(Number.isFinite));
-  check('Day Walk path marked',$('[data-world-project="day-walk"]').getAttribute('aria-label').includes('산책길'));
+  check('Seonbi separate house',Number($('[data-world-project="hanbok-hero"]').dataset.houseX)!==Number($('[data-world-project="spire"]').dataset.houseX));
+  check('Seonbi finite camera',inspectScene().camera.every(Number.isFinite));
   click('#reset-camera');await wait(()=>inspectScene().selected==='sasu');check('reset to original selection',inspectScene().selected==='sasu');
   $('#space').focus();$('#space').dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true}));check('keyboard next',inspectScene().selected==='blog');
   $('#space').dispatchEvent(new KeyboardEvent('keydown',{key:'Home',bubbles:true}));check('keyboard home',inspectScene().selected==='sasu');
@@ -57,8 +57,12 @@ try{
   const probes=await probe(layerHost);
   $('.entry-veil').hidden=true;
   $('.entry-veil').style.setProperty('--entry-progress','0');
-  check('all parameters probed',probes.total===42);
-  check('all layer bindings pass',probes.passed===42,JSON.stringify(probes));
+  check('all parameters probed',probes.total===43);
+  check('all layer bindings pass',probes.passed===43,JSON.stringify(probes));
+  const {layerHost:houses}=await import('/village-layers.js');
+  const houseProbes=await probe(houses);
+  check('all house parameters probed',houseProbes.total===108);
+  check('all house bindings pass',houseProbes.passed===108,JSON.stringify(houseProbes));
   layerHost.setValues(setValue(savedLayers,'all','base','shell','visible',false));check('settings survives hidden shell',getComputedStyle($('#settings-open')).display!=='none');layerHost.setValues(savedLayers);
   click('#settings-open');click('.layer-launch');check('layer panel opens',$('.layers-dialog').open);
   $('.layers-dialog').close();await wait(()=>document.activeElement===$('#settings-open'));check('layer panel focus restores',document.activeElement===$('#settings-open'));

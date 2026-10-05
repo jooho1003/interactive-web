@@ -5,7 +5,7 @@
   "scripts": {
     "build": "node scripts/build-village-layers.mjs && node scripts/build-museum.mjs",
     "validate": "node scripts/validate.mjs",
-    "check": "node scripts/validate.mjs && node scripts/build-village-layers.mjs --check",
+    "check": "node --test scripts/transition.test.mjs && node scripts/validate.mjs && node scripts/build-village-layers.mjs --check",
     "include:experience": "node scripts/include-experience.mjs"
   }
 }

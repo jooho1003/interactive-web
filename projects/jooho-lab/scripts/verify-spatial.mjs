@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {exterior,hall,exhibitPose,routeTo,sampleRoute,containArtwork,nextStop,cameraInputEnvelope} from '../public/spatial-route.js';
+import {exterior,hall,exhibitPose,exhibitX,exhibitBays,exhibitSlot,exhibitPage,routeTo,sampleRoute,containArtwork,nextStop,cameraInputEnvelope} from '../public/spatial-route.js';
+import {projects} from '../public/projects.js';
 import manifest from '../public/layers.manifest.js';
 import {lint} from '../../../packages/layer-kit/src/lint.js';
 import {emptyValues,setValue,resolve,validateValues} from '../../../packages/layer-kit/src/index.js';
@@ -16,12 +17,17 @@ function checkRoute(start,destination,end){
     samples++;
   }return points;
 }
-for(let i=0;i<7;i++){
-  const pose=exhibitPose(i,7);const points=checkRoute(exterior,'project',pose);checkRoute(pose,'exterior');checkRoute(pose,'hall');
-  for(const progress of [.2,.45,.65,.8]){const interrupted=sampleRoute(points,progress);checkRoute(interrupted,'project',exhibitPose(6-i,7));checkRoute(interrupted,'exterior');}
+for(let i=0;i<projects.length;i++){
+  const slot=exhibitSlot(i),page=exhibitPage(i);
+  assert.ok(slot>=0&&slot<exhibitBays);
+  assert.equal(page*exhibitBays+slot,i,'every project maps to one page and baked slot');
+  const pose=exhibitPose(slot,exhibitBays);
+  assert.equal(pose.look[0],exhibitX(slot,exhibitBays),'art and camera align to baked bay');
+  const points=checkRoute(exterior,'project',pose);checkRoute(pose,'exterior');checkRoute(pose,'hall');
+  for(const progress of [.2,.45,.65,.8]){const interrupted=sampleRoute(points,progress);checkRoute(interrupted,'project',exhibitPose(exhibitSlot(projects.length-1-i),exhibitBays));checkRoute(interrupted,'exterior');}
 }
-for(let i=0;i<6;i++)for(const direction of [-1,1]){
-  const a=exhibitPose(direction===1?i:i+1,7),b=exhibitPose(direction===1?i+1:i,7),path=routeTo(a,'project',b);
+for(let i=0;i<projects.length-1;i++)for(const direction of [-1,1]){
+  const a=exhibitPose(exhibitSlot(direction===1?i:i+1),exhibitBays),b=exhibitPose(exhibitSlot(direction===1?i+1:i),exhibitBays),path=routeTo(a,'project',b);
   assert.equal(path.length,2,'neighboring works never visit hall');
   for(let t=0;t<=100;t++){const pose=sampleRoute(path,t/100);assert.equal(pose.eye[2],a.eye[2],'lateral route keeps depth');assert.equal(pose.eye[1],a.eye[1]);assert.equal(pose.focus,1,'lateral route keeps focused framing');}
 }
@@ -40,7 +46,7 @@ const architecture=gltf.materials.find(m=>m.name==='Pavilion PBR limestone and o
 assert.ok(architecture?.pbrMetallicRoughness.baseColorTexture&&architecture.normalTexture&&architecture.pbrMetallicRoughness.metallicRoughnessTexture,'web architecture retains color, tangent normal and roughness maps');
 assert.equal(gltf.materials.find(m=>m.name==='Architectural glass')?.alphaMode,'BLEND','glazing cannot become opaque during export');
 const photoMaterials=gltf.materials.filter(m=>m.name.startsWith('Pavilion PBR'));
-assert.equal(photoMaterials.length,6,'architecture retains six material groups');
+assert.equal(photoMaterials.length,7,'architecture retains seven material groups including gallery paper');
 assert.equal(gltf.scenes[0].extras?.bakedGalleryLights,7,'static illumination comes from seven physical gallery fixtures');
 assert.ok(photoMaterials.every(m=>m.emissiveTexture&&(m.emissiveTexture.texCoord??0)===0),'gallery lighting follows the baked UV atlas');
 assert.ok(photoMaterials.every(m=>m.pbrMetallicRoughness.baseColorTexture?.texCoord===1&&m.normalTexture?.texCoord===1&&(m.occlusionTexture?.texCoord??0)===0&&m.occlusionTexture&&m.pbrMetallicRoughness.baseColorFactor),'meter-scale detail UVs are separate from occlusion UVs / explicit tint factors');

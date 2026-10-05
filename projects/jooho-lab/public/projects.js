@@ -85,4 +85,13 @@ export const projects = [
     image: './assets/work-hanbok-hero.webp', mark: '갓', note: '경회루 야경 위의 회화풍 캐릭터 히어로입니다.',
   },
 
+  {
+    id: 'village', liveUrl: './village.html', title: '작업 동네', subtitle: '아이디어가 사는 동네를 걷다.',
+    category: '인터랙티브', type: 'ILLUSTRATED WORKSPACE', number: '10', color: '#87b9a0',
+    description: '손그림 동네의 건물을 골라 작업 안으로 들어가는 인터랙티브 포트폴리오. 각 집에서 서로 다른 도구와 이야기, 디자인을 만납니다.',
+    details: ['작품마다 연결된 건물과 산책길 탐색', '건물 입장·취소와 전시관으로 돌아가기', '작품 검색·목록 보기와 레이어별 공간 설정'],
+    tags: ['Three.js', 'JavaScript', '인터랙션'],
+    url: 'https://github.com/jooho1003/interactive-web/tree/main/projects/jooho-lab', linkLabel: '프로젝트 코드 보기',
+    image: './assets/project-village.webp', mark: '집', note: 'JOOHO LAB의 아이디어와 작업을 모은 손그림 동네입니다.',
+  },
 ];

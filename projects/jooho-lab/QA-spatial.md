@@ -178,3 +178,30 @@ Final Aside visual check: selected spire directly from the exterior with full mo
 - root `pnpm check` 통과. 마지막 ChemiForge 이미지/세로 QA 조정 후 앱 `check`/`build`, `prompts:check`, `references:check` 통과: layer lint 오류 0, 77,077 경로 샘플, 이미지/GLB 예산 정상. 프롬프트 보관함 42카드로 재생성. 운영 LAB 배포와 원격 claude.ai 보관함 재게시는 미실행.
 - 로컬 보관함과 `.bkit/runtime/prompt-gallery-site`/`reference-gallery-site` 재게시 패키지를 갱신했다. 검증 환경은 Node 22.16.0/pnpm 9.13.2이며 저장소가 지정한 Node 24 검증은 미실행.
 - 재사용 조건: 웹 UI 전체 캡처를 전시 표지로 강제하지 않는다. 실제 운영 화면을 근거로 주제를 그리되 원작 만화의 캐릭터/글자를 보존한다. 세로 그림은 높이까지 포함해 확대를 검수하며 그림 전체와 설명 패널의 경계를 함께 확인한다.
+
+## 2026-10-05 · POTATO·선비·작업 동네 전체 공간 연결
+
+- bkit Plan → Design → Do → Check → Act. [계획](../../docs/01-plan/features/gallery-all-works.plan.md), [설계](../../docs/02-design/features/gallery-all-works.design.md), [검사 대조](../../docs/03-analysis/gallery-all-works.analysis.md). docs/00·10·04·11, 앱 README/기존 QA, 레퍼런스 bruno-simon·annamills를 읽고 기존 공간 복귀·DOM 목록·필름 스트립·텍스트 선택을 재사용했다. 새 에셋·Blender 재빌드·분기 이야기·공용 모듈 추출은 필요 없다.
+- 이전에는 첫 7개 작품만 scene에 전달되어 POTATO·선비를 눌러도 그림과 카메라는 바뀌지 않았다. 이제 전체 10개를 전시하며 `index % exhibitBays`/`floor(index / exhibitBays)`로 기존 7개 칸을 페이지로 재사용한다. 선택/필터 시 현재 페이지와 검색 결과의 교집합만 보인다. 기존 7개 액자 좌표·베이크 조명·GLB는 보존한다.
+- 작업 동네는 stable ID `village`, 작품 10, 기존 `project-village.webp` 표지와 `./village.html` 체험 링크로 등록했다. 카드·검색·소개·링크/콘텐츠 편집은 기존 registry 경로다. 동네 자체는 건물/집 장면 목록에서 제외해 물리 목적지 9개와 기존 house 파라미터를 유지한다.
+- 레이어 계약: **7레이어/57파라미터 유지**, 기존 stage·rail·detail·controls·shell 재사용. 페이지/슬롯은 구조 fixed에 기록, 문구/이미지는 콘텐츠 편집기가 담당한다. 앱 lint 오류 0, 동네 공통 8레이어/42파라미터 및 개별 10레이어/99파라미터 lint/생성물 최신성 유지. 모든 작품의 안전 동선 **110,110샘플** 통과, GLB 4,701,148B 유지.
+- Aside에서 전체 컬렉션 10, 세 작품 선택과 POTATO의 실제 그림 앞으로 이동한 화면을 확인했다. RGBA 표지의 투명 픽셀이 불투명 재질에서 검게 나타난 문제를 발견해 전시 재질의 alpha를 보존했다. 수정 후 Aside 화면에서 흰 전시판 위 캐릭터를 직접 확인했다. 새 이미지 생성/교체 없음.
+- 실제 클릭 smoke는 **desktop 1440×900 / mobile 390×844 / narrow 320×700 모두 PASS**, JavaScript 오류 0. 새 3작품과 07↔08 페이지 전환, 선택/실제 카메라 좌표/현재 페이지 그림 목록/전체 그림 경계, 좌우키·Escape·Home, 검색·빈 결과 복구, POTATO·선비 실제 iframe 체험 진입→전시관 복귀와 선택 복원, 작업 동네 진입→물리 9목적지→전시관 복귀·선택 복원을 확인했다. `art/gallery-all-works-{desktop,mobile,narrow}-smoke.json`과 `*-village.png`.
+- 레이어 설정은 desktop/mobile 각각 **57/57 PASS**. 기존 QA의 CSS/속성 probe 및 실제 renderer uniform 대조를 그대로 실행했다. 비화면 상태에서 렌더를 정지해 검사하며 값 적용은 계속 관찰한다. `art/gallery-all-works-*-probe.json`. 테스트 스크립트는 Git 제외 `.site-publish/gallery-all-works-{smoke,probe}.py`에 있다.
+- 앱 `check`/`build`, prompts:check, references:check 및 diff whitespace 검사 통과. 레퍼런스 사용 이력을 기록하고 보관함을 재생성했다. Node 22.16.0/pnpm 9.13.2에서 실행했다.
+- 실패 이력: Aside 전체 회귀는 18항목 후 12초 hall 대기 시간 초과(`*-aside-first-qa.json`). 첫 headless 전체 회귀는 실패 항목/페이지 오류 없이 127항목 통과 후 실행기 120초 제한으로 TIMEOUT(`*-desktop-qa.json`). 첫 smoke의 마지막 동네→전시관 재로딩도 실행기 30초 제한으로 중단됐으며, 페이지 초기화 대기 90초로 검사한 최종 smoke는 위 결과다. 앱의 이동/성능 기준을 낮추지 않았다. 전체 모션 회귀 PASS를 주장하지 않는다.
+- 재사용 조건: 전시 칸 개수를 전체 작품 수로 재계산하지 않는다. 칸은 구조, 작품은 콘텐츠이며 페이지별 가시성을 반드시 함께 갱신한다. 같은 공간을 작품으로 등록할 때 그 공간 자체를 물리 집으로 추가하지 않는다. 투명 PNG는 기존 전시판 위에서 실제 픽셀을 확인한다.
+- 미검수: 실제 휴대폰 GPU/FPS, 전체 모션 회귀 완료, Node 24, 운영 배포/R2 인증·쓰기, 원격 claude.ai 보관함 재게시. 기존 저장 실패 처리를 바꾸지 않았으며 이번 작업에서 별도로 재검사하지 않았다.
+
+## 2026-10-05 · 이동·페이지 전환 및 얇은 전시 마감
+
+- 승인된 검토1·2를 bkit Plan → Design → Do → Analyze → Act로 진행했다. [계획](../../docs/01-plan/features/gallery-natural-refinement.plan.md), [설계](../../docs/02-design/features/gallery-natural-refinement.design.md), [대조](../../docs/03-analysis/gallery-natural-refinement.analysis.md). docs/00·10·04·11·14, POTATO 제작/QA·직전 비교 기록, bruno-simon·annamills를 참고했다. 실제3D 문 통과 경로가 있어 이미지/CSS 공간으로 바꾸지 않았으며 캐릭터 반응3은 범위 밖이다.
+- 같은 페이지에서 이동 시간은 실제 카메라 거리/2.15m×인접 기준1.8초, 최소.6초/최대4.8초다. 다른 페이지는 기본.85초 가림→그림 교체→등장이다. 선택과 실제 표시 페이지를 분리했고, 재입력은 현재 가림막 alpha에서 새 목적지로 이어간다. 작업실/외관의 페이지 변경도 가리고, 다시 보인 뒤 기존 접근 경로를 이동한다.
+- 큰1.75×2.65m 목재판을 제거하고 종이1.51×1.91m·18mm 샴페인색 액자·선반1.62×.055×.26m로 바꿨다. 종이 앞면보다 그림을15mm 앞으로 배치하고 camera look과 artworkZ=-6.75를 공유한다. 새 종이를 포함해 PBR7그룹, 실제7spot 조명32samples/AO64samples·.8m·denoise를 재생성했다. GLB4,631,904B(<6MB); 이전 GLB/Blender는 같은 검수 폴더에 보존한다.
+- 레이어 계약: **7레이어/66파라미터**. stage에 이동 최소/최대 시간·페이지 시간/색·액자색/거칠기·종이색/거칠기·작품 밝기9개를 추가했다. 베일은 stage 하위라 보이기/불투명도를 상속한다. 물리 치수/베이크 좌표는 fixed 이유를 기록했다. lint 오류0, **desktop/mobile/narrow 각각66/66 probe PASS**, 실제 재질 값과 시간 변경도 확인했다.
+- Headless Playwright Chromium/Intel Arc D3D11 전체 회귀: **1440×900 204 PASS / 390×844 205 PASS / 320×700 205 PASS**, JavaScript 오류 모두0. 외관→작업실 시간은5.617/5.634/5.656초로 기존8.5초 기준을 통과했다. 전체 모션·그림 경계/비율·투명 alpha·설명 패널 분리·포인터/키보드·목록 대체·빈 결과/복구·컨텍스트 손실 대체·설정/되돌리기를 검사했다. 이번 최종 회귀는 이전 전체 모션 회귀 미완료 기록을 보완한다. 보고서는 `art/gallery-natural-refinement/{desktop,mobile,narrow}-qa.json`.
+- 신규 상태 검사: 그림/카메라는 가림 전까지 유지, 가려진 중간에 교체, 끝에는 alpha0. 빠른07→08→09 재선택, fade-out/fade-in에서 이전 페이지·Escape/Home·결과 있는 검색, 빈 검색, reduce로 즉시 완료, 목록에서 진행 정지/복구, 작업실 페이지 변경 뒤 기존 접근, 실제 slideMin/slideMax duration 및 pageSeconds 경과 시간 모두PASS.
+- 실제 캡처를 열어 이전 목재판/넓은 선반 대비 새 액자·받침이 작품을 덜 가리는 것을 확인했다. 세 화면 크기의 외관/작업실/하루 산책/POTATO/선비 캡처와 이전 비교3장이 같은 폴더에 있다. 새 AI 이미지 생성은 없고 Blender 절차·원본·명령은 [프롬프트 카드24](../../prompts/jooho-lab.md#24--lab-light-gallery--가벼운-액자와-전시-마감)에 기록했다.
+- 실패/해결 이력: Aside 외관 화면을 확인했으나 전체 회귀18항목 뒤 hall 대기가 timeout(`aside-qa.json`), 후속 캡처도 CDP timeout. 기본 headless의 SwiftShader가 느려 짧은 fade-in 관찰과 입장 시간 측정(9.197초)이 불안정했다. GPU 진단 후 실제 Intel GPU로 검사하고 단계 대기를 rAF로 바꿨으며 앱 시간/검사 기준은 완화하지 않았다. 새 검사가 project 상태로 끝나 기존 controls.bottom probe를 방해한 것은 기존 외관 준비 상태로 복구해 해결했다. 읽기 전용 설계 대조에서 나온 작업실 페이지 변경/fade-in 검증 갭을 위 구현·검사로 해결했다.
+- root `pnpm check`, app `check`/`build`, 프롬프트47항목/레퍼런스 보관함 재생성·최신성 및 diff whitespace 검사PASS. Node22.16.0/pnpm9.13.2/Blender4.5 환경이다. 로컬 보관함과 재게시 패키지만 갱신하며 운영 전시관·원격 claude.ai 게시·Node24·실제 휴대폰 GPU/FPS·R2 쓰기는 미실행. 저장 실패 코드는 이번에 바꾸거나 별도로 검사하지 않았다.
+- 재사용 조건: 작품 목록/현재 선택과 실제 표시 페이지를 분리한다. 구운 전시물 구조를 바꾸면 같은 광원·UV로 조명/AO도 다시 만든다. 카메라/그림 앞면 좌표는 정본을 공유한다. headless Windows의 시간 검증은 renderer를 확인하고 SwiftShader 결과를 실제 GPU 성능으로 해석하지 않는다.

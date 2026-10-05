@@ -529,3 +529,57 @@ Create a seamless RIGHT-HAND EXTENSION panel for the supplied miniature village 
 ```
 
 **생성 후 확인** — 두 건물·출입문·시계·새·깃발·감자 조형물·연필이 모두 보이며 사람이나 읽을 수 있는 글자가 없다. 실제 문 중심은 요청한 27%보다 오른쪽인 약 31%와 74%여서 코드 좌표를 결과에 맞췄다. 원본 6채의 좌표는 유지한다. 브라우저에서 확인한 하늘 접합 경계는 겹침과 왼쪽 블렌드로 완화하며, 위치·크기·밝기·블렌드를 설정에서 조절한다. 후보 1개를 채택했으며 폐기한 후보는 없다. 새 생성물은 실제 3D 모델이 아니라 이미지다. 실제 입장·모바일·레이어 검수 결과는 [허브 QA](../projects/jooho-lab/QA.md)에 기록한다.
+
+### 23 · 선비 독립 한옥 — village-seonbi-v1
+
+<img src="../projects/jooho-lab/public/assets/village-seonbi-v1.png" width="360">
+
+| 항목 | 내용 |
+|---|---|
+| 파일 | `projects/jooho-lab/public/assets/village-seonbi-v1.png` · 1254×1254 · 2,433,251B · 불투명 PNG |
+| 쓰이는 곳 | 작업 동네 오른쪽 끝, 이미지 레이어 `seonbi-extension`; 링크·이름표·불빛 `house-hanbok-hero` |
+| 도구·모드 | 내장 image_gen · 기존 확장 패널의 재질/접합을 참조한 새 그림 · 2026-10-05 |
+| 참조 이미지 | `projects/jooho-lab/public/assets/village-extension-v1.png` |
+| 설정 | 정사각형, 후보1개, transparent_background=false, 후처리 없음 |
+
+**한국어 요약** — 종말의 탑 앞길과 겹치던 선비에 독립 한옥을 만든다. 갓 장식·기와지붕·격자창·붓·벼루가 있는 집 한 채와 오른쪽 정원으로 기존 마을을 확장한다. 새 3D 모델은 만들지 않으며 기존 파노라마 탐색 방식을 따른다.
+
+**프롬프트 원문 그대로**
+
+```text
+Create a seamless RIGHT-HAND EXTENSION panel for the supplied miniature village panorama panel. Use the supplied image only as a style, sky-color, ground-height and edge-continuity reference; do not repeat its two buildings. OUTPUT: one square illustration with EXACTLY ONE new full building, a welcoming Korean hanok scholar's house for the 'Seonbi' project. Preserve the reference's premium handcrafted 3D miniature clay/stone rendering, daylight, clear pastel blue sky, warm sandy stone plaza, detailed foliage, miniature streetlamps, front-facing slightly elevated orthographic view, scale and sharpness. Match vertical arrangement: open sky above the roof, building door threshold at 76% from top, sandy plaza across lower 24%. House entrance centered at 40% image width. One charming two-level Korean-inspired scholar's house, dark curved tiled roof with gently upturned eaves, warm ivory plaster, dark wooden beams, paper lattice windows, one clearly visible central wooden entrance, elegant round black gat scholar hat ornament above entrance, a small brush and inkstone display in a lit window. No person. Keep roof and entire house fully inside image. Rightmost 25% is quiet open garden, low greenery, sky and plaza, providing breathing room beyond the final house. Both edges have unobtrusive blue sky and sandy plaza/cypress foliage for joining to existing panel. No additional houses, no tower, no clock cottage, no potato atelier. Absolutely no readable text, letters, numbers, logos, UI, watermarks, humans or robots. This is a new square panorama extension asset, not a screenshot or mockup.
+```
+
+**생성 후 확인** — 결과를 직접 열어 독립 집1채·문·갓·기와·붓/벼루·정원과 글자/인물/로봇 없음 확인. 문 중심은 요청한40%보다 왼쪽인 약35%, 지붕 상단은14%이므로 house-hanbok-hero x=33/top=.14로 맞췄다. 패널은 중심34.85, 폭/높이12.096으로 기존 POTATO 그림 뒤에 겹치고 왼쪽 블렌드6%로 접합한다. 한 후보를 채택했으며 버린 후보 없음. 브라우저에서 POTATO와 한옥 접합 및 데스크톱/모바일 선택·입장·복귀를 확인했다. 레이어 이미지·위치·크기·밝기·블렌드 probe 통과. 자세한 결과는 [QA-village](../projects/jooho-lab/QA-village.md)의 2026-10-05 기록.
+
+### 24 · lab-light-gallery — 가벼운 액자와 전시 마감
+
+<img src="../projects/jooho-lab/art/gallery-natural-refinement/desktop-day-walk.png" width="360">
+
+| 항목 | 내용 |
+|---|---|
+| 파일 | `projects/jooho-lab/public/assets/lab-pavilion.glb` · 4,631,904B, packed 원본 `art/lab-pavilion.blend`, 조명/AO `art/lab-gallery-light.png`·`art/lab-occlusion.png` 각각2048² |
+| 쓰이는 곳 | 전시관 실제3D 모델, 레이어 `stage` |
+| 도구·모드 | Blender4.5 · 기존 절차 모델 수정/재베이크/GLB export · 2026-10-05 |
+| 참조 이미지 | POTATO 제작 방식과 기존 전시관 화면/모델. AI 이미지 참조 생성은 하지 않음 |
+| 설정 | 기존7칸 유지. 종이1.51×1.91m, 프레임18mm, 선반1.62×.055×.26m, 그림z=-6.75. Cycles 조명32samples/AO64samples·거리.8m·denoise, CPU4threads. detail UV1, light/AO UV0 |
+| 후보/원본 | 큰 목재판·두꺼운 선반을 이번 수정으로 교체. 이전 GLB/Blender는 `art/gallery-natural-refinement/lab-pavilion-before.*` 보존 |
+| 프롬프트 | 해당 없음 — 새 AI 생성이 아닌 Blender 절차 제작. 사용자 요청 원문과 재현 명령은 아래 |
+
+**한국어 요약** — POTATO의 그림 중심 표현과 역할 분리를 참고해 전시 작품을 강조한다. 큰 목재판을 없애고 얇은 샴페인색 액자·밝은 종이·작은 선반을 둔다. 새 구조에 조명과 접촉 그림자를 다시 구우며 웹 설정에서 재질·작품 밝기를 조절한다. 실제3D 동선은 유지한다.
+
+**제작 요청 원문 그대로**
+
+```text
+1번이랑 2번 진행하자.
+```
+
+직전 검토의1번은 카메라 이동/페이지 전환,2번은 액자·받침·조명이다. [검토 원문](../docs/03-analysis/jooholab-potato-visual-review.md).
+
+**재현 명령** — `projects/jooho-lab`에서:
+
+```powershell
+& 'C:/Program Files/Blender Foundation/Blender 4.5/blender.exe' --background --threads 4 --python scripts/build-spatial-lab.py
+```
+
+**제작 후 확인** — GLB7개 PBR 그룹/7개 조명/분리UV·6MB 이하, 그림이 종이 앞에 있고 원본 비율을 유지함을 검사한다. 표면에 중복 그림자를 덧씌우지 않는다. 실제 화면과 검증 결과/제약은 [QA-spatial](../projects/jooho-lab/QA-spatial.md)의 이번 기록과 `art/gallery-natural-refinement`에 남긴다. 새 이미지 생성 후보나 폐기 후보 없음.

@@ -1,0 +1,391 @@
+{
+  "status": "PASS",
+  "viewport": [
+    1440,
+    900
+  ],
+  "count": 75,
+  "probes": {
+    "total": 43,
+    "passed": 43,
+    "failed": [],
+    "conditional": 0
+  },
+  "results": [
+    {
+      "name": "village manifest isolated",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "original panorama",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no pavilion request",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all numbered stops",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "return to exhibition",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "select chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls chemiforge",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":221.84375,\"y\":718.359375,\"width\":170.78125,\"height\":41.75,\"top\":718.359375,\"right\":392.625,\"bottom\":760.109375,\"left\":221.84375},\"footer\":{\"x\":0,\"y\":768.34375,\"width\":1440,\"height\":61.65625,\"top\":768.34375,\"right\":1440,\"bottom\":830,\"left\":0}}"
+    },
+    {
+      "name": "select sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls sasu",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":635.140625,\"y\":718.359375,\"width\":169.6875,\"height\":41.75,\"top\":718.359375,\"right\":804.828125,\"bottom\":760.109375,\"left\":635.140625},\"footer\":{\"x\":0,\"y\":768.34375,\"width\":1440,\"height\":61.65625,\"top\":768.34375,\"right\":1440,\"bottom\":830,\"left\":0}}"
+    },
+    {
+      "name": "select blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls blog",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":634.3984375,\"y\":718.34375,\"width\":171.171875,\"height\":41.75,\"top\":718.34375,\"right\":805.5703125,\"bottom\":760.09375,\"left\":634.3984375},\"footer\":{\"x\":0,\"y\":768.34375,\"width\":1440,\"height\":61.65625,\"top\":768.34375,\"right\":1440,\"bottom\":830,\"left\":0}}"
+    },
+    {
+      "name": "select dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls dawn-store",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":644.71875,\"y\":718.359375,\"width\":150.53125,\"height\":41.75,\"top\":718.359375,\"right\":795.25,\"bottom\":760.109375,\"left\":644.71875},\"footer\":{\"x\":0,\"y\":768.34375,\"width\":1440,\"height\":61.65625,\"top\":768.34375,\"right\":1440,\"bottom\":830,\"left\":0}}"
+    },
+    {
+      "name": "select instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls instatoon",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":653.7890625,\"y\":718.359375,\"width\":132.390625,\"height\":41.75,\"top\":718.359375,\"right\":786.1796875,\"bottom\":760.109375,\"left\":653.7890625},\"footer\":{\"x\":0,\"y\":768.34375,\"width\":1440,\"height\":61.65625,\"top\":768.34375,\"right\":1440,\"bottom\":830,\"left\":0}}"
+    },
+    {
+      "name": "select spire",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop spire",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination spire",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name spire",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls spire",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":646.28125,\"y\":718.359375,\"width\":147.40625,\"height\":41.75,\"top\":718.359375,\"right\":793.6875,\"bottom\":760.109375,\"left\":646.28125},\"footer\":{\"x\":0,\"y\":768.34375,\"width\":1440,\"height\":61.65625,\"top\":768.34375,\"right\":1440,\"bottom\":830,\"left\":0}}"
+    },
+    {
+      "name": "select day-walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop day-walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination day-walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name day-walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls day-walk",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":646.28125,\"y\":718.34375,\"width\":147.40625,\"height\":41.75,\"top\":718.34375,\"right\":793.6875,\"bottom\":760.09375,\"left\":646.28125},\"footer\":{\"x\":0,\"y\":768.34375,\"width\":1440,\"height\":61.65625,\"top\":768.34375,\"right\":1440,\"bottom\":830,\"left\":0}}"
+    },
+    {
+      "name": "select potato-designer",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop potato-designer",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination potato-designer",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name potato-designer",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls potato-designer",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":643.9921875,\"y\":718.359375,\"width\":151.984375,\"height\":41.75,\"top\":718.359375,\"right\":795.9765625,\"bottom\":760.109375,\"left\":643.9921875},\"footer\":{\"x\":0,\"y\":768.34375,\"width\":1440,\"height\":61.65625,\"top\":768.34375,\"right\":1440,\"bottom\":830,\"left\":0}}"
+    },
+    {
+      "name": "select hanbok-hero",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop hanbok-hero",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination hanbok-hero",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name hanbok-hero",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls hanbok-hero",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":705.6875,\"y\":718.359375,\"width\":120.5,\"height\":41.75,\"top\":718.359375,\"right\":826.1875,\"bottom\":760.109375,\"left\":705.6875},\"footer\":{\"x\":0,\"y\":768.34375,\"width\":1440,\"height\":61.65625,\"top\":768.34375,\"right\":1440,\"bottom\":830,\"left\":0}}"
+    },
+    {
+      "name": "Seonbi separate house",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Seonbi finite camera",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "reset to original selection",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "keyboard next",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "keyboard home",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "animated entry",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "entry cancel focused",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "entry cancellation",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "cancel focus restored",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Escape cancels",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "list cancels entry",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "empty state",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "empty recovery",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "real camera zoom",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "real character size",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all parameters probed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all layer bindings pass",
+      "pass": true,
+      "detail": "{\"total\":43,\"passed\":43,\"failed\":[],\"conditional\":0}"
+    },
+    {
+      "name": "all house parameters probed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all house bindings pass",
+      "pass": true,
+      "detail": "{\"total\":108,\"passed\":108,\"failed\":[],\"conditional\":0}"
+    },
+    {
+      "name": "settings survives hidden shell",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "layer panel opens",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "layer panel focus restores",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no horizontal overflow",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "context loss fallback",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "cannot reopen failed WebGL",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "status": "FAIL",
+  "browser": "Aside",
+  "mode": "1",
+  "passedBeforeTimeout": 18,
+  "last": "same gesture cannot skip hall",
+  "error": "Timed out waiting for hall arrival after 12000ms",
+  "recovery": "Headless Playwright smoke and layer checks; this run is not a pass."
+}

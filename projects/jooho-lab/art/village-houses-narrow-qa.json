@@ -1,0 +1,320 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "house links 9",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "distinct house coordinates",
+      "passed": true,
+      "detail": [
+        -14.4,
+        -8.64,
+        -2.88,
+        2.88,
+        8.82,
+        15.12,
+        21,
+        26.3,
+        33
+      ]
+    },
+    {
+      "name": "visible spire",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "selected spire",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "nameplate clears number buttons spire",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "visible day-walk",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "selected day-walk",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "nameplate clears number buttons day-walk",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "visible potato-designer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "selected potato-designer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "nameplate clears number buttons potato-designer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "visible hanbok-hero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "selected hanbok-hero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "nameplate clears number buttons hanbok-hero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "short drag keeps distance",
+      "passed": true,
+      "detail": {
+        "active": true,
+        "selected": "blog",
+        "goal": -2.261610242174817,
+        "x": -2.261610242174817,
+        "frame": 0,
+        "state": "walking",
+        "camera": [
+          -2.261610242174817,
+          -0.25,
+          1
+        ],
+        "viewHeight": 11.272727272727272,
+        "drawCalls": 1,
+        "bindings": {
+          "zoom": 1,
+          "speed": 1,
+          "damping": 6.5,
+          "parallax": 0.18
+        },
+        "visibility": {
+          "sceneVisible": true,
+          "view": "space",
+          "hidden": false
+        }
+      }
+    },
+    {
+      "name": "long drag moves farther",
+      "passed": true,
+      "detail": {
+        "before": -2.88,
+        "short": {
+          "active": true,
+          "selected": "blog",
+          "goal": -2.261610242174817,
+          "x": -2.261610242174817,
+          "frame": 0,
+          "state": "walking",
+          "camera": [
+            -2.261610242174817,
+            -0.25,
+            1
+          ],
+          "viewHeight": 11.272727272727272,
+          "drawCalls": 1,
+          "bindings": {
+            "zoom": 1,
+            "speed": 1,
+            "damping": 6.5,
+            "parallax": 0.18
+          },
+          "visibility": {
+            "sceneVisible": true,
+            "view": "space",
+            "hidden": false
+          }
+        },
+        "long": {
+          "active": true,
+          "selected": "dawn-store",
+          "goal": 0.8303377483417465,
+          "x": 0.8303377483417465,
+          "frame": 0,
+          "state": "walking",
+          "camera": [
+            0.8303377483417465,
+            -0.25,
+            1
+          ],
+          "viewHeight": 11.272727272727272,
+          "drawCalls": 1,
+          "bindings": {
+            "zoom": 1,
+            "speed": 1,
+            "damping": 6.5,
+            "parallax": 0.18
+          },
+          "visibility": {
+            "sceneVisible": true,
+            "view": "space",
+            "hidden": false
+          }
+        }
+      }
+    },
+    {
+      "name": "released position persists",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "continuous drag advances",
+      "passed": true,
+      "detail": {
+        "active": true,
+        "selected": "dawn-store",
+        "goal": 2.6339741119781097,
+        "x": 2.6339741119781097,
+        "frame": 0,
+        "state": "walking",
+        "camera": [
+          2.6339741119781097,
+          -0.25,
+          1
+        ],
+        "viewHeight": 11.272727272727272,
+        "drawCalls": 1,
+        "bindings": {
+          "zoom": 1,
+          "speed": 1,
+          "damping": 6.5,
+          "parallax": 0.18
+        },
+        "visibility": {
+          "sceneVisible": true,
+          "view": "space",
+          "hidden": false
+        }
+      }
+    },
+    {
+      "name": "reverse drag returns",
+      "passed": true,
+      "detail": {
+        "active": true,
+        "selected": "dawn-store",
+        "goal": 2.2217142734279878,
+        "x": 2.2217142734279878,
+        "frame": 0,
+        "state": "walking",
+        "camera": [
+          2.2217142734279878,
+          -0.25,
+          1
+        ],
+        "viewHeight": 11.272727272727272,
+        "drawCalls": 1,
+        "bindings": {
+          "zoom": 1,
+          "speed": 1,
+          "damping": 6.5,
+          "parallax": 0.18
+        },
+        "visibility": {
+          "sceneVisible": true,
+          "view": "space",
+          "hidden": false
+        }
+      }
+    },
+    {
+      "name": "right edge reaches Seonbi",
+      "passed": true,
+      "detail": {
+        "active": true,
+        "selected": "hanbok-hero",
+        "goal": 33,
+        "x": 33,
+        "frame": 0,
+        "state": "walking",
+        "camera": [
+          33,
+          -0.25,
+          1
+        ],
+        "viewHeight": 11.272727272727272,
+        "drawCalls": 0,
+        "bindings": {
+          "zoom": 1,
+          "speed": 1,
+          "damping": 6.5,
+          "parallax": 0.18
+        },
+        "visibility": {
+          "sceneVisible": true,
+          "view": "space",
+          "hidden": false
+        }
+      }
+    },
+    {
+      "name": "Seonbi remains visible at edge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "reset selection",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "keyboard next",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Home returns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Seonbi destination",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "return selected Seonbi",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "animated entry",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Escape cancels entry",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no JS errors",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "errors": []
+}

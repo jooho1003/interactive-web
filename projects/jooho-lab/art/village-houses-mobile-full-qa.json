@@ -1,0 +1,391 @@
+{
+  "status": "PASS",
+  "viewport": [
+    390,
+    844
+  ],
+  "count": 75,
+  "probes": {
+    "total": 43,
+    "passed": 43,
+    "failed": [],
+    "conditional": 0
+  },
+  "results": [
+    {
+      "name": "village manifest isolated",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "original panorama",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no pavilion request",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all numbered stops",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "return to exhibition",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "select chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls chemiforge",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":140.78125,\"y\":638.703125,\"width\":108.40625,\"height\":43.046875,\"top\":638.703125,\"right\":249.1875,\"bottom\":681.75,\"left\":140.78125},\"footer\":{\"x\":0,\"y\":562.34375,\"width\":390,\"height\":61.65625,\"top\":562.34375,\"right\":390,\"bottom\":624,\"left\":0}}"
+    },
+    {
+      "name": "select sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls sasu",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":141.3515625,\"y\":638.703125,\"width\":107.265625,\"height\":43.046875,\"top\":638.703125,\"right\":248.6171875,\"bottom\":681.75,\"left\":141.3515625},\"footer\":{\"x\":0,\"y\":562.34375,\"width\":390,\"height\":61.65625,\"top\":562.34375,\"right\":390,\"bottom\":624,\"left\":0}}"
+    },
+    {
+      "name": "select blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls blog",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":140.5703125,\"y\":638.703125,\"width\":108.828125,\"height\":43.046875,\"top\":638.703125,\"right\":249.3984375,\"bottom\":681.75,\"left\":140.5703125},\"footer\":{\"x\":0,\"y\":562.34375,\"width\":390,\"height\":61.65625,\"top\":562.34375,\"right\":390,\"bottom\":624,\"left\":0}}"
+    },
+    {
+      "name": "select dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls dawn-store",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":151.5,\"y\":638.703125,\"width\":86.96875,\"height\":43.046875,\"top\":638.703125,\"right\":238.46875,\"bottom\":681.75,\"left\":151.5},\"footer\":{\"x\":0,\"y\":562.34375,\"width\":390,\"height\":61.65625,\"top\":562.34375,\"right\":390,\"bottom\":624,\"left\":0}}"
+    },
+    {
+      "name": "select instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls instatoon",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":161.1015625,\"y\":638.6875,\"width\":67.765625,\"height\":43.046875,\"top\":638.6875,\"right\":228.8671875,\"bottom\":681.734375,\"left\":161.1015625},\"footer\":{\"x\":0,\"y\":562.34375,\"width\":390,\"height\":61.65625,\"top\":562.34375,\"right\":390,\"bottom\":624,\"left\":0}}"
+    },
+    {
+      "name": "select spire",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop spire",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination spire",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name spire",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls spire",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":153.15625,\"y\":638.6875,\"width\":83.65625,\"height\":43.046875,\"top\":638.6875,\"right\":236.8125,\"bottom\":681.734375,\"left\":153.15625},\"footer\":{\"x\":0,\"y\":562.34375,\"width\":390,\"height\":61.65625,\"top\":562.34375,\"right\":390,\"bottom\":624,\"left\":0}}"
+    },
+    {
+      "name": "select day-walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop day-walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination day-walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name day-walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls day-walk",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":153.15625,\"y\":638.703125,\"width\":83.65625,\"height\":43.046875,\"top\":638.703125,\"right\":236.8125,\"bottom\":681.75,\"left\":153.15625},\"footer\":{\"x\":0,\"y\":562.34375,\"width\":390,\"height\":61.65625,\"top\":562.34375,\"right\":390,\"bottom\":624,\"left\":0}}"
+    },
+    {
+      "name": "select potato-designer",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop potato-designer",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination potato-designer",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name potato-designer",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls potato-designer",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":150.7265625,\"y\":638.703125,\"width\":88.515625,\"height\":43.046875,\"top\":638.703125,\"right\":239.2421875,\"bottom\":681.75,\"left\":150.7265625},\"footer\":{\"x\":0,\"y\":562.34375,\"width\":390,\"height\":61.65625,\"top\":562.34375,\"right\":390,\"bottom\":624,\"left\":0}}"
+    },
+    {
+      "name": "select hanbok-hero",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop hanbok-hero",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination hanbok-hero",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name hanbok-hero",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls hanbok-hero",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":167.3984375,\"y\":638.703125,\"width\":55.171875,\"height\":43.046875,\"top\":638.703125,\"right\":222.5703125,\"bottom\":681.75,\"left\":167.3984375},\"footer\":{\"x\":0,\"y\":562.34375,\"width\":390,\"height\":61.65625,\"top\":562.34375,\"right\":390,\"bottom\":624,\"left\":0}}"
+    },
+    {
+      "name": "Seonbi separate house",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Seonbi finite camera",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "reset to original selection",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "keyboard next",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "keyboard home",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "animated entry",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "entry cancel focused",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "entry cancellation",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "cancel focus restored",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Escape cancels",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "list cancels entry",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "empty state",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "empty recovery",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "real camera zoom",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "real character size",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all parameters probed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all layer bindings pass",
+      "pass": true,
+      "detail": "{\"total\":43,\"passed\":43,\"failed\":[],\"conditional\":0}"
+    },
+    {
+      "name": "all house parameters probed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all house bindings pass",
+      "pass": true,
+      "detail": "{\"total\":108,\"passed\":108,\"failed\":[],\"conditional\":0}"
+    },
+    {
+      "name": "settings survives hidden shell",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "layer panel opens",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "layer panel focus restores",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no horizontal overflow",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "context loss fallback",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "cannot reopen failed WebGL",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}

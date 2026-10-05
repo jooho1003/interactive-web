@@ -2,11 +2,13 @@ import {layerHost,inspectScene} from '/app.js';
 import {readPreferences,setPreferences} from '/preferences.js';
 import {setValue} from '/vendor/layer-kit/index.js';
 import {projects} from '/projects.js';
+import {exhibitBays,exhibitPage,exhibitSlot,exhibitX} from '/spatial-route.js';
 const $=s=>document.querySelector(s),results=[];
 const mode=new URL(location.href).searchParams.get('qa');
 const report=document.createElement('pre');report.id='qa-report';report.style.cssText='position:relative;z-index:100;background:#fff;color:#111;padding:20px;white-space:pre-wrap;overflow-wrap:anywhere';document.body.append(report);
 const check=(name,pass,detail='')=>{results.push({name,pass,detail});report.textContent=JSON.stringify({status:'running',results},null,2);if(!pass)throw Error(name+': '+detail)};
 const wait=async(test,ms=12000)=>{const start=performance.now();while(!test()){if(performance.now()-start>ms)throw Error('Timed out');await new Promise(r=>setTimeout(r,60));}};
+const waitPhase=async phase=>{const start=performance.now();while(inspectScene().pageTransition?.phase!==phase){if(performance.now()-start>12000)throw Error(`Timed out waiting for page ${phase}: ${JSON.stringify(inspectScene())}`);await new Promise(requestAnimationFrame);}};
 const click=s=>$(s).click();
 const wheel=(deltaY,extra={})=>{const event=new WheelEvent('wheel',{deltaY,bubbles:true,cancelable:true,...extra});$('#scene').dispatchEvent(event);return event.defaultPrevented;};
 const savedPreferences=readPreferences(),savedLayers=layerHost.values;
@@ -15,11 +17,11 @@ try{
   // A prior context-loss run may leave a saved list-view visit on reload.
   click('#space-view');await wait(()=>inspectScene().geometries>7);
   check('scene uses real meshes',inspectScene().geometries>7&&inspectScene().drawCalls>0,JSON.stringify(inspectScene()));check('one selector per project',$('#gallery-pagination').children.length===projects.length);
-  await wait(()=>inspectScene().posters===Math.min(projects.length,7));check('posters fill the seven baked bays',inspectScene().posters===Math.min(projects.length,7));
+  await wait(()=>inspectScene().posters===projects.length);check('every project has a wall artwork',inspectScene().posters===projects.length);
   check('architecture exports real PBR normal and roughness maps',inspectScene().surfaces.normalMap&&inspectScene().surfaces.roughnessMap);
   check('photographed HDRI environment loaded',inspectScene().surfaces.environment==='HDRI');
   check('photographed gravel PBR maps loaded',inspectScene().surfaces.gravelMaps);
-  check('six repeating architectural materials / separate AO',inspectScene().surfaces.detailMaterials===6&&inspectScene().surfaces.occlusionMap);
+  check('seven repeating architectural materials / separate AO',inspectScene().surfaces.detailMaterials===7&&inspectScene().surfaces.occlusionMap);
   check('baked gallery fixtures cover every wall artwork',inspectScene().surfaces.galleryLights===Math.min(projects.length,7)&&inspectScene().surfaces.galleryLightMap);
   await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
   check('seven curated wall artworks and all rail thumbnails',projects.slice(0,7).every(p=>p.image?.startsWith('./assets/exhibit-'))&&$('#gallery-pagination').querySelectorAll('img').length===projects.length);
@@ -32,7 +34,7 @@ try{
   check('pinch zoom preserved',!wheel(120,{ctrlKey:true}));check('horizontal scroll preserved',!wheel(4,{deltaX:100}));
   const t=performance.now();check('wheel advances into hall',wheel(120));wheel(120);check('same gesture cannot skip hall',inspectScene().destination==='hall');await wait(()=>inspectScene().state==='hall');check('real doorway / hall destination',Math.abs(inspectScene().camera[2]-3)<.01);check('travel is time based',performance.now()-t<8500,String(performance.now()-t));
   const approachStart=performance.now();wheel(120);await wait(()=>inspectScene().state==='project');const first=$('#gallery-pagination button').dataset.id;check('hall advances to first work',inspectScene().selected===first);
-  check('slow approach to close viewing aisle',performance.now()-approachStart>=3000&&Math.abs(inspectScene().camera[2]+4.185)<.001);
+  check('slow approach to close viewing aisle',performance.now()-approachStart>=3000&&Math.abs(inspectScene().camera[2]+4.35)<.001);
   const imageWidth=()=>Math.max(...inspectScene().artwork.corners.map(p=>p.x))-Math.min(...inspectScene().artwork.corners.map(p=>p.x));
   const widthBeforeSlide=imageWidth(),artHeight=Math.max(...inspectScene().artwork.corners.map(p=>p.y))-Math.min(...inspectScene().artwork.corners.map(p=>p.y));
   // Portrait art fills the vertical viewing area; forcing landscape width would crop it.
@@ -60,8 +62,15 @@ try{
   const hoverBefore=inspectScene().renderCamera[0];$('#scene').dispatchEvent(new PointerEvent('pointermove',{clientX:innerWidth,clientY:innerHeight/2,bubbles:true}));await wait(()=>Math.abs(inspectScene().renderCamera[0]-hoverBefore)>.03);check('focused artwork keeps pointer camera motion',inspectScene().state==='project');$('#scene').dispatchEvent(new PointerEvent('pointerleave'));
   click('#spatial-back');await wait(()=>inspectScene().state==='hall');click('#spatial-back');await wait(()=>inspectScene().state==='exterior');check('back through hall to exterior',inspectScene().camera[2]===24);
   setPreferences({...savedPreferences,motion:'reduce'});click('#gallery-pagination button[data-id="day-walk"]');check('reduced motion is immediate',inspectScene().state==='project');
+  $('#space').focus();$('#space').dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true}));
+  check('keyboard crosses from last baked bay to POTATO',inspectScene().selected==='potato-designer'&&inspectScene().wallPage===1&&inspectScene().state==='project');
+  $('#space').dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowLeft',bubbles:true}));
+  check('keyboard restores first page artwork',inspectScene().selected==='day-walk'&&inspectScene().wallPage===0&&inspectScene().wallProjects.length===exhibitBays);
   for(const button of $('#gallery-pagination').children){
     button.click();const art=inspectScene().artwork,rect=$('#project-detail').getBoundingClientRect(),stage=$('#scene').getBoundingClientRect();
+    const index=projects.findIndex(p=>p.id===button.dataset.id),state=inspectScene();
+    check(`wall destination ${button.dataset.id}`,state.state==='project'&&state.selected===button.dataset.id&&state.camera[0]===exhibitX(exhibitSlot(index),exhibitBays));
+    check(`wall page ${button.dataset.id}`,state.wallPage===exhibitPage(index)&&JSON.stringify(state.wallProjects)===JSON.stringify(projects.filter((p,i)=>exhibitPage(i)===exhibitPage(index)).map(p=>p.id)));
     check(`full artwork ${button.dataset.id}`,art.repeat.every(v=>v===1)&&art.offset.every(v=>v===0)&&art.corners.every(p=>p.x>=0&&p.x<=stage.width&&p.y>=0&&p.y<=stage.height));
     const left=Math.min(...art.corners.map(p=>p.x)),right=Math.max(...art.corners.map(p=>p.x)),top=Math.min(...art.corners.map(p=>p.y)),bottom=Math.max(...art.corners.map(p=>p.y));
     check(`copy clears artwork ${button.dataset.id}`,right<=rect.left-stage.left||left>=rect.right-stage.left||bottom<=rect.top-stage.top||top>=rect.bottom-stage.top,JSON.stringify({left,right,top,bottom,copy:rect.toJSON()}));
@@ -82,7 +91,56 @@ try{
   $('#space').dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}));check('Enter enters hall',inspectScene().state==='hall');$('#space').dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
   check('Escape only releases movement control',$('#movement-toggle').getAttribute('aria-pressed')==='false'&&inspectScene().state==='hall');
   $('#space').dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}));check('second Escape exits hall',inspectScene().state==='exterior');
+  // Page changes keep the displayed collection stable until the veil covers it.
+  const choose=i=>click(`#gallery-pagination button[data-id="${projects[i].id}"]`);
+  setPreferences({...savedPreferences,motion:'reduce'});choose(6);
+  const oldCamera=inspectScene().camera;
+  setPreferences({...savedPreferences,motion:'full'});choose(7);
+  check('page fade starts with previous artworks',inspectScene().wallPage===0&&inspectScene().pageTransition?.phase==='out');
+  check('page fade holds camera before cover',JSON.stringify(inspectScene().camera)===JSON.stringify(oldCamera));
+  await waitPhase('in');
+  check('covered midpoint changes displayed page',inspectScene().wallPage===1&&inspectScene().selected===projects[7].id);
+  await wait(()=>inspectScene().state==='project');
+  check('page transition restores transparent veil',getComputedStyle($('.gallery-page-veil')).opacity==='0'&&!inspectScene().pageTransition);
+  choose(8);check('same page uses adjacent distance',Math.abs(inspectScene().transition.duration-1.8)<.001);await wait(()=>inspectScene().state==='project');
+  choose(6);await wait(()=>inspectScene().pageTransition?.alpha>.1);choose(7);choose(8);
+  await wait(()=>inspectScene().state==='project');
+  check('rapid page selection reaches latest work',inspectScene().selected===projects[8].id&&inspectScene().wallPage===1&&!inspectScene().pageTransition);
+  choose(6);$('#space').dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
+  check('Escape cancels page veil',!inspectScene().pageTransition&&getComputedStyle($('.gallery-page-veil')).opacity==='0');await wait(()=>inspectScene().state==='hall');
+  setPreferences({...savedPreferences,motion:'reduce'});choose(6);setPreferences({...savedPreferences,motion:'full'});choose(7);
+  click('#list-view');const paused=inspectScene().pageTransition.alpha;await new Promise(r=>setTimeout(r,200));
+  check('list view pauses page transition',inspectScene().pageTransition.alpha===paused);click('#space-view');await wait(()=>inspectScene().state==='project');
+  choose(6);$('#space').dispatchEvent(new KeyboardEvent('keydown',{key:'Home',bubbles:true}));
+  check('Home cancels page veil',!inspectScene().pageTransition&&getComputedStyle($('.gallery-page-veil')).opacity==='0');
+  setPreferences({...savedPreferences,motion:'reduce'});choose(6);setPreferences({...savedPreferences,motion:'full'});choose(7);setPreferences({...savedPreferences,motion:'reduce'});
+  check('reduced motion finishes pending page change',inspectScene().state==='project'&&inspectScene().wallPage===1&&!inspectScene().pageTransition);
+  setPreferences({...savedPreferences,motion:'full'});choose(6);$('#search').value='no-such-project-qa';$('#search').dispatchEvent(new Event('input',{bubbles:true}));
+  check('empty search cancels pending page change',!inspectScene().pageTransition&&getComputedStyle($('.gallery-page-veil')).opacity==='0');
+  setPreferences({...savedPreferences,motion:'reduce'});$('#search').value='';$('#search').dispatchEvent(new Event('input',{bubbles:true}));
+  for(const action of ['select','Escape','Home','filter']){
+    setPreferences({...savedPreferences,motion:'reduce'});choose(6);setPreferences({...savedPreferences,motion:'full'});choose(7);
+    await waitPhase('in');
+    if(action==='select')choose(6);
+    else if(action==='filter'){$('#search').value=projects[6].title;$('#search').dispatchEvent(new Event('input',{bubbles:true}));}
+    else $('#space').dispatchEvent(new KeyboardEvent('keydown',{key:action,bubbles:true}));
+    await wait(()=>inspectScene().state!=='travel');
+    const s=inspectScene();check(`fade-in ${action} finishes cleanly`,!s.pageTransition&&getComputedStyle($('.gallery-page-veil')).opacity==='0'&&(action==='Escape'?s.state==='hall':action==='Home'?s.state==='exterior':s.selected===projects[6].id&&s.wallPage===0&&Math.abs(s.camera[0]-exhibitX(6,exhibitBays))<.001));
+    $('#search').value='';$('#search').dispatchEvent(new Event('input',{bubbles:true}));
+  }
+  setPreferences({...savedPreferences,motion:'reduce'});choose(6);$('#space').dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
+  setPreferences({...savedPreferences,motion:'full'});choose(7);check('hall page selection starts covered transition',inspectScene().pageTransition?.phase==='out'&&inspectScene().camera[2]===3);
+  await waitPhase('in');check('hall page swap retains entry route',inspectScene().camera[2]===3);
+  await wait(()=>inspectScene().state==='project');check('hall page transition still approaches artwork',Math.abs(inspectScene().camera[2]+4.35)<.001);
+  setPreferences({...savedPreferences,motion:'reduce'});choose(6);
+  layerHost.setValues(setValue(savedLayers,layerHost.scene,'base','stage','slideMaxSeconds',3));await new Promise(r=>setTimeout(r,40));
+  setPreferences({...savedPreferences,motion:'full'});choose(0);check('slide maximum changes actual duration',inspectScene().transition.duration===3);setPreferences({...savedPreferences,motion:'reduce'});
+  layerHost.setValues(setValue(savedLayers,layerHost.scene,'base','stage','slideMinSeconds',1.2));await new Promise(r=>setTimeout(r,40));
+  setPreferences({...savedPreferences,motion:'full'});choose(1);choose(0);check('slide minimum changes interrupted duration',inspectScene().transition.duration===1.2);setPreferences({...savedPreferences,motion:'reduce'});
+  layerHost.setValues(setValue(savedLayers,layerHost.scene,'base','stage','pageSeconds',1.4));await new Promise(r=>setTimeout(r,40));
+  setPreferences({...savedPreferences,motion:'full'});const pageStarted=performance.now();choose(7);await wait(()=>inspectScene().state==='project');check('page duration setting affects elapsed transition',performance.now()-pageStarted>=1200);setPreferences({...savedPreferences,motion:'reduce'});layerHost.setValues(savedLayers);
   // Probe each layer parameter against its concrete attribute or computed-style binding.
+  $('#space').dispatchEvent(new KeyboardEvent('keydown',{key:'Home',bubbles:true}));
   const props={opacity:'opacity',visible:'visibility',x:'left',y:'top',size:'width',color:'color',height:'height',width:'width',gap:'gap',bottom:'bottom',paper:'background-color',ink:'color',shade:'opacity',brightness:'filter'};
   for(const layer of layerHost.manifest.layers)for(const [key,param]of Object.entries(layer.params)){
     const node=param.attr?$(param.attr[0]):$(layer.el.split(',')[0]);

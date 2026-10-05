@@ -1,6 +1,7 @@
 /* layer-fixed: absolute projection boxes and pointer routing belong to the camera renderer; .9rem normalizes the shared label-size default. */
 [data-layer-hidden]{display:none!important}
 .village-extension{position:absolute;pointer-events:none;display:var(--L-village-extension-visible);opacity:var(--L-village-extension-opacity);mask-image:linear-gradient(to right,transparent,black var(--L-village-extension-leftBlend));filter:brightness(calc(var(--scene-brightness,1) * var(--L-village-extension-brightness)))}
+.village-seonbi{position:absolute;pointer-events:none;display:var(--L-seonbi-extension-visible);opacity:var(--L-seonbi-extension-opacity);mask-image:linear-gradient(to right,transparent,black var(--L-seonbi-extension-leftBlend));filter:brightness(calc(var(--scene-brightness,1) * var(--L-seonbi-extension-brightness)))}
 #scene [data-world-project="chemiforge"]{display:var(--L-house-chemiforge-visible);opacity:calc(var(--L-house-chemiforge-opacity) * var(--village-label-opacity))}
 #scene [data-world-project="chemiforge"] .world-label{font-size:calc(var(--L-house-chemiforge-labelSize) + var(--village-label-size) - .9rem);color:var(--L-house-chemiforge-labelColor);background:var(--L-house-chemiforge-labelBackground)}
 [data-world-light="chemiforge"]{display:var(--L-house-chemiforge-visible);--light:var(--L-house-chemiforge-lightColor);opacity:calc(var(--ambient-opacity,0) * var(--L-house-chemiforge-opacity))}

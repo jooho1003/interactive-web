@@ -1,0 +1,97 @@
+{
+  "status": "FAIL",
+  "mode": "1",
+  "error": "Error: Timed out\n    at wait (http://127.0.0.1:8879/__qa/run.js:10:116)\n    at async http://127.0.0.1:8879/__qa/run.js:34:160",
+  "results": [
+    {
+      "name": "GLB loaded / exterior",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "scene uses real meshes",
+      "pass": true,
+      "detail": "{\"state\":\"exterior\",\"destination\":\"exterior\",\"selected\":\"potato-designer\",\"wallPage\":1,\"targetWallPage\":1,\"pageTransition\":null,\"transition\":null,\"wallProjects\":[\"potato-designer\",\"hanbok-hero\",\"village\"],\"camera\":[12,5.4,24],\"renderCamera\":[12,5.4,24],\"orbit\":{\"x\":0,\"y\":0},\"dragging\":false,\"artwork\":{\"corners\":[{\"x\":736.6170654324286,\"y\":435.4632838036311},{\"x\":736.7298327333018,\"y\":391.8469042244865},{\"x\":774.4726844728044,\"y\":438.0208796266602},{\"x\":774.7675668794498,\"y\":393.4608684800107}],\"repeat\":[1,1],\"offset\":[0,0]},\"surfaces\":{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true},\"drawCalls\":40,\"triangles\":157058,\"geometries\":27,\"posters\":10}"
+    },
+    {
+      "name": "one selector per project",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "every project has a wall artwork",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "architecture exports real PBR normal and roughness maps",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "photographed HDRI environment loaded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "photographed gravel PBR maps loaded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "seven repeating architectural materials / separate AO",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "baked gallery fixtures cover every wall artwork",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "seven curated wall artworks and all rail thumbnails",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no horizontal overflow",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "SUIT font loaded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "default mode is sequential camera tour",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "drag mode preserves page wheel",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "pinch zoom preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "horizontal scroll preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wheel advances into hall",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "same gesture cannot skip hall",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}

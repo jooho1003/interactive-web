@@ -5,7 +5,6 @@ import { projectHref, detailHref, projectAction, readVisit, sessionKey } from '.
 import { projects, profile } from './projects.js';
 import { registerPortfolioTools } from './webmcp.js';
 import {layerHost, initLayerSettings} from './spatial-layers.js';
-import { exhibitBays } from './spatial-route.js';
 
 await loadContent();
 const $ = (selector) => document.querySelector(selector);
@@ -16,8 +15,8 @@ const grid = $('#project-grid');
 const detail = $('#project-detail');
 const filters = $('#filters');
 const arrivalHash = location.hash;
-// 3D 벽에는 구운 칸 수만큼만 건다. 나머지 작품은 선택해도 카메라가 움직이지 않고(scene.select가 무시) 정보·링크만 바뀐다.
-const wallProjects = village ? projects : projects.slice(0, exhibitBays);
+// 전시관은 모든 작품을 기존 칸에 페이지로 전시한다. 동네 자체는 동네 건물이 아니다.
+const wallProjects = village ? projects.filter(p => p.id !== 'village') : projects;
 const onWall = (id) => wallProjects.some((p) => p.id === id);
 const visit = readVisit(projects, visitKey);
 let selected = visit?.selected || (village ? 'sasu' : 'dawn-store');

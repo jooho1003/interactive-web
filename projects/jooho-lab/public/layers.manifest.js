@@ -15,6 +15,11 @@ const surface={
   occlusion:{...n('접촉 그림자',.35,0,1,.05),attr:['#scene','data-occlusion']},
   groundTint:{...color('마당 재질색','#a8ab9b'),attr:['#scene','data-ground-tint']},
   waterRoughness:{...n('수면 거칠기',.08,.02,.4,.01),attr:['#scene','data-water-roughness']},
+  frameTint:{...color('액자색','#cec3ad'),attr:['#scene','data-frame-tint']},
+  frameRoughness:{...n('액자 거칠기',.55,.2,1,.05),attr:['#scene','data-frame-roughness']},
+  paperTint:{...color('종이 받침색','#fffdf5'),attr:['#scene','data-paper-tint']},
+  paperRoughness:{...n('종이 거칠기',.92,.5,1,.02),attr:['#scene','data-paper-roughness']},
+  artBrightness:{...n('작품 밝기',.96,.7,1.2,.02),attr:['#scene','data-art-brightness']},
 };
 export default{
   work:'jooho-lab',version:1,initialScene:'exterior',
@@ -22,7 +27,7 @@ export default{
   previewScreens:[{id:'base',label:'데스크톱',width:1440,matches:[]},{id:'mobile',label:'모바일',width:390,media:'(max-width:1000px)',matches:['mobile']}],
   scenes:{exterior:{label:'외관'},hall:{label:'작업실'},project:{label:'작품'}},
   layers:[
-    {id:'stage',label:'3D 공간 · 카메라',el:'#scene',params:{...visibility(),...surface,fov:{...n('화각',48,35,70,1),attr:['#scene','data-fov']},speed:{...n('이동 속도 배율',1,.5,2,.1),attr:['#scene','data-speed']},approachSeconds:{...n('작품 접근 시간',4.2,2.5,7,.1),attr:['#scene','data-approach-seconds']},slideSeconds:{...n('작품 간 이동 시간',1.8,1,3,.1),attr:['#scene','data-slide-seconds']},parallax:{...n('포인터 반응',.16,0,.4,.02),attr:['#scene','data-parallax']},dragStrength:{...n('드래그 반응',1.2,.4,2,.1),attr:['#scene','data-drag-strength']},dragLimit:{...n('시점 회전 범위',.32,.1,.4,.02),attr:['#scene','data-drag-limit']},damping:{...n('카메라 따라오는 속도',9,4,16,1),attr:['#scene','data-damping']},exposure:{...n('노출 배율',1.15,.5,2,.05),attr:['#scene','data-exposure']}}},
+    {id:'stage',label:'3D 공간 · 카메라',el:'#scene',params:{...visibility(),...surface,fov:{...n('화각',48,35,70,1),attr:['#scene','data-fov']},speed:{...n('이동 속도 배율',1,.5,2,.1),attr:['#scene','data-speed']},approachSeconds:{...n('작품 접근 시간',4.2,2.5,7,.1),attr:['#scene','data-approach-seconds']},slideSeconds:{...n('작품 간 이동 시간',1.8,1,3,.1),attr:['#scene','data-slide-seconds']},slideMinSeconds:{...n('작품 이동 최소 시간',.6,.2,1.5,.1),attr:['#scene','data-slide-min-seconds']},slideMaxSeconds:{...n('작품 이동 최대 시간',4.8,3,8,.1),attr:['#scene','data-slide-max-seconds']},pageSeconds:{...n('전시 페이지 전환 시간',.85,.3,1.8,.05),attr:['#scene','data-page-seconds']},pageTint:{...color('전시 페이지 전환 색','#e8e4db'),attr:['#scene','data-page-tint']},parallax:{...n('포인터 반응',.16,0,.4,.02),attr:['#scene','data-parallax']},dragStrength:{...n('드래그 반응',1.2,.4,2,.1),attr:['#scene','data-drag-strength']},dragLimit:{...n('시점 회전 범위',.32,.1,.4,.02),attr:['#scene','data-drag-limit']},damping:{...n('카메라 따라오는 속도',9,4,16,1),attr:['#scene','data-damping']},exposure:{...n('노출 배율',1.15,.5,2,.05),attr:['#scene','data-exposure']}}},
     {id:'landscape',label:'먼 풍경',el:'#lab-landscape',params:{...visibility(),image:{label:'배경 이미지',type:'image',default:'./assets/lab-landscape.jpg',attr:['#lab-landscape','src']},height:n('배경 높이',77,40,100,1,'vh'),brightness:n('풍경 밝기',1.18,.6,1.6,.02),color:color('하늘색','#b6c7cb'),shade:n('화면 음영',.4,0,1,.05)}},
     {id:'intro',label:'첫 인사',el:'.intro',params:{...visibility(),x:n('가로 위치',5,0,40,1,'vw'),y:{...n('세로 위치',36,12,65,1,'vh'),at:{mobile:24}},size:{...n('제목 크기',4.4,1.5,7,.1,'rem'),at:{mobile:2.7}},color:color('글자색','#f5f1e7')}},
     {id:'detail',label:'작품 설명',el:'.project-detail',params:{...visibility(),x:n('가로 위치',5,0,40,1,'vw'),y:{...n('세로 위치',31,15,60,1,'%'),at:{mobile:56}},width:n('설명 너비',340,240,550,10,'px'),color:color('글자색','#f5f1e7')}},
@@ -31,6 +36,8 @@ export default{
     {id:'shell',label:'메뉴 · 목록',el:'.site-header .brand,.site-header nav>a,#about-open,.index-section,.site-footer,#about-dialog',params:{...visibility(),paper:color('목록 배경','#ece9e1'),ink:color('목록 글자색','#28352f')}},
   ],
   fixed:[
+    'Gallery paper (1.51×1.91m), 18mm frame, shelf (1.62×0.055×0.26m), artwork Z=-6.75 and 2.15m bay spacing are physical installation coordinates; changing them requires rebuilding light/AO atlases and checking the matching camera target. Frame/paper tint and roughness and art brightness remain runtime settings.',
+    'The seven baked exhibit bays are reused in registry-order pages. Slot index modulo exhibitBays and page visibility are structural rules; project images/text/links remain editable content.',
     'Physical wall, doorway, artwork and furniture dimensions are Blender meters; changing them requires regenerating GLB and validating route clearances.',
     'Manual orbit is bounded inside the physical pavilion, with a 24% artwork framing allowance. Vertical orbit uses half the horizontal limit to keep floor/ceiling clear.',
     'Camera path anchors, including a 2.4m artwork viewing aisle, are structural coordinates in spatial-route.js; shared content cameraSpeed and lighting remain authoritative multipliers.',
