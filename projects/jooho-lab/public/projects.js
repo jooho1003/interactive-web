@@ -76,13 +76,13 @@ export const projects = [
     url: 'https://github.com/jooho1003/interactive-web/tree/main/projects/potato-designer', linkLabel: '프로젝트 코드 보기',
     image: './assets/potato.png', mark: 'p.', note: '생성한 2D 캐릭터에 CSS 원근과 회전을 적용한 디자인 스터디입니다.',
   },  {
-    id: 'hanbok-hero', liveUrl: './experiences/hanbok-hero/', title: '선비', subtitle: '마우스를 따라 고개를 돌리는 첫 화면.',
+    id: 'hanbok-hero', liveUrl: './experiences/hanbok-hero/', title: '선비', subtitle: '시·서·화를 고르면 분위기가 바뀌는 선비의 첫 화면.',
     category: '인터랙티브', type: 'POINTER-REACTIVE HERO', number: '09', color: '#d9b25a',
-    description: '갓 쓴 조선 선비가 포인터 쪽으로 고개를 돌리는 포트폴리오 첫 화면. 그림 한 장을 영상으로 움직인 뒤 몸은 고정하고 얼굴만 26칸으로 나눠, 끊김과 잔상 없이 따라오게 했습니다.',
-    details: ['포인터를 따라 사이 칸을 하나씩 지나는 고개 돌림', '몸 고정 + 얼굴 칸 교체로 잔상 없는 전환', '레이어마다 바꿀 수 있는 설정과 관리자 화면'],
-    tags: ['2.5D', '인터랙션', 'Kling'],
+    description: '가상의 선비 소운 윤하담의 첫 화면. 시(詩)·서(書)·화(畫) 분야를 고르면 회화풍 배경·큰 한자·문구·강조색이 바뀌고, 갓 쓴 선비는 포인터 쪽으로 고개를 돌립니다. 몸은 고정하고 얼굴만 26칸으로 나눠 끊김과 잔상 없이 따라옵니다.',
+    details: ['시·서·화 분야별 배경과 분위기 전환', '포인터를 따라 사이 칸을 하나씩 지나는 고개 돌림', '레이어마다 바꿀 수 있는 설정과 관리자 화면'],
+    tags: ['2.5D', '인터랙션', 'Kling', 'Codex'],
     url: 'https://github.com/jooho1003/interactive-web', linkLabel: '프로젝트 코드 보기',
-    image: './assets/work-hanbok-hero.webp', mark: '갓', note: '경회루 야경 위의 회화풍 캐릭터 히어로입니다.',
+    image: './assets/work-hanbok-hero.webp', mark: '갓', note: '분야마다 다른 회화풍 배경 위의 캐릭터 히어로입니다.',
   },
 
 ];
