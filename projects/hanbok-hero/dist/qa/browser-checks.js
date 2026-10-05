@@ -244,7 +244,7 @@ export async function runMoodStorageBlocked() {
 // 새로고침 뒤 복구 확인용 — 상태만 돌려준다
 export async function moodState() {
   const { layerHost } = await import('/app.js');
-  return { scene: layerHost.scene, pressed: document.querySelector('.mood[aria-pressed="true"]')?.dataset.scene, stored: stored(), cover: coverShown() };
+  return { scene: layerHost.scene, pressed: document.querySelector('.mood[aria-pressed="true"]')?.dataset.scene, stored: stored(), cover: coverShown(), coverSrc: document.querySelector('.paper-prev').getAttribute('src') };
 }
 
 export async function runSheetFailure() {

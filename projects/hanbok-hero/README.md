@@ -20,11 +20,11 @@ pnpm --filter hanbok-hero check    # node 테스트 · 엔트리 검사 · layer
 
 몸 그림이나 얼굴 시트가 없거나 실패하면 정면 그림(`still`)만 보입니다. 쉬는 칸(아래 행 가운데) + 몸 그림은 정면 그림과 픽셀이 같아서(`restMatchesStill` 평균 차이 0.4/255) 반응이 켜지는 순간이 보이지 않습니다. 영상 원본의 한계로 고개를 돌려도 눈은 대체로 관람자를 봅니다.
 
-분야 배경을 불러오지 못하면 이전 배경을 덮개로 남기고 글자·색만 바뀝니다. 다른 두 분야 배경은 첫 화면을 그린 뒤 미리 불러 둡니다. 저장소가 막혀도 분야는 바뀌고 이번 방문 동안만 기억합니다. 메뉴(About·Work·Contact)와 "작품 보기"는 다음 단계(시트)까지 게시값(`layers.values.json` base `visible: false`)으로 숨겼습니다.
+분야 배경을 불러오지 못하면 이전 배경을 덮개로 남기고 글자·색만 바뀝니다. 덮개는 이전 그림이 실제로 그려진 적이 있을 때만 씁니다(저장된 분야로 다시 방문할 때 아직 받지 못한 첫 장면 그림이 먼저 보이지 않게). 다른 두 분야 배경은 첫 화면을 그린 뒤 미리 불러 둡니다. 저장소가 막혀도 분야는 바뀌고 이번 방문 동안만 기억합니다. 메뉴(About·Work·Contact)와 "작품 보기"는 다음 단계(시트)까지 게시값(`layers.values.json` base `visible: false`)으로 숨겼습니다.
 
 ## 레이어
 
-`dist/layers.manifest.js`가 정본입니다(10레이어 / 108파라미터). `global` 전역 색·글꼴·분야 강조색(`accent`)·전환 시간(`moodFade`) · `paper` 배경(분야별 `image`) · `glyph` 큰 한자 · `character` 반응 캐릭터(still 정면 그림, body 얼굴 자리를 비운 몸 그림, sheet 얼굴 시트, cols·rows, headX·headY·headW·headH 얼굴 칸 창, x·y·size, anchorY, range, follow, returnDelay, react) · `title` 이름·소개 · `moods` 분야 버튼(한글·한자 3쌍, 받침 `plate`, 방향) · `nav` 메뉴 · `cta` 버튼 · `hint` 안내 · `credit` 제작 표시. 장면은 `si`·`seo`·`hwa`(분야 = 장면)이고 장면 `set`이 배경·큰 한자·부제·강조색을 바꿉니다. 구간은 wide·tablet·mobile이고 값은 `dist/layers.values.json`(관리자에서 게시)에 쌓입니다. JS가 읽는 수치(`range`·`anchorY`·`follow`·`returnDelay`)는 `.gaze-range` 요소의 계산된 스타일(크기·top·transition-duration·transition-delay)에서 읽어 CSS 변수가 유일한 정본입니다. 얼굴 칸 창(`head*`)은 시트를 만든 영역(`scripts/assets/build-heads.py`의 `RECT`)과 같아야 합니다.
+`dist/layers.manifest.js`가 정본입니다(10레이어 / 109파라미터). `global` 전역 색·글꼴·분야 강조색(`accent`)·전환 시간(`moodFade`) · `paper` 배경(분야별 `image`) · `glyph` 큰 한자 · `character` 반응 캐릭터(still 정면 그림, body 얼굴 자리를 비운 몸 그림, sheet 얼굴 시트, cols·rows, headX·headY·headW·headH 얼굴 칸 창, x·y·size, anchorY, range, follow, returnDelay, react) · `title` 이름·소개 · `moods` 분야 버튼(한글·한자 3쌍, 한자 비율 `hanjaScale`, 받침 `plate`, 방향) · `nav` 메뉴 · `cta` 버튼 · `hint` 안내 · `credit` 제작 표시. 장면은 `si`·`seo`·`hwa`(분야 = 장면)이고 장면 `set`이 배경·큰 한자·부제·강조색을 바꿉니다. 구간은 wide·tablet·mobile이고 값은 `dist/layers.values.json`(관리자에서 게시)에 쌓입니다. JS가 읽는 수치(`range`·`anchorY`·`follow`·`returnDelay`)는 `.gaze-range` 요소의 계산된 스타일(크기·top·transition-duration·transition-delay)에서 읽어 CSS 변수가 유일한 정본입니다. 얼굴 칸 창(`head*`)은 시트를 만든 영역(`scripts/assets/build-heads.py`의 `RECT`)과 같아야 합니다.
 
 ## 관리자
 

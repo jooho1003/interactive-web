@@ -782,6 +782,15 @@ export default {
             "mobile": 0.95
           }
         },
+        "hanjaScale": {
+          "label": "한자 크기 비율(한글 대비)",
+          "type": "number",
+          "default": 1.35,
+          "min": 0.6,
+          "max": 3,
+          "step": 0.05,
+          "unit": ""
+        },
         "color": {
           "label": "글자 색",
           "type": "color",

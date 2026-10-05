@@ -44,7 +44,7 @@ body { margin: 0; min-height: 100vh; overflow: hidden; opacity: var(--L-global-o
 .moods-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; } /* layer-fixed: 스크린리더 전용 그룹 이름 */
 .mood { display: inline-flex; align-items: baseline; justify-content: center; gap: .4em; min-width: 44px; min-height: 44px; padding: .35em .6em; border: 1px solid transparent; border-radius: 2px; background: none; color: var(--L-moods-color); font: inherit; cursor: pointer; text-shadow: 0 1px 2px rgba(0, 0, 0, .45); transition: color var(--L-global-moodFade), border-color var(--L-global-moodFade); } /* layer-fixed: 터치 타깃 44px, 버튼 기본 모양 제거, 대비용 그림자 */
 .mood[aria-pressed="true"] { color: var(--L-global-accent); border-color: var(--L-global-accent); } /* layer-fixed: 고른 분야 표시 */
-.mood-hanja { font-size: 1.35em; } /* layer-fixed: 한자를 한글보다 크게 */
+.mood-hanja { font-size: calc(var(--L-moods-hanjaScale) * 1em); }
 .mood:focus-visible { outline: 2px solid #f3e9d8; outline-offset: 3px; } /* layer-fixed: 포커스 링 대비 */
 .credit { position: absolute; left: var(--L-credit-x); top: var(--L-credit-y); margin: 0; font-size: var(--L-credit-size); color: var(--L-credit-color); visibility: var(--L-credit-visible); opacity: var(--L-credit-opacity); letter-spacing: .04em; white-space: nowrap; } /* layer-fixed: 한 줄, 자간 디자인 고정 */
 

@@ -39,3 +39,7 @@ test('빈 메뉴·작품 보기는 게시값으로 숨김', () => {
 test('분야별 배경 주소: 장면마다 다른 그림 3장', () => {
   assert.deepEqual(moodImages(manifest, published, []), ['./assets/mood-si.webp', './assets/mood-seo.webp', './assets/mood-hwa.webp']);
 });
+test('버튼 속 한자 크기 비율은 레이어 파라미터(리터럴 아님)', () => {
+  const moods = manifest.layers.find(layer => layer.id === 'moods');
+  assert.equal(moods.params.hanjaScale?.default, 1.35);
+});

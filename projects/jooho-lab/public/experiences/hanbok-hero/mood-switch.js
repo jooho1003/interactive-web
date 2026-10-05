@@ -8,6 +8,9 @@ export function setupMoods(layerHost, { storage = openStorage() } = {}) {
   const cover = document.querySelector('.paper-prev');
   const ids = Object.keys(layerHost.manifest.scenes);
   let scene = layerHost.scene, shown = image.getAttribute('src'), saved = null, started = false, token = null, timer = 0;
+  // 덮개는 이전 그림이 실제로 그려진 적이 있을 때만 쓴다 — 아직 못 받은 첫 장면 그림을 덮개로 올리면 틀린 분위기가 먼저 보인다
+  let shownReady = image.complete && image.naturalWidth > 0;
+  if (!shownReady) image.addEventListener('load', () => { if (image.getAttribute('src') === shown) shownReady = true; }, { once: true });
 
   const sync = () => { for (const button of buttons) button.setAttribute('aria-pressed', String(button.dataset.scene === scene)); };
   // 덮개 전환 시간의 정본은 .paper-prev의 계산된 transition-duration(= global.moodFade, 동작 줄이기면 0)
@@ -22,11 +25,12 @@ export function setupMoods(layerHost, { storage = openStorage() } = {}) {
     clearTimeout(timer);
     if (next === shown) { token = null; cover.hidden = true; cover.classList.remove('is-fading'); return; }
     const current = token = {};
-    cover.src = shown; cover.classList.remove('is-fading'); cover.hidden = false;
+    cover.classList.remove('is-fading');
+    if (shownReady) { cover.src = shown; cover.hidden = false; } else cover.hidden = true;
     image.decode().then(() => {
       if (token !== current) return;
-      shown = next;
-      const ms = animate ? fadeMs() : 0;
+      shown = next; shownReady = true;
+      const ms = animate && !cover.hidden ? fadeMs() : 0;
       if (!ms) return lift(current);
       void cover.offsetWidth; // 덮개를 보인 직후 같은 프레임에 걷으면 전환이 일어나지 않는다
       cover.classList.add('is-fading');
