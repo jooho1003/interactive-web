@@ -1,0 +1,22 @@
+{
+  "format": "iw-layers/1",
+  "work": "jooho-lab",
+  "manifestVersion": 1,
+  "base": {
+    "courtyard-tree-back": {
+      "yaw": -4,
+      "x": 10.571,
+      "z": 0.512
+    },
+    "courtyard-trees": {
+      "x": 10.016,
+      "z": 5.332
+    },
+    "stage": {
+      "positionX": 0.666,
+      "positionY": 1.333
+    }
+  },
+  "responsive": {},
+  "scenes": {}
+}

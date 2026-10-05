@@ -3,6 +3,7 @@ import {GLTFLoader} from './assets/GLTFLoader.js';
 import {Reflector} from './assets/Reflector.js';
 import {HDRLoader} from './assets/HDRLoader.js';
 import manifest from './layers.manifest.js';
+import {createCourtyardTrees} from './courtyard-trees.js';
 import {exterior,hall,exhibitPose,exhibitX,exhibitBays,exhibitSlot,exhibitPage,artworkZ,slideDuration,routeTo,sampleRoute,containArtwork,nextStop,cameraInputEnvelope} from './spatial-route.js';
 
 export async function createGallery(container,projects,onSelect,onFailure,onOpen,onState=()=>{}){
@@ -50,6 +51,8 @@ export async function createGallery(container,projects,onSelect,onFailure,onOpen
       if(mat.map)mat.map.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());
     }
   }});world.add(model);
+  const treePair=await createCourtyardTrees(world,container,renderer,exterior.eye,()=>wake(),()=>destroyed);
+  function updateTrees(){treePair.update();}
   // layer-fixed: physical pool dimensions and seeded 2m gravel tiling match the
   // Blender courtyard; bounded reflection resolution avoids a full-size pass.
   if(gravel){
@@ -77,6 +80,7 @@ export async function createGallery(container,projects,onSelect,onFailure,onOpen
   const setting=key=>Number(container.dataset[key]??defaults[key].default);
   const pageVeil=document.createElement('div');pageVeil.className='gallery-page-veil';pageVeil.setAttribute('aria-hidden','true');container.append(pageVeil);
   function updateSurfaces(){
+    updateTrees();
     ambient.intensity=setting('ambient');sun.intensity=setting('sunlight');
     fill.intensity=setting('interiorLight');side.intensity=setting('interiorLight')*.6;
     const interiorTint=container.dataset.interiorTint??defaults.interiorTint.default;
@@ -100,8 +104,30 @@ export async function createGallery(container,projects,onSelect,onFailure,onOpen
   function graphic(p){const canvas=document.createElement('canvas');canvas.width=512;canvas.height=652;const c=canvas.getContext('2d');c.fillStyle=p.color;c.fillRect(0,0,512,652);c.strokeStyle='#ffffff55';c.strokeRect(25,25,462,602);c.fillStyle='#fff4de';c.font='18px SUIT';c.fillText('JOOHO LAB / '+p.number,48,73);c.font='bold 94px SUIT';c.fillText(p.mark,48,310,415);c.font='26px SUIT';c.fillText(p.title,48,555,420);c.font='17px SUIT';c.fillText(p.category,48,590,420);const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;return texture;}
   projects.forEach((p,i)=>{
     const mesh=new THREE.Mesh(new THREE.PlaneGeometry(1.43,1.82),new THREE.MeshBasicMaterial({color:p.color,transparent:true}));
-    mesh.position.set(exhibitX(exhibitSlot(i),exhibitBays),2.3,artworkZ);mesh.userData.id=p.id;posterGroup.add(mesh);posters.set(p.id,{mesh,page:exhibitPage(i),url:null,version:0});
+    mesh.position.set(exhibitX(exhibitSlot(i),exhibitBays),2.3,artworkZ);mesh.userData.id=p.id;posterGroup.add(mesh);posters.set(p.id,{mesh,page:exhibitPage(i),url:null,version:0,fit:[1,1],x:mesh.position.x});
   });
+  const potatoLayers=manifest.layers.filter(l=>l.id==='potato-card'||l.id==='potato-shadow');
+  const potatoValue=(id,key)=>{const p=potatoLayers.find(l=>l.id===id).params[key],v=container.getAttribute(p.attr[1])??p.default;return p.type==='number'?Number(v):p.type==='boolean'?v===true||v==='true':v;};
+  const potatoShadow=new THREE.Mesh(new THREE.PlaneGeometry(1,1),new THREE.ShaderMaterial({transparent:true,depthWrite:false,uniforms:{tint:{value:new THREE.Color()},alpha:{value:0}},vertexShader:'varying vec2 uvShadow; void main(){uvShadow=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',fragmentShader:'uniform vec3 tint; uniform float alpha; varying vec2 uvShadow; void main(){float a=1.0-smoothstep(0.1,1.0,length((uvShadow-0.5)*2.0));gl_FragColor=vec4(tint,a*alpha); #include <colorspace_fragment> }'.replace('#include <colorspace_fragment>','\n#include <colorspace_fragment>\n')}));
+  potatoShadow.visible=false;posterGroup.add(potatoShadow);
+  let pointerIsTouch=false;
+  function updatePotatoDepth(){
+    const p=posters.get('potato-designer');if(!p)return;
+    const card=k=>potatoValue('potato-card',k),shadow=k=>potatoValue('potato-shadow',k);
+    p.mesh.visible=visible.includes('potato-designer')&&p.page===paintedPage&&card('visible');p.mesh.material.opacity=card('opacity');
+    const engaged=p.mesh.visible&&card('enabled')&&selected==='potato-designer'&&state==='project';
+    const input=engaged&&!reduced&&!pointerIsTouch&&!dragEnabled&&!editing?smoothPointer:{x:0,y:0};
+    const depth=engaged?card('depth'):0,scale=engaged?card('scale'):1;
+    p.mesh.scale.set(p.fit[0]*scale,p.fit[1]*scale,1);
+    // layer-fixed: the physical paper is 15mm behind artworkZ; cap corner retreat.
+    const tilt=Math.min(THREE.MathUtils.degToRad(card('tilt')),Math.atan2(depth+.01,(1.43*p.mesh.scale.x+1.82*p.mesh.scale.y)/2));
+    p.mesh.rotation.set(-input.y*tilt,input.x*tilt,0);
+    p.mesh.position.set(p.x+card('positionX')+input.x*card('shiftX'),2.3+card('positionY')+input.y*card('shiftY'),artworkZ+depth);
+    potatoShadow.visible=engaged&&shadow('visible');
+    potatoShadow.position.set(p.x+shadow('positionX')-input.x*shadow('shift'),2.3+shadow('y')+shadow('positionY')-input.y*shadow('shift')/2,artworkZ+Math.min(.005,depth-.002));
+    potatoShadow.scale.set(shadow('width'),shadow('height'),1);
+    potatoShadow.material.uniforms.tint.value.set(shadow('color'));potatoShadow.material.uniforms.alpha.value=shadow('opacity')*card('opacity');
+  }
   updateSurfaces();
   let paintedPage=0,pageTransition=null,pageAlpha=0;
   function veil(alpha){pageAlpha=alpha;pageVeil.style.setProperty('--gallery-page-alpha',alpha);}
@@ -109,7 +135,7 @@ export async function createGallery(container,projects,onSelect,onFailure,onOpen
   let state='exterior',destination='exterior',transition=null,reduced=false,active=true,destroyed=false;
   let zoom=1,speed=1,lighting=1,raf=0,lastTime=performance.now(),visible=projects.map(p=>p.id),pointer={x:0,y:0},smoothPointer={x:0,y:0},down=null;
   let viewport={width:1,height:1},focusFrame={x:.5,y:.5,fov:48};
-  let dragEnabled=false,drag=null;
+  let dragEnabled=false,drag=null,editing=false;
   const orbit={x:0,y:0},smoothOrbit={x:0,y:0};
   const raycaster=new THREE.Raycaster();
   const pageFor=id=>exhibitPage(Math.max(0,projects.findIndex(p=>p.id===id)));
@@ -152,15 +178,18 @@ export async function createGallery(container,projects,onSelect,onFailure,onOpen
     const focus=current.focus||0;
     const baseFov=THREE.MathUtils.radToDeg(2*Math.atan(Math.tan(THREE.MathUtils.degToRad((Number(container.dataset.fov)||48)+(viewport.width<650?14:0))/2)/zoom));
     camera.fov=baseFov+(Math.max(focusFrame.fov,baseFov)-baseFov)*focus;camera.zoom=1;
+    // layer-fixed: editing temporarily widens the exterior preview to leave room
+    // for the dock. Published camera settings and physical paths stay intact.
+    if(editing&&state==='exterior')camera.fov=Math.max(camera.fov,70);
     camera.setViewOffset(viewport.width,viewport.height,-viewport.width*(focusFrame.x-.5)*focus,-viewport.height*(focusFrame.y-.5)*focus,viewport.width,viewport.height);
     const envelope=cameraInputEnvelope(current.eye[2]);
     const target=new THREE.Vector3(...current.look),offset=new THREE.Vector3().subVectors(camera.position,target);
     const spherical=new THREE.Spherical().setFromVector3(offset);spherical.theta+=smoothOrbit.x*envelope;spherical.phi=THREE.MathUtils.clamp(spherical.phi+smoothOrbit.y*envelope,.15,Math.PI-.15);
     camera.position.copy(target).add(offset.setFromSpherical(spherical));
     if(current.eye[2]<5.55){camera.position.x=THREE.MathUtils.clamp(camera.position.x,-8.1,8.1);camera.position.y=THREE.MathUtils.clamp(camera.position.y,.65,4.1);}
-    const strength=reduced?0:Number(container.dataset.parallax??.16)*envelope;
+    const strength=reduced||editing?0:Number(container.dataset.parallax??.16)*envelope;
     camera.position.x+=smoothPointer.x*strength;camera.position.y+=smoothPointer.y*strength*.4;
-    camera.lookAt(...current.look);renderer.info.reset();renderer.render(world,camera);
+    camera.lookAt(...current.look);updatePotatoDepth();renderer.info.reset();renderer.render(world,camera);
     container.dataset.camera=camera.position.toArray().map(v=>v.toFixed(3)).join(',');container.dataset.drawCalls=String(renderer.info.render.calls);
   }
   function frame(time){raf=0;const dt=Math.max(0,(time-lastTime)/1000);lastTime=time;if(!active||destroyed)return;
@@ -173,14 +202,16 @@ export async function createGallery(container,projects,onSelect,onFailure,onOpen
   }
   function wake(){if(active&&!raf&&!destroyed){lastTime=performance.now();raf=requestAnimationFrame(frame);}}
   function refresh(){for(const p of projects){const item=posters.get(p.id);if(item.version&&item.url===p.image)continue;item.mesh.material.color.setScalar(setting('artBrightness'));
-    item.url=p.image;const version=++item.version;item.mesh.scale.set(1,1,1);item.mesh.material.map?.dispose();item.mesh.material.map=null;item.mesh.material.needsUpdate=true;
+    item.url=p.image;const version=++item.version;item.fit=[1,1];item.mesh.scale.set(1,1,1);item.mesh.material.map?.dispose();item.mesh.material.map=null;item.mesh.material.needsUpdate=true;
     if(!p.image){item.mesh.material.map=graphic(p);item.mesh.material.needsUpdate=true;}
     else textureLoader.load(p.image,tex=>{if(destroyed||version!==item.version){tex.dispose();return}tex.colorSpace=THREE.SRGBColorSpace;
-      const [sx,sy]=containArtwork(tex.image.width,tex.image.height);item.mesh.scale.set(sx,sy,1);
+      const [sx,sy]=containArtwork(tex.image.width,tex.image.height);item.fit=[sx,sy];item.mesh.scale.set(sx,sy,1);
       tex.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());item.mesh.material.map=tex;item.mesh.material.needsUpdate=true;resize();wake();},undefined,()=>{if(destroyed||version!==item.version)return;item.mesh.material.color.set(p.color);wake();});
   }wake();}
   function onPointerMove(e){const r=container.getBoundingClientRect();
+    if(editing)return;
     if(drag&&drag.id!==e.pointerId)return;
+    pointerIsTouch=e.pointerType==='touch';
     if(drag&&drag.id===e.pointerId){
       const strength=Number(container.dataset.dragStrength??1.2),limit=Number(container.dataset.dragLimit??.32);
       orbit.x=THREE.MathUtils.clamp(drag.orbitX-(e.clientX-drag.x)/r.width*strength,-limit,limit);
@@ -188,10 +219,11 @@ export async function createGallery(container,projects,onSelect,onFailure,onOpen
       drag.moved ||= Math.hypot(e.clientX-drag.x,e.clientY-drag.y)>6;pointer={x:0,y:0};
     }else{pointer.x=(e.clientX-r.left)/r.width*2-1;pointer.y=-((e.clientY-r.top)/r.height*2-1);}
     wake();}
-  function onPointerDown(e){if(e.button!==0||(drag&&drag.id!==e.pointerId)||(e.isTrusted&&!e.isPrimary))return;down={x:e.clientX,y:e.clientY};
+  function onPointerDown(e){if(editing||e.button!==0||(drag&&drag.id!==e.pointerId)||(e.isTrusted&&!e.isPrimary))return;down={x:e.clientX,y:e.clientY};
+    pointerIsTouch=e.pointerType==='touch';if(pointerIsTouch){pointer={x:0,y:0};wake();}
     if(dragEnabled){drag={id:e.pointerId,x:e.clientX,y:e.clientY,orbitX:orbit.x,orbitY:orbit.y,moved:false};if(e.isTrusted)container.setPointerCapture(e.pointerId);container.classList.add('dragging');}}
   function endDrag(){const moved=drag?.moved;if(drag&&container.hasPointerCapture(drag.id))container.releasePointerCapture(drag.id);drag=null;container.classList.remove('dragging');return moved;}
-  function onPointerUp(e){if(drag&&drag.id!==e.pointerId)return;const moved=endDrag();if(moved||!down||Math.hypot(e.clientX-down.x,e.clientY-down.y)>8){down=null;return}down=null;
+  function onPointerUp(e){if(editing)return;if(drag&&drag.id!==e.pointerId)return;const moved=endDrag();if(moved||!down||Math.hypot(e.clientX-down.x,e.clientY-down.y)>8){down=null;return}down=null;
     const r=container.getBoundingClientRect();raycaster.setFromCamera(new THREE.Vector2((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1),camera);
     const hit=raycaster.intersectObjects([model,...[...posters.values()].filter(p=>p.mesh.visible).map(p=>p.mesh)],true)[0];
     if(hit&&visible.includes(hit.object.userData.id))onSelect(hit.object.userData.id);
@@ -201,14 +233,21 @@ export async function createGallery(container,projects,onSelect,onFailure,onOpen
   function onLost(e){e.preventDefault();onFailure();}
   container.addEventListener('pointermove',onPointerMove);container.addEventListener('pointerdown',onPointerDown);container.addEventListener('pointerup',onPointerUp);container.addEventListener('pointercancel',onCancel);container.addEventListener('pointerleave',onLeave);renderer.domElement.addEventListener('webglcontextlost',onLost);
   const resizeObserver=new ResizeObserver(resize);resizeObserver.observe(container);
-  const mutation=new MutationObserver(records=>{if(!records.some(r=>r.oldValue!==container.getAttribute(r.attributeName)))return;updateSurfaces();renderer.toneMappingExposure=(Number(container.dataset.exposure)||1.15)*lighting;if(records.some(r=>r.attributeName==='data-fov'&&r.oldValue!==container.getAttribute(r.attributeName)))resize();wake();});mutation.observe(container,{attributes:true,attributeOldValue:true,attributeFilter:['data-fov','data-parallax','data-speed','data-exposure','data-drag-strength','data-drag-limit','data-damping',...Object.values(defaults).filter(p=>p.attr).map(p=>p.attr[1])]});
+  const mutation=new MutationObserver(records=>{if(!records.some(r=>r.oldValue!==container.getAttribute(r.attributeName)))return;updateSurfaces();renderer.toneMappingExposure=(Number(container.dataset.exposure)||1.15)*lighting;if(records.some(r=>r.attributeName==='data-fov'&&r.oldValue!==container.getAttribute(r.attributeName)))resize();wake();});mutation.observe(container,{attributes:true,attributeOldValue:true,attributeFilter:['data-fov','data-parallax','data-speed','data-exposure','data-drag-strength','data-drag-limit','data-damping',...Object.values(defaults).filter(p=>p.attr).map(p=>p.attr[1]),...potatoLayers.flatMap(l=>Object.values(l.params).map(p=>p.attr[1])),...manifest.layers.filter(l=>l.id==='courtyard-trees'||l.id==='courtyard-tree-back').flatMap(l=>Object.values(l.params).map(p=>p.attr[1]))]});
   showPage();refresh();resize();
   // Warm interior programs/buffers while the loading controls are still disabled.
   // First entry should not pay for uploading surfaces hidden in the exterior view.
   await renderer.compileAsync(world,camera);
   camera.position.fromArray(hall.eye);camera.lookAt(...hall.look);renderer.render(world,camera);
   render();announce();
+  const editMeshes=id=>id.startsWith('courtyard-')?treePair.meshes.filter(m=>m.userData.layerId===id):id==='potato-card'?[posters.get('potato-designer')?.mesh].filter(Boolean):id==='potato-shadow'?[potatoShadow]:[];
+  function editRay(x,y){const r=container.getBoundingClientRect();camera.updateMatrixWorld();raycaster.setFromCamera(new THREE.Vector2((x-r.left)/r.width*2-1,-(y-r.top)/r.height*2+1),camera);}
   return{
+    setEditing(value){editing=value;endDrag();down=null;pointer={x:0,y:0};smoothPointer={x:0,y:0};orbit.x=orbit.y=smoothOrbit.x=smoothOrbit.y=0;if(value)while(transition||pageTransition)finish(false);resize();wake();},
+    showEditScene(next){travel(next);},
+    pickLayer(x,y){editRay(x,y);const meshes=[...treePair.meshes,...editMeshes('potato-card'),potatoShadow].filter(m=>m.visible);const hit=raycaster.intersectObjects([model,...meshes],true)[0];return hit?.object.userData.layerId||(hit?.object===posters.get('potato-designer')?.mesh?'potato-card':hit?.object===potatoShadow?'potato-shadow':null);},
+    layerEditPoint(id,x,y){editRay(x,y);const mesh=editMeshes(id)[0];if(!mesh)return null;const ground=id.startsWith('courtyard-');const plane=new THREE.Plane(ground?new THREE.Vector3(0,1,0):new THREE.Vector3(0,0,1),ground?-.255:-mesh.position.z);const point=raycaster.ray.intersectPlane(plane,new THREE.Vector3());return point?{x:point.x,y:ground?point.z:point.y}:null;},
+    getLayerFrame(id){const meshes=editMeshes(id).filter(m=>m.visible&&(!m.material.opacity||m.material.opacity>0));if(!meshes.length)return null;const r=container.getBoundingClientRect(),points=[];for(const mesh of meshes){mesh.updateMatrixWorld(true);const a=mesh.geometry.attributes.position;for(let i=0;i<a.count;i++){const p=new THREE.Vector3().fromBufferAttribute(a,i).applyMatrix4(mesh.matrixWorld).project(camera);if(p.z<1&&p.z>-1)points.push({x:r.left+(p.x+1)*r.width/2,y:r.top+(1-p.y)*r.height/2});}}if(!points.length)return null;const left=Math.min(...points.map(p=>p.x)),top=Math.min(...points.map(p=>p.y));const anchor=meshes[0].getWorldPosition(new THREE.Vector3()).project(camera);return{left,top,width:Math.max(...points.map(p=>p.x))-left,height:Math.max(...points.map(p=>p.y))-top,anchor:{x:r.left+(anchor.x+1)*r.width/2,y:r.top+(1-anchor.y)*r.height/2}};},
     setDragEnabled(value){dragEnabled=value;endDrag();if(!value){orbit.x=0;orbit.y=0;}wake();},
     step(direction){
       const next=nextStop(destination,selected,visible,direction);
@@ -223,7 +262,7 @@ export async function createGallery(container,projects,onSelect,onFailure,onOpen
     setReducedMotion(value){reduced=value;if(value){smoothOrbit.x=orbit.x;smoothOrbit.y=orbit.y;finish();}wake();},setZoom(value){zoom=value;resize();},
     setActive(value){active=value;if(!active&&raf){cancelAnimationFrame(raf);raf=0}else wake();},
     refreshContent(value){speed=value.cameraSpeed;lighting=value.lighting;renderer.toneMappingExposure=(Number(container.dataset.exposure)||1.15)*lighting;refresh();},refreshLinks(){},
-    inspect(){const mesh=posters.get(selected)?.mesh;const corners=mesh?[-1,1].flatMap(x=>[-1,1].map(y=>new THREE.Vector3(x*1.43/2,y*1.82/2,0).applyMatrix4(mesh.matrixWorld).project(camera))).map(p=>({x:(p.x+1)*viewport.width/2,y:(1-p.y)*viewport.height/2})):[];return{state,destination,selected,wallPage:paintedPage,targetWallPage:pageFor(selected),pageTransition:pageTransition?{phase:pageTransition.phase,alpha:pageAlpha}:null,transition:transition?{duration:transition.duration,elapsed:transition.elapsed}:null,wallProjects:[...posters].filter(([,p])=>p.mesh.visible).map(([id])=>id),camera:[...current.eye],renderCamera:camera.position.toArray(),orbit:{...smoothOrbit},dragging:Boolean(drag),artwork:{corners,repeat:mesh?.material.map?.repeat.toArray(),offset:mesh?.material.map?.offset.toArray()},surfaces:{frameTint:frameMaterial?'#'+frameMaterial.color.getHexString():null,frameRoughness:frameMaterial?.roughness,paperRoughness:paper?.roughness,artBrightness:mesh?.material.color.r,paperTint:paper?'#'+paper.color.clone().multiply(new THREE.Color(1/paper.userData.baseTint.r,1/paper.userData.baseTint.g,1/paper.userData.baseTint.b)).multiply(new THREE.Color().setRGB(1/new THREE.Color(container.dataset.surfaceTint??defaults.surfaceTint.default).r,1/new THREE.Color(container.dataset.surfaceTint??defaults.surfaceTint.default).g,1/new THREE.Color(container.dataset.surfaceTint??defaults.surfaceTint.default).b)).getHexString():null,interiorLight:fill.intensity,galleryLight:architecture?.emissiveIntensity*20,interiorTint:'#'+fill.color.getHexString(),galleryLights:model.userData.bakedGalleryLights,galleryLightMap:Boolean(architecture?.emissiveMap),environment:environmentSource,gravelMaps:Boolean(gravel?.map&&gravel?.normalMap&&gravel?.roughnessMap),occlusion:architecture?.aoMapIntensity,detailMaterials:architectureMaterials.length,occlusionMap:Boolean(architecture?.aoMap),groundTint:gravel?'#'+gravel.color.getHexString():null,ambient:ambient.intensity,sunlight:sun.intensity,reflections:architecture?.envMapIntensity,surfaceTint:architecture?'#'+architecture.color.clone().multiply(new THREE.Color(1/architecture.userData.baseTint.r,1/architecture.userData.baseTint.g,1/architecture.userData.baseTint.b)).getHexString():null,surfaceRelief:architecture?.normalScale.x,surfaceRoughness:architecture?.roughness,glassOpacity:glazing?.opacity,waterRoughness:pool?.roughness,normalMap:Boolean(architecture?.normalMap),roughnessMap:Boolean(architecture?.roughnessMap)},drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,posters:[...posters.values()].filter(p=>p.mesh.material.map).length};},
-    destroy(){destroyed=true;cancelAnimationFrame(raf);resizeObserver.disconnect();mutation.disconnect();container.removeEventListener('pointermove',onPointerMove);container.removeEventListener('pointerdown',onPointerDown);container.removeEventListener('pointerup',onPointerUp);container.removeEventListener('pointerleave',onLeave);container.removeEventListener('pointercancel',onCancel);world.traverse(o=>{o.geometry?.dispose();if(o.material){for(const texture of new Set([o.material.map,o.material.normalMap,o.material.roughnessMap,o.material.metalnessMap,o.material.emissiveMap,o.material.aoMap]))texture?.dispose();o.material.dispose();}});poolReflection.dispose();environment.dispose();renderer.dispose();renderer.domElement.remove();pageVeil.remove();},
+    inspect(){const mesh=posters.get(selected)?.mesh,potato=posters.get('potato-designer')?.mesh;const corners=mesh?[-1,1].flatMap(x=>[-1,1].map(y=>new THREE.Vector3(x*1.43/2,y*1.82/2,0).applyMatrix4(mesh.matrixWorld).project(camera))).map(p=>({x:(p.x+1)*viewport.width/2,y:(1-p.y)*viewport.height/2})):[];return{trees:treePair.inspect(),potato:{visible:potato?.visible,opacity:potato?.material.opacity,position:potato?.position.toArray(),rotation:potato?.rotation.toArray().slice(0,3),scale:potato?.scale.toArray(),shadow:{visible:potatoShadow.visible,position:potatoShadow.position.toArray(),scale:potatoShadow.scale.toArray(),color:'#'+potatoShadow.material.uniforms.tint.value.getHexString(),opacity:potatoShadow.material.uniforms.alpha.value}},state,destination,selected,wallPage:paintedPage,targetWallPage:pageFor(selected),pageTransition:pageTransition?{phase:pageTransition.phase,alpha:pageAlpha}:null,transition:transition?{duration:transition.duration,elapsed:transition.elapsed}:null,wallProjects:[...posters].filter(([,p])=>p.mesh.visible).map(([id])=>id),camera:[...current.eye],renderCamera:camera.position.toArray(),orbit:{...smoothOrbit},dragging:Boolean(drag),artwork:{corners,repeat:mesh?.material.map?.repeat.toArray(),offset:mesh?.material.map?.offset.toArray()},surfaces:{frameTint:frameMaterial?'#'+frameMaterial.color.getHexString():null,frameRoughness:frameMaterial?.roughness,paperRoughness:paper?.roughness,artBrightness:mesh?.material.color.r,paperTint:paper?'#'+paper.color.clone().multiply(new THREE.Color(1/paper.userData.baseTint.r,1/paper.userData.baseTint.g,1/paper.userData.baseTint.b)).multiply(new THREE.Color().setRGB(1/new THREE.Color(container.dataset.surfaceTint??defaults.surfaceTint.default).r,1/new THREE.Color(container.dataset.surfaceTint??defaults.surfaceTint.default).g,1/new THREE.Color(container.dataset.surfaceTint??defaults.surfaceTint.default).b)).getHexString():null,interiorLight:fill.intensity,galleryLight:architecture?.emissiveIntensity*20,interiorTint:'#'+fill.color.getHexString(),galleryLights:model.userData.bakedGalleryLights,galleryLightMap:Boolean(architecture?.emissiveMap),environment:environmentSource,gravelMaps:Boolean(gravel?.map&&gravel?.normalMap&&gravel?.roughnessMap),occlusion:architecture?.aoMapIntensity,detailMaterials:architectureMaterials.length,occlusionMap:Boolean(architecture?.aoMap),groundTint:gravel?'#'+gravel.color.getHexString():null,ambient:ambient.intensity,sunlight:sun.intensity,reflections:architecture?.envMapIntensity,surfaceTint:architecture?'#'+architecture.color.clone().multiply(new THREE.Color(1/architecture.userData.baseTint.r,1/architecture.userData.baseTint.g,1/architecture.userData.baseTint.b)).getHexString():null,surfaceRelief:architecture?.normalScale.x,surfaceRoughness:architecture?.roughness,glassOpacity:glazing?.opacity,waterRoughness:pool?.roughness,normalMap:Boolean(architecture?.normalMap),roughnessMap:Boolean(architecture?.roughnessMap)},drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,posters:[...posters.values()].filter(p=>p.mesh.material.map).length};},
+    destroy(){destroyed=true;cancelAnimationFrame(raf);resizeObserver.disconnect();mutation.disconnect();container.removeEventListener('pointermove',onPointerMove);container.removeEventListener('pointerdown',onPointerDown);container.removeEventListener('pointerup',onPointerUp);container.removeEventListener('pointerleave',onLeave);container.removeEventListener('pointercancel',onCancel);world.traverse(o=>{o.geometry?.dispose();if(o.material){for(const texture of new Set([o.material.map,o.material.normalMap,o.material.roughnessMap,o.material.metalnessMap,o.material.emissiveMap,o.material.aoMap]))texture?.dispose();o.material.dispose();}});treePair.dispose();poolReflection.dispose();environment.dispose();renderer.dispose();renderer.domElement.remove();pageVeil.remove();},
   };
 }

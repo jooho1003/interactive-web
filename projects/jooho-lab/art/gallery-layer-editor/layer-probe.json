@@ -1,0 +1,39 @@
+{
+  "total": 131,
+  "passed": 131,
+  "failed": [],
+  "scenes": {
+    "exterior": {
+      "total": 131,
+      "passed": 130,
+      "failed": [
+        {
+          "layer": "detail",
+          "key": "visible",
+          "passed": false,
+          "conditional": false
+        }
+      ],
+      "conditional": 3
+    },
+    "project": {
+      "total": 131,
+      "passed": 129,
+      "failed": [
+        {
+          "layer": "intro",
+          "key": "visible",
+          "passed": false,
+          "conditional": false
+        },
+        {
+          "layer": "controls",
+          "key": "bottom",
+          "passed": false,
+          "conditional": false
+        }
+      ],
+      "conditional": 3
+    }
+  }
+}

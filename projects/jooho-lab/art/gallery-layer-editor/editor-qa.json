@@ -1,0 +1,452 @@
+{
+  "results": [
+    {
+      "name": "3D ready",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "explicit save is visible",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "opening is clean",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "tree actual position changed",
+      "pass": true,
+      "detail": {
+        "id": "courtyard-trees",
+        "visible": true,
+        "opacity": 1,
+        "height": 4.7,
+        "spread": 1,
+        "baseX": 0.38955479860305786,
+        "baseY": 0.03192281723022461,
+        "color": [
+          0.9,
+          0.9,
+          0.9
+        ],
+        "yaw": 0,
+        "x": 12.843,
+        "z": -4.202,
+        "requestedX": 12.843,
+        "minX": 11.25543318353924,
+        "planterX": 12.843,
+        "planterZ": -4.202,
+        "planterTint": "#d1c6b4",
+        "image": "./assets/plum-spreading-v2.png",
+        "imageStatus": "ready",
+        "shadowOpacity": 1,
+        "shadowAlphaTest": 0.45,
+        "shadowShader": true,
+        "shadowShaderOpacity": 1,
+        "count": 2,
+        "items": [
+          {
+            "id": "courtyard-trees",
+            "visible": true,
+            "opacity": 1,
+            "height": 4.7,
+            "spread": 1,
+            "baseX": 0.38955479860305786,
+            "baseY": 0.03192281723022461,
+            "color": [
+              0.9,
+              0.9,
+              0.9
+            ],
+            "yaw": 0,
+            "x": 12.843,
+            "z": -4.202,
+            "requestedX": 12.843,
+            "minX": 11.25543318353924,
+            "planterX": 12.843,
+            "planterZ": -4.202,
+            "planterTint": "#d1c6b4",
+            "image": "./assets/plum-spreading-v2.png",
+            "imageStatus": "ready",
+            "shadowOpacity": 1,
+            "shadowAlphaTest": 0.45,
+            "shadowShader": true,
+            "shadowShaderOpacity": 1
+          },
+          {
+            "id": "courtyard-tree-back",
+            "visible": true,
+            "opacity": 1,
+            "height": 6.1,
+            "spread": 1,
+            "baseX": 0.5395299196243286,
+            "baseY": 0.01665675640106201,
+            "color": [
+              0.9,
+              0.9,
+              0.9
+            ],
+            "yaw": 0,
+            "x": 13,
+            "z": 0,
+            "requestedX": 13,
+            "minX": 11.168627423030244,
+            "planterX": 13,
+            "planterZ": 0,
+            "planterTint": "#d1c6b4",
+            "image": "./assets/plum-upright-v2.png",
+            "imageStatus": "ready",
+            "shadowOpacity": 1,
+            "shadowAlphaTest": 0.45,
+            "shadowShader": true,
+            "shadowShaderOpacity": 1
+          }
+        ],
+        "separateShadows": true,
+        "clearsBuilding": true
+      }
+    },
+    {
+      "name": "camera remains fixed",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "draft does not persist",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "tree safety preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "one drag is one undo",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "hiding one tree keeps canvas and other tree",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Escape cancels drag only",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "direct screen tree drag",
+      "pass": true,
+      "detail": {
+        "picked": "courtyard-tree-back"
+      }
+    },
+    {
+      "name": "back tree moves independently",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "DOM exact screen drag",
+      "pass": true,
+      "detail": {
+        "before": {
+          "x": 72,
+          "y": 324,
+          "width": 480,
+          "height": 246.703125
+        },
+        "after": {
+          "x": 102,
+          "y": 340,
+          "width": 480,
+          "height": 246.703125
+        }
+      }
+    },
+    {
+      "name": "keyboard position adjustment",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "shortcut commits focused input",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "save publishes current draft",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Escape closes mode",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "3D ready",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "reload retains positions",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "restore returns to saved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "global fields read global value",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "visual drag edits effective scene override",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "numeric boundary keeps building clear",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "POTATO renderer and DOM selection agree",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "POTATO drag handle available",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "POTATO actual plane position changes",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "shadow independent of character",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "hidden editor recovers",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "transparent editor recovers",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "file save survives blocked browser storage",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "file failure is honest",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "failed-save draft can export",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "all layer parameters probe",
+      "pass": true,
+      "detail": {
+        "total": 131,
+        "passed": 131,
+        "failed": [],
+        "scenes": {
+          "exterior": {
+            "total": 131,
+            "passed": 130,
+            "failed": [
+              {
+                "layer": "detail",
+                "key": "visible",
+                "passed": false,
+                "conditional": false
+              }
+            ],
+            "conditional": 3
+          },
+          "project": {
+            "total": 131,
+            "passed": 129,
+            "failed": [
+              {
+                "layer": "intro",
+                "key": "visible",
+                "passed": false,
+                "conditional": false
+              },
+              {
+                "layer": "controls",
+                "key": "bottom",
+                "passed": false,
+                "conditional": false
+              }
+            ],
+            "conditional": 3
+          }
+        }
+      }
+    },
+    {
+      "name": "no runtime errors",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "3D ready",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1024 POTATO preview clears copy",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "3D ready",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1100 POTATO preview clears copy",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "3D ready",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "390 preview and dock do not overlap",
+      "pass": true,
+      "detail": {
+        "panel": {
+          "x": 0,
+          "y": 303.84375,
+          "width": 390,
+          "height": 540.15625
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 303.828125
+        }
+      }
+    },
+    {
+      "name": "390 save reachable",
+      "pass": true,
+      "detail": {
+        "x": 14,
+        "y": 682,
+        "width": 177,
+        "height": 44
+      }
+    },
+    {
+      "name": "390 no horizontal overflow",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "390 both tree controls available",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "390 real touch drag",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "3D ready",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "390 mobile save persists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "3D ready",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "360 preview and dock do not overlap",
+      "pass": true,
+      "detail": {
+        "panel": {
+          "x": 0,
+          "y": 266.40625,
+          "width": 360,
+          "height": 473.59375
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 266.390625
+        }
+      }
+    },
+    {
+      "name": "360 save reachable",
+      "pass": true,
+      "detail": {
+        "x": 14,
+        "y": 578,
+        "width": 162,
+        "height": 44
+      }
+    },
+    {
+      "name": "360 no horizontal overflow",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "360 both tree controls available",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "360 real touch drag",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "3D ready",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "360 mobile save persists",
+      "pass": true,
+      "detail": null
+    }
+  ],
+  "errors": []
+}

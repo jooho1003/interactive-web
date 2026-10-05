@@ -1,0 +1,607 @@
+{
+  "status": "PASS",
+  "parameters": 15,
+  "results": [
+    {
+      "id": "potato-card",
+      "key": "visible",
+      "value": false,
+      "pass": true,
+      "actual": {
+        "visible": false,
+        "opacity": 1,
+        "position": [
+          -6.449999999999999,
+          2.3,
+          -6.75
+        ],
+        "rotation": [
+          -0.0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          0.7857142857142857,
+          1
+        ],
+        "shadow": {
+          "visible": false,
+          "position": [
+            -6.449999999999999,
+            1.6099999999999999,
+            -6.752
+          ],
+          "scale": [
+            1.1,
+            0.24,
+            1
+          ],
+          "color": "#25303a",
+          "opacity": 0.18
+        }
+      }
+    },
+    {
+      "id": "potato-card",
+      "key": "opacity",
+      "value": 0.32,
+      "pass": true,
+      "actual": {
+        "visible": true,
+        "opacity": 0.32,
+        "position": [
+          -6.449999999999999,
+          2.3,
+          -6.63
+        ],
+        "rotation": [
+          -0.0,
+          0,
+          0
+        ],
+        "scale": [
+          0.94,
+          0.7385714285714285,
+          1
+        ],
+        "shadow": {
+          "visible": true,
+          "position": [
+            -6.449999999999999,
+            1.6099999999999999,
+            -6.745
+          ],
+          "scale": [
+            1.1,
+            0.24,
+            1
+          ],
+          "color": "#25303a",
+          "opacity": 0.0576
+        }
+      }
+    },
+    {
+      "id": "potato-card",
+      "key": "enabled",
+      "value": false,
+      "pass": true,
+      "actual": {
+        "visible": true,
+        "opacity": 1,
+        "position": [
+          -6.449999999999999,
+          2.3,
+          -6.75
+        ],
+        "rotation": [
+          -0.0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          0.7857142857142857,
+          1
+        ],
+        "shadow": {
+          "visible": false,
+          "position": [
+            -6.449999999999999,
+            1.6099999999999999,
+            -6.752
+          ],
+          "scale": [
+            1.1,
+            0.24,
+            1
+          ],
+          "color": "#25303a",
+          "opacity": 0.18
+        }
+      }
+    },
+    {
+      "id": "potato-card",
+      "key": "depth",
+      "value": 0.2,
+      "pass": true,
+      "actual": {
+        "visible": true,
+        "opacity": 1,
+        "position": [
+          -6.449999999999999,
+          2.3,
+          -6.55
+        ],
+        "rotation": [
+          -0.0,
+          0,
+          0
+        ],
+        "scale": [
+          0.94,
+          0.7385714285714285,
+          1
+        ],
+        "shadow": {
+          "visible": true,
+          "position": [
+            -6.449999999999999,
+            1.6099999999999999,
+            -6.745
+          ],
+          "scale": [
+            1.1,
+            0.24,
+            1
+          ],
+          "color": "#25303a",
+          "opacity": 0.18
+        }
+      }
+    },
+    {
+      "id": "potato-card",
+      "key": "scale",
+      "value": 0.8,
+      "pass": true,
+      "actual": {
+        "visible": true,
+        "opacity": 1,
+        "position": [
+          -6.449999999999999,
+          2.3,
+          -6.63
+        ],
+        "rotation": [
+          -0.0,
+          0,
+          0
+        ],
+        "scale": [
+          0.8,
+          0.6285714285714286,
+          1
+        ],
+        "shadow": {
+          "visible": true,
+          "position": [
+            -6.449999999999999,
+            1.6099999999999999,
+            -6.745
+          ],
+          "scale": [
+            1.1,
+            0.24,
+            1
+          ],
+          "color": "#25303a",
+          "opacity": 0.18
+        }
+      }
+    },
+    {
+      "id": "potato-card",
+      "key": "shiftX",
+      "value": 0.05,
+      "pass": true,
+      "actual": {
+        "visible": true,
+        "opacity": 1,
+        "position": [
+          -6.42000832241653,
+          2.3089975032750405,
+          -6.63
+        ],
+        "rotation": [
+          -0.03489690146854094,
+          0.04187628176224913,
+          0
+        ],
+        "scale": [
+          0.94,
+          0.7385714285714285,
+          1
+        ],
+        "shadow": {
+          "visible": true,
+          "position": [
+            -6.473993342066775,
+            1.6000027741388434,
+            -6.745
+          ],
+          "scale": [
+            1.1,
+            0.24,
+            1
+          ],
+          "color": "#25303a",
+          "opacity": 0.18
+        }
+      }
+    },
+    {
+      "id": "potato-card",
+      "key": "shiftY",
+      "value": 0.04,
+      "pass": true,
+      "actual": {
+        "visible": true,
+        "opacity": 1,
+        "position": [
+          -6.4350012525800695,
+          2.319998329893239,
+          -6.63
+        ],
+        "rotation": [
+          -0.03490367015370314,
+          0.04188440418444377,
+          0
+        ],
+        "scale": [
+          0.94,
+          0.7385714285714285,
+          1
+        ],
+        "shadow": {
+          "visible": true,
+          "position": [
+            -6.473997995871886,
+            1.6000008350533803,
+            -6.745
+          ],
+          "scale": [
+            1.1,
+            0.24,
+            1
+          ],
+          "color": "#25303a",
+          "opacity": 0.18
+        }
+      }
+    },
+    {
+      "id": "potato-card",
+      "key": "tilt",
+      "value": 6,
+      "pass": true,
+      "actual": {
+        "visible": true,
+        "opacity": 1,
+        "position": [
+          -6.4350012525800695,
+          2.3089992484519577,
+          -6.63
+        ],
+        "rotation": [
+          -0.04820195405534635,
+          0.05784234486641564,
+          0
+        ],
+        "scale": [
+          0.94,
+          0.7385714285714285,
+          1
+        ],
+        "shadow": {
+          "visible": true,
+          "position": [
+            -6.473997995871886,
+            1.6000008350533803,
+            -6.745
+          ],
+          "scale": [
+            1.1,
+            0.24,
+            1
+          ],
+          "color": "#25303a",
+          "opacity": 0.18
+        }
+      }
+    },
+    {
+      "id": "potato-shadow",
+      "key": "visible",
+      "value": false,
+      "pass": true,
+      "actual": {
+        "visible": true,
+        "opacity": 1,
+        "position": [
+          -6.449999999999999,
+          2.3,
+          -6.63
+        ],
+        "rotation": [
+          -0.0,
+          0,
+          0
+        ],
+        "scale": [
+          0.94,
+          0.7385714285714285,
+          1
+        ],
+        "shadow": {
+          "visible": false,
+          "position": [
+            -6.449999999999999,
+            1.6099999999999999,
+            -6.745
+          ],
+          "scale": [
+            1.1,
+            0.24,
+            1
+          ],
+          "color": "#25303a",
+          "opacity": 0.18
+        }
+      }
+    },
+    {
+      "id": "potato-shadow",
+      "key": "opacity",
+      "value": 0.3,
+      "pass": true,
+      "actual": {
+        "visible": true,
+        "opacity": 1,
+        "position": [
+          -6.449999999999999,
+          2.3,
+          -6.63
+        ],
+        "rotation": [
+          -0.0,
+          0,
+          0
+        ],
+        "scale": [
+          0.94,
+          0.7385714285714285,
+          1
+        ],
+        "shadow": {
+          "visible": true,
+          "position": [
+            -6.449999999999999,
+            1.6099999999999999,
+            -6.745
+          ],
+          "scale": [
+            1.1,
+            0.24,
+            1
+          ],
+          "color": "#25303a",
+          "opacity": 0.3
+        }
+      }
+    },
+    {
+      "id": "potato-shadow",
+      "key": "color",
+      "value": "#193da9",
+      "pass": true,
+      "actual": {
+        "visible": true,
+        "opacity": 1,
+        "position": [
+          -6.449999999999999,
+          2.3,
+          -6.63
+        ],
+        "rotation": [
+          -0.0,
+          0,
+          0
+        ],
+        "scale": [
+          0.94,
+          0.7385714285714285,
+          1
+        ],
+        "shadow": {
+          "visible": true,
+          "position": [
+            -6.449999999999999,
+            1.6099999999999999,
+            -6.745
+          ],
+          "scale": [
+            1.1,
+            0.24,
+            1
+          ],
+          "color": "#193da9",
+          "opacity": 0.18
+        }
+      }
+    },
+    {
+      "id": "potato-shadow",
+      "key": "width",
+      "value": 1.4,
+      "pass": true,
+      "actual": {
+        "visible": true,
+        "opacity": 1,
+        "position": [
+          -6.449999999999999,
+          2.3,
+          -6.63
+        ],
+        "rotation": [
+          -0.0,
+          0,
+          0
+        ],
+        "scale": [
+          0.94,
+          0.7385714285714285,
+          1
+        ],
+        "shadow": {
+          "visible": true,
+          "position": [
+            -6.449999999999999,
+            1.6099999999999999,
+            -6.745
+          ],
+          "scale": [
+            1.4,
+            0.24,
+            1
+          ],
+          "color": "#25303a",
+          "opacity": 0.18
+        }
+      }
+    },
+    {
+      "id": "potato-shadow",
+      "key": "height",
+      "value": 0.4,
+      "pass": true,
+      "actual": {
+        "visible": true,
+        "opacity": 1,
+        "position": [
+          -6.449999999999999,
+          2.3,
+          -6.63
+        ],
+        "rotation": [
+          -0.0,
+          0,
+          0
+        ],
+        "scale": [
+          0.94,
+          0.7385714285714285,
+          1
+        ],
+        "shadow": {
+          "visible": true,
+          "position": [
+            -6.449999999999999,
+            1.6099999999999999,
+            -6.745
+          ],
+          "scale": [
+            1.1,
+            0.4,
+            1
+          ],
+          "color": "#25303a",
+          "opacity": 0.18
+        }
+      }
+    },
+    {
+      "id": "potato-shadow",
+      "key": "y",
+      "value": -0.4,
+      "pass": true,
+      "actual": {
+        "visible": true,
+        "opacity": 1,
+        "position": [
+          -6.449999999999999,
+          2.3,
+          -6.63
+        ],
+        "rotation": [
+          -0.0,
+          0,
+          0
+        ],
+        "scale": [
+          0.94,
+          0.7385714285714285,
+          1
+        ],
+        "shadow": {
+          "visible": true,
+          "position": [
+            -6.449999999999999,
+            1.9,
+            -6.745
+          ],
+          "scale": [
+            1.1,
+            0.24,
+            1
+          ],
+          "color": "#25303a",
+          "opacity": 0.18
+        }
+      }
+    },
+    {
+      "id": "potato-shadow",
+      "key": "shift",
+      "value": 0.09,
+      "pass": true,
+      "actual": {
+        "visible": true,
+        "opacity": 1,
+        "position": [
+          -6.43500104697754,
+          2.3089993718134756,
+          -6.63
+        ],
+        "rotation": [
+          -0.03490414861251608,
+          0.041884978335019314,
+          0
+        ],
+        "scale": [
+          0.94,
+          0.7385714285714285,
+          1
+        ],
+        "shadow": {
+          "visible": true,
+          "position": [
+            -6.503996230880853,
+            1.587501570466311,
+            -6.745
+          ],
+          "scale": [
+            1.1,
+            0.24,
+            1
+          ],
+          "color": "#25303a",
+          "opacity": 0.18
+        }
+      }
+    }
+  ],
+  "errors": []
+}

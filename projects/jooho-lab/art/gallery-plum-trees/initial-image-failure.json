@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "initial": {
+    "separateShadowClipping": true,
+    "wallClipping": true,
+    "shadowShader": false,
+    "shadowShaderOpacity": 1,
+    "shadowOpacity": 1,
+    "shadowAlphaTest": 0.45,
+    "baseX": 0.34622466564178467,
+    "baseY": 0.027624309062957764,
+    "count": 4,
+    "visible": false,
+    "opacity": 1,
+    "height": 6.8,
+    "spread": 1,
+    "color": [
+      0.9,
+      0.9,
+      0.9
+    ],
+    "yaw": 0,
+    "image": null,
+    "imageStatus": "error"
+  },
+  "recovered": {
+    "separateShadowClipping": true,
+    "wallClipping": true,
+    "shadowShader": true,
+    "shadowShaderOpacity": 1,
+    "shadowOpacity": 1,
+    "shadowAlphaTest": 0.45,
+    "baseX": 0.34622466564178467,
+    "baseY": 0.027624309062957764,
+    "count": 4,
+    "visible": true,
+    "opacity": 1,
+    "height": 6.8,
+    "spread": 1,
+    "color": [
+      0.9,
+      0.9,
+      0.9
+    ],
+    "yaw": 0,
+    "image": "./assets/dawn.webp",
+    "imageStatus": "ready"
+  },
+  "hallEntered": true,
+  "pageErrors": []
+}

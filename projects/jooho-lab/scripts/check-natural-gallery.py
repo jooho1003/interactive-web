@@ -1,9 +1,10 @@
 """Run gallery QA when Aside rendering is throttled or unavailable (preview :8879)."""
-import json
+import json,sys
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
-OUT=Path(__file__).resolve().parents[1]/'art/gallery-natural-refinement'
+prefix=sys.argv[sys.argv.index('--prefix')+1] if '--prefix' in sys.argv else 'gallery-natural-refinement'
+OUT=Path(__file__).resolve().parents[1]/'art'/prefix
 OUT.mkdir(exist_ok=True)
 with sync_playwright() as p:
     # Windows fallback uses the installed GPU, avoiding SwiftShader timing noise.

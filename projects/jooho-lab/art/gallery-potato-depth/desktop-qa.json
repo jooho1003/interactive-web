@@ -1,0 +1,1272 @@
+{
+  "status": "PASS",
+  "mode": "1",
+  "count": 228,
+  "scene": {
+    "potato": {
+      "visible": true,
+      "opacity": 1,
+      "position": [
+        -6.449999999999999,
+        2.3,
+        -6.75
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        0.7857142857142857,
+        1
+      ],
+      "shadow": {
+        "visible": false,
+        "position": [
+          -6.449999999999999,
+          1.6099999999999999,
+          -6.752
+        ],
+        "scale": [
+          1.1,
+          0.24,
+          1
+        ],
+        "color": "#25303a",
+        "opacity": 0.18
+      }
+    },
+    "state": "project",
+    "destination": "project",
+    "selected": "hanbok-hero",
+    "wallPage": 1,
+    "targetWallPage": 1,
+    "pageTransition": null,
+    "transition": null,
+    "wallProjects": [
+      "potato-designer",
+      "hanbok-hero",
+      "village"
+    ],
+    "camera": [
+      -4.3,
+      2.3,
+      -4.35
+    ],
+    "renderCamera": [
+      -4.3,
+      2.3,
+      -4.35
+    ],
+    "orbit": {
+      "x": 0,
+      "y": 0
+    },
+    "dragging": false,
+    "artwork": {
+      "corners": [
+        {
+          "x": 845.9612903225806,
+          "y": 516.7741935483871
+        },
+        {
+          "x": 845.9612903225806,
+          "y": 323.22580645161287
+        },
+        {
+          "x": 1155.6387096774192,
+          "y": 516.7741935483871
+        },
+        {
+          "x": 1155.6387096774192,
+          "y": 323.22580645161287
+        }
+      ],
+      "repeat": [
+        1,
+        1
+      ],
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "surfaces": {
+      "frameTint": "#cec3ad",
+      "frameRoughness": 0.55,
+      "paperRoughness": 0.92,
+      "artBrightness": 0.96,
+      "paperTint": "#fffdf5",
+      "interiorLight": 32,
+      "galleryLight": 20,
+      "interiorTint": "#ffe8c9",
+      "galleryLights": 7,
+      "galleryLightMap": true,
+      "environment": "HDRI",
+      "gravelMaps": true,
+      "occlusion": 0.35,
+      "detailMaterials": 7,
+      "occlusionMap": true,
+      "groundTint": "#a8ab9b",
+      "ambient": 0.8,
+      "sunlight": 1.5,
+      "reflections": 0.75,
+      "surfaceTint": "#ffffff",
+      "surfaceRelief": 0.2,
+      "surfaceRoughness": 1,
+      "glassOpacity": 0.12,
+      "waterRoughness": 0.08,
+      "normalMap": true,
+      "roughnessMap": true
+    },
+    "drawCalls": 18,
+    "triangles": 78468,
+    "geometries": 28,
+    "posters": 10
+  },
+  "results": [
+    {
+      "name": "GLB loaded / exterior",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "scene uses real meshes",
+      "pass": true,
+      "detail": "{\"potato\":{\"visible\":false,\"opacity\":1,\"position\":[-6.449999999999999,2.3,-6.75],\"rotation\":[0,0,0],\"scale\":[1,0.7857142857142857,1],\"shadow\":{\"visible\":false,\"position\":[-6.449999999999999,1.6099999999999999,-6.752],\"scale\":[1.1,0.24,1],\"color\":\"#25303a\",\"opacity\":0.18}},\"state\":\"exterior\",\"destination\":\"exterior\",\"selected\":\"dawn-store\",\"wallPage\":0,\"targetWallPage\":0,\"pageTransition\":null,\"transition\":null,\"wallProjects\":[\"chemiforge\",\"sasu\",\"blog\",\"dawn-store\",\"instatoon\",\"spire\",\"day-walk\"],\"camera\":[12,5.4,24],\"renderCamera\":[12,5.4,24],\"orbit\":{\"x\":0,\"y\":0},\"dragging\":false,\"artwork\":{\"corners\":[{\"x\":929.0540809262217,\"y\":453.94888232762133},{\"x\":930.3983727652043,\"y\":393.6706569055405},{\"x\":975.4789539904226,\"y\":457.2305248601717},{\"x\":977.161748127883,\"y\":395.5071956121156}],\"repeat\":[1,1],\"offset\":[0,0]},\"surfaces\":{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true},\"drawCalls\":48,\"triangles\":157074,\"geometries\":24,\"posters\":10}"
+    },
+    {
+      "name": "one selector per project",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "every project has a wall artwork",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "architecture exports real PBR normal and roughness maps",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "photographed HDRI environment loaded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "photographed gravel PBR maps loaded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "seven repeating architectural materials / separate AO",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "baked gallery fixtures cover every wall artwork",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "seven curated wall artworks and all rail thumbnails",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no horizontal overflow",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "SUIT font loaded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "default mode is sequential camera tour",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "drag mode preserves page wheel",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "pinch zoom preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "horizontal scroll preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wheel advances into hall",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "same gesture cannot skip hall",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "real doorway / hall destination",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "travel is time based",
+      "pass": true,
+      "detail": "5604"
+    },
+    {
+      "name": "hall advances to first work",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "slow approach to close viewing aisle",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "selected artwork fills its viewing area",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wheel next slides laterally",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "sideways movement preserves artwork magnification",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wheel up returns to previous work",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "drag mode releases wheel",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "interrupted selection reaches latest project",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "project description visible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "direct URL preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "camera moves while pointer is still held",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "second pointer cannot interrupt active drag",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "drag reverses camera continuously",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "drag release does not select another work",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "pointer cancellation releases drag",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "focused artwork keeps pointer camera motion",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "back through hall to exterior",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "reduced motion is immediate",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "keyboard crosses from last baked bay to POTATO",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "keyboard restores first page artwork",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wall destination chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wall page chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "full artwork chemiforge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork chemiforge",
+      "pass": true,
+      "detail": "{\"left\":845.9612903225806,\"right\":1155.6387096774192,\"top\":226.45161290322582,\"bottom\":613.5483870967741,\"copy\":{\"x\":72,\"y\":279,\"width\":340,\"height\":363.953125,\"top\":279,\"right\":412,\"bottom\":642.953125,\"left\":72}}"
+    },
+    {
+      "name": "wall destination sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wall page sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "full artwork sasu",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork sasu",
+      "pass": true,
+      "detail": "{\"left\":845.9612903225806,\"right\":1155.6387096774192,\"top\":226.45161290322582,\"bottom\":613.5483870967741,\"copy\":{\"x\":72,\"y\":279,\"width\":340,\"height\":363.953125,\"top\":279,\"right\":412,\"bottom\":642.953125,\"left\":72}}"
+    },
+    {
+      "name": "wall destination blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wall page blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "full artwork blog",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork blog",
+      "pass": true,
+      "detail": "{\"left\":845.9612903225806,\"right\":1155.6387096774192,\"top\":226.45161290322582,\"bottom\":613.5483870967741,\"copy\":{\"x\":72,\"y\":279,\"width\":340,\"height\":386.4375,\"top\":279,\"right\":412,\"bottom\":665.4375,\"left\":72}}"
+    },
+    {
+      "name": "wall destination dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wall page dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "full artwork dawn-store",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork dawn-store",
+      "pass": true,
+      "detail": "{\"left\":845.9612903225806,\"right\":1155.6387096774192,\"top\":226.45161290322582,\"bottom\":613.5483870967741,\"copy\":{\"x\":72,\"y\":279,\"width\":340,\"height\":386.4375,\"top\":279,\"right\":412,\"bottom\":665.4375,\"left\":72}}"
+    },
+    {
+      "name": "wall destination instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wall page instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "full artwork instatoon",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork instatoon",
+      "pass": true,
+      "detail": "{\"left\":845.9612903225806,\"right\":1155.6387096774192,\"top\":226.45161290322582,\"bottom\":613.5483870967743,\"copy\":{\"x\":72,\"y\":279,\"width\":340,\"height\":386.4375,\"top\":279,\"right\":412,\"bottom\":665.4375,\"left\":72}}"
+    },
+    {
+      "name": "wall destination spire",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wall page spire",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "full artwork spire",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork spire",
+      "pass": true,
+      "detail": "{\"left\":845.9612903225806,\"right\":1155.6387096774192,\"top\":226.45161290322582,\"bottom\":613.5483870967741,\"copy\":{\"x\":72,\"y\":279,\"width\":340,\"height\":386.4375,\"top\":279,\"right\":412,\"bottom\":665.4375,\"left\":72}}"
+    },
+    {
+      "name": "wall destination day-walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wall page day-walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "full artwork day-walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork day-walk",
+      "pass": true,
+      "detail": "{\"left\":845.9612903225806,\"right\":1155.6387096774192,\"top\":226.45161290322582,\"bottom\":613.5483870967741,\"copy\":{\"x\":72,\"y\":279,\"width\":340,\"height\":386.4375,\"top\":279,\"right\":412,\"bottom\":665.4375,\"left\":72}}"
+    },
+    {
+      "name": "wall destination potato-designer",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wall page potato-designer",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "full artwork potato-designer",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork potato-designer",
+      "pass": true,
+      "detail": "{\"left\":847.5911714770796,\"right\":1154.00882852292,\"top\":266.7911714770798,\"bottom\":573.2088285229202,\"copy\":{\"x\":72,\"y\":279,\"width\":340,\"height\":363.953125,\"top\":279,\"right\":412,\"bottom\":642.953125,\"left\":72}}"
+    },
+    {
+      "name": "wall destination hanbok-hero",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wall page hanbok-hero",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "full artwork hanbok-hero",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork hanbok-hero",
+      "pass": true,
+      "detail": "{\"left\":845.9612903225806,\"right\":1155.6387096774192,\"top\":323.22580645161287,\"bottom\":516.7741935483871,\"copy\":{\"x\":72,\"y\":279,\"width\":340,\"height\":408.921875,\"top\":279,\"right\":412,\"bottom\":687.921875,\"left\":72}}"
+    },
+    {
+      "name": "wall destination village",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wall page village",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "full artwork village",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "copy clears artwork village",
+      "pass": true,
+      "detail": "{\"left\":845.9612903225806,\"right\":1155.6387096774192,\"top\":367.98163496511836,\"bottom\":472.0183650348817,\"copy\":{\"x\":72,\"y\":279,\"width\":340,\"height\":386.4375,\"top\":279,\"right\":412,\"bottom\":665.4375,\"left\":72}}"
+    },
+    {
+      "name": "bounded orbit keeps full artwork -1",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "bounded orbit clears copy -1",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "bounded orbit keeps full artwork 1",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "bounded orbit clears copy 1",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "last work releases downward wheel",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Home returns to exterior",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Enter enters hall",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Escape only releases movement control",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "second Escape exits hall",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "page fade starts with previous artworks",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "page fade holds camera before cover",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "covered midpoint changes displayed page",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "page transition restores transparent veil",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "same page uses adjacent distance",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "rapid page selection reaches latest work",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Escape cancels page veil",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "list view pauses page transition",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Home cancels page veil",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "reduced motion finishes pending page change",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "empty search cancels pending page change",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "fade-in select finishes cleanly",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "fade-in Escape finishes cleanly",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "fade-in Home finishes cleanly",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "fade-in filter finishes cleanly",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "hall page selection starts covered transition",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "hall page swap retains entry route",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "hall page transition still approaches artwork",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "slide maximum changes actual duration",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "slide minimum changes interrupted duration",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "page duration setting affects elapsed transition",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "POTATO depth has a separate shadow",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "POTATO image and shadow respond separately",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "POTATO tilt stays small",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "POTATO touch tap clears mouse tilt",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "POTATO pointer leave restores pose",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "POTATO touch keeps static depth",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "POTATO reduced motion keeps static depth",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "POTATO effect off restores original plane",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "other works reset POTATO depth",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "layer potato-card.visible",
+      "pass": true,
+      "detail": "true -> false"
+    },
+    {
+      "name": "layer potato-card.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer potato-card.enabled",
+      "pass": true,
+      "detail": "true -> false"
+    },
+    {
+      "name": "layer potato-card.depth",
+      "pass": true,
+      "detail": "0.12 -> 0"
+    },
+    {
+      "name": "layer potato-card.scale",
+      "pass": true,
+      "detail": "0.94 -> 0.75"
+    },
+    {
+      "name": "layer potato-card.shiftX",
+      "pass": true,
+      "detail": "0.025 -> 0"
+    },
+    {
+      "name": "layer potato-card.shiftY",
+      "pass": true,
+      "detail": "0.018 -> 0"
+    },
+    {
+      "name": "layer potato-card.tilt",
+      "pass": true,
+      "detail": "4 -> 0"
+    },
+    {
+      "name": "layer potato-shadow.visible",
+      "pass": true,
+      "detail": "true -> false"
+    },
+    {
+      "name": "layer potato-shadow.opacity",
+      "pass": true,
+      "detail": "0.18 -> 0"
+    },
+    {
+      "name": "layer potato-shadow.color",
+      "pass": true,
+      "detail": "#25303a -> #193da9"
+    },
+    {
+      "name": "layer potato-shadow.width",
+      "pass": true,
+      "detail": "1.1 -> 0.5"
+    },
+    {
+      "name": "layer potato-shadow.height",
+      "pass": true,
+      "detail": "0.24 -> 0.1"
+    },
+    {
+      "name": "layer potato-shadow.y",
+      "pass": true,
+      "detail": "-0.69 -> -0.9"
+    },
+    {
+      "name": "layer potato-shadow.shift",
+      "pass": true,
+      "detail": "0.04 -> 0"
+    },
+    {
+      "name": "layer stage.visible",
+      "pass": true,
+      "detail": "false -> true"
+    },
+    {
+      "name": "layer stage.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer stage.ambient",
+      "pass": true,
+      "detail": "0.8 -> 0"
+    },
+    {
+      "name": "renderer ambient",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.sunlight",
+      "pass": true,
+      "detail": "1.5 -> 0"
+    },
+    {
+      "name": "renderer sunlight",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":0,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.interiorLight",
+      "pass": true,
+      "detail": "32 -> 0"
+    },
+    {
+      "name": "renderer interiorLight",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":0,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.galleryLight",
+      "pass": true,
+      "detail": "20 -> 0"
+    },
+    {
+      "name": "renderer galleryLight",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":0,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.interiorTint",
+      "pass": true,
+      "detail": "#ffe8c9 -> #193da9"
+    },
+    {
+      "name": "renderer interiorTint",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#193da9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.reflections",
+      "pass": true,
+      "detail": "0.75 -> 0"
+    },
+    {
+      "name": "renderer reflections",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.surfaceTint",
+      "pass": true,
+      "detail": "#ffffff -> #193da9"
+    },
+    {
+      "name": "renderer surfaceTint",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#193da9\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.surfaceRelief",
+      "pass": true,
+      "detail": "0.2 -> 0"
+    },
+    {
+      "name": "renderer surfaceRelief",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.surfaceRoughness",
+      "pass": true,
+      "detail": "1 -> 0.5"
+    },
+    {
+      "name": "renderer surfaceRoughness",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":0.5,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.glassOpacity",
+      "pass": true,
+      "detail": "0.12 -> 0"
+    },
+    {
+      "name": "renderer glassOpacity",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.occlusion",
+      "pass": true,
+      "detail": "0.35 -> 0"
+    },
+    {
+      "name": "renderer occlusion",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.groundTint",
+      "pass": true,
+      "detail": "#a8ab9b -> #193da9"
+    },
+    {
+      "name": "renderer groundTint",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#193da9\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.waterRoughness",
+      "pass": true,
+      "detail": "0.08 -> 0.02"
+    },
+    {
+      "name": "renderer waterRoughness",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.02,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.frameTint",
+      "pass": true,
+      "detail": "#cec3ad -> #193da9"
+    },
+    {
+      "name": "renderer frameTint",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#193da9\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.frameRoughness",
+      "pass": true,
+      "detail": "0.55 -> 0.2"
+    },
+    {
+      "name": "renderer frameRoughness",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.2,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.paperTint",
+      "pass": true,
+      "detail": "#fffdf5 -> #193da9"
+    },
+    {
+      "name": "renderer paperTint",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#193da9\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.paperRoughness",
+      "pass": true,
+      "detail": "0.92 -> 0.5"
+    },
+    {
+      "name": "renderer paperRoughness",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.5,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.artBrightness",
+      "pass": true,
+      "detail": "0.96 -> 0.7"
+    },
+    {
+      "name": "renderer artBrightness",
+      "pass": true,
+      "detail": "{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.7,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true}"
+    },
+    {
+      "name": "layer stage.fov",
+      "pass": true,
+      "detail": "48 -> 35"
+    },
+    {
+      "name": "layer stage.speed",
+      "pass": true,
+      "detail": "1 -> 0.5"
+    },
+    {
+      "name": "layer stage.approachSeconds",
+      "pass": true,
+      "detail": "4.2 -> 2.5"
+    },
+    {
+      "name": "layer stage.slideSeconds",
+      "pass": true,
+      "detail": "1.8 -> 1"
+    },
+    {
+      "name": "layer stage.slideMinSeconds",
+      "pass": true,
+      "detail": "0.6 -> 0.2"
+    },
+    {
+      "name": "layer stage.slideMaxSeconds",
+      "pass": true,
+      "detail": "4.8 -> 3"
+    },
+    {
+      "name": "layer stage.pageSeconds",
+      "pass": true,
+      "detail": "0.85 -> 0.3"
+    },
+    {
+      "name": "layer stage.pageTint",
+      "pass": true,
+      "detail": "#e8e4db -> #193da9"
+    },
+    {
+      "name": "layer stage.parallax",
+      "pass": true,
+      "detail": "0.16 -> 0"
+    },
+    {
+      "name": "layer stage.dragStrength",
+      "pass": true,
+      "detail": "1.2 -> 0.4"
+    },
+    {
+      "name": "layer stage.dragLimit",
+      "pass": true,
+      "detail": "0.32 -> 0.1"
+    },
+    {
+      "name": "layer stage.damping",
+      "pass": true,
+      "detail": "9 -> 4"
+    },
+    {
+      "name": "layer stage.exposure",
+      "pass": true,
+      "detail": "1.15 -> 0.5"
+    },
+    {
+      "name": "layer landscape.visible",
+      "pass": true,
+      "detail": "false -> true"
+    },
+    {
+      "name": "layer landscape.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer landscape.image",
+      "pass": true,
+      "detail": "./assets/lab-landscape.jpg -> ./assets/dawn.webp"
+    },
+    {
+      "name": "layer landscape.height",
+      "pass": true,
+      "detail": "693px -> 360px"
+    },
+    {
+      "name": "layer landscape.brightness",
+      "pass": true,
+      "detail": "brightness(1.18) -> brightness(0.6)"
+    },
+    {
+      "name": "layer landscape.color",
+      "pass": true,
+      "detail": "rgb(182, 199, 203) -> rgb(25, 61, 169)"
+    },
+    {
+      "name": "layer landscape.shade",
+      "pass": true,
+      "detail": "0.4 -> 0"
+    },
+    {
+      "name": "layer intro.visible",
+      "pass": true,
+      "detail": "false -> true"
+    },
+    {
+      "name": "layer intro.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer intro.x",
+      "pass": true,
+      "detail": "72px -> 0px"
+    },
+    {
+      "name": "layer intro.y",
+      "pass": true,
+      "detail": "324px -> 108px"
+    },
+    {
+      "name": "layer intro.size",
+      "pass": true,
+      "detail": "70.4px -> 24px"
+    },
+    {
+      "name": "layer intro.color",
+      "pass": true,
+      "detail": "rgb(245, 241, 231) -> rgb(25, 61, 169)"
+    },
+    {
+      "name": "layer detail.visible",
+      "pass": true,
+      "detail": "false -> true"
+    },
+    {
+      "name": "layer detail.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer detail.x",
+      "pass": true,
+      "detail": "72px -> 0px"
+    },
+    {
+      "name": "layer detail.y",
+      "pass": true,
+      "detail": "31% -> 15%"
+    },
+    {
+      "name": "layer detail.width",
+      "pass": true,
+      "detail": "340px -> 240px"
+    },
+    {
+      "name": "layer detail.color",
+      "pass": true,
+      "detail": "rgb(245, 241, 231) -> rgb(25, 61, 169)"
+    },
+    {
+      "name": "layer rail.visible",
+      "pass": true,
+      "detail": "false -> true"
+    },
+    {
+      "name": "layer rail.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer rail.size",
+      "pass": true,
+      "detail": "100px -> 64px"
+    },
+    {
+      "name": "layer rail.gap",
+      "pass": true,
+      "detail": "12px -> 4px"
+    },
+    {
+      "name": "layer rail.bottom",
+      "pass": true,
+      "detail": "30px -> 12px"
+    },
+    {
+      "name": "layer controls.visible",
+      "pass": true,
+      "detail": "false -> true"
+    },
+    {
+      "name": "layer controls.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer controls.color",
+      "pass": true,
+      "detail": "rgb(245, 241, 231) -> rgb(25, 61, 169)"
+    },
+    {
+      "name": "layer controls.bottom",
+      "pass": true,
+      "detail": "175px -> 125px"
+    },
+    {
+      "name": "layer controls.enterLabel",
+      "pass": true,
+      "detail": "\uc791\uc5c5\uc2e4 \ub4e4\uc5b4\uac00\uae30 \u2197 -> \ud14c\uc2a4\ud2b8 \uc785\uc7a5"
+    },
+    {
+      "name": "layer shell.visible",
+      "pass": true,
+      "detail": "false -> true"
+    },
+    {
+      "name": "layer shell.opacity",
+      "pass": true,
+      "detail": "1 -> 0"
+    },
+    {
+      "name": "layer shell.paper",
+      "pass": true,
+      "detail": "rgb(236, 233, 225) -> rgb(25, 61, 169)"
+    },
+    {
+      "name": "layer shell.ink",
+      "pass": true,
+      "detail": "rgb(40, 53, 47) -> rgb(25, 61, 169)"
+    },
+    {
+      "name": "renderer survives layer changes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "hidden shell preserves settings recovery",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "empty search state",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "empty hall disables destination button",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "search restore",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "list fallback accessible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "layer settings opens",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "draw calls under budget",
+      "pass": true,
+      "detail": "{\"potato\":{\"visible\":true,\"opacity\":1,\"position\":[-6.449999999999999,2.3,-6.75],\"rotation\":[0,0,0],\"scale\":[1,0.7857142857142857,1],\"shadow\":{\"visible\":false,\"position\":[-6.449999999999999,1.6099999999999999,-6.752],\"scale\":[1.1,0.24,1],\"color\":\"#25303a\",\"opacity\":0.18}},\"state\":\"project\",\"destination\":\"project\",\"selected\":\"hanbok-hero\",\"wallPage\":1,\"targetWallPage\":1,\"pageTransition\":null,\"transition\":null,\"wallProjects\":[\"potato-designer\",\"hanbok-hero\",\"village\"],\"camera\":[-4.3,2.3,-4.35],\"renderCamera\":[-4.3,2.3,-4.35],\"orbit\":{\"x\":0,\"y\":0},\"dragging\":false,\"artwork\":{\"corners\":[{\"x\":845.9612903225806,\"y\":516.7741935483871},{\"x\":845.9612903225806,\"y\":323.22580645161287},{\"x\":1155.6387096774192,\"y\":516.7741935483871},{\"x\":1155.6387096774192,\"y\":323.22580645161287}],\"repeat\":[1,1],\"offset\":[0,0]},\"surfaces\":{\"frameTint\":\"#cec3ad\",\"frameRoughness\":0.55,\"paperRoughness\":0.92,\"artBrightness\":0.96,\"paperTint\":\"#fffdf5\",\"interiorLight\":32,\"galleryLight\":20,\"interiorTint\":\"#ffe8c9\",\"galleryLights\":7,\"galleryLightMap\":true,\"environment\":\"HDRI\",\"gravelMaps\":true,\"occlusion\":0.35,\"detailMaterials\":7,\"occlusionMap\":true,\"groundTint\":\"#a8ab9b\",\"ambient\":0.8,\"sunlight\":1.5,\"reflections\":0.75,\"surfaceTint\":\"#ffffff\",\"surfaceRelief\":0.2,\"surfaceRoughness\":1,\"glassOpacity\":0.12,\"waterRoughness\":0.08,\"normalMap\":true,\"roughnessMap\":true},\"drawCalls\":18,\"triangles\":78468,\"geometries\":28,\"posters\":10}"
+    },
+    {
+      "name": "context loss exposes list",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "preferences cannot reenter failed space",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "pageErrors": [],
+  "renderer": "ANGLE (Intel, Intel(R) Arc(TM) 140T GPU (16GB) (0x00007D51) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+}

@@ -1,11 +1,16 @@
 const village=document.body.dataset.portfolio==='village';
 const {default:manifest}=await import(village?'./village.layers.manifest.js':'./layers.manifest.js');
 import {emptyValues,createLayerHost,setValue,validateValues,resolve} from './vendor/layer-kit/index.js';
+import {initSpatialLayerEditor} from './spatial-layer-editor.js';
+import {loadLayerPersistence} from './layer-persistence.js';
 const key=village?'jooho-lab-village-layers-v1':'jooho-lab-spatial-layers-v1';
 let published=emptyValues(manifest);
-try{const saved=JSON.parse(localStorage.getItem(key));const checked=validateValues(manifest,saved);if(!checked.errors.length)published=checked.values;}catch{}
+const persistence=village?null:await loadLayerPersistence(manifest,key);
+if(village){try{const saved=JSON.parse(localStorage.getItem(key));const checked=validateValues(manifest,saved);if(!checked.errors.length)published=checked.values;}catch{}}else published=persistence.published;
 export const layerHost=createLayerHost({manifest,published});
-export function initLayerSettings(){
+if(!village)layerHost.setValues(persistence.draft);
+export function initLayerSettings(options={}){
+  if(!village){initSpatialLayerEditor({manifest,layerHost,persistence,...options});return;}
   const settings=document.querySelector('#settings-dialog');
   const launch=document.createElement('button');launch.type='button';launch.className='layer-launch';launch.textContent=village?'동네 레이어 조정':'공간 레이어 조정';settings.querySelector('h2').after(launch);
   const dialog=document.createElement('dialog');dialog.className='layers-dialog';dialog.setAttribute('aria-labelledby','layers-title');
