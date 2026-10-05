@@ -2,6 +2,7 @@ import manifest from './layers.manifest.js';
 import published from './layers.values.js';
 import { createLayerHost } from './vendor/layer-kit/index.js';
 import { targetCell, centerCell, approach, snap } from './gaze.js';
+import { setupMoods } from './mood-switch.js';
 
 export const layerHost = createLayerHost({ manifest, published });
 
@@ -109,5 +110,8 @@ export const gaze = {
   ready: sheetReady, look, reset,
   state: () => ({ ready, cell: shown && { ...shown }, aim: aim && { ...aim }, pos: pos && { ...pos }, moving: frame !== 0 }),
 };
+
+// 분야(시·서·화) 버튼과 장면 — 시선 구독(위) 다음에 붙여, 저장된 분야로 바꿀 때 시선도 새 배치를 읽는다
+export const moods = setupMoods(layerHost);
 
 if (new URLSearchParams(location.search).get('studio') === '1') import('/admin/bridge.js').catch(() => {});

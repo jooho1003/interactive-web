@@ -258,7 +258,7 @@ export default {
           "label": "글자",
           "type": "text",
           "default": "詩",
-          "maxLength": 4,
+          "maxLength": 20,
           "text": "[data-layer-text=\"glyph/text\"]"
         },
         "font": {
@@ -700,42 +700,42 @@ export default {
           "label": "첫째 이름",
           "type": "text",
           "default": "시",
-          "maxLength": 10,
+          "maxLength": 20,
           "text": "[data-layer-text=\"moods/ko1\"]"
         },
         "hanja1": {
           "label": "첫째 한자",
           "type": "text",
           "default": "詩",
-          "maxLength": 4,
+          "maxLength": 20,
           "text": "[data-layer-text=\"moods/hanja1\"]"
         },
         "ko2": {
           "label": "둘째 이름",
           "type": "text",
           "default": "서",
-          "maxLength": 10,
+          "maxLength": 20,
           "text": "[data-layer-text=\"moods/ko2\"]"
         },
         "hanja2": {
           "label": "둘째 한자",
           "type": "text",
           "default": "書",
-          "maxLength": 4,
+          "maxLength": 20,
           "text": "[data-layer-text=\"moods/hanja2\"]"
         },
         "ko3": {
           "label": "셋째 이름",
           "type": "text",
           "default": "화",
-          "maxLength": 10,
+          "maxLength": 20,
           "text": "[data-layer-text=\"moods/ko3\"]"
         },
         "hanja3": {
           "label": "셋째 한자",
           "type": "text",
           "default": "畫",
-          "maxLength": 4,
+          "maxLength": 20,
           "text": "[data-layer-text=\"moods/hanja3\"]"
         },
         "font": {
