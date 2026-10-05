@@ -401,7 +401,10 @@
       "tech": [
         "Vite 번들(assets/index-*.js)에 React·Radix UI·토스트(sonner)가 들어 있다(추정). 캔버스·WebGL·three·gsap 없음(<canvas> 0개). 미리보기는 전부 <video autoplay loop muted>(R2 저장소 mp4·blob). 뷰포트 안에 들어올 때 재생하는 구조(추정, IntersectionObserver 사용). 분석·광고 스크립트 다수"
       ],
-      "usedIn": [],
+      "usedIn": [
+        "hanbok-hero (분류 알약 → 시·서·화 분야 버튼",
+        "2026-10-05)"
+      ],
       "summary": "[레퍼런스] motionsites — MotionSites AI (https://motionsites.ai/) · 패턴 video-tile-catalog · ✅ 2026-09-30\n가져올 것: 공개 미리보기에서 보이는 첫 화면 구성·배경 모션·타이포 조합을 우리 요구로 다시 적는 방식. 결과물을 정지 이미지가 아니라 짧은 루프 영상 타일로 훑게 하는 고르기 화면(뷰포트에 들어올 때만 재생해 부담을 줄이는 방식 포함). 주소 파라미터로 상세를 여는 구조(뒤로 가기·공유가 된다)\n안 가져올 것: 유료 프롬프트 본문, 데모 외형 그대로의 복제, 타일 본체가 키보드로 열리지 않는 구성, 전 타일 영상 동시 재생 같은 무거운 첫 화면"
     },
     {

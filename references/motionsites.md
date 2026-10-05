@@ -15,7 +15,7 @@
 | 패턴 | `video-tile-catalog` |
 | 패밀리 | D |
 | 기술 흔적 | Vite 번들(`assets/index-*.js`)에 React·Radix UI·토스트(sonner)가 들어 있다(추정). 캔버스·WebGL·three·gsap 없음(`<canvas>` 0개). 미리보기는 전부 `<video autoplay loop muted>`(R2 저장소 mp4·blob). 뷰포트 안에 들어올 때 재생하는 구조(추정, IntersectionObserver 사용). 분석·광고 스크립트 다수 |
-| 쓰인 작품 | — |
+| 쓰인 작품 | `hanbok-hero` (분류 알약 → 시·서·화 분야 버튼, 2026-10-05) |
 
 **무엇이 다른가** — 이 사이트 자체는 움직이는 배경 히어로가 아니라, 히어로·랜딩 화면 **수십 개를 영상 타일로 보여 주는 카탈로그**다. 어두운 배경에 큰 그라디언트 제목과 카테고리 알약(All·Hero·Landing Page·Saas·Agency·Portfolio·3D·Ecommerce 등 20여 개)이 있고, 그 아래 4열 벽돌 배치 타일이 각자 루프 영상으로 계속 움직인다. 타일을 누르면 같은 주소에 `?prompt=<이름>`만 붙고, 큰 영상 미리보기와 이름·분류·좋아요 수가 있는 상세 화면이 덮이며 아래에 비슷한 타일이 이어진다. 프롬프트 본문은 무료 일부만 복사할 수 있고 나머지는 잠겨 있다(복사·잠금 버튼은 누르지 않았다).
 
