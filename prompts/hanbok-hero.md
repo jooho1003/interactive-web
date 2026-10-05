@@ -60,11 +60,13 @@ Static camera, plain backdrop, the painted Korean Joseon scholar in a black gat 
 
 ### 03 · 배경 — 경회루 야경 (palace) ✅
 
-<img src="../projects/hanbok-hero/dist/assets/palace.webp" width="360">
+**2026-10-05 교체** — 시·서·화 분야별 배경(05~07)으로 바뀌었다. 그림은 이력으로 `art/superseded/palace.webp`에 남겼다.
+
+<img src="../projects/hanbok-hero/art/superseded/palace.webp" width="360">
 
 | 항목 | 내용 |
 |---|---|
-| 파일 | `projects/hanbok-hero/dist/assets/palace.webp` · 1920×1072 · 111KB |
+| 파일 | `projects/hanbok-hero/art/superseded/palace.webp`(2026-10-05까지 `dist/assets/palace.webp`) · 1920×1072 · 111KB |
 | 쓰이는 곳 | 레이어 `paper` 파라미터 `image`(cover). 위에 `vignette` 0.5 |
 | 도구·모드 | fal.ai `fal-ai/flux-pro/v1.1-ultra` 텍스트→이미지 · 2026-10-02 (정정 전 생성; 다음 교체 시 Codex) |
 | 참조 이미지 | 없음 |
@@ -101,3 +103,77 @@ Photographic cinematic wide shot of Gyeonghoeru pavilion at Gyeongbokgung Palace
 **버린 후보** — ① 원본 프레임 0을 기준 몸으로: 다른 모든 프레임과 머리 영역 차이가 커서(RMS 29~53) 쉬는 칸에서 한 칸만 움직여도 크게 바뀐다. ② 아래 행 양 끝에 고개 든 프레임(56·50·164·170)을 섞은 배치: 갓 기울기가 확 바뀌어 튄다. ③ 192·194: 눈꺼풀이 덜 올라왔다. ④ 띠 섞기만(흐름 없이): 깃 주황·흰 선이 두 겹으로 비친다. ⑤ 평활 없는 광학 흐름: 그림 결 때문에 점처럼 깨진다.
 
 **생성 후 확인** — `alphaReport` 세 장 모서리 알파 0 · `restMatchesStill()` 평균 차이 0.40/255 · 고개를 가장 많이 돌린 칸의 목·깃을 원본 크기로 보고 겹선 없음 확인 · `runChecks` 24/24. 한계: 영상이 고개를 돌리는 동안 눈은 대체로 관람자를 본다.
+
+**방향 전환(2026-10-05)** — 사진풍 경회루 한 장(03) → 분야별 회화풍 배경 세 장(05~07). 사용자 결정: 시·서·화 분야를 고르면 장소까지 바뀌어야 분위기 차이가 분명하고(안 B), 그림체는 선비 캐릭터·참조 화풍과 같은 회화풍 콘셉트 아트로 맞춘다. 전에 실내·일월오봉도 배경이 일본·중국풍으로 읽히고 현판 글씨가 생겼던 기록(03 버린 후보) 때문에 세 장 모두 실외로 정했다.
+
+### 05 · 배경 — 시 詩 — 향원정 달밤 (mood-si) ✅
+
+<img src="../projects/hanbok-hero/dist/assets/mood-si.webp" width="360">
+
+| 항목 | 내용 |
+|---|---|
+| 파일 | `projects/hanbok-hero/dist/assets/mood-si.webp` · 1920×1080 · 160KB(q76) |
+| 쓰이는 곳 | 레이어 `paper` 파라미터 `image`, 장면 `si`의 `set.paper.image`(매니페스트). 위에 `vignette` 0.5 |
+| 도구·모드 | Codex CLI `codex exec` → 내장 `image_gen`(imagegen 스킬 기본 모드) · 2026-10-05. 모델명·시드는 노출되지 않음 |
+| 참조 이미지 | `docs/참고/풍.jpg`(사용자 제공 화풍 참조 — 등불 든 소녀 콘셉트 아트, 미추적 외부 작품). **화풍만** 참조하고 인물·등불·글자·낙관은 가져오지 말라고 프롬프트에 적었다 |
+| 설정 | 출력 1536×1024 → 가운데 16:9(1536×864)로 자름 → 1920×1080 LANCZOS → webp(200KB 이하가 되는 첫 품질). 후보 3장 중 사용자가 `si-2`를 고름 |
+
+**한국어 요약** — 경복궁 향원정의 보름달 밤. 연못 섬 위 육각 2층 정자, 나무 다리(취향교), 연꽃, 버드나무·소나무 실루엣, 옅은 안개. 은청빛. 공통 조건: 회화풍 콘셉트 아트(붓 결이 보임), 전체가 어두워 밝은 글자가 읽힘, 왼쪽 45%는 이름 자리라 어둡고 단순하게, 오른쪽 가운데(선비 자리)는 조용하게. 사람·동물·글자·현판·명패·낙관·붉은 해·깃발 없음, "not Chinese, not Japanese".
+
+**프롬프트 원문** (Codex에 표준입력으로 넘긴 그대로, `-i docs/참고/풍.jpg` 첨부)
+
+```text
+Use your built-in image generation tool to create ONE landscape image (1536x1024). Prompt: Moonlit night at Hyangwonjeong pavilion in Gyeongbokgung Palace, Seoul, Korea: the small hexagonal two-story Korean wooden pavilion with a grey giwa tile roof on a round islet in a still lotus pond, the arched wooden Chwihyanggyo bridge leading to it, a full moon low in a deep indigo sky, silver-blue moonlight on the water with soft reflections, willow and pine silhouettes, faint mist. Cool silver-blue palette. Painterly Korean concept art illustration with visible brush strokes, painted in the same style as the attached reference image (use the reference ONLY for painting style: brushwork, muted palette, soft texture; do not copy its subject, figure, lantern, text or seal). Wide landscape website hero background, dark and moody overall so light text stays readable. Composition: the left 45 percent of the frame is dark, calm and uncluttered for a title; the right-center area is quiet with no strong focal point because a character will stand there; the main landmark sits in the middle distance. Authentically Korean Joseon-era scenery, not Chinese, not Japanese. No people, no figures, no animals, no text, no calligraphy, no letters, no signboard, no hanging plaques, no nameplate, no red sun, no flags, no watermark, no signature, no seal stamp, no border or frame. Save the image in the current directory as si-2.png and reply only with the saved file path.
+```
+
+**버린 후보** — ① si-1 — 같은 구성의 푸른 달빛(밝기 30), 통과했으나 사용자가 2번을 골랐다. ② si-3 — 정자 가운데·버드나무(밝기 31), 1차 생성은 Codex "model at capacity"로 실패해 다시 만들었고 통과, 사용자가 고르지 않음.
+
+**생성 후 확인** — 이름 자리 밝기 31 · 글자·현판 없음 · 정자가 오른쪽에 있어 선비 머리 뒤가 비어 있다. 거르기 기준: 이름 자리(1440×900 cover 기준 x 0~45%·y 45~85%) 평균 밝기 0~255, 기존 경회루 45 · 기준 70 이하. 원본에서 글자·현판·명패·낙관, 일본·중국풍 단서(붉은 원, 붉은 기둥+금색, 일본식 석등)를 보고, 선비를 얹은 합성으로 머리 뒤 초점을 확인했다.
+
+### 06 · 배경 — 서 書 — 사랑채 등불 (mood-seo) ✅
+
+<img src="../projects/hanbok-hero/dist/assets/mood-seo.webp" width="360">
+
+| 항목 | 내용 |
+|---|---|
+| 파일 | `projects/hanbok-hero/dist/assets/mood-seo.webp` · 1920×1080 · 182KB(q82) |
+| 쓰이는 곳 | 레이어 `paper` 파라미터 `image`, 장면 `seo`의 `set.paper.image`(매니페스트). 위에 `vignette` 0.5 |
+| 도구·모드 | Codex CLI `codex exec` → 내장 `image_gen`(imagegen 스킬 기본 모드) · 2026-10-05. 모델명·시드는 노출되지 않음 |
+| 참조 이미지 | `docs/참고/풍.jpg`(사용자 제공 화풍 참조 — 등불 든 소녀 콘셉트 아트, 미추적 외부 작품). **화풍만** 참조하고 인물·등불·글자·낙관은 가져오지 말라고 프롬프트에 적었다 |
+| 설정 | 출력 1536×1024 → 가운데 16:9(1536×864)로 자름 → 1920×1080 LANCZOS → webp(200KB 이하가 되는 첫 품질). 후보 3장 중 사용자가 `seo-1`를 고름 |
+
+**한국어 요약** — 조선 서원의 사랑채(선비의 공부방)를 마당에서 본 늦은 밤. 낮은 기와지붕, 마루, 등잔 하나로 따뜻하게 빛나는 창호지 문, 돌계단, 흙담 옆 매화. 먹빛 어둠과 주홍 등불. 공통 조건: 회화풍 콘셉트 아트(붓 결이 보임), 전체가 어두워 밝은 글자가 읽힘, 왼쪽 45%는 이름 자리라 어둡고 단순하게, 오른쪽 가운데(선비 자리)는 조용하게. 사람·동물·글자·현판·명패·낙관·붉은 해·깃발 없음, "not Chinese, not Japanese".
+
+**프롬프트 원문** (Codex에 표준입력으로 넘긴 그대로, `-i docs/참고/풍.jpg` 첨부)
+
+```text
+Use your built-in image generation tool to create ONE landscape image (1536x1024). Prompt: Late night at a Korean hanok sarangchae, the scholar's study of a Joseon seowon Confucian academy, seen from the courtyard outside: low tiled roof with gently curved eaves, wooden maru veranda, hanji paper lattice doors glowing warm from a single oil lamp inside, stone steps, a plum tree with a few blossoms beside the earthen wall, ink-dark night with deep shadows. Palette of sumi ink blacks and warm vermilion-orange lamp glow. Painterly Korean concept art illustration with visible brush strokes, painted in the same style as the attached reference image (use the reference ONLY for painting style: brushwork, muted palette, soft texture; do not copy its subject, figure, lantern, text or seal). Wide landscape website hero background, dark and moody overall so light text stays readable. Composition: the left 45 percent of the frame is dark, calm and uncluttered for a title; the right-center area is quiet with no strong focal point because a character will stand there; the main landmark sits in the middle distance. Authentically Korean Joseon-era scenery, not Chinese, not Japanese. No people, no figures, no animals, no text, no calligraphy, no letters, no signboard, no hanging plaques, no nameplate, no red sun, no flags, no watermark, no signature, no seal stamp, no border or frame. Save the image in the current directory as seo-1.png and reply only with the saved file path.
+```
+
+**버린 후보** — ① seo-2 — 가장 어둡고 뒤에 산(밝기 20), 통과. ② seo-3 — 건물이 오른쪽 뒤로 작게(밝기 28), 통과. 둘 다 사용자가 고르지 않음.
+
+**생성 후 확인** — 이름 자리 밝기 27 · 글자·현판 없음 · 등불 켜진 문이 화면 오른쪽 가운데에 와서, 분야 버튼 받침(moods.plate)과 밝은 강조색 `#e8866b`로 대비를 맞췄다. 거르기 기준: 이름 자리(1440×900 cover 기준 x 0~45%·y 45~85%) 평균 밝기 0~255, 기존 경회루 45 · 기준 70 이하. 원본에서 글자·현판·명패·낙관, 일본·중국풍 단서(붉은 원, 붉은 기둥+금색, 일본식 석등)를 보고, 선비를 얹은 합성으로 머리 뒤 초점을 확인했다.
+
+### 07 · 배경 — 화 畫 — 비 갠 인왕산 새벽 (mood-hwa) ✅
+
+<img src="../projects/hanbok-hero/dist/assets/mood-hwa.webp" width="360">
+
+| 항목 | 내용 |
+|---|---|
+| 파일 | `projects/hanbok-hero/dist/assets/mood-hwa.webp` · 1920×1080 · 124KB(q82) |
+| 쓰이는 곳 | 레이어 `paper` 파라미터 `image`, 장면 `hwa`의 `set.paper.image`(매니페스트). 위에 `vignette` 0.5 |
+| 도구·모드 | Codex CLI `codex exec` → 내장 `image_gen`(imagegen 스킬 기본 모드) · 2026-10-05. 모델명·시드는 노출되지 않음 |
+| 참조 이미지 | `docs/참고/풍.jpg`(사용자 제공 화풍 참조 — 등불 든 소녀 콘셉트 아트, 미추적 외부 작품). **화풍만** 참조하고 인물·등불·글자·낙관은 가져오지 말라고 프롬프트에 적었다 |
+| 설정 | 출력 1536×1024 → 가운데 16:9(1536×864)로 자름 → 1920×1080 LANCZOS → webp(200KB 이하가 되는 첫 품질). 후보 3장 중 사용자가 `hwa-1`를 고름 |
+
+**한국어 요약** — 비 갠 뒤 새벽의 인왕산. 운무 사이로 솟은 화강암 봉우리, 바위에 붙은 소나무, 겹겹이 흐려지는 능선, 골짜기의 기와집. 진경산수의 분위기. 석채 녹청·청회색. 공통 조건: 회화풍 콘셉트 아트(붓 결이 보임), 전체가 어두워 밝은 글자가 읽힘, 왼쪽 45%는 이름 자리라 어둡고 단순하게, 오른쪽 가운데(선비 자리)는 조용하게. 사람·동물·글자·현판·명패·낙관·붉은 해·깃발 없음, "not Chinese, not Japanese".
+
+**프롬프트 원문** (Codex에 표준입력으로 넘긴 그대로, `-i docs/참고/풍.jpg` 첨부)
+
+```text
+Use your built-in image generation tool to create ONE landscape image (1536x1024). Prompt: Dawn after rain at Inwangsan mountain in Seoul, Korea: pale granite rock peaks emerging from drifting clouds and mist, pine trees clinging to the rocks, layered ridges fading into fog, the mood of a Joseon true-view landscape painting, first light just touching the peaks. Palette of mineral malachite green, slate teal and soft grey. Painterly Korean concept art illustration with visible brush strokes, painted in the same style as the attached reference image (use the reference ONLY for painting style: brushwork, muted palette, soft texture; do not copy its subject, figure, lantern, text or seal). Wide landscape website hero background, dark and moody overall so light text stays readable. Composition: the left 45 percent of the frame is dark, calm and uncluttered for a title; the right-center area is quiet with no strong focal point because a character will stand there; the main landmark sits in the middle distance. Authentically Korean Joseon-era scenery, not Chinese, not Japanese. No people, no figures, no animals, no text, no calligraphy, no letters, no signboard, no hanging plaques, no nameplate, no red sun, no flags, no watermark, no signature, no seal stamp, no border or frame. Save the image in the current directory as hwa-1.png and reply only with the saved file path.
+```
+
+**버린 후보** — ① hwa-2 — **탈락**: 먼 산 위에 남산타워 같은 현대식 탑과 도시가 그려져 조선 풍경이 깨짐(밝기 44). ② hwa-3 — 앞에 바위·오른쪽 먼 궁궐(밝기 37), 통과했으나 사용자가 고르지 않음.
+
+**생성 후 확인** — 이름 자리 밝기 54(왼쪽 안개가 밝음, 기준 이하) · 글자·현판 없음 · 강조색을 `#93c9b8`로 밝혔다. 거르기 기준: 이름 자리(1440×900 cover 기준 x 0~45%·y 45~85%) 평균 밝기 0~255, 기존 경회루 45 · 기준 70 이하. 원본에서 글자·현판·명패·낙관, 일본·중국풍 단서(붉은 원, 붉은 기둥+금색, 일본식 석등)를 보고, 선비를 얹은 합성으로 머리 뒤 초점을 확인했다.

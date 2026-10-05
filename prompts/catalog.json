@@ -956,10 +956,10 @@
       "id": "hanbok-hero--03--배경--경회루-야경-palace-",
       "title": "03 · 배경 — 경회루 야경 (palace) ✅",
       "status": "ok",
-      "image": "projects/hanbok-hero/dist/assets/palace.webp",
+      "image": "projects/hanbok-hero/art/superseded/palace.webp",
       "video": null,
       "meta": {
-        "파일": "projects/hanbok-hero/dist/assets/palace.webp · 1920×1072 · 111KB",
+        "파일": "projects/hanbok-hero/art/superseded/palace.webp(2026-10-05까지 dist/assets/palace.webp) · 1920×1072 · 111KB",
         "쓰이는 곳": "레이어 paper 파라미터 image(cover). 위에 vignette 0.5",
         "도구·모드": "fal.ai fal-ai/flux-pro/v1.1-ultra 텍스트→이미지 · 2026-10-02 (정정 전 생성; 다음 교체 시 Codex)",
         "참조 이미지": "없음",
@@ -990,6 +990,78 @@
         "설정": "기준 몸 프레임 110 · 위 행 56 50 44 38 32 26 2 136 142 148 156 164 170 · 아래 행 80 84 88 92 96 102 110 212 208 204 200 198 196 · 머리 영역 x330–1170 y0–680 · 깃 맞춤 띠 y450–530 · 색 섞기 띠 y455–620 · 가장자리 페더 30px · 축소 0.7 · WebP q88(정면·몸) / q86(시트)"
       },
       "prompts": []
+    },
+    {
+      "app": "hanbok-hero",
+      "appTitle": "한복 히어로",
+      "id": "hanbok-hero--05--배경--시-詩--향원정-달밤-mood-si-",
+      "title": "05 · 배경 — 시 詩 — 향원정 달밤 (mood-si) ✅",
+      "status": "ok",
+      "image": "projects/hanbok-hero/dist/assets/mood-si.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/hanbok-hero/dist/assets/mood-si.webp · 1920×1080 · 160KB(q76)",
+        "쓰이는 곳": "레이어 paper 파라미터 image, 장면 si의 set.paper.image(매니페스트). 위에 vignette 0.5",
+        "도구·모드": "Codex CLI codex exec → 내장 image_gen(imagegen 스킬 기본 모드) · 2026-10-05. 모델명·시드는 노출되지 않음",
+        "참조 이미지": "docs/참고/풍.jpg(사용자 제공 화풍 참조 — 등불 든 소녀 콘셉트 아트, 미추적 외부 작품). 화풍만 참조하고 인물·등불·글자·낙관은 가져오지 말라고 프롬프트에 적었다",
+        "설정": "출력 1536×1024 → 가운데 16:9(1536×864)로 자름 → 1920×1080 LANCZOS → webp(200KB 이하가 되는 첫 품질). 후보 3장 중 사용자가 si-2를 고름"
+      },
+      "prompts": [
+        {
+          "label": null,
+          "lang": "text",
+          "prepend": null,
+          "text": "Use your built-in image generation tool to create ONE landscape image (1536x1024). Prompt: Moonlit night at Hyangwonjeong pavilion in Gyeongbokgung Palace, Seoul, Korea: the small hexagonal two-story Korean wooden pavilion with a grey giwa tile roof on a round islet in a still lotus pond, the arched wooden Chwihyanggyo bridge leading to it, a full moon low in a deep indigo sky, silver-blue moonlight on the water with soft reflections, willow and pine silhouettes, faint mist. Cool silver-blue palette. Painterly Korean concept art illustration with visible brush strokes, painted in the same style as the attached reference image (use the reference ONLY for painting style: brushwork, muted palette, soft texture; do not copy its subject, figure, lantern, text or seal). Wide landscape website hero background, dark and moody overall so light text stays readable. Composition: the left 45 percent of the frame is dark, calm and uncluttered for a title; the right-center area is quiet with no strong focal point because a character will stand there; the main landmark sits in the middle distance. Authentically Korean Joseon-era scenery, not Chinese, not Japanese. No people, no figures, no animals, no text, no calligraphy, no letters, no signboard, no hanging plaques, no nameplate, no red sun, no flags, no watermark, no signature, no seal stamp, no border or frame. Save the image in the current directory as si-2.png and reply only with the saved file path."
+        }
+      ]
+    },
+    {
+      "app": "hanbok-hero",
+      "appTitle": "한복 히어로",
+      "id": "hanbok-hero--06--배경--서-書--사랑채-등불-mood-seo-",
+      "title": "06 · 배경 — 서 書 — 사랑채 등불 (mood-seo) ✅",
+      "status": "ok",
+      "image": "projects/hanbok-hero/dist/assets/mood-seo.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/hanbok-hero/dist/assets/mood-seo.webp · 1920×1080 · 182KB(q82)",
+        "쓰이는 곳": "레이어 paper 파라미터 image, 장면 seo의 set.paper.image(매니페스트). 위에 vignette 0.5",
+        "도구·모드": "Codex CLI codex exec → 내장 image_gen(imagegen 스킬 기본 모드) · 2026-10-05. 모델명·시드는 노출되지 않음",
+        "참조 이미지": "docs/참고/풍.jpg(사용자 제공 화풍 참조 — 등불 든 소녀 콘셉트 아트, 미추적 외부 작품). 화풍만 참조하고 인물·등불·글자·낙관은 가져오지 말라고 프롬프트에 적었다",
+        "설정": "출력 1536×1024 → 가운데 16:9(1536×864)로 자름 → 1920×1080 LANCZOS → webp(200KB 이하가 되는 첫 품질). 후보 3장 중 사용자가 seo-1를 고름"
+      },
+      "prompts": [
+        {
+          "label": null,
+          "lang": "text",
+          "prepend": null,
+          "text": "Use your built-in image generation tool to create ONE landscape image (1536x1024). Prompt: Late night at a Korean hanok sarangchae, the scholar's study of a Joseon seowon Confucian academy, seen from the courtyard outside: low tiled roof with gently curved eaves, wooden maru veranda, hanji paper lattice doors glowing warm from a single oil lamp inside, stone steps, a plum tree with a few blossoms beside the earthen wall, ink-dark night with deep shadows. Palette of sumi ink blacks and warm vermilion-orange lamp glow. Painterly Korean concept art illustration with visible brush strokes, painted in the same style as the attached reference image (use the reference ONLY for painting style: brushwork, muted palette, soft texture; do not copy its subject, figure, lantern, text or seal). Wide landscape website hero background, dark and moody overall so light text stays readable. Composition: the left 45 percent of the frame is dark, calm and uncluttered for a title; the right-center area is quiet with no strong focal point because a character will stand there; the main landmark sits in the middle distance. Authentically Korean Joseon-era scenery, not Chinese, not Japanese. No people, no figures, no animals, no text, no calligraphy, no letters, no signboard, no hanging plaques, no nameplate, no red sun, no flags, no watermark, no signature, no seal stamp, no border or frame. Save the image in the current directory as seo-1.png and reply only with the saved file path."
+        }
+      ]
+    },
+    {
+      "app": "hanbok-hero",
+      "appTitle": "한복 히어로",
+      "id": "hanbok-hero--07--배경--화-畫--비-갠-인왕산-새벽-mood-hwa-",
+      "title": "07 · 배경 — 화 畫 — 비 갠 인왕산 새벽 (mood-hwa) ✅",
+      "status": "ok",
+      "image": "projects/hanbok-hero/dist/assets/mood-hwa.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/hanbok-hero/dist/assets/mood-hwa.webp · 1920×1080 · 124KB(q82)",
+        "쓰이는 곳": "레이어 paper 파라미터 image, 장면 hwa의 set.paper.image(매니페스트). 위에 vignette 0.5",
+        "도구·모드": "Codex CLI codex exec → 내장 image_gen(imagegen 스킬 기본 모드) · 2026-10-05. 모델명·시드는 노출되지 않음",
+        "참조 이미지": "docs/참고/풍.jpg(사용자 제공 화풍 참조 — 등불 든 소녀 콘셉트 아트, 미추적 외부 작품). 화풍만 참조하고 인물·등불·글자·낙관은 가져오지 말라고 프롬프트에 적었다",
+        "설정": "출력 1536×1024 → 가운데 16:9(1536×864)로 자름 → 1920×1080 LANCZOS → webp(200KB 이하가 되는 첫 품질). 후보 3장 중 사용자가 hwa-1를 고름"
+      },
+      "prompts": [
+        {
+          "label": null,
+          "lang": "text",
+          "prepend": null,
+          "text": "Use your built-in image generation tool to create ONE landscape image (1536x1024). Prompt: Dawn after rain at Inwangsan mountain in Seoul, Korea: pale granite rock peaks emerging from drifting clouds and mist, pine trees clinging to the rocks, layered ridges fading into fog, the mood of a Joseon true-view landscape painting, first light just touching the peaks. Palette of mineral malachite green, slate teal and soft grey. Painterly Korean concept art illustration with visible brush strokes, painted in the same style as the attached reference image (use the reference ONLY for painting style: brushwork, muted palette, soft texture; do not copy its subject, figure, lantern, text or seal). Wide landscape website hero background, dark and moody overall so light text stays readable. Composition: the left 45 percent of the frame is dark, calm and uncluttered for a title; the right-center area is quiet with no strong focal point because a character will stand there; the main landmark sits in the middle distance. Authentically Korean Joseon-era scenery, not Chinese, not Japanese. No people, no figures, no animals, no text, no calligraphy, no letters, no signboard, no hanging plaques, no nameplate, no red sun, no flags, no watermark, no signature, no seal stamp, no border or frame. Save the image in the current directory as hwa-1.png and reply only with the saved file path."
+        }
+      ]
     }
   ]
 }
