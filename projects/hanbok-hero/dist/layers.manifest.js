@@ -67,6 +67,9 @@ export default {
         },
         "title": {
           "tagline": "달을 읊고 바람을 적는 선비"
+        },
+        "paper": {
+          "image": "./assets/mood-si.webp"
         }
       }
     },
@@ -74,13 +77,16 @@ export default {
       "label": "서 書",
       "set": {
         "global": {
-          "accent": "#c8553d"
+          "accent": "#e8866b"
         },
         "glyph": {
           "text": "書"
         },
         "title": {
           "tagline": "먹을 갈아 마음을 쓰는 선비"
+        },
+        "paper": {
+          "image": "./assets/mood-seo.webp"
         }
       }
     },
@@ -88,13 +94,16 @@ export default {
       "label": "화 畫",
       "set": {
         "global": {
-          "accent": "#6f9a8d"
+          "accent": "#93c9b8"
         },
         "glyph": {
           "text": "畫"
         },
         "title": {
           "tagline": "산과 물을 화폭에 옮기는 선비"
+        },
+        "paper": {
+          "image": "./assets/mood-hwa.webp"
         }
       }
     }
@@ -206,7 +215,7 @@ export default {
         "image": {
           "label": "배경 이미지",
           "type": "image",
-          "default": "./assets/palace.webp",
+          "default": "./assets/mood-si.webp",
           "attr": [
             "img.paper-image",
             "src"
@@ -778,6 +787,11 @@ export default {
           "type": "color",
           "default": "#e9dcc3"
         },
+        "plate": {
+          "label": "받침 색(투명도 포함)",
+          "type": "color",
+          "default": "#0b0806a6"
+        },
         "gap": {
           "label": "버튼 간격",
           "type": "number",
@@ -809,7 +823,7 @@ export default {
           "step": 0.1,
           "unit": "%",
           "at": {
-            "mobile": 9
+            "mobile": 6
           }
         },
         "direction": {

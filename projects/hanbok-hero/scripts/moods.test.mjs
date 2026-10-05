@@ -30,12 +30,12 @@ test('매니페스트: 장면 3개와 분야 레이어', () => {
   assert.equal(manifest.initialScene, 'si');
   for (const id of ['glyph', 'moods', 'credit']) assert.ok(manifest.layers.some(layer => layer.id === id), id);
   assert.deepEqual(['si', 'seo', 'hwa'].map(id => manifest.scenes[id].set.glyph.text), ['詩', '書', '畫']);
-  assert.deepEqual(['si', 'seo', 'hwa'].map(id => manifest.scenes[id].set.global.accent), ['#b9c7d6', '#c8553d', '#6f9a8d']);
+  assert.deepEqual(['si', 'seo', 'hwa'].map(id => manifest.scenes[id].set.global.accent), ['#b9c7d6', '#e8866b', '#93c9b8']);
 });
 test('빈 메뉴·작품 보기는 게시값으로 숨김', () => {
   assert.equal(published.base.nav.visible, false);
   assert.equal(published.base.cta.visible, false);
 });
-test('분야별 배경 주소: 지금은 세 분야 모두 같은 그림', () => {
-  assert.deepEqual(moodImages(manifest, published, []), ['./assets/palace.webp']);
+test('분야별 배경 주소: 장면마다 다른 그림 3장', () => {
+  assert.deepEqual(moodImages(manifest, published, []), ['./assets/mood-si.webp', './assets/mood-seo.webp', './assets/mood-hwa.webp']);
 });
