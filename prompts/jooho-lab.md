@@ -583,3 +583,104 @@ Create a seamless RIGHT-HAND EXTENSION panel for the supplied miniature village 
 ```
 
 **제작 후 확인** — GLB7개 PBR 그룹/7개 조명/분리UV·6MB 이하, 그림이 종이 앞에 있고 원본 비율을 유지함을 검사한다. 표면에 중복 그림자를 덧씌우지 않는다. 실제 화면과 검증 결과/제약은 [QA-spatial](../projects/jooho-lab/QA-spatial.md)의 이번 기록과 `art/gallery-natural-refinement`에 남긴다. 새 이미지 생성 후보나 폐기 후보 없음.
+
+### 25 · lab-museum-exterior — 박물관 느낌의 외관 시안
+
+<img src="../projects/jooho-lab/art/gallery-museum-exterior/desktop-exterior-preview.png" width="480">
+
+| 항목 | 내용 |
+|---|---|
+| 파일 | `projects/jooho-lab/public/assets/lab-pavilion.glb` · 5,174,556B, 원본 `art/lab-pavilion.blend`, 조명/AO `art/lab-gallery-light.png`·`art/lab-occlusion.png` 각각2048² |
+| 쓰이는 곳 | 전시관 건물 외관, 레이어 `stage` |
+| 도구·모드 | Blender4.5 · 기존 절차 모델의 외관 수정/조명·AO 재베이크/GLB export · 2026-10-05 |
+| 참조 이미지 | 기존 전시관 외관, 국립중앙박물관 공식 [건축 개요](https://www.museum.go.kr/MUSEUM/contents/M0804010000.do)의 건물 형태/열린마당 설명. 원작 사진은 앱에 사용하지 않음 |
+| 설정 | 양측 x=-9..-3/3..9 높이6.9m, 중앙 통로6m, 상부 보 아래6.625m. 외부 camera eye[12,7,28]/look[-3.7,2.4,0]. 기존7종 PBR·7개 전시조명·UV0 조명/AO·UV1 재질 유지, Cycles32/64samples·AO거리.8m·denoise·CPU4threads |
+| 후보/원본 | 1시안. 이전 모델/원본/외관은 `art/gallery-museum-exterior/lab-pavilion-before.*`·`desktop-before.png`에 보존 |
+| 프롬프트 | 해당 없음 — AI 이미지 생성이 아닌 Blender 절차 제작. 사용자 원문/재현 명령을 아래 기록 |
+
+**한국어 요약** — 긴 석재 매스 두 개와 높게 잇는 보, 중앙의 빈 입구로 박물관의 수평적인 건축 느낌을 작은 전시관에 적용한다. 낮은 수평 유리창과 돌 줄눈으로 마감을 표현한다. 실제3D이므로 카메라가 입구를 지나 내부로 들어갈 수 있다. 이번 시안은 외관이며 실내 전시 배치는 유지한다.
+
+**제작 요청 원문 그대로**
+
+```text
+아. 나는 전시관의 건물과 인테리어를 좀 더 캐릭터화 하거나 실물처럼 만든줄 알았어. 국립중앙박물관 건물 외관 느낌으로..
+```
+
+**재현 명령** — `projects/jooho-lab`에서:
+
+```powershell
+& 'C:/Program Files/Blender Foundation/Blender 4.5/blender.exe' --background --threads 4 --python scripts/build-spatial-lab.py
+```
+
+**제작 후 확인** — 실제 외관 캡처를 열어 새 석재 외벽/중앙 빈 공간/창/연결 보와 기존 수면·동선이 보이는지 확인했다. 소스 경로110,110샘플의 외벽/보 여유 검사, 모델7종 PBR/7조명/분리UV/6MB 예산 통과. 브라우저 최종 검증 결과와 제약은 [QA-spatial](../projects/jooho-lab/QA-spatial.md)·`art/gallery-museum-exterior`에 기록한다. 새 이미지 생성 프롬프트/후보 없음.
+
+### 26 · plum-tree-v1 — 사진 참고 분홍 꽃나무
+
+<img src="../projects/jooho-lab/public/assets/plum-tree-v1.png" width="270">
+
+| 항목 | 내용 |
+|---|---|
+| 파일 | `projects/jooho-lab/public/assets/plum-tree-v1.png` · 1086×1448 · 2,796,507B · RGBA |
+| 쓰이는 곳 | 전시관 외부 기존4개 나무 위치, 레이어 `courtyard-trees`. 실제3D 건물 옆의 고정 방향2.5D 카드 |
+| 도구·모드 | 내장 `image_gen` · 참조 생성 · `transparent_background:true` · 2026-10-05 |
+| 참조 이미지 | 사용자 제공 `docs/참고/images.jpg` — 검은 굽은 줄기/비대칭 가지/분홍 잔꽃만 참고. 담장/지붕/난간/안내판은 사용하지 않음 |
+| 설정 | 요청3:4 전체 나무·진짜 alpha·따뜻한 확산광·문구/배경/지면 없음. 반환1086×1448. 기준높이6.8m, 기존 높이비율 유지, brightness.9, alphaTest.45×opacity, 뿌리x=376/1086·아래여백40/1448 |
+| 후보/원본 | 후보1개 채택, 폐기 후보 없음. 생성 원본 `C:/Users/ssool/.codex2/generated_images/01a10a53-d0b2-7621-9b2e-d631bfc1d0fe/exec-7a16825c-ba7f-4722-b7c9-65b3598c4578.png` 보존. 이전GLB/Blender/외관은 `art/gallery-plum-trees/*-before.*` |
+
+**한국어 요약** — 사용자 사진에서 보인 검게 굽은 굵은 줄기, 가늘고 비대칭인 가지, 가지 사이로 빈 공간이 보이는 작은 분홍 꽃을 단독 투명 나무로 재해석했다. 초록 잎은 적고 꽃/눈을 가지에 흩어 둔다. 실물 사진 느낌의 이미지를 실제3D 공간에 배치해 기존 단순 녹색 잎 나무를 바꾼다. 실내 작은 식물과 건물/동선은 유지한다. 자유 회전 가능한 나무 모델이 아니다.
+
+**사용자 요청 원문**
+
+```text
+그럼 일단 나무부터[Image #1]  이 이미지 처럼 바꿔줘봐.
+```
+
+**생성 프롬프트 원문 그대로**
+
+```text
+Use case: photorealistic-natural. Asset type: a single isolated full flowering tree cutout for placement in an architectural web scene, genuine transparent background. Input image is a SUBJECT/FORM reference only: use its naturally crooked dark trunk, complex spreading branches and tiny pink blossoms; do not copy the courtyard or background. Create one realistic mature Korean garden plum-blossom-like tree in early spring, with a thick near-black weathered bifurcated trunk leaning slightly right, convincingly gnarled bark, sinuous asymmetrical branches branching into many fine dark twigs, numerous SMALL individual pale rose and deeper pink five-petal blossoms and buds distributed along the twigs. Airy broad irregular canopy with visible transparent gaps; dark branching skeleton clearly visible through the pink flowers, very few green leaves. Not a solid cotton-candy mass. Botanical photograph quality, natural uneven branch lengths, no cartoon, no toy, no clay, no low-poly, no stylized 3D render. Entire tree fits completely in a portrait 3:4 frame: all upper/side branches visible with 4% transparent margins, trunk base exactly near bottom at 96% image height, canopy spans most of upper two-thirds. Eye-level view, gently warm late-afternoon diffuse daylight, subtle natural highlights on bark and petals, realistic fine texture and soft shading. The source photo's wall, roof, path, fence and sign must be excluded. No planter, no soil mound, no grass patch, no ground plane, no cast shadow baked below the tree, no sky, no wall, no building, no people, no text, no labels, no watermark. True alpha transparency around the tree AND between branches/blossoms; never add a checkerboard or solid backdrop.
+```
+
+**생성 후 확인** — 이미지를 직접 열어 검은 굽은 줄기/가는 가지/분홍 꽃/배경·문구 없음 확인. 실제RGBA alpha0..255, alpha≥128 영역(7,66)~(1079,1408). 가지 주변 일부 반투명 색 가장자리는 웹의 alphaTest로 줄인다. 바닥 여백뿐 아니라 뿌리의 비대칭 가로 위치를 보정해 기존 화단에 접지했다. 실제 크기/방향/원근/그림자/교체 실패와 전후·세 화면 검증 결과는 [QA-spatial](../projects/jooho-lab/QA-spatial.md)·`art/gallery-plum-trees`에 기록한다. 건물의 실제3D는 유지하고 외부 나무만2.5D 시범으로 교체했다.
+
+
+### 27 · plum-spreading-v2 — 굽은 줄기 · 넓은 수관
+
+![굽은 줄기 · 넓은 수관](../projects/jooho-lab/public/assets/plum-spreading-v2.png)
+
+- **파일·크기**: `projects/jooho-lab/public/assets/plum-spreading-v2.png` · 1168×1347 RGBA · 2109970B.
+- **쓰이는 곳·레이어**: 전시관 오른쪽 마당 앞 나무 · `courtyard-trees`. 위치/크기/방향/이미지는 각 레이어 설정에서 조절한다.
+- **도구·모드**: built-in image_gen · 사용자 사진을 형태 참고로 사용한 투명 에셋 생성 · transparent_background=true. 기존 생성본을 수정하거나 반전한 이미지가 아니라 독립 생성본이다.
+- **참조 이미지**: `docs/참고/images.jpg`. 담장/난간/건물은 가져오지 않는다.
+- **설정·원본**: C:\Users\ssool\.codex2\generated_images\01a10a53-d0b2-7621-9b2e-d631bfc1d0fe\exec-afa42ee4-43f1-401f-86cc-1b9d7750adf2.png. 배경 알파를 보존한 채 프로젝트로 복사했다.
+- **한국어 요약**: 검은 줄기와 작은 분홍 꽃. 굽은 줄기 · 넓은 수관; 반복된 V자 나무를 두 가지 다른 형태로 대체한다.
+- **변경 이유**: 사용자 "나무가 건물을 뚫는다. 나무 2개의 위치랑 모형 변경해서 두개가 다른 형태로 되게해. 건물은 뚫지마." 기존4개 반복 시안은 보존하고 현재 외부 나무는 두 그루로 정리했다.
+
+**프롬프트 원문**
+
+```text
+Create one isolated photorealistic flowering Korean plum tree as a transparent PNG asset for an architectural 3D courtyard. Use the supplied photograph only as a reference for botanical character: very dark rough aged bark, delicate individual small pale-pink five-petal blossoms, thin visible branches, airy gaps. This is TREE A, a low wide spreading mature plum tree. One thick sinuous single trunk makes a gentle S bend; crown is an asymmetric broad oval, branches spread horizontally with the highest foliage slightly left of center. Distinct silhouette, no twin V trunks. Full tree including flat trunk base, centered base at horizontal 50%, entire crown fits with 8% transparent margin all sides and 3% transparent margin beneath base. Height to width ratio roughly 1.15. Sparse realistic early-spring flowers, not dense candyfloss. Soft neutral daylight, sharp natural bark texture. True transparent background including gaps between branches, no scenery, no building, no wall, no planter, no soil, no ground plane, no cast shadow, no labels, no text. One tree only.
+```
+
+**생성 후 확인** — 두 PNG를 직접 열어 서로 다른 줄기/수관·완전한 뿌리·문구/배경 없음 확인. 투명 알파를 보존했다. 실제4정점의 회전/크기/뿌리 보정을 계산해 나무와 화단 전체를 가장 넓은 지붕/보 x=9.8m보다 최소.4m 바깥에 배치한다. 기존 clip-plane으로 가지를 잘라내는 방식은 사용하지 않는다. 입장/실내/회귀 결과는 [QA-spatial](../projects/jooho-lab/QA-spatial.md)와 `art/gallery-tree-pair`에 기록한다. 2.5D 에셋이며 자유 회전 가능한3D 모델은 아니다.
+
+
+### 28 · plum-upright-v2 — 가는 줄기 · 세로 수관
+
+![가는 줄기 · 세로 수관](../projects/jooho-lab/public/assets/plum-upright-v2.png)
+
+- **파일·크기**: `projects/jooho-lab/public/assets/plum-upright-v2.png` · 936×1681 RGBA · 1777434B.
+- **쓰이는 곳·레이어**: 전시관 오른쪽 마당 뒤 나무 · `courtyard-tree-back`. 위치/크기/방향/이미지는 각 레이어 설정에서 조절한다.
+- **도구·모드**: built-in image_gen · 사용자 사진을 형태 참고로 사용한 투명 에셋 생성 · transparent_background=true. 기존 생성본을 수정하거나 반전한 이미지가 아니라 독립 생성본이다.
+- **참조 이미지**: `docs/참고/images.jpg`. 담장/난간/건물은 가져오지 않는다.
+- **설정·원본**: C:\Users\ssool\.codex2\generated_images\01a10a53-d0b2-7621-9b2e-d631bfc1d0fe\exec-a4e0cd15-0f68-410a-964e-dfe855f23159.png. 배경 알파를 보존한 채 프로젝트로 복사했다.
+- **한국어 요약**: 검은 줄기와 작은 분홍 꽃. 가는 줄기 · 세로 수관; 반복된 V자 나무를 두 가지 다른 형태로 대체한다.
+- **변경 이유**: 사용자 "나무가 건물을 뚫는다. 나무 2개의 위치랑 모형 변경해서 두개가 다른 형태로 되게해. 건물은 뚫지마." 기존4개 반복 시안은 보존하고 현재 외부 나무는 두 그루로 정리했다.
+
+**프롬프트 원문**
+
+```text
+Create one isolated photorealistic flowering Korean plum tree as a transparent PNG asset for an architectural 3D courtyard. Use the supplied photograph only as a reference for botanical character: dark charcoal weathered bark, tiny soft-pink five-petal flowers, visible slender branching and airy transparent gaps. This is TREE B, a tall narrow upright plum tree with one slimmer mostly straight trunk, a clear vertical leader, elegant staggered upward forks and a narrow open teardrop canopy. Clearly distinct from a low wide gnarled tree: no broad horizontal crown, no twin V trunk, no sweeping S-shaped base. Full tree including flat base, base centered at horizontal 50%, branches end well inside canvas with 8% transparent margins and 3% beneath the trunk base. Height to width ratio roughly 1.8. Sparse detailed blossoms in small clusters, restrained pale pink, realistic early spring. Soft neutral daylight, sharp bark detail. True transparent background including canopy gaps, no building, no wall, no planter, no ground, no soil, no cast shadow, no lettering. One tree only.
+```
+
+**생성 후 확인** — 두 PNG를 직접 열어 서로 다른 줄기/수관·완전한 뿌리·문구/배경 없음 확인. 투명 알파를 보존했다. 실제4정점의 회전/크기/뿌리 보정을 계산해 나무와 화단 전체를 가장 넓은 지붕/보 x=9.8m보다 최소.4m 바깥에 배치한다. 기존 clip-plane으로 가지를 잘라내는 방식은 사용하지 않는다. 입장/실내/회귀 결과는 [QA-spatial](../projects/jooho-lab/QA-spatial.md)와 `art/gallery-tree-pair`에 기록한다. 2.5D 에셋이며 자유 회전 가능한3D 모델은 아니다.
