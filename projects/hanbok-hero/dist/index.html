@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="ko" data-layer-scene="hero">
+<html lang="ko" data-layer-scene="si">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#140f0c">
-  <meta name="description" content="갓 쓴 조선 선비가 시선으로 맞이하는 포트폴리오 첫 화면.">
+  <meta name="description" content="시·서·화를 고르면 분위기가 바뀌고, 갓 쓴 조선 선비가 시선으로 맞이하는 첫 화면.">
   <title>JOOHO LAB — 선비</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,11 @@
 </head>
 <body>
   <main class="stage" id="main">
-    <div class="paper" aria-hidden="true"><img class="paper-image" data-layer-image="paper/image" src="./assets/palace.webp" alt="" draggable="false"></div>
+    <div class="paper" aria-hidden="true">
+      <img class="paper-image" data-layer-image="paper/image" src="./assets/mood-si.webp" alt="" draggable="false">
+      <img class="paper-prev" alt="" draggable="false" hidden>
+    </div>
+    <p class="glyph" aria-hidden="true" data-layer-text="glyph/text">詩</p>
     <nav class="nav" aria-label="메뉴">
       <a href="#about" data-layer-text="nav/item1">About</a>
       <a href="#work" data-layer-text="nav/item2">Work</a>
@@ -29,9 +33,16 @@
       <img class="character-body" data-layer-image="character/body" src="./assets/scholar-body.webp" alt="" width="1440" height="1440" draggable="false">
       <div class="character-head" aria-hidden="true"><img class="character-sheet" data-layer-image="character/sheet" src="./assets/scholar-heads.webp" alt="" draggable="false"></div>
     </div>
-    <h1 class="title"><span class="title-name" data-layer-text="title/name">이주호</span><span class="title-tagline" data-layer-text="title/tagline">인터랙티브를 만드는 사람</span></h1>
+    <h1 class="title"><span class="title-name" data-layer-text="title/name">소운 윤하담</span><span class="title-tagline" data-layer-text="title/tagline">달을 읊고 바람을 적는 선비</span></h1>
+    <div class="moods" role="group" aria-labelledby="moods-label">
+      <span class="moods-label" id="moods-label" data-layer-text="moods/label">분야</span>
+      <button class="mood" type="button" data-scene="si" aria-pressed="true"><span class="mood-ko" data-layer-text="moods/ko1">시</span><span class="mood-hanja" aria-hidden="true" data-layer-text="moods/hanja1">詩</span></button>
+      <button class="mood" type="button" data-scene="seo" aria-pressed="false"><span class="mood-ko" data-layer-text="moods/ko2">서</span><span class="mood-hanja" aria-hidden="true" data-layer-text="moods/hanja2">書</span></button>
+      <button class="mood" type="button" data-scene="hwa" aria-pressed="false"><span class="mood-ko" data-layer-text="moods/ko3">화</span><span class="mood-hanja" aria-hidden="true" data-layer-text="moods/hanja3">畫</span></button>
+    </div>
     <a class="cta" href="#work" data-layer-text="cta/label">작품 보기</a>
     <p class="hint"><span class="hint-pointer" data-layer-text="hint/pointerText">마우스를 움직여 보세요</span><span class="hint-touch" data-layer-text="hint/touchText">화면을 눌러 보세요</span></p>
+    <p class="credit" data-layer-text="credit/text">제작 이주호</p>
   </main>
 </body>
 </html>

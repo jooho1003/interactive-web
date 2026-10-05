@@ -19,7 +19,7 @@ const experiences = {
   'hanbok-hero': {
     source: '../hanbok-hero/dist',
     title: '선비 · 한복 히어로',
-    frameLabel: '마우스를 따라 고개를 돌리는 선비 첫 화면',
+    frameLabel: '시·서·화를 고르면 분위기가 바뀌는 선비 첫 화면',
   },
 };
 const id = process.argv[2];

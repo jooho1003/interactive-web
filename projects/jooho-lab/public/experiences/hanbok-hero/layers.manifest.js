@@ -1,7 +1,7 @@
 export default {
   "work": "hanbok-hero",
   "version": 1,
-  "initialScene": "hero",
+  "initialScene": "si",
   "breakpoints": [
     {
       "id": "wide",
@@ -56,9 +56,56 @@ export default {
     }
   ],
   "scenes": {
-    "hero": {
-      "label": "첫 화면",
-      "set": {}
+    "si": {
+      "label": "시 詩",
+      "set": {
+        "global": {
+          "accent": "#b9c7d6"
+        },
+        "glyph": {
+          "text": "詩"
+        },
+        "title": {
+          "tagline": "달을 읊고 바람을 적는 선비"
+        },
+        "paper": {
+          "image": "./assets/mood-si.webp"
+        }
+      }
+    },
+    "seo": {
+      "label": "서 書",
+      "set": {
+        "global": {
+          "accent": "#e8866b"
+        },
+        "glyph": {
+          "text": "書"
+        },
+        "title": {
+          "tagline": "먹을 갈아 마음을 쓰는 선비"
+        },
+        "paper": {
+          "image": "./assets/mood-seo.webp"
+        }
+      }
+    },
+    "hwa": {
+      "label": "화 畫",
+      "set": {
+        "global": {
+          "accent": "#93c9b8"
+        },
+        "glyph": {
+          "text": "畫"
+        },
+        "title": {
+          "tagline": "산과 물을 화폭에 옮기는 선비"
+        },
+        "paper": {
+          "image": "./assets/mood-hwa.webp"
+        }
+      }
     }
   },
   "layers": [
@@ -121,6 +168,20 @@ export default {
               "label": "시스템 고딕"
             }
           ]
+        },
+        "accent": {
+          "label": "분야 강조색",
+          "type": "color",
+          "default": "#b9c7d6"
+        },
+        "moodFade": {
+          "label": "분야 전환 시간",
+          "type": "number",
+          "default": 600,
+          "min": 0,
+          "max": 3000,
+          "step": 50,
+          "unit": "ms"
         }
       }
     },
@@ -154,7 +215,7 @@ export default {
         "image": {
           "label": "배경 이미지",
           "type": "image",
-          "default": "./assets/palace.webp",
+          "default": "./assets/mood-si.webp",
           "attr": [
             "img.paper-image",
             "src"
@@ -177,6 +238,102 @@ export default {
           "max": 100,
           "step": 1,
           "unit": "%"
+        }
+      }
+    },
+    {
+      "id": "glyph",
+      "label": "큰 한자",
+      "group": "글",
+      "el": ".glyph",
+      "params": {
+        "visible": {
+          "label": "보이기",
+          "type": "boolean",
+          "default": true,
+          "on": "visible",
+          "off": "hidden"
+        },
+        "opacity": {
+          "label": "불투명도",
+          "type": "number",
+          "default": 0.08,
+          "min": 0,
+          "max": 1,
+          "step": 0.01,
+          "unit": ""
+        },
+        "text": {
+          "label": "글자",
+          "type": "text",
+          "default": "詩",
+          "maxLength": 20,
+          "text": "[data-layer-text=\"glyph/text\"]"
+        },
+        "font": {
+          "label": "글꼴",
+          "type": "select",
+          "default": "\"Noto Serif KR\", \"Nanum Myeongjo\", serif",
+          "options": [
+            {
+              "value": "\"Noto Serif KR\", \"Nanum Myeongjo\", serif",
+              "label": "Noto Serif KR (명조)"
+            },
+            {
+              "value": "\"Song Myung\", \"Noto Serif KR\", serif",
+              "label": "Song Myung (송명)"
+            },
+            {
+              "value": "\"Nanum Myeongjo\", \"Noto Serif KR\", serif",
+              "label": "Nanum Myeongjo (나눔명조)"
+            },
+            {
+              "value": "system-ui, sans-serif",
+              "label": "시스템 고딕"
+            }
+          ]
+        },
+        "size": {
+          "label": "크기",
+          "type": "number",
+          "default": 70,
+          "min": 10,
+          "max": 150,
+          "step": 1,
+          "unit": "vh",
+          "at": {
+            "tablet": 52,
+            "mobile": 34
+          }
+        },
+        "x": {
+          "label": "가로 위치(가운데)",
+          "type": "number",
+          "default": 28,
+          "min": -50,
+          "max": 150,
+          "step": 0.1,
+          "unit": "%",
+          "at": {
+            "mobile": 50
+          }
+        },
+        "y": {
+          "label": "세로 위치(가운데)",
+          "type": "number",
+          "default": 42,
+          "min": -50,
+          "max": 150,
+          "step": 0.1,
+          "unit": "%",
+          "at": {
+            "mobile": 30
+          }
+        },
+        "color": {
+          "label": "색",
+          "type": "color",
+          "default": "#f3e9d8"
         }
       }
     },
@@ -398,14 +555,14 @@ export default {
         "name": {
           "label": "이름",
           "type": "text",
-          "default": "이주호",
+          "default": "소운 윤하담",
           "maxLength": 60,
           "text": "[data-layer-text=\"title/name\"]"
         },
         "tagline": {
           "label": "한 줄 소개",
           "type": "text",
-          "default": "인터랙티브를 만드는 사람",
+          "default": "달을 읊고 바람을 적는 선비",
           "maxLength": 200,
           "text": "[data-layer-text=\"title/tagline\"]"
         },
@@ -516,6 +673,185 @@ export default {
               "label": "시스템 고딕"
             }
           ]
+        }
+      }
+    },
+    {
+      "id": "moods",
+      "label": "분야 버튼",
+      "group": "메뉴",
+      "el": ".moods",
+      "params": {
+        "visible": {
+          "label": "보이기",
+          "type": "boolean",
+          "default": true,
+          "on": "visible",
+          "off": "hidden"
+        },
+        "opacity": {
+          "label": "불투명도",
+          "type": "number",
+          "default": 1,
+          "min": 0,
+          "max": 1,
+          "step": 0.01,
+          "unit": ""
+        },
+        "label": {
+          "label": "묶음 이름(스크린리더)",
+          "type": "text",
+          "default": "분야",
+          "maxLength": 20,
+          "text": "[data-layer-text=\"moods/label\"]"
+        },
+        "ko1": {
+          "label": "첫째 이름",
+          "type": "text",
+          "default": "시",
+          "maxLength": 20,
+          "text": "[data-layer-text=\"moods/ko1\"]"
+        },
+        "hanja1": {
+          "label": "첫째 한자",
+          "type": "text",
+          "default": "詩",
+          "maxLength": 20,
+          "text": "[data-layer-text=\"moods/hanja1\"]"
+        },
+        "ko2": {
+          "label": "둘째 이름",
+          "type": "text",
+          "default": "서",
+          "maxLength": 20,
+          "text": "[data-layer-text=\"moods/ko2\"]"
+        },
+        "hanja2": {
+          "label": "둘째 한자",
+          "type": "text",
+          "default": "書",
+          "maxLength": 20,
+          "text": "[data-layer-text=\"moods/hanja2\"]"
+        },
+        "ko3": {
+          "label": "셋째 이름",
+          "type": "text",
+          "default": "화",
+          "maxLength": 20,
+          "text": "[data-layer-text=\"moods/ko3\"]"
+        },
+        "hanja3": {
+          "label": "셋째 한자",
+          "type": "text",
+          "default": "畫",
+          "maxLength": 20,
+          "text": "[data-layer-text=\"moods/hanja3\"]"
+        },
+        "font": {
+          "label": "글꼴",
+          "type": "select",
+          "default": "\"Noto Serif KR\", \"Nanum Myeongjo\", serif",
+          "options": [
+            {
+              "value": "\"Noto Serif KR\", \"Nanum Myeongjo\", serif",
+              "label": "Noto Serif KR (명조)"
+            },
+            {
+              "value": "\"Song Myung\", \"Noto Serif KR\", serif",
+              "label": "Song Myung (송명)"
+            },
+            {
+              "value": "\"Nanum Myeongjo\", \"Noto Serif KR\", serif",
+              "label": "Nanum Myeongjo (나눔명조)"
+            },
+            {
+              "value": "system-ui, sans-serif",
+              "label": "시스템 고딕"
+            }
+          ]
+        },
+        "size": {
+          "label": "글자 크기",
+          "type": "number",
+          "default": 1.05,
+          "min": 0.6,
+          "max": 3,
+          "step": 0.05,
+          "unit": "rem",
+          "at": {
+            "mobile": 0.95
+          }
+        },
+        "hanjaScale": {
+          "label": "한자 크기 비율(한글 대비)",
+          "type": "number",
+          "default": 1.35,
+          "min": 0.6,
+          "max": 3,
+          "step": 0.05,
+          "unit": ""
+        },
+        "color": {
+          "label": "글자 색",
+          "type": "color",
+          "default": "#e9dcc3"
+        },
+        "plate": {
+          "label": "받침 색(투명도 포함)",
+          "type": "color",
+          "default": "#0b0806a6"
+        },
+        "gap": {
+          "label": "버튼 간격",
+          "type": "number",
+          "default": 0.5,
+          "min": 0,
+          "max": 4,
+          "step": 0.05,
+          "unit": "rem"
+        },
+        "x": {
+          "label": "가로 위치(가운데)",
+          "type": "number",
+          "default": 95,
+          "min": -50,
+          "max": 150,
+          "step": 0.1,
+          "unit": "%",
+          "at": {
+            "tablet": 92,
+            "mobile": 50
+          }
+        },
+        "y": {
+          "label": "세로 위치(가운데)",
+          "type": "number",
+          "default": 50,
+          "min": -50,
+          "max": 150,
+          "step": 0.1,
+          "unit": "%",
+          "at": {
+            "mobile": 6
+          }
+        },
+        "direction": {
+          "label": "방향",
+          "type": "select",
+          "default": "column",
+          "options": [
+            {
+              "value": "column",
+              "label": "세로"
+            },
+            {
+              "value": "row",
+              "label": "가로"
+            }
+          ],
+          "at": {
+            "mobile": "row"
+          }
         }
       }
     },
@@ -788,6 +1124,69 @@ export default {
           }
         }
       }
+    },
+    {
+      "id": "credit",
+      "label": "제작 표시",
+      "group": "글",
+      "el": ".credit",
+      "params": {
+        "visible": {
+          "label": "보이기",
+          "type": "boolean",
+          "default": true,
+          "on": "visible",
+          "off": "hidden"
+        },
+        "opacity": {
+          "label": "불투명도",
+          "type": "number",
+          "default": 0.85,
+          "min": 0,
+          "max": 1,
+          "step": 0.01,
+          "unit": ""
+        },
+        "text": {
+          "label": "문구",
+          "type": "text",
+          "default": "제작 이주호",
+          "maxLength": 60,
+          "text": "[data-layer-text=\"credit/text\"]"
+        },
+        "color": {
+          "label": "색",
+          "type": "color",
+          "default": "#bfae8e"
+        },
+        "size": {
+          "label": "크기",
+          "type": "number",
+          "default": 0.8,
+          "min": 0.5,
+          "max": 2,
+          "step": 0.05,
+          "unit": "rem"
+        },
+        "x": {
+          "label": "가로 위치",
+          "type": "number",
+          "default": 6,
+          "min": -50,
+          "max": 150,
+          "step": 0.1,
+          "unit": "%"
+        },
+        "y": {
+          "label": "세로 위치",
+          "type": "number",
+          "default": 95,
+          "min": -50,
+          "max": 150,
+          "step": 0.1,
+          "unit": "%"
+        }
+      }
     }
   ],
   "fixed": [
@@ -820,6 +1219,15 @@ export default {
     },
     {
       "reason": "어두운 배경 위 글자의 얇은 그림자(text-shadow)와 버튼의 둥근 모서리·호버 밝기는 대비·상태 표시용 구조다."
+    },
+    {
+      "reason": "분야 버튼 3개는 장면 3개(si·seo·hwa)와 data-scene으로 짝을 이룬다. 장면 id가 곧 분야이므로 버튼 수와 순서는 구조다. 고른 버튼 강조는 global.accent 한 곳에서 바뀌게 따로 색 파라미터를 두지 않는다. 장면 set의 글자·색은 공통 값보다 우선하므로 분야별 값은 관리자에서 \"이 장면\" 범위로 바꾼다."
+    },
+    {
+      "reason": "배경 전환은 이전 그림(.paper-prev, 바인딩 없음)을 위에 덮고 새 그림이 디코딩되면 moodFade 동안 걷어 낸다. 두 배경이 잠깐 겹치는 것은 의도다(얼굴 칸은 겹치지 않는다는 고정값과 다르다). 새 그림을 불러오지 못하면 덮개를 그대로 둔다. 전환 이징(ease)과 글자 등장(투명에서 시작)은 디자인 고정이다."
+    },
+    {
+      "reason": "동작 줄이기에서는 배경 덮개 전환·글자 등장·버튼 색 전환을 끄고 즉시 바꾼다. 버튼 터치 영역 최소 44px, 그룹 이름은 스크린리더 전용(.moods-label), 큰 한자와 버튼 속 한자는 aria-hidden이다. 큰 한자·분야 버튼은 가운데 기준(translate -50%)으로 놓는다."
     }
   ]
 };

@@ -3,6 +3,17 @@
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 const pointer = (type, x, y, pointerType = 'mouse') => document.dispatchEvent(new PointerEvent(type, { clientX: x, clientY: y, pointerType, bubbles: true }));
 function collector() { const passed = [], failed = []; return { passed, failed, check: (ok, name) => (ok ? passed : failed).push(name) }; }
+const MOOD_KEY = 'hanbok-hero:mood:v1';
+const moodButton = id => document.querySelector(`.mood[data-scene="${id}"]`);
+const paperSrc = () => document.querySelector('.paper-image').getAttribute('src');
+const coverShown = () => !document.querySelector('.paper-prev').hidden;
+const fadeMs = () => Math.round((parseFloat(getComputedStyle(document.querySelector('.paper-prev')).transitionDuration) || 0) * 1000);
+const settleMood = () => wait(fadeMs() + 400);
+const screensNow = host => host.manifest.breakpoints.filter(item => matchMedia(item.media).matches).map(item => item.id);
+const rgb = hex => { const n = parseInt(hex.slice(1, 7), 16); return `rgb(${n >> 16}, ${(n >> 8) & 255}, ${n & 255})`; };
+const stored = () => { try { return localStorage.getItem(MOOD_KEY); } catch { return 'blocked'; } };
+const restoreStored = value => { try { if (value === null) localStorage.removeItem(MOOD_KEY); else localStorage.setItem(MOOD_KEY, value); } catch {} };
+const overlap = (a, b) => { const r = a.getBoundingClientRect(), s = b.getBoundingClientRect(); return Boolean(r.width && s.width) && !(r.right <= s.left || s.right <= r.left || r.bottom <= s.top || s.bottom <= r.top); };
 // 사람이 실제로 움직이는 마우스(신뢰된 이벤트)가 검사 중간에 끼어들지 못하게 막는다. 합성 이벤트만 통과한다.
 const blockTrusted = event => { if (event.isTrusted) event.stopImmediatePropagation(); };
 function isolate() {
@@ -102,14 +113,13 @@ export async function runChecks() {
     check(cell().col === rest.col, '터치 뒤 returnDelay 지나면 정면');
     pointer('pointermove', cx + r, cy, 'touch'); await arrive();
     check(cell().col === rest.col, '터치 이동은 무시');
-    check([...document.querySelectorAll('.nav a')].length === 3 && [...document.querySelectorAll('.nav a')].every(a => a.tabIndex >= 0), '메뉴 3개 키보드 도달');
     const original = layerHost.values;
     try {
-      layerHost.setValues(setValue(original, 'hero', 'base', 'character', 'react', false)); await wait(30);
+      layerHost.setValues(setValue(original, layerHost.scene, 'base', 'character', 'react', false)); await wait(30);
       check(!visible('.character-head') && visible('.character-still'), 'react 끄면 얼굴 칸 숨김, 정면 그림 보임');
       pointer('pointermove', cx + r, cy); await arrive();
       check(cell().col === rest.col, 'react 꺼진 동안 반응 없음');
-      layerHost.setValues(setValue(original, 'hero', 'base', 'character', 'cols', 1)); await wait(30);
+      layerHost.setValues(setValue(original, layerHost.scene, 'base', 'character', 'cols', 1)); await wait(30);
       pointer('pointermove', cx + r, cy); await arrive();
       check(cell().col === 0, 'cols 1이면 index 0 고정');
     } finally {
@@ -120,6 +130,121 @@ export async function runChecks() {
   } finally {
     release();
   }
+}
+
+export async function runMoodChecks() {
+  const { layerHost, moods } = await import('/app.js');
+  const { resolve } = await import('/vendor/layer-kit/index.js');
+  const { check, passed, failed } = collector();
+  const ids = Object.keys(layerHost.manifest.scenes), before = stored();
+  const buttons = [...document.querySelectorAll('.mood[data-scene]')];
+  try {
+    check(ids.join() === 'si,seo,hwa', '장면 3개(si·seo·hwa)');
+    check(buttons.length === 3 && buttons.every(b => b.tagName === 'BUTTON' && b.tabIndex >= 0) && buttons.map(b => b.dataset.scene).join() === ids.join(), '분야 버튼 3개, 장면과 같은 순서, 키보드 도달');
+    const group = document.querySelector('.moods');
+    check(group.getAttribute('role') === 'group' && document.getElementById(group.getAttribute('aria-labelledby'))?.textContent.trim() !== '', '버튼 묶음에 이름');
+    check([...document.querySelectorAll('.mood-hanja, .glyph')].every(el => el.getAttribute('aria-hidden') === 'true'), '한자(버튼 속·큰 글자)는 스크린리더가 읽지 않음');
+    check(buttons.every(b => { const r = b.getBoundingClientRect(); return r.width >= 44 && r.height >= 44; }), '버튼 터치 영역 44px 이상');
+    check(['.nav', '.cta'].every(sel => getComputedStyle(document.querySelector(sel)).display === 'none'), '빈 메뉴·작품 보기 숨김');
+    check([...document.querySelectorAll('.nav a, .cta')].every(el => el.offsetParent === null), '숨긴 링크는 Tab으로 닿지 않음');
+    for (const id of ids) {
+      moodButton(id).click(); await settleMood();
+      const want = resolve(layerHost.manifest, layerHost.values, id, screensNow(layerHost));
+      check(document.documentElement.dataset.layerScene === id && layerHost.scene === id, `${id}: 장면`);
+      check(buttons.every(b => b.getAttribute('aria-pressed') === String(b.dataset.scene === id)), `${id}: 고른 버튼만 aria-pressed`);
+      check(paperSrc() === want.paper.image && !coverShown(), `${id}: 배경 ${want.paper.image}, 덮개 걷힘`);
+      check(document.querySelector('.glyph').textContent === want.glyph.text, `${id}: 큰 한자 ${want.glyph.text}`);
+      check(document.querySelector('.title-tagline').textContent === want.title.tagline, `${id}: 부제`);
+      check(getComputedStyle(moodButton(id)).color === rgb(want.global.accent), `${id}: 고른 버튼 강조색 ${want.global.accent}`);
+      check(stored() === id && moods.saved === true, `${id}: 브라우저에 저장`);
+    }
+    const kept = stored();
+    layerHost.setScene('seo'); await settleMood();
+    check(moodButton('seo').getAttribute('aria-pressed') === 'true' && stored() === kept, '직접 setScene(관리자 경로): 버튼 동기화, 저장 안 함');
+    layerHost.refresh(); await wait(50);
+    check(!coverShown(), '같은 값으로 다시 적용해도 덮개 없음');
+    check(document.documentElement.scrollWidth <= window.innerWidth, '가로 스크롤 없음');
+  } finally {
+    moodButton('si').click(); await settleMood(); restoreStored(before);
+  }
+  return { passed, failed };
+}
+
+// 배경이 다른 두 분야 사이의 덮개 전환. 배경이 같아도 검사할 수 있게 'seo' 배경을 잠깐 1px 그림으로 바꾼다.
+export async function runCrossfade() {
+  const { layerHost } = await import('/app.js');
+  const { setValue } = await import('/vendor/layer-kit/index.js');
+  const { check, passed, failed } = collector();
+  const original = layerHost.values, reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, before = stored();
+  const cover = document.querySelector('.paper-prev');
+  try {
+    moodButton('si').click(); await settleMood();
+    const from = paperSrc();
+    layerHost.setValues(setValue(original, 'seo', 'base', 'paper', 'image', './assets/blank.png'));
+    moodButton('seo').click();
+    check(coverShown() && cover.getAttribute('src') === from, '바꾸는 순간 이전 배경이 덮개로 보임');
+    check(reduce ? fadeMs() === 0 : fadeMs() === layerHost.get('global', 'moodFade'), reduce ? '동작 줄이기: 전환 시간 0' : '전환 시간 = global.moodFade');
+    if (!reduce) { await wait(fadeMs() / 2); check(coverShown() && Number(getComputedStyle(cover).opacity) < 1, '전환 중: 덮개가 걷히는 중'); }
+    await settleMood();
+    check(!coverShown() && paperSrc() === './assets/blank.png', '전환 뒤 덮개 걷힘');
+    moodButton('si').click(); moodButton('seo').click(); moodButton('hwa').click();
+    await settleMood(); await settleMood();
+    check(layerHost.scene === 'hwa' && !coverShown() && paperSrc() === layerHost.get('paper', 'image'), '연달아 눌러도 마지막 분야, 덮개 없음');
+  } finally {
+    layerHost.setValues(original); moodButton('si').click(); await settleMood(); restoreStored(before);
+  }
+  return { passed, failed };
+}
+
+export async function runMoodImageFailure() {
+  const { layerHost } = await import('/app.js');
+  const { setValue } = await import('/vendor/layer-kit/index.js');
+  const { check, passed, failed } = collector();
+  const original = layerHost.values, before = stored(), cover = document.querySelector('.paper-prev');
+  const warn = console.warn; let warned = 0;
+  console.warn = (...args) => { warned++; warn(...args); };
+  try {
+    moodButton('si').click(); await settleMood();
+    const good = paperSrc();
+    layerHost.setValues(setValue(original, 'seo', 'base', 'paper', 'image', './assets/missing-mood.webp'));
+    moodButton('seo').click(); await settleMood();
+    check(paperSrc() === './assets/missing-mood.webp', '검사 조건: 없는 배경 주소');
+    check(coverShown() && cover.getAttribute('src') === good && getComputedStyle(cover).opacity === '1', '불러오지 못하면 이전 배경이 그대로 보임');
+    check(warned > 0, '콘솔 경고');
+    check(layerHost.scene === 'seo' && document.querySelector('.glyph').textContent === layerHost.get('glyph', 'text'), '배경 실패에도 장면·글자는 바뀜');
+    moodButton('hwa').click(); await settleMood();
+    check(!coverShown() && paperSrc() === layerHost.get('paper', 'image'), '다른 분야로 가면 회복');
+  } finally {
+    console.warn = warn; layerHost.setValues(original); moodButton('si').click(); await settleMood(); restoreStored(before);
+  }
+  return { passed, failed };
+}
+
+export async function runMoodStorageBlocked() {
+  const { layerHost, moods } = await import('/app.js');
+  const { check, passed, failed } = collector();
+  const { getItem, setItem } = Storage.prototype;
+  const errors = [], onError = event => errors.push(event.message);
+  addEventListener('error', onError);
+  Storage.prototype.getItem = function () { throw new DOMException('blocked', 'SecurityError'); };
+  Storage.prototype.setItem = function () { throw new DOMException('blocked', 'SecurityError'); };
+  try {
+    const target = layerHost.scene === 'hwa' ? 'seo' : 'hwa';
+    moodButton(target).click(); await settleMood();
+    check(layerHost.scene === target && moodButton(target).getAttribute('aria-pressed') === 'true', '저장소가 막혀도 분야는 바뀜');
+    check(moods.saved === false, '저장 실패를 알고 이번 방문 동안만 기억');
+    check(errors.length === 0, '페이지 오류 없음');
+  } finally {
+    Storage.prototype.getItem = getItem; Storage.prototype.setItem = setItem; removeEventListener('error', onError);
+    moodButton('si').click(); await settleMood();
+  }
+  return { passed, failed };
+}
+
+// 새로고침 뒤 복구 확인용 — 상태만 돌려준다
+export async function moodState() {
+  const { layerHost } = await import('/app.js');
+  return { scene: layerHost.scene, pressed: document.querySelector('.mood[aria-pressed="true"]')?.dataset.scene, stored: stored(), cover: coverShown(), coverSrc: document.querySelector('.paper-prev').getAttribute('src') };
 }
 
 export async function runSheetFailure() {
@@ -164,6 +289,9 @@ export async function runReducedMotionChecks() {
     const before = cell();
     pointer('pointermove', cx + r, cy); await arrive();
     check(cell().col === before.col, '반응 없음');
+    moodButton('seo').click(); await wait(120);
+    check(getComputedStyle(document.querySelector('.glyph')).animationName === 'none' && fadeMs() === 0 && !coverShown(), '분야 전환: 글자 등장·덮개 전환 없이 즉시');
+    moodButton('si').click(); await wait(120);
     return { passed, failed };
   } finally {
     release();
@@ -177,10 +305,15 @@ export async function runNarrowChecks() {
   const release = isolate();
   try {
     const inView = el => { const r = el.getBoundingClientRect(); return r.left >= 0 && r.right <= window.innerWidth && r.top >= 0 && r.bottom <= window.innerHeight; };
-    check(window.innerWidth <= 650, '390px 뷰포트');
+    check(window.innerWidth <= 650, `${window.innerWidth}px 뷰포트(모바일 구간)`);
     check(document.documentElement.scrollWidth <= window.innerWidth, '가로 스크롤 없음');
     check(inView(document.querySelector('.title')), '이름이 화면 안');
-    check(inView(document.querySelector('.nav')), '메뉴가 화면 안');
+    const moodsEl = document.querySelector('.moods'), creditEl = document.querySelector('.credit');
+    check(inView(moodsEl), '분야 버튼이 화면 안');
+    check(getComputedStyle(moodsEl).flexDirection === 'row', '좁은 화면에서 분야 버튼은 가로');
+    check(inView(creditEl), '제작 표시가 화면 안');
+    check(!['.title', '.credit', '.hint'].some(sel => overlap(moodsEl, document.querySelector(sel))), '분야 버튼이 이름·제작 표시·안내와 겹치지 않음');
+    check(!overlap(creditEl, document.querySelector('.hint')), '제작 표시와 안내가 겹치지 않음');
     check(inView(document.querySelector('.character')), '캐릭터가 화면 안');
     await settle(gaze);
     const { cx, cy, r } = anchor();
