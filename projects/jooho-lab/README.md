@@ -151,3 +151,11 @@ POTATO를 선택해 작품 앞에 도착하면 기존 투명 이미지가 액자
 배포 사이트 및 다른 정적 서버에서의 **브라우저 초안 저장**은 개인 초안이다. 전체 배포 반영은 로컬 미리보기의 프로젝트 파일 저장으로 한다. 배포값이 바뀌면 이전 게시본에 대한 개인 초안은 무시한다. 파일/API 읽기 실패와 저장 실패는 성공으로 표시하지 않으며 변경값은 화면에 남아 JSON으로 보관할 수 있다. 다른 창에서 먼저 저장했으면 덮지 않고 충돌을 안내한다.
 
 검수: `pnpm check`, `pnpm build`, `python scripts/check-layer-editor.py`, `python scripts/check-layer-publish.py`. 검수는 임시 파일과 격리 API를 사용하여 제작자의 실제 배치 파일을 변경하지 않는다.
+
+## 11번 상세페이지 · 작업 동네 열 번째 집 (2026-10-07)
+
+shortform-automation에서 만든 상세페이지 시안을 모은 포트폴리오 [`projects/detail-pages`](../detail-pages/README.md)를 체험 스냅숏(`include:experience detail-pages` → `public/experiences/detail-pages/`)으로 싣고, 등록부 11번 **상세페이지**(분류 콘텐츠)로 연결했다. 전시 표지 `work-detail-pages.webp`는 두 상세페이지의 데스크톱·모바일 전체 길이 캡처를 나란히 둔 합성본이며 동기화 스크립트가 만든다(생성 그림 아님). 3D 벽에서는 7칸을 넘어 2쪽째 첫 칸에 걸린다.
+
+작업 동네에는 선비 한옥 오른쪽에 Codex image_gen으로 만든 편집숍 스튜디오 `assets/village-detail-pages-v1.png`를 이어 붙였다(진열창에 긴 교정지·세럼 병·머그). 집 레이어 `house-detail-pages`(x 41.4 · top .11)와 그림 레이어 `detail-extension`(중심 44.5, 폭·높이 12.096, 왼쪽 블렌드 6%)을 추가해 집·확장 **13레이어/127파라미터**다. 이제 작업 동네의 집은 10채다. 번호 버튼이 11개가 되며 320px에서 11번이 화면 밖으로 밀려, 동네의 번호 줄을 화면 폭 안에 두고 가로로 넘기게 했다(`village.css`). 분류를 새로 만들면 목록 필터 줄이 320px에서 넘쳐 기존 **콘텐츠** 분류를 썼다.
+
+프롬프트·합성 기록은 [카드 29·30](../../prompts/jooho-lab.md#29--상세페이지-집--village-detail-pages-v1), 검수는 [QA-village](QA-village.md)·[QA-spatial](QA-spatial.md)의 2026-10-07.

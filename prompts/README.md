@@ -19,6 +19,7 @@
 | [potato-designer.md](potato-designer.md) | POTATO — 날아차기 캐릭터, JOOHO LAB 작품 표지로 재사용 |
 | [jooho-lab.md](jooho-lab.md) | JOOHO LAB 허브 — 기존 마을·표지·하루 산책/POTATO 건물 확장 + fal 풍경·Blender 3D 작업실·실제 작품 캡처 7장 + Tripo P2.0 건물·의자 후보 + 촬영 PBR/HDRI 개선 |
 | [hanbok-hero.md](hanbok-hero.md) | 한복 히어로(선비) — 정면 기준 컷 · 고개 돌리는 영상 · 몸 고정 + 얼굴 시트 · 시·서·화 분야 배경 3장(회화풍, Codex) |
+| [detail-pages.md](detail-pages.md) | 상세페이지 — LUMEN DEW 세럼 리디자인 그림 5장 · 온기 머그 1장 (shortform-automation에서 만든 원본의 프롬프트, 포트폴리오로 옮긴 파일) |
 | [templates.md](templates.md) | **다시 쓸 수 있는 프롬프트 틀** — 스타일 프레임, 프랍 시트, UI 킷, 조명만 바꾸기, 스프라이트, 영상 체인, 3D 변환 |
 
 표시: ✅ 프롬프트 원문 있음 · ❌ 기록 없음(다시 만들 수 없음) · ⏸ 프롬프트만 있고 아직 안 만듦
@@ -31,6 +32,10 @@
 
 | | 작품 | 에셋 | 도구 | 프롬프트 |
 |---|---|---|---|---|
+| <img src="../projects/jooho-lab/public/assets/village-detail-pages-v1.png" width="120"> | JOOHO LAB | [상세페이지 집](jooho-lab.md#29--상세페이지-집--village-detail-pages-v1) | image_gen (Codex CLI · 참조 생성) | ✅ |
+| <img src="../projects/jooho-lab/public/assets/work-detail-pages.webp" width="120"> | JOOHO LAB | [상세페이지 전시 표지](jooho-lab.md#30--상세페이지-전시-표지--work-detail-pages) | 페이지 캡처 합성 | 해당 없음 |
+| <img src="../projects/detail-pages/dist/pages/lumen-dew-serum/media/01.webp" width="120"> | 상세페이지 | [LUMEN DEW 세럼 그림 5장](detail-pages.md#01--lumen-제품-대표컷--hero) | image_gen (shortform-automation) | ✅ |
+| <img src="../projects/detail-pages/dist/pages/ongi-mug/media/01.webp" width="120"> | 상세페이지 | [온기 아이보리 머그](detail-pages.md#06--온기-아이보리-머그--ongi-mug) | image_gen (shortform-automation) | ✅ |
 | <img src="../projects/jooho-lab/public/assets/plum-spreading-v2.png" width="120"> | JOOHO LAB | [앞쪽 굽은 꽃나무](jooho-lab.md#27--plum-spreading-v2--굽은-줄기--넓은-수관) | image_gen | ✅ |
 | <img src="../projects/jooho-lab/public/assets/plum-upright-v2.png" width="120"> | JOOHO LAB | [뒤쪽 곧은 꽃나무](jooho-lab.md#28--plum-upright-v2--가는-줄기--세로-수관) | image_gen | ✅ |
 | <img src="../projects/jooho-lab/public/assets/exhibit-day-walk.webp" width="120"> | JOOHO LAB | [운영 작품 전시 이미지 7개](jooho-lab.md#20--exhibition-art--운영-작품의-전시-키-비주얼) | image_gen · 운영 원본 | ✅ |

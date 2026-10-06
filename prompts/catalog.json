@@ -20,6 +20,10 @@
     {
       "key": "hanbok-hero",
       "title": "한복 히어로"
+    },
+    {
+      "key": "detail-pages",
+      "title": "상세페이지"
     }
   ],
   "shared": {
@@ -1058,6 +1062,48 @@
       ]
     },
     {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--29--상세페이지-집--village-detail-pages-v1",
+      "title": "29 · 상세페이지 집 — village-detail-pages-v1",
+      "status": "ok",
+      "image": "projects/jooho-lab/public/assets/village-detail-pages-v1.png",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/village-detail-pages-v1.png · 1254×1254 · 2,428,669B · 불투명 PNG",
+        "쓰이는 곳": "작업 동네 오른쪽 끝(선비 한옥 다음), 이미지 레이어 detail-extension; 링크·이름표·불빛 house-detail-pages",
+        "도구·모드": "Codex CLI 0.160 codex exec → 내장 image_gen · 기존 한옥 패널을 화풍·하늘·바닥 높이 참조로 쓴 새 그림 · 2026-10-07",
+        "참조 이미지": "projects/jooho-lab/public/assets/village-seonbi-v1.png (-i로 첨부, 프롬프트는 표준입력)",
+        "설정": "정사각형, 후보 1개, 후처리 없음. Codex 원본 ~/.codex/generated_images/01a11258-…/exec-c8ff3159-….png을 작업 폴더에 저장"
+      },
+      "prompts": [
+        {
+          "label": "Codex에 보낸 원문 그대로",
+          "lang": "text",
+          "prepend": null,
+          "text": "Use your built-in image generation tool to create ONE square image. Use the attached image only as a style, sky-color, ground-height and edge-continuity reference; do not repeat its building. Prompt: Create a seamless RIGHT-HAND EXTENSION panel for the supplied miniature village panorama panel. OUTPUT: one square illustration with EXACTLY ONE new full building, a bright product-page design studio for the 'Detail Pages' project. Preserve the reference's premium handcrafted 3D miniature clay/stone rendering, daylight, clear pastel blue sky, warm sandy stone plaza, detailed foliage, miniature streetlamps, front-facing slightly elevated orthographic view, scale and sharpness. Match vertical arrangement: open sky above the roof, building door threshold at 76% from top, sandy plaza across lower 24%. House entrance centered at 40% image width. One charming narrow two-storey editorial boutique studio with cream plaster walls, deep forest-green window frames and a cream-and-forest-green striped awning; a tall shop window shows several very long vertical paper layout sheets hanging side by side like long product-page proofs, made only of soft colour blocks and photo-like rectangles; on a small display shelf in the window sit a pale mint glass serum dropper bottle and an ivory ceramic mug; one clearly visible central glass-and-wood entrance door. No person. Keep roof and entire house fully inside image. Rightmost 25% is quiet open garden with low greenery, a cypress, sky and plaza, providing breathing room beyond the final house. Both edges have unobtrusive blue sky and sandy plaza/cypress foliage for joining to the existing panel. No additional houses, no hanok, no tower, no clock cottage, no potato atelier. Absolutely no readable text, letters, numbers, logos, UI, watermarks, humans or robots on the sheets, signs or anywhere. This is a new square panorama extension asset, not a screenshot or mockup. Save the image in the current directory as detail-house-1.png and reply only with the saved file path."
+        }
+      ]
+    },
+    {
+      "app": "jooho-lab",
+      "appTitle": "JOOHO LAB (허브)",
+      "id": "jooho-lab--30--상세페이지-전시-표지--work-detail-pages",
+      "title": "30 · 상세페이지 전시 표지 — work-detail-pages",
+      "status": "none",
+      "image": "projects/jooho-lab/public/assets/work-detail-pages.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/jooho-lab/public/assets/work-detail-pages.webp · 1800×1125 · 90,788B (원본 projects/detail-pages/dist/assets/cover.webp)",
+        "쓰이는 곳": "전시관 11번 작품 그림(3D 벽 2쪽째 첫 칸)·썸네일 줄·목록·작품 소개",
+        "도구": "projects/detail-pages/scripts/sync-pages.py — Playwright Chromium 전체 길이 캡처(1440·390px) + Pillow 합성 · 2026-10-07. 생성 에셋 아님",
+        "참조 이미지": "해당 없음 — 실제 상세페이지 캡처",
+        "설정": "상세페이지마다 데스크톱·모바일 캡처를 같은 높이(955px)로 나란히, 배경 #ece6da, 흐린 그림자. WebP quality 88",
+        "프롬프트": "해당 없음 — 캡처 합성. 페이지 속 그림의 프롬프트는 detail-pages.md"
+      },
+      "prompts": []
+    },
+    {
       "app": "hanbok-hero",
       "appTitle": "한복 히어로",
       "id": "hanbok-hero--01--정면-기준-컷-hanbok-still-",
@@ -1215,6 +1261,150 @@
           "lang": "text",
           "prepend": null,
           "text": "Use your built-in image generation tool to create ONE landscape image (1536x1024). Prompt: Dawn after rain at Inwangsan mountain in Seoul, Korea: pale granite rock peaks emerging from drifting clouds and mist, pine trees clinging to the rocks, layered ridges fading into fog, the mood of a Joseon true-view landscape painting, first light just touching the peaks. Palette of mineral malachite green, slate teal and soft grey. Painterly Korean concept art illustration with visible brush strokes, painted in the same style as the attached reference image (use the reference ONLY for painting style: brushwork, muted palette, soft texture; do not copy its subject, figure, lantern, text or seal). Wide landscape website hero background, dark and moody overall so light text stays readable. Composition: the left 45 percent of the frame is dark, calm and uncluttered for a title; the right-center area is quiet with no strong focal point because a character will stand there; the main landmark sits in the middle distance. Authentically Korean Joseon-era scenery, not Chinese, not Japanese. No people, no figures, no animals, no text, no calligraphy, no letters, no signboard, no hanging plaques, no nameplate, no red sun, no flags, no watermark, no signature, no seal stamp, no border or frame. Save the image in the current directory as hwa-1.png and reply only with the saved file path."
+        }
+      ]
+    },
+    {
+      "app": "detail-pages",
+      "appTitle": "상세페이지",
+      "id": "detail-pages--01--lumen-제품-대표컷--hero",
+      "title": "01 · LUMEN 제품 대표컷 — hero",
+      "status": "ok",
+      "image": "projects/detail-pages/dist/pages/lumen-dew-serum/media/01.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/detail-pages/dist/pages/lumen-dew-serum/media/01.webp · 1122×1402 · 137,344B (원본 shortform-automation/pipeline/web/public/detail-samples/lumen/hero.png)",
+        "쓰이는 곳": "LUMEN DEW 세럼 상세페이지 · 첫 화면 오른쪽 제품 그림. 포트폴리오 목록은 레이어가 아닌 콘텐츠(pages.js)",
+        "도구·모드": "Codex 내장 image_gen.imagegen · 2026-09-12 (shortform-automation)",
+        "참조 이미지": "없음",
+        "설정": "세로 4:5, 후보 1개. 이 저장소로 옮길 때 WebP quality 86(해상도 유지)"
+      },
+      "prompts": [
+        {
+          "label": "프롬프트 원문 그대로",
+          "lang": "text",
+          "prepend": null,
+          "text": "Premium luxury skincare advertising photograph, portrait 4:5. Fictional brand LUMEN, product DEW SERUM. ONE elegant cylindrical frosted pale sage-green glass serum bottle with flat thick transparent glass base, softly rounded shoulders, white satin cylindrical dropper cap with white rubber bulb. Minimal ivory label precisely reads 'LUMEN' and smaller 'DEW SERUM', no other text/numbers/claims. Bottle upright center-right on clear translucent acrylic block, large single sculptural water splash arcing behind bottle, suspended crystalline droplets, soft silver-sage gradient studio backdrop, crisp caustic shadows, sophisticated Korean skincare campaign, extremely polished tangible glass, softbox lighting, mint/ivory/deep forest palette. Product completely visible, generous clean negative space upper left and left for later large Korean typography. No collage, no extra bottle, no plants, no fake certification, no hands. Physically convincing commercial 3D-render finish with photoreal materials. This is a fictional product concept design."
+        }
+      ]
+    },
+    {
+      "app": "detail-pages",
+      "appTitle": "상세페이지",
+      "id": "detail-pages--02--lumen-제형-매크로--texture",
+      "title": "02 · LUMEN 제형 매크로 — texture",
+      "status": "ok",
+      "image": "projects/detail-pages/dist/pages/lumen-dew-serum/media/02.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/detail-pages/dist/pages/lumen-dew-serum/media/02.webp · 1536×1024 · 91,506B (원본 shortform-automation/pipeline/web/public/detail-samples/lumen/texture.png)",
+        "쓰이는 곳": "LUMEN DEW 세럼 상세페이지 · “투명한 제형을 가까이에서” 구간 그림(사진 안 한글 콜아웃 3개는 HTML). 포트폴리오 목록은 레이어가 아닌 콘텐츠(pages.js)",
+        "도구·모드": "Codex 내장 image_gen.imagegen · 2026-09-12 (shortform-automation)",
+        "참조 이미지": "없음",
+        "설정": "가로 3:2, 후보 1개. 이 저장소로 옮길 때 WebP quality 86(해상도 유지)"
+      },
+      "prompts": [
+        {
+          "label": "프롬프트 원문 그대로",
+          "lang": "text",
+          "prepend": null,
+          "text": "Luxury skincare texture macro photograph, landscape 3:2. One long glossy translucent pale mint serum swatch across a clean warm ivory glass surface, sculpted curved edge, tiny realistic trapped bubbles and one rounded droplet suspended from a transparent glass pipette entering upper right, shallow depth of field but swatch edge sharply detailed, soft directional studio light with subtle caustic shadows, pristine high-end cosmetics editorial. Composition macro abstraction with asymmetrical arc and empty upper-left for explanatory typography added later. No bottle, no hands, no text, no flowers, no fruit, no scientific charts. Convincing tactile transparent gel and varied refractive thickness, refined sage-ivory palette. Fictional product texture concept, not evidence of actual ingredients."
+        }
+      ]
+    },
+    {
+      "app": "detail-pages",
+      "appTitle": "상세페이지",
+      "id": "detail-pages--03--lumen-수분막-cgi--cgi",
+      "title": "03 · LUMEN 수분막 CGI — cgi",
+      "status": "ok",
+      "image": "projects/detail-pages/dist/pages/lumen-dew-serum/media/03.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/detail-pages/dist/pages/lumen-dew-serum/media/03.webp · 1536×1024 · 445,214B (원본 shortform-automation/pipeline/web/public/detail-samples/lumen/cgi.png)",
+        "쓰이는 곳": "LUMEN DEW 세럼 상세페이지 · “수분을 설명하는 세 개의 레이어” 구간 그림. 포트폴리오 목록은 레이어가 아닌 콘텐츠(pages.js)",
+        "도구·모드": "Codex 내장 image_gen.imagegen · 2026-09-12 (shortform-automation)",
+        "참조 이미지": "없음",
+        "설정": "가로 3:2, 후보 1개. 이 저장소로 옮길 때 WebP quality 86(해상도 유지)"
+      },
+      "prompts": [
+        {
+          "label": "프롬프트 원문 그대로",
+          "lang": "text",
+          "prepend": null,
+          "text": "Create a premium 3D scientific-inspired cosmetics concept illustration, landscape 3:2, high production quality Octane-style CGI. Exploded isometric close-up of THREE gently undulating transparent mint hydrogel sheets floating parallel in space above a soft warm ivory base. Small crystal-clear water spheres nestled between the layers, a few droplets above, finely detailed refractive surfaces and subtle thin-film interference, ordered physical spacing, clear visual hierarchy. Background is deep forest teal fading to near black, dramatic rim lighting and soft volumetric glow, luxurious precise render. Main structure at center-right, substantial dark negative space on left for Korean annotations added later. No actual skin tissue, no cells, no epidermal penetration, no before-after, no molecular formulas, no brands, no text, no claims. A purely abstract hydration-film visual metaphor for a clearly labeled conceptual product page."
+        }
+      ]
+    },
+    {
+      "app": "detail-pages",
+      "appTitle": "상세페이지",
+      "id": "detail-pages--04--lumen-사용-장면--ritual",
+      "title": "04 · LUMEN 사용 장면 — ritual",
+      "status": "ok",
+      "image": "projects/detail-pages/dist/pages/lumen-dew-serum/media/04.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/detail-pages/dist/pages/lumen-dew-serum/media/04.webp · 1536×1024 · 115,308B (원본 shortform-automation/pipeline/web/public/detail-samples/lumen/ritual.png)",
+        "쓰이는 곳": "LUMEN DEW 세럼 상세페이지 · “드롭부터 루틴까지” 구간 그림. 포트폴리오 목록은 레이어가 아닌 콘텐츠(pages.js)",
+        "도구·모드": "Codex 내장 image_gen.imagegen · 2026-09-12 (shortform-automation)",
+        "참조 이미지": "없음",
+        "설정": "가로 3:2, 후보 1개. 이 저장소로 옮길 때 WebP quality 86(해상도 유지)"
+      },
+      "prompts": [
+        {
+          "label": "프롬프트 원문 그대로",
+          "lang": "text",
+          "prepend": null,
+          "text": "Premium skincare editorial close-up photograph, landscape 3:2. Two graceful adult hands with natural unpolished nails, one holds a white-capped clear glass dropper above the back of the other hand. Exactly one clear serum droplet at pipette tip. Cream knit sleeve, warm ivory stone bathroom background softly blurred, morning sidelight, realistic skin texture, sophisticated minimal beauty campaign, sage and cream palette. No face, no bottle, no jewelry, no text, no claims. Anatomically correct hands, quiet intimate ritual, generous negative space, premium commercial photography."
+        }
+      ]
+    },
+    {
+      "app": "detail-pages",
+      "appTitle": "상세페이지",
+      "id": "detail-pages--05--lumen-패키지--pack",
+      "title": "05 · LUMEN 패키지 — pack",
+      "status": "ok",
+      "image": "projects/detail-pages/dist/pages/lumen-dew-serum/media/05.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/detail-pages/dist/pages/lumen-dew-serum/media/05.webp · 1536×1024 · 87,292B (원본 shortform-automation/pipeline/web/public/detail-samples/lumen/pack.png)",
+        "쓰이는 곳": "LUMEN DEW 세럼 상세페이지 · “당신의 선반 위, LUMEN” 마무리 구간 그림. 포트폴리오 목록은 레이어가 아닌 콘텐츠(pages.js)",
+        "도구·모드": "Codex 내장 image_gen.imagegen · 2026-09-12 (shortform-automation)",
+        "참조 이미지": "hero 결과(01)를 병 모양 기준으로 첨부",
+        "설정": "가로 3:2, 후보 1개. 이 저장소로 옮길 때 WebP quality 86(해상도 유지)"
+      },
+      "prompts": [
+        {
+          "label": "프롬프트 원문 그대로",
+          "lang": "text",
+          "prepend": null,
+          "text": "Use the attached LUMEN DEW SERUM bottle as exact packaging reference: same frosted pale sage cylindrical bottle, thick clear glass base, ivory LUMEN / DEW SERUM label and white dropper cap. Create a distinctly NEW luxury commercial packaging still-life photograph, landscape 3:2. Show the entire single bottle standing beside one slim warm-ivory rectangular carton with understated dark-forest 'LUMEN' and smaller 'DEW SERUM' typography. Arrange on sculptural pale sage stone plinth in a sunlit cream alcove, diagonal elegant hard shadows, subtle reflected light, pristine materials, refined high-end beauty editorial. Bottle left of carton, group center-right with empty left third. No water splash, no acrylic cube, no additional text or claims, no flowers. Maintain product identity while completely changing scene and composition."
+        }
+      ]
+    },
+    {
+      "app": "detail-pages",
+      "appTitle": "상세페이지",
+      "id": "detail-pages--06--온기-아이보리-머그--ongi-mug",
+      "title": "06 · 온기 아이보리 머그 — ongi-mug",
+      "status": "ok",
+      "image": "projects/detail-pages/dist/pages/ongi-mug/media/01.webp",
+      "video": null,
+      "meta": {
+        "파일": "projects/detail-pages/dist/pages/ongi-mug/media/01.webp · 1536×1024 · 132,064B (원본 shortform-automation/pipeline/web/public/detail-samples/ongi-mug.png)",
+        "쓰이는 곳": "온기 머그 상세페이지의 첫 화면·형태 디테일·일상 장면(같은 그림을 세 곳에서 자르기만 다르게 사용)",
+        "도구·모드": "Codex 내장 image_gen · 2026-09-12 (shortform-automation)",
+        "참조 이미지": "없음",
+        "설정": "가로 3:2, 후보 1개. 이 저장소로 옮길 때 WebP quality 86, 같은 그림 세 번은 파일 하나로 합침"
+      },
+      "prompts": [
+        {
+          "label": "프롬프트 원문 그대로",
+          "lang": "text",
+          "prepend": null,
+          "text": "Create one premium editorial product photograph for a fictional Korean homeware brand sample detail page. Landscape 3:2 composition. A single beautifully proportioned warm ivory ceramic mug with a rounded cylindrical body, slightly flared rim, and generous rounded D-shaped handle on the right; no logo. Mug sits on a pale travertine tabletop, morning sunlight from upper left, delicate elongated shadows, subtly textured limewash beige wall, folded natural linen on far left, small soft olive branch blurred in far background. Mug occupies center-right with ample empty space at left. Understated modern homeware campaign, tactile matte glaze, realistic fine surface and soft reflections, sophisticated art direction, warm cream and muted olive palette, photographed 70mm lens, no text, no watermark, no price, no collage. This is an invented product visual for a clearly labeled design demonstration, not an actual product photograph."
         }
       ]
     }

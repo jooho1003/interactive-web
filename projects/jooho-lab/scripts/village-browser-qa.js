@@ -61,8 +61,10 @@ try{
   check('all layer bindings pass',probes.passed===43,JSON.stringify(probes));
   const {layerHost:houses}=await import('/village-layers.js');
   const houseProbes=await probe(houses);
-  check('all house parameters probed',houseProbes.total===108);
-  check('all house bindings pass',houseProbes.passed===108,JSON.stringify(houseProbes));
+  // Derived from the manifest so adding a work's house does not need a new magic number (127 with 10 houses).
+  const houseParameters=houses.manifest.layers.reduce((sum,layer)=>sum+Object.keys(layer.params).length,0);
+  check('all house parameters probed',houseProbes.total===houseParameters,`${houseProbes.total}/${houseParameters}`);
+  check('all house bindings pass',houseProbes.passed===houseParameters,JSON.stringify(houseProbes));
   layerHost.setValues(setValue(savedLayers,'all','base','shell','visible',false));check('settings survives hidden shell',getComputedStyle($('#settings-open')).display!=='none');layerHost.setValues(savedLayers);
   click('#settings-open');click('.layer-launch');check('layer panel opens',$('.layers-dialog').open);
   $('.layers-dialog').close();await wait(()=>document.activeElement===$('#settings-open'));check('layer panel focus restores',document.activeElement===$('#settings-open'));

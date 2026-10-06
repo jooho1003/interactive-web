@@ -26,11 +26,16 @@ pnpm 워크스페이스다 (Node 24, `pnpm@9.13.2`). 루트에서 `pnpm install`
 | `projects/day-walk/app` | 산책 일정표 | `day-walk` |
 | `projects/jooho-lab` | 허브 | `jooho-lab` |
 | `projects/potato-designer` | 캐릭터 인터랙티브 포트폴리오 | `potato-designer` |
+| `projects/detail-pages` | 상세페이지 시안 포트폴리오 | `detail-pages` |
 | `packages/layer-kit` | 공용 레이어 설정·런타임·검수 | `@iw/layer-kit` |
 
 ### Potato Designer
 
 영상 레퍼런스 속 웹 화면을 참고한 캐릭터 포트폴리오입니다. 마우스에 반응하는 깊이감, 모션 재생, 분야별 분위기 전환과 작업 패널을 제공합니다. `pnpm --filter potato-designer dev`로 실행할 수 있으며 [사용 안내](projects/potato-designer/README.md)에 구현 범위와 수정 방법을 정리했습니다.
+
+### 상세페이지
+
+shortform-automation에서 만든 쇼핑몰 상세페이지 시안(LUMEN DEW 세럼·온기 머그)을 전체 길이 카드로 훑고 데스크톱·모바일 폭으로 크게 보는 정적 포트폴리오입니다. 전시관 11번 작품과 작업 동네의 집에서 열립니다. `pnpm --filter detail-pages dev`로 실행하며 [사용 안내](projects/detail-pages/README.md)에 동기화 방법을 정리했습니다.
 
 ### Jooho Lab
 

@@ -42,6 +42,7 @@ const expectedDestinations = {
   spire: 'https://tower-50.vercel.app/',
   'day-walk': 'https://interactive-web-app-three.vercel.app/experiences/day-walk/',
   'hanbok-hero': './experiences/hanbok-hero/',
+  'detail-pages': './experiences/detail-pages/',
 };
 for (const [id, href] of Object.entries(expectedDestinations)) {
   assert.equal(projectHref(projects.find((project) => project.id === id)), href, `${id}: default destination`);

@@ -2,7 +2,7 @@
   "status": "PASS",
   "checks": [
     {
-      "name": "house links 9",
+      "name": "house links 10",
       "passed": true,
       "detail": null
     },
@@ -18,7 +18,8 @@
         15.12,
         21,
         26.3,
-        33
+        33,
+        41.4
       ]
     },
     {
@@ -78,6 +79,21 @@
     },
     {
       "name": "nameplate clears number buttons hanbok-hero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "visible detail-pages",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "selected detail-pages",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "nameplate clears number buttons detail-pages",
       "passed": true,
       "detail": null
     },
@@ -266,17 +282,17 @@
       }
     },
     {
-      "name": "right edge reaches Seonbi",
+      "name": "right edge reaches Detail Pages",
       "passed": true,
       "detail": {
         "active": true,
-        "selected": "hanbok-hero",
-        "goal": 32.461636363636366,
-        "x": 32.461636363636366,
+        "selected": "detail-pages",
+        "goal": 41.4,
+        "x": 41.4,
         "frame": 0,
         "state": "walking",
         "camera": [
-          32.461636363636366,
+          41.4,
           0,
           1
         ],
@@ -296,7 +312,7 @@
       }
     },
     {
-      "name": "Seonbi remains visible at edge",
+      "name": "Detail Pages remains visible at edge",
       "passed": true,
       "detail": null
     },
@@ -322,6 +338,16 @@
     },
     {
       "name": "return selected Seonbi",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Detail Pages destination",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "return selected Detail Pages",
       "passed": true,
       "detail": null
     },

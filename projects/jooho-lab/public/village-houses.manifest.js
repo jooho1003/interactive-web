@@ -6,7 +6,7 @@ const opacity = number('불투명도',1,0,1,.05);
 const positions = {
   chemiforge:[-14.4,.22],sasu:[-8.64,.34],blog:[-2.88,.26],
   'dawn-store':[2.88,.32],instatoon:[8.82,.27],spire:[15.12,.06],
-  'day-walk':[21,.18],'potato-designer':[26.3,.22],'hanbok-hero':[33,.14],
+  'day-walk':[21,.18],'potato-designer':[26.3,.22],'hanbok-hero':[33,.14],'detail-pages':[41.4,.11],
 };
 const color = (label,value) => ({type:'color',label,default:value});
 export default {
@@ -52,6 +52,16 @@ export default {
       y:number('세로 위치',0,-10,10,.1,{attr:['.village-seonbi','data-world-y']}),
       width:number('그림 폭',12.096,5,30,.1,{attr:['.village-seonbi','data-world-width']}),
       height:number('그림 높이',12.096,5,30,.1,{attr:['.village-seonbi','data-world-height']}),
+      brightness:number('밝기',1,.4,1.8,.05),
+      leftBlend:number('왼쪽 연결부 블렌드',6,0,20,1,{unit:'%'}),
+    }},
+    {id:'detail-extension',label:'11번 상세페이지 집 그림',group:'배경',el:'.village-detail',params:{
+      visible,opacity,
+      src:{type:'image',label:'그림 파일',default:'./assets/village-detail-pages-v1.png',attr:['.village-detail','src']},
+      x:number('가로 위치',44.5,30,60,.1,{attr:['.village-detail','data-world-x']}),
+      y:number('세로 위치',0,-10,10,.1,{attr:['.village-detail','data-world-y']}),
+      width:number('그림 폭',12.096,5,30,.1,{attr:['.village-detail','data-world-width']}),
+      height:number('그림 높이',12.096,5,30,.1,{attr:['.village-detail','data-world-height']}),
       brightness:number('밝기',1,.4,1.8,.05),
       leftBlend:number('왼쪽 연결부 블렌드',6,0,20,1,{unit:'%'}),
     }},

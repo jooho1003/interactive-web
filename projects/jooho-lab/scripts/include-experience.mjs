@@ -21,6 +21,7 @@ const experiences = {
     title: '선비 · 한복 히어로',
     frameLabel: '시·서·화를 고르면 분위기가 바뀌는 선비 첫 화면',
   },
+  'detail-pages': {source:'../detail-pages/dist',title:'상세페이지 · Detail Pages',frameLabel:'상세페이지 시안을 훑고 크게 보는 포트폴리오',cover:'assets/cover.webp',coverTarget:'work-detail-pages.webp'},
 };
 const id = process.argv[2];
 const experience = experiences[id];

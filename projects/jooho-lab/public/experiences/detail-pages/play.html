@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko" data-layer-scene="browse">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>상세페이지 · JOOHO LAB</title>
+  <meta name="description" content="가상 브랜드로 만든 쇼핑몰 상세페이지 시안을 전체 길이로 훑고 크게 보는 포트폴리오">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600&display=swap">
+  <link rel="stylesheet" href="./layers.css">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <header class="intro">
+    <p class="intro-eyebrow" data-layer-text="header/eyebrow">JOOHO LAB · DETAIL PAGES</p>
+    <h1 class="intro-title" data-layer-text="header/title">상세페이지</h1>
+    <p class="intro-lead" data-layer-text="header/lead">가상 브랜드로 만든 쇼핑몰 상세페이지 시안입니다. 페이지 전체를 한눈에 훑고, 카드를 누르면 실제 페이지를 데스크톱·모바일 폭으로 크게 봅니다.</p>
+  </header>
+  <main class="strip-wrap">
+    <ol class="strip" aria-label="상세페이지 목록"></ol>
+    <p class="strip-empty" data-layer-text="strip/empty" hidden>아직 게시한 상세페이지가 없습니다.</p>
+  </main>
+  <footer class="note"><p data-layer-text="note/text">모든 브랜드·제품·문구는 가상의 디자인 시안입니다. 가격·성분·효능 같은 판매 정보는 넣지 않았습니다.</p></footer>
+  <dialog class="viewer" aria-labelledby="viewer-title" data-default-device="desktop">
+    <div class="viewer-bar">
+      <button class="viewer-close" type="button"><span aria-hidden="true">←</span> <span data-layer-text="viewer/closeLabel">목록으로</span></button>
+      <p class="viewer-meta"><span class="viewer-index"></span> <strong id="viewer-title"></strong></p>
+      <div class="viewer-device" role="group" aria-label="미리보기 폭">
+        <button type="button" data-device="desktop" aria-pressed="true" data-layer-text="viewer/desktopLabel">데스크톱</button>
+        <button type="button" data-device="mobile" aria-pressed="false" data-layer-text="viewer/mobileLabel">모바일</button>
+      </div>
+      <div class="viewer-nav">
+        <button class="viewer-prev" type="button" aria-label="이전 상세페이지">‹</button>
+        <button class="viewer-next" type="button" aria-label="다음 상세페이지">›</button>
+      </div>
+      <a class="viewer-open" target="_blank" rel="noopener" href="./"><span data-layer-text="viewer/openLabel">새 창으로 열기</span> <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="viewer-stage" data-device="desktop">
+      <p class="viewer-loading" role="status" data-layer-text="viewer/loadingLabel">페이지를 불러오는 중입니다</p>
+      <iframe title="상세페이지 미리보기"></iframe>
+    </div>
+  </dialog>
+</body>
+</html>

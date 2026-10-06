@@ -684,3 +684,42 @@ Create one isolated photorealistic flowering Korean plum tree as a transparent P
 ```
 
 **생성 후 확인** — 두 PNG를 직접 열어 서로 다른 줄기/수관·완전한 뿌리·문구/배경 없음 확인. 투명 알파를 보존했다. 실제4정점의 회전/크기/뿌리 보정을 계산해 나무와 화단 전체를 가장 넓은 지붕/보 x=9.8m보다 최소.4m 바깥에 배치한다. 기존 clip-plane으로 가지를 잘라내는 방식은 사용하지 않는다. 입장/실내/회귀 결과는 [QA-spatial](../projects/jooho-lab/QA-spatial.md)와 `art/gallery-tree-pair`에 기록한다. 2.5D 에셋이며 자유 회전 가능한3D 모델은 아니다.
+
+### 29 · 상세페이지 집 — village-detail-pages-v1
+
+<img src="../projects/jooho-lab/public/assets/village-detail-pages-v1.png" width="360">
+
+| 항목 | 내용 |
+|---|---|
+| 파일 | `projects/jooho-lab/public/assets/village-detail-pages-v1.png` · 1254×1254 · 2,428,669B · 불투명 PNG |
+| 쓰이는 곳 | 작업 동네 오른쪽 끝(선비 한옥 다음), 이미지 레이어 `detail-extension`; 링크·이름표·불빛 `house-detail-pages` |
+| 도구·모드 | Codex CLI 0.160 `codex exec` → 내장 image_gen · 기존 한옥 패널을 화풍·하늘·바닥 높이 참조로 쓴 새 그림 · 2026-10-07 |
+| 참조 이미지 | `projects/jooho-lab/public/assets/village-seonbi-v1.png` (`-i`로 첨부, 프롬프트는 표준입력) |
+| 설정 | 정사각형, 후보 1개, 후처리 없음. Codex 원본 `~/.codex/generated_images/01a11258-…/exec-c8ff3159-….png`을 작업 폴더에 저장 |
+
+**한국어 요약** — 11번 작품 상세페이지의 집. 크림색 벽·짙은 초록 창틀·줄무늬 차양의 2층 편집숍 스튜디오로, 진열창에 긴 세로 교정지(상세페이지를 닮은 색 블록)와 민트 세럼 병·아이보리 머그(실제 시안 두 개의 제품)를 둔다. 오른쪽 25%는 동네 끝의 정원.
+
+**Codex에 보낸 원문 그대로**
+
+```text
+Use your built-in image generation tool to create ONE square image. Use the attached image only as a style, sky-color, ground-height and edge-continuity reference; do not repeat its building. Prompt: Create a seamless RIGHT-HAND EXTENSION panel for the supplied miniature village panorama panel. OUTPUT: one square illustration with EXACTLY ONE new full building, a bright product-page design studio for the 'Detail Pages' project. Preserve the reference's premium handcrafted 3D miniature clay/stone rendering, daylight, clear pastel blue sky, warm sandy stone plaza, detailed foliage, miniature streetlamps, front-facing slightly elevated orthographic view, scale and sharpness. Match vertical arrangement: open sky above the roof, building door threshold at 76% from top, sandy plaza across lower 24%. House entrance centered at 40% image width. One charming narrow two-storey editorial boutique studio with cream plaster walls, deep forest-green window frames and a cream-and-forest-green striped awning; a tall shop window shows several very long vertical paper layout sheets hanging side by side like long product-page proofs, made only of soft colour blocks and photo-like rectangles; on a small display shelf in the window sit a pale mint glass serum dropper bottle and an ivory ceramic mug; one clearly visible central glass-and-wood entrance door. No person. Keep roof and entire house fully inside image. Rightmost 25% is quiet open garden with low greenery, a cypress, sky and plaza, providing breathing room beyond the final house. Both edges have unobtrusive blue sky and sandy plaza/cypress foliage for joining to the existing panel. No additional houses, no hanok, no tower, no clock cottage, no potato atelier. Absolutely no readable text, letters, numbers, logos, UI, watermarks, humans or robots on the sheets, signs or anywhere. This is a new square panorama extension asset, not a screenshot or mockup. Save the image in the current directory as detail-house-1.png and reply only with the saved file path.
+```
+
+**생성 후 확인** — 직접 열어 집 1채·출입문·차양·진열창의 긴 교정지·세럼 병·머그와 글자/인물/로봇 없음 확인. 교정지 안에 읽을 수 있는 글자 없음. 문 중심은 요청한 40%보다 왼쪽인 약 24%, 지붕 위끝 11%, 문턱 약 74%. 선비 패널(`seonbi-extension` 중심 34.85)의 오른쪽 정원 위에 겹치도록 그림 중심 x=44.5(왼쪽 끝 38.45), 집 x=41.4/top=.11로 맞췄고 왼쪽 블렌드 6%로 접합한다. 뒤쪽 바다·언덕 마을은 한옥 패널의 오른쪽 끝 원경과 이어진다. 한 후보를 채택했으며 버린 후보 없음. 실제 3D 모델이 아니라 기존 파노라마를 확장하는 그림이다. 데스크톱·390·320px 선택·입장·복귀 결과는 [QA-village](../projects/jooho-lab/QA-village.md) 2026-10-07.
+
+### 30 · 상세페이지 전시 표지 — work-detail-pages
+
+<img src="../projects/jooho-lab/public/assets/work-detail-pages.webp" width="360">
+
+| 항목 | 내용 |
+|---|---|
+| 파일 | `projects/jooho-lab/public/assets/work-detail-pages.webp` · 1800×1125 · 90,788B (원본 `projects/detail-pages/dist/assets/cover.webp`) |
+| 쓰이는 곳 | 전시관 11번 작품 그림(3D 벽 2쪽째 첫 칸)·썸네일 줄·목록·작품 소개 |
+| 도구 | `projects/detail-pages/scripts/sync-pages.py` — Playwright Chromium 전체 길이 캡처(1440·390px) + Pillow 합성 · 2026-10-07. 생성 에셋 아님 |
+| 참조 이미지 | 해당 없음 — 실제 상세페이지 캡처 |
+| 설정 | 상세페이지마다 데스크톱·모바일 캡처를 같은 높이(955px)로 나란히, 배경 `#ece6da`, 흐린 그림자. WebP quality 88 |
+| 프롬프트 | 해당 없음 — 캡처 합성. 페이지 속 그림의 프롬프트는 [detail-pages.md](detail-pages.md) |
+
+**무엇을 보여 주나** — LUMEN DEW 세럼·온기 머그 두 상세페이지의 전체 길이(데스크톱·모바일)를 한 보드에. 글자는 넣지 않았다.
+
+**만든 뒤 확인** — 합성본을 열어 네 줄 모두 위아래가 잘리지 않고 원본 비율 그대로인지 확인. 상세페이지를 다시 동기화하면(`python projects/detail-pages/scripts/sync-pages.py`) 표지도 새로 만들어지고, `include:experience detail-pages`가 허브 자산으로 복사한다.

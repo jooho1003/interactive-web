@@ -281,3 +281,9 @@ bkit Plan → Design → Do → Check. [계획](../../docs/01-plan/features/gall
 - 리뷰에서 발견한 API 읽기 오류를 브라우저 초안 성공으로 처리하는 문제를 수정했다. 404만 정적 미지원으로 처리하고 실제 읽기 오류는 저장을 차단한다.
 - 루트 `pnpm check`, 앱 `pnpm build` PASS. 12레이어/131파라미터 유지, lint 오류 0. 새 에셋·프롬프트 없음. 기존 Node>=24 안내와 Dawn umbrella 경고는 이번 변경의 실패가 아니다.
 - 결과: `art/gallery-layer-publish/publish-qa.json`, `art/gallery-layer-editor/editor-qa.json`·`layer-probe.json`. 원격 배포/커밋/push, 사용자의 Chrome 원본 배치 이관, 실제 iOS/Safari/Firefox는 이번에 검증하지 않았다.
+
+# 2026-10-07 — 11번 상세페이지
+
+- 등록부 11개: 전시 벽 7칸을 넘는 작품은 기존 `exhibitBays` 재사용으로 2쪽째에 걸린다. 표지는 캡처 합성 `work-detail-pages.webp`(1800×1125).
+- 공간 harness(`check-natural-gallery.py --prefix gallery-detail-pages`, 임시 8889 서버): 데스크톱 **349 PASS**, 모바일 **350 PASS**. 320px는 `layer editor.panelWidth: 320px -> 320px`에서 멈췄다 — 편집 창 폭이 `min(panelWidth, 100vw)`라 화면 폭 320px에서는 값을 바꿔도 보이지 않는 **기존 검수 스크립트의 한계**다(레이어 편집 커밋 50e7a70의 회귀 기록도 데스크톱·모바일만 있다). 같은 바인딩을 main 체크아웃과 이 브랜치에서 직접 바꿔 보니 둘 다 360px → 300px로 같았다. 스크립트는 고치지 않았다.
+- 그 대신 320·390·1440에서 11번만 따로 확인: 썸네일 있음·선택·가로 넘침 없음·포트폴리오 링크·목록 보기 넘침 없음·페이지 오류 없음, 감싸개 안 덮개 열기·Escape·"전시실로 돌아가기" **22/22 PASS**. 캡처는 남기지 않았다(검수용 임시 폴더).

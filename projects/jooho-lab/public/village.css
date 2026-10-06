@@ -13,6 +13,8 @@
 .entry-veil{visibility:var(--L-entry-visible);opacity:var(--L-entry-opacity);background:color-mix(in srgb,var(--L-entry-color) calc(var(--entry-progress,0)*98%),transparent)}
 .gallery-pagination,.world-arrow,.gallery-footer,.collection-scroll,.gallery-toolbar{visibility:var(--L-controls-visible);opacity:var(--L-controls-opacity)}
 .gallery-pagination{bottom:var(--L-controls-bottom)}
+/* layer-fixed: 작품 수가 늘어도 번호 줄은 화면 안에 두고 가로로 넘긴다(320px에서 11번이 화면 밖으로 밀리지 않게). */
+.gallery-pagination{max-width:calc(100vw - 24px);overflow-x:auto;scrollbar-width:none}.gallery-pagination button{flex:none}
 .gallery-footer{bottom:var(--L-controls-footerBottom)}
 .gallery-pagination button{width:var(--L-controls-size);height:var(--L-controls-size)}
 .gallery-pagination button[aria-pressed=true]{background:var(--L-controls-color)}

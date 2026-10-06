@@ -30,7 +30,7 @@ with sync_playwright() as p:
             page.screenshot(path=str(OUT/f'{name}-exterior.png'))
             page.locator('#spatial-enter').click()
             page.screenshot(path=str(OUT/f'{name}-hall.png'))
-            for work in ['day-walk','potato-designer','hanbok-hero']:
+            for work in ['day-walk','potato-designer','hanbok-hero','detail-pages']:
                 page.locator(f'#gallery-pagination button[data-id="{work}"]').click()
                 page.screenshot(path=str(OUT/f'{name}-{work}.png'))
             page.close()

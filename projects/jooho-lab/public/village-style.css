@@ -2,6 +2,7 @@
 [data-layer-hidden]{display:none!important}
 .village-extension{position:absolute;pointer-events:none;display:var(--L-village-extension-visible);opacity:var(--L-village-extension-opacity);mask-image:linear-gradient(to right,transparent,black var(--L-village-extension-leftBlend));filter:brightness(calc(var(--scene-brightness,1) * var(--L-village-extension-brightness)))}
 .village-seonbi{position:absolute;pointer-events:none;display:var(--L-seonbi-extension-visible);opacity:var(--L-seonbi-extension-opacity);mask-image:linear-gradient(to right,transparent,black var(--L-seonbi-extension-leftBlend));filter:brightness(calc(var(--scene-brightness,1) * var(--L-seonbi-extension-brightness)))}
+.village-detail{position:absolute;pointer-events:none;display:var(--L-detail-extension-visible);opacity:var(--L-detail-extension-opacity);mask-image:linear-gradient(to right,transparent,black var(--L-detail-extension-leftBlend));filter:brightness(calc(var(--scene-brightness,1) * var(--L-detail-extension-brightness)))}
 #scene [data-world-project="chemiforge"]{display:var(--L-house-chemiforge-visible);opacity:calc(var(--L-house-chemiforge-opacity) * var(--village-label-opacity))}
 #scene [data-world-project="chemiforge"] .world-label{font-size:calc(var(--L-house-chemiforge-labelSize) + var(--village-label-size) - .9rem);color:var(--L-house-chemiforge-labelColor);background:var(--L-house-chemiforge-labelBackground)}
 [data-world-light="chemiforge"]{display:var(--L-house-chemiforge-visible);--light:var(--L-house-chemiforge-lightColor);opacity:calc(var(--ambient-opacity,0) * var(--L-house-chemiforge-opacity))}
@@ -29,3 +30,6 @@
 #scene [data-world-project="hanbok-hero"]{display:var(--L-house-hanbok-hero-visible);opacity:calc(var(--L-house-hanbok-hero-opacity) * var(--village-label-opacity))}
 #scene [data-world-project="hanbok-hero"] .world-label{font-size:calc(var(--L-house-hanbok-hero-labelSize) + var(--village-label-size) - .9rem);color:var(--L-house-hanbok-hero-labelColor);background:var(--L-house-hanbok-hero-labelBackground)}
 [data-world-light="hanbok-hero"]{display:var(--L-house-hanbok-hero-visible);--light:var(--L-house-hanbok-hero-lightColor);opacity:calc(var(--ambient-opacity,0) * var(--L-house-hanbok-hero-opacity))}
+#scene [data-world-project="detail-pages"]{display:var(--L-house-detail-pages-visible);opacity:calc(var(--L-house-detail-pages-opacity) * var(--village-label-opacity))}
+#scene [data-world-project="detail-pages"] .world-label{font-size:calc(var(--L-house-detail-pages-labelSize) + var(--village-label-size) - .9rem);color:var(--L-house-detail-pages-labelColor);background:var(--L-house-detail-pages-labelBackground)}
+[data-world-light="detail-pages"]{display:var(--L-house-detail-pages-visible);--light:var(--L-house-detail-pages-lightColor);opacity:calc(var(--ambient-opacity,0) * var(--L-house-detail-pages-opacity))}

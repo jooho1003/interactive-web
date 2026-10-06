@@ -94,4 +94,13 @@ export const projects = [
     url: 'https://github.com/jooho1003/interactive-web/tree/main/projects/jooho-lab', linkLabel: '프로젝트 코드 보기',
     image: './assets/project-village.webp', mark: '집', note: 'JOOHO LAB의 아이디어와 작업을 모은 손그림 동네입니다.',
   },
+  {
+    id: 'detail-pages', liveUrl: './experiences/detail-pages/', title: '상세페이지', subtitle: '제품 한 장을, 끝까지 읽히는 페이지로.',
+    category: '콘텐츠', type: 'PRODUCT DETAIL PAGES', number: '11', color: '#9db59a',
+    description: '가상 브랜드로 만든 쇼핑몰 상세페이지 시안 모음. 의뢰서를 바탕으로 카피와 제품 이미지를 만들고 한 장의 페이지로 조판했습니다. 페이지 전체를 훑고 데스크톱·모바일 폭으로 크게 봅니다.',
+    details: ['LUMEN DEW 세럼 — 제형 매크로·3D 개념 연출을 더한 화장품 리디자인', '온기 아이보리 머그 — 넓은 여백의 생활 소품 상세페이지 샘플', '전체 길이 미리보기 카드와 데스크톱·모바일 폭 크게 보기'],
+    tags: ['상세페이지', '이미지 생성', 'HTML/CSS'],
+    url: 'https://github.com/jooho1003/interactive-web/tree/main/projects/detail-pages', linkLabel: '프로젝트 코드 보기',
+    image: './assets/work-detail-pages.webp', mark: '頁', note: '모든 브랜드·제품은 가상의 디자인 시안입니다.',
+  },
 ];

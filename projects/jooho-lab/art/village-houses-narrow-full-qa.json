@@ -4,7 +4,7 @@
     320,
     700
   ],
-  "count": 75,
+  "count": 80,
   "probes": {
     "total": 43,
     "passed": 43,
@@ -263,6 +263,31 @@
       "detail": "{\"plate\":{\"x\":132.3984375,\"y\":529.734375,\"width\":55.171875,\"height\":43.046875,\"top\":529.734375,\"right\":187.5703125,\"bottom\":572.78125,\"left\":132.3984375},\"footer\":{\"x\":0,\"y\":418.34375,\"width\":320,\"height\":61.65625,\"top\":418.34375,\"right\":320,\"bottom\":480,\"left\":0}}"
     },
     {
+      "name": "select detail-pages",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "visible stop detail-pages",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "operating destination detail-pages",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM name detail-pages",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "nameplate clears controls detail-pages",
+      "pass": true,
+      "detail": "{\"plate\":{\"x\":113.515625,\"y\":529.734375,\"width\":92.9375,\"height\":43.046875,\"top\":529.734375,\"right\":206.453125,\"bottom\":572.78125,\"left\":113.515625},\"footer\":{\"x\":0,\"y\":418.34375,\"width\":320,\"height\":61.65625,\"top\":418.34375,\"right\":320,\"bottom\":480,\"left\":0}}"
+    },
+    {
       "name": "Seonbi separate house",
       "pass": true,
       "detail": ""
@@ -350,12 +375,12 @@
     {
       "name": "all house parameters probed",
       "pass": true,
-      "detail": ""
+      "detail": "127/127"
     },
     {
       "name": "all house bindings pass",
       "pass": true,
-      "detail": "{\"total\":108,\"passed\":108,\"failed\":[],\"conditional\":0}"
+      "detail": "{\"total\":127,\"passed\":127,\"failed\":[],\"conditional\":0}"
     },
     {
       "name": "settings survives hidden shell",
