@@ -13,6 +13,9 @@
 !projects/hanbok-hero/dist/
 !projects/hanbok-hero/dist/**
 projects/hanbok-hero/.studio/
+!projects/detail-pages/dist/
+!projects/detail-pages/dist/**
+projects/detail-pages/.studio/
 **/test-results/
 **/playwright-report/
 

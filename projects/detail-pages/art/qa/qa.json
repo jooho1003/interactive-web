@@ -1,0 +1,243 @@
+{
+  "passed": 44,
+  "total": 44,
+  "results": [
+    {
+      "name": "카드 수 = 목록 수",
+      "ok": true,
+      "detail": "2/2"
+    },
+    {
+      "name": "목록이 있으면 빈 안내 숨김",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "미리보기 캡처를 모두 불러옴",
+      "ok": true,
+      "detail": "[720,720]"
+    },
+    {
+      "name": "가로 넘침 없음(페이지)",
+      "ok": true,
+      "detail": "1440 > 1440"
+    },
+    {
+      "name": "카드 그림 높이 = 파라미터",
+      "ok": true,
+      "detail": "596 vs 596"
+    },
+    {
+      "name": "카드 그림 비율 = 캡처 비율",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "카드 클릭 → 덮개 열림·해시·장면",
+      "ok": true,
+      "detail": "#lumen-dew-serum"
+    },
+    {
+      "name": "덮개 제목·순서 표시",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "첫 상세페이지에서 이전 버튼 비활성",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "실제 페이지를 불러옴",
+      "ok": true,
+      "detail": "http://127.0.0.1:54745/pages/lumen-dew-serum/"
+    },
+    {
+      "name": "새 창 링크가 같은 페이지",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "데스크톱 폭 미리보기가 무대에 맞게 축소",
+      "ok": true,
+      "detail": "1440 / 1440"
+    },
+    {
+      "name": "다음 → 두 번째 상세페이지",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "다음은 기록을 쌓지 않음(replace)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "← 키 → 이전 상세페이지",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "모바일 폭 전환",
+      "ok": true,
+      "detail": "390"
+    },
+    {
+      "name": "폭 버튼 상태(aria-pressed)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "닫기 → 덮개 닫힘·해시 제거·장면 복귀",
+      "ok": true,
+      "detail": "http://127.0.0.1:54745/"
+    },
+    {
+      "name": "닫은 뒤 포커스가 연 카드로",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "setScene(viewer) → 덮개 열림",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "setScene(browse) → 덮개 닫힘",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "덮개를 끄면 덮개를 열지 않음",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "layer-kit probe 59/59",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "Tab 첫 이동이 카드",
+      "ok": true,
+      "detail": "card"
+    },
+    {
+      "name": "Enter → 덮개 열림",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "→ 키 → 다음 상세페이지",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Escape → 닫힘·해시 제거",
+      "ok": true,
+      "detail": "http://127.0.0.1:54745/"
+    },
+    {
+      "name": "Escape 뒤 포커스가 연 카드로(첫 카드에서 연 뒤 다음으로 옮겨도 마지막 페이지 카드)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "뒤로 가기 → 덮개 닫힘, 페이지는 그대로",
+      "ok": true,
+      "detail": "http://127.0.0.1:54745/"
+    },
+    {
+      "name": "앞으로 가기 → 같은 상세페이지 다시 열림",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "앞으로 가기 뒤 닫기 → 목록 주소",
+      "ok": true,
+      "detail": "http://127.0.0.1:54745/"
+    },
+    {
+      "name": "해시 주소로 바로 열기",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "직접 진입 후 닫기 → 해시만 지움(이전 기록 유지)",
+      "ok": true,
+      "detail": "http://127.0.0.1:54745/"
+    },
+    {
+      "name": "390px 가로 넘침 없음",
+      "ok": true,
+      "detail": [
+        390,
+        390
+      ]
+    },
+    {
+      "name": "390px: 모바일 폭으로 열림(화면 전체)",
+      "ok": true,
+      "detail": {
+        "device": "mobile",
+        "frame": 390,
+        "bar": true
+      }
+    },
+    {
+      "name": "390px: 덮개 막대가 화면 안",
+      "ok": true,
+      "detail": {
+        "device": "mobile",
+        "frame": 390,
+        "bar": true
+      }
+    },
+    {
+      "name": "390px: 데스크톱 폭은 축소해 보여 줌",
+      "ok": true,
+      "detail": "0.2708333333333333"
+    },
+    {
+      "name": "동작 줄이기: 카드 떠오름·전환 없음",
+      "ok": true,
+      "detail": {
+        "lift": "none",
+        "transition": "0s"
+      }
+    },
+    {
+      "name": "동작 줄이기: 덮개 전환 없음",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "name": "캡처를 못 불러오면 자리표시(크기 유지)",
+      "ok": true,
+      "detail": [
+        true,
+        true
+      ]
+    },
+    {
+      "name": "관리자: 레이어 목록",
+      "ok": true,
+      "detail": 7
+    },
+    {
+      "name": "관리자: 장면 \"크게 보기\" → 미리보기 덮개 열림",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "관리자: 장면 \"목록\" → 덮개 닫힘",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "페이지 오류 없음",
+      "ok": true,
+      "detail": []
+    }
+  ]
+}

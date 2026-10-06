@@ -1,0 +1,7 @@
+{
+  "source": "../shortform-automation/상세페이지",
+  "pages": [
+    { "slug": "lumen-dew-serum", "folder": "db6b2f93-2d77-436c-b560-8d9ab2208102", "html": "화장품-리디자인.html" },
+    { "slug": "ongi-mug", "folder": "90a6d633-6baf-4473-8a70-80bd6822a9de", "html": "결과.html" }
+  ]
+}
